@@ -17,7 +17,7 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     using Eco.Gameplay.Pipes;
 
-    [RequiresSkill(typeof(ClothProductionSkill), 1)]
+    [RequiresSkill(typeof(BasicCraftingSkill), 1)]
     public partial class StringRecipe : Recipe
     {
         public StringRecipe()
@@ -28,12 +28,12 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<PlantFibersItem>(typeof(ClothProductionEfficiencySkill), 10, ClothProductionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<PlantFibersItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(StringRecipe), Item.Get<StringItem>().UILink(), 2, typeof(ClothProductionSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(StringRecipe), Item.Get<StringItem>().UILink(), 2, typeof(BasicCraftingSpeedSkill));
             this.Initialize("String", typeof(StringRecipe));
 
-            CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
+            CraftingComponent.AddRecipe(typeof(WorkBenchObject), this);
         }
     }
 

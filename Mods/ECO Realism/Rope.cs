@@ -17,7 +17,7 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     using Eco.Gameplay.Pipes;
 
-    [RequiresSkill(typeof(ClothProductionSkill), 1)]
+    [RequiresSkill(typeof(BasicCraftingSkill), 2)]
     public partial class RopeRecipe : Recipe
     {
         public RopeRecipe()
@@ -28,12 +28,12 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<StringItem>(typeof(ClothProductionEfficiencySkill), 5, ClothProductionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<StringItem>(typeof(BasicCraftingEfficiencySkill), 5, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RopeRecipe), Item.Get<RopeItem>().UILink(), 3, typeof(ClothProductionSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RopeRecipe), Item.Get<RopeItem>().UILink(), 3, typeof(BasicCraftingSpeedSkill));
             this.Initialize("Rope", typeof(RopeRecipe));
 
-            CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
+            CraftingComponent.AddRecipe(typeof(WorkBenchObject), this);
         }
     }
 
