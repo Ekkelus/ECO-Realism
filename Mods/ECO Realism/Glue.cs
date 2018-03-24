@@ -28,10 +28,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoneItem>(typeof(MeatPrepEfficiencySkill), 10, MeatPrepEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlassJarItem>(typeof(MeatPrepEfficiencySkill), 2, MeatPrepEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoneItem>(typeof(MeatPrepEfficiencySkill), 5, MeatPrepEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GlassJarItem>(typeof(MeatPrepEfficiencySkill), 1, MeatPrepEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(GlueRecipe), Item.Get<GlueItem>().UILink(), 5, typeof(MeatPrepSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(GlueRecipe), Item.Get<GlueItem>().UILink(), 3, typeof(MeatPrepSpeedSkill));
             this.Initialize("Glue", typeof(GlueRecipe));
 
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);
