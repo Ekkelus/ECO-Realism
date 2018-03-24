@@ -29,6 +29,7 @@ public static class PlayerDefaults
             { typeof(StonePickaxeItem), 1 },
             { typeof(WorkbenchItem), 1 },
             { typeof(CardboardBoxItem), 2 },
+            { typeof(StockpileItem), 2 },
         };
     }
 
