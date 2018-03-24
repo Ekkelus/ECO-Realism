@@ -28,7 +28,7 @@ public static class PlayerDefaults
             { typeof(WoodenShovelItem), 1 },
             { typeof(StonePickaxeItem), 1 },
             { typeof(WorkbenchItem), 1 },
-            { typeof(StorageChestItem), 2 },
+            { typeof(CardboardBoxItem), 2 },
         };
     }
 
