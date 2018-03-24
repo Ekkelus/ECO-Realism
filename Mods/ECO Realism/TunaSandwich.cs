@@ -22,12 +22,12 @@ namespace Eco.Mods.TechTree
         public override string FriendlyName { get { return "Tuna Sandwich"; } }
         public override string Description { get { return "A fish shaped cake filled with bean paste."; } }
 
-        private static Nutrients nutrition = new Nutrients() { Carbs = 16, Fat = 14, Protein = 4, Vitamins = 6 };
-        public override float Calories { get { return 800; } }
+        private static Nutrients nutrition = new Nutrients() { Carbs = 1, Fat = 1, Protein = 1, Vitamins = 1 };
+        public override float Calories { get { return 1; } }
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(LeavenedBakingSkill), 4)]
+    [RequiresSkill(typeof(AdvancedCookingSkill), 1)]
     public partial class TunaSandwichRecipe : Recipe
     {
         public TunaSandwichRecipe()
@@ -39,10 +39,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<TunaFilletItem>(typeof(LeavenedBakingEfficiencySkill), 20, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BreadItem>(typeof(LeavenedBakingEfficiencySkill), 20, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<TunaFilletItem>(typeof(AdvancedCookingEfficiencySkill), 1, AdvancedCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BreadItem>(typeof(AdvancedCookingEfficiencySkill), 1, AdvancedCookingEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(TunaSandwichRecipe), Item.Get<TunaSandwichItem>().UILink(), 10, typeof(LeavenedBakingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(TunaSandwichRecipe), Item.Get<TunaSandwichItem>().UILink(), 10, typeof(AdvancedCookingSpeedSkill));
             this.Initialize("Tuna Sandwich", typeof(TunaSandwichRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }
