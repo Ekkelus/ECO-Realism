@@ -46,7 +46,7 @@ namespace Eco.Mods.TechTree
 			this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
 
             var storage = this.GetComponent<PublicStorageComponent>();
-            storage.Initialize(8);
+            storage.Initialize(5);
             storage.Storage.AddRestriction(new NotCarriedRestriction()); // can't store block or large items
 
 
