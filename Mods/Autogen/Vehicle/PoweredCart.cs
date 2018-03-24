@@ -59,7 +59,7 @@ namespace Eco.Mods.TechTree
     {
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
         {
-            { typeof(DirtRoadBlock), 0.8f }, { typeof(DirtRoadWorldObjectBlock), 0.8f },
+            { typeof(DirtRoadBlock), 1.0f }, { typeof(DirtRoadWorldObjectBlock), 1.0f },
             { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
             { typeof(AsphaltRoadBlock), 1.6f }, { typeof(AsphaltRoadWorldObjectBlock), 1.6f }
         };
