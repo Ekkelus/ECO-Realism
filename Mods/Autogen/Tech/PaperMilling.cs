@@ -17,8 +17,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
 
-    [Serialized]
-    [RequiresSkill(typeof(CarpenterSkill), 0)]    
+    [Serialized]    
     public partial class PaperMillingSkill : Skill
     {
         public override string FriendlyName { get { return "Paper Milling"; } }
