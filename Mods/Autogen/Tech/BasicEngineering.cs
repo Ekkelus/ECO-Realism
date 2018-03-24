@@ -54,7 +54,6 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<HewnLogItem>(typeof(ResearchEfficiencySkill), 10, ResearchEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BookItem>(typeof(ResearchEfficiencySkill), 2, ResearchEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
 

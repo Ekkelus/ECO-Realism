@@ -56,7 +56,6 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<HuckleberrySeedItem>(typeof(ResearchEfficiencySkill), 5, ResearchEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<CornSeedItem>(typeof(ResearchEfficiencySkill), 5, ResearchEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<CriminiMushroomSporesItem>(typeof(ResearchEfficiencySkill), 5, ResearchEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BookItem>(typeof(ResearchEfficiencySkill), 2, ResearchEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
 
