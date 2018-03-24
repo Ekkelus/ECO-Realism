@@ -18,7 +18,7 @@ namespace Eco.Mods.TechTree
     using Gameplay.Systems.Tooltip;
 
     [Serialized]
-    
+    [RequiresSkill(typeof(MasonSkill), 0)]    
     public partial class GlassworkingSkill : Skill
     {
         public override string FriendlyName { get { return "Glassworking"; } }
