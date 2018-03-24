@@ -98,6 +98,8 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronIngotItem>(typeof(LumberWoodworkingEfficiencySkill), 10, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(LumberWoodworkingEfficiencySkill), 20, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<CopperPipeItem>(typeof(LumberWoodworkingEfficiencySkill), 8, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(LumberWoodworkingEfficiencySkill), 16, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GlassJarItem>(typeof(LumberWoodworkingEfficiencySkill), 8, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
             };
             SkillModifiedValue value = new SkillModifiedValue(120, LumberWoodworkingSpeedSkill.MultiplicativeStrategy, typeof(LumberWoodworkingSpeedSkill), "craft time");
             SkillModifiedValueManager.AddBenefitForObject(typeof(KitchenRecipe), Item.Get<KitchenItem>().UILink(), value);
