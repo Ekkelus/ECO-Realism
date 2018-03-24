@@ -33,7 +33,7 @@ namespace Eco.Mods.TechTree
             this.CraftMinutes = CreateCraftTimeValue(typeof(RopeRecipe), Item.Get<RopeItem>().UILink(), 3, typeof(BasicCraftingSpeedSkill));
             this.Initialize("Rope", typeof(RopeRecipe));
 
-            CraftingComponent.AddRecipe(typeof(WorkBenchObject), this);
+            CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }
 
