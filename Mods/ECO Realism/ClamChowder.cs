@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(CookingSkill), 2)]
+    [RequiresSkill(typeof(HomeCookingSkill), 2)]
     public partial class ClamChowderRecipe : Recipe
     {
         public ClamChowderRecipe()
@@ -39,11 +39,11 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ClamItem>(typeof(CookingEfficiencySkill), 1, CookingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<FiddleheadsItem>(typeof(CookingEfficiencySkill), 1, CookingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CriminiMushroomsItem>(typeof(CookingEfficiencySkill), 1, CookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<ClamItem>(typeof(HomeCookingEfficiencySkill), 1, HomeCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<FiddleheadsItem>(typeof(HomeCookingEfficiencySkill), 1, HomeCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<CriminiMushroomsItem>(typeof(HomeCookingEfficiencySkill), 1, HomeCookingEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ClamChowderRecipe), Item.Get<ClamChowderItem>().UILink(), 10, typeof(CookingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ClamChowderRecipe), Item.Get<ClamChowderItem>().UILink(), 10, typeof(HomeCookingSpeedSkill));
             this.Initialize("Clam Chowder", typeof(ClamChowderRecipe));
             CraftingComponent.AddRecipe(typeof(CastIronStoveObject), this);
         }

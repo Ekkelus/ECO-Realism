@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(AdvancedCookingSkill), 1)]
+    [RequiresSkill(typeof(CulinaryArtsSkill), 1)]
     public partial class TunaSandwichRecipe : Recipe
     {
         public TunaSandwichRecipe()
@@ -39,10 +39,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<TunaFilletItem>(typeof(AdvancedCookingEfficiencySkill), 1, AdvancedCookingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BreadItem>(typeof(AdvancedCookingEfficiencySkill), 1, AdvancedCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<TunaFilletItem>(typeof(CulinaryArtsEfficiencySkill), 1, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BreadItem>(typeof(CulinaryArtsEfficiencySkill), 1, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(TunaSandwichRecipe), Item.Get<TunaSandwichItem>().UILink(), 10, typeof(AdvancedCookingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(TunaSandwichRecipe), Item.Get<TunaSandwichItem>().UILink(), 10, typeof(CulinaryArtsSpeedSkill));
             this.Initialize("Tuna Sandwich", typeof(TunaSandwichRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }
