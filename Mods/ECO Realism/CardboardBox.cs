@@ -42,7 +42,8 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Storage");                                 
+            this.GetComponent<MinimapComponent>().Initialize("Storage");
+			this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
 
             var storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(8);
