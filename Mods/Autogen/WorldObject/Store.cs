@@ -84,10 +84,8 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(BasicCraftingEfficiencySkill), 4, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlueItem>(typeof(BasicCraftingEfficiencySkill), 4, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(BasicCraftingEfficiencySkill), 8, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 20, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<StoneItem>(typeof(BasicCraftingEfficiencySkill), 20, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
             };
             SkillModifiedValue value = new SkillModifiedValue(15, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), "craft time");
             SkillModifiedValueManager.AddBenefitForObject(typeof(StoreRecipe), Item.Get<StoreItem>().UILink(), value);
