@@ -13,7 +13,7 @@ namespace Eco.Mods.TechTree
         protected override void PostInitialize()
         {
             base.PostInitialize();
-            this.GetComponent<AnimalTrapComponent>().Initialize(new List<string>() { "Trout", "Salmon", "Tuna" });
+            this.GetComponent<AnimalTrapComponent>().Initialize(new List<string>() { "Trout", "Salmon", "Tuna", "Hare", "Turkey", "Bison", "Elk", "Wolf", "Fox" });
         }
     }
 }
