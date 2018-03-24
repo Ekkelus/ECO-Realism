@@ -30,7 +30,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<PlantFibersItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(StringRecipe), Item.Get<StringItem>().UILink(), 2, typeof(BasicCraftingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(StringRecipe), Item.Get<StringItem>().UILink(), 0.5f, typeof(BasicCraftingSpeedSkill));
             this.Initialize("String", typeof(StringRecipe));
 
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
