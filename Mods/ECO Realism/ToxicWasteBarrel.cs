@@ -70,7 +70,7 @@ namespace Eco.Mods.TechTree
 			this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
 			
             var storage = this.GetComponent<PublicStorageComponent>();
-            storage.Initialize(10);
+            storage.Initialize(4);
             storage.Storage.AddRestriction(new TailingsOnlyRestriction()); // can't store block or large items
 
 
@@ -109,7 +109,7 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 2, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 4, MetalworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<CopperIngotItem>(typeof(MetalworkingEfficiencySkill), 2, MetalworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(MetalworkingEfficiencySkill), 2, MetalworkingEfficiencySkill.MultiplicativeStrategy),
             };
