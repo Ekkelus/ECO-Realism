@@ -20,7 +20,7 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
-    [Weight(500)]      
+    [Weight(0)]      
     [Currency]              
     public partial class CoinItem :
     Item                                     
