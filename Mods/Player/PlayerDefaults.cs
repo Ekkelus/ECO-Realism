@@ -32,7 +32,7 @@ public static class PlayerDefaults
             { typeof(WorkbenchItem), 1 },
             { typeof(CardboardBoxItem), 2 },
             { typeof(StockpileItem), 2 },
-            { typeof(CoinItem), 100 },
+            { typeof(CoinItem), 50 },
         };
     }
 

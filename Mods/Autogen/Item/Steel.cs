@@ -29,8 +29,7 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<IronIngotItem>(typeof(AlloySmeltingEfficiencySkill), 3, AlloySmeltingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LumberItem>(typeof(AlloySmeltingEfficiencySkill), 2, AlloySmeltingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CoalItem>(typeof(AlloySmeltingEfficiencySkill), 2, AlloySmeltingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<CharcoalItem>(typeof(AlloySmeltingEfficiencySkill), 2, AlloySmeltingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<TailingsItem>(typeof(AlloySmeltingEfficiencySkill), 1, AlloySmeltingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(SteelRecipe), Item.Get<SteelItem>().UILink(), 5, typeof(AlloySmeltingSpeedSkill));    
