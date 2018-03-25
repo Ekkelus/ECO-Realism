@@ -59,9 +59,9 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(LinkComponent))]
     [RequireComponent(typeof(PublicStorageComponent))]
-    public partial class WasteContainerObject : WorldObject
+    public partial class ToxicWasteBarrelObject : WorldObject
     {
-        public override string FriendlyName { get { return "Storage Chest"; } }
+        public override string FriendlyName { get { return "Toxic Waste Barrel"; } }
 
 
         protected override void Initialize()
@@ -83,12 +83,12 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
-    public partial class WasteContainerItem : WorldObjectItem<WasteContainerObject>
+    public partial class ToxicWasteBarrelItem : WorldObjectItem<ToxicWasteBarrelObject>
     {
-        public override string FriendlyName { get { return "Wate Container"; } }
+        public override string FriendlyName { get { return "Toxic Waste Barrel"; } }
         public override string Description { get { return "A container for storing Tailings."; } }
 
-        static WasteContainerItem()
+        static ToxicWasteBarrelItem()
         {
 
         }
@@ -96,29 +96,28 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 1)]
-    public partial class WasteContainerRecipe : Recipe
+    [RequiresSkill(typeof(MetalworkingSkill), 1)]
+    public partial class ToxicWasteBarrelRecipe : Recipe
     {
-        public WasteContainerRecipe()
+        public ToxicWasteBarrelRecipe()
         {
             this.Products = new CraftingElement[]
             {
-                new CraftingElement<WasteContainerItem>(),
+                new CraftingElement<ToxicWasteBarrelItem>(),
             };
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(BasicCraftingEfficiencySkill), 5, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(BasicCraftingEfficiencySkill), 3, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<HingeItem>(typeof(BasicCraftingEfficiencySkill), 2, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 2, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<CopperIngotItem>(typeof(MetalworkingEfficiencySkill), 2, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(MetalworkingEfficiencySkill), 2, MetalworkingEfficiencySkill.MultiplicativeStrategy),
             };
             SkillModifiedValue value = new SkillModifiedValue(2, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), "craft time");
-            SkillModifiedValueManager.AddBenefitForObject(typeof(WasteContainerRecipe), Item.Get<WasteContainerItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<WasteContainerItem>().UILink(), value);
+            SkillModifiedValueManager.AddBenefitForObject(typeof(ToxicWasteBarrelRecipe), Item.Get<ToxicWasteBarrelItem>().UILink(), value);
+            SkillModifiedValueManager.AddSkillBenefit(Item.Get<ToxicWasteBarrelItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Waste Container", typeof(WasteContainerRecipe));
-            CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
+            this.Initialize("Toxic Waste Barrel", typeof(ToxicWasteBarrelRecipe));
+            CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }
 }
