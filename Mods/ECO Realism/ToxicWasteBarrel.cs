@@ -46,7 +46,7 @@ namespace Eco.Mods.TechTree
         {
             if (item.Type == typeof(TailingsItem))
             {
-                return item.MaxStackSize - currentQuantity;
+                return item.MaxStackSize;
             }
             else return 0;
         }
