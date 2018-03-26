@@ -1,6 +1,7 @@
 namespace Eco.Mods.TechTree
 {
     using System;
+    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -28,7 +29,6 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-    using Eco.Shared.Localization;
 
 
 

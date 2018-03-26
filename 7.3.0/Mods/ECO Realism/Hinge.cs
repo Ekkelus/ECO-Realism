@@ -1,6 +1,7 @@
 namespace Eco.Mods.TechTree
 {
     using System;
+    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -15,7 +16,6 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
-    using Eco.Shared.Localization;
     using Eco.Gameplay.Pipes;
 
     [RequiresSkill(typeof(MetalworkingSkill), 1)]

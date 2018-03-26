@@ -2,6 +2,7 @@
 // See LICENSE file in the project root for full license information.
 
 using System;
+    using Eco.Shared.Localization;
 using System.Collections.Generic;
 using Eco.Gameplay.DynamicValues;
 using Eco.Gameplay.Items;

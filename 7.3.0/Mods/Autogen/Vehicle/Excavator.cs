@@ -1,6 +1,7 @@
 namespace Eco.Mods.TechTree
 {
     using System;
+    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;

@@ -1,6 +1,7 @@
 namespace Eco.Mods.TechTree
 {
     using System;
+    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.Linq;
     using Eco.Core.Utils;

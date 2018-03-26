@@ -1,6 +1,7 @@
 namespace Eco.Mods.TechTree
 {
     using System;
+    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.DynamicValues;
@@ -9,7 +10,6 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
-    using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
     [RequiresSkill(typeof(SmallButcherySkill), 1)] 
