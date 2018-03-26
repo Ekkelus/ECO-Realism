@@ -9,6 +9,7 @@
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
+    using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
     [RequiresSkill(typeof(FishingSkill), 2)] 
