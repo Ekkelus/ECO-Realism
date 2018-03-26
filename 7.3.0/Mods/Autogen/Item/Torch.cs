@@ -45,7 +45,7 @@ namespace Eco.Mods.TechTree
     [Fuel(1000)]          
     [Currency]              
     public partial class TorchItem :
-    Item                                     
+    ToolItem                                     
     {
         public override string FriendlyName { get { return "Torch"; } }
         public override string Description { get { return "A little bit of light to help beat back the night."; } }
