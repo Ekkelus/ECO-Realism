@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(LeavenedBakingSkill), 4)]
+    [RequiresSkill(typeof(LeavenedBakingSkill), 3)]
     public partial class PizzaRecipe : Recipe
     {
         public PizzaRecipe()
@@ -46,7 +46,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(PizzaRecipe), Item.Get<PizzaItem>().UILink(), 15, typeof(LeavenedBakingSpeedSkill));
             this.Initialize("Pizza", typeof(PizzaRecipe));
-            CraftingComponent.AddRecipe(typeof(KitchenObject), this);
+            CraftingComponent.AddRecipe(typeof(BakeryOvenObject), this);
         }
     }
 }

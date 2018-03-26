@@ -20,14 +20,14 @@ namespace Eco.Mods.TechTree
         FoodItem
     {
         public override string FriendlyName { get { return "Exotic Urchin Surprise"; } }
-        public override string Description { get { return "A fish shaped cake filled with bean paste."; } }
+        public override string Description { get { return "Sea Urchins!"; } }
 
-        private static Nutrients nutrition = new Nutrients() { Carbs = 16, Fat = 14, Protein = 4, Vitamins = 6 };
-        public override float Calories { get { return 800; } }
+        private static Nutrients nutrition = new Nutrients() { Carbs = 8, Fat = 9, Protein =11 , Vitamins = 8 };
+        public override float Calories { get { return 500; } }
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(LeavenedBakingSkill), 4)]
+    [RequiresSkill(typeof(CulinaryArtsSkill), 3)]
     public partial class ExoticUrchinSurpriseRecipe : Recipe
     {
         public ExoticUrchinSurpriseRecipe()
@@ -39,10 +39,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<UrchinItem>(typeof(LeavenedBakingEfficiencySkill), 20, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<AmanitaMushroomsItem>(typeof(LeavenedBakingEfficiencySkill), 20, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<UrchinItem>(typeof(CulinaryArtsEfficiencySkill), 10, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<AmanitaMushroomsItem>(typeof(CulinaryArtsEfficiencySkill), 20, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ExoticUrchinSurpriseRecipe), Item.Get<ExoticUrchinSurpriseItem>().UILink(), 10, typeof(LeavenedBakingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ExoticUrchinSurpriseRecipe), Item.Get<ExoticUrchinSurpriseItem>().UILink(), 10, typeof(CulinaryArtsSpeedSkill));
             this.Initialize("Exotic Urchin Surprise", typeof(ExoticUrchinSurpriseRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }

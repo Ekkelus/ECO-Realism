@@ -20,10 +20,10 @@ namespace Eco.Mods.TechTree
         FoodItem
     {
         public override string FriendlyName { get { return "Tuna Sandwich"; } }
-        public override string Description { get { return "A fish shaped cake filled with bean paste."; } }
+        public override string Description { get { return "Tuna Sandwich! Delicious!"; } }
 
-        private static Nutrients nutrition = new Nutrients() { Carbs = 1, Fat = 1, Protein = 1, Vitamins = 1 };
-        public override float Calories { get { return 1; } }
+        private static Nutrients nutrition = new Nutrients() { Carbs = 10, Fat = 12, Protein = 11, Vitamins = 9 };
+        public override float Calories { get { return 800; } }
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
@@ -39,8 +39,8 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<TunaFilletItem>(typeof(CulinaryArtsEfficiencySkill), 1, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BreadItem>(typeof(CulinaryArtsEfficiencySkill), 1, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<TunaFilletItem>(typeof(CulinaryArtsEfficiencySkill), 5, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BreadItem>(typeof(CulinaryArtsEfficiencySkill), 5, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(TunaSandwichRecipe), Item.Get<TunaSandwichItem>().UILink(), 10, typeof(CulinaryArtsSpeedSkill));
             this.Initialize("Tuna Sandwich", typeof(TunaSandwichRecipe));

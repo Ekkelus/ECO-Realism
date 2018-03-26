@@ -20,10 +20,10 @@ namespace Eco.Mods.TechTree
         FoodItem
     {
         public override string FriendlyName { get { return "Stuffed Clams"; } }
-        public override string Description { get { return "A fish shaped cake filled with bean paste."; } }
+        public override string Description { get { return "Clams filled with some nice ingredients"; } }
 
-        private static Nutrients nutrition = new Nutrients() { Carbs = 1, Fat = 1, Protein = 1, Vitamins = 1 };
-        public override float Calories { get { return 1; } }
+        private static Nutrients nutrition = new Nutrients() { Carbs = 10, Fat = 7, Protein = 9, Vitamins = 6 };
+        public override float Calories { get { return 800; } }
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
@@ -39,8 +39,8 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ClamItem>(typeof(HomeCookingEfficiencySkill), 1, HomeCookingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<WheatPorridgeItem>(typeof(HomeCookingEfficiencySkill), 1, HomeCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<ClamItem>(typeof(HomeCookingEfficiencySkill), 10, HomeCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<WheatPorridgeItem>(typeof(HomeCookingEfficiencySkill), 5, HomeCookingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(StuffedClamsRecipe), Item.Get<StuffedClamsItem>().UILink(), 15, typeof(HomeCookingSpeedSkill));
             this.Initialize("Stuffed Clams", typeof(StuffedClamsRecipe));

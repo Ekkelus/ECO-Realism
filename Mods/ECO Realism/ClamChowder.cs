@@ -20,10 +20,10 @@ namespace Eco.Mods.TechTree
         FoodItem
     {
         public override string FriendlyName { get { return "Clam Chowder"; } }
-        public override string Description { get { return "A fish shaped cake filled with bean paste."; } }
+        public override string Description { get { return "Some soup with clams"; } }
 
-        private static Nutrients nutrition = new Nutrients() { Carbs = 1, Fat = 1, Protein = 1, Vitamins = 1 };
-        public override float Calories { get { return 1; } }
+        private static Nutrients nutrition = new Nutrients() { Carbs = 4, Fat = 4, Protein = 8, Vitamins = 12 };
+        public override float Calories { get { return 1000; } }
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
@@ -39,9 +39,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ClamItem>(typeof(HomeCookingEfficiencySkill), 1, HomeCookingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<FiddleheadsItem>(typeof(HomeCookingEfficiencySkill), 1, HomeCookingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CriminiMushroomsItem>(typeof(HomeCookingEfficiencySkill), 1, HomeCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<ClamItem>(typeof(HomeCookingEfficiencySkill), 10, HomeCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<FiddleheadsItem>(typeof(HomeCookingEfficiencySkill), 20, HomeCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<CriminiMushroomsItem>(typeof(HomeCookingEfficiencySkill), 20, HomeCookingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(ClamChowderRecipe), Item.Get<ClamChowderItem>().UILink(), 10, typeof(HomeCookingSpeedSkill));
             this.Initialize("Clam Chowder", typeof(ClamChowderRecipe));

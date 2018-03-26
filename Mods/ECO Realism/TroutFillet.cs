@@ -20,10 +20,10 @@ namespace Eco.Mods.TechTree
         FoodItem
     {
         public override string FriendlyName { get { return "Trout Fillet"; } }
-        public override string Description { get { return "A fish shaped cake filled with bean paste."; } }
+        public override string Description { get { return "Some fine trout Fillet."; } }
 
-        private static Nutrients nutrition = new Nutrients() { Carbs = 16, Fat = 14, Protein = 4, Vitamins = 6 };
-        public override float Calories { get { return 800; } }
+        private static Nutrients nutrition = new Nutrients() { Carbs = 0, Fat = 3, Protein = 10, Vitamins = 2 };
+        public override float Calories { get { return 400; } }
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
