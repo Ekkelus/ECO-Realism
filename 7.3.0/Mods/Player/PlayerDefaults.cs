@@ -9,7 +9,7 @@ using Eco.Gameplay.Items;
 using Eco.Gameplay.Items.Actionbar;
 using Eco.Gameplay.Players;
 using Eco.Mods.TechTree;
-using Eco.Shared.Localization;
+
 
 // default starting player items / skills
 public static class PlayerDefaults
