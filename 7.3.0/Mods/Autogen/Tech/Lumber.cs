@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
     public partial class LumberSkill : Skill
     {
         public override string FriendlyName { get { return "Lumber"; } }
-        public override string Description { get { return ""; } }
+        public override string Description { get { return Localizer.Do(""); } }
 
         public override int RequiredPoint { get { return 0; } }
         public override int MaxLevel { get { return 1; } }

@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
     public partial class BakingSkill : Skill
     {
         public override string FriendlyName { get { return "Baking"; } }
-        public override string Description { get { return ""; } }
+        public override string Description { get { return Localizer.Do(""); } }
 
         public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
         public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }

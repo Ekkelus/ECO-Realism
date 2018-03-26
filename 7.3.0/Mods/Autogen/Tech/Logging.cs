@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
     public partial class LoggingSkill : Skill
     {
         public override string FriendlyName { get { return "Logging"; } }
-        public override string Description { get { return ""; } }
+        public override string Description { get { return Localizer.Do(""); } }
 
  /*        private static List<Tuple<Type, int>> ItemsGiven = new List<Tuple<Type, int>>
         {

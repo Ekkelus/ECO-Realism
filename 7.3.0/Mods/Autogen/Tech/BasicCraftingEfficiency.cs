@@ -1,10 +1,10 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.Linq;
     using Eco.Core.Utils;
+	using Eco.Shared.Localization;
     using Eco.Core.Utils.AtomicAction;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.DynamicValues;
@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
     public partial class BasicCraftingEfficiencySkill : Skill
     {
         public override string FriendlyName { get { return "Basic Crafting Efficiency"; } }
-        public override string Description { get { return ""; } }
+        public override string Description { get { return Localizer.Do(""); } }
 
         public static ModificationStrategy MultiplicativeStrategy = 
             new MultiplicativeStrategy(new float[] { 1, 1 - 0.1f, 1 - 0.2f, 1 - 0.3f, 1 - 0.4f, 1 - 0.5f });
