@@ -67,7 +67,9 @@ namespace Eco.Mods.TechTree
 
         static CardboardBoxItem()
         {
-            
+            WorldObject.AddOccupancy<CardboardBoxObject>(new List<BlockOccupancy>(){
+            new BlockOccupancy(new Vector3i(0, 0, 0)),
+            });
         }
         
     }
