@@ -92,7 +92,9 @@ namespace Eco.Mods.TechTree
 
         static ToxicWasteBarrelItem()
         {
-
+            WorldObject.AddOccupancy<ToxicWasteBarrelObject>(new List<BlockOccupancy>(){
+            new BlockOccupancy(new Vector3i(0, 0, 0)),
+            });
         }
 
     }

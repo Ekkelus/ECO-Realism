@@ -29,7 +29,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
     [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -68,7 +68,9 @@ namespace Eco.Mods.TechTree
 
         static CardboardBoxItem()
         {
-            
+            WorldObject.AddOccupancy<CardboardBoxObject>(new List<BlockOccupancy>(){
+            new BlockOccupancy(new Vector3i(0, 0, 0)),
+            });
         }
         
     }
