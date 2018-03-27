@@ -31,29 +31,6 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
 
 
-
-    public class TailingsOnlyRestriction : IInventoryRestriction
-    {
-        public string Message { get; set; }
-
-        public TailingsOnlyRestriction()
-        {
-            this.Message = "This inventory only accepts Tailings";
-        }
-
-
-
-        public int MaxAccepted(Item item, int currentQuantity)
-        {
-            if (item.Type == typeof(TailingsItem))
-            {
-                return item.MaxStackSize;
-            }
-            else return 0;
-        }
-    }
-
-
     [Serialized]
     [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -63,7 +40,10 @@ namespace Eco.Mods.TechTree
     public partial class ToxicWasteBarrelObject : WorldObject
     {
         public override string FriendlyName { get { return "Toxic Waste Barrel"; } }
-
+        private static Type[] itemToStoreList = new Type[]
+        {
+            typeof(TailingsItem),
+        }; 
 
         protected override void Initialize()
         {
@@ -72,7 +52,7 @@ namespace Eco.Mods.TechTree
 			
             var storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(4);
-            storage.Storage.AddRestriction(new TailingsOnlyRestriction()); // can't store block or large items
+            storage.Storage.AddRestriction(new CustomInventoryRestriction(itemToStoreList,"You can only store Tailings in that barrel!")); // can't store anything besides tailings
 
 
         }
