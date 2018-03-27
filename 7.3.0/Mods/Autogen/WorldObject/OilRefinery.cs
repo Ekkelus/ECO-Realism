@@ -67,7 +67,7 @@ namespace Eco.Mods.TechTree
             tankList.Add(new LiquidProducer("Chimney", typeof(SmogItem), 100,
                     null,                                                       
                     new Ray(0, 7, 4, Direction.Up),     
-                        (float)(0.25f * SmogItem.SmogItemsPerCO2PPM) / TimeUtil.SecondsPerHour)); 
+                        (float)(1.0f * SmogItem.SmogItemsPerCO2PPM) / TimeUtil.SecondsPerHour)); 
             
             
             
