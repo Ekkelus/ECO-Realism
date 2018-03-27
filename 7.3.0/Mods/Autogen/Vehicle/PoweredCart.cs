@@ -15,6 +15,8 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Networking;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
+    using Eco.World;
+    using Eco.World.Blocks;
     
     [Serialized]
     [Weight(15000)]  
@@ -60,6 +62,10 @@ namespace Eco.Mods.TechTree
     {
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
         {
+            { typeof(GrassBlock) , 0.7f}, { typeof(SandBlock) , 0.3f},
+            { typeof(DesertSandBlock) , 0.3f}, { typeof(WetlandsBlock) , 0.5f},
+            { typeof(SnowBlock) , 0.5f}, { typeof(DirtBlock) , 0.8f},
+            { typeof(ForestSoilBlock) , 0.6f},
             { typeof(DirtRoadBlock), 1.0f }, { typeof(DirtRoadWorldObjectBlock), 1.0f },
             { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
             { typeof(AsphaltRoadBlock), 1.6f }, { typeof(AsphaltRoadWorldObjectBlock), 1.6f }
