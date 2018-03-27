@@ -40,7 +40,7 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
-    [Weight(1000)]
+    [Weight(500)]
     [Currency]
     public partial class RubberItem :
     Item

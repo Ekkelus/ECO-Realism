@@ -40,7 +40,7 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
-    [Weight(2000)]
+    [Weight(1000)]
     [Currency]
     public partial class RopeItem :
     Item

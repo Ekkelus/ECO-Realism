@@ -40,7 +40,7 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
-    [Weight(2000)]
+    [Weight(150)]
     [Currency]
     public partial class HingeItem :
     Item

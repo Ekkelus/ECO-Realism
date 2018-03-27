@@ -40,7 +40,7 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
-    [Weight(2000)]      
+    [Weight(20)]      
     [Currency]              
     public partial class NailsItem :
     Item                                     

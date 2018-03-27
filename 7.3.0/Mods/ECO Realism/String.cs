@@ -40,7 +40,7 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
-    [Weight(2000)]
+    [Weight(200)]
     [Currency]
     public partial class StringItem :
     Item

@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
-    [Weight(500)]      
+    [Weight(200)]      
     [Currency]              
     public partial class BoneItem :
     Item                                     

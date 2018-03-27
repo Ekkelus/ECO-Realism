@@ -40,7 +40,7 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
-    [Weight(2000)]
+    [Weight(100)]
     [Currency]
     public partial class GlassJarItem :
     Item
