@@ -29,7 +29,7 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<GlassItem>(typeof(GlassProductionEfficiencySkill), 3, GlassProductionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GlassItem>(typeof(GlassProductionEfficiencySkill), 2, GlassProductionEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(GlassJarRecipe), Item.Get<GlassJarItem>().UILink(), 2, typeof(GlassProductionSpeedSkill));
             this.Initialize("Glass Jar", typeof(GlassJarRecipe));
