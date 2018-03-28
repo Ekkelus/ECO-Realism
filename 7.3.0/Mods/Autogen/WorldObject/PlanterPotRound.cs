@@ -72,9 +72,9 @@ namespace Eco.Mods.TechTree
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "General",
-                                                    Val = 0.5f,
-                                                    TypeForRoomLimit = "",
-                                                    DiminishingReturnPercent = 0.75f
+                                                    Val = 1,
+                                                    TypeForRoomLimit = "Decoration",
+                                                    DiminishingReturnPercent = 0.9f
                                                 };}}       
     }
 

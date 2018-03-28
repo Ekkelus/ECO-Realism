@@ -72,8 +72,8 @@ namespace Eco.Mods.TechTree
                                                 {
                                                     Category = "General",
                                                     Val = 1,
-                                                    TypeForRoomLimit = "",
-                                                    DiminishingReturnPercent = 0.75f
+                                                    TypeForRoomLimit = "Rug",
+                                                    DiminishingReturnPercent = 0.5f
                                                 };}}       
     }
 
