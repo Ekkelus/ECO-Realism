@@ -82,7 +82,7 @@ namespace Eco.Mods.TechTree
                                                     Category = "Kitchen",
                                                     Val = 2,
                                                     TypeForRoomLimit = "Food Storage",
-                                                    DiminishingReturnPercent = 0.0.3f
+                                                    DiminishingReturnPercent = 0.3f
                                                 };}}       
     }
 
