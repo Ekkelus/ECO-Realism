@@ -33,7 +33,8 @@ namespace Eco.Mods.TechTree
     [Serialized]    
     [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
-    [RequireComponent(typeof(MinimapComponent))]                
+    [RequireComponent(typeof(MinimapComponent))]
+	[RequireComponent(typeof(SolidGroundComponent))] 	
     public partial class ContractBoardObject : WorldObject
     {
         public override string FriendlyName { get { return "Contract Board"; } } 

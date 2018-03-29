@@ -38,6 +38,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(HousingComponent))]                          
     [RequireComponent(typeof(PublicStorageComponent))]                
     [RequireComponent(typeof(RoomRequirementsComponent))]
+	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(8)]                              
     public partial class ShelfCabinetObject : WorldObject

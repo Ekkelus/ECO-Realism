@@ -38,7 +38,8 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(CraftingComponent))]               
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerConsumptionComponent))]                     
-    [RequireComponent(typeof(HousingComponent))]                          
+    [RequireComponent(typeof(HousingComponent))]
+	[RequireComponent(typeof(SolidGroundComponent))] 	
     public partial class PumpJackObject : WorldObject
     {
         public override string FriendlyName { get { return "Pump Jack"; } } 

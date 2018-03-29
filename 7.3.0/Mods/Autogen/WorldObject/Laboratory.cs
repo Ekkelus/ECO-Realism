@@ -39,6 +39,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerConsumptionComponent))]                     
     [RequireComponent(typeof(RoomRequirementsComponent))]
+	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(3, 18)]        

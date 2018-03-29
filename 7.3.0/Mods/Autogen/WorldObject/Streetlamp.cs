@@ -36,7 +36,8 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(PowerGridComponent))]              
-    [RequireComponent(typeof(PowerConsumptionComponent))]                     
+    [RequireComponent(typeof(PowerConsumptionComponent))]
+[RequireComponent(typeof(SolidGroundComponent))] 	
     [RequireComponent(typeof(HousingComponent))]                          
     public partial class StreetlampObject : WorldObject
     {

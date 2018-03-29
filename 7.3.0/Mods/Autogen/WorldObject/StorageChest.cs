@@ -35,7 +35,8 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
-    [RequireComponent(typeof(PublicStorageComponent))]                
+    [RequireComponent(typeof(PublicStorageComponent))]
+	[RequireComponent(typeof(SolidGroundComponent))] 
     public partial class StorageChestObject : WorldObject
     {
         public override string FriendlyName { get { return "Storage Chest"; } } 

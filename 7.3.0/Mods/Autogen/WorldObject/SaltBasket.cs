@@ -33,7 +33,8 @@ namespace Eco.Mods.TechTree
     [Serialized]    
     [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
-    [RequireComponent(typeof(MinimapComponent))]                
+    [RequireComponent(typeof(MinimapComponent))]
+	[RequireComponent(typeof(SolidGroundComponent))] 	
     [RequireComponent(typeof(HousingComponent))]                          
     public partial class SaltBasketObject : WorldObject
     {

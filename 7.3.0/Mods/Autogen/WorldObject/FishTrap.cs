@@ -34,7 +34,8 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
-    [RequireComponent(typeof(LinkComponent))]                   
+    [RequireComponent(typeof(LinkComponent))]
+	[RequireComponent(typeof(SolidGroundComponent))] 	
     public partial class FishTrapObject : WorldObject
     {
         public override string FriendlyName { get { return "Fish Trap"; } } 

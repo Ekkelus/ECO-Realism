@@ -34,7 +34,8 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
-    [RequireComponent(typeof(HousingComponent))]                          
+    [RequireComponent(typeof(HousingComponent))] 
+	[RequireComponent(typeof(SolidGroundComponent))] 	
     public partial class RugSmallObject : WorldObject
     {
         public override string FriendlyName { get { return "Small Rug"; } } 

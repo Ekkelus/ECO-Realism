@@ -35,6 +35,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(HousingComponent))]
+	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomVolume(4)]
     public partial class PlanterPotSquareObject : WorldObject
     {

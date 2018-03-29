@@ -36,6 +36,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(HousingComponent))]                          
     [RequireComponent(typeof(RoomRequirementsComponent))]
+	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(8)]                              
     public partial class SmallTableObject : WorldObject

@@ -40,7 +40,8 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerGeneratorComponent))]         
-    [RequireComponent(typeof(HousingComponent))]                          
+    [RequireComponent(typeof(HousingComponent))]
+	[RequireComponent(typeof(SolidGroundComponent))] 	
     public partial class CombustionGeneratorObject : WorldObject
     {
         public override string FriendlyName { get { return "Combustion Generator"; } } 
