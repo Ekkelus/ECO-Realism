@@ -32,7 +32,7 @@ public static class PlayerDefaults
             { typeof(StoneHammerItem), 1 },
             { typeof(StoneScytheItem), 1 },
             { typeof(WorkbenchItem), 1 },
-            { typeof(CardboardBoxItem), 2 },
+            { typeof(CardboardBoxItem), 3 },
             { typeof(StockpileItem), 2 },
             { typeof(CoinItem), 50 },
         };
