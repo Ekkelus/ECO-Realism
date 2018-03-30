@@ -45,6 +45,10 @@ namespace Eco.Mods.TechTree
         private static SkillModifiedValue caloriesBurn = CreateCalorieValue(20, typeof(ScytheEfficiencySkill), typeof(StoneScytheItem), new StoneScytheItem().UILink());
         public override IDynamicValue CaloriesBurn { get { return caloriesBurn; } }
         
+        private static SkillModifiedValue skilledRepairCost = new SkillModifiedValue(5, BasicCraftingSkill.MultiplicativeStrategy, typeof(BasicCraftingSkill), Localizer.Do("repair cost"));
+        public override IDynamicValue SkilledRepairCost { get { return skilledRepairCost; } }
+
+
         public override float DurabilityRate { get { return DurabilityMax / 100f; } }
         
         public override Item RepairItem         {get{ return Item.Get<StoneItem>(); } }

@@ -47,7 +47,11 @@ namespace Eco.Mods.TechTree
         private static SkillModifiedValue damage = CreateDamageValue(1, typeof(LoggingDamageSkill), typeof(StoneAxeItem), new StoneAxeItem().UILink());
         public override SkillModifiedValue Damage { get { return damage; } }
         
-        public override float DurabilityRate { get { return DurabilityMax / 250f; } }
+        private static SkillModifiedValue skilledRepairCost = new SkillModifiedValue(5, BasicCraftingSkill.MultiplicativeStrategy, typeof(BasicCraftingSkill), Localizer.Do("repair cost"));
+        public override IDynamicValue SkilledRepairCost { get { return skilledRepairCost; } }
+
+
+        public override float DurabilityRate { get { return DurabilityMax / 100f; } }
         
         public override Item RepairItem         {get{ return Item.Get<StoneItem>(); } }
         public override int FullRepairAmount    {get{ return 5; } }
