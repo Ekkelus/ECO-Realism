@@ -84,9 +84,8 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
             new CraftingElement<LogItem>(typeof(WoodworkingEfficiencySkill), 6, new PercentReductionStrategy(2, 0.1f)),
-            new CraftingElement<HingeItem>(typeof(WoodworkingEfficiencySkill), 4, new PercentReductionStrategy(2, 0.1f)),
-            new CraftingElement<NailsItem>(typeof(WoodworkingEfficiencySkill), 8, new PercentReductionStrategy(2, 0.1f)),
-            new CraftingElement<IronIngotItem>(typeof(WoodworkingEfficiencySkill), 2, new PercentReductionStrategy(2, 0.1f)),
+            new CraftingElement<HingeItem>(typeof(WoodworkingEfficiencySkill), 2, new PercentReductionStrategy(2, 0.1f)),
+            new CraftingElement<NailsItem>(typeof(WoodworkingEfficiencySkill), 5, new PercentReductionStrategy(2, 0.1f)),
             };
             SkillModifiedValue value = new SkillModifiedValue(5, WoodworkingSpeedSkill.MultiplicativeStrategy, typeof(WoodworkingSpeedSkill), Localizer.Do("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(DoorRecipe), Item.Get<DoorItem>().UILink(), value);
