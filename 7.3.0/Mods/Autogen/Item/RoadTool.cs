@@ -29,8 +29,7 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(RoadConstructionEfficiencySkill), 4, RoadConstructionEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(RoadConstructionEfficiencySkill), 2, RoadConstructionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(RoadConstructionEfficiencySkill), 6, RoadConstructionEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
             this.Initialize("Road Tool", typeof(RoadToolRecipe));
