@@ -1,0 +1,17 @@
+2018-04-01
+- Removed Tailings from Steel recipe
+- Removed Toxic Waste Barrel
+- Removed Glue from Shelf Cabinet
+- Removed Glue from Bookshelf
+- Reduced amounts of books in Shelf Cabinet and Bookshelf
+- Reduced Nails needed in Shelf Cabinet and Bookshelf
+- Organized mod folder
+- Added Super Secret Dildo Statue
+- Added Changelog
+- Added Rules
+
+2018-03-31
+- Removed iron ingot from Road Tool
+- Removed iron ingot from Door and reduced hinge and nails
+- Removed Rope from stockpile and increased logs needed
+- Increased storage space in Cardboard Boxes
