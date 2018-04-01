@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Eco.Gameplay.Blocks;
@@ -57,8 +58,24 @@ namespace EcoRealism.Utils
         }
     }
 
-    public class Settings
+    public class ChatUtils
+    { }
+
+
+    public class IOUtils
     {
+        public static string ReadConfig(string filename)
+        {
+            string content = string.Empty;
+            string path = "./configs/" + filename;
+
+
+            if (File.Exists(path))
+            {
+                return File.ReadAllText(path);
+            }
+            else return "Error reading file: File does not exist!";
+        }
 
     }
 }
