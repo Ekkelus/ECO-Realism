@@ -26,6 +26,7 @@ using Eco.Shared.View;
 using Eco.Shared.Items;
 using Eco.Gameplay.Pipes;
 using Eco.World.Blocks;
+using EcoRealism.Utils
 
 namespace Eco.Gameplay.Components.Auth
 {
@@ -39,21 +40,6 @@ namespace Eco.Gameplay.Components.Auth
         private Type reqskilltype;
         private int reqskilllevel;
 
-        public bool UserHasSkill(User user, Type skilltype, int lvl)
-        {
-            foreach (Skill skill in user.Skillset.Skills)
-            {
-                if (skill.Type == skilltype)
-                {
-                    if (skill.Level >= lvl)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
 
         public void Initialize(AuthModeType defaultMode, Type RequiredSkillType, int RequiredSkillLevel)
         {
@@ -65,7 +51,7 @@ namespace Eco.Gameplay.Components.Auth
         public override bool IsAuthorized(User user)
         {
             if ((user == null) || (reqskilltype == null)) return base.IsAuthorized(user);
-            if (base.IsAuthorized(user) && UserHasSkill(user, reqskilltype, reqskilllevel))
+            if (base.IsAuthorized(user) && SkillUtils.UserHasSkill(user, reqskilltype, reqskilllevel))
             {
                 return true;
             }
