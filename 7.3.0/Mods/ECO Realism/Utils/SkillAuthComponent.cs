@@ -26,7 +26,7 @@ using Eco.Shared.View;
 using Eco.Shared.Items;
 using Eco.Gameplay.Pipes;
 using Eco.World.Blocks;
-using EcoRealism.Utils
+using EcoRealism.Utils;
 
 namespace Eco.Gameplay.Components.Auth
 {

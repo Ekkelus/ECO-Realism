@@ -30,7 +30,7 @@ using Eco.World.Blocks;
 
 namespace EcoRealism.Utils
 {
-    public class SkillUtils
+    public static class SkillUtils
     {
         public static bool UserHasSkill(User user, Type skilltype, int lvl)
         {
@@ -58,11 +58,11 @@ namespace EcoRealism.Utils
         }
     }
 
-    public class ChatUtils
+    public static class ChatUtils
     { }
 
 
-    public class IOUtils
+    public static class IOUtils
     {
         public static string ReadConfig(string filename)
         {
@@ -75,6 +75,8 @@ namespace EcoRealism.Utils
                 return File.ReadAllText(path);
             }
             else return "Error reading file: File does not exist!";
+
+            
         }
 
     }
