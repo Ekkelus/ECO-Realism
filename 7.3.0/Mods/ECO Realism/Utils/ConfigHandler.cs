@@ -44,19 +44,26 @@ namespace EcoRealism.Utils
     {
         public static string configpath = "./configs/ecorealism.cfg";
 
+        public static int maxsuperskills;
+
+
 
         public static void Initialize()
         {
-            if (!File.Exists(configpath))
-            {
-                File.Create(configpath);
-                
-            }
+            //if (!File.Exists(configpath))
+            //{
+            //    File.Create(configpath);
+
+            //}
+
+            InitWithDefault();
         }
 
 
         private static void InitWithDefault()
-        { }
+        {
+            maxsuperskills = 1;
+        }
     }
 
 }
