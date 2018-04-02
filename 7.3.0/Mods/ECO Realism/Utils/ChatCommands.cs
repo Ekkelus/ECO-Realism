@@ -80,7 +80,7 @@ namespace EcoRealism.Utils
                     return;
                 }                   
             }
-            user.Player.SendTemporaryMessageAlreadyLocalized("You can now lvl up a Skill to lvl 6");
+            user.Player.SendTemporaryMessageAlreadyLocalized("You can now level up a Skill to level 10");
             SkillUtils.superskillconfirmed.Add(user.ID);
         }
     }
