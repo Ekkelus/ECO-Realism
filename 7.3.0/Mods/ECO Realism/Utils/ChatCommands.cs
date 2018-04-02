@@ -10,6 +10,9 @@ namespace EcoRealism.Utils
 {
     public class ChatCommands : IChatCommandHandler
     {
+        //private static string separator = "[#SEPARATOR#]";
+
+
         [ChatCommand("rules", "Displays the Server Rules")]
         public static void Rules(User user)
         {
@@ -22,6 +25,32 @@ namespace EcoRealism.Utils
             string x = IOUtils.ReadConfig("changelog.txt");         
             user.Player.OpenInfoPanel("Changelog", x);
         }
+
+        [ChatCommand("report", "Reports a player or an issue")]
+        public static void Report(User user, string report)
+        {
+            string texttoadd = string.Empty;
+
+            texttoadd = user.Name + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":" + System.Environment.NewLine + report + System.Environment.NewLine + System.Environment.NewLine;
+            IOUtils.WriteToFile("./Reports/reports.txt", texttoadd);
+            user.Player.SendTemporaryMessageAlreadyLocalized("Report added");
+
+        }
+
+        [ChatCommand("reports", "Displays current Reports", level: ChatAuthorizationLevel.Admin)]
+        public static void Reports(User user)
+        {
+            string x = IOUtils.ReadConfig("../Reports/reports.txt");
+            user.Player.OpenInfoPanel("Recent Reports", x);
+        }
+
+        [ChatCommand("clearreports", "Deletes all current reports", level: ChatAuthorizationLevel.Admin)]
+        public static void ClearReports(User user)
+        {
+            IOUtils.ClearFile("./Reports/reports.txt");
+            user.Player.SendTemporaryMessageAlreadyLocalized("Reports cleared");
+        }
+
 
         [ChatCommand("houseranking", "Displays the users with the highest housing rates")]
         public static void HouseRanking(User user)
@@ -66,6 +95,12 @@ namespace EcoRealism.Utils
             user.Player.SendTemporaryMessageAlreadyLocalized("Wrote to file");
             //user.Player.OpenInfoPanel("bla", log);
 
+        }
+
+        [ChatCommand("superskillhelp", "Displays an infobox about superskills")]
+        public static void SuperSkillhelp(User user)
+        {
+            SkillUtils.ShowSuperSkillInfo(user.Player);
         }
 
 

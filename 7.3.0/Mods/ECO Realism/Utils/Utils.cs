@@ -27,6 +27,7 @@ using Eco.Shared.View;
 using Eco.Shared.Items;
 using Eco.Gameplay.Pipes;
 using Eco.World.Blocks;
+using EcoRealism.Utils;
 
 namespace EcoRealism.Utils
 {
@@ -47,12 +48,12 @@ namespace EcoRealism.Utils
 
         public static void Initialize()
         {
-            superskillconfirmed = new List<string>();
+            superskillconfirmed = new List<string>(); 
         }
 
         public static void ShowSuperSkillInfo(Player player)
         {
-            player.OpenInfoPanel("Super Skills", "Warning: You can only have 1 Super Skill (skill with higher level than 5), to unlock enter <b><color=green>/confirmsuperskill</color></b> and try again");
+            player.OpenInfoPanel("SuperSkills", "Current amount of SuperSkills: " + SkillUtils.SuperSkillCount(player.User) + "<br>Max amount of SuperSkills: " + ConfigHandler.maxsuperskills + "<br><br> SuperSkills are Skills that are leveled up to a higher level than 5.<br><color=red>You can only have a limited amount of them.</color><br>To confirm that you understood SuperSkills and to unlock them pls enter <b><color=green>/confirmsuperskill</b></color>");
         }
 
         public static bool UserHasSkill(User user, Type skilltype, int lvl)
@@ -90,6 +91,12 @@ namespace EcoRealism.Utils
         public static void SendMessage(Player player)
         { }
 
+
+        public static string CustomTags(string text)
+        {
+            return text;
+        }
+
     }
 
 
@@ -111,14 +118,31 @@ namespace EcoRealism.Utils
         }
 
 
-        public static void WriteToLog(string logdata, string desc = "\n")
+        public static void WriteToLog(string logdata, string desc = "")
         {
             string path = "./Dump/log.txt";
-            logdata = string.Concat("\n", desc, "\n", logdata);
-            if (!File.Exists(path)) File.Create(path);
+            logdata = Environment.NewLine + System.Environment.NewLine + desc + System.Environment.NewLine + logdata;
+            if (!File.Exists(path)) File.Create(path).Close();
 
             File.AppendAllText(path, logdata);
 
+        }
+
+        public static void WriteToFile(string path,string text)
+        {
+            string dirpath = path.Substring(0, path.LastIndexOf('/') + 1);
+            if (!Directory.Exists(dirpath)) Directory.CreateDirectory(dirpath);
+            if (!File.Exists(path)) File.Create(path).Close();
+            File.AppendAllText(path, text);
+        }
+
+        public static void ClearFile(string path)
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+                File.Create(path).Close();
+            }
         }
 
     }
