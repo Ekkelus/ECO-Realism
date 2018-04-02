@@ -19,7 +19,7 @@ namespace EcoRealism.Utils
         [ChatCommand("changelog", "Displays the changelog of the modkit")]
         public static void Changelog(User user)
         {
-            string x = IOUtils.ReadConfig("changelog.txt")          
+            string x = IOUtils.ReadConfig("changelog.txt");         
             user.Player.OpenInfoPanel("Changelog", x);
         }
 
