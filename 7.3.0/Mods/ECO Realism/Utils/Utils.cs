@@ -76,7 +76,7 @@ namespace EcoRealism.Utils
             int x = 0;
             foreach (Skill skill in user.Skillset.Skills)
             {
-                if (skill.Level >= 5) x++;
+                if (skill.Level > 5) x++;
             }
             return x;
         }
