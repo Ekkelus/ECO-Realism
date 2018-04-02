@@ -19,45 +19,37 @@ namespace EcoRealism.Utils
         [ChatCommand("changelog", "Displays the changelog of the modkit")]
         public static void Changelog(User user)
         {
-            user.Player.OpenInfoPanel("Changelog", IOUtils.ReadConfig("changelog.txt"));
+            string x = IOUtils.ReadConfig("changelog.txt")          
+            user.Player.OpenInfoPanel("Changelog", x);
         }
 
-        [ChatCommand("housingranking", "Displays the users with the highest housing rates")]
-        public static void HousingRanking(User user)
+        [ChatCommand("houseranking", "Displays the users with the highest housing rates")]
+        public static void HouseRanking(User user)
         {
 
             int usercount = UserManager.Users.Count<User>();
-            int max = 5;
+            int max = 10;
             int i = 0;
             string output = string.Empty;
             List<KeyValuePair< string, float>> userlist = new List<KeyValuePair<string, float>>(usercount);
-            string tmpstring = string.Empty;
-            float tmpfloat = 0f;
             string tmpuser = string.Empty;
 
             foreach (User userentry in UserManager.Users)
             {
-                tmpstring = userentry.HouseValue;
-                tmpstring = tmpstring.Split('>')[3].Split('<')[0];
-                tmpfloat = Convert.ToSingle(tmpstring);
-                
-
-                userlist.Add(new KeyValuePair<string,float>(user.Name, tmpfloat));
+                userlist.Add(new KeyValuePair<string,float>(userentry.Name, (float)Math.Round(userentry.CachedHouseValue.HousingSkillRate,2)));
             }
 
-            userlist.Sort(new MyComparer());
-            
+            userlist.Sort(new MyComparer());           
 
-            if (usercount < 5) max = usercount;
-
+            if (usercount < max) max = usercount;
             for(i=0; i<max; i++)
             {
                 tmpuser = userlist[i].Key;
-                output = output + (i + 1).ToString() + ". <link=\"User:" + tmpuser + "\"><style=\"Warning\">" + tmpuser + "</style></link>: <b><link=\"CachedHouseValue:" + tmpuser +"\"><style=\"Positive\">" + userlist[i].Value.ToString() + "</style></link></b> skill/day <br>";
+                output = output + (i + 1).ToString() + ". <link=\"User:" + tmpuser + "\"><style=\"Warning\">" + tmpuser + "</style></link>: <link=\"CachedHouseValue:" + tmpuser +"\"><style=\"Positive\">" + userlist[i].Value.ToString() + "</style></link> skill/day <br>";
             }
             output = output + "<br> Your " + user.HouseValue;
 
-            user.Player.OpenInfoPanel("HouseRanking", output);
+            user.Player.OpenInfoPanel("House Ranking", output);
         }
 
 
@@ -84,10 +76,11 @@ namespace EcoRealism.Utils
             {
                 if (id == user.ID)
                 {
-                    user.Player.SendTemporaryErrorAlreadyLocalized("You are already on the list");
+                    user.Player.SendTemporaryErrorAlreadyLocalized("You already unlocked SuperSkills");
                     return;
                 }                   
             }
+            user.Player.SendTemporaryMessageAlreadyLocalized("You can now lvl up a Skill to lvl 6");
             SkillUtils.superskillconfirmed.Add(user.ID);
         }
     }
