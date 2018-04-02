@@ -1,17 +1,17 @@
-1. No Griefing
+<color=green><b>1. No Griefing</b></color>
 You're not allowed to take what is not yours unless the owner tells you otherwise. Example: Someone has forgot to claim the entire stockpile and now you're able to take items from it, if you do loot the stockpile without asking the owner first you're breaking the rule. Griefing is not allowed in any form, however if a player has been inactive for 3 days and the claim has been removed you are allowed to take stuff from that plot.
 [Bannable Offense]
 
-2. 999 Crafting
+<color=green><b>2. 999 Crafting</b></color>
 999 crafting is when you level up in a profession just so you can craft a specific item and put in craft orders for 999 of that specific item and then just leave that profession and keep "feeding" the station. This is not supposed to be a feature in the game and it ruins the experience for alot of players. If you get caught doing so we will ban you. This rule will however be obsolete in the future because the developers will fix this.
 [Bannable Offense]
 
-3. Exploits
+<color=green><b>3. Exploits</b></color>
 If you find an exploit and abuse it without telling an admin you might get banned and that's why it's best if you tell an admin about the exploit so it can get fixed.
 [Bannable Offense]
 
-4. Inactivity
+<color=green><b>4. Inactivity</b></color>
 If you've been inactive for more than 3 days your claims might get unclaimed, if you however plan to come back to the server please make a sign and place it on your property clearly visable to prevent an unclaim-accident.
 
-5. Be Helpful
+<color=green><b>5. Be Helpful</b></color>
 We strongly encourage players to be helpful so please help out because you never know when you'll be the one in need of help.

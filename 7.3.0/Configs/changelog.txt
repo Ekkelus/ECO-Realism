@@ -1,4 +1,4 @@
-2018-04-01
+<color=green><b>2018-04-01</b></color>
 - Removed Tailings from Steel recipe
 - Removed Toxic Waste Barrel
 - Removed Glue from Shelf Cabinet
@@ -10,7 +10,7 @@
 - Added Changelog
 - Added Rules
 
-2018-03-31
+<color=green><b>2018-03-31</b></color>
 - Removed iron ingot from Road Tool
 - Removed iron ingot from Door and reduced hinge and nails
 - Removed Rope from stockpile and increased logs needed
