@@ -52,7 +52,7 @@ namespace EcoRealism.Utils
 
         public static void ShowSuperSkillInfo(Player player)
         {
-            player.OpenInfoPanel("Super Skills", "Warning: You can only have 1 SuperSkill (skill with higher level than 5), to unlock enter /confirmsuperskill and try again");
+            player.OpenInfoPanel("Super Skills", "Warning: You can only have 1 Super Skill (skill with higher level than 5), to unlock enter <b><color=green>/confirmsuperskill</color></b> and try again");
         }
 
         public static bool UserHasSkill(User user, Type skilltype, int lvl)
