@@ -62,7 +62,7 @@ namespace EcoRealism.Utils
 
         private static void InitWithDefault()
         {
-            maxsuperskills = 1;
+            maxsuperskills = 2;
         }
     }
 

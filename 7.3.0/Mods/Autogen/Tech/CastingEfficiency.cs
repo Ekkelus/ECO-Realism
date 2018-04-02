@@ -30,7 +30,7 @@ namespace Eco.Mods.TechTree
             new MultiplicativeStrategy(new float[] { 1, 1 - 0.1f, 1 - 0.2f, 1 - 0.3f, 1 - 0.4f, 1 - 0.5f, 1 - 0.55f, 1 - 0.6f, 1 - 0.65f, 1 - 0.7f, 1 - 0.75f });
         public static ModificationStrategy AdditiveStrategy =
             new AdditiveStrategy(new float[] { 0, 0.2f, 0.35f, 0.5f, 0.65f, 0.8f });
-        public static int[] SkillPointCost = { 10, 20, 35, 55, 80, 110, 145, 185, 230, 280 };
+        public static int[] SkillPointCost = { 10, 20, 35, 55, 80, 80, 80, 80, 80, 80 };
         public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }
         public override int PrevRequiredPoint { get { return this.Level - 1 >= 0 && this.Level - 1 < this.MaxLevel ? SkillPointCost[this.Level - 1] : 0; } }
         public override int MaxLevel { get { return 10; } }
