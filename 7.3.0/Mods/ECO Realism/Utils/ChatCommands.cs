@@ -26,7 +26,7 @@ namespace EcoRealism.Utils
             user.Player.OpenInfoPanel("Changelog", x);
         }
 
-        [ChatCommand("report", "Reports a player or an issue")]
+        [ChatCommand("report", "Report a player or an issue")]
         public static void Report(User user, string part1, string part2 = "", string part3 = "", string part4 = "", string part5 = "", string part6 = "", string part7 = "", string part8 = "", string part9 = "", string part10 = "", string eof = "")
         {
             if(eof != "")
@@ -38,7 +38,7 @@ namespace EcoRealism.Utils
             singlestringreport = singlestringreport.TrimEnd(',');
             string texttoadd = string.Empty;
 
-            texttoadd = user.Name + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine;
+            texttoadd = "<b><link=\"User:" + user.Name + "\"><style=\"Warning\">" + user.Name + "</style></link></b> " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine;
             IOUtils.WriteToFile("./Reports/reports.txt", texttoadd);
             user.Player.SendTemporaryMessageAlreadyLocalized("Report sent");
 
@@ -104,21 +104,21 @@ namespace EcoRealism.Utils
 
         }
 
-        [ChatCommand("superskillhelp", "Displays an infobox about superskills")]
+        [ChatCommand("superskillshelp", "Displays an infobox about Super Skills")]
         public static void SuperSkillhelp(User user)
         {
             SkillUtils.ShowSuperSkillInfo(user.Player);
         }
 
 
-        [ChatCommand("confirmsuperskill", "Confirm that you read the warning about superskills")]
+        [ChatCommand("confirmsuperskill", "Confirm that you read the warning about Super Skills")]
         public static void ConfirmSuperSkill(User user)
         {
             foreach(string id in SkillUtils.superskillconfirmed)
             {
                 if (id == user.ID)
                 {
-                    user.Player.SendTemporaryErrorAlreadyLocalized("You already unlocked SuperSkills");
+                    user.Player.SendTemporaryErrorAlreadyLocalized("You already unlocked Super Skills");
                     return;
                 }                   
             }

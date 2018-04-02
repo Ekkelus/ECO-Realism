@@ -53,7 +53,7 @@ namespace EcoRealism.Utils
 
         public static void ShowSuperSkillInfo(Player player)
         {
-            player.OpenInfoPanel("SuperSkills", "Current amount of SuperSkills: " + SkillUtils.SuperSkillCount(player.User) + "<br>Max amount of SuperSkills: " + ConfigHandler.maxsuperskills + "<br><br> SuperSkills are Skills that are leveled up to a higher level than 5.<br><color=red>You can only have a limited amount of them.</color><br>To confirm that you understood SuperSkills and to unlock them pls enter <b><color=green>/confirmsuperskill</b></color>");
+            player.OpenInfoPanel("Super Skills", "Current amount of Super Skills: <b><color=green>" + SkillUtils.SuperSkillCount(player.User) + "</color></b><br>Max amount of Super Skills: <b><color=green>" + ConfigHandler.maxsuperskills + "</color></b><br><br>Super Skills are Skills that can be leveled all the way up to 10 times.<br><br><color=red>You can only have a limited amount of them.</color><br><br>To confirm that you understood Super Skills and to unlock them please enter <b><color=green>/confirmsuperskill</b></color>");
         }
 
         public static bool UserHasSkill(User user, Type skilltype, int lvl)
