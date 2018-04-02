@@ -27,13 +27,20 @@ namespace EcoRealism.Utils
         }
 
         [ChatCommand("report", "Reports a player or an issue")]
-        public static void Report(User user, string report)
+        public static void Report(User user, string part1, string part2 = "", string part3 = "", string part4 = "", string part5 = "", string part6 = "", string part7 = "", string part8 = "", string part9 = "", string part10 = "", string eof = "")
         {
+            if(eof != "")
+            {
+                user.Player.SendTemporaryErrorAlreadyLocalized("Sorry, too many commas (this command only supports up to 9");
+                return;
+            }
+            string singlestringreport = part1 + "," + part2 + "," + part3 + "," + part4 + "," + part5 + "," + part6 + "," + part7 + "," + part8 + "," + part9 + "," + part10;
+            singlestringreport = singlestringreport.TrimEnd(',');
             string texttoadd = string.Empty;
 
-            texttoadd = user.Name + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":" + System.Environment.NewLine + report + System.Environment.NewLine + System.Environment.NewLine;
+            texttoadd = user.Name + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine;
             IOUtils.WriteToFile("./Reports/reports.txt", texttoadd);
-            user.Player.SendTemporaryMessageAlreadyLocalized("Report added");
+            user.Player.SendTemporaryMessageAlreadyLocalized("Report sent");
 
         }
 
