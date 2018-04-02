@@ -30,10 +30,34 @@ using Eco.World.Blocks;
 
 namespace EcoRealism.Utils
 {
+
+    public class UtilsInitItem : Item
+    {
+        static UtilsInitItem()
+        {
+            SkillUtils.Initialize();
+        }
+    }
+
+
     public static class SkillUtils
     {
+
+        public static List<string> superskillconfirmed;
+
+        public static void Initialize()
+        {
+            superskillconfirmed = new List<string>();
+        }
+
+        public static void ShowSuperSkillInfo(Player player)
+        {
+            player.OpenInfoPanel("SuperSkills", "Warning: You can only have 1 SuperSkill (skill with higher lvl than 5), to unlock enter /confirmsuperskill and try again");
+        }
+
         public static bool UserHasSkill(User user, Type skilltype, int lvl)
         {
+            
             foreach (Skill skill in user.Skillset.Skills)
             {
                 if (skill.Type == skilltype)
@@ -59,7 +83,14 @@ namespace EcoRealism.Utils
     }
 
     public static class ChatUtils
-    { }
+    {
+        public static void SendMessage(User user)
+        { }
+
+        public static void SendMessage(Player player)
+        { }
+
+    }
 
 
     public static class IOUtils
@@ -76,8 +107,32 @@ namespace EcoRealism.Utils
             }
             else return "Error reading file: File does not exist!";
 
-            
+
+        }
+
+
+        public static void WriteToLog(string logdata, string desc = "\n")
+        {
+            string path = "./Dump/log.txt";
+            logdata = string.Concat("\n", desc, "\n", logdata);
+            if (!File.Exists(path)) File.Create(path);
+
+            File.AppendAllText(path, logdata);
+
         }
 
     }
+
+
+    public class MyComparer : IComparer<KeyValuePair<string, float>>
+    {
+        public int Compare(KeyValuePair<string, float> x, KeyValuePair<string, float> y)
+        {
+            if (x.Value == y.Value) return 0;
+            if (x.Value > y.Value) return -1;
+            else return 1;
+        }
+
+    }
+
 }
