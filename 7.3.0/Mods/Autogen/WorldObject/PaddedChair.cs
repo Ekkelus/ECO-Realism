@@ -61,6 +61,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(3000)]
     public partial class PaddedChairItem : WorldObjectItem<PaddedChairObject>
     {
         public override string FriendlyName { get { return "Padded Chair"; } } 

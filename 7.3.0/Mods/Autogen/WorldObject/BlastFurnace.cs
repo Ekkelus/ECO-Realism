@@ -84,6 +84,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(20000)]
     public partial class BlastFurnaceItem : WorldObjectItem<BlastFurnaceObject>
     {
         public override string FriendlyName { get { return "Blast Furnace"; } } 

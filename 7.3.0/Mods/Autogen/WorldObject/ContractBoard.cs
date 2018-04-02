@@ -56,6 +56,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1500)]
     public partial class ContractBoardItem : WorldObjectItem<ContractBoardObject>
     {
         public override string FriendlyName { get { return "Contract Board"; } } 

@@ -64,6 +64,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(5000)]
     public partial class KitchenItem : WorldObjectItem<KitchenObject>
     {
         public override string FriendlyName { get { return "Kitchen"; } } 

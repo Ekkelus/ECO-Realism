@@ -61,6 +61,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(3000)]
     public partial class WashboardItem : WorldObjectItem<WashboardObject>
     {
         public override string FriendlyName { get { return "Washboard"; } } 

@@ -66,6 +66,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(2000)]
     public partial class BookshelfItem : WorldObjectItem<BookshelfObject>
     {
         public override string FriendlyName { get { return "Bookshelf"; } } 

@@ -60,6 +60,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(10000)]
     public partial class MintItem : WorldObjectItem<MintObject>
     {
         public override string FriendlyName { get { return "Mint"; } } 

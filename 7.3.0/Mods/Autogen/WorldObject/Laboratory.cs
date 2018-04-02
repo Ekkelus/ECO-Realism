@@ -66,6 +66,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(5000)]
     public partial class LaboratoryItem : WorldObjectItem<LaboratoryObject>
     {
         public override string FriendlyName { get { return "Laboratory"; } } 

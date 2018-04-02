@@ -64,6 +64,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(10000)]
     public partial class SolarGeneratorItem : WorldObjectItem<SolarGeneratorObject>
     {
         public override string FriendlyName { get { return "Solar Generator"; } } 

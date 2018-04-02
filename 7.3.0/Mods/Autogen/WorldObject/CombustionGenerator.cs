@@ -79,6 +79,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(10000)]
     public partial class CombustionGeneratorItem : WorldObjectItem<CombustionGeneratorObject>
     {
         public override string FriendlyName { get { return "Combustion Generator"; } } 

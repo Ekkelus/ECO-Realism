@@ -32,6 +32,7 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
+    [Weight(5000)]
     public partial class ComputerLabItem : WorldObjectItem<ComputerLabObject>
     {
         public override string FriendlyName { get { return "Computer Lab"; } } 

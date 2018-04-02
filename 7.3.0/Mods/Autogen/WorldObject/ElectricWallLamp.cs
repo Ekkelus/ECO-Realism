@@ -62,6 +62,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1000)]
     public partial class ElectricWallLampItem : WorldObjectItem<ElectricWallLampObject>
     {
         public override string FriendlyName { get { return "Electric Wall Lamp"; } } 

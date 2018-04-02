@@ -68,6 +68,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(5000)]
     public partial class MillItem : WorldObjectItem<MillObject>
     {
         public override string FriendlyName { get { return "Mill"; } } 

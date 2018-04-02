@@ -84,6 +84,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(20000)]
     public partial class OilRefineryItem : WorldObjectItem<OilRefineryObject>
     {
         public override string FriendlyName { get { return "Oil Refinery"; } } 

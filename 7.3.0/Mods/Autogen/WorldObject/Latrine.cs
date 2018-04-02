@@ -62,6 +62,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1000)]
     public partial class LatrineItem : WorldObjectItem<LatrineObject>
     {
         public override string FriendlyName { get { return "Wooden Latrine"; } } 

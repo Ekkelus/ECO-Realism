@@ -57,6 +57,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1000)]
     public partial class FishTrapItem : WorldObjectItem<FishTrapObject>
     {
         public override string FriendlyName { get { return "Fish Trap"; } } 

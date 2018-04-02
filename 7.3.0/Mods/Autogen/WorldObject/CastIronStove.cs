@@ -77,6 +77,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(10000)]
     public partial class CastIronStoveItem : WorldObjectItem<CastIronStoveObject>
     {
         public override string FriendlyName { get { return "Cast Iron Stove"; } } 

@@ -66,6 +66,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1000)]
     public partial class TorchStandItem : WorldObjectItem<TorchStandObject>
     {
         public override string FriendlyName { get { return "Torch Stand"; } } 

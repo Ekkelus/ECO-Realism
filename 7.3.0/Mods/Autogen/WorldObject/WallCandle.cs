@@ -68,6 +68,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(500)]
     public partial class WallCandleItem : WorldObjectItem<WallCandleObject>
     {
         public override string FriendlyName { get { return "Wall Candle"; } } 

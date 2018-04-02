@@ -32,6 +32,7 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
+    [Weight(500)]
     public partial class SmallWoodSignItem : WorldObjectItem<SmallWoodSignObject>
     {
         public override string FriendlyName { get { return "Small Wood Sign"; } } 

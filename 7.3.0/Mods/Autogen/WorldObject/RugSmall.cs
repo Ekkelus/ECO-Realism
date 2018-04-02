@@ -58,6 +58,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(500)]
     public partial class RugSmallItem : WorldObjectItem<RugSmallObject>
     {
         public override string FriendlyName { get { return "Small Rug"; } } 

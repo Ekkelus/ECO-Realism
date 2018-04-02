@@ -62,6 +62,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(3000)]
     public partial class WoodenStrawBedItem : WorldObjectItem<WoodenStrawBedObject>
     {
         public override string FriendlyName { get { return "Wooden Straw Bed"; } } 

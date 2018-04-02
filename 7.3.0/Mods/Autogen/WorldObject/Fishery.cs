@@ -62,6 +62,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(5000)]
     public partial class FisheryItem : WorldObjectItem<FisheryObject>
     {
         public override string FriendlyName { get { return "Fishery"; } } 

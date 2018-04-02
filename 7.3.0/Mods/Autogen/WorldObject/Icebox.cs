@@ -66,6 +66,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(3000)]
     public partial class IceboxItem : WorldObjectItem<IceboxObject>
     {
         public override string FriendlyName { get { return "Icebox"; } } 

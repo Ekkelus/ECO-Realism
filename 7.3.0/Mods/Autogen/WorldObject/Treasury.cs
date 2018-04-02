@@ -31,6 +31,7 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
 
     [Serialized]
+    [Weight(10000)]
     public partial class TreasuryItem : WorldObjectItem<TreasuryObject>
     {
         public override string FriendlyName { get { return "Treasury"; } } 

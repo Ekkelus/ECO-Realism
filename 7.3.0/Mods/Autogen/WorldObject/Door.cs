@@ -58,6 +58,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1000)]
     public partial class DoorItem : WorldObjectItem<DoorObject>
     {
         public override string FriendlyName { get { return "Door"; } } 

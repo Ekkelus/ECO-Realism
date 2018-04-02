@@ -57,6 +57,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1000)]
     public partial class WoodSignItem : WorldObjectItem<WoodSignObject>
     {
         public override string FriendlyName { get { return "Wood Sign"; } } 

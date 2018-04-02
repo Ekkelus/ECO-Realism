@@ -66,6 +66,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(3000)]
     public partial class WashingMachineItem : WorldObjectItem<WashingMachineObject>
     {
         public override string FriendlyName { get { return "Washing Machine"; } } 

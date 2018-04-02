@@ -63,6 +63,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(2000)]
     public partial class StreetlampItem : WorldObjectItem<StreetlampObject>
     {
         public override string FriendlyName { get { return "Streetlamp"; } } 

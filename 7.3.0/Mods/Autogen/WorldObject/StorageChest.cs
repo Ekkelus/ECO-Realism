@@ -61,6 +61,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1500)]
     public partial class StorageChestItem : WorldObjectItem<StorageChestObject>
     {
         public override string FriendlyName { get { return "Storage Chest"; } } 

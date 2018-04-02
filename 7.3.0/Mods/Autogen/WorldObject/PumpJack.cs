@@ -64,6 +64,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(20000)]
     public partial class PumpJackItem : WorldObjectItem<PumpJackObject>
     {
         public override string FriendlyName { get { return "Pump Jack"; } } 

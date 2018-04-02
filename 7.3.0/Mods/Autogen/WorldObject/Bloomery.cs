@@ -73,6 +73,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(10000)]
     public partial class BloomeryItem : WorldObjectItem<BloomeryObject>
     {
         public override string FriendlyName { get { return "Bloomery"; } } 

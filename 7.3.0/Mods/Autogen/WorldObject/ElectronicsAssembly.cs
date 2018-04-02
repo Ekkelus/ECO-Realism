@@ -64,6 +64,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(5000)]
     public partial class ElectronicsAssemblyItem : WorldObjectItem<ElectronicsAssemblyObject>
     {
         public override string FriendlyName { get { return "Electronics Assembly"; } } 

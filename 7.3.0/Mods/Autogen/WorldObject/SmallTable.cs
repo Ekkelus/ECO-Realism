@@ -61,6 +61,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1500)]
     public partial class SmallTableItem : WorldObjectItem<SmallTableObject>
     {
         public override string FriendlyName { get { return "Small Table"; } } 

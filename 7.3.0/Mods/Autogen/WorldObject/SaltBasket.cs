@@ -58,6 +58,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(750)]
     public partial class SaltBasketItem : WorldObjectItem<SaltBasketObject>
     {
         public override string FriendlyName { get { return "Salt Basket"; } } 

@@ -61,6 +61,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(5000)]
     public partial class StoreItem : WorldObjectItem<StoreObject>
     {
         public override string FriendlyName { get { return "Store"; } } 

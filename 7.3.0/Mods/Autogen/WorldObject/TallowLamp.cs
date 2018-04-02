@@ -68,6 +68,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(500)]
     public partial class TallowLampItem : WorldObjectItem<TallowLampObject>
     {
         public override string FriendlyName { get { return "Tallow Lamp"; } } 

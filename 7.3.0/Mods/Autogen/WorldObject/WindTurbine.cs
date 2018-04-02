@@ -64,6 +64,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(10000)]
     public partial class WindTurbineItem : WorldObjectItem<WindTurbineObject>
     {
         public override string FriendlyName { get { return "Wind Turbine"; } } 

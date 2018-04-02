@@ -59,6 +59,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1500)]
     public partial class PlanterPotSquareItem : WorldObjectItem<PlanterPotSquareObject>
     {
         public override string FriendlyName { get { return "Square Pot"; } } 

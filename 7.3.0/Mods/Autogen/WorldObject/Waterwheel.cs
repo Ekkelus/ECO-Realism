@@ -61,6 +61,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(10000)]
     public partial class WaterwheelItem : WorldObjectItem<WaterwheelObject>
     {
         public override string FriendlyName { get { return "Waterwheel"; } } 
