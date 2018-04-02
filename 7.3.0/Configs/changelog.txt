@@ -2,6 +2,7 @@
 - Removed Super Secret Dildo Statue (April Fools)
 - Hid Ecko Statue
 - Added weight to world objects
+- Halved the weight of coal and ores
 - Added /houseranking
 - Added /report
 - Added Super Skills
