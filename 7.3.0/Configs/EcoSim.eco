@@ -2084,7 +2084,7 @@
             "max": 2
           },
           "SeedItem": {
-            "Type": "Eco.Mods.TechTree.PricklyPearItem, Eco.Mods"
+            "Type": "Eco.Mods.TechTree.PricklyPearFruitItem, Eco.Mods"
           },
           "PostHarvestingGrowth": 0.5,
           "ScythingKills": true,
@@ -4292,7 +4292,7 @@
             "max": 0
           },
           "SeedItem": {
-            "Type": "Eco.Mods.TechTree.AcornItem, Eco.Mods"
+            "Type": "Eco.Mods.TechTree.RiceItem, Eco.Mods"
           },
           "PostHarvestingGrowth": 0,
           "ScythingKills": true,
