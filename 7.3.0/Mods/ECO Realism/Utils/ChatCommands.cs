@@ -16,13 +16,18 @@ namespace EcoRealism.Utils
         [ChatCommand("rules", "Displays the Server Rules")]
         public static void Rules(User user)
         {
-            user.Player.OpenInfoPanel("Rules", IOUtils.ReadConfig("rules.txt"));
+            string x = IOUtils.ReadConfig("rules.txt");
+                x = ChatUtils.CustomTags(x);
+
+            user.Player.OpenInfoPanel("Rules", x);
         }
 
         [ChatCommand("changelog", "Displays the changelog of the modkit")]
         public static void Changelog(User user)
         {
-            string x = IOUtils.ReadConfig("changelog.txt");         
+            string x = IOUtils.ReadConfig("changelog.txt");
+            x = ChatUtils.CustomTags(x);
+
             user.Player.OpenInfoPanel("Changelog", x);
         }
 

@@ -94,7 +94,37 @@ namespace EcoRealism.Utils
 
         public static string CustomTags(string text)
         {
-            return text;
+            string[] tmparray;
+            string tmpstr = string.Empty;
+            string open, close, item, itemfriendly = string.Empty;
+            int i = 0;
+
+
+            tmparray = text.Split(new string[] { "<autolink>" }, StringSplitOptions.None);
+
+            close = "</ecoicon></link></style>";
+
+            if (tmparray.Length == 1) return text;
+
+            for (i = 0; i < tmparray.Length - 1; i = i + 2)
+            {
+                item = tmparray[i + 1];
+                try
+                {
+                    itemfriendly = Item.GetItemByString(null, item).FriendlyName;
+                    open = "<link=\"Item:" + item + "Item\"><style=\"Item\"><ecoicon item='" + item + "Item'>";
+                    tmpstr = tmpstr + tmparray[i] + open + itemfriendly + close;
+                }
+                catch (Exception)
+                {
+                    tmpstr = tmpstr + tmparray[i] + item ;
+                }
+            }
+
+            if(tmparray.Length%2 != 0) tmpstr = tmpstr + tmparray[tmparray.Length - 1];
+
+
+            return tmpstr;
         }
 
     }

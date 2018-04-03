@@ -42,7 +42,7 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
     [RequireComponent(typeof(AnimalTrapComponent))]
     public class SmallAnimalTrapObject : WorldObject
     {
-        public override string FriendlyName { get { return "Fish Trap"; } }
+        public override string FriendlyName { get { return "Small Animal Trap"; } }
 
 
         protected override void Initialize()
