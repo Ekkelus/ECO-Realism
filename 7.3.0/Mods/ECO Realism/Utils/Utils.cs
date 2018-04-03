@@ -135,7 +135,7 @@ namespace EcoRealism.Utils
         public static string ReadConfig(string filename)
         {
             string content = string.Empty;
-            string path = "./configs/" + filename;
+            string path = "./mods/ECO Realism/configs/" + filename;
 
 
             if (File.Exists(path))
