@@ -38,7 +38,7 @@ namespace EcoRealism.Utils
             singlestringreport = singlestringreport.TrimEnd(',');
             string texttoadd = string.Empty;
 
-            texttoadd = "<b><link=\"User:" + user.Name + "\"><style=\"Warning\">" + user.Name + "</style></link></b> " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine;
+            texttoadd = "<b><link=\"User:" + user.Name + "\"><style=\"Warning\">" + user.Name + "</style></link> " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":</b>" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine;
             IOUtils.WriteToFile("./Reports/reports.txt", texttoadd);
             user.Player.SendTemporaryMessageAlreadyLocalized("Report sent");
 
