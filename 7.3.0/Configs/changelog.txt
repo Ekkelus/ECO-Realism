@@ -1,4 +1,5 @@
 <color=green><b>MAKE SURE IT'S THE CORRECT DATE!</b></color>
+- Removed seed drop from plants that you can craft seeds for
 - Changes to Steel Table Lamp, Steel Floor Lamp and Steel Ceiling Light recipes
 - Reduced construction skill costs
 - Added fuel value to Wood Pulp
