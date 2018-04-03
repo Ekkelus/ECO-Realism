@@ -55,6 +55,7 @@ namespace Eco.Mods.TechTree
             typeof(ArrowItem),
             typeof(BoardItem),
             typeof(CoalItem),
+            typeof(WoodPulpItem),
         };
 
         protected override void Initialize()
