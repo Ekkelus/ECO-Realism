@@ -1,6 +1,9 @@
-<color=green><b>2018-04-02</b></color>
+<color=green><b>MAKE SURE IT'S THE CORRECT DATE!</b></color>
+- Changes to Steel Table Lamp, Steel Floor Lamp and Steel Ceiling Light recipes
+
+<color=green><b>2018-04-03</b></color>
 - Removed Super Secret Dildo Statue (April Fools)
-- Hid Ecko Statue
+- Hid Ecko Statue (Temp fix)
 - Added weight to world objects
 - Halved the weight of coal and ores
 - Added /houseranking

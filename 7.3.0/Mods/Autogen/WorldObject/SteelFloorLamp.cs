@@ -85,7 +85,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(SteelworkingSkill), 2)]
+    [RequiresSkill(typeof(ElectronicEngineeringSkill), 3)]
     public partial class SteelFloorLampRecipe : Recipe
     {
         public SteelFloorLampRecipe()
@@ -97,9 +97,11 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(SteelworkingEfficiencySkill), 10, SteelworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 10, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<CopperWiringItem>(typeof(ElectronicEngineeringEfficiencySkill), 8, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GlassItem>(typeof(ElectronicEngineeringEfficiencySkill), 8, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, SteelworkingSpeedSkill.MultiplicativeStrategy, typeof(SteelworkingSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(10, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.Do("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(SteelFloorLampRecipe), Item.Get<SteelFloorLampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SteelFloorLampItem>().UILink(), value);
             this.CraftMinutes = value;
