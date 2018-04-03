@@ -100,7 +100,7 @@ namespace EcoRealism.Utils
             int i = 0;
 
 
-            tmparray = text.Split(new string[] { "<autolink>" }, StringSplitOptions.None);
+            tmparray = text.Split(new string[] { "@@" }, StringSplitOptions.None);
 
             close = "</ecoicon></link></style>";
 
