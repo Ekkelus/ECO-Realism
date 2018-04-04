@@ -49,7 +49,7 @@ namespace EcoRealism.Utils
                 if (usercheck.IsAdmin) usercheck.Player.OpenCustomPanel("New Report from " + user.Name, singlestringreport, DateTime.Now.Ticks.ToString());
             }
 
-            texttoadd = TextLinkManager.MarkUpText("<b>" + user.Name + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":</b>" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine;
+            texttoadd = TextLinkManager.MarkUpText("<b>" + user.Name + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":</b>" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine);
             IOUtils.WriteToFile("./mods/ECO Realism/Reports/reports.txt", texttoadd);
             user.Player.SendTemporaryMessageAlreadyLocalized("Report sent");
 
