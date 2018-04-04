@@ -43,7 +43,7 @@ namespace EcoRealism.Utils
             singlestringreport = singlestringreport.TrimEnd(',');
             string texttoadd = string.Empty;
 
-            foreach (User usercheck in UserManager.OnlineUsers)
+            foreach (User usercheck in UserManager.Users)
             {
                 if (usercheck.IsAdmin) usercheck.Player.OpenCustomPanel("New Report from " + user.Name, TextLinkManager.MarkUpText(singlestringreport), DateTime.Now.Ticks.ToString());
             }
