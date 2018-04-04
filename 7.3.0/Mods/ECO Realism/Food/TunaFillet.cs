@@ -41,7 +41,7 @@ namespace Eco.Mods.TechTree
             {
 				new CraftingElement<TunaItem>(typeof(FishCleaningEfficiencySkill), 1, FishCleaningEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(TunaFilletRecipe), Item.Get<TunaFilletItem>().UILink(), 9, typeof(FishCleaningSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(TunaFilletRecipe), Item.Get<TunaFilletItem>().UILink(), 3, typeof(FishCleaningSpeedSkill));
             this.Initialize("Tuna Fillet", typeof(TunaFilletRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
