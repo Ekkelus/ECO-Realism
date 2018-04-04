@@ -15,6 +15,7 @@ using Eco.Gameplay.Objects;
 using Eco.Gameplay.Players;
 using Eco.Gameplay.Property;
 using Eco.Gameplay.Skills;
+using Eco.Gameplay.Systems.Chat;
 using Eco.Gameplay.Systems.TextLinks;
 using Eco.Gameplay.Pipes.LiquidComponents;
 using Eco.Gameplay.Pipes.Gases;
@@ -86,45 +87,44 @@ namespace EcoRealism.Utils
     public static class ChatUtils
     {
         public static void SendMessage(User user)
-        { }
+        {
+            
+        }
 
         public static void SendMessage(Player player)
         { }
 
 
-        public static string CustomTags(string text)
+        //public static string CustomTags(string text)
+        //{
+        //    string[] tmparray;
+        //    string tmpstr = string.Empty;
+        //    string open, close, item, itemfriendly = string.Empty;
+        //    int i = 0;
+        //    tmparray = text.Split(new string[] { "@@" }, StringSplitOptions.None);
+        //    close = "</ecoicon></link></style>";
+        //    if (tmparray.Length == 1) return text;
+        //    for (i = 0; i < tmparray.Length - 1; i = i + 2)
+        //    {
+        //        item = tmparray[i + 1];
+        //        try
+        //        {
+        //            itemfriendly = Item.GetItemByString(null, item).FriendlyName;
+        //            open = "<link=\"Item:" + item + "Item\"><style=\"Item\"><ecoicon item='" + item + "Item'>";
+        //            tmpstr = tmpstr + tmparray[i] + open + itemfriendly + close;
+        //        }
+        //        catch (Exception)
+        //        {
+        //            tmpstr = tmpstr + tmparray[i] + item ;
+        //        }
+        //    }
+        //    if(tmparray.Length%2 != 0) tmpstr = tmpstr + tmparray[tmparray.Length - 1];
+        //    return tmpstr;
+        //}
+
+        public static string AutoLink(string text)
         {
-            string[] tmparray;
-            string tmpstr = string.Empty;
-            string open, close, item, itemfriendly = string.Empty;
-            int i = 0;
-
-
-            tmparray = text.Split(new string[] { "@@" }, StringSplitOptions.None);
-
-            close = "</ecoicon></link></style>";
-
-            if (tmparray.Length == 1) return text;
-
-            for (i = 0; i < tmparray.Length - 1; i = i + 2)
-            {
-                item = tmparray[i + 1];
-                try
-                {
-                    itemfriendly = Item.GetItemByString(null, item).FriendlyName;
-                    open = "<link=\"Item:" + item + "Item\"><style=\"Item\"><ecoicon item='" + item + "Item'>";
-                    tmpstr = tmpstr + tmparray[i] + open + itemfriendly + close;
-                }
-                catch (Exception)
-                {
-                    tmpstr = tmpstr + tmparray[i] + item ;
-                }
-            }
-
-            if(tmparray.Length%2 != 0) tmpstr = tmpstr + tmparray[tmparray.Length - 1];
-
-
-            return tmpstr;
+            return TextLinkManager.MarkUpText(text);
         }
 
     }

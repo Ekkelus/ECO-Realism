@@ -17,7 +17,7 @@ namespace EcoRealism.Utils
         public static void Rules(User user)
         {
             string x = IOUtils.ReadConfig("rules.txt");
-                x = ChatUtils.CustomTags(x);
+            x = ChatUtils.AutoLink(x);
 
             user.Player.OpenInfoPanel("Rules", x);
         }
@@ -26,7 +26,7 @@ namespace EcoRealism.Utils
         public static void Changelog(User user)
         {
             string x = IOUtils.ReadConfig("changelog.txt");
-            x = ChatUtils.CustomTags(x);
+            x = ChatUtils.AutoLink(x);
 
             user.Player.OpenInfoPanel("Changelog", x);
         }
