@@ -1,7 +1,9 @@
 <color=green><b>MAKE SURE IT'S THE CORRECT DATE!</b></color>
 - Removed seed drop from plants that you can craft seeds for
 - Changes to Steel Table Lamp, Steel Floor Lamp and Steel Ceiling Light recipes
+- Changes to Farming Skill Book recipe
 - Reduced construction skill costs
+- Added more books to some of the more advanced techs
 - Added fuel value to Wood Pulp
 - Added Wood Pulp as fuel in a number of stations
 - Added new icon for Coin
