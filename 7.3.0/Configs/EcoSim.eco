@@ -141,8 +141,8 @@
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {
-            "min": 2,
-            "max": 4
+            "min": 0,
+            "max": 1
           },
           "SeedItem": {
             "Type": "Eco.Mods.TechTree.WheatItem, Eco.Mods"
@@ -869,7 +869,7 @@
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {
-            "min": 1,
+            "min": 0,
             "max": 2
           },
           "SeedItem": {
@@ -982,7 +982,7 @@
             "Type": "Eco.Gameplay.Plants.PlantEntity, Eco.Gameplay"
           },
           "Water": false,
-          "SeedDropChance": 0.6,
+          "SeedDropChance": 0.45,
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {
@@ -1383,12 +1383,12 @@
             "Type": "Eco.Gameplay.Plants.PlantEntity, Eco.Gameplay"
           },
           "Water": false,
-          "SeedDropChance": 0.5,
+          "SeedDropChance": 0.25,
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {
-            "min": 1,
-            "max": 3
+            "min": 0,
+            "max": 1
           },
           "SeedItem": {
             "Type": "Eco.Mods.TechTree.BeetItem, Eco.Mods"
@@ -1500,12 +1500,12 @@
             "Type": "Eco.Gameplay.Plants.PlantEntity, Eco.Gameplay"
           },
           "Water": false,
-          "SeedDropChance": 0.5,
+          "SeedDropChance": 0.25,
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {
-            "min": 1,
-            "max": 3
+            "min": 0,
+            "max": 1
           },
           "SeedItem": {
             "Type": "Eco.Mods.TechTree.CornItem, Eco.Mods"
@@ -1731,8 +1731,8 @@
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {
-            "min": 1,
-            "max": 3
+            "min": 0,
+            "max": 1
           },
           "SeedItem": {
             "Type": "Eco.Mods.TechTree.FireweedShootsItem, Eco.Mods"
@@ -2076,12 +2076,12 @@
             "Type": "Eco.Gameplay.Plants.PlantEntity, Eco.Gameplay"
           },
           "Water": false,
-          "SeedDropChance": 0.5,
+          "SeedDropChance": 0.4,
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {
-            "min": 1,
-            "max": 2
+            "min": 0,
+            "max": 1
           },
           "SeedItem": {
             "Type": "Eco.Mods.TechTree.PricklyPearFruitItem, Eco.Mods"
@@ -2197,8 +2197,8 @@
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {
-            "min": 1,
-            "max": 2
+            "min": 0,
+            "max": 1
           },
           "SeedItem": {
             "Type": "Eco.Mods.TechTree.BeansItem, Eco.Mods"
@@ -3536,11 +3536,11 @@
             "Type": "Eco.Gameplay.Plants.PlantEntity, Eco.Gameplay"
           },
           "Water": false,
-          "SeedDropChance": 0.66,
+          "SeedDropChance": 0.75,
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {
-            "min": 1,
+            "min": 0,
             "max": 2
           },
           "SeedItem": {
