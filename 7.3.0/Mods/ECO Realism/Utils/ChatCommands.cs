@@ -64,7 +64,7 @@ namespace EcoRealism.Utils
         [ChatCommand("clearreports", "Deletes all current reports", level: ChatAuthorizationLevel.Admin)]
         public static void ClearReports(User user)
         {
-            IOUtils.ClearFile(".mods/ECO Realism/Reports/reports.txt");
+            IOUtils.ClearFile("./mods/ECO Realism/Reports/reports.txt");
             user.Player.SendTemporaryMessageAlreadyLocalized("Reports cleared");
         }
 
