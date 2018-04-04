@@ -41,9 +41,15 @@ namespace EcoRealism.Utils
             }
             string singlestringreport = part1 + "," + part2 + "," + part3 + "," + part4 + "," + part5 + "," + part6 + "," + part7 + "," + part8 + "," + part9 + "," + part10;
             singlestringreport = singlestringreport.TrimEnd(',');
+            singlestringreport = TextLinkManager.MarkUpText(singlestringreport);
             string texttoadd = string.Empty;
 
-            texttoadd = "<b><link=\"User:" + user.Name + "\"><style=\"Warning\">" + user.Name + "</style></link> " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":</b>" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine;
+            foreach (User usercheck in UserManager.OnlineUsers)
+            {
+                if (usercheck.IsAdmin) usercheck.Player.OpenCustomPanel("New Report from " + user.Name, singlestringreport, DateTime.Now.Ticks.ToString());
+            }
+
+            texttoadd = TextLinkManager.MarkUpText("<b>" + user.Name + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":</b>" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine;
             IOUtils.WriteToFile("./mods/ECO Realism/Reports/reports.txt", texttoadd);
             user.Player.SendTemporaryMessageAlreadyLocalized("Report sent");
 
