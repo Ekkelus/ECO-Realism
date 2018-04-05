@@ -138,7 +138,7 @@ namespace EcoRealism.Utils
             SkillUtils.superskillconfirmed.Add(user.ID);
         }
 
-        [ChatCommand("unclaimselect", "selects the owner of the plot you're standing on for unclaimconfirm")]
+        [ChatCommand("unclaimselect", "selects the owner of the plot you're standing on for unclaimconfirm", level: ChatAuthorizationLevel.Admin)]
         public static void UnclaimPlayer(User user)
         {
             User owner = PropertyManager.GetPlot(user.Position.XZi).Owner;
@@ -153,13 +153,13 @@ namespace EcoRealism.Utils
 
             UtilsClipboard.UnclaimSelector.TryGetValue(user, out owner);
             user.Player.SendTemporaryMessageAlreadyLocalized(TextLinkManager.MarkUpText("Selected " + owner.Name + " as target! "));
-            ChatUtils.SendMessage(user, "Then: " + owner.OfflineInfo.LoggoutTime.ToString());
-            ChatUtils.SendMessage(user, "Now: " + TimeUtil.Ticks);
-            ChatUtils.SendMessage(user, "Diff: " + TimeUtil.DaysHoursMinutes(TimeUtil.TicksToSeconds((TimeUtil.Ticks - (long)owner.OfflineInfo.LoggoutTime))));
+            //ChatUtils.SendMessage(user, "Then: " + owner.OfflineInfo.LoggoutTime.ToString());
+            //ChatUtils.SendMessage(user, "Now: " + TimeUtil.Ticks);
+            //ChatUtils.SendMessage(user, "Diff: " + TimeUtil.DaysHoursMinutes(TimeUtil.TicksToSeconds((TimeUtil.Ticks - (long)owner.OfflineInfo.LoggoutTime))));
 
         }
 
-        [ChatCommand("unclaimconfirm", "unclaims all property of the selected player")]
+        [ChatCommand("unclaimconfirm", "unclaims all property of the selected player", level: ChatAuthorizationLevel.Admin)]
         public static void UnclaimConfirm(User user)
         {
             User target = null;
