@@ -24,6 +24,15 @@ namespace EcoRealism.Utils
             user.Player.OpenInfoPanel("Rules", x);
         }
 
+        [ChatCommand("modkit", "Display information about the modkit")]
+        public static void Modkit(User user)
+        {
+            string x = IOUtils.ReadConfig("modkit.txt");
+            x = ChatUtils.AutoLink(x);
+
+            user.Player.OpenInfoPanel("Modkit", x);
+        }
+
         [ChatCommand("changelog", "Displays the changelog of the modkit")]
         public static void Changelog(User user)
         {
@@ -138,7 +147,7 @@ namespace EcoRealism.Utils
             SkillUtils.superskillconfirmed.Add(user.ID);
         }
 
-        [ChatCommand("unclaimselect", "selects the owner of the plot you're standing on for unclaimconfirm", level: ChatAuthorizationLevel.Admin)]
+        [ChatCommand("unclaimselect", "Selects the owner of the plot you're standing on for unclaimconfirm", level: ChatAuthorizationLevel.Admin)]
         public static void UnclaimPlayer(User user)
         {
             User owner = PropertyManager.GetPlot(user.Position.XZi).Owner;
@@ -159,7 +168,7 @@ namespace EcoRealism.Utils
 
         }
 
-        [ChatCommand("unclaimconfirm", "unclaims all property of the selected player", level: ChatAuthorizationLevel.Admin)]
+        [ChatCommand("unclaimconfirm", "Unclaims all property of the selected player", level: ChatAuthorizationLevel.Admin)]
         public static void UnclaimConfirm(User user)
         {
             User target = null;

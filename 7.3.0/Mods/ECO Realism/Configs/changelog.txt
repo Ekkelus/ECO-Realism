@@ -1,12 +1,16 @@
-<color=green><b>MAKE SURE IT'S THE CORRECT DATE!</b></color>
+<color=green><b>2018-04-06</b></color>
 - Removed seed drop from plants that you can craft seeds for
 - Changes to Steel Table Lamp, Steel Floor Lamp and Steel Ceiling Light recipes
 - Changes to Farming Skill Book recipe
+- Changed icon for Coin
 - Reduced construction skill costs
+- Reduced crafting time for fillets
+- Reduced amounts of items you get from plants
 - Added more books to some of the more advanced techs
 - Added fuel value to Wood Pulp
 - Added Wood Pulp as fuel in a number of stations
-- Added new icon for Coin
+- Added /modkit
+- Added /unclaimselect and /unclaimconfirm for admins
 
 <color=green><b>2018-04-03</b></color>
 - Removed Super Secret Dildo Statue (April Fools)
