@@ -29,6 +29,7 @@ using Eco.Shared.Items;
 using Eco.Gameplay.Pipes;
 using Eco.World.Blocks;
 using EcoRealism.Utils;
+using Eco.Shared.Localization;
 
 namespace EcoRealism.Utils
 {
@@ -38,6 +39,7 @@ namespace EcoRealism.Utils
         static UtilsInitItem()
         {
             SkillUtils.Initialize();
+            UtilsClipboard.Initialize();
         }
     }
 
@@ -86,13 +88,15 @@ namespace EcoRealism.Utils
 
     public static class ChatUtils
     {
-        public static void SendMessage(User user)
+        public static void SendMessage(User user, string msg)
         {
-            
+            ChatManager.ServerMessageToPlayer(Localizer.Do(AutoLink(msg)), user, false);
         }
 
-        public static void SendMessage(Player player)
-        { }
+        public static void SendMessage(Player player, string msg)
+        {
+            SendMessage(player.User, msg);
+        }
 
 
         //public static string CustomTags(string text)
@@ -188,5 +192,20 @@ namespace EcoRealism.Utils
         }
 
     }
+
+
+    public static class UtilsClipboard
+    {
+        public static Dictionary<User,User> UnclaimSelector;
+
+            public static void Initialize()
+        {
+            UnclaimSelector = new Dictionary<User, User>();
+
+        }
+
+    }
+
+
 
 }

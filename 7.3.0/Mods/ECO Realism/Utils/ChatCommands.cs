@@ -4,7 +4,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
+using Eco.Gameplay.Property;
+using Eco.Shared.Math;
 
 namespace EcoRealism.Utils
 {
@@ -135,6 +136,82 @@ namespace EcoRealism.Utils
             user.Player.SendTemporaryMessageAlreadyLocalized("You can now level up a Skill to level 10");
             SkillUtils.superskillconfirmed.Add(user.ID);
         }
+
+        [ChatCommand("unclaimselect", "selects the owner of the plot you're standing on for unclaimconfirm")]
+        public static void UnclaimPlayer(User user)
+        {
+            User owner = PropertyManager.GetPlot(user.Position.XZi).Owner;
+            if (owner == null)
+            {
+                user.Player.SendTemporaryMessageAlreadyLocalized("Player not Found");
+                return;
+            }
+
+            if (UtilsClipboard.UnclaimSelector.ContainsKey(user)) UtilsClipboard.UnclaimSelector.Remove(user);
+            UtilsClipboard.UnclaimSelector.Add(user, owner);
+
+            UtilsClipboard.UnclaimSelector.TryGetValue(user, out owner);
+            user.Player.SendTemporaryMessageAlreadyLocalized(TextLinkManager.MarkUpText("Selected " + owner.Name + " as target! "));
+            ChatUtils.SendMessage(user, "Then: " + owner.OfflineInfo.LoggoutTime.ToString());
+            ChatUtils.SendMessage(user, "Now: " + TimeUtil.Ticks);
+            ChatUtils.SendMessage(user, "Diff: " + TimeUtil.DaysHoursMinutes(TimeUtil.TicksToSeconds((TimeUtil.Ticks - (long)owner.OfflineInfo.LoggoutTime))));
+
+        }
+
+        [ChatCommand("unclaimconfirm", "unclaims all property of the selected player")]
+        public static void UnclaimConfirm(User user)
+        {
+            User target = null;
+            int totalplotcount = 0, deedcount = 0, plotcountdeed = 0, vehiclecount = 0;
+            IEnumerable<Vector2i> positions;
+            string tmp = string.Empty;
+
+
+            if (!UtilsClipboard.UnclaimSelector.TryGetValue(user, out target))
+            {
+                user.Player.SendTemporaryErrorAlreadyLocalized("no User selected");
+                return;
+            }
+            IEnumerable<AuthorizationController> authorizationControllers = PropertyManager.GetAuthBelongingTo(target);
+            foreach (AuthorizationController auth in authorizationControllers)
+            {
+                plotcountdeed = 0;
+                if (auth.Type == "Property")
+                {
+                    deedcount++;
+                    positions = PropertyManager.PositionsForId(auth.Id);
+                    foreach (Vector2i pos in positions)
+                    {
+                        plotcountdeed++;
+                        totalplotcount++;
+                        //ChatUtils.SendMessage(user, TextLinkManager.MarkUpText("Try unclaiming: (" + pos.X + "," + pos.Y + ")"));
+                        PropertyManager.UnclaimProperty(pos);
+                    }
+                    ChatUtils.SendMessage(user, "Unclaimed: " + auth.Name + " (" + plotcountdeed.ToString() + " Plots)");
+                }
+                else if (auth.Type == "Vehicle")
+                {
+                    vehiclecount++;
+                    ChatUtils.SendMessage(user, "Found Vehicle: " + auth.Name);
+
+                    //(auth.AttachedWorldObjects[0].Object as WorldObject).Destroy();
+
+                    //foreach (WorldObjectHandle objhandle in auth.AttachedWorldObjects)
+                    //{
+                    //    tmp = objhandle.Object.Name;
+                    //    (objhandle.Object as WorldObject).Destroy();
+                    //    ChatUtils.SendMessage(user, "Destroyed " + tmp);
+                    //}                    
+
+                }
+            }
+
+            ChatUtils.SendMessage(user, totalplotcount.ToString() + " Plots on " + deedcount.ToString() + " Deeds unclaimed. Also found " + vehiclecount.ToString() + " Vehicles (those aren't handled by this command yet)");
+        }
+
+
+
+
     }
 
 
