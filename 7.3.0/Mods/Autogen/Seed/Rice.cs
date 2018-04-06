@@ -17,7 +17,7 @@ namespace Eco.Mods.TechTree
     using System.ComponentModel;
 
     [Serialized]
-    [Yield(typeof(RiceItem), typeof(WetlandsWandererSkill), new float[] { 1f, 1.2f, 1.4f, 1.6f, 1.8f, 2f  })]  
+    [Yield(typeof(RiceItem), typeof(WetlandsWandererSkill), new float[] { 1f, 1.4f, 1.8f, 2.2f, 2.6f, 3f  })]  
     [Weight(10)]  
     public partial class RiceItem : SeedItem
     {
