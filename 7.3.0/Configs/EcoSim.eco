@@ -3544,7 +3544,7 @@
             "max": 2
           },
           "SeedItem": {
-            "Type": "Eco.Mods.TechTree.AmanitaMushroomItem, Eco.Mods"
+            "Type": "Eco.Mods.TechTree.AmanitaMushroomsItem, Eco.Mods"
           },
           "PostHarvestingGrowth": 0,
           "ScythingKills": true,
@@ -3649,7 +3649,7 @@
             "max": 2
           },
           "SeedItem": {
-            "Type": "Eco.Mods.TechTree.CriminiMushroomItem, Eco.Mods"
+            "Type": "Eco.Mods.TechTree.CriminiMushroomsItem, Eco.Mods"
           },
           "PostHarvestingGrowth": 0,
           "ScythingKills": true,
