@@ -33,6 +33,30 @@ namespace Eco.Mods.TechTree
     }
 
 
+    [RequiresSkill(typeof(SeedProductionSkill), 1)]
+    public class AmanitaMushroomSporesRecipe : Recipe
+    {
+        public AmanitaMushroomSporesRecipe()
+        {
+            this.Products = new CraftingElement[]
+            {
+                new CraftingElement<AmanitaMushroomSporesItem>(),
+            };
+            this.Ingredients = new CraftingElement[]
+            {
+                new CraftingElement<AmanitaMushroomsItem>(typeof(SeedProductionEfficiencySkill), 2, SeedProductionEfficiencySkill.MultiplicativeStrategy),
+            };
+            SkillModifiedValue value = new SkillModifiedValue(2, SeedProductionSpeedSkill.MultiplicativeStrategy, typeof(SeedProductionSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValueManager.AddBenefitForObject(typeof(AmanitaMushroomSporesRecipe), Item.Get<AmanitaMushroomSporesItem>().UILink(), value);
+            SkillModifiedValueManager.AddSkillBenefit(Item.Get<AmanitaMushroomSporesItem>().UILink(), value);
+            this.CraftMinutes = value;
+
+            this.Initialize("Amanita Mushroom Spores", typeof(AmanitaMushroomSporesRecipe));
+            CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
+        }
+    }
+
+
     [Serialized]
     [Category("Hidden")]
     [Weight(10)]  
