@@ -19,6 +19,7 @@ namespace Eco.Mods.TechTree
             this.Products = new CraftingElement[]
             {
                new CraftingElement<LumberItem>(),
+               new CraftingElement<WoodPulpItem>(3),
             };
             this.Ingredients = new CraftingElement[]
             {

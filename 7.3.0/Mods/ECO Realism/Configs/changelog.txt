@@ -7,6 +7,8 @@
 - Reduced construction skill costs
 - Reduced crafting time for fillets
 - Reduced amounts of items you get from plants
+- Added recipe Hewn logs to Lumber
+- Added recipe Mortared Stone to Brick
 - Added more books to some of the more advanced techs
 - Added fuel value to Wood Pulp
 - Added Wood Pulp as fuel in a number of stations
