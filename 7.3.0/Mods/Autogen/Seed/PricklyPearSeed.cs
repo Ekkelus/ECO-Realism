@@ -58,7 +58,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<PricklyPearFruitItem>(typeof(SeedProductionEfficiencySkill), 2, SeedProductionEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(2, SeedProductionSpeedSkill.MultiplicativeStrategy, typeof(SeedProductionSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(0.5f, SeedProductionSpeedSkill.MultiplicativeStrategy, typeof(SeedProductionSpeedSkill), Localizer.Do("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(PricklyPearSeedRecipe), Item.Get<PricklyPearSeedItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<PricklyPearSeedItem>().UILink(), value);
             this.CraftMinutes = value;

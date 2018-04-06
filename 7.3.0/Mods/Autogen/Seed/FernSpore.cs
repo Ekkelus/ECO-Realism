@@ -58,7 +58,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<FiddleheadsItem>(typeof(SeedProductionEfficiencySkill), 4, SeedProductionEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(2, SeedProductionSpeedSkill.MultiplicativeStrategy, typeof(SeedProductionSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(0.5f, SeedProductionSpeedSkill.MultiplicativeStrategy, typeof(SeedProductionSpeedSkill), Localizer.Do("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(FernSporeRecipe), Item.Get<FernSporeItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<FernSporeItem>().UILink(), value);
             this.CraftMinutes = value;
