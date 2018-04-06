@@ -17,7 +17,7 @@ namespace Eco.Mods.TechTree
     
     [Serialized]
     [Weight(10)]                                          
-     [Yield(typeof(BeetItem), typeof(GrasslandGathererSkill), new float[] { 1f, 1.2f, 1.4f, 1.6f, 1.8f, 2f })]      
+     [Yield(typeof(BeetItem), typeof(GrasslandGathererSkill), new float[] {1f, 1.4f, 1.8f, 2.2f, 2.6f, 3f})]      
     public partial class BeetItem :
         FoodItem            
     {
