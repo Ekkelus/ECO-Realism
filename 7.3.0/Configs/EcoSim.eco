@@ -3544,7 +3544,7 @@
             "max": 2
           },
           "SeedItem": {
-            "Type": "Eco.Mods.TechTree.AmanitaMushroomSporesItem, Eco.Mods"
+            "Type": "Eco.Mods.TechTree.AmanitaMushroomItem, Eco.Mods"
           },
           "PostHarvestingGrowth": 0,
           "ScythingKills": true,
@@ -3645,11 +3645,11 @@
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {
-            "min": 1,
+            "min": 0,
             "max": 2
           },
           "SeedItem": {
-            "Type": "Eco.Mods.TechTree.CriminiMushroomSporesItem, Eco.Mods"
+            "Type": "Eco.Mods.TechTree.CriminiMushroomItem, Eco.Mods"
           },
           "PostHarvestingGrowth": 0,
           "ScythingKills": true,
