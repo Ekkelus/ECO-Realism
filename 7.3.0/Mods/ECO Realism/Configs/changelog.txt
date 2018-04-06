@@ -1,4 +1,5 @@
 <color=green><b>2018-04-06</b></color>
+- Storage components are now set to inherit by default
 - Removed seed drop from plants that you can craft seeds for
 - Changes to Steel Table Lamp, Steel Floor Lamp and Steel Ceiling Light recipes
 - Changes to Farming Skill Book recipe

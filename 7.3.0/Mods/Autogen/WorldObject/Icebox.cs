@@ -49,7 +49,8 @@ namespace Eco.Mods.TechTree
         protected override void Initialize()
         {
             this.GetComponent<MinimapComponent>().Initialize("Housing");                                 
-            this.GetComponent<HousingComponent>().Set(IceboxItem.HousingVal);                                
+            this.GetComponent<HousingComponent>().Set(IceboxItem.HousingVal);
+            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
 
             var storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(8);

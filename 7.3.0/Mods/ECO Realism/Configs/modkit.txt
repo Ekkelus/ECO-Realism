@@ -1,7 +1,7 @@
 <b><color=green>.:: GENERAL INFORMATION ::.</color></b>
-The idea behind this modkit was to make the game more of a challenge, force collaborations and at the same time add a bit of realism to it. The key is to work together or else you won't succeed in shooting down the meteor in time.
+The idea behind this modkit was to make the game more of a challenge, force collaborations, keep early-game specialties relevant in late-game, and at the same time add a bit of realism to it. The key is to work together or else you won't succeed in shooting down the meteor in time.
 
-Down below is a list of things we've added to the game, we do recommend you to also have a look at the changelog of the modkit because alot of changes are not listed down below.
+Down below is a list of things we've added to the game, we do recommend you to also have a look at the changelog of the modkit because not all changes are listed down below.
 
 <b><color=green>.:: CRAFTING COMPONENTS ::.</color></b>
 Bone, Book, Glue, Hinge, Glass Jar, Nails, Rope, Rubber, String, Wooden Gear
