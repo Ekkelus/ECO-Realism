@@ -7,6 +7,8 @@
 - Reduced construction skill costs
 - Reduced crafting time for fillets
 - Reduced amounts of items you get from plants
+- Reduced crafting time for seeds
+- Added more seed recipes
 - Added recipe Hewn logs to Lumber
 - Added recipe Mortared Stone to Brick
 - Added more books to some of the more advanced techs
