@@ -32,6 +32,30 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
+    [RequiresSkill(typeof(SeedProductionSkill), 1)]
+    public class CriminiMushroomSporesRecipe : Recipe
+    {
+        public CriminiMushroomSporesRecipe()
+        {
+            this.Products = new CraftingElement[]
+            {
+                new CraftingElement<CriminiMushroomSporesItem>(),
+            };
+            this.Ingredients = new CraftingElement[]
+            {
+                new CraftingElement<CriminiMushroomsItem>(typeof(SeedProductionEfficiencySkill), 2, SeedProductionEfficiencySkill.MultiplicativeStrategy),
+            };
+            SkillModifiedValue value = new SkillModifiedValue(2, SeedProductionSpeedSkill.MultiplicativeStrategy, typeof(SeedProductionSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValueManager.AddBenefitForObject(typeof(CriminiMushroomSporesRecipe), Item.Get<CriminiMushroomSporesItem>().UILink(), value);
+            SkillModifiedValueManager.AddSkillBenefit(Item.Get<CriminiMushroomSporesItem>().UILink(), value);
+            this.CraftMinutes = value;
+
+            this.Initialize("Crimini Mushroom Spores", typeof(CriminiMushroomSporesRecipe));
+            CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
+        }
+    }
+
+
 
     [Serialized]
     [Category("Hidden")]
