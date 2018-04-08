@@ -18,7 +18,7 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     using Eco.Gameplay.Pipes;
 
-    [RequiresSkill(typeof(SteelworkingSkill), 1)]   
+    [RequiresSkill(typeof(LumberSkill), 1)]   
     public partial class CharcoalRecipe : Recipe
     {
         public CharcoalRecipe()
@@ -29,12 +29,12 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LumberItem>(typeof(SteelworkingEfficiencySkill), 2, SteelworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(LumberProcessingEfficiencySkill), 2, LumberProcessingEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CharcoalRecipe), Item.Get<CharcoalItem>().UILink(), 1, typeof(SteelworkingSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CharcoalRecipe), Item.Get<CharcoalItem>().UILink(), 1, typeof(LumberProcessingSpeedSkill));    
             this.Initialize("Charcoal", typeof(CharcoalRecipe));
 
-            CraftingComponent.AddRecipe(typeof(BlastFurnaceObject), this);
+            CraftingComponent.AddRecipe(typeof(BloomeryObject), this);
         }
     }
 
