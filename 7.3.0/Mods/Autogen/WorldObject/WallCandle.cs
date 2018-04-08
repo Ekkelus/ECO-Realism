@@ -54,7 +54,8 @@ namespace Eco.Mods.TechTree
             this.GetComponent<MinimapComponent>().Initialize("Lights");                                 
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
             this.GetComponent<FuelConsumptionComponent>().Initialize(0.2f);                    
-            this.GetComponent<HousingComponent>().Set(WallCandleItem.HousingVal);                                
+            this.GetComponent<HousingComponent>().Set(WallCandleItem.HousingVal);
+            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
 
 
 

@@ -59,7 +59,8 @@ namespace Eco.Mods.TechTree
             this.GetComponent<MinimapComponent>().Initialize("Crafting");                                 
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
             this.GetComponent<FuelConsumptionComponent>().Initialize(10);                    
-            this.GetComponent<HousingComponent>().Set(BloomeryItem.HousingVal);                                
+            this.GetComponent<HousingComponent>().Set(BloomeryItem.HousingVal);
+            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
 
 
 
