@@ -1,3 +1,8 @@
+<color=green><b>2018-04-08</b></color>
+- set all objects that have a fuelstorage to "inherited" by default
+- increased housing value of chair from 0.5 to 1
+
+
 <color=green><b>2018-04-06</b></color>
 - Storage components are now set to inherit by default
 - Removed seed drop from plants that you can craft seeds for
