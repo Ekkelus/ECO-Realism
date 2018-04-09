@@ -71,7 +71,7 @@ namespace Eco.Mods.TechTree
     public partial class BeehiveItem : WorldObjectItem<BeehiveObject>
     {
         public override string FriendlyName { get { return "Beehive"; } }
-        public override string Description { get { return "Cook like a caveman on an uneven fire."; } }
+        public override string Description { get { return "Oh, beehive!"; } }
 
         static BeehiveItem()
         {
@@ -81,7 +81,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 0)]
+    [RequiresSkill(typeof(BeekeeperSkill), 1)]
     public partial class BeehiveRecipe : Recipe
     {
         public BeehiveRecipe()
@@ -93,10 +93,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 5, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<StoneItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(BeekeeperEfficiencySkill), 25, BeekeeperEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GlassJarItem>(typeof(BeekeeperEfficiencySkill), 4, BeekeeperEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(1, BeekeeperSpeedSkill.MultiplicativeStrategy, typeof(BeekeeperSpeedSkill), Localizer.Do("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(BeehiveRecipe), Item.Get<BeehiveItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BeehiveItem>().UILink(), value);
             this.CraftMinutes = value;

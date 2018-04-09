@@ -1,3 +1,6 @@
+<color=green><b>2018-04-13</b></color>
+- Added Bee, Beehive, Beeswax, Honey and Beekeeper skill
+
 <color=green><b>2018-04-08</b></color>
 - Removed Campfire Bison, Elk and Wolf recipes
 - Stations using fuel is now inherited by default

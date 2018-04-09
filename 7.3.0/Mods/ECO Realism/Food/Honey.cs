@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(BasicBakingSkill), 4)]
+    [RequiresSkill(typeof(BeekeeperSkill), 1)]
     public partial class HoneyRecipe : Recipe
     {
         public HoneyRecipe()
@@ -40,9 +40,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<GlassJarItem>(typeof(BasicBakingEfficiencySkill), 2, BasicBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GlassJarItem>(typeof(BeekeeperEfficiencySkill), 2, BeekeeperEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 10, typeof(BasicBakingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 10, typeof(BeekeeperSpeedSkill));
             this.Initialize("Honey", typeof(HoneyRecipe));
             CraftingComponent.AddRecipe(typeof(BeehiveObject), this);
         }
