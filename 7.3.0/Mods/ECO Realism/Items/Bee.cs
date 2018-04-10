@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
     [Serialized]
     [Weight(1)]
     [Currency]
-    [Fuel(50)]
+    [Fuel(60)]
     public partial class BeeItem :
     Item
     {

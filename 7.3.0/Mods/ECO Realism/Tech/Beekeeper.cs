@@ -32,7 +32,7 @@ namespace Eco.Mods.TechTree
         public static int[] SkillPointCost = { 1, 2, 2, 3, 3 };
         public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }
         public override int PrevRequiredPoint { get { return this.Level - 1 >= 0 && this.Level - 1 < this.MaxLevel ? SkillPointCost[this.Level - 1] : 0; } }
-        public override int MaxLevel { get { return 4; } }
+        public override int MaxLevel { get { return 1; } }
     }
 
 }
