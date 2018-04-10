@@ -48,6 +48,7 @@ namespace Eco.Mods.TechTree
         {
             typeof(TallowItem),
             typeof(OilItem),
+            typeof(BeeswaxItem),
         };
 
         protected override void Initialize()

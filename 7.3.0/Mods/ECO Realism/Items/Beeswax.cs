@@ -22,6 +22,7 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(500)]
+    [Fuel(2000)]
     [Currency]
     public partial class BeeswaxItem :
     Item
