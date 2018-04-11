@@ -36,7 +36,7 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
 {
     [Serialized]
     [RequireComponent(typeof(AttachmentComponent))]
-    [RequireComponent(typeof(SkillAuthComponent))]
+    [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(LinkComponent))]
     [RequireComponent(typeof(AnimalTrapComponent))]
@@ -48,10 +48,9 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
         protected override void Initialize()
         {
             this.GetComponent<MinimapComponent>().Initialize("Economy");
-            this.GetComponent<SkillAuthComponent>().Initialize(AuthModeType.Inherited, typeof(HuntingSkill), 1);
-
-
-
+            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
+            this.GetComponent<PublicStorageComponent>().Initialize(1);
+            this.GetComponent<PublicStorageComponent>().Storage.AddRestriction(new StackLimitRestriction(1));
         }
 
         public override void Destroy()
