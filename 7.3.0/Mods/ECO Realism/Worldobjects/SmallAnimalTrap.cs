@@ -75,7 +75,9 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
 
         static SmallAnimalTrapItem()
         {
-
+            WorldObject.AddOccupancy<SmallAnimalTrapObject>(new List<BlockOccupancy>(){
+            new BlockOccupancy(new Vector3i(0, 0, 0)),
+            });
         }
 
     }

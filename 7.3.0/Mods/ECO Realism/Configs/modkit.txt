@@ -10,7 +10,7 @@ Beeswax, Bone, Book, Glue, Hinge, Glass Jar, Nails, Rope, Rubber, String, Wooden
 Clam Chowder, Exotic Urchin Surprise, Granola Bar, Grilled Salmon, Honey, Pizza, Salmon Fillet, Smoked Trout Salad, Stuffed Clams, Sushi, Taiyaki, Trout Fillet, Tuna Fillet, Tuna Sandwich
 
 <b><color=green>.:: WORLD OBJECTS ::.</color></b>
-Beehive, Cardboard Box
+Beehive, Cardboard Box, Small Animal Trap
 
 <b><color=green>.:: MISC ITEMS ::.</color></b>
 Bee, Coin
