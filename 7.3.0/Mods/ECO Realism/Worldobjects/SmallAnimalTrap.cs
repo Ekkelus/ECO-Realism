@@ -83,7 +83,7 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
     }
 
 
-    [RequiresSkill(typeof(FishingSkill), 3)]
+    [RequiresSkill(typeof(TrapperSkill), 1)]
     public partial class SmallAnimalTrapRecipe : Recipe
     {
         public SmallAnimalTrapRecipe()
@@ -95,15 +95,11 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(FishingSkill), 20, FishingSkill.MultiplicativeStrategy),
-                new CraftingElement<RopeItem>(typeof(FishingSkill), 4, FishingSkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(20),
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, FishingSkill.MultiplicativeStrategy, typeof(FishingSkill), Localizer.Do("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(SmallAnimalTrapRecipe), Item.Get<SmallAnimalTrapItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<SmallAnimalTrapItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = new ConstantValue(10);
             this.Initialize("Small Animal Trap", typeof(SmallAnimalTrapRecipe));
-            CraftingComponent.AddRecipe(typeof(FisheryObject), this);
+            CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }
 }

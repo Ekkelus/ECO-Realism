@@ -1,6 +1,8 @@
 <color=green><b>2018-04-13</b></color>
 - Removed Lumber from barrel recipes
+- Removed Copper ingot from barrel recipes
 - Added Bee, Beehive, Beeswax, Honey and Beekeeper skill
+- Added Trapper skill
 - Added Small Animal Trap
 
 <color=green><b>2018-04-08</b></color>
