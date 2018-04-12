@@ -25,7 +25,6 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<SteelItem>(typeof(IndustrialEngineeringEfficiencySkill), 2, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<CopperIngotItem>(typeof(IndustrialEngineeringEfficiencySkill), 5, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LumberItem>(typeof(IndustrialEngineeringEfficiencySkill), 4, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<RivetItem>(typeof(IndustrialEngineeringEfficiencySkill), 2, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
             };
             this.Initialize("Mass Barrels", typeof(MassBarrelsRecipe));

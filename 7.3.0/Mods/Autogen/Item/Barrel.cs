@@ -32,7 +32,6 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<IronIngotItem>(typeof(PetrolRefiningEfficiencySkill), 2, PetrolRefiningEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<CopperIngotItem>(typeof(PetrolRefiningEfficiencySkill), 2, PetrolRefiningEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LumberItem>(typeof(PetrolRefiningEfficiencySkill), 2, PetrolRefiningEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<RivetItem>(typeof(PetrolRefiningEfficiencySkill), 2, PetrolRefiningEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(BarrelRecipe), Item.Get<BarrelItem>().UILink(), 1, typeof(PetrolRefiningSpeedSkill));    

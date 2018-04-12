@@ -1,4 +1,5 @@
 <color=green><b>2018-04-13</b></color>
+- Removed Lumber from barrel recipes
 - Added Bee, Beehive, Beeswax, Honey and Beekeeper skill
 - Added Small Animal Trap
 
