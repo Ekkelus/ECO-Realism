@@ -18,6 +18,7 @@ Bee, Coin
 <b><color=green>.:: USER COMMANDS ::.</color></b>
 <b>/changelog</b> - Display the changelog of the modkit
 <b>/confirmsuperskill</b> - Confirm Super Skills
+<b>/donate</b> - Donate money to the treasury
 <b>/houseranking</b> - Display the users with highest housing rates
 <b>/modkit</b> - Display information about the modkit
 <b>/report</b> - Report a player or an issue

@@ -71,7 +71,7 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
     public partial class SmallAnimalTrapItem : WorldObjectItem<SmallAnimalTrapObject>
     {
         public override string FriendlyName { get { return "Small Animal Trap"; } }
-        public override string Description { get { return "A trap to catch small animals as they run around. "; } }
+        public override string Description { get { return "A trap to catch small animals like hare, turkey and foxes as they run around. "; } }
 
         static SmallAnimalTrapItem()
         {
