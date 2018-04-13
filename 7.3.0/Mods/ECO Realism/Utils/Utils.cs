@@ -178,7 +178,28 @@ namespace EcoRealism.Utils
                 File.Create(path).Close();
             }
         }
+    }
 
+    public static class MiscUtils
+    {
+        public static int CountPlots(User user)
+        {
+            IEnumerable<Vector2i> positions;
+            int totalplotcount = 0;
+
+            if (user == null) return -1;
+            IEnumerable<AuthorizationController> authorizationControllers = PropertyManager.GetAuthBelongingTo(user);
+            foreach (AuthorizationController auth in authorizationControllers)
+            {
+                if (auth.Type == "Property")
+                {
+                    positions = PropertyManager.PositionsForId(auth.Id);
+                    foreach (Vector2i pos in positions) totalplotcount++;
+                }
+            }
+            return totalplotcount;
+
+        }
     }
 
 
