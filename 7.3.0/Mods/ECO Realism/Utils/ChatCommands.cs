@@ -114,19 +114,83 @@ namespace EcoRealism.Utils
             user.Player.OpenInfoPanel("House Ranking", output);
         }
 
-        [ChatCommand("testlogdmp",level: ChatAuthorizationLevel.Admin)]
-        public static void testlogdmp(User user)
+        [ChatCommand("avatar","Displays information about you or the given Player")]
+        public static void Avatarcmd(User user, string playername = "")
         {
-            string log = user.Markers.List.First().TooltipTile;
-            //string log = user.HouseValue;
+            Player targetplayer;
+            User targetuser;
+            if (playername == "")
+            {
+                targetplayer = user.Player;
+                targetuser = user;
+            }
+            else
+            {
+                targetuser = UserManager.FindUserByName(playername);
+                if (targetuser == null)
+                {
+                    user.Player.SendTemporaryErrorAlreadyLocalized("Player " + playername + " not found!");
+                    return;
+                }
+                targetplayer = targetuser.Player;
+            }
+
+            string title = "Stats for " + targetuser.Name ;
+            string housinginfo;
+            string foodinfo;
+            string totalsp;
+            string onlineinfo;
+            string professioninfo;
+            string currencyinfo = string.Empty;
             string propertyinfo;
+            string newline = "<br>";
 
-            //log = log.Split('>')[3].Split('<')[0];
 
-            IOUtils.WriteToLog(log);
+            foreach(Currency currency in EconomyManager.Currency.Currencies)
+            {
+                if (currency.HasAccount(targetuser.Name))
+                {
+                    if (currency.GetAccount(targetuser.Name).Val > 0f)
+                    {
+                        currencyinfo += currency.GetAccount(targetuser.Name).ToString() + newline;
+                    }
+                }
+            }
 
-            user.Player.SendTemporaryMessageAlreadyLocalized("Wrote to file");
-            //user.Player.OpenInfoPanel("bla", log);
+
+            float foodsp = targetuser.SkillRate;
+            float housesp = targetuser.CachedHouseValue.HousingSkillRate;
+
+            currencyinfo = targetuser.Currency.UserReport(targetuser.Name);
+            
+            housinginfo = "House SP: " + targetuser.CachedHouseValue.UILink();
+            foodinfo =  "Food SP: " + Math.Round(foodsp,2);
+            totalsp = "Total SP: " + Math.Round(housesp + foodsp, 2);
+            propertyinfo = "Owns " + MiscUtils.CountPlots(targetuser) * 25 + "m² of land.";
+            onlineinfo = targetuser.LoggedIn ? "Logged in. Located at " + new Vector3Tooltip(targetuser.Position).UILink() : "Logged out. Last online " + TimeFormatter.FormatSpan(WorldTime.Seconds - targetuser.LogoutTime) + " ago";
+            //currencyinfo = targetuser.Currency.UserReport(targetuser.Name);
+
+            user.Player.OpenInfoPanel(title,targetuser.UILink() + " " + onlineinfo + newline + newline + foodinfo + newline + housinginfo + newline + totalsp + newline + newline + propertyinfo + newline + currencyinfo);
+
+        }
+
+        [ChatCommand("donate", "Donates Money to the Treasury")]
+        public static void Donate(User user, float amount, string currencytype)
+        {
+            Currency currency = EconomyManager.Currency.GetCurrency(currencytype);
+            if(currency==null)
+            {
+                user.Player.SendTemporaryErrorAlreadyLocalized("Currency " + currencytype + " not found.");
+                return;
+            }
+           
+            if (amount <= 0)
+            {
+                user.Player.SendTemporaryErrorLoc("Must specify an amount greater than 0.");
+                return;
+            }
+            Legislation.Government.PayTax(currency, user, amount, "Voluntary Donation");
+            user.Player.SendTemporaryMessageAlreadyLocalized("You donated " + currency.UILink(amount) + " to the Treasury. Thank you!");
 
         }
 
