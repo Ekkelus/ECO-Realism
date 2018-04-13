@@ -7,13 +7,19 @@
 using Eco.Gameplay.Property;
 using Eco.Shared.Math;
 using Eco.Shared.Utils;
+using Eco.Shared.Networking;
+using Eco.Simulation.WorldLayers;
+using Eco.Simulation.Types;
+using Eco.Shared.Localization;
+using Eco.Simulation.Time;
+using Eco.Gameplay;
+using Eco.Gameplay.Economy;
 
 namespace EcoRealism.Utils
 {
     public class ChatCommands : IChatCommandHandler
     {
         //private static string separator = "[#SEPARATOR#]";
-
 
         [ChatCommand("rules", "Displays the Server Rules")]
         public static void Rules(User user)
@@ -79,7 +85,6 @@ namespace EcoRealism.Utils
             user.Player.SendTemporaryMessageAlreadyLocalized("Reports cleared");
         }
 
-
         [ChatCommand("houseranking", "Displays the users with the highest housing rates")]
         public static void HouseRanking(User user)
         {
@@ -109,12 +114,12 @@ namespace EcoRealism.Utils
             user.Player.OpenInfoPanel("House Ranking", output);
         }
 
-
         [ChatCommand("testlogdmp",level: ChatAuthorizationLevel.Admin)]
         public static void testlogdmp(User user)
         {
             string log = user.Markers.List.First().TooltipTile;
             //string log = user.HouseValue;
+            string propertyinfo;
 
             //log = log.Split('>')[3].Split('<')[0];
 
@@ -130,7 +135,6 @@ namespace EcoRealism.Utils
         {
             SkillUtils.ShowSuperSkillInfo(user.Player);
         }
-
 
         [ChatCommand("confirmsuperskill", "Confirm that you read the warning about Super Skills")]
         public static void ConfirmSuperSkill(User user)
@@ -218,10 +222,6 @@ namespace EcoRealism.Utils
 
             ChatUtils.SendMessage(user, totalplotcount.ToString() + " Plots on " + deedcount.ToString() + " Deeds unclaimed. Also found " + vehiclecount.ToString() + " Vehicles (those aren't handled by this command yet)");
         }
-
-
-
-
     }
 
 
