@@ -189,9 +189,14 @@ namespace EcoRealism.Utils
                 user.Player.SendTemporaryErrorLoc("Must specify an amount greater than 0.");
                 return;
             }
-            Legislation.Government.PayTax(currency, user, amount, "Voluntary Donation");
-            user.Player.SendTemporaryMessageAlreadyLocalized("You donated " + currency.UILink(amount) + " to the Treasury. Thank you!");
 
+            
+            Result result = Legislation.Government.PayTax(currency, user, amount, "Voluntary Donation");
+            if (result.Success)
+            {
+                user.Player.SendTemporaryMessageAlreadyLocalized("You donated " + currency.UILink(amount) + " to the Treasury. Thank you!");
+            }
+            else user.Player.SendTemporaryMessageAlreadyLocalized(result.Message);
         }
 
         [ChatCommand("superskillshelp", "Displays an infobox about Super Skills")]
