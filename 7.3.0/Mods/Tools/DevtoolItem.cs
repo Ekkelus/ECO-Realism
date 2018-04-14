@@ -62,6 +62,7 @@ public class DevtoolItem : HammerItem
     public override InteractResult OnActRight(InteractionContext context)
     {
         User owner;
+        User creator;
         var currentBlock = context.Player.User.Inventory.Carried.Stacks.First().Item as BlockItem;
         if (currentBlock != null && context.HasBlock && context.Normal != Vector3i.Zero)
         {
@@ -84,6 +85,12 @@ public class DevtoolItem : HammerItem
                         ChatUtils.SendMessage(context.Player, "Owner: " + owner.Name);
                     }
                     else ChatUtils.SendMessage(context.Player, "Object is unowned");
+                    creator = (context.Target as WorldObject).Creator.User;
+                    if (creator != null)
+                    {
+                        ChatUtils.SendMessage(context.Player, "Creator: " + creator.Name);
+                    }
+                    else ChatUtils.SendMessage(context.Player, "No creator");
                 }
             }
             return InteractResult.Success;
