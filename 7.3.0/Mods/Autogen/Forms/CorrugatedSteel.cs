@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(3)]
     [IsForm("Cube", typeof(CorrugatedSteelItem))]
-    [RequiresSkill(typeof(SteelConstructionSkill), 4)]
+    [RequiresSkill(typeof(ConstructionTier3Skill), 4)]
     public partial class CorrugatedSteelCubeBlock :
         Block
     { }
@@ -52,7 +52,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(3)]
     [IsForm("Roof", typeof(CorrugatedSteelItem))]
-    [RequiresSkill(typeof(SteelConstructionSkill), 2)]
+    [RequiresSkill(typeof(ConstructionTier3Skill), 2)]
     public partial class CorrugatedSteelRoofBlock :
         Block
     { }
@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(3)]
     [IsForm("Column", typeof(CorrugatedSteelItem))]
-    [RequiresSkill(typeof(SteelConstructionSkill), 4)]
+    [RequiresSkill(typeof(ConstructionTier3Skill), 4)]
     public partial class CorrugatedSteelColumnBlock :
         Block
     { }
@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(3)]
     [IsForm("Window", typeof(CorrugatedSteelItem))]
-    [RequiresSkill(typeof(SteelConstructionSkill), 3)]
+    [RequiresSkill(typeof(ConstructionTier3Skill), 3)]
     public partial class CorrugatedSteelWindowBlock :
         Block
     { }
@@ -83,28 +83,28 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(3)]
     [IsForm("Stairs", typeof(CorrugatedSteelItem))]
-    [RequiresSkill(typeof(SteelConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier3Skill), 1)]
     public partial class CorrugatedSteelStairsBlock : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(3)]
-    [RequiresSkill(typeof(SteelConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier3Skill), 1)]
     public partial class CorrugatedSteelStairs90Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(3)]
-    [RequiresSkill(typeof(SteelConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier3Skill), 1)]
     public partial class CorrugatedSteelStairs180Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(3)]
-    [RequiresSkill(typeof(SteelConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier3Skill), 1)]
     public partial class CorrugatedSteelStairs270Block : Block
     { }
 

@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     [IsForm("Cube", typeof(MortaredStoneItem))]
-    [RequiresSkill(typeof(MortaredStoneConstructionSkill), 4)]
+    [RequiresSkill(typeof(ConstructionTier1Skill), 4)]
     public partial class MortaredStoneCubeBlock :
         Block
     { }
@@ -52,7 +52,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     [IsForm("Roof", typeof(MortaredStoneItem))]
-    [RequiresSkill(typeof(MortaredStoneConstructionSkill), 2)]
+    [RequiresSkill(typeof(ConstructionTier1Skill), 2)]
     public partial class MortaredStoneRoofBlock :
         Block
     { }
@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     [IsForm("Column", typeof(MortaredStoneItem))]
-    [RequiresSkill(typeof(MortaredStoneConstructionSkill), 4)]
+    [RequiresSkill(typeof(ConstructionTier1Skill), 4)]
     public partial class MortaredStoneColumnBlock :
         Block
     { }
@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     [IsForm("Window", typeof(MortaredStoneItem))]
-    [RequiresSkill(typeof(MortaredStoneConstructionSkill), 3)]
+    [RequiresSkill(typeof(ConstructionTier1Skill), 3)]
     public partial class MortaredStoneWindowBlock :
         Block
     { }
@@ -83,28 +83,28 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     [IsForm("Stairs", typeof(MortaredStoneItem))]
-    [RequiresSkill(typeof(MortaredStoneConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier1Skill), 1)]
     public partial class MortaredStoneStairsBlock : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
-    [RequiresSkill(typeof(MortaredStoneConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier1Skill), 1)]
     public partial class MortaredStoneStairs90Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
-    [RequiresSkill(typeof(MortaredStoneConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier1Skill), 1)]
     public partial class MortaredStoneStairs180Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
-    [RequiresSkill(typeof(MortaredStoneConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier1Skill), 1)]
     public partial class MortaredStoneStairs270Block : Block
     { }
 

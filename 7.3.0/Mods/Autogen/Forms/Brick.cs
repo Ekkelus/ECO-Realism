@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Cube", typeof(BrickItem))]
-    [RequiresSkill(typeof(BrickConstructionSkill), 4)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 4)]
     public partial class BrickCubeBlock :
         Block
     { }
@@ -52,7 +52,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Roof", typeof(BrickItem))]
-    [RequiresSkill(typeof(BrickConstructionSkill), 2)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 2)]
     public partial class BrickRoofBlock :
         Block
     { }
@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Column", typeof(BrickItem))]
-    [RequiresSkill(typeof(BrickConstructionSkill), 4)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 4)]
     public partial class BrickColumnBlock :
         Block
     { }
@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Window", typeof(BrickItem))]
-    [RequiresSkill(typeof(BrickConstructionSkill), 3)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 3)]
     public partial class BrickWindowBlock :
         Block
     { }
@@ -82,7 +82,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Aqueduct", typeof(BrickItem))]
-    [RequiresSkill(typeof(BrickConstructionSkill), 2)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 2)]
     public partial class BrickAqueductBlock :
         Block
     { }
@@ -93,28 +93,28 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Stairs", typeof(BrickItem))]
-    [RequiresSkill(typeof(BrickConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 1)]
     public partial class BrickStairsBlock : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
-    [RequiresSkill(typeof(BrickConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 1)]
     public partial class BrickStairs90Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
-    [RequiresSkill(typeof(BrickConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 1)]
     public partial class BrickStairs180Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
-    [RequiresSkill(typeof(BrickConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 1)]
     public partial class BrickStairs270Block : Block
     { }
 

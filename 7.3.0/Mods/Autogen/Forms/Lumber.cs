@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Cube", typeof(LumberItem))]
-    [RequiresSkill(typeof(LumberConstructionSkill), 4)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 4)]
     public partial class LumberCubeBlock :
         Block
     { }
@@ -52,7 +52,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Roof", typeof(LumberItem))]
-    [RequiresSkill(typeof(LumberConstructionSkill), 2)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 2)]
     public partial class LumberRoofBlock :
         Block
     { }
@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Column", typeof(LumberItem))]
-    [RequiresSkill(typeof(LumberConstructionSkill), 4)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 4)]
     public partial class LumberColumnBlock :
         Block
     { }
@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Window", typeof(LumberItem))]
-    [RequiresSkill(typeof(LumberConstructionSkill), 3)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 3)]
     public partial class LumberWindowBlock :
         Block
     { }
@@ -82,7 +82,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Fence", typeof(LumberItem))]
-    [RequiresSkill(typeof(LumberConstructionSkill), 2)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 2)]
     public partial class LumberFenceBlock :
         Block
     { }
@@ -92,7 +92,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("WindowT2", typeof(LumberItem))]
-    [RequiresSkill(typeof(LumberConstructionSkill), 4)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 4)]
     public partial class LumberWindowT2Block :
         Block
     { }
@@ -103,28 +103,28 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     [IsForm("Stairs", typeof(LumberItem))]
-    [RequiresSkill(typeof(LumberConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 1)]
     public partial class LumberStairsBlock : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
-    [RequiresSkill(typeof(LumberConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 1)]
     public partial class LumberStairs90Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
-    [RequiresSkill(typeof(LumberConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 1)]
     public partial class LumberStairs180Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(2)]
-    [RequiresSkill(typeof(LumberConstructionSkill), 1)]
+    [RequiresSkill(typeof(ConstructionTier2Skill), 1)]
     public partial class LumberStairs270Block : Block
     { }
 
