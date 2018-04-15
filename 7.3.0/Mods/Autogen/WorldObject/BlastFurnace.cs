@@ -40,7 +40,10 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(FuelSupplyComponent))]                      
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
     [RequireComponent(typeof(HousingComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 	
+	[RequireComponent(typeof(SolidGroundComponent))]
+    [RequireRoomContainment]
+    [RequireRoomVolume(45)]
+    [RequireRoomMaterialTier(2, 32)]
     public partial class BlastFurnaceObject : WorldObject
     {
         public override string FriendlyName { get { return "Blast Furnace"; } } 

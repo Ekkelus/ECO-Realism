@@ -40,7 +40,10 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerConsumptionComponent))]                     
     [RequireComponent(typeof(HousingComponent))]                  
-    [RequireComponent(typeof(SolidGroundComponent))]            
+    [RequireComponent(typeof(SolidGroundComponent))]
+    [RequireRoomContainment]
+    [RequireRoomVolume(45)]
+    [RequireRoomMaterialTier(4, 64)]
     public partial class FactoryObject : 
         WorldObject    
     {
