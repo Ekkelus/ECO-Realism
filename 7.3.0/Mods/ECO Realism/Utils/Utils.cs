@@ -30,28 +30,32 @@ using Eco.Gameplay.Pipes;
 using Eco.World.Blocks;
 using EcoRealism.Utils;
 using Eco.Shared.Localization;
+using System.Linq;
+using Eco.Core.Utils;
+using Eco.Gameplay.Stats;
+using Eco.Mods.TechTree;
 
 namespace EcoRealism.Utils
 {
-
+    [Category("Hidden")]
     public class UtilsInitItem : Item
     {
         static UtilsInitItem()
         {
             SkillUtils.Initialize();
             UtilsClipboard.Initialize();
+            GlobalEvents.Initialize();
         }
     }
 
 
     public static class SkillUtils
     {
-
         public static List<string> superskillconfirmed;
 
         public static void Initialize()
         {
-            superskillconfirmed = new List<string>(); 
+            superskillconfirmed = new List<string>();
         }
 
         public static void ShowSuperSkillInfo(Player player)
@@ -84,6 +88,61 @@ namespace EcoRealism.Utils
             }
             return x;
         }
+
+        public static List<Skill> GetSuperSkills(User user)
+        {
+            List<Skill> superskills = new List<Skill>();
+
+            foreach(Skill skill in user.Skillset.Skills)
+            {
+                if(skill.Level > 5)
+                {
+                    superskills.Add(skill);
+                }
+            }
+            return superskills;
+        }
+
+        public static Skill FindProfession(User user)
+        {
+            if (user == null) return new SurvivalistSkill();
+            SkillTree profession = new SurvivalistSkill().RootSkillTree;
+            int maxpoints = 0;
+            Dictionary<SkillTree, int> rootskills = new Dictionary<SkillTree, int>();
+
+            foreach (SkillTree skilltree in SkillTree.RootSkillTrees)
+            {
+                rootskills.Add(skilltree, 0);
+            }
+
+
+            Skill[] skills = user.Skillset.Skills;
+
+
+
+            foreach(Skill skill in skills)
+            {
+                if (skill.IsSpecialty)
+                {
+                    if(skill.Level>0) rootskills[skill.RootSkillTree] += 100;
+                }
+                else rootskills[skill.RootSkillTree] += skill.TotalPointSpent;
+            }
+
+            foreach(KeyValuePair<SkillTree,int> pair in rootskills)
+            {
+                if (pair.Value > maxpoints)
+                {
+                    profession = pair.Key;
+                    maxpoints = pair.Value;
+                }
+                    //ChatManager.ServerMessageToAllAlreadyLocalized(pair.Key.StaticSkill.UILink() + " " + pair.Value, false);
+            }
+
+             return profession.StaticSkill;
+
+          
+        }
     }
 
     public static class ChatUtils
@@ -97,7 +156,6 @@ namespace EcoRealism.Utils
         {
             SendMessage(player.User, msg);
         }
-
 
         //public static string CustomTags(string text)
         //{
@@ -126,11 +184,10 @@ namespace EcoRealism.Utils
         //    return tmpstr;
         //}
 
-        public static string AutoLink(string text)
+        public static string AutoLink(string text) // should not be used better call TextLinkManager.MarkUpText() directly
         {
             return TextLinkManager.MarkUpText(text);
         }
-
     }
 
 
@@ -150,7 +207,6 @@ namespace EcoRealism.Utils
 
 
         }
-
 
         public static void WriteToLog(string logdata, string desc = "")
         {
@@ -201,6 +257,35 @@ namespace EcoRealism.Utils
 
         }
     }
+
+
+    public static class GlobalEvents
+    {
+        private static ThreadSafeAction<User> LoginActions;
+
+        public static void Initialize()
+        {
+            LoginActions = UserManager.OnUserLoggedIn;
+            LoginActions.Add(OnUserLogin);
+
+            
+        }
+
+        private static void OnUserLogin(User user)
+        {
+            /* Too early, Player is not initialized yet...
+            user.Player.OpenInfoPanel("Login", "Hello World!");
+            */
+        }
+
+ 
+
+
+
+    }
+
+
+
 
 
     public class MyComparer : IComparer<KeyValuePair<string, float>>

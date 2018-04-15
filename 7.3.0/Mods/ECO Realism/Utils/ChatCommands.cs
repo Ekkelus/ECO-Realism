@@ -14,13 +14,13 @@ using Eco.Shared.Localization;
 using Eco.Simulation.Time;
 using Eco.Gameplay;
 using Eco.Gameplay.Economy;
+using Eco.Gameplay.Skills;
+using Eco.Core.Utils;
 
 namespace EcoRealism.Utils
 {
     public class ChatCommands : IChatCommandHandler
     {
-        //private static string separator = "[#SEPARATOR#]";
-
         [ChatCommand("rules", "Displays the Server Rules")]
         public static void Rules(User user)
         {
@@ -135,16 +135,18 @@ namespace EcoRealism.Utils
                 targetplayer = targetuser.Player;
             }
 
+            string newline = "<br>";
             string title = "Stats for " + targetuser.Name ;
+            string skillsheadline = "<b><u>Skillrates:</b></u>" + newline;
             string housinginfo;
             string foodinfo;
             string totalsp;
             string onlineinfo;
+            string superskillsinfo= string.Empty;
             string professioninfo;
-            string currencyinfo = string.Empty;
+            string currencyinfo = "<b><u>Currencies:</b></u>" + newline;
             string propertyinfo;
-            string newline = "<br>";
-
+            
 
             foreach(Currency currency in EconomyManager.Currency.Currencies)
             {
@@ -152,26 +154,35 @@ namespace EcoRealism.Utils
                 {
                     if (currency.GetAccount(targetuser.Name).Val > 0f)
                     {
-                        currencyinfo += currency.GetAccount(targetuser.Name).ToString() + newline;
+                        currencyinfo += currency.UILink(currency.GetAccount(targetuser.Name).Val) + newline;
                     }
                 }
             }
 
 
+            List<Skill> superskills = SkillUtils.GetSuperSkills(targetuser);
+            if(superskills.Count > 0)
+            {
+                superskillsinfo = "<b><u>Superskills:</b></u>" + newline;
+                foreach(Skill skill in superskills)
+                {
+                    superskillsinfo += skill.UILink() + newline;
+                }
+                superskillsinfo += newline;                
+            }
+            
             float foodsp = targetuser.SkillRate;
             float housesp = targetuser.CachedHouseValue.HousingSkillRate;
 
-            currencyinfo = targetuser.Currency.UserReport(targetuser.Name);
-            
-            housinginfo = "House SP: " + targetuser.CachedHouseValue.UILink();
-            foodinfo =  "Food SP: " + Math.Round(foodsp,2);
-            totalsp = "Total SP: " + Math.Round(housesp + foodsp, 2);
-            propertyinfo = "Owns " + MiscUtils.CountPlots(targetuser) * 25 + "m² of land.";
-            onlineinfo = targetuser.LoggedIn ? "Logged in. Located at " + new Vector3Tooltip(targetuser.Position).UILink() : "Logged out. Last online " + TimeFormatter.FormatSpan(WorldTime.Seconds - targetuser.LogoutTime) + " ago";
-            //currencyinfo = targetuser.Currency.UserReport(targetuser.Name);
+            professioninfo = "Profession: " + SkillUtils.FindProfession(targetuser).UILink() + newline;
+            housinginfo = "House SP: " + targetuser.CachedHouseValue.UILink() + newline;
+            foodinfo =  "Food SP: " + Math.Round(foodsp,2) + newline;
+            totalsp = "Total SP: " + Math.Round(housesp + foodsp, 2) + newline;
+            propertyinfo = "Owns " + MiscUtils.CountPlots(targetuser) * 25 + "sqm of land." + newline;
+            onlineinfo = targetuser.LoggedIn ? "is online. Located at " + new Vector3Tooltip(targetuser.Position).UILink() : "is offline. Last online " + TimeFormatter.FormatSpan(WorldTime.Seconds - targetuser.LogoutTime) + " ago";
+            onlineinfo += newline;
 
-            user.Player.OpenInfoPanel(title,targetuser.UILink() + " " + onlineinfo + newline + newline + foodinfo + newline + housinginfo + newline + totalsp + newline + newline + propertyinfo + newline + currencyinfo);
-
+            user.Player.OpenInfoPanel(title,targetuser.UILink() + " " + onlineinfo + newline + foodinfo + housinginfo + totalsp + professioninfo + newline + propertyinfo + newline + superskillsinfo + newline + currencyinfo);
         }
 
         [ChatCommand("donate", "Donates Money to the Treasury")]
