@@ -31,6 +31,9 @@ using Eco.Shared.Items;
 using Eco.Gameplay.Pipes;
 using Eco.World.Blocks;
 using Eco.Mods.TechTree;
+using Eco.Core.Utils;
+using Eco.Gameplay.Systems.Chat;
+using EcoRealism.Utils;
 
 namespace EcoRealism.Mods.ECO_Realism.Worldobjects
 {
@@ -44,6 +47,15 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
     {
         public override string FriendlyName { get { return "Small Animal Trap"; } }
 
+        private Type RequiredSkill = typeof(TrapperSkill);
+        private int RequiredLevel = 1;
+        private Type[] allowedItems = new Type[]
+            {
+            typeof(HareCarcassItem),
+            typeof(TurkeyCarcassItem),
+            typeof(FoxCarcassItem),
+            };
+        
 
         protected override void Initialize()
         {
@@ -51,6 +63,24 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
             this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
             this.GetComponent<PublicStorageComponent>().Initialize(1);
             this.GetComponent<PublicStorageComponent>().Storage.AddRestriction(new StackLimitRestriction(1));
+            this.GetComponent<PublicStorageComponent>().Storage.AddRestriction(new SpecificItemTypesRestriction(allowedItems));
+            ThreadSafeAction<User> action = this.GetComponent<PublicStorageComponent>().Storage.OnChanged;
+            action.Add(InventoryChanged);
+        }
+
+        private void InventoryChanged(User obj)
+        {
+            User owner = this.OwnerUser;
+            User creator = this.Creator;
+            if (owner == null && creator == null) return;
+            if (owner == null) owner = creator;
+            if (creator == null) creator = owner;
+
+
+            if(!SkillUtils.UserHasSkill(owner,RequiredSkill,RequiredLevel)&& (!SkillUtils.UserHasSkill(creator, RequiredSkill, RequiredLevel)))
+            {
+                this.GetComponent<PublicStorageComponent>().Storage.Clear();
+            }
         }
 
         public override void Destroy()
@@ -64,6 +94,8 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
             base.PostInitialize();
             this.GetComponent<AnimalTrapComponent>().Initialize(new List<string>() { "Hare", "Turkey", "Fox" });
         }
+
+
     }
 
     [Serialized]
@@ -71,7 +103,7 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
     public partial class SmallAnimalTrapItem : WorldObjectItem<SmallAnimalTrapObject>
     {
         public override string FriendlyName { get { return "Small Animal Trap"; } }
-        public override string Description { get { return "A trap to catch small animals like hare, turkey and foxes as they run around. "; } }
+        public override string Description { get { return "A trap to catch small animals as they run around. "; } }
 
         static SmallAnimalTrapItem()
         {
