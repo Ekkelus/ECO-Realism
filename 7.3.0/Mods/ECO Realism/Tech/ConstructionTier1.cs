@@ -19,7 +19,7 @@ namespace Eco.Mods.TechTree
     using Gameplay.Systems.Tooltip;
 
     [Serialized]
-    [RequiresSkill(typeof(SurvivalistSkill), 0)]    
+    [RequiresSkill(typeof(SelfImprovementSkill), 0)]    
     public partial class ConstructionTier1Skill : Skill
     {
         public override string FriendlyName { get { return "Construction Tier 1"; } }

@@ -15,15 +15,15 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.View;
 
     [Serialized]
-    [Weight(200)]
+    [Weight(150)]
     public partial class HoneyItem :
         FoodItem
     {
         public override string FriendlyName { get { return "Honey"; } }
         public override string Description { get { return "A spoonful a day keeps the doctor away"; } }
 
-        private static Nutrients nutrition = new Nutrients() { Carbs = 1, Fat = 1, Protein = 1, Vitamins = 1 };
-        public override float Calories { get { return 50; } }
+        private static Nutrients nutrition = new Nutrients() { Carbs = 14, Fat = 0, Protein = 1, Vitamins = 0 };
+        public override float Calories { get { return 45; } }
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
