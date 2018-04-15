@@ -43,7 +43,6 @@ namespace Eco.Mods.TechTree
         public override string FriendlyName { get { return "Glassworking Skill Scroll"; } }
     }
 
-    [RequiresSkill(typeof(StoneConstructionSkill), 0)] 
     public partial class GlassworkingSkillBookRecipe : Recipe
     {
         public GlassworkingSkillBookRecipe()

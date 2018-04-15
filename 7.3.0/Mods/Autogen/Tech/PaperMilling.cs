@@ -41,7 +41,6 @@ namespace Eco.Mods.TechTree
         public override string FriendlyName { get { return "Paper Milling Skill Scroll"; } }
     }
 
-    [RequiresSkill(typeof(WoodConstructionSkill), 0)] 
     public partial class PaperMillingSkillBookRecipe : Recipe
     {
         public PaperMillingSkillBookRecipe()
