@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     [IsForm("Cube", typeof(HewnLogItem))]
-    [RequiresSkill(typeof(ConstructionTier1Skill), 4)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 4)]
     public partial class HewnLogCubeBlock :
         Block
     { }
@@ -52,7 +52,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     [IsForm("Roof", typeof(HewnLogItem))]
-    [RequiresSkill(typeof(ConstructionTier1Skill), 2)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 2)]
     public partial class HewnLogRoofBlock :
         Block
     { }
@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     [IsForm("Column", typeof(HewnLogItem))]
-    [RequiresSkill(typeof(ConstructionTier1Skill), 4)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 4)]
     public partial class HewnLogColumnBlock :
         Block
     { }
@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     [IsForm("Window", typeof(HewnLogItem))]
-    [RequiresSkill(typeof(ConstructionTier1Skill), 3)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 3)]
     public partial class HewnLogWindowBlock :
         Block
     { }
@@ -82,7 +82,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     [IsForm("PeatRoof", typeof(HewnLogItem))]
-    [RequiresSkill(typeof(ConstructionTier1Skill), 1)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 1)]
     public partial class HewnLogPeatRoofBlock :
         Block
     { }
@@ -93,28 +93,28 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     [IsForm("Stairs", typeof(HewnLogItem))]
-    [RequiresSkill(typeof(ConstructionTier1Skill), 1)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 1)]
     public partial class HewnLogStairsBlock : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
-    [RequiresSkill(typeof(ConstructionTier1Skill), 1)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 1)]
     public partial class HewnLogStairs90Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
-    [RequiresSkill(typeof(ConstructionTier1Skill), 1)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 1)]
     public partial class HewnLogStairs180Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(1)]
-    [RequiresSkill(typeof(ConstructionTier1Skill), 1)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 1)]
     public partial class HewnLogStairs270Block : Block
     { }
 

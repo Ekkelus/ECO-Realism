@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
     [IsForm("Cube", typeof(FramedGlassItem))]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 4)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 4)]
     public partial class FramedGlassCubeBlock :
         Block
     { }
@@ -52,7 +52,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
     [IsForm("Roof", typeof(FramedGlassItem))]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 2)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 2)]
     public partial class FramedGlassRoofBlock :
         Block
     { }
@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
     [IsForm("Column", typeof(FramedGlassItem))]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 4)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 4)]
     public partial class FramedGlassColumnBlock :
         Block
     { }
@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
     [IsForm("Window", typeof(FramedGlassItem))]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 3)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 3)]
     public partial class FramedGlassWindowBlock :
         Block
     { }
@@ -83,28 +83,28 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
     [IsForm("Stairs", typeof(FramedGlassItem))]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 1)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 1)]
     public partial class FramedGlassStairsBlock : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 1)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 1)]
     public partial class FramedGlassStairs90Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 1)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 1)]
     public partial class FramedGlassStairs180Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 1)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 1)]
     public partial class FramedGlassStairs270Block : Block
     { }
 

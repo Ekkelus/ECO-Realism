@@ -19,17 +19,17 @@ namespace Eco.Mods.TechTree
     using Gameplay.Systems.Tooltip;
 
     [Serialized]
-    [RequiresSkill(typeof(SelfImprovementSkill), 0)]    
-    public partial class ConstructionTier1Skill : Skill
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 4)]    
+    public partial class Tier2ConstructionSkill : Skill
     {
-        public override string FriendlyName { get { return "Construction Tier 1"; } }
+        public override string FriendlyName { get { return "Tier 2 Construction"; } }
         public override string Description { get { return Localizer.Do(""); } }
 
         public static ModificationStrategy MultiplicativeStrategy = 
             new MultiplicativeStrategy(new float[] { 1, 1 - 0.2f, 1 - 0.35f, 1 - 0.5f, 1 - 0.65f, 1 - 0.8f });
         public static ModificationStrategy AdditiveStrategy =
             new AdditiveStrategy(new float[] { 0, 0.2f, 0.35f, 0.5f, 0.65f, 0.8f });
-        public static int[] SkillPointCost = { 1, 2, 2, 3, 3 };
+        public static int[] SkillPointCost = { 3, 5, 5, 7, 3 };
         public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }
         public override int PrevRequiredPoint { get { return this.Level - 1 >= 0 && this.Level - 1 < this.MaxLevel ? SkillPointCost[this.Level - 1] : 0; } }
         public override int MaxLevel { get { return 4; } }

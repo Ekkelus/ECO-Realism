@@ -16,6 +16,7 @@ Beehive, Cardboard Box, Small Animal Trap
 Bee, Coin
 
 <b><color=green>.:: USER COMMANDS ::.</color></b>
+<b>/avatar</b> - Display information about you or the given Player
 <b>/changelog</b> - Display the changelog of the modkit
 <b>/confirmsuperskill</b> - Confirm Super Skills
 <b>/donate</b> - Donate money to the treasury

@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
     [IsForm("Cube", typeof(FlatSteelItem))]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 4)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 4)]
     public partial class FlatSteelCubeBlock :
         Block
     { }
@@ -52,7 +52,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
     [IsForm("Roof", typeof(FlatSteelItem))]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 2)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 2)]
     public partial class FlatSteelRoofBlock :
         Block
     { }
@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
     [IsForm("Column", typeof(FlatSteelItem))]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 4)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 4)]
     public partial class FlatSteelColumnBlock :
         Block
     { }
@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
     [IsForm("Window", typeof(FlatSteelItem))]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 3)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 3)]
     public partial class FlatSteelWindowBlock :
         Block
     { }
@@ -83,28 +83,28 @@ namespace Eco.Mods.TechTree
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
     [IsForm("Stairs", typeof(FlatSteelItem))]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 1)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 1)]
     public partial class FlatSteelStairsBlock : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 1)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 1)]
     public partial class FlatSteelStairs90Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 1)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 1)]
     public partial class FlatSteelStairs180Block : Block
     { }
 
     [Serialized]
     [Wall, Constructed, Solid, BuildRoomMaterialOption]
     [Tier(4)]
-    [RequiresSkill(typeof(ConstructionTier4Skill), 1)]
+    [RequiresSkill(typeof(Tier4ConstructionSkill), 1)]
     public partial class FlatSteelStairs270Block : Block
     { }
 
