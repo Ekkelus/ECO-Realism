@@ -3,6 +3,9 @@
 - Added room requirement to Computer Lab
 - Added room requirement to Factory
 - Added tier construction skills to self improvement
+- Added Beekeeper
+- Added Bee, Beeswax, Honey and Beehive
+- Added Honey Bun, Honey Flan, Honey Glazed Ham
 - Added /avatar
 
 <color=green><b>2018-04-13</b></color>

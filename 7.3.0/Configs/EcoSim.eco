@@ -20,7 +20,7 @@
             "Type": "Eco.Gameplay.Plants.PlantEntity, Eco.Gameplay"
           },
           "Water": false,
-          "SeedDropChance": 0.1,
+          "SeedDropChance": 0.05,
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {
@@ -1727,7 +1727,7 @@
             "Type": "Eco.Gameplay.Plants.PlantEntity, Eco.Gameplay"
           },
           "Water": false,
-          "SeedDropChance": 0.1,
+          "SeedDropChance": 0.05,
           "SeedsAtGrowth": 0.6,
           "SeedsBonusAtGrowth": 0.9,
           "SeedRange": {

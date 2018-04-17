@@ -75,7 +75,9 @@ namespace Eco.Mods.TechTree
 
         static BeehiveItem()
         {
-
+            WorldObject.AddOccupancy<BeehiveObject>(new List<BlockOccupancy>(){
+            new BlockOccupancy(new Vector3i(0, 1, 0)),
+            });
         }
 
     }
