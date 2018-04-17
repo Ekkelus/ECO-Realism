@@ -20,14 +20,14 @@ namespace Eco.Mods.TechTree
         FoodItem
     {
         public override string FriendlyName { get { return "Honey Bun"; } }
-        public override string Description { get { return "Raw fish with sticky rice, rolled in kelp."; } }
+        public override string Description { get { return "One bite and you're hooked."; } }
 
-        private static Nutrients nutrition = new Nutrients() { Carbs = 14, Fat = 15, Protein = 11, Vitamins = 4 };
-        public override float Calories { get { return 950; } }
+        private static Nutrients nutrition = new Nutrients() { Carbs = 20, Fat = 15, Protein = 4, Vitamins = 4 };
+        public override float Calories { get { return 850; } }
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(CulinaryArtsSkill), 3)]
+    [RequiresSkill(typeof(LeavenedBakingSkill), 3)]
     public partial class HoneyBunRecipe : Recipe
     {
         public HoneyBunRecipe()
@@ -39,11 +39,13 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<HoneyItem>(typeof(CulinaryArtsEfficiencySkill), 2, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HoneyItem>(typeof(LeavenedBakingEfficiencySkill), 2, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<YeastItem>(typeof(LeavenedBakingEfficiencySkill), 3, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<FlourItem>(typeof(LeavenedBakingEfficiencySkill), 6, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyBunRecipe), Item.Get<HoneyBunItem>().UILink(), 15, typeof(CulinaryArtsSpeedSkill));
-            this.Initialize("HoneyBun", typeof(HoneyBunRecipe));
-            CraftingComponent.AddRecipe(typeof(KitchenObject), this);
+            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyBunRecipe), Item.Get<HoneyBunItem>().UILink(), 10, typeof(LeavenedBakingSpeedSkill));
+            this.Initialize("Honey Bun", typeof(HoneyBunRecipe));
+            CraftingComponent.AddRecipe(typeof(BakeryOvenObject), this);
         }
     }
 }
