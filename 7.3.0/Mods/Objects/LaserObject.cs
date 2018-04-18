@@ -25,9 +25,9 @@ public class LaserObject : WorldObject
         base.Initialize();
         this.GetComponent<MinimapComponent>().Initialize("Laser");
         this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());
-        this.GetComponent<PowerConsumptionComponent>().Initialize(6000);
+        this.GetComponent<PowerConsumptionComponent>().Initialize(9000);
         this.GetComponent<ChargingComponent>().Initialize(30, 30);
-        this.GetComponent<PowerGridNetworkComponent>().Initialize(new Dictionary<Type, int> { { typeof(LaserObject), 4 }, { typeof(ComputerLabObject), 1 } }, false);
+        this.GetComponent<PowerGridNetworkComponent>().Initialize(new Dictionary<Type, int> { { typeof(LaserObject), 8 }, { typeof(ComputerLabObject), 4 } }, false);
     }
 
     static LaserObject()

@@ -1,4 +1,5 @@
 <color=green><b>REMEMBER DATE</b></color>
+- Removed Raw Fish from Refine Fish recipe
 - Added room requirement to Blast Furnace
 - Added room requirement to Computer Lab
 - Added room requirement to Factory
@@ -7,6 +8,12 @@
 - Added Bee, Beeswax, Honey and Beehive
 - Added Honey Bun, Honey Flan, Honey Glazed Ham
 - Added /avatar
+- Added Iron Ingot to Hand Plough recipe
+- Rebalanced Rice Glue
+- Lasers now require 9000w to operate
+- Computer Labs now require 1000w to operate
+- More Lasers required to shoot down meteor
+- More Computer Labs required to shoot down meteor
 
 <color=green><b>2018-04-13</b></color>
 - Removed Lumber from barrel recipes

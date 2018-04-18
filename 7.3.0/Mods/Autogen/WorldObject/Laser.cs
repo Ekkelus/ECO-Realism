@@ -64,9 +64,9 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<GoldIngotItem>(typeof(ElectronicEngineeringEfficiencySkill), 100, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 100, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CircuitItem>(typeof(ElectronicEngineeringEfficiencySkill), 50, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<GoldIngotItem>(typeof(ElectronicEngineeringEfficiencySkill), 150, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 150, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<CircuitItem>(typeof(ElectronicEngineeringEfficiencySkill), 75, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),   
             };
             SkillModifiedValue value = new SkillModifiedValue(240, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.Do("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(LaserRecipe), Item.Get<LaserItem>().UILink(), value);

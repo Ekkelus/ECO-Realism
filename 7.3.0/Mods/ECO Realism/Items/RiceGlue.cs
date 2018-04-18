@@ -23,11 +23,11 @@
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<RiceSludgeItem>(typeof(CampfireCookingEfficiencySkill), 2, CampfireCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<RiceSludgeItem>(typeof(CampfireCookingEfficiencySkill), 5, CampfireCookingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<GlassJarItem>(1),
             };
             this.Initialize("Rice Glue", typeof(RiceGlueRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RiceGlueRecipe), this.UILink(), 3, typeof(CampfireCookingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RiceGlueRecipe), this.UILink(), 5, typeof(CampfireCookingSpeedSkill));
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);
         }
     }

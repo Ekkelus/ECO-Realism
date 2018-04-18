@@ -43,7 +43,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(SolidGroundComponent))]
     [RequireRoomContainment]
     [RequireRoomVolume(45)]
-    [RequireRoomMaterialTier(4, 64)]
+    [RequireRoomMaterialTier(3, 64)]
     public partial class FactoryObject : 
         WorldObject    
     {
