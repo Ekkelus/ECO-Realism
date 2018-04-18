@@ -95,8 +95,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(BeekeeperEfficiencySkill), 25, BeekeeperEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlassJarItem>(typeof(BeekeeperEfficiencySkill), 4, BeekeeperEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(BeekeeperEfficiencySkill), 50, BeekeeperEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GlassItem>(typeof(BeekeeperEfficiencySkill), 10, BeekeeperEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(BeekeeperEfficiencySkill), 4, BeekeeperEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GlueItem>(typeof(BeekeeperEfficiencySkill), 8, BeekeeperEfficiencySkill.MultiplicativeStrategy),
             };
             SkillModifiedValue value = new SkillModifiedValue(1, BeekeeperSpeedSkill.MultiplicativeStrategy, typeof(BeekeeperSpeedSkill), Localizer.Do("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(BeehiveRecipe), Item.Get<BeehiveItem>().UILink(), value);

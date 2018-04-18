@@ -36,7 +36,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(PrimitiveMechanicsEfficiencySkill), 50, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(PrimitiveMechanicsEfficiencySkill), 25, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<WoodenGearItem>(typeof(PrimitiveMechanicsEfficiencySkill), 2, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(PrimitiveMechanicsEfficiencySkill), 8, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(PrimitiveMechanicsEfficiencySkill), 8, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
 

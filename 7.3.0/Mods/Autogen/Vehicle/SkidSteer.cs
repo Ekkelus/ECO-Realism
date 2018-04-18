@@ -39,7 +39,9 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<GearboxItem>(typeof(IndustrialEngineeringEfficiencySkill), 10, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<CelluloseFiberItem>(typeof(IndustrialEngineeringEfficiencySkill), 20, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<SteelItem>(typeof(IndustrialEngineeringEfficiencySkill), 40, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<AdvancedCombustionEngineItem>(typeof(IndustrialEngineeringEfficiencySkill), 1, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<RivetItem>(typeof(IndustrialEngineeringEfficiencySkill), 16, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<RubberItem>(typeof(IndustrialEngineeringEfficiencySkill), 8, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<AdvancedCombustionEngineItem>(typeof(IndustrialEngineeringEfficiencySkill), 2, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(25);
 
