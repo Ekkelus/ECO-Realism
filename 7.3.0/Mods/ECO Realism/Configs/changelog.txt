@@ -4,16 +4,17 @@
 - Added room requirement to Computer Lab
 - Added room requirement to Factory
 - Added tier construction skills to self improvement
-- Added Beekeeper
+- Added Beekeeper skill
 - Added Bee, Beeswax, Honey and Beehive
 - Added Honey Bun, Honey Flan, Honey Glazed Ham
 - Added /avatar
-- Added Iron Ingot to Hand Plough recipe
-- Rebalanced Rice Glue
-- Lasers now require 9000w to operate
-- Computer Labs now require 1000w to operate
-- More Lasers required to shoot down meteor
-- More Computer Labs required to shoot down meteor
+- Balanced Excavator recipe
+- Balanced Hand Plough recipe
+- Balanced Skid Steer recipe
+- Balanced Wheelbarrow recipe
+- Balanced Rice Glue recipe
+- Balanced lasers recipe
+- Balanced Computer Labs recipe
 
 <color=green><b>2018-04-13</b></color>
 - Removed Lumber from barrel recipes
