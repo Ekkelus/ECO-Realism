@@ -64,6 +64,7 @@ public class DirtRampObject : BaseRampObject
 
 [Serialized]
 [ItemGroup("Road Items")]
+[Weight(500)]
 public class DirtRampItem : WorldObjectItem<DirtRampObject>
 {
     public override string FriendlyName { get { return "Dirt Ramp"; } }
@@ -87,6 +88,7 @@ public class StoneRampObject : BaseRampObject
 
 [Serialized]
 [ItemGroup("Road Items")]
+[Weight(500)]
 public class StoneRampItem : WorldObjectItem<StoneRampObject>
 {
     public override string FriendlyName { get { return "Stone Ramp"; } }
@@ -109,6 +111,7 @@ public class AsphaltRampObject : BaseRampObject
 
 [Serialized]
 [ItemGroup("Road Items")]
+[Weight(500)]
 public class AsphaltRampItem : WorldObjectItem<AsphaltRampObject>
 {
     public override string FriendlyName { get { return "Asphalt Ramp"; } }
