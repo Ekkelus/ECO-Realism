@@ -9,12 +9,14 @@
 - Added Honey Bun, Honey Flan, Honey Glazed Ham
 - Added /avatar
 - Balanced Excavator recipe
+- Balanced Truck recipe
 - Balanced Hand Plough recipe
 - Balanced Skid Steer recipe
 - Balanced Wheelbarrow recipe
 - Balanced Rice Glue recipe
-- Balanced lasers recipe
+- Balanced Lasers recipe
 - Balanced Computer Labs recipe
+- Balanced Anvil recipe
 
 <color=green><b>2018-04-13</b></color>
 - Removed Lumber from barrel recipes
