@@ -80,6 +80,7 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
             if(!SkillUtils.UserHasSkill(owner,RequiredSkill,RequiredLevel)&& (!SkillUtils.UserHasSkill(creator, RequiredSkill, RequiredLevel)))
             {
                 this.GetComponent<PublicStorageComponent>().Storage.Clear();
+                ChatUtils.SendMessage(owner.Player, "Your " + this.UILink() + "isn't working because you dont have the required skill, pls remove it.");
             }
         }
 
