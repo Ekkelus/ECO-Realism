@@ -87,7 +87,6 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
                     changes.Clear();
                     changes.AddItem<RuinedCarcassItem>();
                     Result result = changes.TryApply();
-                    ChatManager.ServerMessageToAllAlreadyLocalized(result.Message,false);
                 }
             }
         }
