@@ -54,6 +54,7 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
             typeof(HareCarcassItem),
             typeof(TurkeyCarcassItem),
             typeof(FoxCarcassItem),
+            typeof(RuinedCarcassItem),
             };
         
 
@@ -70,6 +71,7 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
 
         private void InventoryChanged(User obj)
         {
+            Inventory inventory = this.GetComponent<PublicStorageComponent>().Storage;
             User owner = this.OwnerUser;
             User creator = this.Creator;
             if (owner == null && creator == null) return;
@@ -79,8 +81,14 @@ namespace EcoRealism.Mods.ECO_Realism.Worldobjects
 
             if(!SkillUtils.UserHasSkill(owner,RequiredSkill,RequiredLevel)&& (!SkillUtils.UserHasSkill(creator, RequiredSkill, RequiredLevel)))
             {
-                this.GetComponent<PublicStorageComponent>().Storage.Clear();
-                ChatUtils.SendMessage(owner.Player, "Your " + this.UILink() + "isn't working because you dont have the required skill, pls remove it.");
+                if ((inventory.TotalNumberOfItems(typeof(RuinedCarcassItem)) == 0) && (!inventory.IsEmpty))
+                {
+                    InventoryChangeSet changes = new InventoryChangeSet(inventory);
+                    changes.Clear();
+                    changes.AddItem<RuinedCarcassItem>();
+                    Result result = changes.TryApply();
+                    ChatManager.ServerMessageToAllAlreadyLocalized(result.Message,false);
+                }
             }
         }
 
