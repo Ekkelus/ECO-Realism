@@ -29,6 +29,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
+    using EcoRealism.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]    
@@ -39,7 +40,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerGeneratorComponent))]         
     [RequireComponent(typeof(HousingComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 	
+    [RequireComponent(typeof(SpecificGroundComponent))]
     public partial class WindTurbineObject : WorldObject
     {
         public override string FriendlyName { get { return "Wind Turbine"; } } 
@@ -50,7 +51,8 @@ namespace Eco.Mods.TechTree
             this.GetComponent<MinimapComponent>().Initialize("Power");                                 
             this.GetComponent<PowerGridComponent>().Initialize(30, new ElectricPower());        
             this.GetComponent<PowerGeneratorComponent>().Initialize(750);                       
-            this.GetComponent<HousingComponent>().Set(WindTurbineItem.HousingVal);                                
+            this.GetComponent<HousingComponent>().Set(WindTurbineItem.HousingVal);
+            this.GetComponent<SpecificGroundComponent>().Initialize(typeof(ReinforcedConcreteItem));
 
 
 
