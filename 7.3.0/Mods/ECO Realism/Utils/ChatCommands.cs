@@ -146,7 +146,10 @@ namespace EcoRealism.Utils
             string professioninfo;
             string currencyinfo = "<b><u>Currencies:</b></u>" + newline;
             string propertyinfo;
-            
+            string admininfo = string.Empty;
+
+
+            if (targetuser.IsAdmin) admininfo = "<color=red><b>ADMIN</b></color>" + newline;
 
             foreach(Currency currency in EconomyManager.Currency.Currencies)
             {
@@ -182,7 +185,7 @@ namespace EcoRealism.Utils
             onlineinfo = targetuser.LoggedIn ? "is online. Located at " + new Vector3Tooltip(targetuser.Position).UILink() : "is offline. Last online " + TimeFormatter.FormatSpan(WorldTime.Seconds - targetuser.LogoutTime) + " ago";
             onlineinfo += newline;
 
-            user.Player.OpenInfoPanel(title,targetuser.UILink() + " " + onlineinfo + newline + foodinfo + housinginfo + totalsp + professioninfo + newline + propertyinfo + newline + superskillsinfo + newline + currencyinfo);
+            user.Player.OpenInfoPanel(title,admininfo + targetuser.UILink() + " " + onlineinfo + newline + foodinfo + housinginfo + totalsp + professioninfo + newline + propertyinfo + newline + superskillsinfo + newline + currencyinfo);
         }
 
         [ChatCommand("donate", "Donates Money to the Treasury")]
