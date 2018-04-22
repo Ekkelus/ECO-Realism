@@ -42,10 +42,10 @@ namespace Eco.Mods.TechTree
     {
 
         public override string FriendlyName { get { return "Stone Axe"; } }
-        private static SkillModifiedValue caloriesBurn = CreateCalorieValue(20, typeof(LoggingEfficiencySkill), typeof(StoneAxeItem), new StoneAxeItem().UILink());
+        private static IDynamicValue caloriesBurn = CreateCalorieValue(20, typeof(LoggingEfficiencySkill), typeof(StoneAxeItem), new StoneAxeItem().UILink());
         public override IDynamicValue CaloriesBurn { get { return caloriesBurn; } }
-        private static SkillModifiedValue damage = CreateDamageValue(1, typeof(LoggingDamageSkill), typeof(StoneAxeItem), new StoneAxeItem().UILink());
-        public override SkillModifiedValue Damage { get { return damage; } }
+        private static IDynamicValue damage = CreateDamageValue(1, typeof(LoggingDamageSkill), typeof(StoneAxeItem), new StoneAxeItem().UILink());
+        public override IDynamicValue Damage { get { return damage; } }
         
         private static SkillModifiedValue skilledRepairCost = new SkillModifiedValue(5, BasicCraftingSkill.MultiplicativeStrategy, typeof(BasicCraftingSkill), Localizer.Do("repair cost"));
         public override IDynamicValue SkilledRepairCost { get { return skilledRepairCost; } }
