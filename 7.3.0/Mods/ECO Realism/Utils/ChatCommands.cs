@@ -137,19 +137,19 @@ namespace EcoRealism.Utils
 
             string newline = "<br>";
             string title = "Stats for " + targetuser.Name ;
-            string skillsheadline = "<b>SKILLRATES:</b>" + newline;
+            string skillsheadline = "<b><u>Skillrates:</b></u>" + newline;
             string housinginfo;
             string foodinfo;
             string totalsp;
             string onlineinfo;
             string superskillsinfo= string.Empty;
             string professioninfo;
-            string currencyinfo = "<b>CURRENCIES:</b>" + newline;
+            string currencyinfo = "<b><u>Currencies:</b></u>" + newline;
             string propertyinfo;
             string admininfo = string.Empty;
 
 
-            if (targetuser.IsAdmin) admininfo = "<color=red><b>ADMIN</b></color> ";
+            if (targetuser.IsAdmin) admininfo = "<color=red><b>ADMIN</b></color>" + newline;
 
             foreach(Currency currency in EconomyManager.Currency.Currencies)
             {
@@ -166,7 +166,7 @@ namespace EcoRealism.Utils
             List<Skill> superskills = SkillUtils.GetSuperSkills(targetuser);
             if(superskills.Count > 0)
             {
-                superskillsinfo = "<b>SUPERSKILLS:</b>" + newline;
+                superskillsinfo = "<b><u>Superskills:</b></u>" + newline;
                 foreach(Skill skill in superskills)
                 {
                     superskillsinfo += skill.UILink() + newline;
@@ -177,15 +177,15 @@ namespace EcoRealism.Utils
             float foodsp = targetuser.SkillRate;
             float housesp = targetuser.CachedHouseValue.HousingSkillRate;
 
-            professioninfo = newline + "<b>PROFESSION:</b> " + newline + SkillUtils.FindProfession(targetuser).UILink() + newline;
+            professioninfo = "Profession: " + SkillUtils.FindProfession(targetuser).UILink() + newline;
             housinginfo = "House SP: " + targetuser.CachedHouseValue.UILink() + newline;
             foodinfo =  "Food SP: " + Math.Round(foodsp,2) + newline;
             totalsp = "Total SP: " + Math.Round(housesp + foodsp, 2) + newline;
-            propertyinfo = "<b>PROPERTY:</b>" + newline + MiscUtils.CountPlots(targetuser) * 25 + " sqm of land." + newline;
+            propertyinfo = "Owns " + MiscUtils.CountPlots(targetuser) * 25 + "sqm of land." + newline;
             onlineinfo = targetuser.LoggedIn ? "is online. Located at " + new Vector3Tooltip(targetuser.Position).UILink() : "is offline. Last online " + TimeFormatter.FormatSpan(WorldTime.Seconds - targetuser.LogoutTime) + " ago";
             onlineinfo += newline;
 
-            user.Player.OpenInfoPanel(title,admininfo + targetuser.UILink() + " " + onlineinfo + newline + skillsheadline + foodinfo + housinginfo + totalsp + professioninfo + newline + propertyinfo + newline + superskillsinfo + currencyinfo);
+            user.Player.OpenInfoPanel(title,admininfo + targetuser.UILink() + " " + onlineinfo + newline + foodinfo + housinginfo + totalsp + professioninfo + newline + propertyinfo + newline + superskillsinfo + newline + currencyinfo);
         }
 
         [ChatCommand("donate", "Donates Money to the Treasury")]
