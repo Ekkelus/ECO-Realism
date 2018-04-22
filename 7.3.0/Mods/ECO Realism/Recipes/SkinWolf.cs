@@ -20,11 +20,11 @@ namespace Eco.Mods.TechTree
             this.Products = new CraftingElement[]
             {
                new CraftingElement<SkinnedWolfItem>(1),
-               new CraftingElement<FurPeltItem>(3),
+               new CraftingElement<FurPeltItem>(typeof(SkinningEfficiencySkill), 3, SkinningEfficiencySkill.MultiplicativeStrategy),
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<WolfCarcassItem>(typeof(SkinningEfficiencySkill), 1, SkinningEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<WolfCarcassItem>(1),
             };
             this.Initialize("Skin Wolf", typeof(SkinWolfRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(SkinWolfRecipe), this.UILink(), 1, typeof(SkinningSpeedSkill));

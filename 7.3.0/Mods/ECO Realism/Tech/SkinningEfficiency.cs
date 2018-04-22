@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
         public override string Description { get { return Localizer.Do(""); } }
 
         public static ModificationStrategy MultiplicativeStrategy =
-            new MultiplicativeStrategy(new float[] { 1, 1 - 0.1f, 1 - 0.2f, 1 - 0.3f, 1 - 0.4f, 1 - 0.5f, 1 - 0.55f, 1 - 0.6f, 1 - 0.65f, 1 - 0.7f, 1 - 0.75f });
+            new MultiplicativeStrategy(new float[] { 1, 1/(1 - 0.1f), 1 / (1 - 0.2f), 1 / (1 - 0.3f), 1 / (1 - 0.4f), 1 / (1 - 0.5f), 1 / (1 - 0.55f), 1 / (1 - 0.6f), 1 / (1 - 0.65f), 1 / (1 - 0.7f), 1 / (1 - 0.75f) });
         public static ModificationStrategy AdditiveStrategy =
             new AdditiveStrategy(new float[] { 0, 0.2f, 0.35f, 0.5f, 0.65f, 0.8f });
         public static int[] SkillPointCost = { 2, 4, 6, 8, 10, 10, 10, 10, 10, 10 };
