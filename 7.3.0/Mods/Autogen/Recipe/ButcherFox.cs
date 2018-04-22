@@ -20,12 +20,11 @@ namespace Eco.Mods.TechTree
             this.Products = new CraftingElement[]
             {
                new CraftingElement<RawMeatItem>(3),
-               new CraftingElement<FurPeltItem>(2),
                new CraftingElement<BoneItem>(4),
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<FoxCarcassItem>(typeof(SmallButcheryEfficiencySkill), 1, SmallButcheryEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<SkinnedFoxItem>(typeof(SmallButcheryEfficiencySkill), 1, SmallButcheryEfficiencySkill.MultiplicativeStrategy), 
             };
             this.Initialize("Butcher Fox", typeof(ButcherFoxRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(ButcherFoxRecipe), this.UILink(), 1, typeof(SmallButcherySpeedSkill));

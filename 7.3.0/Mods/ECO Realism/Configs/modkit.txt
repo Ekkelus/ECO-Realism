@@ -4,7 +4,7 @@ The idea behind this modkit was to make the game more of a challenge, force coll
 Down below is a list of things we've added to the game, we do recommend you to also have a look at the changelog of the modkit because not all changes are listed down below.
 
 <b><color=green>.:: CRAFTING COMPONENTS ::.</color></b>
-Beeswax, Bone, Book, Glue, Hinge, Glass Jar, Nails, Rope, Rubber, String, Wooden Gear
+Beeswax, Bone, Book, Glue, Hinge, Glass Jar, Nails, Rope, Rubber, Skinned Bison, Skinned Elk, Skinned Fox, Skinned Hare, Skinned Turkey, Skinned Wolf, String, Wooden Gear
 
 <b><color=green>.:: FOOD ITEMS ::.</color></b>
 Clam Chowder, Exotic Urchin Surprise, Granola Bar, Grilled Salmon, Honey, Honey Bun, Honey Flan, Honey Glazed Ham, Pizza, Salmon Fillet, Smoked Trout Salad, Stuffed Clams, Sushi, Taiyaki, Trout Fillet, Tuna Fillet, Tuna Sandwich
@@ -13,7 +13,7 @@ Clam Chowder, Exotic Urchin Surprise, Granola Bar, Grilled Salmon, Honey, Honey 
 Beehive, Cardboard Box, Small Animal Trap
 
 <b><color=green>.:: MISC ITEMS ::.</color></b>
-Bee, Coin
+Bee, Coin, Ruined Carcass
 
 <b><color=green>.:: USER COMMANDS ::.</color></b>
 <b>/avatar</b> - Display information about you or the given Player

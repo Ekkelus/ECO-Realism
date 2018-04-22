@@ -12,22 +12,22 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     using Gameplay.Systems.TextLinks;
 
-    [RequiresSkill(typeof(SmallButcherySkill), 1)] 
-    public class ButcherTurkeyRecipe : Recipe
+    [RequiresSkill(typeof(SkinningSkill), 2)]
+    public class SkinWolfRecipe : Recipe
     {
-        public ButcherTurkeyRecipe()
+        public SkinWolfRecipe()
         {
             this.Products = new CraftingElement[]
             {
-               new CraftingElement<RawMeatItem>(2),
-               new CraftingElement<BoneItem>(2),
+               new CraftingElement<SkinnedWolfItem>(1),
+               new CraftingElement<FurPeltItem>(3),
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SkinnedTurkeyItem>(typeof(SmallButcheryEfficiencySkill), 1, SmallButcheryEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<WolfCarcassItem>(typeof(SkinningEfficiencySkill), 1, SkinningEfficiencySkill.MultiplicativeStrategy),
             };
-            this.Initialize("Butcher Turkey", typeof(ButcherTurkeyRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ButcherTurkeyRecipe), this.UILink(), 1, typeof(SmallButcherySpeedSkill));
+            this.Initialize("Skin Wolf", typeof(SkinWolfRecipe));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(SkinWolfRecipe), this.UILink(), 1, typeof(SkinningSpeedSkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }

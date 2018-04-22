@@ -1,4 +1,4 @@
-﻿namespace Eco.Mods.TechTree
+namespace Eco.Mods.TechTree
 {
     using System;
     using Eco.Shared.Localization;
@@ -21,12 +21,14 @@
 
 
     [Serialized]
-    [Weight(1000)]
-    public partial class RuinedCarcassItem :
+    [Weight(800)]
+    [Currency]
+    public partial class SkinnedTurkeyItem :
     Item
     {
-        public override string FriendlyName { get { return "Ruined Carcass"; } }
-        public override string Description { get { return "This has probably no use anymore."; } }
+        public override string FriendlyName { get { return "Skinned Turkey"; } }
+        public override string Description { get { return "A skinned turkey."; } }
+
     }
 
 }
