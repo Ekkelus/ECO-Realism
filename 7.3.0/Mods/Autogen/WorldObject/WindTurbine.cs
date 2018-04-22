@@ -70,7 +70,7 @@ namespace Eco.Mods.TechTree
     public partial class WindTurbineItem : WorldObjectItem<WindTurbineObject>
     {
         public override string FriendlyName { get { return "Wind Turbine"; } } 
-        public override string Description { get { return "Generates electrical power from the wind."; } }
+        public override string Description { get { return "Generates electrical power from the wind. Needs to be placed on 3x3 reinforced concrete."; } }
 
         static WindTurbineItem()
         {

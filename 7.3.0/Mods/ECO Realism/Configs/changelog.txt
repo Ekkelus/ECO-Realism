@@ -1,4 +1,4 @@
-<color=green><b>REMEMBER DATE</b></color>
+<color=green><b>REMEMBER DATE</b></color><size=17>
 - Removed Raw Fish from Refine Fish recipe
 - Added room requirement to Blast Furnace
 - Added room requirement to Computer Lab
@@ -17,21 +17,25 @@
 - Balanced Lasers recipe
 - Balanced Computer Labs recipe
 - Balanced Anvil recipe
+- Wind Turbine needs to be placed on 3x3 reinforced concrete
+</size>
 
-<color=green><b>2018-04-13</b></color>
+<color=green><b>2018-04-13</b></color><size=17>
 - Removed Lumber from barrel recipes
 - Removed Copper ingot from barrel recipes
 - Added Trapper skill
 - Added Small Animal Trap
 - Added /donate
+</size>
 
-<color=green><b>2018-04-08</b></color>
+<color=green><b>2018-04-08</b></color><size=17>
 - Removed Campfire Bison, Elk and Wolf recipes
 - Stations using fuel is now inherited by default
 - Moved charcoal production from Smith to Carpenter skill tree
 - Increased housing value of chair from 0.5 to 1
+</size>
 
-<color=green><b>2018-04-06</b></color>
+<color=green><b>2018-04-06</b></color><size=17>
 - Storage components are now set to inherit by default
 - Removed seed drop from plants that you can craft seeds for
 - Changes to Steel Table Lamp, Steel Floor Lamp and Steel Ceiling Light recipes
@@ -49,8 +53,9 @@
 - Added Wood Pulp as fuel in a number of stations
 - Added /modkit
 - Added /unclaimselect and /unclaimconfirm for admins
+</size>
 
-<color=green><b>2018-04-03</b></color>
+<color=green><b>2018-04-03</b></color><size=17>
 - Removed Super Secret Dildo Statue (April Fools)
 - Hid Ecko Statue (Temp fix)
 - Added weight to world objects
@@ -58,8 +63,9 @@
 - Added /houseranking
 - Added /report
 - Added Super Skills
+</size>
 
-<color=green><b>2018-04-01</b></color>
+<color=green><b>2018-04-01</b></color><size=17>
 - Removed Tailings from Steel recipe
 - Removed Toxic Waste Barrel
 - Removed Glue from Shelf Cabinet
@@ -70,9 +76,11 @@
 - Added Super Secret Dildo Statue
 - Added Changelog
 - Added Rules
+</size>
 
-<color=green><b>2018-03-31</b></color>
+<color=green><b>2018-03-31</b></color><size=17>
 - Removed iron ingot from Road Tool
 - Removed iron ingot from Door and reduced hinge and nails
 - Removed Rope from stockpile and increased logs needed
 - Increased storage space in Cardboard Boxes
+</size>
