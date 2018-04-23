@@ -37,20 +37,7 @@ namespace Eco.Mods.TechTree
 
         public override IAtomicAction CreateLevelUpAction(Player player)
         {
-            if (this.Level != 5) return base.CreateLevelUpAction(player);
-            if (SkillUtils.SuperSkillCount(player.User) >= ConfigHandler.maxsuperskills) return new FailedAtomicAction(Localizer.Do("You already have enough SuperSkills " + SkillUtils.SuperSkillCount(player.User) + "/" + ConfigHandler.maxsuperskills));
-            foreach (string id in SkillUtils.superskillconfirmed)
-            {
-                if (id == player.User.ID)
-                {
-                    SkillUtils.superskillconfirmed.Remove(id);
-                    return base.CreateLevelUpAction(player);
-                }
-            }
-
-            SkillUtils.ShowSuperSkillInfo(player);
-            return new FailedAtomicAction(Localizer.Do("You need to confirm first"));
-
+            return SkillUtils.SuperSkillLevelUp(this, player);
         }
     }
 

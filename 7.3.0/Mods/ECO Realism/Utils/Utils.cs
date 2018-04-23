@@ -34,6 +34,7 @@ using System.Linq;
 using Eco.Core.Utils;
 using Eco.Gameplay.Stats;
 using Eco.Mods.TechTree;
+using Eco.Core.Utils.AtomicAction;
 
 namespace EcoRealism.Utils
 {
@@ -51,6 +52,29 @@ namespace EcoRealism.Utils
 
     public static class SkillUtils
     {
+        /// <summary>
+        /// This Method should override the CreateLevelUpAction() Method of Skills that can be superskilled.
+        /// </summary>
+        /// <seealso cref="Skill.CreateLevelUpAction(Player)"/>
+        /// <param name="skill"></param>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        public static IAtomicAction SuperSkillLevelUp(Skill skill,Player player)
+        {
+            if (skill.Level != 5) return SimpleAtomicAction.NoOp;
+            if (SkillUtils.SuperSkillCount(player.User) >= ConfigHandler.maxsuperskills) return new FailedAtomicAction(Localizer.Do("You already have enough SuperSkills " + SkillUtils.SuperSkillCount(player.User) + "/" + ConfigHandler.maxsuperskills));
+            foreach (string id in SkillUtils.superskillconfirmed)
+            {
+                if (id == player.User.ID)
+                {
+                    SkillUtils.superskillconfirmed.Remove(id);
+                    return SimpleAtomicAction.NoOp;
+                }
+            }
+            SkillUtils.ShowSuperSkillInfo(player);
+            return new FailedAtomicAction(Localizer.Do("You need to confirm first"));
+        }
+
         public static List<string> superskillconfirmed;
 
         public static void Initialize()
