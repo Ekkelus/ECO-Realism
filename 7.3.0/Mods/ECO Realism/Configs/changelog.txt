@@ -21,7 +21,9 @@
 - Balanced Lasers recipe
 - Balanced Computer Labs recipe
 - Balanced Anvil recipe
-- Wind Turbine needs to be placed on 3x3 reinforced concrete</size>
+- Increased number of books required in research
+- Wind Turbine needs to be placed on 3x3 reinforced concrete
+- Lasers needs to be placed on 3x3 reinforced concrete</size>
 
 <color=green><b>2018-04-13</b></color><size=18>
 - Removed Lumber from barrel recipes

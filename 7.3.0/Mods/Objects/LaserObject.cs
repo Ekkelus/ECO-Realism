@@ -8,6 +8,7 @@ using Eco.Gameplay.Objects;
 using Eco.Mods.TechTree;
 using Eco.Shared.Math;
 using Eco.Shared.Serialization;
+using EcoRealism.Utils;
 
 [Serialized]
 [RequireComponent(typeof(MinimapComponent))]
@@ -15,6 +16,7 @@ using Eco.Shared.Serialization;
 [RequireComponent(typeof(PowerConsumptionComponent))]
 [RequireComponent(typeof(ChargingComponent))]
 [RequireComponent(typeof(PowerGridNetworkComponent))]
+[RequireComponent(typeof(SpecificGroundComponent))]
 public class LaserObject : WorldObject
 {
     public float MinimapYaw { get { return 0.0f; } }
@@ -28,6 +30,7 @@ public class LaserObject : WorldObject
         this.GetComponent<PowerConsumptionComponent>().Initialize(9000);
         this.GetComponent<ChargingComponent>().Initialize(30, 30);
         this.GetComponent<PowerGridNetworkComponent>().Initialize(new Dictionary<Type, int> { { typeof(LaserObject), 8 }, { typeof(ComputerLabObject), 4 } }, false);
+        this.GetComponent<SpecificGroundComponent>().Initialize(typeof(ReinforcedConcreteItem));
     }
 
     static LaserObject()

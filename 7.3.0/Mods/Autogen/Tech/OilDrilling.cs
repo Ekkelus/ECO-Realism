@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ReinforcedConcreteItem>(typeof(ResearchEfficiencySkill), 50, ResearchEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<CombustionEngineItem>(typeof(ResearchEfficiencySkill), 4, ResearchEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(ResearchEfficiencySkill), 80, ResearchEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BookItem>(typeof(ResearchEfficiencySkill), 8, ResearchEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BookItem>(typeof(ResearchEfficiencySkill), 16, ResearchEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(30);
 

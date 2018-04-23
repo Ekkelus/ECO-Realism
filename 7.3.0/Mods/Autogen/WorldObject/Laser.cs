@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
     public partial class LaserItem : WorldObjectItem<LaserObject>
     {
         public override string FriendlyName { get { return "Laser"; } } 
-        public override string Description  { get { return  "AVOID DIRECT EYE EXPOSURE"; } }
+        public override string Description  { get { return "AVOID DIRECT EYE EXPOSURE. Needs to be placed on 3x3 reinforced concrete."; } }
 
         static LaserItem()
         {
