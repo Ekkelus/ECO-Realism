@@ -33,9 +33,9 @@ using Eco.World.Blocks;
 using Eco.Mods.TechTree;
 using Eco.Core.Utils;
 using Eco.Gameplay.Systems.Chat;
-using EcoRealism.Utils;
+using REYmod.Utils;
 
-namespace EcoRealism.Mods.ECO_Realism.Worldobjects
+namespace REYmod.Mods.ECO_Realism.Worldobjects
 {
     [Serialized]
     [RequireComponent(typeof(AttachmentComponent))]

@@ -18,7 +18,7 @@ using Eco.Shared.Math;
 using Eco.Gameplay.Items;
 using Eco.Gameplay.Systems.Chat;
 
-namespace EcoRealism.Utils
+namespace REYmod.Utils
 {
     [RequireComponent(typeof(StatusComponent))]
     [Serialized]

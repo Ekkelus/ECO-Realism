@@ -17,7 +17,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
-	using EcoRealism.Utils;
+	using REYmod.Utils;
 
     [Serialized]
     [RequiresSkill(typeof(StoneworkingSkill), 1)]    

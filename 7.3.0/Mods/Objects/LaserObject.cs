@@ -8,7 +8,7 @@ using Eco.Gameplay.Objects;
 using Eco.Mods.TechTree;
 using Eco.Shared.Math;
 using Eco.Shared.Serialization;
-using EcoRealism.Utils;
+using REYmod.Utils;
 
 [Serialized]
 [RequireComponent(typeof(MinimapComponent))]

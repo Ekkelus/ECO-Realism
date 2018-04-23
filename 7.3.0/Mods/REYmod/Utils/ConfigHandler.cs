@@ -27,10 +27,10 @@ using Eco.Shared.View;
 using Eco.Shared.Items;
 using Eco.Gameplay.Pipes;
 using Eco.World.Blocks;
-using EcoRealism.Utils;
+using REYmod.Utils;
 
 
-namespace EcoRealism.Utils
+namespace REYmod.Utils
 {
     public class ConfigInitItem : Item
     {
@@ -42,7 +42,7 @@ namespace EcoRealism.Utils
 
     public static class ConfigHandler
     {
-        public static string configpath = "./configs/ecorealism.cfg";
+        public static string configpath = "./configs/REYmod.cfg";
 
         public static int maxsuperskills;
 

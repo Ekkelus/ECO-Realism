@@ -28,7 +28,7 @@ using Eco.Shared.View;
 using Eco.Shared.Items;
 using Eco.Gameplay.Pipes;
 using Eco.World.Blocks;
-using EcoRealism.Utils;
+using REYmod.Utils;
 using Eco.Shared.Localization;
 using System.Linq;
 using Eco.Core.Utils;
@@ -36,7 +36,7 @@ using Eco.Gameplay.Stats;
 using Eco.Mods.TechTree;
 using Eco.Core.Utils.AtomicAction;
 
-namespace EcoRealism.Utils
+namespace REYmod.Utils
 {
     [Category("Hidden")]
     public class UtilsInitItem : Item
@@ -54,6 +54,15 @@ namespace EcoRealism.Utils
     {
         /// <summary>
         /// This Method should override the CreateLevelUpAction() Method of Skills that can be superskilled.
+        /// Just place the Example code in the code of superskillable Skills.
+        /// <example>
+        /// <code>
+        ///public override IAtomicAction CreateLevelUpAction(Player player)
+        ///{
+        ///    return SkillUtils.SuperSkillLevelUp(this, player);
+        ///}
+        /// </code>
+        /// </example>
         /// </summary>
         /// <seealso cref="Skill.CreateLevelUpAction(Player)"/>
         /// <param name="skill"></param>
@@ -84,7 +93,7 @@ namespace EcoRealism.Utils
 
         public static void ShowSuperSkillInfo(Player player)
         {
-            player.OpenInfoPanel("Super Skills", "Current amount of Super Skills: <b><color=green>" + SkillUtils.SuperSkillCount(player.User) + "</color></b><br>Max amount of Super Skills: <b><color=green>" + ConfigHandler.maxsuperskills + "</color></b><br><br>Super Skills are Skills that can be leveled all the way up to level 10.<br><br><color=red>You can only have a limited amount of them.</color><br><br>To confirm that you understood Super Skills and to unlock them please enter <b><color=green>/confirmsuperskill</b></color>");
+            player.OpenInfoPanel("Super Skills", "Current amount of Super Skills: <b><color=green>" + SkillUtils.SuperSkillCount(player.User) + "</color></b><br>Max amount of Super Skills: <b><color=green>" + ((ConfigHandler.maxsuperskills != int.MaxValue)? ConfigHandler.maxsuperskills.ToString() : "Infinite") + "</color></b><br><br>Super Skills are Skills that can be leveled all the way up to level 10.<br><br><color=red>You can only have a limited amount of them.</color><br><br>To confirm that you understood Super Skills and to unlock them please enter <b><color=green>/confirmsuperskill</b></color>");
         }
 
         public static bool UserHasSkill(User user, Type skilltype, int lvl)

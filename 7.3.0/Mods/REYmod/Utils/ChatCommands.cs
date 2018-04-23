@@ -17,7 +17,7 @@ using Eco.Gameplay.Economy;
 using Eco.Gameplay.Skills;
 using Eco.Core.Utils;
 
-namespace EcoRealism.Utils
+namespace REYmod.Utils
 {
     public class ChatCommands : IChatCommandHandler
     {
@@ -49,9 +49,9 @@ namespace EcoRealism.Utils
         }
 
         [ChatCommand("report", "Report a player or an issue")]
-        public static void Report(User user, string part1, string part2 = "", string part3 = "", string part4 = "", string part5 = "", string part6 = "", string part7 = "", string part8 = "", string part9 = "", string part10 = "", string eof = "")
+        public static void Report(User user, string part1, string part2 = "", string part3 = "", string part4 = "", string part5 = "", string part6 = "", string part7 = "", string part8 = "", string part9 = "", string part10 = "", string last = "")
         {
-            if(eof != "")
+            if(last != "")
             {
                 user.Player.SendTemporaryErrorAlreadyLocalized("Sorry, too many commas (this command only supports up to 9");
                 return;
@@ -70,6 +70,28 @@ namespace EcoRealism.Utils
             user.Player.SendTemporaryMessageAlreadyLocalized("Report sent");
 
         }
+
+        [ChatCommand("setmaxsuperskills", "Displays or set the maximum allowed Superskills. -1 for no limit", level: ChatAuthorizationLevel.Admin)]
+        public static void SetMaxSuperSkills(User user, int maxallowed = int.MinValue)
+        {          
+            if (maxallowed == -1) maxallowed = int.MaxValue;
+            string currentallowedstr = (ConfigHandler.maxsuperskills != int.MaxValue) ? ConfigHandler.maxsuperskills.ToString() : "Infinite";
+            if (maxallowed == int.MinValue || maxallowed == ConfigHandler.maxsuperskills)
+            {
+                ChatUtils.SendMessage(user, "Max allowed Superskills: " + currentallowedstr);
+                return;
+            }
+            else
+            {
+                string newallowedstr = (maxallowed != int.MaxValue) ? maxallowed.ToString() : "Infinite";
+                ConfigHandler.maxsuperskills = maxallowed;
+                ChatUtils.SendMessage(user, "Changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr);
+                ChatManager.ServerMessageToAllAlreadyLocalized(user.UILink() + "changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr, false);
+            }
+
+
+        }
+
 
         [ChatCommand("reports", "Displays current Reports", level: ChatAuthorizationLevel.Admin)]
         public static void Reports(User user)
