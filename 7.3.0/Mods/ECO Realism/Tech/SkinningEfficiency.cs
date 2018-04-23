@@ -35,23 +35,6 @@ namespace Eco.Mods.TechTree
         public override int PrevRequiredPoint { get { return this.Level - 1 >= 0 && this.Level - 1 < this.MaxLevel ? SkillPointCost[this.Level - 1] : 0; } }
         public override int MaxLevel { get { return 5; } }
 
-        public override IAtomicAction CreateLevelUpAction(Player player)
-        {
-            if (this.Level != 5) return base.CreateLevelUpAction(player);
-            if (SkillUtils.SuperSkillCount(player.User) >= ConfigHandler.maxsuperskills) return new FailedAtomicAction(Localizer.Do("You already have enough SuperSkills " + SkillUtils.SuperSkillCount(player.User) + "/" + ConfigHandler.maxsuperskills));
-            foreach (string id in SkillUtils.superskillconfirmed)
-            {
-                if (id == player.User.ID)
-                {
-                    SkillUtils.superskillconfirmed.Remove(id);
-                    return base.CreateLevelUpAction(player);
-                }
-            }
-
-            SkillUtils.ShowSuperSkillInfo(player);
-            return new FailedAtomicAction(Localizer.Do("You need to confirm first"));
-
-        }
     }
 
 }
