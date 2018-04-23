@@ -1,7 +1,4 @@
-# ECO Realism
-Mod pack that aims to add realism to ECO.
+# REY MOD
+Mod that aims to add realism to ECO.
 
-#The Crew
-Ekke
-Lilitu
-Yamor
+Please be aware that files contained in this github might be work in progress and not functional, we strongly recommend that you download the latest functional version of the mod at https://eco-mods.com/resources/rey-mod.58
