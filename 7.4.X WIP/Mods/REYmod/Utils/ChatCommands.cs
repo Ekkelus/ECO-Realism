@@ -16,6 +16,10 @@ using Eco.Gameplay;
 using Eco.Gameplay.Economy;
 using Eco.Gameplay.Skills;
 using Eco.Core.Utils;
+using Eco.Gameplay.Objects;
+using Eco.Gameplay.Items;
+using Eco.Gameplay.Components.Auth;
+using Eco.Gameplay.Components;
 
 namespace REYmod.Utils
 {
@@ -24,7 +28,9 @@ namespace REYmod.Utils
         [ChatCommand("rules", "Displays the Server Rules")]
         public static void Rules(User user)
         {
-            string x = IOUtils.ReadConfig("rules.txt");
+
+            string x = IOUtils.ReadFileFromConfigFolder("rules.txt");
+
             x = ChatUtils.AutoLink(x);
 
             user.Player.OpenInfoPanel("Rules", x);
@@ -33,7 +39,7 @@ namespace REYmod.Utils
         [ChatCommand("modkit", "Display information about the modkit")]
         public static void Modkit(User user)
         {
-            string x = IOUtils.ReadConfig("modkit.txt");
+            string x = IOUtils.ReadFileFromConfigFolder("modkit.txt");
             x = ChatUtils.AutoLink(x);
 
             user.Player.OpenInfoPanel("Modkit", x);
@@ -42,7 +48,7 @@ namespace REYmod.Utils
         [ChatCommand("changelog", "Displays the changelog of the modkit")]
         public static void Changelog(User user)
         {
-            string x = IOUtils.ReadConfig("changelog.txt");
+            string x = IOUtils.ReadFileFromConfigFolder("changelog.txt");
             x = ChatUtils.AutoLink(x);
 
             user.Player.OpenInfoPanel("Changelog", x);
@@ -75,8 +81,8 @@ namespace REYmod.Utils
         public static void SetMaxSuperSkills(User user, int maxallowed = int.MinValue)
         {          
             if (maxallowed == -1) maxallowed = int.MaxValue;
-            string currentallowedstr = (ConfigHandler.maxsuperskills != int.MaxValue) ? ConfigHandler.maxsuperskills.ToString() : "Infinite";
-            if (maxallowed == int.MinValue || maxallowed == ConfigHandler.maxsuperskills)
+            string currentallowedstr = (REYconfig.maxsuperskills != int.MaxValue) ? REYconfig.maxsuperskills.ToString() : "Infinite";
+            if (maxallowed == int.MinValue || maxallowed == REYconfig.maxsuperskills)
             {
                 ChatUtils.SendMessage(user, "Max allowed Superskills: " + currentallowedstr);
                 return;
@@ -84,9 +90,10 @@ namespace REYmod.Utils
             else
             {
                 string newallowedstr = (maxallowed != int.MaxValue) ? maxallowed.ToString() : "Infinite";
-                ConfigHandler.maxsuperskills = maxallowed;
+                REYconfig.maxsuperskills = maxallowed;
                 ChatUtils.SendMessage(user, "Changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr);
                 ChatManager.ServerMessageToAllAlreadyLocalized(user.UILink() + "changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr, false);
+                ConfigHandler.UpdateConfigFile();
             }
 
 
@@ -96,7 +103,7 @@ namespace REYmod.Utils
         [ChatCommand("reports", "Displays current Reports", level: ChatAuthorizationLevel.Admin)]
         public static void Reports(User user)
         {
-            string x = IOUtils.ReadConfig("../Reports/reports.txt");
+            string x = IOUtils.ReadFileFromConfigFolder("../Reports/reports.txt");
             user.Player.OpenInfoPanel("Recent Reports", x);
         }
 
@@ -108,32 +115,63 @@ namespace REYmod.Utils
         }
 
         [ChatCommand("houseranking", "Displays the users with the highest housing rates")]
-        public static void HouseRanking(User user)
+        public static void HouseRanking(User user) // needs to be reworked! maybe without custom comparer, also add own Rank
         {
 
             int usercount = UserManager.Users.Count<User>();
             int max = 10;
             int i = 0;
             string output = string.Empty;
-            List<KeyValuePair< string, float>> userlist = new List<KeyValuePair<string, float>>(usercount);
-            string tmpuser = string.Empty;
+            List<KeyValuePair< User, float>> userlist = new List<KeyValuePair<User, float>>(usercount);
+            User tmpuser;
 
             foreach (User userentry in UserManager.Users)
             {
-                userlist.Add(new KeyValuePair<string,float>(userentry.Name, (float)Math.Round(userentry.CachedHouseValue.HousingSkillRate,2)));
+                userlist.Add(new KeyValuePair<User,float>(userentry, (float)Math.Round(userentry.CachedHouseValue.HousingSkillRate,2)));
             }
 
-            userlist.Sort(new MyComparer());           
+            //userlist.Sort(new UserFloatComparer());
+            userlist.Sort((KeyValuePair<User, float> x, KeyValuePair<User, float> y) => y.Value.CompareTo(x.Value));
 
             if (usercount < max) max = usercount;
             for(i=0; i<max; i++)
             {
                 tmpuser = userlist[i].Key;
-                output = output + (i + 1).ToString() + ". <link=\"User:" + tmpuser + "\"><style=\"Warning\">" + tmpuser + "</style></link>: <link=\"CachedHouseValue:" + tmpuser +"\"><style=\"Positive\">" + userlist[i].Value.ToString() + "</style></link> skill/day <br>";
+                //output = output + (i + 1).ToString() + ". <link=\"User:" + tmpuser.Name + "\"><style=\"Warning\">" + tmpuser.Name + "</style></link>: <link=\"CachedHouseValue:" + tmpuser.Name +"\"><style=\"Positive\">" + userlist[i].Value.ToString() + "</style></link> skill/day <br>";
+                output = output + (i + 1) + ". " + tmpuser.UILink() + ": " + tmpuser.CachedHouseValue.UILink() + "<br>";
             }
             output = output + "<br> Your " + user.HouseValue;
 
             user.Player.OpenInfoPanel("House Ranking", output);
+        }
+
+        [ChatCommand("nutritionranking", "Displays the users with the highest food skill rates")]
+        public static void NutritionRanking(User user) //needs to be reworked! maybe without custom comparer, also add own Rank
+        {
+
+            int usercount = UserManager.Users.Count<User>();
+            int max = 10;
+            int i = 0;
+            string output = string.Empty;
+            List<KeyValuePair<User, float>> userlist = new List<KeyValuePair<User, float>>(usercount);
+            User tmpuser;
+
+            foreach (User userentry in UserManager.Users)
+            {
+                userlist.Add(new KeyValuePair<User, float>(userentry, (float)Math.Round(userentry.SkillRate, 2)));
+            }
+
+            userlist.Sort(new UserFloatComparer());
+
+            if (usercount < max) max = usercount;
+            for (i = 0; i < max; i++)
+            {
+                tmpuser = userlist[i].Key;
+                output = output + (i + 1) + ". " + tmpuser.UILink() + ": <color=green>" + tmpuser.SkillRate + "</color><br>";
+            }
+            output = output + "<br> Your Foodskillrate: <color=green>" + user.SkillRate + "</color>";
+
+            user.Player.OpenInfoPanel("Nutrition Ranking", output);
         }
 
         [ChatCommand("avatar","Displays information about you or the given Player")]
@@ -281,10 +319,17 @@ namespace REYmod.Utils
         public static void UnclaimConfirm(User user)
         {
             User target = null;
-            int totalplotcount = 0, deedcount = 0, plotcountdeed = 0, vehiclecount = 0;
+            int totalplotcount = 0, deedcount = 0, plotcountdeed = 0, vehiclecount = 0, destroyedvehicles = 0;
             IEnumerable<Vector2i> positions;
             string tmp = string.Empty;
-
+            WorldObject vehicle = null;
+            ItemStack sourcestack;
+            ItemStack targetstack;
+            Func<ItemStack,bool> findDeed = i =>
+            {
+                if(i.Item as DeedItem != null) return ((i.Item as DeedItem).AuthID == vehicle.GetComponent<StandaloneAuthComponent>().AuthGuid);
+                return false;
+            };
 
             if (!UtilsClipboard.UnclaimSelector.TryGetValue(user, out target))
             {
@@ -310,24 +355,42 @@ namespace REYmod.Utils
                 }
                 else if (auth.Type == "Vehicle")
                 {
-                    vehiclecount++;
-                    ChatUtils.SendMessage(user, "Found Vehicle: " + auth.Name);
+                    if (auth.AttachedWorldObjects[0].Object != null)
+                    {
+                        vehiclecount++;
+                        vehicle = auth.AttachedWorldObjects[0].Object;
+                        ChatUtils.SendMessage(user, "Found Vehicle: " + auth.Name + " at " + vehicle.Position.UILink());
+                        //vehicle.Destroy();
+                        sourcestack = null;
+                        sourcestack = target.Inventory.NonEmptyStacks.FirstOrDefault(findDeed);
+                        targetstack = vehicle.GetComponent<PublicStorageComponent>().Inventory.Stacks.FirstOrDefault(i => i.Empty);
+                        if (targetstack == null)
+                        {
+                            targetstack = vehicle.GetComponent<PublicStorageComponent>().Inventory.Stacks.First();
+                            vehicle.GetComponent<PublicStorageComponent>().Inventory.ClearItemStack(targetstack);
+                        }
 
-                    //(auth.AttachedWorldObjects[0].Object as WorldObject).Destroy();
-
-                    //foreach (WorldObjectHandle objhandle in auth.AttachedWorldObjects)
-                    //{
-                    //    tmp = objhandle.Object.Name;
-                    //    (objhandle.Object as WorldObject).Destroy();
-                    //    ChatUtils.SendMessage(user, "Destroyed " + tmp);
-                    //}                    
+                        if (sourcestack != null)
+                        {
+                            vehicle.GetComponent<PublicStorageComponent>().Inventory.AddItem(sourcestack.Item);
+                            auth.SetOwner(user.Name);
+                            vehicle.GetComponent<StandaloneAuthComponent>().SetLocked(user.Player, false);
+                            auth.SetOwner(target.Name);
+                            //target.Inventory.MoveItems(sourcestack, targetstack, target.Player);
+                        }
+                        else
+                        {
+                            destroyedvehicles++;
+                            vehicle.Destroy();
+                        }
+                    }
+                 
 
                 }
             }
 
-            ChatUtils.SendMessage(user, totalplotcount.ToString() + " Plots on " + deedcount.ToString() + " Deeds unclaimed. Also found " + vehiclecount.ToString() + " Vehicles (those aren't handled by this command yet)");
+            ChatUtils.SendMessage(user, totalplotcount + " Plots on " + deedcount + " Deeds unclaimed. Also found " + vehiclecount + " Vehicles. " + (vehiclecount-destroyedvehicles) + " have been unlocked and got their deed added to inventory. " + destroyedvehicles + " were destroyed as the deed couldn't be found");
         }
     }
-
 
 }

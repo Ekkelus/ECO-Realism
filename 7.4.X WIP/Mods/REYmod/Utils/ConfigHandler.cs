@@ -28,10 +28,95 @@ using Eco.Shared.Items;
 using Eco.Gameplay.Pipes;
 using Eco.World.Blocks;
 using REYmod.Utils;
-
+using System.Reflection;
 
 namespace REYmod.Utils
 {
+    /// <summary>
+    /// This class is handling the global config settings and the config file
+    /// </summary>
+    public static class ConfigHandler
+    {
+        public static string configfolderpath = "./configs/";
+        public static string configfilename = "REYmod.cfg";
+        public static string Fullconfigpath { get { return configfolderpath + configfilename; } }
+
+        public static void Initialize()
+        {
+            if (File.Exists(Fullconfigpath))
+            {
+                ReadConfig();
+            }
+            UpdateConfigFile();
+        }
+
+        /// <summary>
+        /// Updates the Configfile by reading the current values of <see cref="REYconfig"/> and writing them to the file.
+        /// </summary>
+        public static void UpdateConfigFile()
+        {
+            List<string> lines = new List<string>();
+            foreach (FieldInfo field in typeof(REYconfig).GetFields())
+            {
+                lines.Add(field.Name + ":" + field.GetValue(null));
+            }
+            File.Delete(Fullconfigpath);
+            File.AppendAllLines(Fullconfigpath, lines);
+        }
+
+        /// <summary>
+        /// Returns a list of all Fieldnames of <see cref="REYconfig"/>.
+        /// </summary>
+        /// <returns></returns>
+        private static List<string> GetFieldNames()
+        {
+            List<string> fieldnames = new List<string>();
+            foreach (FieldInfo field in typeof(REYconfig).GetFields())
+            {
+                fieldnames.Add(field.Name);
+                //Console.WriteLine(field.Name);
+            }
+            return fieldnames;
+        }
+
+        /// <summary>
+        /// Reads the configfile and stores the values in <see cref="REYconfig"/>.
+        /// Also returns a list of the fields that weren't found in the configfile
+        /// </summary>
+        /// <returns>A list of all settings that were not in the configfile</returns>
+        private static List<string> ReadConfig()
+        {
+            FieldInfo field;
+            List<string> missingfields = GetFieldNames();
+            string[] splitstring;
+            foreach (string line in File.ReadAllLines(Fullconfigpath))
+            {
+                splitstring = line.Split(':');
+                if (splitstring.Length == 2)
+                {
+                    field = typeof(REYconfig).GetField(splitstring[0]);
+                    field.SetValue(null, Convert.ChangeType(splitstring[1], field.FieldType));
+                    missingfields.Remove(splitstring[0]);
+                }
+            }
+            return missingfields;
+        }
+    }
+
+    /// <summary>
+    /// Stored config values.
+    /// </summary>
+    public static class REYconfig
+    {
+        public static int maxsuperskills = 2;
+        public static int testint = DateTime.Now.Second;
+        public static string teststring = "default";
+    }
+
+    /// <summary>
+    /// Only here to trigger the Initialization of the ConfigHandler
+    /// </summary>
+    [Category("Hidden")]
     public class ConfigInitItem : Item
     {
         static ConfigInitItem()
@@ -39,31 +124,4 @@ namespace REYmod.Utils
             ConfigHandler.Initialize();
         }
     }
-
-    public static class ConfigHandler
-    {
-        public static string configpath = "./configs/REYmod.cfg";
-
-        public static int maxsuperskills;
-
-
-
-        public static void Initialize()
-        {
-            //if (!File.Exists(configpath))
-            //{
-            //    File.Create(configpath);
-
-            //}
-
-            InitWithDefault();
-        }
-
-
-        private static void InitWithDefault()
-        {
-            maxsuperskills = 2;
-        }
-    }
-
 }
