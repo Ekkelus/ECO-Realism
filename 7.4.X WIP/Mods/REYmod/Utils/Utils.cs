@@ -35,6 +35,7 @@ using Eco.Core.Utils;
 using Eco.Gameplay.Stats;
 using Eco.Mods.TechTree;
 using Eco.Core.Utils.AtomicAction;
+using System.Timers;
 
 namespace REYmod.Utils
 {
@@ -43,25 +44,32 @@ namespace REYmod.Utils
     /// </summary>
     public static class ChatUtils
     {
-        /// <summary>
-        /// -OUTDATED- does the same as <see cref="TextLinkManager.MarkUpText(string)"/> \n
-        /// <para/>Use that instead
-        /// </summary>
-        /// <param name="text">The string that should be auto formatted for ingame chat</param>
-        /// <returns></returns>
-        public static string AutoLink(string text) // should not be used better call TextLinkManager.MarkUpText() directly
-        {
-            return TextLinkManager.MarkUpText(text);
-        }
+        ///// <summary>
+        ///// -OUTDATED- does the same as <see cref="TextLinkManager.MarkUpText(string)"/> \n
+        ///// <para/>Use that instead
+        ///// </summary>
+        ///// <param name="text">The string that should be auto formatted for ingame chat</param>
+        ///// <returns></returns>
+        //public static string AutoLink(string text) // should not be used better call TextLinkManager.MarkUpText() directly
+        //{
+        //    return TextLinkManager.MarkUpText(text);
+        //}
 
         public static void SendMessage(User user, string msg)
         {
-            ChatManager.ServerMessageToPlayer(Localizer.Do(AutoLink(msg)), user, false);
+            ChatManager.ServerMessageToPlayerAlreadyLocalized(msg.Autolink(), user, false);
         }
 
         public static void SendMessage(Player player, string msg)
         {
             SendMessage(player.User, msg);
+        }
+
+        internal static void ShowWelcomeMessage(User user)
+        {
+            string title = "Welcome";
+            string content = IOUtils.ReadFileFromConfigFolder("welcomemessage.txt");
+            user.Player.OpenInfoPanel(title, content);
         }
     }
 
@@ -71,21 +79,74 @@ namespace REYmod.Utils
     /// </summary>
     public static class GlobalEvents
     {
-        private static ThreadSafeAction<User> LoginActions;
+        private static Timer timer = null;
 
         public static void Initialize()
         {
-            //LoginActions = UserManager.OnUserLoggedIn;
-            //LoginActions.Add(OnUserLogin);
+            if (timer != null) timer.Dispose(); // dispose the old timer if theres already one
+            timer = new Timer
+            {
+                AutoReset = true,
+                Interval = 60000 // once per minute
+            };
+            timer.Elapsed += MinuteTimerElapsed;
+            timer.Start();
+            UserManager.OnUserLoggedIn.Remove(OnUserLogin);
+            UserManager.OnUserLoggedIn.Add(OnUserLogin);
+
 
 
         }
-
-        private static void OnUserLogin(User user)
+        /// <summary>
+        /// This method will automatically be called every minute
+        /// <para/> Could be useful
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void MinuteTimerElapsed(object sender, ElapsedEventArgs e)
         {
-            /* Too early, Player is not initialized yet...
-            user.Player.OpenInfoPanel("Login", "Hello World!");
-            */
+            //ChatManager.ServerMessageToAllAlreadyLocalized("Another minute passed! Current time: " + DateTime.Now.ToShortTimeString(),false);
+        }
+
+        /// <summary>
+        /// This method is called whenever a user logs in
+        /// </summary>
+        /// <param name="user">the logged in user</param>
+        private static void OnUserLogin(User user) // Note: There's no "Player" at that point yet
+        {
+            bool firstlogin = false;
+            if (user.LoginTime == default(int)) firstlogin = true;
+            user.OnLogOut.Add(() => OnUserLogout(user)); //user logout is needed to unsubcribe from certain events when logged out (maybe not but i'll keep it here)
+            if(!user.Stomach.OnEatFood.Any) user.Stomach.OnEatFood.Add(food => PlayerEatFood(food, user));
+            user.OnEnterWorld.Add(() => OnUserEnterWorld(user,firstlogin));
+        }
+
+        /// <summary>
+        /// This Method is called when a player Login is completed
+        /// </summary>
+        /// <param name="user"></param>
+        private static void OnUserEnterWorld(User user,bool firstlogin)
+        {
+            //Console.WriteLine(user.Name + " entered world");
+            if (firstlogin && REYconfig.showwelcomemessage) ChatUtils.ShowWelcomeMessage(user);
+            user.OnEnterWorld.Clear();
+        }
+
+        /// <summary>
+        /// This method is called whenever a player eats somethin
+        /// </summary>
+        /// <param name="food">the eaten fooditem</param>
+        /// <param name="user">the player who ate</param>
+        private static void PlayerEatFood(FoodItem food, User user)
+        {
+            //ChatManager.ServerMessageToAllAlreadyLocalized(user.UILink() + " just ate " + food.UILink(), false);
+
+        }
+
+        private static void OnUserLogout(User user)
+        {
+            user.Stomach.OnEatFood.Clear();
+
         }
     }
 
@@ -135,6 +196,11 @@ namespace REYmod.Utils
     /// </summary>
     public static class MiscUtils
     {
+        /// <summary>
+        /// Returns the number of plots a <see cref="User"/> owns.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public static int CountPlots(User user)
         {
             IEnumerable<Vector2i> positions;
@@ -268,6 +334,7 @@ namespace REYmod.Utils
         /// <summary>
         /// This Method should override the CreateLevelUpAction() Method of Skills that can be superskilled.
         /// Just place the Example code in the code of superskillable Skills.
+        /// </summary>
         /// <example>
         /// <code>
         ///public override IAtomicAction CreateLevelUpAction(Player player)
@@ -276,7 +343,6 @@ namespace REYmod.Utils
         ///}
         /// </code>
         /// </example>
-        /// </summary>
         /// <seealso cref="Skill.CreateLevelUpAction(Player)"/>
         /// <param name="skill"></param>
         /// <param name="player"></param>
@@ -327,18 +393,18 @@ namespace REYmod.Utils
     /// </summary>
     public static class UtilsClipboard
     {
-        public static Dictionary<User, User> UnclaimSelector;
+        public static Dictionary<User, Tuple<User,int>> UnclaimSelector;
 
         public static void Initialize()
         {
-            UnclaimSelector = new Dictionary<User, User>();
+            UnclaimSelector = new Dictionary<User, Tuple<User,int>>();
 
         }
 
     }
 
     /// <summary>
-    /// Custom Comparer (currently in use but probably not needed)
+    /// Custom Comparer (currently still in use but probably not needed)
     /// </summary>
     public class UserFloatComparer : IComparer<KeyValuePair<User, float>>
     {
@@ -360,5 +426,33 @@ namespace REYmod.Utils
             UtilsClipboard.Initialize();
             GlobalEvents.Initialize();
         }
+    }
+
+    /// <summary>
+    /// Most of the Functionality of this class is already available via the <see cref="Text"/> class.
+    /// <para/>The main difference is that this one provides its methods as extension methods for <see cref="string"/>.
+    /// </summary>
+    public static class CustomStringExtension
+    {
+        public static string Color(this string x, string color)
+        {
+            return "<color=" + color + ">" + x + "</color>";
+        }
+
+        public static string Bold(this string x)
+        {
+            return Text.Bold(x);
+        }
+
+        public static string Italics(this string x)
+        {
+            return Text.Italics(x);
+        }
+
+        public static string Autolink(this string x)
+        {
+            return TextLinkManager.MarkUpText(x);
+        }
+
     }
 }

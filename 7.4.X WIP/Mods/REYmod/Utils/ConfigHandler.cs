@@ -37,7 +37,7 @@ namespace REYmod.Utils
     /// </summary>
     public static class ConfigHandler
     {
-        public static string configfolderpath = "./configs/";
+        public static string configfolderpath = "./mods/REYmod/configs/";
         public static string configfilename = "REYmod.cfg";
         public static string Fullconfigpath { get { return configfolderpath + configfilename; } }
 
@@ -109,8 +109,8 @@ namespace REYmod.Utils
     public static class REYconfig
     {
         public static int maxsuperskills = 2;
-        public static int testint = DateTime.Now.Second;
-        public static string teststring = "default";
+        public static double maxinactivetime = 3*24; // in hours
+        public static bool showwelcomemessage = true;
     }
 
     /// <summary>

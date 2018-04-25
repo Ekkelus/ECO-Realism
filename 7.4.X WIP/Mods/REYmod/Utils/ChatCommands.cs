@@ -28,30 +28,22 @@ namespace REYmod.Utils
         [ChatCommand("rules", "Displays the Server Rules")]
         public static void Rules(User user)
         {
-
             string x = IOUtils.ReadFileFromConfigFolder("rules.txt");
-
-            x = ChatUtils.AutoLink(x);
-
-            user.Player.OpenInfoPanel("Rules", x);
+            user.Player.OpenInfoPanel("Rules", x.Autolink());
         }
 
         [ChatCommand("modkit", "Display information about the modkit")]
         public static void Modkit(User user)
         {
             string x = IOUtils.ReadFileFromConfigFolder("modkit.txt");
-            x = ChatUtils.AutoLink(x);
-
-            user.Player.OpenInfoPanel("Modkit", x);
+            user.Player.OpenInfoPanel("Modkit", x.Autolink());
         }
 
         [ChatCommand("changelog", "Displays the changelog of the modkit")]
         public static void Changelog(User user)
         {
             string x = IOUtils.ReadFileFromConfigFolder("changelog.txt");
-            x = ChatUtils.AutoLink(x);
-
-            user.Player.OpenInfoPanel("Changelog", x);
+            user.Player.OpenInfoPanel("Changelog", x.Autolink());
         }
 
         [ChatCommand("report", "Report a player or an issue")]
@@ -295,30 +287,55 @@ namespace REYmod.Utils
         }
 
         [ChatCommand("unclaimselect", "Selects the owner of the plot you're standing on for unclaimconfirm", level: ChatAuthorizationLevel.Admin)]
-        public static void UnclaimPlayer(User user)
+        public static void UnclaimPlayer(User user, string ownername = "")
         {
-            User owner = PropertyManager.GetPlot(user.Position.XZi).Owner;
+            User owner = null;
+            Tuple<User, int> ownerandcode;
+            int confirmationcode = 0;
+            bool inactive = true;
+            if (ownername == "")
+            {
+                if (PropertyManager.GetPlot(user.Position.XZi) != null)
+                {
+                    owner = PropertyManager.GetPlot(user.Position.XZi).Owner;
+                }
+            }
+            else owner = UserManager.FindUserByName(ownername);
+
             if (owner == null)
             {
                 user.Player.SendTemporaryMessageAlreadyLocalized("Player not Found");
                 return;
             }
+            if ((WorldTime.Seconds - owner.LogoutTime) < REYconfig.maxinactivetime * 3600)
+            {
+                confirmationcode = RandomUtil.Range(1000, 9999);
+                inactive = false;
+            }
+            
+
 
             if (UtilsClipboard.UnclaimSelector.ContainsKey(user)) UtilsClipboard.UnclaimSelector.Remove(user);
-            UtilsClipboard.UnclaimSelector.Add(user, owner);
+            UtilsClipboard.UnclaimSelector.Add(user, new Tuple<User,int>(owner,confirmationcode));
 
-            UtilsClipboard.UnclaimSelector.TryGetValue(user, out owner);
-            user.Player.SendTemporaryMessageAlreadyLocalized(TextLinkManager.MarkUpText("Selected " + owner.Name + " as target! "));
-            //ChatUtils.SendMessage(user, "Then: " + owner.OfflineInfo.LoggoutTime.ToString());
-            //ChatUtils.SendMessage(user, "Now: " + TimeUtil.Ticks);
-            //ChatUtils.SendMessage(user, "Diff: " + TimeUtil.DaysHoursMinutes(TimeUtil.TicksToSeconds((TimeUtil.Ticks - (long)owner.OfflineInfo.LoggoutTime))));
+            UtilsClipboard.UnclaimSelector.TryGetValue(user, out ownerandcode);
+            owner = ownerandcode.Item1;
+            user.Player.SendTemporaryMessageAlreadyLocalized("Selected " + owner.UILink() + " as target! ");
+            if (owner.LoggedIn)
+            {
+                user.Player.SendTemporaryMessageAlreadyLocalized((owner.UILink() + " IS ONLINE! ").Color("red").Bold());
+                user.Player.SendTemporaryMessageAlreadyLocalized("Confirmationcode: " + confirmationcode);
+            }
+            else if (!inactive) user.Player.SendTemporaryMessageAlreadyLocalized("WARNING: Player only offline for " + TimeSpan.FromSeconds(WorldTime.Seconds - owner.LogoutTime).ToString() + ". Use Confirmation Code:" + confirmationcode);
+
 
         }
 
         [ChatCommand("unclaimconfirm", "Unclaims all property of the selected player", level: ChatAuthorizationLevel.Admin)]
-        public static void UnclaimConfirm(User user)
+        public static void UnclaimConfirm(User user, int confirmcode = 0)
         {
             User target = null;
+            Tuple<User,int> targetandcode;
             int totalplotcount = 0, deedcount = 0, plotcountdeed = 0, vehiclecount = 0, destroyedvehicles = 0;
             IEnumerable<Vector2i> positions;
             string tmp = string.Empty;
@@ -331,9 +348,15 @@ namespace REYmod.Utils
                 return false;
             };
 
-            if (!UtilsClipboard.UnclaimSelector.TryGetValue(user, out target))
+            if (!UtilsClipboard.UnclaimSelector.TryGetValue(user, out targetandcode))
             {
                 user.Player.SendTemporaryErrorAlreadyLocalized("no User selected");
+                return;
+            }
+            target = targetandcode.Item1;
+            if(confirmcode != targetandcode.Item2)
+            {
+                ChatUtils.SendMessage(user, "Confirmationcode not correct");
                 return;
             }
             IEnumerable<AuthorizationController> authorizationControllers = PropertyManager.GetAuthBelongingTo(target);
@@ -359,7 +382,7 @@ namespace REYmod.Utils
                     {
                         vehiclecount++;
                         vehicle = auth.AttachedWorldObjects[0].Object;
-                        ChatUtils.SendMessage(user, "Found Vehicle: " + auth.Name + " at " + vehicle.Position.UILink());
+                        ChatUtils.SendMessage(user, "Found Vehicle: " + auth.Name);
                         //vehicle.Destroy();
                         sourcestack = null;
                         sourcestack = target.Inventory.NonEmptyStacks.FirstOrDefault(findDeed);
