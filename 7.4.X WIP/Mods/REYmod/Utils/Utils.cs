@@ -69,7 +69,7 @@ namespace REYmod.Utils
         {
             string title = "Welcome";
             string content = IOUtils.ReadFileFromConfigFolder("welcomemessage.txt");
-            user.Player.OpenInfoPanel(title, content);
+            user.Player.OpenInfoPanel(title, content.Autolink());
         }
     }
 
