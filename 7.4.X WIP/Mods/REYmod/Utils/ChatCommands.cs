@@ -20,11 +20,22 @@ using Eco.Gameplay.Objects;
 using Eco.Gameplay.Items;
 using Eco.Gameplay.Components.Auth;
 using Eco.Gameplay.Components;
+using Eco.World;
+using REYmod.Blocks;
 
 namespace REYmod.Utils
 {
     public class ChatCommands : IChatCommandHandler
     {
+
+        [ChatCommand("diamond", "Spawns a diamond above you")]
+        public static void DiamondSpawn(User user)
+        {
+            Vector3i x = user.Position.Round + new Vector3i(0, 2, 0);
+            World.SetBlock(typeof(DiamondBlock), x);
+        }
+
+
         [ChatCommand("rules", "Displays the Server Rules")]
         public static void Rules(User user)
         {
