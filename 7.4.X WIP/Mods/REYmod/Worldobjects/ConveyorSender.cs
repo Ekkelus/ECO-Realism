@@ -82,24 +82,30 @@ namespace Eco.Mods.TechTree
         private void CustomTick(object sender, ElapsedEventArgs e)
         {          
             if (!this.Enabled) return;
-            this.LinkedStorage.MoveAsManyItemsAsPossible(Storage, this.OwnerUser);
+            int mult = 1;
+            int unitstosend = 8;
 
-            ItemStack firststack = Storage.NonEmptyStacks.First();
-            if (firststack != null)
+
+            this.LinkedStorage.MoveAsManyItemsAsPossible(Storage, this.OwnerUser);
+            IEnumerable<ItemStack> nonempty = Storage.NonEmptyStacks;
+            //outputWire.UpdateStatus();
+            nonempty.ForEach(stack =>
             {
-                outputWire.UpdateStatus();
-                Console.WriteLine("Try sending items! " + firststack.Quantity + " " + firststack.Item.FriendlyNamePlural);
+                int stackbefore = stack.Quantity;
+                if (stack.Item.IsCarried) mult = 5; else mult = 1;
+                if (unitstosend / mult < 1) return;
+                Console.WriteLine("Try sending items! " + stack.Quantity + " " + stack.Item.FriendlyNamePlural);
                 //Console.WriteLine(outputWire.IsDisconnected);
-                outputWire.SendItemConsume(firststack, 5);
-                Storage.OnChanged.Invoke(null);
-                //Console.WriteLine(firststack.Quantity);
-                //if (firststack.Quantity <= 0)
-                //{
-                //    Console.WriteLine("Try removing Stack");
-                //    this.GetComponent<LinkComponent>().GetSortedLinkedInventories(this.OwnerUser).TryClearItemStack(firststack);
-                //}
-                //this.GetComponent<LinkComponent>().GetSortedLinkedInventories(this.OwnerUser).RemoveItems(new ItemStack(firststack.Item, sentItemCount));
-            }
+                outputWire.SendItemConsume(stack,unitstosend/mult);
+                unitstosend -= (stackbefore - stack.Quantity) * mult;
+                Console.WriteLine(stack.Quantity);
+                if (stack.Quantity <= 0)
+                {
+                    Console.WriteLine("Try removing Stack");
+                    Storage.AddItem(stack.Item);
+                    Storage.RemoveItem(stack.Item.Type);
+                }
+            });
         }
 
         public override void Destroy()

@@ -33,6 +33,7 @@ namespace Eco.Mods.TechTree
     using System.Linq;
     using Eco.Core.Utils;
     using System.Timers;
+    using REYmod.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]                   
@@ -98,6 +99,7 @@ namespace Eco.Mods.TechTree
 
         private int OnReceive(ItemStack arg)
         {
+            if (!this.Enabled) return 0;
             // Need to add one item after the other?
             //Result result = this.GetComponent<LinkComponent>().GetSortedLinkedInventories(this.OwnerUser).TryAddItems(arg.Item.GetType(),arg.Quantity,this.OwnerUser);
             //if (result.Success)
@@ -107,28 +109,35 @@ namespace Eco.Mods.TechTree
             //}
             //Console.WriteLine("Called OnReceive: Received NOTHING!");
             //return 0;
-            tmpInventory.Clear();
-            tmpInventory.AddItems(arg);
-            ValResult<int> receivedItems = tmpInventory.MoveAsManyItemsAsPossible(Storage, this.OwnerUser);
+            ValResult<int> receivedItems;
+                tmpInventory.Clear();
+                tmpInventory.AddItems(arg);
+                receivedItems = tmpInventory.MoveAsManyItemsAsPossible(Storage, this.OwnerUser);
             if (receivedItems.Success) return receivedItems.Val;
-            throw new Exception("Something went wrong when adding Items");
+            return 0;
         }
 
         private int CanReceive(ItemStack arg)
-        {
-            Console.Write("Called CanReceive: ");
+        {        
             if (!this.Enabled) return 0;
-            this.Storage.MoveAsManyItemsAsPossible(LinkedStorage, this.OwnerUser);
-            int canreceive = 0;
-            if (Storage.Stacks.Where(x => x.Empty) != null)
+            Console.Write("Called CanReceive: ");
+            if (arg.Item.IsLiquid())
             {
-                Console.Write("returned " + Math.Min(arg.Item.MaxStackSize, arg.Quantity) + " " + arg.Item.FriendlyName + "\n");
+                Console.WriteLine("nothing because is liquid");
+                return 0;
+            }
+            int canreceive = 0;
+                this.Storage.MoveAsManyItemsAsPossible(LinkedStorage, this.OwnerUser);
+
+            //if (Storage.Stacks.Where(x => x.Empty).Count() != 0)
+            if (Storage.Stacks.Any(x => x.Empty))
+            {
+                Console.Write("Empty Stack found!\n");
                 return Math.Min(arg.Item.MaxStackSize, arg.Quantity);
             }
                 IEnumerable<ItemStack> matchingStacks = Storage.Stacks.Where(x => (x.Item == arg.Item) && x.Quantity < x.Item.MaxStackSize);
 
-            matchingStacks.ForEach(x => canreceive += (x.Item.MaxStackSize - x.Quantity));
-
+                matchingStacks.ForEach(x => canreceive += (x.Item.MaxStackSize - x.Quantity));
             Console.Write("returned " + Math.Min(canreceive, arg.Quantity) + " " + arg.Item.FriendlyName + "\n");
             return Math.Min(canreceive,arg.Quantity);
         }

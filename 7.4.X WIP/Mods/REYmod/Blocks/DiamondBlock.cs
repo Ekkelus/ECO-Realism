@@ -21,6 +21,7 @@ namespace REYmod.Blocks
 {
     [Serialized]
     [Minable, Solid, Wall]
+    [BecomesRubble(typeof(CopperOreRubbleSet2Chunk1Object), typeof(GoldOreRubbleSet2Chunk2Object), typeof(CoalRubbleSet2Chunk3Object), typeof(IronOreRubbleSet2Chunk4Object))]
     public partial class DiamondBlock :
         Block
     { }

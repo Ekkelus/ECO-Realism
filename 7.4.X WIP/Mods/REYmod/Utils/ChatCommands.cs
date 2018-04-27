@@ -164,7 +164,9 @@ namespace REYmod.Utils
                 userlist.Add(new KeyValuePair<User, float>(userentry, (float)Math.Round(userentry.SkillRate, 2)));
             }
 
-            userlist.Sort(new UserFloatComparer());
+            //userlist.Sort(new UserFloatComparer());
+            userlist.Sort((KeyValuePair<User, float> x, KeyValuePair<User, float> y) => y.Value.CompareTo(x.Value));
+
 
             if (usercount < max) max = usercount;
             for (i = 0; i < max; i++)

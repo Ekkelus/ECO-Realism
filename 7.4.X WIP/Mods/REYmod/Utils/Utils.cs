@@ -36,6 +36,7 @@ using Eco.Gameplay.Stats;
 using Eco.Mods.TechTree;
 using Eco.Core.Utils.AtomicAction;
 using System.Timers;
+using Eco.Gameplay.Wires;
 
 namespace REYmod.Utils
 {
@@ -399,7 +400,7 @@ namespace REYmod.Utils
     }
 
     /// <summary>
-    /// Custom Comparer (currently still in use but probably not needed)
+    /// Custom Comparer -OUTDATED-(can probably be removed)
     /// </summary>
     public class UserFloatComparer : IComparer<KeyValuePair<User, float>>
     {
@@ -424,11 +425,11 @@ namespace REYmod.Utils
     }
 
     /// <summary>
-    /// Most of the Functionality of this class is already available via the <see cref="Text"/> class.
-    /// <para/>The main difference is that this one provides its methods as extension methods for <see cref="string"/>.
+    /// Some extensions for existing classes.
     /// </summary>
-    public static class CustomStringExtension
+    public static class CustomClassExtensions
     {
+        #region String
         public static string Color(this string x, string color)
         {
             return "<color=" + color + ">" + x + "</color>";
@@ -448,6 +449,17 @@ namespace REYmod.Utils
         {
             return TextLinkManager.MarkUpText(x);
         }
+        #endregion
+
+        #region Item
+        public static bool IsLiquid(this Item x)
+        {
+            return ItemAttribute.Has<LiquidAttribute>(x.Type);
+        }
+        #endregion
+
 
     }
+
+
 }
