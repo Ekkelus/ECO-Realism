@@ -456,6 +456,27 @@ namespace REYmod.Utils
         {
             return ItemAttribute.Has<LiquidAttribute>(x.Type);
         }
+
+        public static bool HasIngredient(this Item item, Type ingredienttype)
+        {
+            if (item.Type == ingredienttype) return true;
+            IEnumerable<Recipe> recipes = Recipe.GetRecipesForItem(item.Type);
+            recipes = recipes.Where(y =>
+            {
+                IEnumerable<CraftingElement> recipeingredients = y.Ingredients.Where(z =>
+                 {
+                     return z.Item.HasIngredient(ingredienttype);
+                 });
+                if (recipeingredients.Count() != 0) return true;
+                else return false; 
+            });
+            if (recipes.Count() != 0)
+            {
+                //recipes.ForEach(x => ChatManager.ServerMessageToAllAlreadyLocalized(x.FriendlyName, false));
+                return true;
+            }
+            else return false;
+        }
         #endregion
 
 
