@@ -21,8 +21,32 @@ namespace REYmod.Blocks
 {
     [Serialized]
     [Minable, Solid, Wall]
-    [BecomesRubble(typeof(CopperOreRubbleSet2Chunk1Object), typeof(GoldOreRubbleSet2Chunk2Object), typeof(CoalRubbleSet2Chunk3Object), typeof(IronOreRubbleSet2Chunk4Object))]
+    [BecomesRubble(typeof(DiamondRubble1Object), typeof(DiamondRubble2Object), typeof(DiamondRubble3Object), typeof(DiamondRubble4Object))]
     public partial class DiamondBlock :
         Block
     { }
+
+    [Serialized]
+    [Weight(1000)]
+    [MaxStackSize(20)]
+    public class DiamondItem : Item
+    {
+        public override string FriendlyName { get { return "Diamond"; } }
+    }
+
+    [Serialized]
+    public class DiamondRubble4Object : RubbleObject<DiamondItem>
+    {    }
+
+    [Serialized]
+    public class DiamondRubble3Object : RubbleObject<DiamondItem>
+    {    }
+
+    [Serialized]
+    public class DiamondRubble2Object : RubbleObject<DiamondItem>
+    {    }
+
+    [Serialized]
+    public class DiamondRubble1Object : RubbleObject<DiamondItem>
+    {    }
 }
