@@ -88,20 +88,15 @@ namespace Eco.Mods.TechTree
 
             this.LinkedStorage.MoveAsManyItemsAsPossible(Storage, this.OwnerUser);
             IEnumerable<ItemStack> nonempty = Storage.NonEmptyStacks;
-            //outputWire.UpdateStatus();
             nonempty.ForEach(stack =>
             {
                 int stackbefore = stack.Quantity;
                 if (stack.Item.IsCarried) mult = 5; else mult = 1;
                 if (unitstosend / mult < 1) return;
-                Console.WriteLine("Try sending items! " + stack.Quantity + " " + stack.Item.FriendlyNamePlural);
-                //Console.WriteLine(outputWire.IsDisconnected);
                 outputWire.SendItemConsume(stack,unitstosend/mult);
                 unitstosend -= (stackbefore - stack.Quantity) * mult;
-                Console.WriteLine(stack.Quantity);
                 if (stack.Quantity <= 0)
                 {
-                    Console.WriteLine("Try removing Stack");
                     Storage.AddItem(stack.Item);
                     Storage.RemoveItem(stack.Item.Type);
                 }

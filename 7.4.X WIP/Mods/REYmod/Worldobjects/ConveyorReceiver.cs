@@ -100,15 +100,6 @@ namespace Eco.Mods.TechTree
         private int OnReceive(ItemStack arg)
         {
             if (!this.Enabled) return 0;
-            // Need to add one item after the other?
-            //Result result = this.GetComponent<LinkComponent>().GetSortedLinkedInventories(this.OwnerUser).TryAddItems(arg.Item.GetType(),arg.Quantity,this.OwnerUser);
-            //if (result.Success)
-            //{
-            //    Console.WriteLine("Called OnReceive: Received " + arg.Quantity + " " + arg.Item.FriendlyName);
-            //    return arg.Quantity;
-            //}
-            //Console.WriteLine("Called OnReceive: Received NOTHING!");
-            //return 0;
             ValResult<int> receivedItems;
                 tmpInventory.Clear();
                 tmpInventory.AddItems(arg);
@@ -118,28 +109,23 @@ namespace Eco.Mods.TechTree
         }
 
         private int CanReceive(ItemStack arg)
-        {        
+        {
             if (!this.Enabled) return 0;
-            Console.Write("Called CanReceive: ");
             if (arg.Item.IsLiquid())
             {
-                Console.WriteLine("nothing because is liquid");
                 return 0;
             }
             int canreceive = 0;
-                this.Storage.MoveAsManyItemsAsPossible(LinkedStorage, this.OwnerUser);
+            this.Storage.MoveAsManyItemsAsPossible(LinkedStorage, this.OwnerUser);
 
-            //if (Storage.Stacks.Where(x => x.Empty).Count() != 0)
+
             if (Storage.Stacks.Any(x => x.Empty))
             {
-                Console.Write("Empty Stack found!\n");
                 return Math.Min(arg.Item.MaxStackSize, arg.Quantity);
             }
-                IEnumerable<ItemStack> matchingStacks = Storage.Stacks.Where(x => (x.Item == arg.Item) && x.Quantity < x.Item.MaxStackSize);
-
-                matchingStacks.ForEach(x => canreceive += (x.Item.MaxStackSize - x.Quantity));
-            Console.Write("returned " + Math.Min(canreceive, arg.Quantity) + " " + arg.Item.FriendlyName + "\n");
-            return Math.Min(canreceive,arg.Quantity);
+            IEnumerable<ItemStack> matchingStacks = Storage.Stacks.Where(x => (x.Item == arg.Item) && x.Quantity < x.Item.MaxStackSize);
+            matchingStacks.ForEach(x => canreceive += (x.Item.MaxStackSize - x.Quantity));
+            return Math.Min(canreceive, arg.Quantity);
         }
 
         public override void Destroy()
