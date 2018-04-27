@@ -44,16 +44,6 @@ namespace REYmod.Utils
     /// </summary>
     public static class ChatUtils
     {
-        ///// <summary>
-        ///// -OUTDATED- does the same as <see cref="TextLinkManager.MarkUpText(string)"/> \n
-        ///// <para/>Use that instead
-        ///// </summary>
-        ///// <param name="text">The string that should be auto formatted for ingame chat</param>
-        ///// <returns></returns>
-        //public static string AutoLink(string text) // should not be used better call TextLinkManager.MarkUpText() directly
-        //{
-        //    return TextLinkManager.MarkUpText(text);
-        //}
 
         public static void SendMessage(User user, string msg)
         {
@@ -65,11 +55,16 @@ namespace REYmod.Utils
             SendMessage(player.User, msg);
         }
 
-        internal static void ShowWelcomeMessage(User user)
+        public static void ShowWelcomeMessage(User user)
         {
             string title = "Welcome";
             string content = IOUtils.ReadFileFromConfigFolder("welcomemessage.txt");
             user.Player.OpenInfoPanel(title, content.Autolink());
+        }
+
+        public static void ShowMOTD(User user)
+        {
+            throw new NotImplementedException();
         }
     }
 
