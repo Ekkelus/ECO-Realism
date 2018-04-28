@@ -27,6 +27,31 @@ namespace REYmod.Utils
 {
     public class ChatCommands : IChatCommandHandler
     {
+        [ChatCommand("addallergy", "adds an allergy", level: ChatAuthorizationLevel.Admin)]
+        public static void AddAllergy(User user, string item)
+        {
+            Item x = Item.GetItemByString(user, item);
+            if (x != null)
+            {
+                user.SetState("allergy", x.Type.Name);
+            }
+        }
+
+
+
+        [ChatCommand("vomit+", "(Really) Empties your stomach", ChatAuthorizationLevel.Admin)]
+        public static void VomitPlus(User user)
+        {
+            user.Player.User.Stomach.ClearCalories(user.Player);
+            user.Player.User.Stomach.Contents.Clear();
+            user.Player.SendTemporaryMessageLoc("Really Bad elk meat?");
+        }
+
+        [ChatCommand("clearallergy", "clears allergies", level: ChatAuthorizationLevel.Admin)]
+        public static void ClearAllergy(User user)
+        {
+            user.SetState("allergy", string.Empty);
+        }
 
         [ChatCommand("diamond", "Spawns a diamond above you")]
         public static void DiamondSpawn(User user)
