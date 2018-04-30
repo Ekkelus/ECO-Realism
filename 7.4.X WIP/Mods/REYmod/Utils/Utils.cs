@@ -38,6 +38,7 @@ using Eco.Core.Utils.AtomicAction;
 using System.Timers;
 using Eco.Gameplay.Wires;
 using Eco.Simulation.Time;
+using Eco.Core.Controller;
 
 namespace REYmod.Utils
 {
@@ -72,7 +73,6 @@ namespace REYmod.Utils
 
     /// <summary>
     /// This class is responsible for the handling of Events
-    /// currently serves no purpose
     /// </summary>
     public static class GlobalEvents
     {
@@ -114,15 +114,15 @@ namespace REYmod.Utils
             bool firstlogin = false;
             if (user.LoginTime == default(int)) firstlogin = true;
             user.OnLogOut.Add(() => OnUserLogout(user)); //user logout is needed to unsubcribe from certain events when logged out (maybe not but i'll keep it here)
-            if(!user.Stomach.OnEatFood.Any) user.Stomach.OnEatFood.Add(food => PlayerEatFood(food, user));
-            user.OnEnterWorld.Add(() => OnUserEnterWorld(user,firstlogin));
+            if (!user.Stomach.OnEatFood.Any) user.Stomach.OnEatFood.Add(food => PlayerEatFood(food, user));
+            user.OnEnterWorld.Add(() => OnUserEnterWorld(user, firstlogin));
         }
 
         /// <summary>
         /// This Method is called when a player Login is completed
         /// </summary>
         /// <param name="user"></param>
-        private static void OnUserEnterWorld(User user,bool firstlogin)
+        private static void OnUserEnterWorld(User user, bool firstlogin) // Note: "Player" should be ready here
         {
             //Console.WriteLine(user.Name + " entered world");
             if (firstlogin && REYconfig.showwelcomemessage) ChatUtils.ShowWelcomeMessage(user);
@@ -172,7 +172,7 @@ namespace REYmod.Utils
     {
         public static void ClearFile(string path)
         {
-            if (File.Exists(path)) File.Delete(path);          
+            if (File.Exists(path)) File.Delete(path);
             File.Create(path).Close();
         }
 
@@ -233,6 +233,17 @@ namespace REYmod.Utils
             }
             return totalplotcount;
 
+        }
+
+        /// <summary>
+        /// -BUGGY- i have no idea why but that currently causes issues
+        /// <para/>Inverts the given DynamicValue and returns a new InvertDynamicvalue
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static InvertedDynamicValue InvertDynamicvalue(IDynamicValue x)
+        {
+            return new InvertedDynamicValue(x);
         }
     }
 
@@ -328,7 +339,19 @@ namespace REYmod.Utils
         /// <param name="player"></param>
         public static void ShowSuperSkillInfo(Player player)
         {
-            player.OpenInfoPanel("Super Skills", "Current amount of Super Skills: <b><color=green>" + SkillUtils.SuperSkillCount(player.User) + "</color></b><br>Max amount of Super Skills: <b><color=green>" + ((REYconfig.maxsuperskills != int.MaxValue) ? REYconfig.maxsuperskills.ToString() : "Infinite") + "</color></b><br><br>Super Skills are Skills that can be leveled all the way up to level 10.<br><br><color=red>You can only have a limited amount of them.</color><br><br>To confirm that you understood Super Skills and to unlock them please enter <b><color=green>/confirmsuperskill</b></color>");
+            string confirmation = "You already unlocked your next superskill";
+            if (!CheckSuperskillConfirmation(player.User))
+            {                 
+                confirmation = "To confirm that you understood Super Skills and to unlock them please click " + new Button(x => ConfirmSuperskill(x.User),clickdesc:"Click to unlock", content: "HERE".Color("green"), singleuse: true).UILink();
+            }
+            player.OpenInfoPanel("Super Skills", "Current amount of Super Skills: <b><color=green>" + SkillUtils.SuperSkillCount(player.User) + "</color></b><br>Max amount of Super Skills: <b><color=green>" + ((REYconfig.maxsuperskills != int.MaxValue) ? REYconfig.maxsuperskills.ToString() : "Infinite") + "</color></b><br><br>Super Skills are Skills that can be leveled all the way up to level 10.<br><br><color=red>You can only have a limited amount of them.</color><br><br>" + confirmation);
+        }
+
+        public static void ConfirmSuperskill(User user)
+        {
+            if (CheckSuperskillConfirmation(user)) return;           
+            if (user.Player != null) user.Player.OpenInfoPanel("Superskill Unlocked!", "You can now level up a Skill to level 10");
+            superskillconfirmed.Add(user.ID);
         }
 
         /// <summary>
@@ -366,18 +389,27 @@ namespace REYmod.Utils
         {
             if (skill.Level != 5) return SimpleAtomicAction.NoOp;
             if (SkillUtils.SuperSkillCount(player.User) >= REYconfig.maxsuperskills) return new FailedAtomicAction(Localizer.Do("You already have enough SuperSkills " + SkillUtils.SuperSkillCount(player.User) + "/" + REYconfig.maxsuperskills));
-            foreach (string id in SkillUtils.superskillconfirmed)
+            if (CheckSuperskillConfirmation(player.User))
             {
-                if (id == player.User.ID)
-                {
-                    SkillUtils.superskillconfirmed.Remove(id);
-                    return SimpleAtomicAction.NoOp;
-                }
+                superskillconfirmed.Remove(player.User.ID);
+                return SimpleAtomicAction.NoOp;
             }
             SkillUtils.ShowSuperSkillInfo(player);
             return new FailedAtomicAction(Localizer.Do("You need to confirm first"));
         }
-        
+
+        public static bool CheckSuperskillConfirmation(User user)
+        {
+            foreach (string id in SkillUtils.superskillconfirmed)
+            {
+                if (id == user.ID)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// Checks if the given User has the given <see cref="Skill"/> at the given Level or above
         /// </summary>
@@ -408,11 +440,11 @@ namespace REYmod.Utils
     /// </summary>
     public static class UtilsClipboard
     {
-        public static Dictionary<User, Tuple<User,int>> UnclaimSelector;
+        public static Dictionary<User, Tuple<User, int>> UnclaimSelector;
 
         public static void Initialize()
         {
-            UnclaimSelector = new Dictionary<User, Tuple<User,int>>();
+            UnclaimSelector = new Dictionary<User, Tuple<User, int>>();
 
         }
 
@@ -431,6 +463,8 @@ namespace REYmod.Utils
         }
 
     }
+
+    public class AllergyIgnoreAttribute : ItemAttribute { }
 
     [Category("Hidden")]
     public class UtilsInitItem : Item
@@ -476,20 +510,22 @@ namespace REYmod.Utils
             return ItemAttribute.Has<LiquidAttribute>(x.Type);
         }
 
-        public static bool HasIngredient(this Item item, Type ingredienttype, HashSet<Item> checkeditems = null)
+        public static bool HasIngredient(this Item item, Type ingredienttype, HashSet<Item> checkeditems = null, bool allergyfix = true)
         {
             if (checkeditems == null) checkeditems = new HashSet<Item>();
             if (checkeditems.Contains(item)) return false;
             checkeditems.Add(item);
-            Console.WriteLine(checkeditems.Count);
-            
+            //Console.WriteLine(checkeditems.Count);
+            if (allergyfix && ItemAttribute.Has<AllergyIgnoreAttribute>(item.Type)) return false;
+
+
             if (item.Type == ingredienttype) return true;
             IEnumerable<Recipe> recipes = Recipe.GetRecipesForItem(item.Type);
             recipes = recipes.Where(y =>
             {
                 IEnumerable<CraftingElement> recipeingredients = y.Ingredients.Where(z =>
                  {
-                     return z.Item.HasIngredient(ingredienttype,checkeditems);
+                     return z.Item.HasIngredient(ingredienttype, checkeditems, allergyfix);
                  });
                 if (recipeingredients.Count() != 0) return true;
                 else return false;
@@ -507,6 +543,7 @@ namespace REYmod.Utils
         [Tooltip(200)]
         public static string MytooltipSection(this FoodItem food, Player player)
         {
+            //Console.WriteLine("Requested Tootip");
             if (!REYconfig.foodallergiesenabled) return null;
             if (player.User.IsAllergicTo(food)) return ("You are allergic to " + food.UILink() + "!. (Contains " + player.User.GetAllergyItem().UILink() + ")").Color("red");
             return null;
@@ -531,7 +568,7 @@ namespace REYmod.Utils
 
         public static Item GetAllergyItem(this User user)
         {
-            if(user.HasState("allergy") && (user.GetState<string>("allergy") != string.Empty))
+            if (user.HasState("allergy") && (user.GetState<string>("allergy") != string.Empty))
             {
                 string allergenestring = user.GetState<string>("allergy");
                 return Item.GetItemByString(user, allergenestring);
@@ -542,7 +579,123 @@ namespace REYmod.Utils
         #endregion
 
 
+
     }
+
+    /// <summary>
+    /// -BUGGY- at least was buggy, made some changes that are still untested
+    /// <para/>Inverts the given DynamicValue
+    /// </summary>
+    /// <param name="x"></param>
+    /// <returns></returns>
+    public class InvertedDynamicValue : IDynamicValue
+    {
+        private IDynamicValue dynamicValue;
+
+        public InvertedDynamicValue(IDynamicValue x)
+        {
+            dynamicValue = x;
+        }
+
+        public float GetBaseValue  { get { return dynamicValue.GetBaseValue; } }
+
+        int IController.ControllerID { get; set; }
+
+        public float GetCurrentValue(User user)
+        {
+            float currentvalue = dynamicValue.GetCurrentValue(user);
+            if (currentvalue == 0) return 0;
+            if (currentvalue <= 0.1f) return float.MaxValue;
+            return 1 / currentvalue;
+
+        }
+
+
+        public int GetCurrentValueInt(User user, float multiplier)
+        {
+            float floatvalue = (GetCurrentValue(user) * multiplier);
+            if (floatvalue >= int.MaxValue) return int.MaxValue;
+            return (int)(GetCurrentValue(user) * multiplier);
+        }
+    }
+
+
+    public class Button : ILinkable
+    {
+        private string clickdesc;
+        private string tooltip;
+        private string linkcontent;
+        private Action<Player> linkclickaction;
+        public int ID;
+        public bool temporary;
+
+        public static HashSet<Button> buttonList = new HashSet<Button>();
+        // [TooltipTitle]
+        public string TooltipTitle { get; set; }
+
+        [Tooltip(100)]
+        public string Tooltip()
+        {
+            return this.tooltip;
+        }
+
+
+
+        public Button(Action<Player> onClick = null, string title = null, string tooltip = null, string content = null, bool singleuse = false,string clickdesc = null)
+        {
+            if (buttonList.Count > 10000000) throw new OverflowException("Too many undisposed Buttons"); // Exception when there are more than 10mil buttons, thats hopefully never the case
+            this.linkclickaction = onClick;
+            this.TooltipTitle = title;
+            this.tooltip = tooltip;
+            this.linkcontent = content;
+            this.temporary = singleuse;
+            this.clickdesc = clickdesc;
+            int newid = RandomUtil.Range(100000000, 999999999);
+            while (buttonList.Any(x => x.ID == newid))
+            {
+                newid = RandomUtil.Range(100000000, 999999999);
+            }
+            buttonList.Add(this);
+            this.ID = newid;
+        }
+
+
+
+
+        public LocString LinkClickedTooltipContent(Player clickingPlayer)
+        {
+            return new LocString(clickdesc);
+        }
+
+        public virtual void OnLinkClicked(Player clickingPlayer)
+        {
+            if (linkclickaction == null) return;
+            linkclickaction(clickingPlayer);
+            //if (temporary) this.Dispose();
+            //clickingPlayer.OpenInfoPanel("Test", "It worked!");
+        }
+
+        public LocString UILinkContent()
+        {
+            return new LocString(linkcontent);
+        }
+
+    }
+
+
+    public class ButtonIdTranslator : ObjectLinkIdTranslator<Button>
+    {
+        protected override string GetTypedLinkId(Button linkTarget)
+        {
+            return linkTarget.ID.ToString();//linkTarget.Guid.ToString();
+        }
+        protected override Button GetTypedLinkTarget(string linkId)
+        {
+            int linkIdInt = Convert.ToInt32(linkId);
+            return Button.buttonList.FirstOrDefault(x => x.ID == linkIdInt);
+        }
+    }
+
 
 
 }

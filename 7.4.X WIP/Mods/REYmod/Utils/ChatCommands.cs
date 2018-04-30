@@ -309,20 +309,20 @@ namespace REYmod.Utils
             SkillUtils.ShowSuperSkillInfo(user.Player);
         }
 
-        [ChatCommand("confirmsuperskill", "Confirm that you read the warning about Super Skills")]
-        public static void ConfirmSuperSkill(User user)
-        {
-            foreach(string id in SkillUtils.superskillconfirmed)
-            {
-                if (id == user.ID)
-                {
-                    user.Player.SendTemporaryErrorAlreadyLocalized("You already unlocked Super Skills");
-                    return;
-                }                   
-            }
-            user.Player.SendTemporaryMessageAlreadyLocalized("You can now level up a Skill to level 10");
-            SkillUtils.superskillconfirmed.Add(user.ID);
-        }
+        //[ChatCommand("confirmsuperskill", "Confirm that you read the warning about Super Skills")]
+        //public static void ConfirmSuperSkill(User user)
+        //{
+        //    foreach(string id in SkillUtils.superskillconfirmed)
+        //    {
+        //        if (id == user.ID)
+        //        {
+        //            user.Player.SendTemporaryErrorAlreadyLocalized("You already unlocked Super Skills");
+        //            return;
+        //        }                   
+        //    }
+        //    user.Player.SendTemporaryMessageAlreadyLocalized("You can now level up a Skill to level 10");
+        //    SkillUtils.superskillconfirmed.Add(user.ID);
+        //}
 
         [ChatCommand("unclaimselect", "Selects the owner of the plot you're standing on for unclaimconfirm", level: ChatAuthorizationLevel.Admin)]
         public static void UnclaimPlayer(User user, string ownername = "")

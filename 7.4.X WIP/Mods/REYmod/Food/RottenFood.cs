@@ -1,6 +1,7 @@
 ﻿namespace Eco.Mods.TechTree
 {
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.DynamicValues;
@@ -17,9 +18,10 @@
     
     /// <summary>
     /// Dummy for the Foodallergysystem
-    /// </summary>
+    /// </summary>   
     [Serialized]
     [Weight(200)]
+    [Category("Hidden")]
     public partial class RottenFoodItem :
         FoodItem
     {
