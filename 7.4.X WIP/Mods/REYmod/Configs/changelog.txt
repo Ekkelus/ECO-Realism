@@ -10,6 +10,7 @@
 - Added Skinning Skill
 - Added skinned animals
 - Added Ruined Carcass
+- Added Raw Diamond, Diamond Cut
 - Added /avatar
 - Balanced a bunch of power requirements
 - Balanced Excavator recipe

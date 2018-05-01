@@ -29,24 +29,24 @@ namespace REYmod.Blocks
     [Serialized]
     [Weight(1000)]
     [MaxStackSize(20)]
-    public class DiamondItem : Item
+    public class RawDiamondItem : Item
     {
-        public override string FriendlyName { get { return "Diamond"; } }
+        public override string FriendlyName { get { return "Raw Diamond"; } }
     }
 
     [Serialized]
-    public class DiamondRubble4Object : RubbleObject<DiamondItem>
+    public class DiamondRubble4Object : RubbleObject<RawDiamondItem>
     {    }
 
     [Serialized]
-    public class DiamondRubble3Object : RubbleObject<DiamondItem>
+    public class DiamondRubble3Object : RubbleObject<RawDiamondItem>
     {    }
 
     [Serialized]
-    public class DiamondRubble2Object : RubbleObject<DiamondItem>
+    public class DiamondRubble2Object : RubbleObject<RawDiamondItem>
     {    }
 
     [Serialized]
-    public class DiamondRubble1Object : RubbleObject<DiamondItem>
+    public class DiamondRubble1Object : RubbleObject<RawDiamondItem>
     {    }
 }
