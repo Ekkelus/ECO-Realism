@@ -20,7 +20,6 @@
     /// Dummy for the Foodallergysystem
     /// </summary>   
     [Serialized]
-    [Weight(200)]
     [Category("Hidden")]
     public partial class RottenFoodItem :
         FoodItem

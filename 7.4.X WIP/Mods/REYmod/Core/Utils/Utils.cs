@@ -39,6 +39,12 @@ using System.Timers;
 using Eco.Gameplay.Wires;
 using Eco.Simulation.Time;
 using Eco.Core.Controller;
+using REYmod.Config;
+
+
+
+// This file should contain only basic Utils wich are needed for all Modules, no module specific code here, only "interfaces" for events (see OneMinutetimer for example)
+
 
 namespace REYmod.Utils
 {
@@ -78,6 +84,10 @@ namespace REYmod.Utils
     {
         private static Timer timer = null;
 
+        public static ThreadSafeAction OneMinuteEvent = new ThreadSafeAction();
+
+        public static ThreadSafeAction<FoodItem, User> OnPlayerEatFood = new ThreadSafeAction<FoodItem, User>();
+
         public static void Initialize()
         {
             if (timer != null) timer.Dispose(); // dispose the old timer if theres already one
@@ -86,23 +96,13 @@ namespace REYmod.Utils
                 AutoReset = true,
                 Interval = 60000 // once per minute
             };
-            timer.Elapsed += MinuteTimerElapsed;
+            timer.Elapsed += (x,y) => OneMinuteEvent.Invoke();
             timer.Start();
             UserManager.OnUserLoggedIn.Remove(OnUserLogin);
             UserManager.OnUserLoggedIn.Add(OnUserLogin);
 
 
 
-        }
-        /// <summary>
-        /// This method will automatically be called every minute
-        /// <para/> Could be useful
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private static void MinuteTimerElapsed(object sender, ElapsedEventArgs e)
-        {
-            //ChatManager.ServerMessageToAllAlreadyLocalized("Another minute passed! Current time: " + DateTime.Now.ToShortTimeString(),false);
         }
 
         /// <summary>
@@ -136,26 +136,10 @@ namespace REYmod.Utils
         /// <param name="user">the player who ate</param>
         private static void PlayerEatFood(FoodItem food, User user)
         {
+            OnPlayerEatFood.Invoke(food, user);
             //ChatManager.ServerMessageToAllAlreadyLocalized(user.UILink() + " just ate " + food.UILink(), false);             
-            if (REYconfig.foodallergiesenabled && user.IsAllergicTo(food))
-            {
-                ChatUtils.SendMessage(user, "You are allergic to " + food.FriendlyName + "!");
-                //user.Stomach.UseCalories(food.Calories * 2);
-                user.Stomach.Contents.Remove(user.Stomach.Contents.First(x => x.Food == food));
-                FoodItem rottenfood = new RottenFoodItem();
-                int amountofrotten = (int)(food.Calories / rottenfood.Calories);
-                for (int i = 0; i < amountofrotten; i++)
-                {
-                    StomachEntry rottenstomachEntry = new StomachEntry { Food = rottenfood, TimeEaten = WorldTime.Seconds };
-                    user.Stomach.Contents.Add(rottenstomachEntry);
-                }
-                if (WorldTime.Seconds > TimeUtil.DaysToSeconds(1))
-                {
-                    StomachEntry dummystomachEntry = new StomachEntry { Food = rottenfood, TimeEaten = double.MinValue }; // This is a workaround to update the nutritionvalue...
-                    user.Stomach.Contents.Add(dummystomachEntry); // for some reason that Update method is private...
-                    user.Stomach.CheckForBowelMovementAndExcreteFeces(user.Player); // unfortunately it wont work on the first day                   
-                }
-            }
+
+            
         }
 
         private static void OnUserLogout(User user)
@@ -193,6 +177,14 @@ namespace REYmod.Utils
             if (!Directory.Exists(dirpath)) Directory.CreateDirectory(dirpath);
             if (!File.Exists(path)) File.Create(path).Close();
             File.AppendAllText(path, text);
+        }
+
+        public static void WriteFileToConfigFolder(string filename, string text)
+        {
+            string dirpath = ConfigHandler.configfolderpath + filename.Substring(0, filename.LastIndexOf('/') + 1);
+            if (!Directory.Exists(dirpath)) Directory.CreateDirectory(dirpath);
+            if (!File.Exists(filename)) File.Create(filename).Close();
+            File.AppendAllText(filename, text);
         }
 
         public static void WriteToLog(string logdata, string desc = "")
@@ -464,7 +456,8 @@ namespace REYmod.Utils
 
     }
 
-    public class AllergyIgnoreAttribute : ItemAttribute { }
+  
+    public class AllergyIgnoreAttribute : ItemAttribute { } // This has to stay in Core because the attribute is added to Existing Items
 
     [Category("Hidden")]
     public class UtilsInitItem : Item
@@ -480,7 +473,7 @@ namespace REYmod.Utils
     /// <summary>
     /// Some extensions for existing classes.
     /// </summary>
-    public static class CustomClassExtensions
+    public static partial class CustomClassExtensions
     {
         #region String
         public static string Color(this string x, string color)
@@ -510,7 +503,7 @@ namespace REYmod.Utils
             return ItemAttribute.Has<LiquidAttribute>(x.Type);
         }
 
-        public static bool HasIngredient(this Item item, Type ingredienttype, HashSet<Item> checkeditems = null, bool allergyfix = true)
+        public static bool HasIngredient(this Item item, Type ingredienttype, HashSet<Item> checkeditems = null, bool allergyfix = true) //stays in core as it can also be used for othere things other than allergies, also the AllergyIgnoreAttribute exists in core so theres no problem
         {
             if (checkeditems == null) checkeditems = new HashSet<Item>();
             if (checkeditems.Contains(item)) return false;
@@ -538,47 +531,6 @@ namespace REYmod.Utils
             else return false;
         }
         #endregion
-
-        #region FoodItem
-        [Tooltip(200)]
-        public static string MytooltipSection(this FoodItem food, Player player)
-        {
-            //Console.WriteLine("Requested Tootip");
-            if (!REYconfig.foodallergiesenabled) return null;
-            if (player.User.IsAllergicTo(food)) return ("You are allergic to " + food.UILink() + "!. (Contains " + player.User.GetAllergyItem().UILink() + ")").Color("red");
-            return null;
-        }
-
-        #endregion
-
-        #region User
-        public static bool IsAllergicTo(this User user, FoodItem food)
-        {
-            if (user.HasState("allergy") && (user.GetState<string>("allergy") != string.Empty))
-            {
-                var allergenestring = user.GetState<string>("allergy");
-                Item allergeneItem = Item.GetItemByString(user, allergenestring);
-                Type allergenetype = allergeneItem.Type;
-                if (food.HasIngredient(allergenetype)) return true;
-            }
-            return false;
-
-
-        }
-
-        public static Item GetAllergyItem(this User user)
-        {
-            if (user.HasState("allergy") && (user.GetState<string>("allergy") != string.Empty))
-            {
-                string allergenestring = user.GetState<string>("allergy");
-                return Item.GetItemByString(user, allergenestring);
-            }
-            return null;
-        }
-
-        #endregion
-
-
 
     }
 
@@ -620,6 +572,7 @@ namespace REYmod.Utils
     }
 
 
+    #region Button
     public class Button : ILinkable
     {
         private string clickdesc;
@@ -639,8 +592,6 @@ namespace REYmod.Utils
             return this.tooltip;
         }
 
-
-
         public Button(Action<Player> onClick = null, string title = null, string tooltip = null, string content = null, bool singleuse = false,string clickdesc = null)
         {
             if (buttonList.Count > 10000000) throw new OverflowException("Too many undisposed Buttons"); // Exception when there are more than 10mil buttons, thats hopefully never the case
@@ -659,9 +610,6 @@ namespace REYmod.Utils
             this.ID = newid;
         }
 
-
-
-
         public LocString LinkClickedTooltipContent(Player clickingPlayer)
         {
             return new LocString(clickdesc);
@@ -679,7 +627,6 @@ namespace REYmod.Utils
         {
             return new LocString(linkcontent);
         }
-
     }
 
 
@@ -696,6 +643,7 @@ namespace REYmod.Utils
         }
     }
 
+    #endregion
 
 
 }

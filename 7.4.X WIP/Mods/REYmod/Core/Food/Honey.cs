@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
+    using REYmod.Utils;
 
     [Serialized]
     [Weight(150)]
@@ -42,6 +43,12 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<GlassJarItem>(typeof(BeekeeperEfficiencySkill), 2, BeekeeperEfficiencySkill.MultiplicativeStrategy),
             };
+            //            this.CraftMinutes = new MultiDynamicValue(MultiDynamicOps.Multiply
+            //, CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 0.1f, typeof(BeekeeperSpeedSkill))
+            //, MiscUtils.InvertDynamicvalue(new MultiDynamicValue(MultiDynamicOps.Average
+            //    , new LayerModifiedValue("Fireweed", 5)
+            //    , new LayerModifiedValue("Camas", 5))
+            //));
             this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 10, typeof(BeekeeperSpeedSkill));
             this.Initialize("Honey", typeof(HoneyRecipe));
             CraftingComponent.AddRecipe(typeof(BeehiveObject), this);

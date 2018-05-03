@@ -19,7 +19,7 @@ namespace Eco.Mods.TechTree
     using Gameplay.Systems.Tooltip;
 
     [Serialized]
-    [RequiresSkill(typeof(BowDamageSkill), 5)]
+    [RequiresSkill(typeof(BowDamageSkill), 1)]
     public partial class TrapperSkill : Skill
     {
         public override string FriendlyName { get { return "Trapper"; } }

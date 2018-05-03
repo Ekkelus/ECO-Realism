@@ -22,21 +22,13 @@ using Eco.Gameplay.Components.Auth;
 using Eco.Gameplay.Components;
 using Eco.World;
 using REYmod.Blocks;
+using REYmod.Utils;
+using REYmod.Config;
 
-namespace REYmod.Utils
+namespace REYmod.Core.ChatCommands
 {
     public class ChatCommands : IChatCommandHandler
     {
-        [ChatCommand("addallergy", "adds an allergy", level: ChatAuthorizationLevel.Admin)]
-        public static void AddAllergy(User user, string item)
-        {
-            Item x = Item.GetItemByString(user, item);
-            if (x != null)
-            {
-                user.SetState("allergy", x.Type.Name);
-            }
-        }
-
 
 
         [ChatCommand("vomit+", "(Really) Empties your stomach", ChatAuthorizationLevel.Admin)]
@@ -47,11 +39,6 @@ namespace REYmod.Utils
             user.Player.SendTemporaryMessageLoc("Really Bad elk meat?");
         }
 
-        [ChatCommand("clearallergy", "clears allergies", level: ChatAuthorizationLevel.Admin)]
-        public static void ClearAllergy(User user)
-        {
-            user.SetState("allergy", string.Empty);
-        }
 
         [ChatCommand("diamond", "Spawns a diamond above you")]
         public static void DiamondSpawn(User user)
@@ -100,7 +87,7 @@ namespace REYmod.Utils
             }
 
             texttoadd = TextLinkManager.MarkUpText("<b>" + user.Name + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":</b>" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine);
-            IOUtils.WriteToFile("./mods/ECO Realism/Reports/reports.txt", texttoadd);
+            IOUtils.WriteFileToConfigFolder("../Reports/reports.txt", texttoadd);
             user.Player.SendTemporaryMessageAlreadyLocalized("Report sent");
 
         }

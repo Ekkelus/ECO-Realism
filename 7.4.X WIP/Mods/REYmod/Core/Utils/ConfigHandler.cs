@@ -30,7 +30,7 @@ using Eco.World.Blocks;
 using REYmod.Utils;
 using System.Reflection;
 
-namespace REYmod.Utils
+namespace REYmod.Config
 {
     /// <summary>
     /// This class is handling the global config settings and the config file
@@ -103,16 +103,6 @@ namespace REYmod.Utils
         }
     }
 
-    /// <summary>
-    /// Stored config values.
-    /// </summary>
-    public static class REYconfig
-    {
-        public static int maxsuperskills = 2;
-        public static double maxinactivetime = 3*24; // in hours
-        public static bool showwelcomemessage = true;
-        public static bool foodallergiesenabled = false;
-    }
 
     /// <summary>
     /// Only here to trigger the Initialization of the ConfigHandler
