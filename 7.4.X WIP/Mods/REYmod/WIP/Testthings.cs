@@ -39,6 +39,7 @@ using System.Timers;
 using Eco.Gameplay;
 using Eco.Simulation.Time;
 using Eco.Shared.Localization;
+using REYmod.Blocks;
 
 
 // everything here is for still in development and is mostly used when i need some ways of testing things im working on and trying some new things
@@ -49,24 +50,37 @@ using Eco.Shared.Localization;
 namespace REYmod.TestStuff
 {
 
-    // public partial class;
     [Category("Hidden")]
     public class AnotherInitItem : Item
     {
-        AnotherInitItem()
+        static AnotherInitItem()
         {
-            GlobalEvents.OneMinuteEvent.Add(() => ChatManager.ServerMessageToAllAlreadyLocalized("WARNING! Debugfunctions enabled! Please contact an admin about that!", false));
+            GlobalEvents.OneMinuteEvent.Add(WarnDebug);
             CustomWorldGen.Initialize();
         }
 
-
+        private static void WarnDebug()
+        {
+            ChatManager.ServerMessageToAllAlreadyLocalized("WARNING! Debugfunctions enabled! Please contact an admin about that!", false);
+        }
     }
 
 
+    
 
 
     public class ChatCommands : IChatCommandHandler
     {
+
+        [ChatCommand("diamond", "Spawns a diamond above you", level: ChatAuthorizationLevel.Admin)]
+        public static void DiamondSpawn(User user)
+        {
+            Vector3i x = user.Position.Round + new Vector3i(0, 2, 0);
+            World.SetBlock(typeof(DiamondBlock), x);
+        }
+
+
+
 
 
 

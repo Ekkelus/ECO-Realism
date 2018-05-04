@@ -39,12 +39,20 @@ namespace REYmod.Core.ChatCommands
             user.Player.SendTemporaryMessageLoc("Really Bad elk meat?");
         }
 
-
-        [ChatCommand("diamond", "Spawns a diamond above you")]
-        public static void DiamondSpawn(User user)
+        [ChatCommand("passlaw+", "Lets you pass a single law instead of all at once", level: ChatAuthorizationLevel.Admin)]
+        public static void PassLawPlus(User user)
         {
-            Vector3i x = user.Position.Round + new Vector3i(0, 2, 0);
-            World.SetBlock(typeof(DiamondBlock), x);
+            string panelcontent = "Click on the law you want to pass: <br><br>";
+            if (Legislation.Laws.AllNonFailedLaws.Where(x => !x.InEffect).Count() != 0)
+            {
+                Legislation.Laws.AllNonFailedLaws.Where(x => !x.InEffect).ToList().ForEach(x =>
+                {
+                    panelcontent += new Button(player => { Legislation.Laws.EnactLaw(x); player.OpenInfoPanel("Law passed", "You passed " + x.UILink()); }, content: x.Title, singleuse: true, clickdesc: "Click to enact this law").UILink();
+                    panelcontent += "<br>";
+                });
+            }
+            else panelcontent = "No pending laws!";
+            user.Player.OpenInfoPanel("Passlaw Menu", panelcontent);
         }
 
 
