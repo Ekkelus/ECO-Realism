@@ -68,12 +68,12 @@ namespace REYmod.Utils
                     StomachEntry rottenstomachEntry = new StomachEntry { Food = rottenfood, TimeEaten = WorldTime.Seconds };
                     user.Stomach.Contents.Add(rottenstomachEntry);
                 }
-                if (WorldTime.Seconds > TimeUtil.DaysToSeconds(1)) // todo: find a better solution for the update (actually.... maybe that one works too on the first day, needs testing (and removal of that if statement)
-                {
+                //if (WorldTime.Seconds > TimeUtil.DaysToSeconds(1)) // todo: find a better solution for the update (actually.... maybe that one works too on the first day, needs testing (and removal of that if statement)
+                //{
                     StomachEntry dummystomachEntry = new StomachEntry { Food = rottenfood, TimeEaten = double.MinValue }; // This is a workaround to update the nutritionvalue...
                     user.Stomach.Contents.Add(dummystomachEntry); // for some reason that Update method is private...
                     user.Stomach.CheckForBowelMovementAndExcreteFeces(user.Player); // unfortunately it wont work on the first day                   
-                }
+                //}
             }
         }
 

@@ -42,7 +42,7 @@ using Eco.Shared.Localization;
 
 namespace REYmod.Mods.REYmod.Jail
 {
-    class JailChatCommands
+    class JailChatCommands : IChatCommandHandler
     {
         [ChatCommand("setjailpos", "", level: ChatAuthorizationLevel.Admin)]
         public static void SetJailPosCommand(User user, int radius = 5)
