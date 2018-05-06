@@ -45,7 +45,7 @@ namespace REYmod.Config
         {
             if (File.Exists(Fullconfigpath))
             {
-                ReadConfig();
+                ApplyConfigFromFile();
             }
             UpdateConfigFile();
         }
@@ -84,19 +84,28 @@ namespace REYmod.Config
         /// Also returns a list of the fields that weren't found in the configfile
         /// </summary>
         /// <returns>A list of all settings that were not in the configfile</returns>
-        private static List<string> ReadConfig()
+        private static List<string> ApplyConfigFromFile()
         {
             FieldInfo field;
             List<string> missingfields = GetFieldNames();
             string[] splitstring;
             foreach (string line in File.ReadAllLines(Fullconfigpath))
             {
-                splitstring = line.Split(':');
-                if (splitstring.Length == 2)
+                try
                 {
-                    field = typeof(REYconfig).GetField(splitstring[0]);
-                    field.SetValue(null, Convert.ChangeType(splitstring[1], field.FieldType));
-                    missingfields.Remove(splitstring[0]);
+                    splitstring = line.Split(':');
+                    if (splitstring.Length == 2)
+                    {
+                        field = typeof(REYconfig).GetField(splitstring[0]);
+                        field.SetValue(null, Convert.ChangeType(splitstring[1], field.FieldType));
+                        missingfields.Remove(splitstring[0]);
+                    }
+                }
+                catch (Exception x)
+                {
+                    Console.WriteLine("There was an Error reading config file in line : " + line);
+                    Console.WriteLine("That line will be ignored and deleted");
+                    Console.WriteLine("Error: " + x.Message);
                 }
             }
             return missingfields;
