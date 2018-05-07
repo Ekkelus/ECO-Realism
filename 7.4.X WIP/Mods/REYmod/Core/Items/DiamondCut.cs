@@ -17,8 +17,9 @@ namespace Eco.Mods.TechTree
     using Eco.World;
     using Eco.World.Blocks;
     using Eco.Gameplay.Pipes;
+    using REYmod.Blocks;
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 2)]
+    [RequiresSkill(typeof(StoneworkingSkill), 5)]
     public partial class DiamondCutRecipe : Recipe
     {
         public DiamondCutRecipe()
@@ -29,12 +30,12 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<StringItem>(typeof(ClothProductionEfficiencySkill), 5, ClothProductionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<RawDiamondItem>(typeof(StoneworkingEfficiencySkill), 10, StoneworkingEfficiencySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(DiamondCutRecipe), Item.Get<DiamondCutItem>().UILink(), 2, typeof(ClothProductionSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(DiamondCutRecipe), Item.Get<DiamondCutItem>().UILink(), 60, typeof(StoneworkingSpeedSkill));
             this.Initialize("Cut Diamond", typeof(DiamondCutRecipe));
 
-            CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
+            CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }
     }
 
