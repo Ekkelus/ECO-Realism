@@ -43,6 +43,7 @@ using REYmod.Config;
 
 
 
+
 // This file should contain only basic Utils wich are needed for all Modules, no module specific code here, only "interfaces" for events (see OneMinutetimer for example)
 
 
@@ -467,6 +468,7 @@ namespace REYmod.Utils
             SkillUtils.Initialize();
             UtilsClipboard.Initialize();
             GlobalEvents.Initialize();
+            CustomWorldGen.Initialize();
         }
     }
 
