@@ -58,7 +58,7 @@ namespace REYmod.Core.ChatCommands
             {
                 Legislation.Laws.AllNonFailedLaws.Where(x => !x.InEffect).ToList().ForEach(x =>
                 {
-                    panelcontent += new Button(player => { Legislation.Laws.EnactLaw(x); player.OpenInfoPanel("Law passed", "You passed " + x.UILink()); }, content: x.Title, singleuse: true, clickdesc: "Click to enact this law").UILink();
+                    panelcontent += new Button(player => { Legislation.Laws.EnactLaw(x); player.OpenInfoPanel("Law passed", "You passed " + x.UILink()); },tooltip: x.Tooltip(), content: x.Title, singleuse: true, clickdesc: "Click to enact this law").UILink();
                     panelcontent += "<br>";
                 });
             }
