@@ -40,7 +40,7 @@ using Eco.Gameplay;
 using Eco.Simulation.Time;
 using Eco.Shared.Localization;
 using REYmod.Blocks;
-
+using Eco.Core.Utils;
 
 namespace REYmod.Utils
 {
@@ -91,43 +91,49 @@ namespace REYmod.Utils
         /// <para/> If false only tries to set the amount of blocks, so if only ~50% of positions are valid, it only spawns ~50% of blocks </param>
         public static void GenerateMineral(Type block, float abundancyInPPM, int minHeight = 0, int maxHeight = 100, Type[] spawnOnlyIn = null, bool forcespawn = true) // maybe switch from chunks to area, as chunks are 3d in Eco
         {
-            int amountofveins = (int)Math.Round(World.ChunksCount * abundancyInPPM / 1000f, 0);
+            string blockname = block.ToString();//(Activator.CreateInstance(block) as Block).ToString();
+            blockname =  blockname.Split('.').Last();           
+            int amountofveins = (int)Math.Round(World.ChunksCount * abundancyInPPM / 1000f, 0);           
             int i = 0;
             int x = 0;
-            Console.WriteLine("Should spawn " + amountofveins + " Blocks");
+            //Console.WriteLine("Should spawn " + amountofveins + " Blocks");
             Vector2i XZvector;
             Vector3i position;
             Block tmpBlock;
-            while (i <= amountofveins)
+            using (TimedTask task = new TimedTask("Spawning " + blockname + "s (" + amountofveins + ")"))
             {
-                XZvector = World.RandomMapPos().XZ;
-                position = XZvector.X_Z((int)random.Range(minHeight, Math.Min(maxHeight, World.GetTopPos(XZvector).Y - 2)));
-
-                if (spawnOnlyIn != null)
+                while (i <= amountofveins)
                 {
-                    tmpBlock = World.GetBlock(position);
-                    //Console.WriteLine("Found " + tmpBlock.GetType() + " need " + spawnOnlyIn[0]);
-                    if (!spawnOnlyIn.Contains(tmpBlock.GetType()))
+                    XZvector = World.RandomMapPos().XZ;
+                    position = XZvector.X_Z((int)random.Range(minHeight, Math.Min(maxHeight, World.GetTopPos(XZvector).Y - 2)));
+
+                    if (spawnOnlyIn != null)
                     {
-                        if (forcespawn)
+                        tmpBlock = World.GetBlock(position);
+                        //Console.WriteLine("Found " + tmpBlock.GetType() + " need " + spawnOnlyIn[0]);
+                        if (!spawnOnlyIn.Contains(tmpBlock.GetType()))
                         {
-                            x++;
-                            if (x >= 200)
+                            if (forcespawn)
                             {
-                                Console.WriteLine("There was a problem with while spawning custom minerals... aborting...(200 consecutive failed placement attempts)");
-                                ChatManager.ServerMessageToAllAlreadyLocalized("There was a problem with while spawning custom minerals... aborting...(200 consecutive failed placement attempts)", true);
-                                break;
+                                x++;
+                                if (x >= 200)
+                                {
+                                    Console.WriteLine("There was a problem with while spawning custom minerals... aborting...(200 consecutive failed placement attempts)");
+                                    ChatManager.ServerMessageToAllAlreadyLocalized("There was a problem while spawning custom minerals... aborting...(200 consecutive failed placement attempts)", true);
+                                    break;
+                                }
+                                continue;
                             }
+                            else i++;
                             continue;
                         }
-                        else i++;
-                        continue;
                     }
+                    //Console.WriteLine("Spawned " + blockname + " (" + i + "/" + amountofveins + ")" + " at " + position.x + "/" + position.y + "/" + position.z + "           ");
+                    task.LoadPercentage = i / amountofveins;
+                    World.SetBlock(block, position);
+                    i++;
+                    x = 0;
                 }
-                Console.WriteLine("Spawned Block (" + i + "/" + amountofveins + ")" + " at " + position.x + "/" + position.y + "/" + position.z);
-                World.SetBlock(block, position);
-                i++;
-                x = 0;
             }
         }
     }
@@ -140,16 +146,16 @@ namespace REYmod.Utils
         public static void Generate()
         {
             Type[] spawnin = new Type[] { typeof(CoalBlock) };
-            DateTime start = DateTime.Now;
-            WorldGenUtils.GenerateMineral(typeof(BrickFloorBlock), 500, 10, 25, spawnin);
-            TimeSpan usedTime = DateTime.Now - start;
-            Console.WriteLine("Worldgen finalized. Time spent: " + usedTime.Minutes + ":" + usedTime.Seconds + ":" + usedTime.Milliseconds);
+            //DateTime start = DateTime.Now;
+            WorldGenUtils.GenerateMineral(typeof(DiamondBlock), 300, 10, 25, spawnin);
+            //TimeSpan usedTime = DateTime.Now - start;
+            //Console.WriteLine("Worldgen finalized. Time spent: " + Math.Round(usedTime.TotalMilliseconds,0)+ "ms");
             newworld = false;
         }
 
         public static void Initialize()
         {
-            WorldGeneratorPlugin.OnFinishGenerate.Add(CustomWorldGen.Generate);
+            //WorldGeneratorPlugin.OnFinishGenerate.Add(CustomWorldGen.Generate);
         }
     }
 
@@ -157,7 +163,8 @@ namespace REYmod.Utils
     {
         public void Generate(Random seed, Vector3 voxelSize, WorldSettings settings)
         {
-            CustomWorldGen.newworld = true;
+            //CustomWorldGen.newworld = true;
+            CustomWorldGen.Generate();
         }
 
     }
