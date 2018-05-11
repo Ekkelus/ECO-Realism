@@ -192,7 +192,7 @@ namespace REYmod.Core.ChatCommands
 
             foreach (User userentry in UserManager.Users)
             {
-                userlist.Add(new KeyValuePair<User, float>(userentry, (float)Math.Round(userentry.Stomach.NutrientSkillRate, 2)));               
+                userlist.Add(new KeyValuePair<User, float>(userentry, userentry.Stomach.NutrientSkillRate));               
             }
 
             //userlist.Sort(new UserFloatComparer());
@@ -203,7 +203,7 @@ namespace REYmod.Core.ChatCommands
             for (i = 0; i < max; i++)
             {
                 tmpuser = userlist[i].Key;
-                output = output + (i + 1) + ". " + tmpuser.UILink() + ": <color=green>" + tmpuser.Stomach.NutrientSkillRate + "</color><br>";
+                output = output + (i + 1) + ". " + tmpuser.UILink() + ": <color=green>" + Math.Round(userlist[i].Value, 2) + "</color><br>";
             }
             output = output + "<br> Your Foodskillrate: <color=green>" + user.SkillRate + "</color>";
 
