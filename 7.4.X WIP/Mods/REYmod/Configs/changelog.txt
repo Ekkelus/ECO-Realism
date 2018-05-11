@@ -1,3 +1,7 @@
+<color=green><b>2018-05-11</b></color><size=18>
+- Balanced stone brazier
+- Balanced the new hewn log and lumber signs
+
 <color=green><b>2018-05-09</b></color><size=18>
 - Removed Raw Fish from Refine Fish recipe
 - Added room requirement to Blast Furnace
