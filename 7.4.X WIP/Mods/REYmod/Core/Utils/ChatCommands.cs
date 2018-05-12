@@ -174,13 +174,13 @@ namespace REYmod.Core.ChatCommands
                 //output = output + (i + 1).ToString() + ". <link=\"User:" + tmpuser.Name + "\"><style=\"Warning\">" + tmpuser.Name + "</style></link>: <link=\"CachedHouseValue:" + tmpuser.Name +"\"><style=\"Positive\">" + userlist[i].Value.ToString() + "</style></link> skill/day <br>";
                 output = output + (i + 1) + ". " + tmpuser.UILink() + ": " + tmpuser.CachedHouseValue.UILink() + "<br>";
             }
-            output = output + "<br> Your " + user.HouseValue;
+            output = output + "<br> Your " + user.HouseValue + " (Rank " + (userlist.FindIndex(x => x.Key == user) + 1) + ")";
 
             user.Player.OpenInfoPanel("House Ranking", output);
         }
 
         [ChatCommand("nutritionranking", "Displays the users with the highest food skill rates")]
-        public static void NutritionRanking(User user) //needs to be reworked! maybe without custom comparer, also add own Rank
+        public static void NutritionRanking(User user) //can still be optimized theres for example no need for the KeyValuePair<User, float>, a userlist is actually enough
         {
 
             int usercount = UserManager.Users.Count<User>();
@@ -205,8 +205,7 @@ namespace REYmod.Core.ChatCommands
                 tmpuser = userlist[i].Key;
                 output = output + (i + 1) + ". " + tmpuser.UILink() + ": <color=green>" + Math.Round(userlist[i].Value, 2) + "</color><br>";
             }
-            output = output + "<br> Your Foodskillrate: <color=green>" + user.SkillRate + "</color>";
-
+            output = output + "<br> Your Foodskillrate: <color=green>" + user.Stomach.NutrientSkillRate + "</color> (Rank " + (userlist.FindIndex(x => x.Key == user)+1) + ")";
             user.Player.OpenInfoPanel("Nutrition Ranking", output);
         }
 
@@ -270,7 +269,7 @@ namespace REYmod.Core.ChatCommands
                 superskillsinfo += newline;                
             }
             
-            float foodsp = targetuser.SkillRate;
+            float foodsp = targetuser.Stomach.NutrientSkillRate;
             float housesp = targetuser.CachedHouseValue.HousingSkillRate;
 
             professioninfo = newline + "<b>PROFESSION:</b> " + newline + SkillUtils.FindProfession(targetuser).UILink() + newline;
