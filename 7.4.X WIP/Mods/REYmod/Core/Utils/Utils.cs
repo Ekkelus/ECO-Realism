@@ -182,10 +182,11 @@ namespace REYmod.Utils
 
         public static void WriteFileToConfigFolder(string filename, string text)
         {
-            string dirpath = ConfigHandler.configfolderpath + filename.Substring(0, filename.LastIndexOf('/') + 1);
+            string fullfilename = ConfigHandler.configfolderpath + filename;
+            string dirpath = fullfilename.Substring(0, fullfilename.LastIndexOf('/') + 1);          
             if (!Directory.Exists(dirpath)) Directory.CreateDirectory(dirpath);
-            if (!File.Exists(filename)) File.Create(filename).Close();
-            File.AppendAllText(filename, text);
+            if (!File.Exists(fullfilename)) File.Create(fullfilename).Close();
+            File.AppendAllText(fullfilename, text);
         }
 
         public static void WriteToLog(string logdata, string desc = "")
