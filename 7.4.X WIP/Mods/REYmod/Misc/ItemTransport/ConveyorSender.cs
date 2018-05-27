@@ -48,7 +48,7 @@ namespace Eco.Mods.TechTree
         IEnumerable<WireConnection> IWireContainer.Wires { get { return this.outputWire.SingleItemAsEnumerable(); } }
         private Inventory Storage { get { return this.GetComponent<PublicStorageComponent>().Inventory; } }
         private Inventory LinkedStorage { get { return this.GetComponent<LinkComponent>().GetSortedLinkedInventories(this.OwnerUser); } }
-
+        private int pullcounter = 0;
 
         public override string FriendlyName { get { return "ConveyorSender"; } } 
 
@@ -84,9 +84,12 @@ namespace Eco.Mods.TechTree
             if (!this.Enabled) return;
             int mult = 1;
             int unitstosend = 8;
-
-
-            this.LinkedStorage.MoveAsManyItemsAsPossible(Storage, this.OwnerUser);
+            pullcounter++;
+            if (pullcounter >= 30)
+            {
+                this.LinkedStorage.MoveAsManyItemsAsPossible(Storage, this.OwnerUser);
+                pullcounter = 0;
+            }
             IEnumerable<ItemStack> nonempty = Storage.NonEmptyStacks;
             nonempty.ForEach(stack =>
             {

@@ -77,7 +77,7 @@ namespace Eco.Mods.TechTree
             this.GetComponent<LinkComponent>().Initialize(2);
             this.GetComponent<AttachmentComponent>().Initialize();
             this.GetComponent<PublicStorageComponent>().Initialize(2);
-            timer = new Timer(1000);
+            timer = new Timer(30000);
             timer.AutoReset = true;
             timer.Elapsed += CustomTick;
             timer.Start();
