@@ -97,7 +97,7 @@ namespace REYmod.Utils
                 AutoReset = true,
                 Interval = 60000 // once per minute
             };
-            timer.Elapsed += (x,y) => OneMinuteEvent.Invoke();
+            timer.Elapsed += (x, y) => OneMinuteEvent.Invoke();
             timer.Start();
             UserManager.OnUserLoggedIn.Remove(OnUserLogin);
             UserManager.OnUserLoggedIn.Add(OnUserLogin);
@@ -126,7 +126,7 @@ namespace REYmod.Utils
         private static void OnUserEnterWorld(User user, bool firstlogin) // Note: "Player" should be ready here
         {
             //Console.WriteLine(user.Name + " entered world");
-            if (firstlogin && REYconfig.showwelcomemessage) ChatUtils.ShowWelcomeMessage(user);
+            if (firstlogin && REYmodSettings.Obj.Config.Showwelcomemessage) ChatUtils.ShowWelcomeMessage(user);
             user.OnEnterWorld.Clear();
         }
 
@@ -164,7 +164,7 @@ namespace REYmod.Utils
         public static string ReadFileFromConfigFolder(string filename)
         {
             string content = string.Empty;
-            string path = ConfigHandler.configfolderpath + filename;
+            string path = REYmodSettings.Obj.Config.Configfolderpath + filename;
             if (File.Exists(path))
             {
                 return File.ReadAllText(path);
@@ -182,7 +182,7 @@ namespace REYmod.Utils
 
         public static void WriteFileToConfigFolder(string filename, string text)
         {
-            string fullfilename = ConfigHandler.configfolderpath + filename;
+            string fullfilename = REYmodSettings.Obj.Config.Configfolderpath + filename;
             string dirpath = fullfilename.Substring(0, fullfilename.LastIndexOf('/') + 1);          
             if (!Directory.Exists(dirpath)) Directory.CreateDirectory(dirpath);
             if (!File.Exists(fullfilename)) File.Create(fullfilename).Close();
@@ -338,7 +338,7 @@ namespace REYmod.Utils
             {                 
                 confirmation = "To confirm that you understood Super Skills and to unlock them please click " + new Button(x => ConfirmSuperskill(x.User),clickdesc:"Click to unlock", content: "HERE".Color("green"), singleuse: true).UILink();
             }
-            player.OpenInfoPanel("Super Skills", "Current amount of Super Skills: <b><color=green>" + SkillUtils.SuperSkillCount(player.User) + "</color></b><br>Max amount of Super Skills: <b><color=green>" + ((REYconfig.maxsuperskills != int.MaxValue) ? REYconfig.maxsuperskills.ToString() : "Infinite") + "</color></b><br><br>Super Skills are Skills that can be leveled all the way up to level 10.<br><br><color=red>You can only have a limited amount of them.</color><br><br>" + confirmation);
+            player.OpenInfoPanel("Super Skills", "Current amount of Super Skills: <b><color=green>" + SkillUtils.SuperSkillCount(player.User) + "</color></b><br>Max amount of Super Skills: <b><color=green>" + ((REYmodSettings.Obj.Config.Maxsuperskills != int.MaxValue) ? REYmodSettings.Obj.Config.Maxsuperskills.ToString() : "Infinite") + "</color></b><br><br>Super Skills are Skills that can be leveled all the way up to level 10.<br><br><color=red>You can only have a limited amount of them.</color><br><br>" + confirmation);
         }
 
         public static void ConfirmSuperskill(User user)
@@ -382,7 +382,7 @@ namespace REYmod.Utils
         public static IAtomicAction SuperSkillLevelUp(Skill skill, Player player)
         {
             if (skill.Level != 5) return SimpleAtomicAction.NoOp;
-            if (SkillUtils.SuperSkillCount(player.User) >= REYconfig.maxsuperskills) return new FailedAtomicAction(Localizer.Do("You already have enough SuperSkills " + SkillUtils.SuperSkillCount(player.User) + "/" + REYconfig.maxsuperskills));
+            if (SkillUtils.SuperSkillCount(player.User) >= REYmodSettings.Obj.Config.Maxsuperskills) return new FailedAtomicAction(Localizer.Do("You already have enough SuperSkills " + SkillUtils.SuperSkillCount(player.User) + "/" + REYmodSettings.Obj.Config.Maxsuperskills));
             if (CheckSuperskillConfirmation(player.User))
             {
                 superskillconfirmed.Remove(player.User.ID);

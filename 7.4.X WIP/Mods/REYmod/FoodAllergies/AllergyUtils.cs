@@ -56,7 +56,7 @@ namespace REYmod.Utils
     {
         public static void OnPlayerEatFoodAllergy(FoodItem food,User user)
         {
-            if (REYconfig.foodallergiesenabled && user.IsAllergicTo(food))
+            if (REYmodSettings.Obj.Config.Foodallergiesenabled && user.IsAllergicTo(food))
             {
                 ChatUtils.SendMessage(user, "You are allergic to " + food.FriendlyName + "!");
                 //user.Stomach.UseCalories(food.Calories * 2);
@@ -90,7 +90,7 @@ namespace REYmod.Utils
         public static string MytooltipSection(this FoodItem food, Player player)
         {
             //Console.WriteLine("Requested Tootip");
-            if (!REYconfig.foodallergiesenabled) return null;
+            if (!REYmodSettings.Obj.Config.Foodallergiesenabled) return null;
             if (player.User.IsAllergicTo(food)) return ("You are allergic to " + food.UILink() + "!. (Contains " + player.User.GetAllergyItem().UILink() + ")").Color("red");
             return null;
         }

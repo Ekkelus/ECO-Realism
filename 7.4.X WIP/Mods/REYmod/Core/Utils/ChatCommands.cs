@@ -24,6 +24,8 @@ using Eco.World;
 using REYmod.Blocks;
 using REYmod.Utils;
 using REYmod.Config;
+using Eco.Core;
+using Eco.Core.Plugins.Interfaces;
 
 namespace REYmod.Core.ChatCommands
 {
@@ -115,8 +117,8 @@ namespace REYmod.Core.ChatCommands
         public static void SetMaxSuperSkills(User user, int maxallowed = int.MinValue)
         {          
             if (maxallowed == -1) maxallowed = int.MaxValue;
-            string currentallowedstr = (REYconfig.maxsuperskills != int.MaxValue) ? REYconfig.maxsuperskills.ToString() : "Infinite";
-            if (maxallowed == int.MinValue || maxallowed == REYconfig.maxsuperskills)
+            string currentallowedstr = (REYmodSettings.Obj.Config.Maxsuperskills != int.MaxValue) ? REYmodSettings.Obj.Config.Maxsuperskills.ToString() : "Infinite";
+            if (maxallowed == int.MinValue || maxallowed == REYmodSettings.Obj.Config.Maxsuperskills)
             {
                 ChatUtils.SendMessage(user, "Max allowed Superskills: " + currentallowedstr);
                 return;
@@ -124,10 +126,11 @@ namespace REYmod.Core.ChatCommands
             else
             {
                 string newallowedstr = (maxallowed != int.MaxValue) ? maxallowed.ToString() : "Infinite";
-                REYconfig.maxsuperskills = maxallowed;
+                REYmodSettings.Obj.Config.Maxsuperskills = maxallowed;
+                REYmodSettings.Obj.SaveConfig();
                 ChatUtils.SendMessage(user, "Changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr);
                 ChatManager.ServerMessageToAllAlreadyLocalized(user.UILink() + "changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr, false);
-                ConfigHandler.UpdateConfigFile();
+               // ConfigHandler.UpdateConfigFile();
             }
 
 
@@ -149,7 +152,7 @@ namespace REYmod.Core.ChatCommands
         }
 
         [ChatCommand("houseranking", "Displays the users with the highest housing rates")]
-        public static void HouseRanking(User user) // needs to be reworked! maybe without custom comparer, also add own Rank
+        public static void HouseRanking(User user) //can still be optimized theres for example no need for the KeyValuePair<User, float>, a userlist is actually enough
         {
 
             int usercount = UserManager.Users.Count<User>();
@@ -350,7 +353,7 @@ namespace REYmod.Core.ChatCommands
                 user.Player.SendTemporaryMessageAlreadyLocalized("Player not Found");
                 return;
             }
-            if ((WorldTime.Seconds - owner.LogoutTime) < REYconfig.maxinactivetime * 3600)
+            if ((WorldTime.Seconds - owner.LogoutTime) < REYmodSettings.Obj.Config.Maxinactivetime * 3600)
             {
                 confirmationcode = RandomUtil.Range(1000, 9999);
                 inactive = false;

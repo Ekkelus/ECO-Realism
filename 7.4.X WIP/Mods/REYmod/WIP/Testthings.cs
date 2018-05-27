@@ -65,9 +65,7 @@ namespace REYmod.TestStuff
     }
 
 
-    
-
-
+   
     public class ChatCommands : IChatCommandHandler
     {
 
@@ -79,6 +77,26 @@ namespace REYmod.TestStuff
         }
 
 
+        [ChatCommand("linkhidden", "links an hidden item", level: ChatAuthorizationLevel.Admin)]
+        public static void LinkHidden(User user, string item)
+        {
+            Item x = Item.GetItemByString(user, item);
+            if(x!=null) ChatUtils.SendMessage(user, x.UILink());
+        }
+
+        [ChatCommand("lawinfo", "gives info about a law", level: ChatAuthorizationLevel.Admin)]
+        public static void LawInfo(User user)
+        {
+            Law law = Legislation.Laws.AllNonFailedLaws.Where(x => x.State == LawState.Voting).First();
+            Console.WriteLine(law.Title);
+            Console.WriteLine("Zoned? " + law.IsZonedLaw);
+            Console.WriteLine("Clauses? " + law.HasClauses);
+            Console.WriteLine("Logic? " + law.HasLogic);
+            Console.WriteLine("Zonename: " + law.Zone);
+            Console.WriteLine("ManagedActionsCount: " + law.ManagedActions.Count());
+
+
+        }
 
 
 

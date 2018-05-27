@@ -38,6 +38,8 @@ namespace REYmod.Allergies
             if (x != null)
             {
                 target.SetState("allergy", x.Type.Name);
+                ChatUtils.SendMessage(user, "You made " + target.UILink() + " allergic to " + x.UILink());
+                ChatUtils.SendMessage(target, "You are now allergic to " + x.UILink());
             }
         }
 
@@ -47,6 +49,8 @@ namespace REYmod.Allergies
             User target = UserManager.FindUserByName(username);
             target = target ?? user;
             target.SetState("allergy", string.Empty);
+            ChatUtils.SendMessage(user, "You cleared the allergies of " + target.UILink());
+            ChatUtils.SendMessage(target, "Your allergies have been cleared");
         }
     }
 }
