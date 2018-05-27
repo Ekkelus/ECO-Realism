@@ -116,15 +116,25 @@ namespace Eco.Mods.TechTree
                 return 0;
             }
             int canreceive = 0;
-            
-            if (Storage.Stacks.Any(x => x.Empty))
+            bool firsttry = true;
+
+            while (true)
             {
-                return Math.Min(arg.Item.MaxStackSize, arg.Quantity);
+                if (Storage.Stacks.Any(x => x.Empty))
+                {
+                    return Math.Min(arg.Item.MaxStackSize, arg.Quantity);
+                }                
+                IEnumerable<ItemStack> matchingStacks = Storage.Stacks.Where(x => (x.Item == arg.Item) && x.Quantity < x.Item.MaxStackSize);
+                matchingStacks.ForEach(x => canreceive += (x.Item.MaxStackSize - x.Quantity));
+
+                if ((canreceive == 0) && firsttry)
+                {
+                    this.Storage.MoveAsManyItemsAsPossible(LinkedStorage, this.OwnerUser);
+                    firsttry = false;
+                }
+                else return Math.Min(canreceive, arg.Quantity);
             }
-            this.Storage.MoveAsManyItemsAsPossible(LinkedStorage, this.OwnerUser);
-            IEnumerable<ItemStack> matchingStacks = Storage.Stacks.Where(x => (x.Item == arg.Item) && x.Quantity < x.Item.MaxStackSize);
-            matchingStacks.ForEach(x => canreceive += (x.Item.MaxStackSize - x.Quantity));
-            return Math.Min(canreceive, arg.Quantity);
+            
         }
 
         public override void Destroy()
