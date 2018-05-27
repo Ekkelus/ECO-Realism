@@ -116,13 +116,12 @@ namespace Eco.Mods.TechTree
                 return 0;
             }
             int canreceive = 0;
-            this.Storage.MoveAsManyItemsAsPossible(LinkedStorage, this.OwnerUser);
-
-
+            
             if (Storage.Stacks.Any(x => x.Empty))
             {
                 return Math.Min(arg.Item.MaxStackSize, arg.Quantity);
             }
+            this.Storage.MoveAsManyItemsAsPossible(LinkedStorage, this.OwnerUser);
             IEnumerable<ItemStack> matchingStacks = Storage.Stacks.Where(x => (x.Item == arg.Item) && x.Quantity < x.Item.MaxStackSize);
             matchingStacks.ForEach(x => canreceive += (x.Item.MaxStackSize - x.Quantity));
             return Math.Min(canreceive, arg.Quantity);
