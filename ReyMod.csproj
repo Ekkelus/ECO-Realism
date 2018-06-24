@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net46</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Eco.Core">
+      <HintPath>dlls\Eco.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Eco.Gameplay">
+      <HintPath>dlls\Eco.Gameplay.dll</HintPath>
+    </Reference>
+    <Reference Include="Eco.ModKit">
+      <HintPath>dlls\Eco.ModKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Eco.Mods">
+      <HintPath>dlls\Eco.Mods.dll</HintPath>
+    </Reference>
+    <Reference Include="Eco.Shared">
+      <HintPath>dlls\Eco.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Eco.Simulation">
+      <HintPath>dlls\Eco.Simulation.dll</HintPath>
+    </Reference>
+    <Reference Include="Eco.Stats">
+      <HintPath>dlls\Eco.Stats.dll</HintPath>
+    </Reference>
+    <Reference Include="Eco.World">
+      <HintPath>dlls\Eco.World.dll</HintPath>
+    </Reference>
+    <Reference Include="LiteDB">
+      <HintPath>dlls\LiteDB.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
