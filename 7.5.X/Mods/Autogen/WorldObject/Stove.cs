@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -23,13 +22,14 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.Tooltip;
     using Eco.Shared;
     using Eco.Shared.Math;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
     [RequireComponent(typeof(PipeComponent))]    
     [RequireComponent(typeof(AttachmentComponent))]
@@ -72,9 +72,9 @@ namespace Eco.Mods.TechTree
             var tankList = new List<LiquidTank>();
             
             tankList.Add(new LiquidProducer("Chimney", typeof(SmogItem), 100,
-                    null,                                                       
-                    new Ray(1, 1, 1, Direction.Up),     
-                        (float)(0.1f * SmogItem.SmogItemsPerCO2PPM) / TimeUtil.SecondsPerHour)); 
+                    null,                                                                
+                    this.Occupancy.Find(x => x.Name == "ChimneyOut"),   
+                        (float)(0.2f * SmogItem.SmogItemsPerCO2PPM) / TimeUtil.SecondsPerHour)); 
             
             
             
@@ -103,15 +103,15 @@ namespace Eco.Mods.TechTree
             
             
         }
-        
+
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "Kitchen",
-                                                    Val = 4,
-                                                    TypeForRoomLimit = "Cooking",
-                                                    DiminishingReturnPercent = 0.3f
-                                                };}}       
+                                                    Val = 4,                                   
+                                                    TypeForRoomLimit = "Cooking", 
+                                                    DiminishingReturnPercent = 0.3f    
+        };}}
     }
 
 

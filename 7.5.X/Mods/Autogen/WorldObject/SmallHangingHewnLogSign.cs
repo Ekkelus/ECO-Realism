@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Crafting");                                 
+            this.GetComponent<MinimapComponent>().Initialize("Sign");                                 
 
 
         }

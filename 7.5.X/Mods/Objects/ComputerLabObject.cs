@@ -5,6 +5,7 @@ namespace Eco.Mods.TechTree
     using System;
     using System.Collections.Generic;
     using Eco.Gameplay.Components;
+    using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.Objects;
     using Shared.Serialization;
 
@@ -15,6 +16,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(LinkComponent))]
     [RequireComponent(typeof(PowerGridComponent))]
     [RequireComponent(typeof(PowerGridNetworkComponent))]
+    [RequireComponent(typeof(PropertyAuthComponent))]
     public partial class ComputerLabObject : WorldObject
     {
         public override string FriendlyName { get { return "Computer Lab"; } }

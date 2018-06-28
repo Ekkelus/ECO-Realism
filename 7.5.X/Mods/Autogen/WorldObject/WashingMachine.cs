@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -23,15 +22,15 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.Tooltip;
     using Eco.Shared;
     using Eco.Shared.Math;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
-    [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(PowerGridComponent))]              
@@ -55,7 +54,6 @@ namespace Eco.Mods.TechTree
             this.GetComponent<HousingComponent>().Set(WashingMachineItem.HousingVal);                                
 
 
-
         }
 
         public override void Destroy()
@@ -76,15 +74,15 @@ namespace Eco.Mods.TechTree
         {
             
         }
-        
+
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "Bathroom",
-                                                    Val = 20,
-                                                    TypeForRoomLimit = "",
-                                                    DiminishingReturnPercent = 0.3f
-                                                };}}       
+                                                    Val = 20,                                   
+                                                    TypeForRoomLimit = "Washing", 
+                                                    DiminishingReturnPercent = 0.3f    
+        };}}
     }
 
 
@@ -110,7 +108,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WashingMachineItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Washing Machine", typeof(WashingMachineRecipe));
-            CraftingComponent.AddRecipe(typeof(FactoryObject), this);
+            CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }
 }

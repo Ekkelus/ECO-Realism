@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -23,15 +22,15 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.Tooltip;
     using Eco.Shared;
     using Eco.Shared.Math;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
-    [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(HousingComponent))] 
@@ -62,7 +61,7 @@ namespace Eco.Mods.TechTree
     public partial class RugSmallItem : WorldObjectItem<RugSmallObject>
     {
         public override string FriendlyName { get { return "Small Rug"; } } 
-        public override string Description { get { return "A small rug for when you just didn't have enough materials to make a bigger one."; } }
+        public override string Description  { get { return  "A small rug for when you just didn't have enough materials to make a bigger one."; } }
 
         static RugSmallItem()
         {
@@ -73,10 +72,10 @@ namespace Eco.Mods.TechTree
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "General",
-                                                    Val = 1,
-                                                    TypeForRoomLimit = "Rug",
-                                                    DiminishingReturnPercent = 0.5f
-                                                };}}       
+                                                    Val = 1,                                   
+                                                    TypeForRoomLimit = "Rug", 
+                                                    DiminishingReturnPercent = 0.5f    
+        };}}
     }
 
 

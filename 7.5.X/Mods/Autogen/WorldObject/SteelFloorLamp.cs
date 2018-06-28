@@ -52,7 +52,6 @@ namespace Eco.Mods.TechTree
             this.GetComponent<HousingComponent>().Set(SteelFloorLampItem.HousingVal);                                
 
 
-
         }
 
         public override void Destroy()
@@ -98,15 +97,14 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 10, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CopperWiringItem>(typeof(ElectronicEngineeringEfficiencySkill), 8, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlassItem>(typeof(ElectronicEngineeringEfficiencySkill), 8, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LightBulbItem>(1), 
             };
             SkillModifiedValue value = new SkillModifiedValue(10, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.Do("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(SteelFloorLampRecipe), Item.Get<SteelFloorLampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SteelFloorLampItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Steel Floor Lamp", typeof(SteelFloorLampRecipe));
-            CraftingComponent.AddRecipe(typeof(FactoryObject), this);
+            CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
 }

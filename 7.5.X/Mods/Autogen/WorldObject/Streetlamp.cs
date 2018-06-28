@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -23,16 +22,16 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.Tooltip;
     using Eco.Shared;
     using Eco.Shared.Math;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]    
-    [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(PowerGridComponent))]              
@@ -50,7 +49,6 @@ namespace Eco.Mods.TechTree
             this.GetComponent<PowerConsumptionComponent>().Initialize(100);                      
             this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());        
             this.GetComponent<HousingComponent>().Set(StreetlampItem.HousingVal);                                
-
 
 
         }
@@ -73,15 +71,15 @@ namespace Eco.Mods.TechTree
         {
             
         }
-        
+
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "General",
-                                                    Val = 4,
-                                                    TypeForRoomLimit = "Lights",
-                                                    DiminishingReturnPercent = 0.8f
-                                                };}}       
+                                                    Val = 4,                                   
+                                                    TypeForRoomLimit = "Lights", 
+                                                    DiminishingReturnPercent = 0.8f    
+        };}}
     }
 
 
@@ -97,16 +95,15 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 10, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CopperWiringItem>(typeof(ElectronicEngineeringEfficiencySkill), 20, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlassItem>(typeof(ElectronicEngineeringEfficiencySkill), 2, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LightBulbItem>(1), 
+                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 20, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),   
             };
             SkillModifiedValue value = new SkillModifiedValue(1, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.Do("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(StreetlampRecipe), Item.Get<StreetlampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StreetlampItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Streetlamp", typeof(StreetlampRecipe));
-            CraftingComponent.AddRecipe(typeof(FactoryObject), this);
+            CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
 }

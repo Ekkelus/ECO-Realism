@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -23,20 +22,19 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.Tooltip;
     using Eco.Shared;
     using Eco.Shared.Math;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
-    [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
     [RequireComponent(typeof(PublicStorageComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 
     public partial class StorageChestObject : WorldObject
     {
         public override string FriendlyName { get { return "Storage Chest"; } } 
@@ -45,10 +43,9 @@ namespace Eco.Mods.TechTree
         protected override void Initialize()
         {
             this.GetComponent<MinimapComponent>().Initialize("Storage");                                 
-
             var storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(25);
-            storage.Storage.AddRestriction(new NotCarriedRestriction()); // can't store block or large items
+            storage.Storage.AddInvRestriction(new NotCarriedRestriction()); // can't store block or large items
 
 
         }
