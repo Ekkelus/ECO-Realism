@@ -1,10 +1,10 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
+    using Eco.Gameplay.Components.VehicleModules;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
@@ -13,10 +13,9 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Math;
     using Eco.Shared.Networking;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
     
     [Serialized]
     [Weight(15000)]  
@@ -37,6 +36,8 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
+                new CraftingElement<CombustionEngineItem>(1),
+                new CraftingElement<IronWheelItem>(3), 
                 new CraftingElement<LumberItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<ClothItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<CombustionEngineItem>(typeof(MechanicsAssemblyEfficiencySkill), 1, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
@@ -49,6 +50,7 @@ namespace Eco.Mods.TechTree
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }
     }
+
     [Serialized]
     [RequireComponent(typeof(StandaloneAuthComponent))] 
     [RequireComponent(typeof(PublicStorageComponent))]
@@ -58,7 +60,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(AirPollutionComponent))]       
     [RequireComponent(typeof(VehicleComponent))]
     [RequireComponent(typeof(TailingsReportComponent))]
-    public class PoweredCartObject : PhysicsWorldObject
+    public partial class PoweredCartObject : PhysicsWorldObject
     {
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
         {
@@ -67,7 +69,7 @@ namespace Eco.Mods.TechTree
             { typeof(SnowBlock) , 0.5f}, { typeof(DirtBlock) , 0.8f},
             { typeof(ForestSoilBlock) , 0.6f},
             { typeof(DirtRoadBlock), 1.0f }, { typeof(DirtRoadWorldObjectBlock), 1.0f },
-            { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
+            { typeof(StoneRoadBlock), 1.3f }, { typeof(StoneRoadWorldObjectBlock), 1.3f },
             { typeof(AsphaltRoadBlock), 1.6f }, { typeof(AsphaltRoadWorldObjectBlock), 1.6f }
         };
         public override string FriendlyName { get { return "Powered Cart"; } }
@@ -88,7 +90,7 @@ typeof(GasolineItem),
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
             this.GetComponent<FuelConsumptionComponent>().Initialize(40);    
             this.GetComponent<AirPollutionComponent>().Initialize(0.2f);            
-            this.GetComponent<VehicleComponent>().Initialize(20, 1, roadEfficiency);
+            this.GetComponent<VehicleComponent>().Initialize(20, 1, roadEfficiency, 1);
         }
     }
 }

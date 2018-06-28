@@ -32,13 +32,11 @@ namespace Eco.Mods.TechTree
     
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]                   
-    [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(FuelSupplyComponent))]                      
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
     [RequireComponent(typeof(HousingComponent))]                  
-    [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class CandleStandObject : 
         WorldObject    
     {

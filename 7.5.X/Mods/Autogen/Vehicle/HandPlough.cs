@@ -36,6 +36,8 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
+                new CraftingElement<WoodenWheelItem>(1), 
+                new CraftingElement<HewnLogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 10, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<BoardItem>(typeof(PrimitiveMechanicsEfficiencySkill), 50, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<IronIngotItem>(typeof(PrimitiveMechanicsEfficiencySkill), 20, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
             };
@@ -45,12 +47,10 @@ namespace Eco.Mods.TechTree
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }
     }
+
     [Serialized]
-    [RequireComponent(typeof(StandaloneAuthComponent))] 
-    [RequireComponent(typeof(PublicStorageComponent))]
-    [RequireComponent(typeof(MovableLinkComponent))]
+    [RequireComponent(typeof(StandaloneAuthComponent))]
     [RequireComponent(typeof(VehicleComponent))]
-    [RequireComponent(typeof(TailingsReportComponent))]
     public partial class HandPloughObject : PhysicsWorldObject
     {
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
@@ -68,8 +68,7 @@ namespace Eco.Mods.TechTree
         {
             base.Initialize();
             
-            this.GetComponent<PublicStorageComponent>().Initialize(12, 1500000);            
-            this.GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency);
+            this.GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency, 1);
             this.GetComponent<VehicleComponent>().HumanPowered(1);           
         }
     }

@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -23,6 +22,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.Tooltip;
     using Eco.Shared;
     using Eco.Shared.Math;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
@@ -67,8 +67,8 @@ namespace Eco.Mods.TechTree
             
             tankList.Add(new LiquidProducer("Chimney", typeof(SmogItem), 100,
                     null,                                                       
-                    new Ray(0, 7, 4, Direction.Up),     
                         (float)(1.0f * SmogItem.SmogItemsPerCO2PPM) / TimeUtil.SecondsPerHour)); 
+                    this.Occupancy.Find(x => x.Name == "ChimneyOut"),   
             
             
             
@@ -102,10 +102,8 @@ namespace Eco.Mods.TechTree
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "Industrial",
-                                                    Val = 0,
-                                                    TypeForRoomLimit = "",
-                                                    DiminishingReturnPercent = 0
-                                                };}}       
+                                                    TypeForRoomLimit = "", 
+        };}}
     }
 
 

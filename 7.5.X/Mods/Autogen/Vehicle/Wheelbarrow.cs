@@ -18,14 +18,14 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Utils;
     
     [Serialized]
-    [Weight(15000)]  
+    [Weight(5000)]  
     public class WheelbarrowItem : WorldObjectItem<WheelbarrowObject>
     {
         public override string FriendlyName         { get { return "Wheelbarrow"; } }
         public override string Description          { get { return "Small wheelbarrow for hauling minimal loads."; } }
     }
 
-    [RequiresSkill(typeof(PrimitiveMechanicsSkill), 1)] 
+    [RequiresSkill(typeof(WoodworkingSkill), 1)] 
     public class WheelbarrowRecipe : Recipe
     {
         public WheelbarrowRecipe()
@@ -36,17 +36,17 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(PrimitiveMechanicsEfficiencySkill), 25, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<WoodenGearItem>(typeof(PrimitiveMechanicsEfficiencySkill), 2, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(PrimitiveMechanicsEfficiencySkill), 8, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(PrimitiveMechanicsEfficiencySkill), 8, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<WoodenWheelItem>(2), 
+                new CraftingElement<HewnLogItem>(typeof(WoodworkingEfficiencySkill), 10, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(WoodworkingEfficiencySkill), 15, WoodworkingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
 
             this.Initialize("Wheelbarrow", typeof(WheelbarrowRecipe));
-            CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
+            CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }
+
     [Serialized]
     [RequireComponent(typeof(StandaloneAuthComponent))] 
     [RequireComponent(typeof(PublicStorageComponent))]
@@ -70,9 +70,9 @@ namespace Eco.Mods.TechTree
         {
             base.Initialize();
             
-            this.GetComponent<PublicStorageComponent>().Initialize(12, 1500000);            
-            this.GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency);
-            this.GetComponent<VehicleComponent>().HumanPowered(1);           
+            this.GetComponent<PublicStorageComponent>().Initialize(6, 1000000);           
+            this.GetComponent<VehicleComponent>().Initialize(8, 1, roadEfficiency, 1);
+            this.GetComponent<VehicleComponent>().HumanPowered(0.5f);           
         }
     }
 }

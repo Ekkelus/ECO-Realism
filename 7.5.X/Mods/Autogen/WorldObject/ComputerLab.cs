@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -23,6 +22,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.Tooltip;
     using Eco.Shared;
     using Eco.Shared.Math;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ComputerLabItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Computer Lab", typeof(ComputerLabRecipe));
-            CraftingComponent.AddRecipe(typeof(FactoryObject), this);
+            CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }
     }
 }

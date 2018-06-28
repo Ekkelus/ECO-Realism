@@ -103,7 +103,7 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<StoneItem>(typeof(StoneworkingEfficiencySkill), 20, StoneworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<StoneItem>(typeof(StoneworkingEfficiencySkill), 60, StoneworkingEfficiencySkill.MultiplicativeStrategy),   
             };
             SkillModifiedValue value = new SkillModifiedValue(30, StoneworkingSpeedSkill.MultiplicativeStrategy, typeof(StoneworkingSpeedSkill), Localizer.Do("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(KilnRecipe), Item.Get<KilnItem>().UILink(), value);

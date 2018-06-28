@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -23,6 +22,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.Tooltip;
     using Eco.Shared;
     using Eco.Shared.Math;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
@@ -32,7 +32,6 @@ namespace Eco.Mods.TechTree
 
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]    
-    [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(PowerGridComponent))]              
@@ -77,10 +76,10 @@ namespace Eco.Mods.TechTree
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "General",
-                                                    Val = 4,
-                                                    TypeForRoomLimit = "Lights",
-                                                    DiminishingReturnPercent = 0.8f
-                                                };}}       
+                                                    Val = 4,                                   
+                                                    TypeForRoomLimit = "Lights", 
+                                                    DiminishingReturnPercent = 0.8f    
+        };}}
     }
 
 
@@ -96,16 +95,15 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 6, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CopperWiringItem>(typeof(ElectronicEngineeringEfficiencySkill), 10, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlassItem>(typeof(ElectronicEngineeringEfficiencySkill), 6, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LightBulbItem>(1), 
+                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 10, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),   
             };
             SkillModifiedValue value = new SkillModifiedValue(1, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.Do("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(ElectricWallLampRecipe), Item.Get<ElectricWallLampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ElectricWallLampItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Electric Wall Lamp", typeof(ElectricWallLampRecipe));
-            CraftingComponent.AddRecipe(typeof(FactoryObject), this);
+            CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }
     }
 }

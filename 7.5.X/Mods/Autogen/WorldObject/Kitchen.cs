@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -23,6 +22,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.Tooltip;
     using Eco.Shared;
     using Eco.Shared.Math;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
@@ -31,14 +31,13 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
 
     [Serialized]    
-    [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
     [RequireComponent(typeof(CraftingComponent))]               
     [RequireComponent(typeof(HousingComponent))]                          
+    [RequireComponent(typeof(SolidGroundComponent))]            
     [RequireComponent(typeof(RoomRequirementsComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(2, 18)]        
@@ -51,7 +50,6 @@ namespace Eco.Mods.TechTree
         {
             this.GetComponent<MinimapComponent>().Initialize("Cooking");                                 
             this.GetComponent<HousingComponent>().Set(KitchenItem.HousingVal);                                
-
 
 
         }
@@ -79,10 +77,10 @@ namespace Eco.Mods.TechTree
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "Kitchen",
-                                                    Val = 3,
-                                                    TypeForRoomLimit = "",
-                                                    DiminishingReturnPercent = 0.75f
-                                                };}}       
+                                                    Val = 3,                                   
+                                                    TypeForRoomLimit = "Cooking", 
+                                                    DiminishingReturnPercent = 0.3f    
+        };}}
     }
 
 

@@ -1,10 +1,10 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
+    using Eco.Gameplay.Components.VehicleModules;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Math;
     using Eco.Shared.Networking;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.World;
@@ -37,6 +38,8 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
+                new CraftingElement<WoodenWheelItem>(2), 
+                new CraftingElement<HewnLogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 30, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<BoardItem>(typeof(PrimitiveMechanicsEfficiencySkill), 50, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 2, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<IronIngotItem>(typeof(PrimitiveMechanicsEfficiencySkill), 4, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
@@ -47,13 +50,15 @@ namespace Eco.Mods.TechTree
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }
     }
+
     [Serialized]
     [RequireComponent(typeof(StandaloneAuthComponent))] 
     [RequireComponent(typeof(PublicStorageComponent))]
     [RequireComponent(typeof(MovableLinkComponent))]
     [RequireComponent(typeof(VehicleComponent))]
     [RequireComponent(typeof(TailingsReportComponent))]
-    public class WoodCartObject : PhysicsWorldObject
+    [RequireComponent(typeof(ModularStockpileComponent))]   
+    public partial class WoodCartObject : PhysicsWorldObject
     {
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
         {
@@ -74,9 +79,10 @@ namespace Eco.Mods.TechTree
         {
             base.Initialize();
             
-            this.GetComponent<PublicStorageComponent>().Initialize(12, 1500000);            
-            this.GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency);
+            this.GetComponent<PublicStorageComponent>().Initialize(12, 2000000);           
+            this.GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency, 1);
             this.GetComponent<VehicleComponent>().HumanPowered(1);           
+            this.GetComponent<StockpileComponent>().Initialize(new Vector3i(2,1,2));  
         }
     }
 }

@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -11,6 +10,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.World;
@@ -18,7 +18,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Pipes;
 
     [RequiresSkill(typeof(BasicCraftingSkill), 3)]   
-    [RepairRequiresSkill(typeof(SurvivalistSkill), 0)]
+    [RepairRequiresSkill(typeof(BasicCraftingSkill), 0)]
     public partial class StoneScytheRecipe : Recipe
     {
         public StoneScytheRecipe()
@@ -28,7 +28,6 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 3, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<StoneItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RopeItem>(typeof(BasicCraftingEfficiencySkill), 2, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(StoneScytheRecipe), Item.Get<StoneScytheItem>().UILink(), 0.5f, typeof(BasicCraftingSpeedSkill));
             this.Initialize("Stone Scythe", typeof(StoneScytheRecipe));
@@ -42,9 +41,9 @@ namespace Eco.Mods.TechTree
     {
 
         public override string FriendlyName { get { return "Stone Scythe"; } }
-        private static SkillModifiedValue caloriesBurn = CreateCalorieValue(20, typeof(ScytheEfficiencySkill), typeof(StoneScytheItem), new StoneScytheItem().UILink());
+        private static IDynamicValue caloriesBurn = CreateCalorieValue(20, typeof(ScytheEfficiencySkill), typeof(StoneScytheItem), new StoneScytheItem().UILink());
         public override IDynamicValue CaloriesBurn { get { return caloriesBurn; } }
-        
+
         private static SkillModifiedValue skilledRepairCost = new SkillModifiedValue(5, BasicCraftingSkill.MultiplicativeStrategy, typeof(BasicCraftingSkill), Localizer.Do("repair cost"));
         public override IDynamicValue SkilledRepairCost { get { return skilledRepairCost; } }
 

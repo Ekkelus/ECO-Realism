@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -23,6 +22,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.Tooltip;
     using Eco.Shared;
     using Eco.Shared.Math;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
@@ -33,6 +33,7 @@ namespace Eco.Mods.TechTree
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]    
     [RequireComponent(typeof(AttachmentComponent))]
+    [RequireComponent(typeof(PipeComponent))]                    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
@@ -62,13 +63,22 @@ namespace Eco.Mods.TechTree
         {
             this.GetComponent<MinimapComponent>().Initialize("Power");                                 
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(100);                    
+            this.GetComponent<FuelConsumptionComponent>().Initialize(75);                    
             this.GetComponent<PowerGridComponent>().Initialize(30, new ElectricPower());        
-            this.GetComponent<PowerGeneratorComponent>().Initialize(1500);                       
             this.GetComponent<HousingComponent>().Set(CombustionGeneratorItem.HousingVal);
             this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
+            this.GetComponent<PowerGeneratorComponent>().Initialize(3000);                       
 
-
+            var tankList = new List<LiquidTank>();
+            
+            tankList.Add(new LiquidProducer("Chimney", typeof(SmogItem), 100,
+                    null,                                                                
+                    this.Occupancy.Find(x => x.Name == "ChimneyOut"),   
+                        (float)(0.4f * SmogItem.SmogItemsPerCO2PPM) / TimeUtil.SecondsPerHour)); 
+            
+            
+            
+            this.GetComponent<PipeComponent>().Initialize(tankList);
 
         }
 
@@ -95,10 +105,8 @@ namespace Eco.Mods.TechTree
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "Industrial",
-                                                    Val = 0,
-                                                    TypeForRoomLimit = "",
-                                                    DiminishingReturnPercent = 0
-                                                };}}       
+                                                    TypeForRoomLimit = "", 
+        };}}
     }
 
 
@@ -114,9 +122,9 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
+                new CraftingElement<CombustionEngineItem>(1), 
                 new CraftingElement<IronIngotItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<PistonItem>(typeof(MechanicsAssemblyEfficiencySkill), 5, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CombustionEngineItem>(typeof(MechanicsAssemblyEfficiencySkill), 1, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<ValveItem>(typeof(MechanicsAssemblyEfficiencySkill), 4, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
             };
             SkillModifiedValue value = new SkillModifiedValue(30, MechanicsAssemblySpeedSkill.MultiplicativeStrategy, typeof(MechanicsAssemblySpeedSkill), Localizer.Do("craft time"));

@@ -86,6 +86,8 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
+                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GoldIngotItem>(typeof(MetalworkingEfficiencySkill), 10, MetalworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<BrickItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),   
             };
@@ -94,7 +96,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CurrencyExchangeItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Currency Exchange", typeof(CurrencyExchangeRecipe));
-            CraftingComponent.AddRecipe(typeof(FactoryObject), this);
+            CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }
 }

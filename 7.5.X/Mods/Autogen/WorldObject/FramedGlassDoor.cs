@@ -87,7 +87,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<FramedGlassDoorItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Framed Glass Door", typeof(FramedGlassDoorRecipe));
-            CraftingComponent.AddRecipe(typeof(FactoryObject), this);
+            CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
 }

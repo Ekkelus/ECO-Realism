@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -23,13 +22,14 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.Tooltip;
     using Eco.Shared;
     using Eco.Shared.Math;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
     [RequireComponent(typeof(PipeComponent))]    
     [RequireComponent(typeof(AttachmentComponent))]
@@ -41,9 +41,6 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
     [RequireComponent(typeof(HousingComponent))]
 	[RequireComponent(typeof(SolidGroundComponent))]
-    [RequireRoomContainment]
-    [RequireRoomVolume(45)]
-    [RequireRoomMaterialTier(2, 32)]
     public partial class BlastFurnaceObject : WorldObject
     {
         public override string FriendlyName { get { return "Blast Furnace"; } } 
@@ -70,9 +67,9 @@ namespace Eco.Mods.TechTree
             var tankList = new List<LiquidTank>();
             
             tankList.Add(new LiquidProducer("Chimney", typeof(SmogItem), 100,
-                    null,                                                       
-                    new Ray(1, 4, 1, Direction.Up),     
-                        (float)(0.5f * SmogItem.SmogItemsPerCO2PPM) / TimeUtil.SecondsPerHour)); 
+                    null,                                                                
+                    this.Occupancy.Find(x => x.Name == "ChimneyOut"),   
+                        (float)(0.7f * SmogItem.SmogItemsPerCO2PPM) / TimeUtil.SecondsPerHour)); 
             
             
             
@@ -106,10 +103,8 @@ namespace Eco.Mods.TechTree
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "Industrial",
-                                                    Val = 0,
-                                                    TypeForRoomLimit = "",
-                                                    DiminishingReturnPercent = 0
-                                                };}}       
+                                                    TypeForRoomLimit = "", 
+        };}}
     }
 
 

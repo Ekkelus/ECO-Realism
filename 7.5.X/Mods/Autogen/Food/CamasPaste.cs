@@ -10,6 +10,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Mods.TechTree;
     using Eco.Shared.Items;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
@@ -40,7 +41,7 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<CamasBulbItem>(typeof(MillProcessingEfficiencySkill), 8, MillProcessingEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<CamasBulbItem>(typeof(MillProcessingEfficiencySkill), 10, MillProcessingEfficiencySkill.MultiplicativeStrategy), 
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(CamasPasteRecipe), Item.Get<CamasPasteItem>().UILink(), 5, typeof(MillProcessingSpeedSkill)); 
             this.Initialize("Camas Paste", typeof(CamasPasteRecipe));
