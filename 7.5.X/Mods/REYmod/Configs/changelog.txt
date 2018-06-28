@@ -1,0 +1,44 @@
+<color=green><b>2018-05-11</b></color><size=18>
+- Balanced stone brazier
+- Balanced the new hewn log and lumber signs
+
+<color=green><b>2018-05-09</b></color><size=18>
+- Removed Raw Fish from Refine Fish recipe
+- Added room requirement to Blast Furnace
+- Added room requirement to Computer Lab
+- Added room requirement to Factory
+- Added tier construction skills to self improvement
+- Added Beekeeper skill
+- Added Bee, Beeswax, Honey and Beehive
+- Added Honey Bun, Honey Flan, Honey Glazed Ham
+- Added Skinning Skill
+- Added skinned animals
+- Added Ruined Carcass
+- Added Raw Diamond, Diamond Cut
+- Added /avatar
+- Added /nutritionranking
+- Balanced a bunch of power requirements
+- Balanced Excavator recipe
+- Balanced Truck recipe
+- Balanced Hand Plough recipe
+- Balanced Skid Steer recipe
+- Balanced Rice Glue recipe
+- Balanced Lasers recipe
+- Balanced Computer Labs recipe
+- Balanced Anvil recipe
+- Increased number of books required in research
+- Wind Turbine needs to be placed on 3x3 reinforced concrete
+- Lasers needs to be placed on 3x3 reinforced concrete</size>
+
+<color=green><b>2018-04-13</b></color><size=18>
+- Removed Lumber from barrel recipes
+- Removed Copper ingot from barrel recipes
+- Added Trapper skill
+- Added Small Animal Trap
+- Added /donate</size>
+
+<color=green><b>2018-04-08</b></color><size=18>
+- Removed Campfire Bison, Elk and Wolf recipes
+- Stations using fuel is now inherited by default
+- Moved charcoal production from Smith to Carpenter skill tree
+- Increased housing value of chair from 0.5 to 1</size>
