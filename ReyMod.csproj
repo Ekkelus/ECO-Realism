@@ -3,6 +3,14 @@
     <TargetFramework>net46</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="7.4.X WIP\**" />
+    <Compile Remove="Removed\**" />
+    <EmbeddedResource Remove="7.4.X WIP\**" />
+    <EmbeddedResource Remove="Removed\**" />
+    <None Remove="7.4.X WIP\**" />
+    <None Remove="Removed\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Eco.Core">
       <HintPath>dlls\Eco.Core.dll</HintPath>
     </Reference>
