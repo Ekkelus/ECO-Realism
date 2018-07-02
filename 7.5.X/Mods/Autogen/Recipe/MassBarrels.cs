@@ -28,7 +28,7 @@ namespace Eco.Mods.TechTree
             };
             this.Initialize("Mass Barrels", typeof(MassBarrelsRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(MassBarrelsRecipe), this.UILink(), 5, typeof(IndustrialEngineeringSpeedSkill));
-            CraftingComponent.AddRecipe(typeof(FactoryObject), this);
+            CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
 }
