@@ -34,6 +34,10 @@ namespace Eco.Gameplay.Components.Auth
     // Has to be Initialized with Initialize(AuthModeType defaultMode, Type RequiredSkillType, int RequiredSkillLevel)
     // Otherwise its just a normal PropertyAuthComponent
 
+    // currently not working as an update changed how Authcomponents work, and i didn't update it here as its currently not used anyways
+    // therefor commentetd out
+
+    /*
     [Serialized]
     public class SkillAuthComponent : PropertyAuthComponent
     {
@@ -61,4 +65,6 @@ namespace Eco.Gameplay.Components.Auth
             }
         }
     }
+
+    */
 }

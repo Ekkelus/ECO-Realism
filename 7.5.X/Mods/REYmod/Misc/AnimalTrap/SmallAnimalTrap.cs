@@ -63,8 +63,8 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
             this.GetComponent<MinimapComponent>().Initialize("Economy");
             this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
             this.GetComponent<PublicStorageComponent>().Initialize(1);
-            this.GetComponent<PublicStorageComponent>().Storage.AddRestriction(new StackLimitRestriction(1));
-            this.GetComponent<PublicStorageComponent>().Storage.AddRestriction(new SpecificItemTypesRestriction(allowedItems));
+            this.GetComponent<PublicStorageComponent>().Storage.AddInvRestriction(new StackLimitRestriction(1));
+            this.GetComponent<PublicStorageComponent>().Storage.AddInvRestriction(new SpecificItemTypesRestriction(allowedItems));
             ThreadSafeAction<User> action = this.GetComponent<PublicStorageComponent>().Storage.OnChanged;
             action.Add(InventoryChanged);
         }

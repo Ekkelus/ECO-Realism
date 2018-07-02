@@ -9,6 +9,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Objects;
     using Eco.Gameplay.Skills;
     using Eco.Shared.Serialization;
+    using Eco.World.Blocks;
 
     [Serialized]
     [Weight(25000)]  
@@ -37,6 +38,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ScrewsItem>(typeof(MechanicsAssemblyEfficiencySkill), 40, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(MechanicsAssemblyEfficiencySkill), 30, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LeatherHideItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<RubberItem>(typeof(MechanicsAssemblyEfficiencySkill), 8, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(25);
 
@@ -58,9 +60,13 @@ namespace Eco.Mods.TechTree
     {
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
         {
-            { typeof(DirtRoadBlock), 1 }, { typeof(DirtRoadWorldObjectBlock), 1 },
-            { typeof(StoneRoadBlock), 1.4f }, { typeof(StoneRoadWorldObjectBlock), 1.4f },
-            { typeof(AsphaltRoadBlock), 1.8f }, { typeof(AsphaltRoadWorldObjectBlock), 1.8f }
+            { typeof(GrassBlock) , 0.9f}, { typeof(SandBlock) , 0.5f},
+            { typeof(DesertSandBlock) , 0.5f}, { typeof(WetlandsBlock) , 0.7f},
+            { typeof(SnowBlock) , 0.7f}, 
+            { typeof(ForestSoilBlock) , 0.8f},
+            { typeof(DirtRoadBlock), 1.0f }, { typeof(DirtRoadWorldObjectBlock), 1.0f },
+            { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
+            { typeof(AsphaltRoadBlock), 1.4f }, { typeof(AsphaltRoadWorldObjectBlock), 1.4f }
         };
         public override string FriendlyName { get { return "Steam Tractor"; } }
 

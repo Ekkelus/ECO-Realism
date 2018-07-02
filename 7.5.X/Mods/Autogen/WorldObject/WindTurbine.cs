@@ -29,7 +29,8 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-    
+    using REYmod.Utils;
+
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]    
     [RequireComponent(typeof(PropertyAuthComponent))]

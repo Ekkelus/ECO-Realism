@@ -16,7 +16,8 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
-    
+    using Eco.World.Blocks;
+
     [Serialized]
     [Weight(15000)]  
     public class PoweredCartItem : WorldObjectItem<PoweredCartObject>

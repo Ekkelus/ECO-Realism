@@ -37,9 +37,9 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(LinkComponent))]                   
     [RequireComponent(typeof(FuelSupplyComponent))]                      
     [RequireComponent(typeof(FuelConsumptionComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 
-    public partial class TorchStandObject : WorldObject
-    [RequireComponent(typeof(HousingComponent))]                  
+	[RequireComponent(typeof(SolidGroundComponent))]
+    [RequireComponent(typeof(HousingComponent))]
+    public partial class TorchStandObject : WorldObject               
     {
         public override string FriendlyName { get { return "Torch Stand"; } } 
 
