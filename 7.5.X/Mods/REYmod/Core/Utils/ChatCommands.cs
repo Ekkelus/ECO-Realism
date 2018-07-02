@@ -31,6 +31,14 @@ namespace REYmod.Core.ChatCommands
 {
     public class ChatCommands : IChatCommandHandler
     {
+        [ChatCommand("random","Rolls a random number between 1 and the given number (default 100), visible to all")]
+        public static void Random(User user, int max = 100)
+        {
+            if (max < 1) max = 1;
+            int x = RandomUtil.Range(1, max);
+            ChatManager.ServerMessageToAllAlreadyLocalized(user.Name + " rolled a random number from 1 to " + max + ": " + "<i>" + x + "</i>",false);
+        }
+
         [ChatCommand("spawncustomores", "Finalizes worldgen by running the Custom Generator part", level: ChatAuthorizationLevel.Admin)]
         public static void SpawnCustomOres(User user, string force = null)
         {
