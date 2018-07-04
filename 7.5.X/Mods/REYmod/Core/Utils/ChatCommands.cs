@@ -45,8 +45,7 @@ namespace REYmod.Core.ChatCommands
         {
             User newowneruser = UserManager.FindUserByName(newowner);
             AuthorizationController controller = PropertyManager.GetAuth(user.Position.XZi);
-            if (controller != null) controller.OpenAuthorizationMenuOn(user.Player, new DeedItem());
-            else
+            if (controller == null)
             {
                 ChatUtils.SendMessage(user, "Plot is not claimed!");
                 return;
