@@ -8,6 +8,7 @@ using Eco.Shared.Math;
 using System.Collections.Generic;
 using Eco.Gameplay.Items;
 using System.ComponentModel;
+using REYmod.Blocks;
 
 namespace Eco.Mods
 {
@@ -254,13 +255,13 @@ namespace Eco.Mods
             });
             // DoorObject
             WorldObject.AddOccupancy<DoorObject>(new List<BlockOccupancy>(){
-            new BlockOccupancy(new Vector3i(0, 0, 0), typeof(BuildingWorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
-            new BlockOccupancy(new Vector3i(0, 1, 0), typeof(BuildingWorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
+            new BlockOccupancy(new Vector3i(0, 0, 0), typeof(T1WorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
+            new BlockOccupancy(new Vector3i(0, 1, 0), typeof(T1WorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
             });
             // FramedGlassDoorObject
             WorldObject.AddOccupancy<FramedGlassDoorObject>(new List<BlockOccupancy>(){
-            new BlockOccupancy(new Vector3i(0, 0, 0), typeof(BuildingWorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
-            new BlockOccupancy(new Vector3i(0, 1, 0), typeof(BuildingWorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
+            new BlockOccupancy(new Vector3i(0, 0, 0), typeof(T4WorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
+            new BlockOccupancy(new Vector3i(0, 1, 0), typeof(T4WorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
             });
             // ElectricWallLampObject
             WorldObject.AddOccupancy<ElectricWallLampObject>(new List<BlockOccupancy>(){
@@ -1646,18 +1647,18 @@ namespace Eco.Mods
             });
             // HewnLogDoorObject
             WorldObject.AddOccupancy<HewnLogDoorObject>(new List<BlockOccupancy>(){
-            new BlockOccupancy(new Vector3i(0, 0, 0), typeof(BuildingWorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
-            new BlockOccupancy(new Vector3i(0, 1, 0), typeof(BuildingWorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
+            new BlockOccupancy(new Vector3i(0, 0, 0), typeof(T1WorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
+            new BlockOccupancy(new Vector3i(0, 1, 0), typeof(T1WorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
             });
             // StoneDoorObject
             WorldObject.AddOccupancy<StoneDoorObject>(new List<BlockOccupancy>(){
-            new BlockOccupancy(new Vector3i(0, 0, 0), typeof(BuildingWorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
-            new BlockOccupancy(new Vector3i(0, 1, 0), typeof(BuildingWorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
+            new BlockOccupancy(new Vector3i(0, 0, 0), typeof(T1WorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
+            new BlockOccupancy(new Vector3i(0, 1, 0), typeof(T1WorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
             });
             // LumberDoorObject
             WorldObject.AddOccupancy<LumberDoorObject>(new List<BlockOccupancy>(){
-            new BlockOccupancy(new Vector3i(0, 0, 0), typeof(BuildingWorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
-            new BlockOccupancy(new Vector3i(0, 1, 0), typeof(BuildingWorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
+            new BlockOccupancy(new Vector3i(0, 0, 0), typeof(T2WorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
+            new BlockOccupancy(new Vector3i(0, 1, 0), typeof(T2WorldObjectBlock), new Quaternion(0f, 0f, 0f, 1f), ""),
             });
             // StuffedElkObject
             WorldObject.AddOccupancy<StuffedElkObject>(new List<BlockOccupancy>(){
