@@ -7,10 +7,14 @@ using Eco.Shared.Localization;
 using REYmod.Config;
 using System.Net;
 
+/*
+This is the Voteplugin that interacts with the API of Ecoservers.io to make Voterewards possible
+*/
 namespace REYmod.Utils
 {
     public class VoteCommands : IChatCommandHandler
     {
+        //this is the chatcommand a user has to enter to claim his voterewards
         [ChatCommand("claimvote", "Claims your vote on Ecoservers.io and get your reward", level: ChatAuthorizationLevel.Admin)]
         public static void claimvote(User user)
         {
@@ -71,6 +75,8 @@ namespace REYmod.Utils
                     return;
             }
             ChatUtils.SendMessage(user, "Thanks for Voting! Here is your reward :D");
+
+            // maybe that should be moved somewhere else for better configurability
             user.Inventory.AddItems(typeof(CoinItem), 10);
 
 
@@ -80,6 +86,17 @@ namespace REYmod.Utils
 
     public class VoteUtils
     {
+        /// <summary>
+        /// Checks the voting state of the given user on Ecoservers.io
+        /// </summary>
+        /// <param name="user">The user that will be checked</param>
+        /// <returns>
+        /// -2 -> Unexpected response (could not parse to integer)
+        /// -1 -> Connection Error
+        ///  0 -> User has not voted in the last 24h
+        ///  1 -> User has voted but not claimed his reward yet
+        ///  2 -> User has voted and already claimed his reward
+        /// </returns>
         public static int CheckVote(User user)
         {
             WebClient client = new WebClient();
@@ -110,7 +127,16 @@ namespace REYmod.Utils
                // ChatUtils.SendMessage(user, "Received an unexpected respone from Ecoservers. Please try again later.");
             }
         }
-
+        /// <summary>
+        /// Set the vote state of the given user to "claimed"
+        /// </summary>
+        /// <param name="user">The user who claimed his reward</param>
+        /// <returns>
+        /// -2 -> Unexpected response (could not parse to integer)
+        /// -1 -> Connection Error
+        ///  0 -> Vote could not be claimed (user not found or already claimed)
+        ///  1 -> OK - Vote has been claimed
+        ///  </returns>
         public static int SetVote(User user)
         {
             WebClient client = new WebClient();
