@@ -55,14 +55,15 @@ namespace REYmod.Utils
     public static class ChatUtils
     {
 
-        public static void SendMessage(User user, string msg)
+        public static void SendMessage(User user, string msg, bool temporary = false, bool createlinks = true)
         {
-            ChatManager.ServerMessageToPlayerAlreadyLocalized(msg.Autolink(), user, false);
+            if(createlinks) ChatManager.ServerMessageToPlayerAlreadyLocalized(msg.Autolink(), user, temporary);
+            else ChatManager.ServerMessageToPlayerAlreadyLocalized(msg, user, temporary);
         }
 
-        public static void SendMessage(Player player, string msg)
+        public static void SendMessage(Player player, string msg, bool temporary = false, bool createlinks = true)
         {
-            SendMessage(player.User, msg);
+            SendMessage(player.User, msg, temporary,createlinks);
         }
 
         public static void ShowWelcomeMessage(User user)

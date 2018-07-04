@@ -32,12 +32,31 @@ namespace REYmod.Core.ChatCommands
     public class ChatCommands : IChatCommandHandler
     {
         #region ADMIN Commands
-        [ChatCommand("addauth", "Adds authorization for the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
-        public static void AddAuth(User user)
+        [ChatCommand("openauth", "Opens the authmenu for the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
+        public static void OpenAuth(User user)
         {
-            //Guid id = PropertyManager.GetAuthIDAtPos(user.Position.XZi);
             AuthorizationController controller =  PropertyManager.GetAuth(user.Position.XZi);
-            controller.OpenAuthorizationMenuOn(user.Player, new DeedItem());
+            if (controller != null) controller.OpenAuthorizationMenuOn(user.Player, new DeedItem());
+            else ChatUtils.SendMessage(user, "Plot is not claimed!",true);
+        }
+
+        [ChatCommand("setowner", "Opens the authmenu for the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
+        public static void SetOwner(User user, string newowner)
+        {
+            User newowneruser = UserManager.FindUserByName(newowner);
+            AuthorizationController controller = PropertyManager.GetAuth(user.Position.XZi);
+            if (controller != null) controller.OpenAuthorizationMenuOn(user.Player, new DeedItem());
+            else
+            {
+                ChatUtils.SendMessage(user, "Plot is not claimed!");
+                return;
+            }
+            if (newowneruser!=null)
+            {
+                controller.SetOwner(newowneruser.Name);
+                ChatUtils.SendMessage(user, newowneruser + " is now the owner of " + controller.Name);
+            }
+            else ChatUtils.SendMessage(user, "User not found!",true);
         }
 
         [ChatCommand("unclaimselect", "Selects the owner of the plot you're standing on for unclaimconfirm", level: ChatAuthorizationLevel.Admin)]
