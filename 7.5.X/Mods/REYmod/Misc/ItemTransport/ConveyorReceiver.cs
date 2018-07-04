@@ -160,8 +160,8 @@ namespace Eco.Mods.TechTree
 
        
     }
-
-
+    // Not Craftable for now
+/* 
     [RequiresSkill(typeof(MetalworkingSkill), 4)]
     public partial class ConveyorReceiverRecipe : Recipe
     {
@@ -184,4 +184,5 @@ namespace Eco.Mods.TechTree
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }
+    */
 }
