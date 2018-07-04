@@ -31,12 +31,142 @@ namespace REYmod.Core.ChatCommands
 {
     public class ChatCommands : IChatCommandHandler
     {
-        [ChatCommand("random","Rolls a random number between 1 and the given number (default 100), visible to all")]
-        public static void Random(User user, int max = 100)
+        #region ADMIN Commands
+        [ChatCommand("addauth", "Adds authorization for the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
+        public static void AddAuth(User user)
         {
-            if (max < 1) max = 1;
-            int x = RandomUtil.Range(1, max);
-            ChatManager.ServerMessageToAllAlreadyLocalized(user.Name + " rolled a random number from 1 to " + max + ": " + "<i>" + x + "</i>",false);
+            //Guid id = PropertyManager.GetAuthIDAtPos(user.Position.XZi);
+            AuthorizationController controller =  PropertyManager.GetAuth(user.Position.XZi);
+            controller.OpenAuthorizationMenuOn(user.Player, new DeedItem());
+        }
+
+        [ChatCommand("unclaimselect", "Selects the owner of the plot you're standing on for unclaimconfirm", level: ChatAuthorizationLevel.Admin)]
+        public static void UnclaimPlayer(User user, string ownername = "")
+        {
+            User owner = null;
+            Tuple<User, int> ownerandcode;
+            int confirmationcode = 0;
+            bool inactive = true;
+            if (ownername == "")
+            {
+                if (PropertyManager.GetPlot(user.Position.XZi) != null)
+                {
+                    owner = PropertyManager.GetPlot(user.Position.XZi).Owner;
+                }
+            }
+            else owner = UserManager.FindUserByName(ownername);
+
+            if (owner == null)
+            {
+                user.Player.SendTemporaryMessageAlreadyLocalized("Player not Found");
+                return;
+            }
+            if ((WorldTime.Seconds - owner.LogoutTime) < REYmodSettings.Obj.Config.Maxinactivetime * 3600)
+            {
+                confirmationcode = RandomUtil.Range(1000, 9999);
+                inactive = false;
+            }
+
+
+
+            if (UtilsClipboard.UnclaimSelector.ContainsKey(user)) UtilsClipboard.UnclaimSelector.Remove(user);
+            UtilsClipboard.UnclaimSelector.Add(user, new Tuple<User, int>(owner, confirmationcode));
+
+            UtilsClipboard.UnclaimSelector.TryGetValue(user, out ownerandcode);
+            owner = ownerandcode.Item1;
+            user.Player.SendTemporaryMessageAlreadyLocalized("Selected " + owner.UILink() + " as target! ");
+            if (owner.LoggedIn)
+            {
+                user.Player.SendTemporaryMessageAlreadyLocalized((owner.UILink() + " IS ONLINE! ").Color("red").Bold());
+                user.Player.SendTemporaryMessageAlreadyLocalized("Confirmationcode: " + confirmationcode);
+            }
+            else if (!inactive) user.Player.SendTemporaryMessageAlreadyLocalized("WARNING: Player only offline for " + TimeSpan.FromSeconds(WorldTime.Seconds - owner.LogoutTime).ToString() + ". Use Confirmation Code:" + confirmationcode);
+
+
+        }
+
+        [ChatCommand("unclaimconfirm", "Unclaims all property of the selected player", level: ChatAuthorizationLevel.Admin)]
+        public static void UnclaimConfirm(User user, int confirmcode = 0)
+        {
+            User target = null;
+            Tuple<User, int> targetandcode;
+            int totalplotcount = 0, deedcount = 0, plotcountdeed = 0, vehiclecount = 0, destroyedvehicles = 0;
+            IEnumerable<Vector2i> positions;
+            string tmp = string.Empty;
+            WorldObject vehicle = null;
+            ItemStack sourcestack;
+            ItemStack targetstack;
+            Func<ItemStack, bool> findDeed = i =>
+            {
+                if (i.Item as DeedItem != null) return ((i.Item as DeedItem).AuthID == vehicle.GetComponent<StandaloneAuthComponent>().AuthGuid);
+                return false;
+            };
+
+            if (!UtilsClipboard.UnclaimSelector.TryGetValue(user, out targetandcode))
+            {
+                user.Player.SendTemporaryErrorAlreadyLocalized("no User selected");
+                return;
+            }
+            target = targetandcode.Item1;
+            if (confirmcode != targetandcode.Item2)
+            {
+                ChatUtils.SendMessage(user, "Confirmationcode not correct");
+                return;
+            }
+            IEnumerable<AuthorizationController> authorizationControllers = PropertyManager.GetAuthBelongingTo(target);
+            foreach (AuthorizationController auth in authorizationControllers)
+            {
+                plotcountdeed = 0;
+                if (auth.Type == "Property")
+                {
+                    deedcount++;
+                    positions = PropertyManager.PositionsForId(auth.Id);
+                    foreach (Vector2i pos in positions)
+                    {
+                        plotcountdeed++;
+                        totalplotcount++;
+                        //ChatUtils.SendMessage(user, TextLinkManager.MarkUpText("Try unclaiming: (" + pos.X + "," + pos.Y + ")"));
+                        PropertyManager.UnclaimProperty(pos);
+                    }
+                    ChatUtils.SendMessage(user, "Unclaimed: " + auth.Name + " (" + plotcountdeed.ToString() + " Plots)");
+                }
+                else if (auth.Type == "Vehicle")
+                {
+                    if (auth.AttachedWorldObjects[0].Object != null)
+                    {
+                        vehiclecount++;
+                        vehicle = auth.AttachedWorldObjects[0].Object;
+                        ChatUtils.SendMessage(user, "Found Vehicle: " + auth.Name);
+                        //vehicle.Destroy();
+                        sourcestack = null;
+                        sourcestack = target.Inventory.NonEmptyStacks.FirstOrDefault(findDeed);
+                        targetstack = vehicle.GetComponent<PublicStorageComponent>().Inventory.Stacks.FirstOrDefault(i => i.Empty);
+                        if (targetstack == null)
+                        {
+                            targetstack = vehicle.GetComponent<PublicStorageComponent>().Inventory.Stacks.First();
+                            vehicle.GetComponent<PublicStorageComponent>().Inventory.ClearItemStack(targetstack);
+                        }
+
+                        if (sourcestack != null)
+                        {
+                            vehicle.GetComponent<PublicStorageComponent>().Inventory.AddItem(sourcestack.Item);
+                            auth.SetOwner(user.Name);
+                            vehicle.GetComponent<StandaloneAuthComponent>().SetLocked(user.Player, false);
+                            auth.SetOwner(target.Name);
+                            //target.Inventory.MoveItems(sourcestack, targetstack, target.Player);
+                        }
+                        else
+                        {
+                            destroyedvehicles++;
+                            vehicle.Destroy();
+                        }
+                    }
+
+
+                }
+            }
+
+            ChatUtils.SendMessage(user, totalplotcount + " Plots on " + deedcount + " Deeds unclaimed. Also found " + vehiclecount + " Vehicles. " + (vehiclecount - destroyedvehicles) + " have been unlocked and got their deed added to inventory. " + destroyedvehicles + " were destroyed as the deed couldn't be found");
         }
 
         [ChatCommand("spawncustomores", "Finalizes worldgen by running the Custom Generator part", level: ChatAuthorizationLevel.Admin)]
@@ -68,7 +198,7 @@ namespace REYmod.Core.ChatCommands
             {
                 Legislation.Laws.AllNonFailedLaws.Where(x => !x.InEffect).ToList().ForEach(x =>
                 {
-                    panelcontent += new Button(player => { Legislation.Laws.EnactLaw(x); player.OpenInfoPanel("Law passed", "You passed " + x.UILink()); },tooltip: x.Tooltip(), content: x.Title, singleuse: true, clickdesc: "Click to enact this law").UILink();
+                    panelcontent += new Button(player => { Legislation.Laws.EnactLaw(x); player.OpenInfoPanel("Law passed", "You passed " + x.UILink()); }, tooltip: x.Tooltip(), content: x.Title, singleuse: true, clickdesc: "Click to enact this law").UILink();
                     panelcontent += "<br>";
                 });
             }
@@ -76,6 +206,53 @@ namespace REYmod.Core.ChatCommands
             user.Player.OpenInfoPanel("Passlaw Menu", panelcontent);
         }
 
+        [ChatCommand("setmaxsuperskills", "Displays or set the maximum allowed Superskills. -1 for no limit", level: ChatAuthorizationLevel.Admin)]
+        public static void SetMaxSuperSkills(User user, int maxallowed = int.MinValue)
+        {
+            if (maxallowed == -1) maxallowed = int.MaxValue;
+            string currentallowedstr = (REYmodSettings.Obj.Config.Maxsuperskills != int.MaxValue) ? REYmodSettings.Obj.Config.Maxsuperskills.ToString() : "Infinite";
+            if (maxallowed == int.MinValue || maxallowed == REYmodSettings.Obj.Config.Maxsuperskills)
+            {
+                ChatUtils.SendMessage(user, "Max allowed Superskills: " + currentallowedstr);
+                return;
+            }
+            else
+            {
+                string newallowedstr = (maxallowed != int.MaxValue) ? maxallowed.ToString() : "Infinite";
+                REYmodSettings.Obj.Config.Maxsuperskills = maxallowed;
+                REYmodSettings.Obj.SaveConfig();
+                ChatUtils.SendMessage(user, "Changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr);
+                ChatManager.ServerMessageToAllAlreadyLocalized(user.UILink() + "changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr, false);
+                // ConfigHandler.UpdateConfigFile();
+            }
+
+
+        }
+
+        [ChatCommand("reports", "Displays current Reports", level: ChatAuthorizationLevel.Admin)]
+        public static void Reports(User user)
+        {
+            string x = IOUtils.ReadFileFromConfigFolder("../Reports/reports.txt");
+            user.Player.OpenInfoPanel("Recent Reports", x);
+        }
+
+        [ChatCommand("clearreports", "Deletes all current reports", level: ChatAuthorizationLevel.Admin)]
+        public static void ClearReports(User user)
+        {
+            IOUtils.ClearFile("./mods/ECO Realism/Reports/reports.txt");
+            user.Player.SendTemporaryMessageAlreadyLocalized("Reports cleared");
+        }
+
+        #endregion
+
+        #region USER Commands
+        [ChatCommand("random", "Rolls a random number between 1 and the given number (default 100), visible to all")]
+        public static void Random(User user, int max = 100)
+        {
+            if (max < 1) max = 1;
+            int x = RandomUtil.Range(1, max);
+            ChatManager.ServerMessageToAllAlreadyLocalized(user.Name + " rolled a random number from 1 to " + max + ": " + "<i>" + x + "</i>", false);
+        }
 
         [ChatCommand("rules", "Displays the Server Rules")]
         public static void Rules(User user)
@@ -119,44 +296,6 @@ namespace REYmod.Core.ChatCommands
             IOUtils.WriteFileToConfigFolder("../Reports/reports.txt", texttoadd);
             user.Player.SendTemporaryMessageAlreadyLocalized("Report sent");
 
-        }
-
-        [ChatCommand("setmaxsuperskills", "Displays or set the maximum allowed Superskills. -1 for no limit", level: ChatAuthorizationLevel.Admin)]
-        public static void SetMaxSuperSkills(User user, int maxallowed = int.MinValue)
-        {          
-            if (maxallowed == -1) maxallowed = int.MaxValue;
-            string currentallowedstr = (REYmodSettings.Obj.Config.Maxsuperskills != int.MaxValue) ? REYmodSettings.Obj.Config.Maxsuperskills.ToString() : "Infinite";
-            if (maxallowed == int.MinValue || maxallowed == REYmodSettings.Obj.Config.Maxsuperskills)
-            {
-                ChatUtils.SendMessage(user, "Max allowed Superskills: " + currentallowedstr);
-                return;
-            }
-            else
-            {
-                string newallowedstr = (maxallowed != int.MaxValue) ? maxallowed.ToString() : "Infinite";
-                REYmodSettings.Obj.Config.Maxsuperskills = maxallowed;
-                REYmodSettings.Obj.SaveConfig();
-                ChatUtils.SendMessage(user, "Changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr);
-                ChatManager.ServerMessageToAllAlreadyLocalized(user.UILink() + "changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr, false);
-               // ConfigHandler.UpdateConfigFile();
-            }
-
-
-        }
-
-
-        [ChatCommand("reports", "Displays current Reports", level: ChatAuthorizationLevel.Admin)]
-        public static void Reports(User user)
-        {
-            string x = IOUtils.ReadFileFromConfigFolder("../Reports/reports.txt");
-            user.Player.OpenInfoPanel("Recent Reports", x);
-        }
-
-        [ChatCommand("clearreports", "Deletes all current reports", level: ChatAuthorizationLevel.Admin)]
-        public static void ClearReports(User user)
-        {
-            IOUtils.ClearFile("./mods/ECO Realism/Reports/reports.txt");
-            user.Player.SendTemporaryMessageAlreadyLocalized("Reports cleared");
         }
 
         [ChatCommand("houseranking", "Displays the users with the highest housing rates")]
@@ -325,149 +464,8 @@ namespace REYmod.Core.ChatCommands
             SkillUtils.ShowSuperSkillInfo(user.Player);
         }
 
-        //[ChatCommand("confirmsuperskill", "Confirm that you read the warning about Super Skills")]
-        //public static void ConfirmSuperSkill(User user)
-        //{
-        //    foreach(string id in SkillUtils.superskillconfirmed)
-        //    {
-        //        if (id == user.ID)
-        //        {
-        //            user.Player.SendTemporaryErrorAlreadyLocalized("You already unlocked Super Skills");
-        //            return;
-        //        }                   
-        //    }
-        //    user.Player.SendTemporaryMessageAlreadyLocalized("You can now level up a Skill to level 10");
-        //    SkillUtils.superskillconfirmed.Add(user.ID);
-        //}
-
-        [ChatCommand("unclaimselect", "Selects the owner of the plot you're standing on for unclaimconfirm", level: ChatAuthorizationLevel.Admin)]
-        public static void UnclaimPlayer(User user, string ownername = "")
-        {
-            User owner = null;
-            Tuple<User, int> ownerandcode;
-            int confirmationcode = 0;
-            bool inactive = true;
-            if (ownername == "")
-            {
-                if (PropertyManager.GetPlot(user.Position.XZi) != null)
-                {
-                    owner = PropertyManager.GetPlot(user.Position.XZi).Owner;
-                }
-            }
-            else owner = UserManager.FindUserByName(ownername);
-
-            if (owner == null)
-            {
-                user.Player.SendTemporaryMessageAlreadyLocalized("Player not Found");
-                return;
-            }
-            if ((WorldTime.Seconds - owner.LogoutTime) < REYmodSettings.Obj.Config.Maxinactivetime * 3600)
-            {
-                confirmationcode = RandomUtil.Range(1000, 9999);
-                inactive = false;
-            }
-            
-
-
-            if (UtilsClipboard.UnclaimSelector.ContainsKey(user)) UtilsClipboard.UnclaimSelector.Remove(user);
-            UtilsClipboard.UnclaimSelector.Add(user, new Tuple<User,int>(owner,confirmationcode));
-
-            UtilsClipboard.UnclaimSelector.TryGetValue(user, out ownerandcode);
-            owner = ownerandcode.Item1;
-            user.Player.SendTemporaryMessageAlreadyLocalized("Selected " + owner.UILink() + " as target! ");
-            if (owner.LoggedIn)
-            {
-                user.Player.SendTemporaryMessageAlreadyLocalized((owner.UILink() + " IS ONLINE! ").Color("red").Bold());
-                user.Player.SendTemporaryMessageAlreadyLocalized("Confirmationcode: " + confirmationcode);
-            }
-            else if (!inactive) user.Player.SendTemporaryMessageAlreadyLocalized("WARNING: Player only offline for " + TimeSpan.FromSeconds(WorldTime.Seconds - owner.LogoutTime).ToString() + ". Use Confirmation Code:" + confirmationcode);
-
-
-        }
-
-        [ChatCommand("unclaimconfirm", "Unclaims all property of the selected player", level: ChatAuthorizationLevel.Admin)]
-        public static void UnclaimConfirm(User user, int confirmcode = 0)
-        {
-            User target = null;
-            Tuple<User,int> targetandcode;
-            int totalplotcount = 0, deedcount = 0, plotcountdeed = 0, vehiclecount = 0, destroyedvehicles = 0;
-            IEnumerable<Vector2i> positions;
-            string tmp = string.Empty;
-            WorldObject vehicle = null;
-            ItemStack sourcestack;
-            ItemStack targetstack;
-            Func<ItemStack,bool> findDeed = i =>
-            {
-                if(i.Item as DeedItem != null) return ((i.Item as DeedItem).AuthID == vehicle.GetComponent<StandaloneAuthComponent>().AuthGuid);
-                return false;
-            };
-
-            if (!UtilsClipboard.UnclaimSelector.TryGetValue(user, out targetandcode))
-            {
-                user.Player.SendTemporaryErrorAlreadyLocalized("no User selected");
-                return;
-            }
-            target = targetandcode.Item1;
-            if(confirmcode != targetandcode.Item2)
-            {
-                ChatUtils.SendMessage(user, "Confirmationcode not correct");
-                return;
-            }
-            IEnumerable<AuthorizationController> authorizationControllers = PropertyManager.GetAuthBelongingTo(target);
-            foreach (AuthorizationController auth in authorizationControllers)
-            {
-                plotcountdeed = 0;
-                if (auth.Type == "Property")
-                {
-                    deedcount++;
-                    positions = PropertyManager.PositionsForId(auth.Id);
-                    foreach (Vector2i pos in positions)
-                    {
-                        plotcountdeed++;
-                        totalplotcount++;
-                        //ChatUtils.SendMessage(user, TextLinkManager.MarkUpText("Try unclaiming: (" + pos.X + "," + pos.Y + ")"));
-                        PropertyManager.UnclaimProperty(pos);
-                    }
-                    ChatUtils.SendMessage(user, "Unclaimed: " + auth.Name + " (" + plotcountdeed.ToString() + " Plots)");
-                }
-                else if (auth.Type == "Vehicle")
-                {
-                    if (auth.AttachedWorldObjects[0].Object != null)
-                    {
-                        vehiclecount++;
-                        vehicle = auth.AttachedWorldObjects[0].Object;
-                        ChatUtils.SendMessage(user, "Found Vehicle: " + auth.Name);
-                        //vehicle.Destroy();
-                        sourcestack = null;
-                        sourcestack = target.Inventory.NonEmptyStacks.FirstOrDefault(findDeed);
-                        targetstack = vehicle.GetComponent<PublicStorageComponent>().Inventory.Stacks.FirstOrDefault(i => i.Empty);
-                        if (targetstack == null)
-                        {
-                            targetstack = vehicle.GetComponent<PublicStorageComponent>().Inventory.Stacks.First();
-                            vehicle.GetComponent<PublicStorageComponent>().Inventory.ClearItemStack(targetstack);
-                        }
-
-                        if (sourcestack != null)
-                        {
-                            vehicle.GetComponent<PublicStorageComponent>().Inventory.AddItem(sourcestack.Item);
-                            auth.SetOwner(user.Name);
-                            vehicle.GetComponent<StandaloneAuthComponent>().SetLocked(user.Player, false);
-                            auth.SetOwner(target.Name);
-                            //target.Inventory.MoveItems(sourcestack, targetstack, target.Player);
-                        }
-                        else
-                        {
-                            destroyedvehicles++;
-                            vehicle.Destroy();
-                        }
-                    }
-                 
-
-                }
-            }
-
-            ChatUtils.SendMessage(user, totalplotcount + " Plots on " + deedcount + " Deeds unclaimed. Also found " + vehiclecount + " Vehicles. " + (vehiclecount-destroyedvehicles) + " have been unlocked and got their deed added to inventory. " + destroyedvehicles + " were destroyed as the deed couldn't be found");
-        }
+        #endregion
+       
     }
 
 }
