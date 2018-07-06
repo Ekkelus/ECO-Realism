@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace REYmod.Blocks
 {
     [Serialized]
-    [Wall, Constructed, Solid, BuildRoomMaterialOption]
+    [Wall, Solid, BuildRoomMaterialOption]
     [Tier(4)]
     public class T4WorldObjectBlock : WorldObjectBlock
     {
@@ -23,7 +23,7 @@ namespace REYmod.Blocks
     }
 
     [Serialized]
-    [Wall, Constructed, Solid, BuildRoomMaterialOption]
+    [Wall, Solid, BuildRoomMaterialOption]
     [Tier(3)]
     public class T3WorldObjectBlock : WorldObjectBlock
     {
@@ -35,7 +35,7 @@ namespace REYmod.Blocks
     }
 
     [Serialized]
-    [Wall, Constructed, Solid, BuildRoomMaterialOption]
+    [Wall, Solid, BuildRoomMaterialOption]
     [Tier(2)]
     public class T2WorldObjectBlock : WorldObjectBlock
     {
@@ -47,7 +47,7 @@ namespace REYmod.Blocks
     }
 
     [Serialized]
-    [Wall, Constructed, Solid, BuildRoomMaterialOption]
+    [Wall, Solid, BuildRoomMaterialOption]
     [Tier(1)]
     public class T1WorldObjectBlock : WorldObjectBlock
     {

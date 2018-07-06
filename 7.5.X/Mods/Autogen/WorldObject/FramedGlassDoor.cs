@@ -60,6 +60,12 @@ namespace Eco.Mods.TechTree
         public override string FriendlyName { get { return "Framed Glass Door"; } } 
         public override string Description  { get { return  "A beautiful glass door made of steel and glass."; } }
 
+        [Tooltip(100)]
+        public string TierTooltip()
+        {
+            return "<i>Tier 4 building material</i>";
+        }
+
         static FramedGlassDoorItem()
         {
             

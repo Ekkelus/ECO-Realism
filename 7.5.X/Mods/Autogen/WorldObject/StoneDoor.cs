@@ -59,6 +59,13 @@ namespace Eco.Mods.TechTree
         public override string FriendlyName { get { return "Stone Door"; } } 
         public override string Description  { get { return  "A heavy stone door."; } }
 
+        [Tooltip(100)]
+        public string TierTooltip()
+        {
+            return "<i>Tier 1 building material</i>";
+        }
+
+
         static StoneDoorItem()
         {
             

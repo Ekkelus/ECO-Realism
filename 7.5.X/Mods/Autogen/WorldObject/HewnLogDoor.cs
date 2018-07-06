@@ -59,6 +59,13 @@ namespace Eco.Mods.TechTree
         public override string FriendlyName { get { return "Hewn Log Door"; } } 
         public override string Description  { get { return  "A door made from roughly hewn logs."; } }
 
+        [Tooltip(100)]
+        public string TierTooltip()
+        {
+            return "<i>Tier 1 building material</i>";
+        }
+
+
         static HewnLogDoorItem()
         {
             

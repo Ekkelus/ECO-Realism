@@ -26,12 +26,31 @@ using REYmod.Utils;
 using REYmod.Config;
 using Eco.Core;
 using Eco.Core.Plugins.Interfaces;
+using Eco.Mods.TechTree;
+using Eco.Shared.Services;
+using System.ComponentModel;
 
 namespace REYmod.Core.ChatCommands
 {
     public class ChatCommands : IChatCommandHandler
     {
         #region ADMIN Commands
+
+        [ChatCommand("tp", "Opens a list of online players. Click the player you(or the given player) should be teleported to", level: ChatAuthorizationLevel.Admin)]
+        public static void Tp(User user, string username = "")
+        {
+            User usertoteleport = UserManager.FindUserByName(username);
+            if (usertoteleport == null) usertoteleport = user;
+
+            string panelcontent = "Select Player: <br><br>";
+            foreach (User onlineuser in UserManager.OnlineUsers)
+            {
+                panelcontent += new Button(player => { usertoteleport.Player.SetPosition(usertoteleport.Player.Position + new Vector3(0,2,0)); }, content: onlineuser.Name, singleuse: true, clickdesc: "Click to teleport " + usertoteleport.Name + " to " + onlineuser.Name).UILink();
+                panelcontent += "<br>";
+            }
+            user.Player.OpenInfoPanel("Teleport Menu", panelcontent);
+        }
+
         [ChatCommand("openauth", "Opens the authmenu for the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
         public static void OpenAuth(User user)
         {

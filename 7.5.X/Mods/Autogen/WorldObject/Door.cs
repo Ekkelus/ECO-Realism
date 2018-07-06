@@ -62,6 +62,12 @@ namespace Eco.Mods.TechTree
         public override string FriendlyName { get { return "Door"; } } 
         public override string Description  { get { return  "A sturdy wooden door. Can be locked for certain players."; } }
 
+        [Tooltip(100)]
+        public string TierTooltip()
+        {
+            return "<i>Tier 1 building material</i>";
+        }
+
         static DoorItem()
         {
             
