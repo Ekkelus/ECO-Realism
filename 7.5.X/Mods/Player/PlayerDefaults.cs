@@ -2,20 +2,18 @@
 // See LICENSE file in the project root for full license information.
 
 using System;
-    using Eco.Shared.Localization;
 using System.Collections.Generic;
 using Eco.Gameplay.DynamicValues;
 using Eco.Gameplay.Items;
-using Eco.Gameplay.Items.Actionbar;
 using Eco.Gameplay.Players;
 using Eco.Mods.TechTree;
-
+using Eco.Shared.Localization;
 
 // default starting player items / skills
 public static class PlayerDefaults
 {
     public static Dictionary<Type, int> GetDefaultToolbar()
-    {        
+    {
         return new Dictionary<Type, int>
         {
         };
@@ -25,16 +23,24 @@ public static class PlayerDefaults
     {
         return new Dictionary<Type, int>
         {
-            { typeof(PropertyClaimItem), 10 },
+            { typeof(StarterCampItem), 1 },
+            { typeof(PropertyClaimItem), 4 },
+            { typeof(CoinItem), 100 },
+        };
+    }
+
+    public static Dictionary<Type, int> GetDefaultCampsiteInventory()
+    {
+        return new Dictionary<Type, int>
+        {
+            { typeof(PropertyClaimItem), 6 },
+            { typeof(PropertyToolItem), 1 },
             { typeof(StoneAxeItem), 1 },
             { typeof(WoodenShovelItem), 1 },
             { typeof(StonePickaxeItem), 1 },
             { typeof(StoneHammerItem), 1 },
             { typeof(StoneScytheItem), 1 },
-            { typeof(WorkbenchItem), 1 },
             { typeof(CardboardBoxItem), 3 },
-            { typeof(StockpileItem), 2 },
-            { typeof(CoinItem), 50 },
         };
     }
 
@@ -49,7 +55,6 @@ public static class PlayerDefaults
             typeof(MiningSkill),
             typeof(MortaringSkill),
             typeof(ChefSkill),
-            typeof(CampfireSkill),
             typeof(FarmerSkill),
             typeof(DiggingSkill),
             typeof(GatheringSkill),
