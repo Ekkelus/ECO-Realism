@@ -38,11 +38,10 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<CombustionEngineItem>(1),
-                new CraftingElement<IronWheelItem>(3), 
                 new CraftingElement<LumberItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<ClothItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<RivetItem>(typeof(MechanicsAssemblyEfficiencySkill), 5, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RubberItem>(typeof(MechanicsAssemblyEfficiencySkill), 6, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<RubberWheelItem>(typeof(MechanicsAssemblyEfficiencySkill), 3, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(25);
 
