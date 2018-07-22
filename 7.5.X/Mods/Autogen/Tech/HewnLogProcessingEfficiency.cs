@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.Linq;
     using Eco.Core.Utils;
@@ -13,6 +12,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;

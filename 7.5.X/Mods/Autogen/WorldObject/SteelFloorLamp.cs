@@ -37,7 +37,6 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerConsumptionComponent))]                     
     [RequireComponent(typeof(HousingComponent))]                  
-    [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class SteelFloorLampObject : 
         WorldObject    
     {
@@ -63,7 +62,8 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(2000)]
-    public partial class SteelFloorLampItem : WorldObjectItem<SteelFloorLampObject>
+    public partial class SteelFloorLampItem :
+        WorldObjectItem<SteelFloorLampObject> 
     {
         public override string FriendlyName { get { return "Steel Floor Lamp"; } } 
         public override string Description  { get { return  "A more modern way to light up a room. This time from the floor."; } }
@@ -84,7 +84,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(ElectronicEngineeringSkill), 3)]
+    [RequiresSkill(typeof(SteelworkingSkill), 2)]
     public partial class SteelFloorLampRecipe : Recipe
     {
         public SteelFloorLampRecipe()
@@ -96,15 +96,16 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 10, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LightBulbItem>(1), 
+                new CraftingElement<SteelItem>(typeof(SteelworkingEfficiencySkill), 10, SteelworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<PlasticItem>(typeof(SteelworkingEfficiencySkill), 10, SteelworkingEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(10, SteelworkingSpeedSkill.MultiplicativeStrategy, typeof(SteelworkingSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(SteelFloorLampRecipe), Item.Get<SteelFloorLampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SteelFloorLampItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Steel Floor Lamp", typeof(SteelFloorLampRecipe));
-            CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
+            CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }
 }

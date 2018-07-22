@@ -51,7 +51,6 @@ namespace Eco.Mods.TechTree
             this.GetComponent<HousingComponent>().Set(SteelTableLampItem.HousingVal);                                
 
 
-
         }
 
         public override void Destroy()
@@ -63,7 +62,8 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(1000)]
-    public partial class SteelTableLampItem : WorldObjectItem<SteelTableLampObject>
+    public partial class SteelTableLampItem :
+        WorldObjectItem<SteelTableLampObject> 
     {
         public override string FriendlyName { get { return "Steel Table Lamp"; } } 
         public override string Description  { get { return  "For late night studying. Or working. Or anything, really."; } }
@@ -84,7 +84,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(ElectronicEngineeringSkill), 3)]
+    [RequiresSkill(typeof(SteelworkingSkill), 1)]
     public partial class SteelTableLampRecipe : Recipe
     {
         public SteelTableLampRecipe()
@@ -96,15 +96,16 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 8, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LightBulbItem>(1), 
+                new CraftingElement<SteelItem>(typeof(SteelworkingEfficiencySkill), 8, SteelworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<PlasticItem>(typeof(SteelworkingEfficiencySkill), 5, SteelworkingEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(10, SteelworkingSpeedSkill.MultiplicativeStrategy, typeof(SteelworkingSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(SteelTableLampRecipe), Item.Get<SteelTableLampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SteelTableLampItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Steel Table Lamp", typeof(SteelTableLampRecipe));
-            CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
+            CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }
 }

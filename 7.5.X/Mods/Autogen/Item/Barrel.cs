@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -12,6 +11,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.World;
@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
             this.CraftMinutes = CreateCraftTimeValue(typeof(BarrelRecipe), Item.Get<BarrelItem>().UILink(), 1, typeof(PetrolRefiningSpeedSkill));    
             this.Initialize("Barrel", typeof(BarrelRecipe));
 
-            CraftingComponent.AddRecipe(typeof(MachineShopObject), this);
+            CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);
         }
     }
 
@@ -48,7 +48,7 @@ namespace Eco.Mods.TechTree
     { }
 
     [Serialized]
-    [MaxStackSize(10)]                                      
+    [MaxStackSize(10)]                                       
     [Weight(2000)]      
     [Currency]              
     public partial class BarrelItem :

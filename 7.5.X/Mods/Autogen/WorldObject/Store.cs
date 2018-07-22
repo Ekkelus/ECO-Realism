@@ -34,12 +34,13 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
+    [RequireComponent(typeof(SolidGroundComponent))]            
     [RequireComponent(typeof(RoomRequirementsComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(1, 18)]        
-    public partial class StoreObject : WorldObject
+    public partial class StoreObject : 
+        WorldObject    
     {
         public override string FriendlyName { get { return "Store"; } } 
 
@@ -60,20 +61,20 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(5000)]
-    public partial class StoreItem : WorldObjectItem<StoreObject>
+    public partial class StoreItem :
+        WorldObjectItem<StoreObject> 
     {
         public override string FriendlyName { get { return "Store"; } } 
-        public override string Description { get { return "Allows the selling and trading of items."; } }
+        public override string Description  { get { return  "Allows the selling and trading of items."; } }
 
         static StoreItem()
         {
             
         }
-        
+
     }
 
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 4)]
     public partial class StoreRecipe : Recipe
     {
         public StoreRecipe()
@@ -85,13 +86,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<StoneItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<LogItem>(10),
+                new CraftingElement<StoneItem>(10),                                                                    
             };
-            SkillModifiedValue value = new SkillModifiedValue(15, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.Do("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(StoreRecipe), Item.Get<StoreItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<StoreItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = new ConstantValue(15); 
             this.Initialize("Store", typeof(StoreRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

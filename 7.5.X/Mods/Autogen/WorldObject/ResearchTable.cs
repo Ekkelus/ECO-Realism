@@ -51,7 +51,6 @@ namespace Eco.Mods.TechTree
             this.GetComponent<MinimapComponent>().Initialize("Research");                                 
 
 
-
         }
 
         public override void Destroy()
@@ -62,8 +61,8 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
-    [Weight(5000)]
-    public partial class ResearchTableItem : WorldObjectItem<ResearchTableObject>
+    public partial class ResearchTableItem :
+        WorldObjectItem<ResearchTableObject> 
     {
         public override string FriendlyName { get { return "Research Table"; } } 
         public override string Description  { get { return  "A basic table for researching new technologies and skills."; } }
@@ -88,14 +87,11 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 30, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<StoneItem>(typeof(BasicCraftingEfficiencySkill), 40, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PlantFibersItem>(typeof(BasicCraftingEfficiencySkill), 30, BasicCraftingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<LogItem>(30),
+                new CraftingElement<StoneItem>(40),
+                new CraftingElement<PlantFibersItem>(30),                                                                    
             };
-            SkillModifiedValue value = new SkillModifiedValue(5, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.Do("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(ResearchTableRecipe), Item.Get<ResearchTableItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<ResearchTableItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = new ConstantValue(5); 
             this.Initialize("Research Table", typeof(ResearchTableRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

@@ -45,7 +45,6 @@ namespace Eco.Mods.TechTree
             this.GetComponent<MinimapComponent>().Initialize("Economy");                                 
 
 
-
             this.AddAsPOI("Marker");  
         }
 
@@ -59,7 +58,8 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(250)]
-    public partial class ConstructionPostItem : WorldObjectItem<ConstructionPostObject>
+    public partial class ConstructionPostItem :
+        WorldObjectItem<ConstructionPostObject> 
     {
         public override string FriendlyName { get { return "Construction Post"; } } 
         public override string Description  { get { return  "For contruction contracts."; } }
@@ -72,7 +72,6 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 1)]
     public partial class ConstructionPostRecipe : Recipe
     {
         public ConstructionPostRecipe()
@@ -84,12 +83,9 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 1, BasicCraftingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<LogItem>(1),                                                                    
             };
-            SkillModifiedValue value = new SkillModifiedValue(2, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.Do("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(ConstructionPostRecipe), Item.Get<ConstructionPostItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<ConstructionPostItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = new ConstantValue(2); 
             this.Initialize("Construction Post", typeof(ConstructionPostRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

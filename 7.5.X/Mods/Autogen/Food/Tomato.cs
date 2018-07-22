@@ -24,7 +24,7 @@ namespace Eco.Mods.TechTree
         public override string FriendlyName                     { get { return "Tomato"; } }
         public override string Description                      { get { return "Intelligence is knowing this is a fruit; wisdom is not putting it in a fruit salad."; } }
 
-        private static Nutrients nutrition = new Nutrients()    { Carbs = 3, Fat = 1, Protein = 1, Vitamins = 3};
+        private static Nutrients nutrition = new Nutrients()    { Carbs = 4, Fat = 0, Protein = 1, Vitamins = 3};
         public override float Calories                          { get { return 240; } }
         public override Nutrients Nutrition                     { get { return nutrition; } }
     }

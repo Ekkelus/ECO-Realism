@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.Linq;
     using Eco.Core.Utils;
@@ -13,6 +12,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
     public partial class IndustrySkill : Skill
     {
         public override string FriendlyName { get { return "Industry"; } }
-        public override string Description { get { return Localizer.Do(""); } }
+        public override string Description { get { return Localizer.DoStr(""); } }
 
         public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
         public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }
@@ -56,6 +56,8 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<SteelItem>(typeof(ResearchEfficiencySkill), 100, ResearchEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<BookItem>(typeof(ResearchEfficiencySkill), 16, ResearchEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(ResearchEfficiencySkill), 50, ResearchEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BrickItem>(typeof(ResearchEfficiencySkill), 50, ResearchEfficiencySkill.MultiplicativeStrategy), 
             };
             this.CraftMinutes = new ConstantValue(30);
 

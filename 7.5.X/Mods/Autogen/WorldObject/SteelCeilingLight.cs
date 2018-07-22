@@ -51,7 +51,6 @@ namespace Eco.Mods.TechTree
             this.GetComponent<HousingComponent>().Set(SteelCeilingLightItem.HousingVal);                                
 
 
-
         }
 
         public override void Destroy()
@@ -63,7 +62,8 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(2000)]
-    public partial class SteelCeilingLightItem : WorldObjectItem<SteelCeilingLightObject>
+    public partial class SteelCeilingLightItem :
+        WorldObjectItem<SteelCeilingLightObject> 
     {
         public override string FriendlyName { get { return "Steel Ceiling Light"; } } 
         public override string Description  { get { return  "A more modern way to light up a room."; } }
@@ -84,7 +84,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(ElectronicEngineeringSkill), 3)]
+    [RequiresSkill(typeof(SteelworkingSkill), 3)]
     public partial class SteelCeilingLightRecipe : Recipe
     {
         public SteelCeilingLightRecipe()
@@ -96,15 +96,16 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 10, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LightBulbItem>(1), 
+                new CraftingElement<SteelItem>(typeof(SteelworkingEfficiencySkill), 10, SteelworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<PlasticItem>(typeof(SteelworkingEfficiencySkill), 10, SteelworkingEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(10, SteelworkingSpeedSkill.MultiplicativeStrategy, typeof(SteelworkingSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(SteelCeilingLightRecipe), Item.Get<SteelCeilingLightItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SteelCeilingLightItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Steel Ceiling Light", typeof(SteelCeilingLightRecipe));
-            CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
+            CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }
 }

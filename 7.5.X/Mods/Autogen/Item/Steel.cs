@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -12,6 +11,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.World;
@@ -29,10 +29,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(AlloySmeltingEfficiencySkill), 3, AlloySmeltingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<CharcoalItem>(typeof(AlloySmeltingEfficiencySkill), 2, AlloySmeltingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(AlloySmeltingEfficiencySkill), 5, AlloySmeltingEfficiencySkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SteelRecipe), Item.Get<SteelItem>().UILink(), 5, typeof(AlloySmeltingSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(SteelRecipe), Item.Get<SteelItem>().UILink(), 3, typeof(AlloySmeltingSpeedSkill));    
             this.Initialize("Steel", typeof(SteelRecipe));
 
             CraftingComponent.AddRecipe(typeof(BlastFurnaceObject), this);
@@ -41,12 +41,12 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
-    [Weight(4000)]      
+    [Weight(2500)]      
     [Currency]              
     public partial class SteelItem :
     Item                                     
     {
-        public override string FriendlyName { get { return "Steel"; } }
+        public override string FriendlyName { get { return "Steel"; } } 
         public override string Description { get { return "A strong alloy of iron and other elements."; } }
 
     }

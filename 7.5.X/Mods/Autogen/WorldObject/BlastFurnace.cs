@@ -89,7 +89,7 @@ namespace Eco.Mods.TechTree
     public partial class BlastFurnaceItem : WorldObjectItem<BlastFurnaceObject>
     {
         public override string FriendlyName { get { return "Blast Furnace"; } } 
-        public override string Description { get { return "A superior replacement for the bloomery that can produce steel."; } }
+        public override string Description  { get { return  "A superior replacement for the bloomery that can produce steel."; } }
 
         static BlastFurnaceItem()
         {
@@ -98,7 +98,7 @@ namespace Eco.Mods.TechTree
             
             
         }
-        
+
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -121,15 +121,16 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BrickItem>(typeof(MetalworkingEfficiencySkill), 10, MetalworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<IronPipeItem>(typeof(MetalworkingEfficiencySkill), 10, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronPlateItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<ScrewsItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(60, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(60, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(BlastFurnaceRecipe), Item.Get<BlastFurnaceItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BlastFurnaceItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Blast Furnace", typeof(BlastFurnaceRecipe));
-            CraftingComponent.AddRecipe(typeof(AnvilObject), this);
+            CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
 }

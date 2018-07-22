@@ -55,15 +55,15 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
-    [RequireComponent(typeof(StandaloneAuthComponent))] 
-    [RequireComponent(typeof(PublicStorageComponent))]
-    [RequireComponent(typeof(MovableLinkComponent))]
+    [RequireComponent(typeof(StandaloneAuthComponent))]
     [RequireComponent(typeof(FuelSupplyComponent))]              
     [RequireComponent(typeof(FuelConsumptionComponent))]         
+    [RequireComponent(typeof(PublicStorageComponent))]      
+    [RequireComponent(typeof(MovableLinkComponent))]        
     [RequireComponent(typeof(AirPollutionComponent))]       
     [RequireComponent(typeof(VehicleComponent))]
-    [RequireComponent(typeof(TailingsReportComponent))]
     [RequireComponent(typeof(ModularStockpileComponent))]   
+    [RequireComponent(typeof(TailingsReportComponent))]     
     public partial class TruckObject : PhysicsWorldObject
     {
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()

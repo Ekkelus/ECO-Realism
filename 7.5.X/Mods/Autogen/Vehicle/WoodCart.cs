@@ -24,7 +24,7 @@ namespace Eco.Mods.TechTree
     public class WoodCartItem : WorldObjectItem<WoodCartObject>
     {
         public override string FriendlyName         { get { return "Wood Cart"; } }
-        public override string Description          { get { return "Small wheelbarrow for hauling minimal loads."; } }
+        public override string Description          { get { return "Small cart for hauling small loads."; } }
     }
 
     [RequiresSkill(typeof(PrimitiveMechanicsSkill), 1)] 
@@ -52,12 +52,12 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
-    [RequireComponent(typeof(StandaloneAuthComponent))] 
-    [RequireComponent(typeof(PublicStorageComponent))]
-    [RequireComponent(typeof(MovableLinkComponent))]
+    [RequireComponent(typeof(StandaloneAuthComponent))]
+    [RequireComponent(typeof(PublicStorageComponent))]      
+    [RequireComponent(typeof(MovableLinkComponent))]        
     [RequireComponent(typeof(VehicleComponent))]
-    [RequireComponent(typeof(TailingsReportComponent))]
     [RequireComponent(typeof(ModularStockpileComponent))]   
+    [RequireComponent(typeof(TailingsReportComponent))]     
     public partial class WoodCartObject : PhysicsWorldObject
     {
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()

@@ -52,14 +52,14 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
-    [RequireComponent(typeof(StandaloneAuthComponent))] 
-    [RequireComponent(typeof(PublicStorageComponent))]
-    [RequireComponent(typeof(MovableLinkComponent))]
+    [RequireComponent(typeof(StandaloneAuthComponent))]
     [RequireComponent(typeof(FuelSupplyComponent))]              
     [RequireComponent(typeof(FuelConsumptionComponent))]         
+    [RequireComponent(typeof(PublicStorageComponent))]      
+    [RequireComponent(typeof(MovableLinkComponent))]        
     [RequireComponent(typeof(AirPollutionComponent))]       
     [RequireComponent(typeof(VehicleComponent))]
-    [RequireComponent(typeof(TailingsReportComponent))]
+    [RequireComponent(typeof(TailingsReportComponent))]     
     public partial class PoweredCartObject : PhysicsWorldObject
     {
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
@@ -90,7 +90,7 @@ typeof(GasolineItem),
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
             this.GetComponent<FuelConsumptionComponent>().Initialize(40);    
             this.GetComponent<AirPollutionComponent>().Initialize(0.2f);            
-            this.GetComponent<VehicleComponent>().Initialize(20, 1, roadEfficiency, 1);
+            this.GetComponent<VehicleComponent>().Initialize(15, 1, roadEfficiency, 1);
         }
     }
 }

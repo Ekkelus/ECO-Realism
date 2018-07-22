@@ -25,34 +25,12 @@ namespace Eco.Mods.TechTree
         public override string Description          { get { return "Small wheelbarrow for hauling minimal loads."; } }
     }
 
-    [RequiresSkill(typeof(WoodworkingSkill), 1)] 
-    public class WheelbarrowRecipe : Recipe
-    {
-        public WheelbarrowRecipe()
-        {
-            this.Products = new CraftingElement[]
-            {
-                new CraftingElement<WheelbarrowItem>(),
-            };
-            this.Ingredients = new CraftingElement[]
-            {
-                new CraftingElement<WoodenWheelItem>(2), 
-                new CraftingElement<HewnLogItem>(typeof(WoodworkingEfficiencySkill), 10, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BoardItem>(typeof(WoodworkingEfficiencySkill), 15, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-            };
-            this.CraftMinutes = new ConstantValue(5);
-
-            this.Initialize("Wheelbarrow", typeof(WheelbarrowRecipe));
-            CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
-        }
-    }
-
     [Serialized]
-    [RequireComponent(typeof(StandaloneAuthComponent))] 
-    [RequireComponent(typeof(PublicStorageComponent))]
-    [RequireComponent(typeof(MovableLinkComponent))]
+    [RequireComponent(typeof(StandaloneAuthComponent))]
+    [RequireComponent(typeof(PublicStorageComponent))]      
+    [RequireComponent(typeof(MovableLinkComponent))]        
     [RequireComponent(typeof(VehicleComponent))]
-    [RequireComponent(typeof(TailingsReportComponent))]
+    [RequireComponent(typeof(TailingsReportComponent))]     
     public partial class WheelbarrowObject : PhysicsWorldObject
     {
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
@@ -70,8 +48,8 @@ namespace Eco.Mods.TechTree
         {
             base.Initialize();
             
-            this.GetComponent<PublicStorageComponent>().Initialize(6, 1000000);           
-            this.GetComponent<VehicleComponent>().Initialize(8, 1, roadEfficiency, 1);
+            this.GetComponent<PublicStorageComponent>().Initialize(8, 1400000);           
+            this.GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency, 1);
             this.GetComponent<VehicleComponent>().HumanPowered(0.5f);           
         }
     }

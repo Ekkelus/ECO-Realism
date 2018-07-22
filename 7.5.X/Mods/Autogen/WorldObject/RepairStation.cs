@@ -47,7 +47,6 @@ namespace Eco.Mods.TechTree
             this.GetComponent<MinimapComponent>().Initialize("Crafting");                                 
 
 
-
         }
 
         public override void Destroy()
@@ -59,7 +58,8 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(3000)]
-    public partial class RepairStationItem : WorldObjectItem<RepairStationObject>
+    public partial class RepairStationItem :
+        WorldObjectItem<RepairStationObject> 
     {
         public override string FriendlyName { get { return "Repair Station"; } } 
         public override string Description  { get { return  "A place to fix up broken tools."; } }
@@ -72,7 +72,6 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 1)]
     public partial class RepairStationRecipe : Recipe
     {
         public RepairStationRecipe()
@@ -84,13 +83,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 20, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<StoneItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<LogItem>(20),
+                new CraftingElement<StoneItem>(10),                                                                    
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.Do("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(RepairStationRecipe), Item.Get<RepairStationItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<RepairStationItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = new ConstantValue(1); 
             this.Initialize("Repair Station", typeof(RepairStationRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

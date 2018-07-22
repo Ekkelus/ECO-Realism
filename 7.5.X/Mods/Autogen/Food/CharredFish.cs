@@ -10,6 +10,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Mods.TechTree;
     using Eco.Shared.Items;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
@@ -23,7 +24,7 @@ namespace Eco.Mods.TechTree
         public override string FriendlyNamePlural               { get { return "Charred Fish"; } } 
         public override string Description                      { get { return "At least it doesn't have any scales any more."; } }
 
-        private static Nutrients nutrition = new Nutrients()    { Carbs = 0, Fat = 8, Protein = 12, Vitamins = 0};
+        private static Nutrients nutrition = new Nutrients()    { Carbs = 0, Fat = 4, Protein = 9, Vitamins = 0};
         public override float Calories                          { get { return 550; } }
         public override Nutrients Nutrition                     { get { return nutrition; } }
     }

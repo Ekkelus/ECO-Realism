@@ -31,14 +31,15 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     
     [Serialized]    
-    [RequireComponent(typeof(OnOffComponent))]    
+    [RequireComponent(typeof(OnOffComponent))]                   
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(PowerGridComponent))]              
-    [RequireComponent(typeof(PowerConsumptionComponent))]
-[RequireComponent(typeof(SolidGroundComponent))] 	
-    [RequireComponent(typeof(HousingComponent))]                          
-    public partial class StreetlampObject : WorldObject
+    [RequireComponent(typeof(PowerConsumptionComponent))]                     
+    [RequireComponent(typeof(HousingComponent))]                  
+    [RequireComponent(typeof(SolidGroundComponent))]            
+    public partial class StreetlampObject : 
+        WorldObject    
     {
         public override string FriendlyName { get { return "Streetlamp"; } } 
 
@@ -62,10 +63,11 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(2000)]
-    public partial class StreetlampItem : WorldObjectItem<StreetlampObject>
+    public partial class StreetlampItem :
+        WorldObjectItem<StreetlampObject> 
     {
         public override string FriendlyName { get { return "Streetlamp"; } } 
-        public override string Description { get { return "A towering metal lightpost that requires electricity to run."; } }
+        public override string Description  { get { return  "A towering metal lightpost that requires electricity to run."; } }
 
         static StreetlampItem()
         {
@@ -98,12 +100,12 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<LightBulbItem>(1), 
                 new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 20, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(1, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(StreetlampRecipe), Item.Get<StreetlampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StreetlampItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Streetlamp", typeof(StreetlampRecipe));
-            CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
+            CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }
 }

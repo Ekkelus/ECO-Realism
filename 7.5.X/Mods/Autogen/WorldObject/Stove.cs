@@ -31,21 +31,22 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     
     [Serialized]    
-    [RequireComponent(typeof(PipeComponent))]    
-    [RequireComponent(typeof(AttachmentComponent))]
+    [RequireComponent(typeof(PipeComponent))]                    
+    [RequireComponent(typeof(AttachmentComponent))]              
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
     [RequireComponent(typeof(CraftingComponent))]               
     [RequireComponent(typeof(FuelSupplyComponent))]                      
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
-    [RequireComponent(typeof(HousingComponent))]                          
+    [RequireComponent(typeof(HousingComponent))]                  
+    [RequireComponent(typeof(SolidGroundComponent))]            
     [RequireComponent(typeof(RoomRequirementsComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(2, 18)]        
-    public partial class StoveObject : WorldObject
+    public partial class StoveObject : 
+        WorldObject    
     {
         public override string FriendlyName { get { return "Stove"; } } 
 
@@ -57,7 +58,6 @@ namespace Eco.Mods.TechTree
             typeof(ArrowItem),
             typeof(BoardItem),
             typeof(CoalItem),
-            typeof(WoodPulpItem),
         };
 
         protected override void Initialize()
@@ -65,9 +65,7 @@ namespace Eco.Mods.TechTree
             this.GetComponent<MinimapComponent>().Initialize("Cooking");                                 
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
             this.GetComponent<FuelConsumptionComponent>().Initialize(10);                    
-            this.GetComponent<HousingComponent>().Set(StoveItem.HousingVal);
-            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
-
+            this.GetComponent<HousingComponent>().Set(StoveItem.HousingVal);                                
 
             var tankList = new List<LiquidTank>();
             
@@ -90,11 +88,11 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
-    [Weight(5000)]
-    public partial class StoveItem : WorldObjectItem<StoveObject>
+    public partial class StoveItem :
+        WorldObjectItem<StoveObject> 
     {
         public override string FriendlyName { get { return "Stove"; } } 
-        public override string Description { get { return "A heavy stove for cooking more complex dishes."; } }
+        public override string Description  { get { return  "A heavy stove for cooking more complex dishes."; } }
 
         static StoveItem()
         {
@@ -115,7 +113,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MetalworkingSkill), 1)]
+    [RequiresSkill(typeof(IndustrialEngineeringSkill), 1)]
     public partial class StoveRecipe : Recipe
     {
         public StoveRecipe()
@@ -127,16 +125,17 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 10, MetalworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<HingeItem>(typeof(MetalworkingEfficiencySkill), 4, MetalworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<GlassJarItem>(typeof(MetalworkingEfficiencySkill), 4, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<SteelPlateItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<RivetItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(20, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(20, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(StoveRecipe), Item.Get<StoveItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StoveItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Stove", typeof(StoveRecipe));
-            CraftingComponent.AddRecipe(typeof(MachineShopObject), this);
+            CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);
         }
     }
 }

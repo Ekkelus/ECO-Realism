@@ -55,7 +55,6 @@ namespace Eco.Mods.TechTree
             this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());        
 
 
-
         }
 
         public override void Destroy()
@@ -67,7 +66,8 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(3000)]
-    public partial class RollingMillItem : WorldObjectItem<RollingMillObject>
+    public partial class RollingMillItem :
+        WorldObjectItem<RollingMillObject> 
     {
         public override string FriendlyName { get { return "Rolling Mill"; } } 
         public override string Description  { get { return  "For rolling steel into more buildable materials."; } }
@@ -94,12 +94,12 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<SteelItem>(typeof(SteelworkingEfficiencySkill), 10, SteelworkingEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(45, SteelworkingSpeedSkill.MultiplicativeStrategy, typeof(SteelworkingSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(45, SteelworkingSpeedSkill.MultiplicativeStrategy, typeof(SteelworkingSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(RollingMillRecipe), Item.Get<RollingMillItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<RollingMillItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("Rolling Mill", typeof(RollingMillRecipe));
-            CraftingComponent.AddRecipe(typeof(MachineShopObject), this);
+            CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }
 }

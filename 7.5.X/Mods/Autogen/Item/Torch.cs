@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Eco.Gameplay.Blocks;
@@ -12,13 +11,13 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
     using Eco.Gameplay.Pipes;
 
- 
     public partial class TorchRecipe : Recipe
     {
         public TorchRecipe()
@@ -29,10 +28,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(2),
-                new CraftingElement<ClothItem>(1),
+                new CraftingElement<LogItem>(2),    
             };
-            this.CraftMinutes = new ConstantValue(0.5f);    
+            this.CraftMinutes = new ConstantValue(0.5f);
             this.Initialize("Torch", typeof(TorchRecipe));
 
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
@@ -45,9 +43,9 @@ namespace Eco.Mods.TechTree
     [Fuel(1000)]          
     [Currency]              
     public partial class TorchItem :
-    ToolItem                                     
+    ToolItem                        
     {
-        public override string FriendlyName { get { return "Torch"; } }
+        public override string FriendlyName { get { return "Torch"; } } 
         public override string Description { get { return "A little bit of light to help beat back the night."; } }
 
     }

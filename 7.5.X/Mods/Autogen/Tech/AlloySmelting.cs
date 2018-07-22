@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
     public partial class AlloySmeltingSkill : Skill
     {
         public override string FriendlyName { get { return "Alloy Smelting"; } }
-        public override string Description { get { return Localizer.Do(""); } }
+        public override string Description { get { return Localizer.DoStr(""); } }
 
         public static ModificationStrategy MultiplicativeStrategy = 
             new MultiplicativeStrategy(new float[] { 1, 1 - 0.2f, 1 - 0.35f, 1 - 0.5f, 1 - 0.65f, 1 - 0.8f });
@@ -32,7 +32,7 @@ namespace Eco.Mods.TechTree
         public static int[] SkillPointCost = { 10, 15, 20, 25, 30 };
         public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }
         public override int PrevRequiredPoint { get { return this.Level - 1 >= 0 && this.Level - 1 < this.MaxLevel ? SkillPointCost[this.Level - 1] : 0; } }
-        public override int MaxLevel { get { return 2; } }
+        public override int MaxLevel { get { return 4; } }
     }
 
 }

@@ -31,15 +31,16 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     
     [Serialized]    
-    [RequireComponent(typeof(OnOffComponent))]    
+    [RequireComponent(typeof(OnOffComponent))]                   
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
     [RequireComponent(typeof(FuelSupplyComponent))]                      
-    [RequireComponent(typeof(FuelConsumptionComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))]
-    [RequireComponent(typeof(HousingComponent))]
-    public partial class TorchStandObject : WorldObject               
+    [RequireComponent(typeof(FuelConsumptionComponent))]                 
+    [RequireComponent(typeof(HousingComponent))]                  
+    [RequireComponent(typeof(SolidGroundComponent))]            
+    public partial class TorchStandObject : 
+        WorldObject    
     {
         public override string FriendlyName { get { return "Torch Stand"; } } 
 
@@ -52,9 +53,8 @@ namespace Eco.Mods.TechTree
         {
             this.GetComponent<MinimapComponent>().Initialize("Lights");                                 
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(0.5f);
-            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
-
+            this.GetComponent<FuelConsumptionComponent>().Initialize(0.5f);                    
+            this.GetComponent<HousingComponent>().Set(TorchStandItem.HousingVal);                                
 
 
         }
@@ -68,10 +68,11 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(1000)]
-    public partial class TorchStandItem : WorldObjectItem<TorchStandObject>
+    public partial class TorchStandItem :
+        WorldObjectItem<TorchStandObject> 
     {
         public override string FriendlyName { get { return "Torch Stand"; } } 
-        public override string Description { get { return "A stand for a torch."; } }
+        public override string Description  { get { return  "A stand for a torch."; } }
 
         static TorchStandItem()
         {
@@ -89,7 +90,6 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 1)]
     public partial class TorchStandRecipe : Recipe
     {
         public TorchStandRecipe()
@@ -104,10 +104,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<RopeItem>(typeof(BasicCraftingEfficiencySkill), 1, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(2, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.Do("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(TorchStandRecipe), Item.Get<TorchStandItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<TorchStandItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = new ConstantValue(2); 
             this.Initialize("Torch Stand", typeof(TorchStandRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

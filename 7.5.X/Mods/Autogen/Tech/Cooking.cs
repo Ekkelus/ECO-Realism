@@ -1,7 +1,6 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Shared.Localization;
     using System.Collections.Generic;
     using System.Linq;
     using Eco.Core.Utils;
@@ -13,6 +12,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
     public partial class CookingSkill : Skill
     {
         public override string FriendlyName { get { return "Cooking"; } }
-        public override string Description { get { return Localizer.Do(""); } }
+        public override string Description { get { return Localizer.DoStr(""); } }
 
         public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
         public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }
@@ -43,7 +43,7 @@ namespace Eco.Mods.TechTree
         public override string FriendlyName { get { return "Cooking Skill Scroll"; } }
     }
 
-    [RequiresSkill(typeof(CampfireSkill), 0)] 
+    [RequiresSkill(typeof(GatheringSkill), 0)] 
     public partial class CookingSkillBookRecipe : Recipe
     {
         public CookingSkillBookRecipe()
