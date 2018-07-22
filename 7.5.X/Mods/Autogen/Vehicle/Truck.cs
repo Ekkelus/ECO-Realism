@@ -37,6 +37,7 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
+                new CraftingElement<SteamTruckItem>(1),
                 new CraftingElement<CombustionEngineItem>(1),
                 new CraftingElement<RadiatorItem>(1), 
                 new CraftingElement<GearboxItem>(typeof(IndustrialEngineeringEfficiencySkill), 10, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
@@ -93,7 +94,7 @@ typeof(GasolineItem),
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
             this.GetComponent<FuelConsumptionComponent>().Initialize(25);    
             this.GetComponent<AirPollutionComponent>().Initialize(0.2f);            
-            this.GetComponent<VehicleComponent>().Initialize(20, 1, roadEfficiency, 2);
+            this.GetComponent<VehicleComponent>().Initialize(25, 1, roadEfficiency, 2);
             this.GetComponent<StockpileComponent>().Initialize(new Vector3i(2,2,3));  
         }
     }
