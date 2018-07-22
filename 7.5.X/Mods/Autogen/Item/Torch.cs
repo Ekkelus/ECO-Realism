@@ -18,7 +18,7 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     using Eco.Gameplay.Pipes;
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 0)]   
+ 
     public partial class TorchRecipe : Recipe
     {
         public TorchRecipe()
@@ -29,10 +29,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 2, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ClothItem>(typeof(BasicCraftingEfficiencySkill), 1, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(2),
+                new CraftingElement<ClothItem>(1),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(TorchRecipe), Item.Get<TorchItem>().UILink(), 0.5f, typeof(BasicCraftingSpeedSkill));    
+            this.CraftMinutes = new ConstantValue(0.5f);    
             this.Initialize("Torch", typeof(TorchRecipe));
 
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);

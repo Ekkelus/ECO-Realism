@@ -229,17 +229,18 @@ namespace REYmod.Utils
             return totalplotcount;
 
         }
-
-        /// <summary>
-        /// -BUGGY- i have no idea why but that currently causes issues
-        /// <para/>Inverts the given DynamicValue and returns a new InvertDynamicvalue
-        /// </summary>
-        /// <param name="x"></param>
-        /// <returns></returns>
-        public static InvertedDynamicValue InvertDynamicvalue(IDynamicValue x)
-        {
-            return new InvertedDynamicValue(x);
-        }
+        /*
+                /// <summary>
+                /// -BUGGY- i have no idea why but that currently causes issues
+                /// <para/>Inverts the given DynamicValue and returns a new InvertDynamicvalue
+                /// </summary>
+                /// <param name="x"></param>
+                /// <returns></returns>
+                public static InvertedDynamicValue InvertDynamicvalue(IDynamicValue x)
+                {
+                    return new InvertedDynamicValue(x);
+                }
+          */
     }
 
     /// <summary>

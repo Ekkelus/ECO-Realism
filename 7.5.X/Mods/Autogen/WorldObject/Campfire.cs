@@ -58,9 +58,7 @@ namespace Eco.Mods.TechTree
         {
             this.GetComponent<MinimapComponent>().Initialize("Cooking");                                 
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(10);
-            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
-
+            this.GetComponent<FuelConsumptionComponent>().Initialize(10);                    
 
 
         }
@@ -74,7 +72,8 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(1000)]
-    public partial class CampfireItem : WorldObjectItem<CampfireObject>
+    public partial class CampfireItem :
+        WorldObjectItem<CampfireObject> 
     {
         public override string FriendlyName { get { return "Campfire"; } } 
         public override string Description  { get { return  "Cook like a caveman on an uneven fire."; } }
@@ -87,7 +86,6 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 0)]
     public partial class CampfireRecipe : Recipe
     {
         public CampfireRecipe()
@@ -99,15 +97,12 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 5, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<StoneItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<LogItem>(3),
+                new CraftingElement<StoneItem>(12),                                                                    
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.Do("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(CampfireRecipe), Item.Get<CampfireItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<CampfireItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = new ConstantValue(1); 
             this.Initialize("Campfire", typeof(CampfireRecipe));
-            CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
+            CraftingComponent.AddRecipe(typeof(CampsiteObject), this);
         }
     }
 }

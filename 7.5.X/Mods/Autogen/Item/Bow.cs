@@ -18,7 +18,7 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     using Eco.Gameplay.Pipes;
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 3)]   
+    [RequiresSkill(typeof(BowEfficiencySkill), 0)]   
     public partial class BowRecipe : Recipe
     {
         public BowRecipe()
@@ -29,8 +29,8 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(BasicCraftingEfficiencySkill), 4, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<StringItem>(typeof(BasicCraftingEfficiencySkill), 3, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(BowEfficiencySkill), 4, BowEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<StringItem>(typeof(BowEfficiencySkill), 3, BowEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
             this.Initialize("Bow", typeof(BowRecipe));
