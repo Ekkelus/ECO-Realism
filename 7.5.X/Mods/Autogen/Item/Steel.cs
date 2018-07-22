@@ -18,26 +18,26 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     using Eco.Gameplay.Pipes;
 
-    [RequiresSkill(typeof(AlloySmeltingSkill), 2)]   
-    public partial class SteelRecipe : Recipe
-    {
-        public SteelRecipe()
-        {
-            this.Products = new CraftingElement[]
-            {
-                new CraftingElement<SteelItem>(),          
-            };
-            this.Ingredients = new CraftingElement[]
-            {
-                new CraftingElement<CharcoalItem>(typeof(AlloySmeltingEfficiencySkill), 2, AlloySmeltingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(AlloySmeltingEfficiencySkill), 5, AlloySmeltingEfficiencySkill.MultiplicativeStrategy), 
-            };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SteelRecipe), Item.Get<SteelItem>().UILink(), 3, typeof(AlloySmeltingSpeedSkill));    
-            this.Initialize("Steel", typeof(SteelRecipe));
+    //[RequiresSkill(typeof(AlloySmeltingSkill), 2)]   
+    //public partial class SteelRecipe : Recipe
+    //{
+    //    public SteelRecipe()
+    //    {
+    //        this.Products = new CraftingElement[]
+    //        {
+    //            new CraftingElement<SteelItem>(),          
+    //        };
+    //        this.Ingredients = new CraftingElement[]
+    //        {
+    //            new CraftingElement<CoalItem>(typeof(AlloySmeltingEfficiencySkill), 2, AlloySmeltingEfficiencySkill.MultiplicativeStrategy),
+    //            new CraftingElement<IronIngotItem>(typeof(AlloySmeltingEfficiencySkill), 5, AlloySmeltingEfficiencySkill.MultiplicativeStrategy), 
+    //        };
+    //        this.CraftMinutes = CreateCraftTimeValue(typeof(SteelRecipe), Item.Get<SteelItem>().UILink(), 3, typeof(AlloySmeltingSpeedSkill));    
+    //        this.Initialize("Steel", typeof(SteelRecipe));
 
-            CraftingComponent.AddRecipe(typeof(BlastFurnaceObject), this);
-        }
-    }
+    //        CraftingComponent.AddRecipe(typeof(BlastFurnaceObject), this);
+    //    }
+    //}
 
 
     [Serialized]
