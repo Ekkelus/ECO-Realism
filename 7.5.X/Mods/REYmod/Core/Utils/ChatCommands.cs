@@ -29,12 +29,26 @@ using Eco.Core.Plugins.Interfaces;
 using Eco.Mods.TechTree;
 using Eco.Shared.Services;
 using System.ComponentModel;
+using Eco.Gameplay.Rooms;
 
 namespace REYmod.Core.ChatCommands
 {
     public class ChatCommands : IChatCommandHandler
     {
         #region ADMIN Commands
+        [ChatCommand("globalroomfix", "Reevaluates all rooms that have at least one worldobject placed in them", level: ChatAuthorizationLevel.Admin)]
+        public static void GlobalRoomFix(User user)
+        {
+            foreach(WorldObject obj in WorldObjectManager.All)
+            {
+                RoomData.QueueRoomTest(obj.Position3i);
+                //Console.WriteLine("Checked " + obj.Name + " at " + obj.Position3i.ToStringLabelled("pos"));
+            }
+            RoomData.Obj.UpdateRooms();
+            ChatUtils.SendMessage(user, "Rooms should be fixed now");
+
+        }
+
 
         [ChatCommand("tp", "Opens a list of online players. Click the player you(or the given player) should be teleported to", level: ChatAuthorizationLevel.Admin)]
         public static void Tp(User user, string username = "")
@@ -45,7 +59,7 @@ namespace REYmod.Core.ChatCommands
             string panelcontent = "Select Player: <br><br>";
             foreach (User onlineuser in UserManager.OnlineUsers)
             {
-                panelcontent += new Button(player => { usertoteleport.Player.SetPosition(usertoteleport.Player.Position + new Vector3(0,2,0)); }, content: onlineuser.Name, singleuse: true, clickdesc: "Click to teleport " + usertoteleport.Name + " to " + onlineuser.Name).UILink();
+                panelcontent += new Button(player => { usertoteleport.Player.SetPosition(onlineuser.Player.Position); }, content: onlineuser.Name, singleuse: true, clickdesc: "Click to teleport " + usertoteleport.Name + " to " + onlineuser.Name).UILink();
                 panelcontent += "<br>";
             }
             user.Player.OpenInfoPanel("Teleport Menu", panelcontent);
@@ -206,6 +220,11 @@ namespace REYmod.Core.ChatCommands
             ChatUtils.SendMessage(user, totalplotcount + " Plots on " + deedcount + " Deeds unclaimed. Also found " + vehiclecount + " Vehicles. " + (vehiclecount - destroyedvehicles) + " have been unlocked and got their deed added to inventory. " + destroyedvehicles + " were destroyed as the deed couldn't be found");
         }
 
+        /// <summary>
+        /// -OBSOLETE- Finalizes worldgen by running the Custom Generator part
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="force"></param>
         [ChatCommand("spawncustomores", "Finalizes worldgen by running the Custom Generator part", level: ChatAuthorizationLevel.Admin)]
         public static void SpawnCustomOres(User user, string force = null)
         {
