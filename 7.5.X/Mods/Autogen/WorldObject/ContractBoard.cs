@@ -84,7 +84,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PaperItem>(typeof(WoodworkingEfficiencySkill), 10, WoodworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(WoodworkingEfficiencySkill), 20, WoodworkingEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(15, WoodworkingSpeedSkill.MultiplicativeStrategy, typeof(WoodworkingSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(15, WoodworkingSpeedSkill.MultiplicativeStrategy, typeof(WoodworkingSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(ContractBoardRecipe), Item.Get<ContractBoardItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ContractBoardItem>().UILink(), value);
             this.CraftMinutes = value;

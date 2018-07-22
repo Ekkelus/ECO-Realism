@@ -384,14 +384,14 @@ namespace REYmod.Utils
         public static IAtomicAction SuperSkillLevelUp(Skill skill, Player player)
         {
             if (skill.Level != 5) return SimpleAtomicAction.NoOp;
-            if (SkillUtils.SuperSkillCount(player.User) >= REYmodSettings.Obj.Config.Maxsuperskills) return new FailedAtomicAction(Localizer.Do("You already have enough SuperSkills " + SkillUtils.SuperSkillCount(player.User) + "/" + REYmodSettings.Obj.Config.Maxsuperskills));
+            if (SkillUtils.SuperSkillCount(player.User) >= REYmodSettings.Obj.Config.Maxsuperskills) return new FailedAtomicAction(Localizer.DoStr("You already have enough SuperSkills " + SkillUtils.SuperSkillCount(player.User) + "/" + REYmodSettings.Obj.Config.Maxsuperskills));
             if (CheckSuperskillConfirmation(player.User))
             {
                 superskillconfirmed.Remove(player.User.ID);
                 return SimpleAtomicAction.NoOp;
             }
             SkillUtils.ShowSuperSkillInfo(player);
-            return new FailedAtomicAction(Localizer.Do("You need to confirm first"));
+            return new FailedAtomicAction(Localizer.DoStr("You need to confirm first"));
         }
 
         public static bool CheckSuperskillConfirmation(User user)

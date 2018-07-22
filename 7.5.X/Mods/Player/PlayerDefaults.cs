@@ -67,22 +67,22 @@ public static class PlayerDefaults
     {
         {
             UserStatType.MaxCalories, new MultiDynamicValue(MultiDynamicOps.Sum,
-                CreateSmv(0f, BigStomachSkill.AdditiveStrategy, typeof(BigStomachSkill), Localizer.Do("maximum calories")),
+                CreateSmv(0f, BigStomachSkill.AdditiveStrategy, typeof(BigStomachSkill), Localizer.DoStr("maximum calories")),
                 new ConstantValue(3000))
         },
         {
             UserStatType.MaxCarryWeight, new MultiDynamicValue(MultiDynamicOps.Sum,
-                CreateSmv(0f, new BonusUnitsDecoratorStrategy(StrongBackSkill.AdditiveStrategy, "kg", (float val) => val/1000f), typeof(StrongBackSkill), Localizer.Do("carry weight")),
+                CreateSmv(0f, new BonusUnitsDecoratorStrategy(StrongBackSkill.AdditiveStrategy, "kg", (float val) => val/1000f), typeof(StrongBackSkill), Localizer.DoStr("carry weight")),
                 new ConstantValue(ToolbarBackpackInventory.DefaultWeightLimit))
         },
         {
             UserStatType.CalorieRate, new MultiDynamicValue(MultiDynamicOps.Sum,
-                CreateSmv(1f, CalorieEfficiencySkill.MultiplicativeStrategy, typeof(CalorieEfficiencySkill), Localizer.Do("calorie cost")),
+                CreateSmv(1f, CalorieEfficiencySkill.MultiplicativeStrategy, typeof(CalorieEfficiencySkill), Localizer.DoStr("calorie cost")),
                 new ConstantValue(0))
         },
         {
             UserStatType.DetectionRange, new MultiDynamicValue(MultiDynamicOps.Sum,
-                CreateSmv(0f, PredatoryInstinctsSkill.AdditiveStrategy, typeof(PredatoryInstinctsSkill), Localizer.Do("how close you can approach animals")),
+                CreateSmv(0f, PredatoryInstinctsSkill.AdditiveStrategy, typeof(PredatoryInstinctsSkill), Localizer.DoStr("how close you can approach animals")),
                 new ConstantValue(0))
         },
     };
@@ -90,7 +90,7 @@ public static class PlayerDefaults
     private static SkillModifiedValue CreateSmv(float startValue, ModificationStrategy strategy, Type skillType, LocString benefitsDescription)
     {
         SkillModifiedValue smv = new SkillModifiedValue(startValue, strategy, skillType, benefitsDescription);
-        SkillModifiedValueManager.AddSkillBenefit(Localizer.Do("You"), smv);
+        SkillModifiedValueManager.AddSkillBenefit(Localizer.DoStr("You"), smv);
         return smv;
     }
 

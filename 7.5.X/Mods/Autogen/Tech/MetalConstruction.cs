@@ -23,7 +23,7 @@
     // public partial class MetalConstructionSkill : Skill
     // {
         // public override string FriendlyName { get { return "Metal Construction"; } }
-        // public override string Description { get { return Localizer.Do(""); } }
+        // public override string Description { get { return Localizer.DoStr(""); } }
 
         // public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
         // public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }

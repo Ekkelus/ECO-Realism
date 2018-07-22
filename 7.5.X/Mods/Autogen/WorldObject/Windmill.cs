@@ -96,7 +96,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ClothItem>(typeof(PrimitiveMechanicsEfficiencySkill), 25, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<WoodenGearItem>(typeof(PrimitiveMechanicsEfficiencySkill), 1, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(30, PrimitiveMechanicsSpeedSkill.MultiplicativeStrategy, typeof(PrimitiveMechanicsSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(30, PrimitiveMechanicsSpeedSkill.MultiplicativeStrategy, typeof(PrimitiveMechanicsSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(WindmillRecipe), Item.Get<WindmillItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WindmillItem>().UILink(), value);
             this.CraftMinutes = value;

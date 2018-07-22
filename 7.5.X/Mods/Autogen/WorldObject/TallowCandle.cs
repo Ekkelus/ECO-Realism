@@ -106,7 +106,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<TallowItem>(typeof(BasicCraftingEfficiencySkill), 3, BasicCraftingEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(2.5f, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(2.5f, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(TallowCandleRecipe), Item.Get<TallowCandleItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<TallowCandleItem>().UILink(), value);
             this.CraftMinutes = value;

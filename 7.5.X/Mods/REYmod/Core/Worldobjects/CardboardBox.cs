@@ -91,7 +91,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PaperItem>(typeof(PaperEfficiencySkill), 10, PaperEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<GlueItem>(typeof(PaperEfficiencySkill), 1, PaperEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(2, PaperSpeedSkill.MultiplicativeStrategy, typeof(PaperSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(2, PaperSpeedSkill.MultiplicativeStrategy, typeof(PaperSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(CardboardBoxRecipe), Item.Get<CardboardBoxItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CardboardBoxItem>().UILink(), value);
             this.CraftMinutes = value;

@@ -93,7 +93,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<ClothItem>(typeof(ClothProductionEfficiencySkill), 10, ClothProductionEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(15, ClothProductionSpeedSkill.MultiplicativeStrategy, typeof(ClothProductionSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(15, ClothProductionSpeedSkill.MultiplicativeStrategy, typeof(ClothProductionSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(RugSmallRecipe), Item.Get<RugSmallItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<RugSmallItem>().UILink(), value);
             this.CraftMinutes = value;

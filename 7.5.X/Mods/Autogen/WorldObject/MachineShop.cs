@@ -100,7 +100,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(MechanicsAssemblyEfficiencySkill), 30, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<IronIngotItem>(typeof(MechanicsAssemblyEfficiencySkill), 40, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(120, MechanicsAssemblySpeedSkill.MultiplicativeStrategy, typeof(MechanicsAssemblySpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(120, MechanicsAssemblySpeedSkill.MultiplicativeStrategy, typeof(MechanicsAssemblySpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(MachineShopRecipe), Item.Get<MachineShopItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<MachineShopItem>().UILink(), value);
             this.CraftMinutes = value;

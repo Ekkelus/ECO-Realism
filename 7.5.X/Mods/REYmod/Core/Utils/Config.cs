@@ -106,7 +106,7 @@ namespace REYmod.Config
         }
         public override string ToString()
         {
-            return Localizer.Do("REYmod");
+            return Localizer.DoStr("REYmod");
         }
     }
 }

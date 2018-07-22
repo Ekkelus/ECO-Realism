@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<CircuitItem>(typeof(ElectronicEngineeringEfficiencySkill), 70, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<DiamondCutItem>(typeof(ElectronicEngineeringEfficiencySkill), 50, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(240, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(240, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(LaserRecipe), Item.Get<LaserItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<LaserItem>().UILink(), value);
             this.CraftMinutes = value;

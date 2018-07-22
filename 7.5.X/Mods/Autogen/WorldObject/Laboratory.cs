@@ -95,7 +95,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<GlassJarItem>(typeof(IndustrialEngineeringEfficiencySkill), 15, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<HingeItem>(typeof(IndustrialEngineeringEfficiencySkill), 8, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(120, IndustrialEngineeringSpeedSkill.MultiplicativeStrategy, typeof(IndustrialEngineeringSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(120, IndustrialEngineeringSpeedSkill.MultiplicativeStrategy, typeof(IndustrialEngineeringSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(LaboratoryRecipe), Item.Get<LaboratoryItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<LaboratoryItem>().UILink(), value);
             this.CraftMinutes = value;

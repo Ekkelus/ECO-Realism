@@ -106,7 +106,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronIngotItem>(typeof(StoneworkingEfficiencySkill), 4, StoneworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<BoardItem>(typeof(StoneworkingEfficiencySkill), 8, StoneworkingEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(20, StoneworkingSpeedSkill.MultiplicativeStrategy, typeof(StoneworkingSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(20, StoneworkingSpeedSkill.MultiplicativeStrategy, typeof(StoneworkingSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(MillRecipe), Item.Get<MillItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<MillItem>().UILink(), value);
             this.CraftMinutes = value;

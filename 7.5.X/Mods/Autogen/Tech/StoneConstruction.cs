@@ -23,7 +23,7 @@
     // public partial class StoneConstructionSkill : Skill
     // {
         // public override string FriendlyName { get { return "Stone Construction"; } }
-        // public override string Description { get { return Localizer.Do(""); } }
+        // public override string Description { get { return Localizer.DoStr(""); } }
 
         // public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
         // public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }

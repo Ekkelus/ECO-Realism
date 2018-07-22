@@ -94,7 +94,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(FertilizerEfficiencySkill), 10, FertilizerEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<RopeItem>(typeof(FertilizerEfficiencySkill), 6, FertilizerEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(5, FertilizerSpeedSkill.MultiplicativeStrategy, typeof(FertilizerSpeedSkill), Localizer.Do("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(5, FertilizerSpeedSkill.MultiplicativeStrategy, typeof(FertilizerSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(SaltBasketRecipe), Item.Get<SaltBasketItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SaltBasketItem>().UILink(), value);
             this.CraftMinutes = value;
