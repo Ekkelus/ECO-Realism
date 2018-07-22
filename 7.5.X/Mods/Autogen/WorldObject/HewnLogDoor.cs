@@ -53,6 +53,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1000)]
     public partial class HewnLogDoorItem :
         WorldObjectItem<HewnLogDoorObject> 
     {

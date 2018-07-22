@@ -53,6 +53,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1500)]
     public partial class LumberDoorItem :
         WorldObjectItem<LumberDoorObject> 
     {

@@ -56,6 +56,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(1000)]
     public partial class LargeStandingLumberSignItem :
         WorldObjectItem<LargeStandingLumberSignObject> 
     {

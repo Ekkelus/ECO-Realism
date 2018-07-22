@@ -56,6 +56,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(500)]
     public partial class SmallStandingHewnLogSignItem :
         WorldObjectItem<SmallStandingHewnLogSignObject> 
     {

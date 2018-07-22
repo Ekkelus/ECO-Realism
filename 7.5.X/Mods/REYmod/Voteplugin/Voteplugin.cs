@@ -15,7 +15,7 @@ namespace REYmod.Utils
     public class VoteCommands : IChatCommandHandler
     {
         //this is the chatcommand a user has to enter to claim his voterewards
-        [ChatCommand("claimvote", "Claims your vote on Ecoservers.io and get your reward", level: ChatAuthorizationLevel.Admin)]
+        [ChatCommand("claimvote", "Claims your vote on Ecoservers.io and get your reward")]
         public static void claimvote(User user)
         {
             int emptystacks = 0;

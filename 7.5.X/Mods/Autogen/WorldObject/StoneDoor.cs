@@ -53,6 +53,7 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
+    [Weight(2000)]
     public partial class StoneDoorItem :
         WorldObjectItem<StoneDoorObject> 
     {

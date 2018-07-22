@@ -538,6 +538,8 @@ namespace REYmod.Utils
 
     }
 
+
+    /* InvertedDynamicvalue doesn't work as expected
     /// <summary>
     /// -BUGGY- at least was buggy, made some changes that are still untested
     /// <para/>Inverts the given DynamicValue
@@ -574,7 +576,7 @@ namespace REYmod.Utils
             return (int)(GetCurrentValue(user) * multiplier);
         }
     }
-
+    */
 
     #region Button
     public class Button : ILinkable

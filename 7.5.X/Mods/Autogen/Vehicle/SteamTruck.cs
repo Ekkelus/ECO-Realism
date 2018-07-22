@@ -45,7 +45,6 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ScrewsItem>(typeof(MechanicsAssemblyEfficiencySkill), 40, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(MechanicsAssemblyEfficiencySkill), 30, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LeatherHideItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RubberItem>(typeof(MechanicsAssemblyEfficiencySkill), 8, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(25);
 

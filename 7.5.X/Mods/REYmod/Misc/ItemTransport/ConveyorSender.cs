@@ -84,8 +84,8 @@ namespace Eco.Mods.TechTree
             if (!this.Enabled) return;
             int mult = 1;
             int unitstosend = 8;
-            pullcounter++;
-            if (pullcounter >= 30)
+            pullcounter++;  
+            if (pullcounter >= 30) // dont pull item into its internal inventory too often to reduce lag
             {
                 this.LinkedStorage.MoveAsManyItemsAsPossible(Storage, this.OwnerUser);
                 pullcounter = 0;
@@ -94,9 +94,9 @@ namespace Eco.Mods.TechTree
             nonempty.ForEach(stack =>
             {
                 int stackbefore = stack.Quantity;
-                if (stack.Item.IsCarried) mult = 5; else mult = 1;
+                if (stack.Item.IsCarried) mult = 5; else mult = 1; // transport less carried items per second than normal ones, maybe restrict based on mass?
                 if (unitstosend / mult < 1) return;
-                outputWire.SendItemConsume(stack,unitstosend/mult);
+                outputWire.SendItemConsume(stack,unitstosend/mult); // thats where the items will be sent over the syste,
                 unitstosend -= (stackbefore - stack.Quantity) * mult;
                 if (stack.Quantity <= 0)
                 {
@@ -118,7 +118,7 @@ namespace Eco.Mods.TechTree
     public partial class ConveyorSenderItem : WorldObjectItem<ConveyorSenderObject>
     {
         public override string FriendlyName { get { return "ConveyorSender"; } } 
-        public override string Description  { get { return  "A metal stand which can hold burning fuel to provide light."; } }
+        public override string Description  { get { return  "Entry Point of a itempipe system."; } }
 
         static ConveyorSenderItem()
         {

@@ -77,7 +77,7 @@ namespace Eco.Mods.TechTree
             this.GetComponent<LinkComponent>().Initialize(2);
             this.GetComponent<AttachmentComponent>().Initialize();
             this.GetComponent<PublicStorageComponent>().Initialize(2);
-            timer = new Timer(30000);
+            timer = new Timer(30000); //push items out only once very 30 seconds to reduce craftingqueue spam and lag
             timer.AutoReset = true;
             timer.Elapsed += CustomTick;
             timer.Start();
@@ -149,7 +149,7 @@ namespace Eco.Mods.TechTree
     public partial class ConveyorReceiverItem : WorldObjectItem<ConveyorReceiverObject>
     {
         public override string FriendlyName { get { return "ConveyorReceiver"; } } 
-        public override string Description  { get { return  "A metal stand which can hold burning fuel to provide light."; } }
+        public override string Description  { get { return "Exit Point of a itempipe system."; } }
 
         static ConveyorReceiverItem()
         {
