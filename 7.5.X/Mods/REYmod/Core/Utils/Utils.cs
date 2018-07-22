@@ -213,6 +213,11 @@ namespace REYmod.Utils
         /// <returns></returns>
         public static int CountPlots(User user)
         {
+            //*******************************
+            return 0; // currently disabled due to deedchanges
+            //*********************************
+
+            /*
             IEnumerable<Vector2i> positions;
             int totalplotcount = 0;
 
@@ -227,20 +232,8 @@ namespace REYmod.Utils
                 }
             }
             return totalplotcount;
-
+            */
         }
-        /*
-                /// <summary>
-                /// -BUGGY- i have no idea why but that currently causes issues
-                /// <para/>Inverts the given DynamicValue and returns a new InvertDynamicvalue
-                /// </summary>
-                /// <param name="x"></param>
-                /// <returns></returns>
-                public static InvertedDynamicValue InvertDynamicvalue(IDynamicValue x)
-                {
-                    return new InvertedDynamicValue(x);
-                }
-          */
     }
 
     /// <summary>

@@ -1,54 +1,43 @@
-﻿    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Chat;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+﻿using Eco.Core.Plugins.Interfaces;
+using Eco.Core.Utils;
+using Eco.Gameplay;
+using Eco.Gameplay.Components;
+using Eco.Gameplay.Components.Auth;
+using Eco.Gameplay.Economy;
+using Eco.Gameplay.Items;
+using Eco.Gameplay.Objects;
+using Eco.Gameplay.Players;
 using Eco.Gameplay.Property;
+using Eco.Gameplay.Rooms;
+using Eco.Gameplay.Skills;
+using Eco.Gameplay.Systems.Chat;
+using Eco.Gameplay.Systems.TextLinks;
 using Eco.Shared.Math;
 using Eco.Shared.Utils;
-using Eco.Shared.Networking;
-using Eco.Simulation.WorldLayers;
-using Eco.Simulation.Types;
-using Eco.Shared.Localization;
 using Eco.Simulation.Time;
-using Eco.Gameplay;
-using Eco.Gameplay.Economy;
-using Eco.Gameplay.Skills;
-using Eco.Core.Utils;
-using Eco.Gameplay.Objects;
-using Eco.Gameplay.Items;
-using Eco.Gameplay.Components.Auth;
-using Eco.Gameplay.Components;
-using Eco.World;
-using REYmod.Blocks;
-using REYmod.Utils;
 using REYmod.Config;
-using Eco.Core;
-using Eco.Core.Plugins.Interfaces;
-using Eco.Mods.TechTree;
-using Eco.Shared.Services;
-using System.ComponentModel;
-using Eco.Gameplay.Rooms;
+using REYmod.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace REYmod.Core.ChatCommands
 {
     public class ChatCommands : IChatCommandHandler
     {
         #region ADMIN Commands
+
         [ChatCommand("globalroomfix", "Reevaluates all rooms that have at least one worldobject placed in them", level: ChatAuthorizationLevel.Admin)]
         public static void GlobalRoomFix(User user)
         {
-            foreach(WorldObject obj in WorldObjectManager.All)
+            foreach (WorldObject obj in WorldObjectManager.All)
             {
                 RoomData.QueueRoomTest(obj.Position3i);
                 //Console.WriteLine("Checked " + obj.Name + " at " + obj.Position3i.ToStringLabelled("pos"));
             }
             RoomData.Obj.UpdateRooms();
             ChatUtils.SendMessage(user, "Rooms should be fixed now");
-
         }
-
 
         [ChatCommand("tp", "Opens a list of online players. Click the player you(or the given player) should be teleported to", level: ChatAuthorizationLevel.Admin)]
         public static void Tp(User user, string username = "")
@@ -65,12 +54,15 @@ namespace REYmod.Core.ChatCommands
             user.Player.OpenInfoPanel("Teleport Menu", panelcontent);
         }
 
+
+        /* Currently disabled due to deedchanges
+
         [ChatCommand("openauth", "Opens the authmenu for the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
         public static void OpenAuth(User user)
         {
-            AuthorizationController controller =  PropertyManager.GetAuth(user.Position.XZi);
+            AuthorizationController controller = PropertyManager.GetAuth(user.Position.XZi);
             if (controller != null) controller.OpenAuthorizationMenuOn(user.Player, new DeedItem());
-            else ChatUtils.SendMessage(user, "Plot is not claimed!",true);
+            else ChatUtils.SendMessage(user, "Plot is not claimed!", true);
         }
 
         [ChatCommand("setowner", "Opens the authmenu for the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
@@ -83,12 +75,12 @@ namespace REYmod.Core.ChatCommands
                 ChatUtils.SendMessage(user, "Plot is not claimed!");
                 return;
             }
-            if (newowneruser!=null)
+            if (newowneruser != null)
             {
                 controller.SetOwner(newowneruser.Name);
                 ChatUtils.SendMessage(user, newowneruser + " is now the owner of " + controller.Name);
             }
-            else ChatUtils.SendMessage(user, "User not found!",true);
+            else ChatUtils.SendMessage(user, "User not found!", true);
         }
 
         [ChatCommand("unclaimselect", "Selects the owner of the plot you're standing on for unclaimconfirm", level: ChatAuthorizationLevel.Admin)]
@@ -118,8 +110,6 @@ namespace REYmod.Core.ChatCommands
                 inactive = false;
             }
 
-
-
             if (UtilsClipboard.UnclaimSelector.ContainsKey(user)) UtilsClipboard.UnclaimSelector.Remove(user);
             UtilsClipboard.UnclaimSelector.Add(user, new Tuple<User, int>(owner, confirmationcode));
 
@@ -132,8 +122,6 @@ namespace REYmod.Core.ChatCommands
                 user.Player.SendTemporaryMessageAlreadyLocalized("Confirmationcode: " + confirmationcode);
             }
             else if (!inactive) user.Player.SendTemporaryMessageAlreadyLocalized("WARNING: Player only offline for " + TimeSpan.FromSeconds(WorldTime.Seconds - owner.LogoutTime).ToString() + ". Use Confirmation Code:" + confirmationcode);
-
-
         }
 
         [ChatCommand("unclaimconfirm", "Unclaims all property of the selected player", level: ChatAuthorizationLevel.Admin)]
@@ -212,13 +200,14 @@ namespace REYmod.Core.ChatCommands
                             vehicle.Destroy();
                         }
                     }
-
-
                 }
             }
 
             ChatUtils.SendMessage(user, totalplotcount + " Plots on " + deedcount + " Deeds unclaimed. Also found " + vehiclecount + " Vehicles. " + (vehiclecount - destroyedvehicles) + " have been unlocked and got their deed added to inventory. " + destroyedvehicles + " were destroyed as the deed couldn't be found");
         }
+
+
+    */
 
         /// <summary>
         /// -OBSOLETE- Finalizes worldgen by running the Custom Generator part
@@ -281,8 +270,6 @@ namespace REYmod.Core.ChatCommands
                 ChatManager.ServerMessageToAllAlreadyLocalized(user.UILink() + "changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr, false);
                 // ConfigHandler.UpdateConfigFile();
             }
-
-
         }
 
         [ChatCommand("reports", "Displays current Reports", level: ChatAuthorizationLevel.Admin)]
@@ -299,9 +286,10 @@ namespace REYmod.Core.ChatCommands
             user.Player.SendTemporaryMessageAlreadyLocalized("Reports cleared");
         }
 
-        #endregion
+        #endregion ADMIN Commands
 
         #region USER Commands
+
         [ChatCommand("random", "Rolls a random number between 1 and the given number (default 100), visible to all")]
         public static void Random(User user, int max = 100)
         {
@@ -334,7 +322,7 @@ namespace REYmod.Core.ChatCommands
         [ChatCommand("report", "Report a player or an issue")]
         public static void Report(User user, string part1, string part2 = "", string part3 = "", string part4 = "", string part5 = "", string part6 = "", string part7 = "", string part8 = "", string part9 = "", string part10 = "", string last = "")
         {
-            if(last != "")
+            if (last != "")
             {
                 user.Player.SendTemporaryErrorAlreadyLocalized("Sorry, too many commas (this command only supports up to 9");
                 return;
@@ -351,30 +339,28 @@ namespace REYmod.Core.ChatCommands
             texttoadd = TextLinkManager.MarkUpText("<b>" + user.Name + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":</b>" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine);
             IOUtils.WriteFileToConfigFolder("../Reports/reports.txt", texttoadd);
             user.Player.SendTemporaryMessageAlreadyLocalized("Report sent");
-
         }
 
         [ChatCommand("houseranking", "Displays the users with the highest housing rates")]
         public static void HouseRanking(User user) //can still be optimized theres for example no need for the KeyValuePair<User, float>, a userlist is actually enough
         {
-
             int usercount = UserManager.Users.Count<User>();
             int max = 10;
             int i = 0;
             string output = string.Empty;
-            List<KeyValuePair< User, float>> userlist = new List<KeyValuePair<User, float>>(usercount);
+            List<KeyValuePair<User, float>> userlist = new List<KeyValuePair<User, float>>(usercount);
             User tmpuser;
 
             foreach (User userentry in UserManager.Users)
             {
-                userlist.Add(new KeyValuePair<User,float>(userentry, (float)Math.Round(userentry.CachedHouseValue.HousingSkillRate,2)));
+                userlist.Add(new KeyValuePair<User, float>(userentry, (float)Math.Round(userentry.CachedHouseValue.HousingSkillRate, 2)));
             }
 
             //userlist.Sort(new UserFloatComparer());
             userlist.Sort((KeyValuePair<User, float> x, KeyValuePair<User, float> y) => y.Value.CompareTo(x.Value));
 
             if (usercount < max) max = usercount;
-            for(i=0; i<max; i++)
+            for (i = 0; i < max; i++)
             {
                 tmpuser = userlist[i].Key;
                 //output = output + (i + 1).ToString() + ". <link=\"User:" + tmpuser.Name + "\"><style=\"Warning\">" + tmpuser.Name + "</style></link>: <link=\"CachedHouseValue:" + tmpuser.Name +"\"><style=\"Positive\">" + userlist[i].Value.ToString() + "</style></link> skill/day <br>";
@@ -388,7 +374,6 @@ namespace REYmod.Core.ChatCommands
         [ChatCommand("nutritionranking", "Displays the users with the highest food skill rates")]
         public static void NutritionRanking(User user) //can still be optimized theres for example no need for the KeyValuePair<User, float>, a userlist is actually enough
         {
-
             int usercount = UserManager.Users.Count<User>();
             int max = 10;
             int i = 0;
@@ -398,12 +383,11 @@ namespace REYmod.Core.ChatCommands
 
             foreach (User userentry in UserManager.Users)
             {
-                userlist.Add(new KeyValuePair<User, float>(userentry, userentry.Stomach.NutrientSkillRate));               
+                userlist.Add(new KeyValuePair<User, float>(userentry, userentry.Stomach.NutrientSkillRate));
             }
 
             //userlist.Sort(new UserFloatComparer());
             userlist.Sort((KeyValuePair<User, float> x, KeyValuePair<User, float> y) => y.Value.CompareTo(x.Value));
-
 
             if (usercount < max) max = usercount;
             for (i = 0; i < max; i++)
@@ -411,11 +395,11 @@ namespace REYmod.Core.ChatCommands
                 tmpuser = userlist[i].Key;
                 output = output + (i + 1) + ". " + tmpuser.UILink() + ": <color=green>" + Math.Round(userlist[i].Value, 2) + "</color><br>";
             }
-            output = output + "<br> Your Foodskillrate: <color=green>" + user.Stomach.NutrientSkillRate + "</color> (Rank " + (userlist.FindIndex(x => x.Key == user)+1) + ")";
+            output = output + "<br> Your Foodskillrate: <color=green>" + user.Stomach.NutrientSkillRate + "</color> (Rank " + (userlist.FindIndex(x => x.Key == user) + 1) + ")";
             user.Player.OpenInfoPanel("Nutrition Ranking", output);
         }
 
-        [ChatCommand("avatar","Displays information about you or the given Player")]
+        [ChatCommand("avatar", "Displays information about you or the given Player")]
         public static void Avatarcmd(User user, string playername = "")
         {
             Player targetplayer;
@@ -437,22 +421,21 @@ namespace REYmod.Core.ChatCommands
             }
 
             string newline = "<br>";
-            string title = "Stats for " + targetuser.Name ;
+            string title = "Stats for " + targetuser.Name;
             string skillsheadline = "<b>SKILLRATES:</b>" + newline;
             string housinginfo;
             string foodinfo;
             string totalsp;
             string onlineinfo;
-            string superskillsinfo= string.Empty;
+            string superskillsinfo = string.Empty;
             string professioninfo;
             string currencyinfo = "<b>CURRENCIES:</b>" + newline;
             string propertyinfo;
             string admininfo = string.Empty;
 
-
             if (targetuser.IsAdmin) admininfo = "<color=red><b>ADMIN</b></color> ";
 
-            foreach(Currency currency in EconomyManager.Currency.Currencies)
+            foreach (Currency currency in EconomyManager.Currency.Currencies)
             {
                 if (currency.HasAccount(targetuser.Name))
                 {
@@ -463,49 +446,47 @@ namespace REYmod.Core.ChatCommands
                 }
             }
 
-
             List<Skill> superskills = SkillUtils.GetSuperSkills(targetuser);
-            if(superskills.Count > 0)
+            if (superskills.Count > 0)
             {
                 superskillsinfo = "<b>SUPERSKILLS:</b>" + newline;
-                foreach(Skill skill in superskills)
+                foreach (Skill skill in superskills)
                 {
                     superskillsinfo += skill.UILink() + newline;
                 }
-                superskillsinfo += newline;                
+                superskillsinfo += newline;
             }
-            
+
             float foodsp = targetuser.Stomach.NutrientSkillRate;
             float housesp = targetuser.CachedHouseValue.HousingSkillRate;
 
             professioninfo = newline + "<b>PROFESSION:</b> " + newline + SkillUtils.FindProfession(targetuser).UILink() + newline;
             housinginfo = "House SP: " + targetuser.CachedHouseValue.UILink() + newline;
-            foodinfo =  "Food SP: " + Math.Round(foodsp,2) + newline;
+            foodinfo = "Food SP: " + Math.Round(foodsp, 2) + newline;
             totalsp = "Total SP: " + Math.Round(housesp + foodsp, 2) + newline;
             propertyinfo = "<b>PROPERTY:</b>" + newline + MiscUtils.CountPlots(targetuser) * 25 + " sqm of land." + newline;
             onlineinfo = targetuser.LoggedIn ? "is online. Located at " + new Vector3Tooltip(targetuser.Position).UILink() : "is offline. Last online " + TimeFormatter.FormatSpan(WorldTime.Seconds - targetuser.LogoutTime) + " ago";
             onlineinfo += newline;
 
-            user.Player.OpenInfoPanel(title,admininfo + targetuser.UILink() + " " + onlineinfo + newline + skillsheadline + foodinfo + housinginfo + totalsp + professioninfo + newline + propertyinfo + newline + superskillsinfo + currencyinfo);
+            user.Player.OpenInfoPanel(title, admininfo + targetuser.UILink() + " " + onlineinfo + newline + skillsheadline + foodinfo + housinginfo + totalsp + professioninfo + newline + propertyinfo + newline + superskillsinfo + currencyinfo);
         }
 
         [ChatCommand("donate", "Donates Money to the Treasury")]
         public static void Donate(User user, float amount, string currencytype)
         {
             Currency currency = EconomyManager.Currency.GetCurrency(currencytype);
-            if(currency==null)
+            if (currency == null)
             {
                 user.Player.SendTemporaryErrorAlreadyLocalized("Currency " + currencytype + " not found.");
                 return;
             }
-           
+
             if (amount <= 0)
             {
                 user.Player.SendTemporaryErrorLoc("Must specify an amount greater than 0.");
                 return;
             }
 
-            
             Result result = Legislation.Government.PayTax(currency, user, amount, "Voluntary Donation");
             if (result.Success)
             {
@@ -520,8 +501,7 @@ namespace REYmod.Core.ChatCommands
             SkillUtils.ShowSuperSkillInfo(user.Player);
         }
 
-        #endregion
-       
+        #endregion USER Commands
     }
-
 }
+ 
