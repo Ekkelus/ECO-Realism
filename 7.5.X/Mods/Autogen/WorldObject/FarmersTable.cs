@@ -87,13 +87,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<DirtItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 20, BasicCraftingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<DirtItem>(10),
+                new CraftingElement<LogItem>(20),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(FarmersTableRecipe), Item.Get<FarmersTableItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<FarmersTableItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = new ConstantValue(10);     
             this.Initialize("Farmers Table", typeof(FarmersTableRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

@@ -72,7 +72,6 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 0)]
     public partial class WorkbenchRecipe : Recipe
     {
         public WorkbenchRecipe()
@@ -84,13 +83,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 30, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<StoneItem>(typeof(BasicCraftingEfficiencySkill), 20, BasicCraftingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<LogItem>(30),
+                new CraftingElement<StoneItem>(20),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(5, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(WorkbenchRecipe), Item.Get<WorkbenchItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<WorkbenchItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = new ConstantValue(5);
             this.Initialize("Workbench", typeof(WorkbenchRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

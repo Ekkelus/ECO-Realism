@@ -92,7 +92,6 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 2)]
     public partial class TallowCandleRecipe : Recipe
     {
         public TallowCandleRecipe()
@@ -104,12 +103,9 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<TallowItem>(typeof(BasicCraftingEfficiencySkill), 3, BasicCraftingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<TallowItem>(3),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(2.5f, BasicCraftingSpeedSkill.MultiplicativeStrategy, typeof(BasicCraftingSpeedSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(TallowCandleRecipe), Item.Get<TallowCandleItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<TallowCandleItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = new ConstantValue(2.5f);
             this.Initialize("Tallow Candle", typeof(TallowCandleRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

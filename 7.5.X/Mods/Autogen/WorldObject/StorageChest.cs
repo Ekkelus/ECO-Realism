@@ -73,7 +73,7 @@ namespace Eco.Mods.TechTree
 
     }
 
-
+    [RequiresSkill(typeof(WoodworkingSkill),1)]
     public partial class StorageChestRecipe : Recipe
     {
         public StorageChestRecipe()
@@ -85,14 +85,14 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(BasicCraftingEfficiencySkill), 5, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<HingeItem>(typeof(BasicCraftingEfficiencySkill), 2, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(BasicCraftingEfficiencySkill), 3, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(WoodworkingEfficiencySkill), 5, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HingeItem>(typeof(WoodworkingEfficiencySkill), 2, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(WoodworkingEfficiencySkill), 10, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(WoodworkingEfficiencySkill), 3, WoodworkingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(2); 
             this.Initialize("Storage Chest", typeof(StorageChestRecipe));
-            CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
+            CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }
 }

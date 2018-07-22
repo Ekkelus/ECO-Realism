@@ -18,7 +18,7 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     using Eco.Gameplay.Pipes;
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 1)]
+
     public partial class StringRecipe : Recipe
     {
         public StringRecipe()

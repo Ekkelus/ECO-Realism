@@ -18,7 +18,6 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     using Eco.Gameplay.Pipes;
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 2)]
     public partial class RopeRecipe : Recipe
     {
         public RopeRecipe()

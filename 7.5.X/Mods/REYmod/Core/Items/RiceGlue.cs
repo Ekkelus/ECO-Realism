@@ -12,7 +12,7 @@
     using Eco.World.Blocks;
     using Gameplay.Systems.TextLinks;
 
-    [RequiresSkill(typeof(CampfireCookingSkill), 3)]
+    [RequiresSkill(typeof(CampfireCreationsSkill), 1)]
     public class RiceGlueRecipe : Recipe
     {
         public RiceGlueRecipe()
@@ -23,11 +23,11 @@
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<RiceSludgeItem>(typeof(CampfireCookingEfficiencySkill), 5, CampfireCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<RiceSludgeItem>(typeof(CampfireCreationsEfficiencySkill), 5, CampfireCreationsEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<GlassJarItem>(1),
             };
             this.Initialize("Rice Glue", typeof(RiceGlueRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RiceGlueRecipe), this.UILink(), 5, typeof(CampfireCookingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RiceGlueRecipe), this.UILink(), 5, typeof(CampfireCreationsSpeedSkill));
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);
         }
     }

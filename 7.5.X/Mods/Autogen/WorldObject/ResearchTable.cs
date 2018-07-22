@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(BasicCraftingSkill), 1)]
+
     public partial class ResearchTableRecipe : Recipe
     {
         public ResearchTableRecipe()

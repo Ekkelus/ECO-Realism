@@ -101,8 +101,8 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(BasicCraftingEfficiencySkill), 10, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RopeItem>(typeof(BasicCraftingEfficiencySkill), 1, BasicCraftingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(10),
+                new CraftingElement<RopeItem>(1),
             };
             this.CraftMinutes = new ConstantValue(2); 
             this.Initialize("Torch Stand", typeof(TorchStandRecipe));
