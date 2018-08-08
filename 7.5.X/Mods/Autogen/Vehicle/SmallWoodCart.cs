@@ -16,7 +16,8 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
-    
+    using Eco.World.Blocks;
+
     [Serialized]
     [Weight(5000)]  
     public class SmallWoodCartItem : WorldObjectItem<SmallWoodCartObject>
@@ -57,6 +58,10 @@ namespace Eco.Mods.TechTree
     {
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
         {
+            { typeof(GrassBlock) , 0.7f}, { typeof(SandBlock) , 0.3f},
+            { typeof(DesertSandBlock) , 0.3f}, { typeof(WetlandsBlock) , 0.5f},
+            { typeof(SnowBlock) , 0.5f}, { typeof(DirtBlock) , 0.8f},
+            { typeof(ForestSoilBlock) , 0.6f},
             { typeof(DirtRoadBlock), 1 }, { typeof(DirtRoadWorldObjectBlock), 1 },
             { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
             { typeof(AsphaltRoadBlock), 1.4f }, { typeof(AsphaltRoadWorldObjectBlock), 1.4f }
