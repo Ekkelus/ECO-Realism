@@ -27,6 +27,28 @@ namespace REYmod.Core.ChatCommands
     {
         #region ADMIN Commands
 
+        #region  Custom Userranks/privileges/titles
+        // configfile/entry with an update command would be better than using Userstates i guess!
+        [ChatCommand("setmod", "Promotes a user to Moderator", level: ChatAuthorizationLevel.Admin)]
+        public static void Setmod(User user, User target)
+        {
+            target.SetState("Moderator", true);
+        }
+
+        [ChatCommand("removemod", "Removes moderator privileges from a user", level: ChatAuthorizationLevel.Admin)]
+        public static void Removemod(User user, User target)
+        {
+            target.SetState("Moderator", false);
+        }
+
+        [ChatCommand("settitle", "Sets the custom title of the given user", level: ChatAuthorizationLevel.Admin)]
+        public static void Removemod(User user, User target, string title)
+        {
+            target.SetState("CustomTitle", title);
+            ChatUtils.SendMessage(user, "Set " + target.Name + "'s title to: \"" + title + "\"");
+        }
+        #endregion
+
         [ChatCommand("globalroomfix", "Reevaluates all rooms that have at least one worldobject placed in them", level: ChatAuthorizationLevel.Admin)]
         public static void GlobalRoomFix(User user)
         {

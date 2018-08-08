@@ -40,6 +40,7 @@ using Eco.Gameplay.Wires;
 using Eco.Simulation.Time;
 using Eco.Core.Controller;
 using REYmod.Config;
+using Eco.Gameplay;
 
 
 
@@ -118,6 +119,7 @@ namespace REYmod.Utils
             user.OnLogOut.Add(() => OnUserLogout(user)); //user logout is needed to unsubcribe from certain events when logged out (maybe not but i'll keep it here)
             if (!user.Stomach.OnEatFood.Any) user.Stomach.OnEatFood.Add(food => PlayerEatFood(food, user));
             user.OnEnterWorld.Add(() => OnUserEnterWorld(user, firstlogin));
+            MiscUtils.UpdateUserStates();
         }
 
         /// <summary>
@@ -233,6 +235,20 @@ namespace REYmod.Utils
             }
             return totalplotcount;
             */
+        }
+
+
+        /// <summary>
+        /// Sets some basic Userstates if they are not set yet
+        /// </summary>
+        internal static void UpdateUserStates()
+        {
+            UserManager.Users.ForEach(user =>
+            {
+                if (!user.HasState("Moderator")) user.SetState("Moderator", false);
+                if (!user.HasState("CustomTitle")) user.SetState("CustomTitle", "");
+                else return;
+            });
         }
     }
 
@@ -527,6 +543,24 @@ namespace REYmod.Utils
                 return true;
             }
             else return false;
+        }
+        #endregion
+
+        #region User
+        [Tooltip(1)]
+        public static string AdminTooltip(this User user)
+        {
+            string roles = "";
+            if (user.IsAdmin) roles += "<b><color=red>ADMIN</b></color> ";
+            if (user.GetState<bool>("Moderator") == true) roles += "<b><color=blue>Moderator</b></color> ";
+            if (Legislation.Government.IsLeader(user)) roles += "<b><color=orange>World Leader</b></color> ";
+            return roles;
+        }
+        [Tooltip(2)]
+        public static string CustomTitle(this User user)
+        {
+            string title = user.GetState<string>("CustomTitle");
+            return title;
         }
         #endregion
 
