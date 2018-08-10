@@ -216,8 +216,10 @@ namespace REYmod.Utils
         public static int CountPlots(User user)
         {
             //*******************************
-            return 0; // currently disabled due to deedchanges
+            //return 0; // currently disabled due to deedchanges
             //*********************************
+            return PropertyManager.PropertyForUser(user).Count();
+
 
             /*
             IEnumerable<Vector2i> positions;
@@ -236,12 +238,40 @@ namespace REYmod.Utils
             return totalplotcount;
             */
         }
+        
+        /// <summary>
+        /// Unclaims all property of a given user
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="feedbackuser"></param>
+        public static void UnclaimUser(User target, User feedbackuser)
+        {
+            int emptystacks = 0; 
+            IEnumerable<Deed> allDeeds = PropertyManager.GetAllDeeds();
+            IEnumerable<Deed> targetDeeds = allDeeds.Where(x => x.OwnerUser.User == target);
+
+            bool forceunclaim = false;
+            string force = "";
+            foreach (Deed auth in targetDeeds)
+            {
+
+                Result res = PropertyManager.TryRemoveDeed(auth);
+                if (!res.Success && feedbackuser != null) ChatUtils.SendMessage(feedbackuser, res.Message);
+                if (!res.Success) forceunclaim = true;
+            }
+            if (forceunclaim)
+            {
+                PropertyManager.PropertyForUser(target).ForEach(x => PropertyManager.ForceUnclaim(x.Position));
+                force = ". Had to use Forceunclaim-Workaround!";
+            }
+            if (feedbackuser != null) feedbackuser.Player.OpenInfoPanel("Unclaim Player" ,"Unclaimed all property of " + target.Name + force);
+        }
 
 
         /// <summary>
         /// Sets some basic Userstates if they are not set yet
         /// </summary>
-        internal static void UpdateUserStates()
+        public static void UpdateUserStates()
         {
             UserManager.Users.ForEach(user =>
             {

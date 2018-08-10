@@ -33,12 +33,14 @@ namespace REYmod.Core.ChatCommands
         public static void Setmod(User user, User target)
         {
             target.SetState("Moderator", true);
+            MiscUtils.UpdateUserStates();
         }
 
         [ChatCommand("removemod", "Removes moderator privileges from a user", level: ChatAuthorizationLevel.Admin)]
         public static void Removemod(User user, User target)
         {
             target.SetState("Moderator", false);
+            MiscUtils.UpdateUserStates();
         }
 
         [ChatCommand("settitle", "Sets the custom title of the given user", level: ChatAuthorizationLevel.Admin)]
@@ -77,13 +79,11 @@ namespace REYmod.Core.ChatCommands
         }
 
 
-        /* Currently disabled due to deedchanges
-
         [ChatCommand("openauth", "Opens the authmenu for the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
         public static void OpenAuth(User user)
         {
-            AuthorizationController controller = PropertyManager.GetAuth(user.Position.XZi);
-            if (controller != null) controller.OpenAuthorizationMenuOn(user.Player, new DeedItem());
+            Deed deed = PropertyManager.GetDeed(user.Position.XZi);
+            if (deed != null) deed.OpenAuthorizationMenuOn(user.Player);
             else ChatUtils.SendMessage(user, "Plot is not claimed!", true);
         }
 
@@ -91,145 +91,73 @@ namespace REYmod.Core.ChatCommands
         public static void SetOwner(User user, string newowner)
         {
             User newowneruser = UserManager.FindUserByName(newowner);
-            AuthorizationController controller = PropertyManager.GetAuth(user.Position.XZi);
-            if (controller == null)
+            Deed deed = PropertyManager.GetDeed(user.Position.XZi);
+            if (deed == null)
             {
                 ChatUtils.SendMessage(user, "Plot is not claimed!");
                 return;
             }
             if (newowneruser != null)
             {
-                controller.SetOwner(newowneruser.Name);
-                ChatUtils.SendMessage(user, newowneruser + " is now the owner of " + controller.Name);
+                deed.SetOwner(newowneruser);
+                ChatUtils.SendMessage(user, newowneruser + " is now the owner of " + deed.Name);
             }
             else ChatUtils.SendMessage(user, "User not found!", true);
         }
 
-        [ChatCommand("unclaimselect", "Selects the owner of the plot you're standing on for unclaimconfirm", level: ChatAuthorizationLevel.Admin)]
-        public static void UnclaimPlayer(User user, string ownername = "")
+        [ChatCommand("unclaimuser", "MOD/ADMIN only! - Unclaims all property of the given user ", level: ChatAuthorizationLevel.User)]
+        public static void UnclaimPlayer(User user, User owner = null)
         {
-            User owner = null;
-            Tuple<User, int> ownerandcode;
-            int confirmationcode = 0;
             bool inactive = true;
-            if (ownername == "")
+            double inactivetime;
+
+            if (!user.IsAdmin && !user.GetState<bool>("Moderator"))
             {
-                if (PropertyManager.GetPlot(user.Position.XZi) != null)
-                {
-                    owner = PropertyManager.GetPlot(user.Position.XZi).Owner;
-                }
+                ChatUtils.SendMessage(user, "You dont have permission to use this command!");
+                return;
             }
-            else owner = UserManager.FindUserByName(ownername);
 
             if (owner == null)
             {
-                user.Player.SendTemporaryMessageAlreadyLocalized("Player not Found");
+                if (PropertyManager.GetPlot(user.Position.XZi) != null) owner = PropertyManager.GetPlot(user.Position.XZi).Owner;
+            }
+
+            if (owner == null)
+            {
+                user.Player.SendTemporaryMessageAlreadyLocalized("Plot not owned");
                 return;
             }
-            if ((WorldTime.Seconds - owner.LogoutTime) < REYmodSettings.Obj.Config.Maxinactivetime * 3600)
+
+            inactivetime = (WorldTime.Seconds - owner.LogoutTime);
+            if (inactivetime < REYmodSettings.Obj.Config.Maxinactivetime * 3600) inactive = false;
+            if (owner.LoggedIn) inactivetime = 0;
+
+            IEnumerable<Deed> allDeeds = PropertyManager.GetAllDeeds();
+            IEnumerable<Deed> targetDeeds = allDeeds.Where(x => x.OwnerUser.User == owner);
+            int ownedplots = PropertyManager.PropertyForUser(owner).Count();
+            int ownedvehicles = targetDeeds.Sum(x => x.OwnedObjects.Count) - ownedplots;
+
+            string textbox = "";
+            textbox += "You are going to unclaim all property of " + owner.UILink() + "<br>";
+            textbox += "Owned Plots: " + ownedplots + "<br>";
+            textbox += "Owned Vehicles: " + ownedvehicles + "<br>";
+            textbox += "<br>Player offline for " + TimeFormatter.FormatSpan(inactivetime);
+            if (!inactive) textbox += "<br>WARNING! Player not inactive!".Color("red");
+            textbox += "<br><br>";
+            if (!inactive && !user.IsAdmin)
             {
-                confirmationcode = RandomUtil.Range(1000, 9999);
-                inactive = false;
+                textbox += "You can't unclaim this player! Not inactive for long enough.";
+            }
+            else
+            {
+                textbox += new Button(x => MiscUtils.UnclaimUser(owner, user), "","Click here to unclaim all property of " + owner.UILink(), "Confirm Unclaiming".Color("green")).UILink();
             }
 
-            if (UtilsClipboard.UnclaimSelector.ContainsKey(user)) UtilsClipboard.UnclaimSelector.Remove(user);
-            UtilsClipboard.UnclaimSelector.Add(user, new Tuple<User, int>(owner, confirmationcode));
+            user.Player.OpenInfoPanel("Unclaim Player", textbox);
 
-            UtilsClipboard.UnclaimSelector.TryGetValue(user, out ownerandcode);
-            owner = ownerandcode.Item1;
-            user.Player.SendTemporaryMessageAlreadyLocalized("Selected " + owner.UILink() + " as target! ");
-            if (owner.LoggedIn)
-            {
-                user.Player.SendTemporaryMessageAlreadyLocalized((owner.UILink() + " IS ONLINE! ").Color("red").Bold());
-                user.Player.SendTemporaryMessageAlreadyLocalized("Confirmationcode: " + confirmationcode);
-            }
-            else if (!inactive) user.Player.SendTemporaryMessageAlreadyLocalized("WARNING: Player only offline for " + TimeSpan.FromSeconds(WorldTime.Seconds - owner.LogoutTime).ToString() + ". Use Confirmation Code:" + confirmationcode);
-        }
-
-        [ChatCommand("unclaimconfirm", "Unclaims all property of the selected player", level: ChatAuthorizationLevel.Admin)]
-        public static void UnclaimConfirm(User user, int confirmcode = 0)
-        {
-            User target = null;
-            Tuple<User, int> targetandcode;
-            int totalplotcount = 0, deedcount = 0, plotcountdeed = 0, vehiclecount = 0, destroyedvehicles = 0;
-            IEnumerable<Vector2i> positions;
-            string tmp = string.Empty;
-            WorldObject vehicle = null;
-            ItemStack sourcestack;
-            ItemStack targetstack;
-            Func<ItemStack, bool> findDeed = i =>
-            {
-                if (i.Item as DeedItem != null) return ((i.Item as DeedItem).AuthID == vehicle.GetComponent<StandaloneAuthComponent>().AuthGuid);
-                return false;
-            };
-
-            if (!UtilsClipboard.UnclaimSelector.TryGetValue(user, out targetandcode))
-            {
-                user.Player.SendTemporaryErrorAlreadyLocalized("no User selected");
-                return;
-            }
-            target = targetandcode.Item1;
-            if (confirmcode != targetandcode.Item2)
-            {
-                ChatUtils.SendMessage(user, "Confirmationcode not correct");
-                return;
-            }
-            IEnumerable<AuthorizationController> authorizationControllers = PropertyManager.GetAuthBelongingTo(target);
-            foreach (AuthorizationController auth in authorizationControllers)
-            {
-                plotcountdeed = 0;
-                if (auth.Type == "Property")
-                {
-                    deedcount++;
-                    positions = PropertyManager.PositionsForId(auth.Id);
-                    foreach (Vector2i pos in positions)
-                    {
-                        plotcountdeed++;
-                        totalplotcount++;
-                        //ChatUtils.SendMessage(user, TextLinkManager.MarkUpText("Try unclaiming: (" + pos.X + "," + pos.Y + ")"));
-                        PropertyManager.UnclaimProperty(pos);
-                    }
-                    ChatUtils.SendMessage(user, "Unclaimed: " + auth.Name + " (" + plotcountdeed.ToString() + " Plots)");
-                }
-                else if (auth.Type == "Vehicle")
-                {
-                    if (auth.AttachedWorldObjects[0].Object != null)
-                    {
-                        vehiclecount++;
-                        vehicle = auth.AttachedWorldObjects[0].Object;
-                        ChatUtils.SendMessage(user, "Found Vehicle: " + auth.Name);
-                        //vehicle.Destroy();
-                        sourcestack = null;
-                        sourcestack = target.Inventory.NonEmptyStacks.FirstOrDefault(findDeed);
-                        targetstack = vehicle.GetComponent<PublicStorageComponent>().Inventory.Stacks.FirstOrDefault(i => i.Empty);
-                        if (targetstack == null)
-                        {
-                            targetstack = vehicle.GetComponent<PublicStorageComponent>().Inventory.Stacks.First();
-                            vehicle.GetComponent<PublicStorageComponent>().Inventory.ClearItemStack(targetstack);
-                        }
-
-                        if (sourcestack != null)
-                        {
-                            vehicle.GetComponent<PublicStorageComponent>().Inventory.AddItem(sourcestack.Item);
-                            auth.SetOwner(user.Name);
-                            vehicle.GetComponent<StandaloneAuthComponent>().SetLocked(user.Player, false);
-                            auth.SetOwner(target.Name);
-                            //target.Inventory.MoveItems(sourcestack, targetstack, target.Player);
-                        }
-                        else
-                        {
-                            destroyedvehicles++;
-                            vehicle.Destroy();
-                        }
-                    }
-                }
-            }
-
-            ChatUtils.SendMessage(user, totalplotcount + " Plots on " + deedcount + " Deeds unclaimed. Also found " + vehiclecount + " Vehicles. " + (vehiclecount - destroyedvehicles) + " have been unlocked and got their deed added to inventory. " + destroyedvehicles + " were destroyed as the deed couldn't be found");
         }
 
 
-    */
 
         /// <summary>
         /// -OBSOLETE- Finalizes worldgen by running the Custom Generator part
