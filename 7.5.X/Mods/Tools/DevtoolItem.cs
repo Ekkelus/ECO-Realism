@@ -15,6 +15,8 @@ using Eco.Simulation.Agents;
 using Eco.World;
 using Eco.World.Blocks;
 using Eco.Gameplay.DynamicValues;
+using REYmod.Utils;
+using Eco.Gameplay.Players;
 
 [Serialized]
 [IgnoreAuth]
@@ -59,6 +61,8 @@ public class DevtoolItem : HammerItem
 
     public override InteractResult OnActRight(InteractionContext context)
     {
+        User owner;
+        User creator;
         var currentBlock = context.Player.User.Inventory.Carried.Stacks.First().Item as BlockItem;
         if (currentBlock != null && context.HasBlock && context.Normal != Vector3i.Zero)
         {
@@ -68,6 +72,28 @@ public class DevtoolItem : HammerItem
                 context.Player.User.Inventory.AddItem(currentBlock);
                 return result;
             }
+        }
+        else if (context.HasTarget)
+        {
+            if (context.Target != null)
+            {
+                if (context.Target is WorldObject)
+                {
+                    owner = (context.Target as WorldObject).OwnerUser;
+                    if (owner != null)
+                    {
+                        ChatUtils.SendMessage(context.Player, "Owner: " + owner.Name);
+                    }
+                    else ChatUtils.SendMessage(context.Player, "Object is unowned");
+                    creator = (context.Target as WorldObject).Creator.User;
+                    if (creator != null)
+                    {
+                        ChatUtils.SendMessage(context.Player, "Creator: " + creator.Name);
+                    }
+                    else ChatUtils.SendMessage(context.Player, "No creator");
+                }
+            }
+            return InteractResult.Success;
         }
 
         return InteractResult.NoOp;
