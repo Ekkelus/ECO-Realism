@@ -71,7 +71,7 @@ namespace Eco.Mods.TechTree
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "General",
-                                                    Val = 10,                                   
+                                                    Val = 5,                                   
                                                     TypeForRoomLimit = "Decoration", 
                                                     DiminishingReturnPercent = 0.2f    
         };}}
@@ -91,7 +91,8 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<ElkCarcassItem>(1), 
-                new CraftingElement<BoardItem>(typeof(ClothProductionEfficiencySkill), 5, ClothProductionEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<BoardItem>(typeof(ClothProductionEfficiencySkill), 5, ClothProductionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(ClothProductionEfficiencySkill), 8, ClothProductionEfficiencySkill.MultiplicativeStrategy),
             };
             SkillModifiedValue value = new SkillModifiedValue(15, ClothProductionSpeedSkill.MultiplicativeStrategy, typeof(ClothProductionSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(ElkMountRecipe), Item.Get<ElkMountItem>().UILink(), value);
