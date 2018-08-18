@@ -35,7 +35,8 @@ namespace Eco.Mods.TechTree
     using System.Timers;
     using REYmod.Utils;
 
-    [Serialized]    
+    [Serialized]
+    [RequireComponent(typeof(MustBeOwnedComponent))]
     [RequireComponent(typeof(OnOffComponent))]                   
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                 
@@ -148,8 +149,8 @@ namespace Eco.Mods.TechTree
     [Weight(2000)]
     public partial class ConveyorReceiverItem : WorldObjectItem<ConveyorReceiverObject>
     {
-        public override string FriendlyName { get { return "ConveyorReceiver"; } } 
-        public override string Description  { get { return "Exit Point of a itempipe system."; } }
+        public override string FriendlyName { get { return "Conveyor Output"; } } 
+        public override string Description  { get { return "Exit Point of a itempipe system. (Name not final, im open to suggestions)"; } }
 
         static ConveyorReceiverItem()
         {
@@ -160,8 +161,7 @@ namespace Eco.Mods.TechTree
 
        
     }
-    // Not Craftable for now
-/* 
+
     [RequiresSkill(typeof(MetalworkingSkill), 4)]
     public partial class ConveyorReceiverRecipe : Recipe
     {
@@ -174,15 +174,17 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 10, MetalworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<IronIngotItem>(typeof(MechanicsAssemblyEfficiencySkill), 10, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GearboxItem>(typeof(MechanicsAssemblyEfficiencySkill), 4, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<PistonItem>(typeof(MechanicsAssemblyEfficiencySkill), 2, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
             };
             SkillModifiedValue value = new SkillModifiedValue(1, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(ConveyorReceiverRecipe), Item.Get<ConveyorReceiverItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ConveyorReceiverItem>().UILink(), value);
             this.CraftMinutes = value;
             this.Initialize("ConveyorReceiver", typeof(ConveyorReceiverRecipe));
-            CraftingComponent.AddRecipe(typeof(AnvilObject), this);
+            CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
-    */
+
 }
