@@ -149,7 +149,7 @@ namespace Eco.Mods.TechTree
     [Weight(2000)]
     public partial class ConveyorReceiverItem : WorldObjectItem<ConveyorReceiverObject>
     {
-        public override string FriendlyName { get { return "Conveyor Output"; } } 
+        public override string FriendlyName { get { return "Conveyor Exit Point"; } } 
         public override string Description  { get { return "Exit Point of a itempipe system. (Name not final, im open to suggestions)"; } }
 
         static ConveyorReceiverItem()
@@ -162,7 +162,7 @@ namespace Eco.Mods.TechTree
        
     }
 
-    [RequiresSkill(typeof(MetalworkingSkill), 4)]
+    [RequiresSkill(typeof(MechanicalEngineeringSkill), 4)]
     public partial class ConveyorReceiverRecipe : Recipe
     {
         public ConveyorReceiverRecipe()
@@ -182,7 +182,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(ConveyorReceiverRecipe), Item.Get<ConveyorReceiverItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ConveyorReceiverItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("ConveyorReceiver", typeof(ConveyorReceiverRecipe));
+            this.Initialize("Conveyor Exit Point", typeof(ConveyorReceiverRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

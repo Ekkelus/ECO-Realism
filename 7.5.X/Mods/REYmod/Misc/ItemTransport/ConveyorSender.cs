@@ -118,7 +118,7 @@ namespace Eco.Mods.TechTree
     [Weight(2000)]
     public partial class ConveyorSenderItem : WorldObjectItem<ConveyorSenderObject>
     {
-        public override string FriendlyName { get { return "Conveyor Input"; } } 
+        public override string FriendlyName { get { return "Conveyor Entry Point"; } } 
         public override string Description  { get { return "Entry Point of a itempipe system. (Name not final, im open to suggestions)"; } }
 
         static ConveyorSenderItem()
@@ -152,7 +152,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(ConveyorSenderRecipe), Item.Get<ConveyorSenderItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ConveyorSenderItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("ConveyorSender", typeof(ConveyorSenderRecipe));
+            this.Initialize("Conveyor Entry Point", typeof(ConveyorSenderRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
