@@ -40,8 +40,8 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
-    [RequireRoomMaterialTier(2, 18)]        
     public partial class ElectronicsAssemblyObject : WorldObject
+    [RequireRoomMaterialTier(2)]        
     {
         public override string FriendlyName { get { return "Electronics Assembly"; } } 
 

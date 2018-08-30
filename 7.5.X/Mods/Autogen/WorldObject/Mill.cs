@@ -42,8 +42,8 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
-    [RequireRoomMaterialTier(1, 18)]        
     public partial class MillObject : WorldObject
+    [RequireRoomMaterialTier(1)]        
     {
         public override string FriendlyName { get { return "Mill"; } } 
 

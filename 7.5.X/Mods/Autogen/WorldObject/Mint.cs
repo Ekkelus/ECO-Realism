@@ -37,8 +37,8 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(45)]                              
-    [RequireRoomMaterialTier(2, 32)]        
     public partial class MintObject : WorldObject
+    [RequireRoomMaterialTier(1.2f)]        
     {
         public override string FriendlyName { get { return "Mint"; } } 
 

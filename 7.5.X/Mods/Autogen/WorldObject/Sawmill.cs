@@ -41,7 +41,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(RoomRequirementsComponent))]
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
-    [RequireRoomMaterialTier(1, 18)]        
+    [RequireRoomMaterialTier(1)]        
     public partial class SawmillObject : 
         WorldObject    
     {

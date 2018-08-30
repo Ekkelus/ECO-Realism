@@ -40,8 +40,8 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(RoomRequirementsComponent))]
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
-    [RequireRoomMaterialTier(2, 18)]        
     public partial class KitchenObject : WorldObject
+    [RequireRoomMaterialTier(1.8f)]        
     {
         public override string FriendlyName { get { return "Kitchen"; } } 
 

@@ -41,8 +41,8 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
-    [RequireRoomMaterialTier(3, 18)]        
     public partial class LaboratoryObject : WorldObject
+    [RequireRoomMaterialTier(3)]        
     {
         public override string FriendlyName { get { return "Laboratory"; } } 
 

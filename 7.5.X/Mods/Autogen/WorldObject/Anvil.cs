@@ -37,6 +37,10 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(CraftingComponent))]               
     [RequireComponent(typeof(HousingComponent))]                  
     [RequireComponent(typeof(SolidGroundComponent))]            
+    [RequireComponent(typeof(RoomRequirementsComponent))]
+    [RequireRoomContainment]
+    [RequireRoomVolume(25)]                              
+    [RequireRoomMaterialTier(1)]        
     public partial class AnvilObject : 
         WorldObject    
     {

@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(RoomRequirementsComponent))]
     [RequireRoomContainment]
     [RequireRoomVolume(45)]                              
-    [RequireRoomMaterialTier(1, 32)]        
+    [RequireRoomMaterialTier(1)]        
     public partial class TailoringTableObject : 
         WorldObject    
     {

@@ -37,13 +37,13 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(CraftingComponent))]               
     [RequireComponent(typeof(FuelSupplyComponent))]                      
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
-    [RequireComponent(typeof(HousingComponent))]                          
+    [RequireComponent(typeof(HousingComponent))]                  
+    [RequireComponent(typeof(SolidGroundComponent))]            
     [RequireComponent(typeof(RoomRequirementsComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(45)]                              
-    [RequireRoomMaterialTier(2, 32)]        
     public partial class BakeryOvenObject : WorldObject
+    [RequireRoomMaterialTier(1.8f)]        
     {
         public override string FriendlyName { get { return "Bakery Oven"; } } 
 

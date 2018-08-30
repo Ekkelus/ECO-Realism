@@ -41,7 +41,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(RoomRequirementsComponent))]
     [RequireRoomContainment]
     [RequireRoomVolume(45)]                              
-    [RequireRoomMaterialTier(1, 32)]        
+    [RequireRoomMaterialTier(0.9f)]        
     public partial class KilnObject : 
         WorldObject    
     {

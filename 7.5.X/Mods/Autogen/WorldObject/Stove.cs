@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(RoomRequirementsComponent))]
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
-    [RequireRoomMaterialTier(2, 18)]        
+    [RequireRoomMaterialTier(2)]        
     public partial class StoveObject : 
         WorldObject    
     {

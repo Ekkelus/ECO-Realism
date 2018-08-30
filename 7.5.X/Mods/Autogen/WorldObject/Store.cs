@@ -38,7 +38,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(RoomRequirementsComponent))]
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
-    [RequireRoomMaterialTier(1, 18)]        
+    [RequireRoomMaterialTier(0.9f)]        
     public partial class StoreObject : 
         WorldObject    
     {
