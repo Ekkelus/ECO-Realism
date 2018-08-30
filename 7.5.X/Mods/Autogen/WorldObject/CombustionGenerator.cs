@@ -111,6 +111,9 @@ namespace Eco.Mods.TechTree
                                                     Category = "Industrial",
                                                     TypeForRoomLimit = "", 
         };}}
+        
+        [Tooltip(7)] private LocString PowerConsumptionTooltip { get { return new LocString(string.Format(Localizer.DoStr("Consumes: {0}w from fuel"), Text.Info(75))); } } 
+        [Tooltip(8)] private LocString PowerProductionTooltip  { get { return new LocString(string.Format(Localizer.DoStr("Produces: {0}w"), Text.Info(3000))); } } 
     }
 
 

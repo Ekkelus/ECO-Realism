@@ -92,6 +92,8 @@ namespace Eco.Mods.TechTree
                                                     TypeForRoomLimit = "Lights", 
                                                     DiminishingReturnPercent = 0.8f    
         };}}
+        
+        [Tooltip(7)] private LocString PowerConsumptionTooltip { get { return new LocString(string.Format(Localizer.DoStr("Consumes: {0}w from fuel"), Text.Info(1))); } } 
     }
 
 

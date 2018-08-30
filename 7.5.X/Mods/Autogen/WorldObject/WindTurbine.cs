@@ -46,6 +46,8 @@ namespace Eco.Mods.TechTree
     {
         public override string FriendlyName { get { return "Wind Turbine"; } } 
 
+        public virtual Type RepresentedItemType { get { return typeof(WindTurbineItem); } } 
+
 
         protected override void Initialize()
         {
@@ -84,6 +86,8 @@ namespace Eco.Mods.TechTree
                                                     Category = "Industrial",
                                                     TypeForRoomLimit = "", 
         };}}
+        
+        [Tooltip(8)] private LocString PowerProductionTooltip  { get { return new LocString(string.Format(Localizer.DoStr("Produces: {0}w"), Text.Info(1000))); } } 
     }
 
 

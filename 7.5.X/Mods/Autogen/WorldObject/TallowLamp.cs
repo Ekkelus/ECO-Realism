@@ -87,8 +87,12 @@ namespace Eco.Mods.TechTree
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
                                                     Category = "General",
+                                                    Val = 2,                                   
                                                     TypeForRoomLimit = "Lights", 
+                                                    DiminishingReturnPercent = 0.8f    
         };}}
+        
+        [Tooltip(7)] private LocString PowerConsumptionTooltip { get { return new LocString(string.Format(Localizer.DoStr("Consumes: {0}w from fuel"), Text.Info(1))); } } 
     }
 
 

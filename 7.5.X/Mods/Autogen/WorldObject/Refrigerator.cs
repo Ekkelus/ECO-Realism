@@ -94,6 +94,8 @@ namespace Eco.Mods.TechTree
                                                     TypeForRoomLimit = "Food Storage", 
                                                     DiminishingReturnPercent = 0.3f    
         };}}
+        
+        [Tooltip(7)] private LocString PowerConsumptionTooltip { get { return new LocString(string.Format(Localizer.DoStr("Consumes: {0}w"), Text.Info(100))); } }  
     }
 
 
