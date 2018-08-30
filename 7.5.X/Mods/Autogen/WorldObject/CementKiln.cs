@@ -66,7 +66,7 @@ namespace Eco.Mods.TechTree
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
             this.GetComponent<FuelConsumptionComponent>().Initialize(50);                    
             this.GetComponent<HousingComponent>().Set(CementKilnItem.HousingVal);
-            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
+            this.GetComponent<PropertyAuthComponent>().Initialize();
 
 
             var tankList = new List<LiquidTank>();

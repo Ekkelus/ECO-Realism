@@ -60,7 +60,7 @@ namespace Eco.Mods.TechTree
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
             this.GetComponent<FuelConsumptionComponent>().Initialize(1);                    
             this.GetComponent<HousingComponent>().Set(BrazierItem.HousingVal);
-            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
+            this.GetComponent<PropertyAuthComponent>().Initialize();
 
 
 

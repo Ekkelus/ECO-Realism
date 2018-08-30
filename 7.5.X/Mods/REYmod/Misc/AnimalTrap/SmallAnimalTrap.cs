@@ -61,7 +61,7 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
         protected override void Initialize()
         {
             this.GetComponent<MinimapComponent>().Initialize("Economy");
-            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
+            this.GetComponent<PropertyAuthComponent>().Initialize();
             this.GetComponent<PublicStorageComponent>().Initialize(1);
             this.GetComponent<PublicStorageComponent>().Storage.AddInvRestriction(new StackLimitRestriction(1));
             this.GetComponent<PublicStorageComponent>().Storage.AddInvRestriction(new SpecificItemTypesRestriction(allowedItems));

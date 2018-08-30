@@ -74,7 +74,7 @@ namespace Eco.Mods.TechTree
         {;
             tmpInventory = new AuthorizationInventory(1, this);
             inputWire = WireInput.CreatePipeInput(this, "Input", new Ray(0, 0, 0, Direction.Up), CanReceive, OnReceive);                    
-            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
+            this.GetComponent<PropertyAuthComponent>().Initialize();
             this.GetComponent<LinkComponent>().Initialize(2);
             this.GetComponent<AttachmentComponent>().Initialize();
             this.GetComponent<PublicStorageComponent>().Initialize(2);

@@ -67,7 +67,7 @@ namespace Eco.Mods.TechTree
         protected override void Initialize()
         {
             outputWire = new WireOutput(this, typeof(PipeBlock), new Ray(0, 0, 0, Direction.Up), "Output");                 
-            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
+            this.GetComponent<PropertyAuthComponent>().Initialize();
             this.GetComponent<LinkComponent>().Initialize(2);
             this.GetComponent<AttachmentComponent>().Initialize();
             this.GetComponent<PublicStorageComponent>().Initialize(2);

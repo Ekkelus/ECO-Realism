@@ -49,7 +49,7 @@ namespace Eco.Mods.TechTree
         {
             this.GetComponent<MinimapComponent>().Initialize("Housing");                                 
             this.GetComponent<HousingComponent>().Set(ShelfCabinetItem.HousingVal);
-            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
+            this.GetComponent<PropertyAuthComponent>().Initialize();
 
             var storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(8);

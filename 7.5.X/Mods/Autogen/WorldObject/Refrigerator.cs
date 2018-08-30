@@ -54,7 +54,7 @@ namespace Eco.Mods.TechTree
             this.GetComponent<PowerConsumptionComponent>().Initialize(100);                      
             this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());        
             this.GetComponent<HousingComponent>().Set(RefrigeratorItem.HousingVal);
-            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
+            this.GetComponent<PropertyAuthComponent>().Initialize();
 
             var storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(8);

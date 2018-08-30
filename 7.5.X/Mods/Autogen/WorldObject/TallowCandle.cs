@@ -56,7 +56,7 @@ namespace Eco.Mods.TechTree
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
             this.GetComponent<FuelConsumptionComponent>().Initialize(0.2f);                    
             this.GetComponent<HousingComponent>().Set(TallowCandleItem.HousingVal);
-            this.GetComponent<PropertyAuthComponent>().Initialize(AuthModeType.Inherited);
+            this.GetComponent<PropertyAuthComponent>().Initialize();
 
 
 
