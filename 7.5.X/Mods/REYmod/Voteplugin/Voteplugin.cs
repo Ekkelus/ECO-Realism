@@ -5,6 +5,8 @@ using Eco.Gameplay.Systems.Chat;
 using Eco.Mods.TechTree;
 using Eco.Shared.Localization;
 using REYmod.Config;
+using System;
+using System.ComponentModel;
 using System.Net;
 
 /*
@@ -100,9 +102,9 @@ namespace REYmod.Utils
         public static int CheckVote(User user)
         {
             WebClient client = new WebClient();
-            string response;            
+            string response;
             int intresponse;
-            
+
             string encodedname = WebUtility.UrlEncode(user.Name);
             string url = "https://ecoservers.io/api/?object=votes&element=claim&key=" + REYmodSettings.Obj.Config.Apikey + "&username=" + encodedname;
 
@@ -124,7 +126,7 @@ namespace REYmod.Utils
             else
             {
                 return -2;
-               // ChatUtils.SendMessage(user, "Received an unexpected respone from Ecoservers. Please try again later.");
+                // ChatUtils.SendMessage(user, "Received an unexpected respone from Ecoservers. Please try again later.");
             }
         }
         /// <summary>
@@ -169,6 +171,46 @@ namespace REYmod.Utils
         }
 
 
+        /* NOT ready yet, i honestly lost a bit of interest in this idea when i noticed that its a bit more complicated for not much use
+         * 
+        public static User topvoter;
+        public static void Initialize()
+        {
+            UpdateTopVoter();
+            GlobalEvents.OneMinuteEvent.Add(UpdateTopVoter);
+        }
+
+        public static void UpdateTopVoter()
+        {
+            WebClient client = new WebClient();
+            string response;
+            int intresponse;
+
+            string encodedname = WebUtility.UrlEncode(user.Name);
+            string url = "https://ecoservers.io/api/?object=servers&element=voters&key=" + REYmodSettings.Obj.Config.Apikey + "&month=current&format=json&limit=1" ;
+
+            try
+            {
+                response = client.DownloadString(url);
+                //ChatUtils.SendMessage(user, "Check:" + response);
+            }
+            catch (WebException)
+            {
+                return -1;
+                //throw new System.Exception("There was an error when contacting Ecoservers.io. Please try again later.");
+            }
+        }
+    }
+
+    [Category("Hidden")]
+    public class VoteInitItem : Item
+    {
+        static VoteInitItem()
+        {
+            VoteUtils.Initialize();
+        }
+    }
+    */
     }
 }
 

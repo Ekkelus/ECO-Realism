@@ -488,16 +488,16 @@ namespace REYmod.Utils
     /// <summary>
     /// Custom Comparer -OUTDATED-(can probably be removed)
     /// </summary>
-    public class UserFloatComparer : IComparer<KeyValuePair<User, float>>
-    {
-        public int Compare(KeyValuePair<User, float> x, KeyValuePair<User, float> y)
-        {
-            if (x.Value == y.Value) return 0;
-            if (x.Value > y.Value) return -1;
-            else return 1;
-        }
+    //public class UserFloatComparer : IComparer<KeyValuePair<User, float>>
+    //{
+    //    public int Compare(KeyValuePair<User, float> x, KeyValuePair<User, float> y)
+    //    {
+    //        if (x.Value == y.Value) return 0;
+    //        if (x.Value > y.Value) return -1;
+    //        else return 1;
+    //    }
 
-    }
+    //}
 
   
     public class AllergyIgnoreAttribute : ItemAttribute { } // This has to stay in Core because the attribute is added to Existing Items
@@ -596,45 +596,6 @@ namespace REYmod.Utils
 
     }
 
-
-    /* InvertedDynamicvalue doesn't work as expected
-    /// <summary>
-    /// -BUGGY- at least was buggy, made some changes that are still untested
-    /// <para/>Inverts the given DynamicValue
-    /// </summary>
-    /// <param name="x"></param>
-    /// <returns></returns>
-    public class InvertedDynamicValue : IDynamicValue
-    {
-        private IDynamicValue dynamicValue;
-
-        public InvertedDynamicValue(IDynamicValue x)
-        {
-            dynamicValue = x;
-        }
-
-        public float GetBaseValue  { get { return dynamicValue.GetBaseValue; } }
-
-        int IController.ControllerID { get; set; }
-
-        public float GetCurrentValue(User user)
-        {
-            float currentvalue = dynamicValue.GetCurrentValue(user);
-            if (currentvalue == 0) return 0;
-            if (currentvalue <= 0.1f) return float.MaxValue;
-            return 1 / currentvalue;
-
-        }
-
-
-        public int GetCurrentValueInt(User user, float multiplier)
-        {
-            float floatvalue = (GetCurrentValue(user) * multiplier);
-            if (floatvalue >= int.MaxValue) return int.MaxValue;
-            return (int)(GetCurrentValue(user) * multiplier);
-        }
-    }
-    */
 
     #region Button
     public class Button : ILinkable

@@ -13,6 +13,7 @@ using Eco.Gameplay.Skills;
 using Eco.Gameplay.Systems.Chat;
 using Eco.Gameplay.Systems.TextLinks;
 using Eco.Shared.Math;
+using Eco.Shared.Networking;
 using Eco.Shared.Utils;
 using Eco.Simulation.Time;
 using REYmod.Config;
@@ -51,43 +52,8 @@ namespace REYmod.Core.ChatCommands
         }
         #endregion
 
-        [ChatCommand("globalroomfix", "Reevaluates all rooms that have at least one worldobject placed in them", level: ChatAuthorizationLevel.Admin)]
-        public static void GlobalRoomFix(User user)
-        {
-            foreach (WorldObject obj in WorldObjectManager.All)
-            {
-                RoomData.QueueRoomTest(obj.Position3i);
-                //Console.WriteLine("Checked " + obj.Name + " at " + obj.Position3i.ToStringLabelled("pos"));
-            }
-            RoomData.Obj.UpdateRooms();
-            ChatUtils.SendMessage(user, "Rooms should be fixed now");
-        }
 
-        [ChatCommand("tp", "Opens a list of online players. Click the player you(or the given player) should be teleported to", level: ChatAuthorizationLevel.Admin)]
-        public static void Tp(User user, string username = "")
-        {
-            User usertoteleport = UserManager.FindUserByName(username);
-            if (usertoteleport == null) usertoteleport = user;
-
-            string panelcontent = "Select Player: <br><br>";
-            foreach (User onlineuser in UserManager.OnlineUsers)
-            {
-                panelcontent += new Button(player => { usertoteleport.Player.SetPosition(onlineuser.Player.Position); }, content: onlineuser.Name, singleuse: true, clickdesc: "Click to teleport " + usertoteleport.Name + " to " + onlineuser.Name).UILink();
-                panelcontent += "<br>";
-            }
-            user.Player.OpenInfoPanel("Teleport Menu", panelcontent);
-        }
-
-
-        [ChatCommand("openauth", "Opens the authmenu for the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
-        public static void OpenAuth(User user)
-        {
-            Deed deed = PropertyManager.GetDeed(user.Position.XZi);
-            if (deed != null) deed.OpenAuthorizationMenuOn(user.Player);
-            else ChatUtils.SendMessage(user, "Plot is not claimed!", true);
-        }
-
-        [ChatCommand("setowner", "Opens the authmenu for the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
+        [ChatCommand("setowner", "Sets tho owner of the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
         public static void SetOwner(User user, string newowner)
         {
             User newowneruser = UserManager.FindUserByName(newowner);
@@ -103,58 +69,6 @@ namespace REYmod.Core.ChatCommands
                 ChatUtils.SendMessage(user, newowneruser + " is now the owner of " + deed.Name);
             }
             else ChatUtils.SendMessage(user, "User not found!", true);
-        }
-
-        [ChatCommand("unclaimuser", "MOD/ADMIN only! - Unclaims all property of the given user ", level: ChatAuthorizationLevel.User)]
-        public static void UnclaimPlayer(User user, User owner = null)
-        {
-            bool inactive = true;
-            double inactivetime;
-
-            if (!user.IsAdmin && !user.GetState<bool>("Moderator"))
-            {
-                ChatUtils.SendMessage(user, "You dont have permission to use this command!");
-                return;
-            }
-
-            if (owner == null)
-            {
-                if (PropertyManager.GetPlot(user.Position.XZi) != null) owner = PropertyManager.GetPlot(user.Position.XZi).Owner;
-            }
-
-            if (owner == null)
-            {
-                user.Player.SendTemporaryMessageAlreadyLocalized("Plot not owned");
-                return;
-            }
-
-            inactivetime = (WorldTime.Seconds - owner.LogoutTime);
-            if (inactivetime < REYmodSettings.Obj.Config.Maxinactivetime * 3600) inactive = false;
-            if (owner.LoggedIn) inactivetime = 0;
-
-            IEnumerable<Deed> allDeeds = PropertyManager.GetAllDeeds();
-            IEnumerable<Deed> targetDeeds = allDeeds.Where(x => x.OwnerUser.User == owner);
-            int ownedplots = PropertyManager.PropertyForUser(owner).Count();
-            int ownedvehicles = targetDeeds.Sum(x => x.OwnedObjects.Count) - ownedplots;
-
-            string textbox = "";
-            textbox += "You are going to unclaim all property of " + owner.UILink() + "<br>";
-            textbox += "Owned Plots: " + ownedplots + "<br>";
-            textbox += "Owned Vehicles: " + ownedvehicles + "<br>";
-            textbox += "<br>Player offline for " + TimeFormatter.FormatSpan(inactivetime);
-            if (!inactive) textbox += "<br>WARNING! Player not inactive!".Color("red");
-            textbox += "<br><br>";
-            if (!inactive && !user.IsAdmin)
-            {
-                textbox += "You can't unclaim this player! Not inactive for long enough.";
-            }
-            else
-            {
-                textbox += new Button(x => MiscUtils.UnclaimUser(owner, user), "","Click here to unclaim all property of " + owner.UILink(), "Confirm Unclaiming".Color("green")).UILink();
-            }
-
-            user.Player.OpenInfoPanel("Unclaim Player", textbox);
-
         }
 
 
@@ -237,6 +151,144 @@ namespace REYmod.Core.ChatCommands
         }
 
         #endregion ADMIN Commands
+
+        #region MOD Commands
+        #region Copies of original Commands
+        [ChatCommand("MOD/ADMIN only! - Toggles fly mode", ChatAuthorizationLevel.User)]
+        public static void MFly(User user)
+        {
+            if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
+            {
+                ChatUtils.SendMessage(user, "Not Authorized to use this command!");
+                return;
+            }
+            user.Player.RPC("ToggleFly");
+        }
+
+        [ChatCommand("MOD/ADMIN only! - Kicks user", ChatAuthorizationLevel.User)]
+        public static void MKick(User user, User kickUser, string reason = "")
+        {
+            if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
+            {
+                ChatUtils.SendMessage(user, "Not Authorized to use this command!");
+                return;
+            }
+            var player = kickUser.Player;
+            if (player != null)
+            {
+                player.Client.Disconnect("Moderator "+ Text.Bold(user.Name) + " has kicked you.", reason);
+                ChatUtils.SendMessage(user,"You have kicked " + kickUser.Name);
+            }
+            else
+                ChatUtils.SendMessage(user, kickUser.Name + " is not online");
+        }
+
+        #endregion
+
+
+        [ChatCommand("unclaimuser", "MOD/ADMIN only! - Unclaims all property of the given user ", level: ChatAuthorizationLevel.User)]
+        public static void UnclaimPlayer(User user, User owner = null)
+        {
+            bool inactive = true;
+            double inactivetime;
+
+            if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
+            {
+                ChatUtils.SendMessage(user, "Not Authorized to use this command!");
+                return;
+            }
+
+            if (owner == null)
+            {
+                if (PropertyManager.GetPlot(user.Position.XZi) != null) owner = PropertyManager.GetPlot(user.Position.XZi).Owner;
+            }
+
+            if (owner == null)
+            {
+                user.Player.SendTemporaryMessageAlreadyLocalized("Plot not owned");
+                return;
+            }
+
+            inactivetime = (WorldTime.Seconds - owner.LogoutTime);
+            if (inactivetime < REYmodSettings.Obj.Config.Maxinactivetime * 3600) inactive = false;
+            if (owner.LoggedIn) inactivetime = 0;
+
+            IEnumerable<Deed> allDeeds = PropertyManager.GetAllDeeds();
+            IEnumerable<Deed> targetDeeds = allDeeds.Where(x => x.OwnerUser.User == owner);
+            int ownedplots = PropertyManager.PropertyForUser(owner).Count();
+            int ownedvehicles = targetDeeds.Sum(x => x.OwnedObjects.Count) - ownedplots;
+
+            string textbox = "";
+            textbox += "You are going to unclaim all property of " + owner.UILink() + "<br>";
+            textbox += "Owned Plots: " + ownedplots + "<br>";
+            textbox += "Owned Vehicles: " + ownedvehicles + "<br>";
+            textbox += "<br>Player offline for " + TimeFormatter.FormatSpan(inactivetime);
+            if (!inactive) textbox += "<br>WARNING! Player not inactive!".Color("red");
+            textbox += "<br><br>";
+            if (!inactive && !user.IsAdmin)
+            {
+                textbox += "You can't unclaim this player! Not inactive for long enough.";
+            }
+            else
+            {
+                textbox += new Button(x => MiscUtils.UnclaimUser(owner, user), "", "Click here to unclaim all property of " + owner.UILink(), "Confirm Unclaiming".Color("green")).UILink();
+            }
+
+            user.Player.OpenInfoPanel("Unclaim Player", textbox);
+
+        }
+
+        [ChatCommand("tp", "MOD/ADMIN only! - Opens a list of online players. Click the player you(or the given player) should be teleported to", level: ChatAuthorizationLevel.User)]
+        public static void Tp(User user, string username = "")
+        {
+            if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
+            {
+                ChatUtils.SendMessage(user, "Not Authorized to use this command!");
+                return;
+            }
+            User usertoteleport = UserManager.FindUserByName(username);
+            if (usertoteleport == null) usertoteleport = user;
+
+            string panelcontent = "Select Player: <br><br>";
+            foreach (User onlineuser in UserManager.OnlineUsers)
+            {
+                panelcontent += new Button(player => { usertoteleport.Player.SetPosition(onlineuser.Player.Position); }, content: onlineuser.Name, singleuse: true, clickdesc: "Click to teleport " + usertoteleport.Name + " to " + onlineuser.Name).UILink();
+                panelcontent += "<br>";
+            }
+            user.Player.OpenInfoPanel("Teleporting " + usertoteleport.Name, panelcontent);
+        }
+
+        [ChatCommand("globalroomfix", "MOD/ADMIN only! - Reevaluates all rooms that have at least one worldobject placed in them", level: ChatAuthorizationLevel.User)]
+        public static void GlobalRoomFix(User user)
+        {
+            if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
+            {
+                ChatUtils.SendMessage(user, "Not Authorized to use this command!");
+                return;
+            }
+            foreach (WorldObject obj in WorldObjectManager.All)
+            {
+                RoomData.QueueRoomTest(obj.Position3i);
+                //Console.WriteLine("Checked " + obj.Name + " at " + obj.Position3i.ToStringLabelled("pos"));
+            }
+            RoomData.Obj.UpdateRooms();
+            ChatUtils.SendMessage(user, "Rooms should be fixed now");
+        }
+
+        [ChatCommand("openauth", "MOD/ADMIN only! - Opens the authmenu for the Plot your currently standing on, only to check settings, only owner can change", level: ChatAuthorizationLevel.User)]
+        public static void OpenAuth(User user)
+        {
+            if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
+            {
+                ChatUtils.SendMessage(user, "Not Authorized to use this command!");
+                return;
+            }
+            Deed deed = PropertyManager.GetDeed(user.Position.XZi);
+            if (deed != null) deed.OpenAuthorizationMenuOn(user.Player);
+            else ChatUtils.SendMessage(user, "Plot is not claimed!", true);
+        }
+
+        #endregion
 
         #region USER Commands
 
