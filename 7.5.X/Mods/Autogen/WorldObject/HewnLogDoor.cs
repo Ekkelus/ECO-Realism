@@ -34,13 +34,17 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class HewnLogDoorObject : 
-        DoorObject 
+        DoorObject, 
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Hewn Log Door"; } } 
+
+        public override Type RepresentedItemType { get { return typeof(HewnLogDoorItem); } } 
 
 
         protected override void Initialize()
         {
+            base.Initialize(); 
 
 
         }

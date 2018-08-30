@@ -39,9 +39,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class CampfireObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Campfire"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(CampfireItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

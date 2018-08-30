@@ -29,7 +29,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
@@ -37,15 +37,19 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(CraftingComponent))]               
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerConsumptionComponent))]                     
-    [RequireComponent(typeof(HousingComponent))]                          
+    [RequireComponent(typeof(HousingComponent))]                  
+    [RequireComponent(typeof(SolidGroundComponent))]            
     [RequireComponent(typeof(RoomRequirementsComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
-    public partial class MillObject : WorldObject
     [RequireRoomMaterialTier(1)]        
+    public partial class MillObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Mill"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(MillItem); } } 
 
 
         protected override void Initialize()

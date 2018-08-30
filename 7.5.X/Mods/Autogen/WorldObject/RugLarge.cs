@@ -29,15 +29,19 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(HousingComponent))]
 	[RequireComponent(typeof(SolidGroundComponent))] 	
-    public partial class RugLargeObject : WorldObject
+    public partial class RugLargeObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Large Rug"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(RugLargeItem); } } 
 
 
         protected override void Initialize()

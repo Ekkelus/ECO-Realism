@@ -33,9 +33,13 @@ namespace Eco.Mods.TechTree
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
-    public partial class WoodSignObject : WorldObject
+    public partial class WoodSignObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Wood Sign"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(WoodSignItem); } } 
 
 
         protected override void Initialize()

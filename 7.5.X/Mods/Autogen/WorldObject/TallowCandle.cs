@@ -39,9 +39,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
     [RequireComponent(typeof(HousingComponent))]                  
     public partial class TallowCandleObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Tallow Candle"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(TallowCandleItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

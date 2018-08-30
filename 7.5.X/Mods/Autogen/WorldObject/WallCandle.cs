@@ -38,9 +38,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
     [RequireComponent(typeof(HousingComponent))]                  
     public partial class WallCandleObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Wall Candle"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(WallCandleItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

@@ -35,9 +35,13 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MinimapComponent))]
 	[RequireComponent(typeof(SolidGroundComponent))] 	
     [RequireComponent(typeof(HousingComponent))]                          
-    public partial class SaltBasketObject : WorldObject
+    public partial class SaltBasketObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Salt Basket"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(SaltBasketItem); } } 
 
 
         protected override void Initialize()

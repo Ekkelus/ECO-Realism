@@ -43,9 +43,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(2)]        
     public partial class RollingMillObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Rolling Mill"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(RollingMillItem); } } 
 
 
         protected override void Initialize()

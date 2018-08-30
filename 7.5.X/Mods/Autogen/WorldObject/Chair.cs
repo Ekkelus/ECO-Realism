@@ -29,7 +29,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(HousingComponent))]                          
@@ -38,9 +38,13 @@ namespace Eco.Mods.TechTree
     [RequireRoomContainment]
     [RequireRoomVolume(8)]                              
     [RequireRoomMaterialTier(1, 2)]        
-    public partial class ChairObject : WorldObject
+    public partial class ChairObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Chair"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(ChairItem); } } 
 
 
         protected override void Initialize()

@@ -32,7 +32,7 @@ namespace Eco.Mods.TechTree
     using REYmod.Utils;
 
     [Serialized]    
-    [RequireComponent(typeof(OnOffComponent))]    
+    [RequireComponent(typeof(OnOffComponent))]                   
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
@@ -40,7 +40,9 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PowerGeneratorComponent))]         
     [RequireComponent(typeof(HousingComponent))]
     [RequireComponent(typeof(SpecificGroundComponent))]
-    public partial class WindTurbineObject : WorldObject
+    public partial class WindTurbineObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Wind Turbine"; } } 
 

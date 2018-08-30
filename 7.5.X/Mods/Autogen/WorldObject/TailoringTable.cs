@@ -41,9 +41,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(45)]                              
     [RequireRoomMaterialTier(1)]        
     public partial class TailoringTableObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Tailoring Table"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(TailoringTableItem); } } 
 
 
         protected override void Initialize()

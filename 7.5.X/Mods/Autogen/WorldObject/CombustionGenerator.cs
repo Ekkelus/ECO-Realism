@@ -29,11 +29,11 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
-    [RequireComponent(typeof(OnOffComponent))]    
-    [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PipeComponent))]                    
+    [RequireComponent(typeof(AttachmentComponent))]              
+    [RequireComponent(typeof(OnOffComponent))]                   
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
@@ -41,11 +41,15 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerGeneratorComponent))]         
-    [RequireComponent(typeof(HousingComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 	
-    public partial class CombustionGeneratorObject : WorldObject
+    [RequireComponent(typeof(HousingComponent))]                  
+    [RequireComponent(typeof(SolidGroundComponent))]            
+    public partial class CombustionGeneratorObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Combustion Generator"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(CombustionGeneratorItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

@@ -38,9 +38,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PowerConsumptionComponent))]                     
     [RequireComponent(typeof(HousingComponent))]                  
     public partial class WoodenTableLampObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Wooden Table Lamp"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(WoodenTableLampItem); } } 
 
 
         protected override void Initialize()

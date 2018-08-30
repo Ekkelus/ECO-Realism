@@ -39,7 +39,9 @@ namespace Eco.Mods.TechTree
     [RequireRoomContainment]
     [RequireRoomVolume(16)]                              
     [RequireRoomMaterialTier(1, 6)]        
-    public partial class LatrineObject : WorldObject
+    public partial class LatrineObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Wooden Latrine"; } } 
 

@@ -46,9 +46,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(45)]                              
     [RequireRoomMaterialTier(2)]        
     public partial class CementKilnObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Cement Kiln"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(CementKilnItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

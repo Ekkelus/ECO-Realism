@@ -38,9 +38,13 @@ namespace Eco.Mods.TechTree
     [RequireRoomContainment]
     [RequireRoomVolume(16)]                              
     [RequireRoomMaterialTier(1, 6)]        
-    public partial class TableObject : WorldObject
+    public partial class TableObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Table"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(TableItem); } } 
 
 
         protected override void Initialize()

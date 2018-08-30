@@ -35,9 +35,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(HousingComponent))]                  
     public partial class StuffedElkObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Stuffed Elk"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(StuffedElkItem); } } 
 
 
         protected override void Initialize()

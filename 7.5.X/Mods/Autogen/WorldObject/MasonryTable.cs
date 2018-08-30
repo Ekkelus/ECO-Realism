@@ -40,9 +40,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
     public partial class MasonryTableObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Masonry Table"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(MasonryTableItem); } } 
 
 
         protected override void Initialize()

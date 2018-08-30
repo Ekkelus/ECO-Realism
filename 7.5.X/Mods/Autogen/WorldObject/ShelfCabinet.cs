@@ -40,9 +40,13 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(8)]                              
-    public partial class ShelfCabinetObject : WorldObject
+    public partial class ShelfCabinetObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Shelf Cabinet"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(ShelfCabinetItem); } } 
 
 
         protected override void Initialize()

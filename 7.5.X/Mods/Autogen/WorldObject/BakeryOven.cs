@@ -42,10 +42,14 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(RoomRequirementsComponent))]
     [RequireRoomContainment]
     [RequireRoomVolume(45)]                              
-    public partial class BakeryOvenObject : WorldObject
     [RequireRoomMaterialTier(1.8f)]        
+    public partial class BakeryOvenObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Bakery Oven"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(BakeryOvenItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

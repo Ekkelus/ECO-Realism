@@ -38,9 +38,13 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(4)]                              
-    public partial class WashboardObject : WorldObject
+    public partial class WashboardObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Washboard"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(WashboardItem); } } 
 
 
         protected override void Initialize()

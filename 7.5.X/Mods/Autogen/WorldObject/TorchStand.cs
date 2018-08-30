@@ -40,9 +40,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(HousingComponent))]                  
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class TorchStandObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Torch Stand"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(TorchStandItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

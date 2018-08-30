@@ -41,9 +41,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(0.9f)]        
     public partial class WainwrightTableObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Wainwright Table"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(WainwrightTableItem); } } 
 
 
         protected override void Initialize()

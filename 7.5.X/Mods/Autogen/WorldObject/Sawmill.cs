@@ -43,9 +43,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(1)]        
     public partial class SawmillObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Sawmill"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(SawmillItem); } } 
 
 
         protected override void Initialize()

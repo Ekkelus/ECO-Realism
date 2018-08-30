@@ -35,10 +35,14 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerGeneratorComponent))]         
-    [RequireComponent(typeof(HousingComponent))]                          
-    public partial class WindmillObject : WorldObject
+    [RequireComponent(typeof(HousingComponent))]                  
+    public partial class WindmillObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Windmill"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(WindmillItem); } } 
 
 
         protected override void Initialize()

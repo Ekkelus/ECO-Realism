@@ -46,9 +46,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(2)]        
     public partial class StoveObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Stove"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(StoveItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

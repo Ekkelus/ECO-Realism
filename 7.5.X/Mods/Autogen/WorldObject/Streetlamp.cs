@@ -39,9 +39,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(HousingComponent))]                  
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class StreetlampObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Streetlamp"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(StreetlampItem); } } 
 
 
         protected override void Initialize()

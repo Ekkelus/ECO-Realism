@@ -34,15 +34,19 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
-    [RequireComponent(typeof(HousingComponent))]                          
+    [RequireComponent(typeof(HousingComponent))]                  
     [RequireComponent(typeof(PublicStorageComponent))]                
     [RequireComponent(typeof(RoomRequirementsComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(8)]                              
-    public partial class IceboxObject : WorldObject
+    [RequireComponent(typeof(SolidGroundComponent))]            
+    public partial class IceboxObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Icebox"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(IceboxItem); } } 
 
 
         protected override void Initialize()

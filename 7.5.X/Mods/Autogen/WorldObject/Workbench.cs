@@ -37,9 +37,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(CraftingComponent))]               
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class WorkbenchObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Workbench"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(WorkbenchItem); } } 
 
 
         protected override void Initialize()

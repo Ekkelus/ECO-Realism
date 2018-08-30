@@ -40,9 +40,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(0.9f)]        
     public partial class StoreObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Store"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(StoreItem); } } 
 
 
         protected override void Initialize()

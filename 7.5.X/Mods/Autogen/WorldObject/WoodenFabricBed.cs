@@ -39,9 +39,13 @@ namespace Eco.Mods.TechTree
     [RequireRoomContainment]
     [RequireRoomVolume(16)]                              
     [RequireRoomMaterialTier(1, 6)]        
-    public partial class WoodenFabricBedObject : WorldObject
+    public partial class WoodenFabricBedObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Wooden Fabric Bed"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(WoodenFabricBedItem); } } 
 
 
         protected override void Initialize()

@@ -37,11 +37,15 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(CraftingComponent))]               
     [RequireComponent(typeof(FuelSupplyComponent))]                      
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
-    [RequireComponent(typeof(HousingComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 	
-    public partial class BloomeryObject : WorldObject
+    [RequireComponent(typeof(HousingComponent))]                  
+    [RequireComponent(typeof(SolidGroundComponent))]            
+    public partial class BloomeryObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Bloomery"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(BloomeryItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

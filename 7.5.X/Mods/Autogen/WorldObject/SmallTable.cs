@@ -38,9 +38,13 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(8)]                              
-    public partial class SmallTableObject : WorldObject
+    public partial class SmallTableObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Small Table"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(SmallTableItem); } } 
 
 
         protected override void Initialize()

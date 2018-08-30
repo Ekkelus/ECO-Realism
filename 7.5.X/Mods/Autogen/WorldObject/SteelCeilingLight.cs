@@ -38,9 +38,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PowerConsumptionComponent))]                     
     [RequireComponent(typeof(HousingComponent))]                  
     public partial class SteelCeilingLightObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Steel Ceiling Light"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(SteelCeilingLightItem); } } 
 
 
         protected override void Initialize()

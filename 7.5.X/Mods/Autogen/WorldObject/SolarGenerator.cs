@@ -29,19 +29,23 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
-    [RequireComponent(typeof(OnOffComponent))]    
+    [RequireComponent(typeof(OnOffComponent))]                   
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerGeneratorComponent))]         
-    [RequireComponent(typeof(HousingComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 	
-    public partial class SolarGeneratorObject : WorldObject
+    [RequireComponent(typeof(HousingComponent))]                  
+    [RequireComponent(typeof(SolidGroundComponent))]            
+    public partial class SolarGeneratorObject : 
+        WorldObject,    
+        IRepresentsItem
     {
-        public override string FriendlyName { get { return "Solar Generator"; } } 
+        public override string FriendlyName { get { return "SolarPanels"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(SolarGeneratorItem); } } 
 
 
         protected override void Initialize()

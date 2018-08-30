@@ -42,9 +42,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(1)]        
     public partial class AnvilObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Anvil"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(AnvilItem); } } 
 
 
         protected override void Initialize()

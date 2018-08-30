@@ -36,9 +36,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(LinkComponent))]                   
     [RequireComponent(typeof(PublicStorageComponent))]                
     public partial class StorageChestObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Storage Chest"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(StorageChestItem); } } 
 
 
         protected override void Initialize()

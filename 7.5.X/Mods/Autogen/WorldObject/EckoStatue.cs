@@ -35,9 +35,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(HousingComponent))]                  
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class EckoStatueObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Ecko Statue"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(EckoStatueItem); } } 
 
 
         protected override void Initialize()

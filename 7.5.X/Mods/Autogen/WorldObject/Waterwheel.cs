@@ -35,10 +35,14 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerGeneratorComponent))]         
-    [RequireComponent(typeof(HousingComponent))]                          
-    public partial class WaterwheelObject : WorldObject
+    [RequireComponent(typeof(HousingComponent))]                  
+    public partial class WaterwheelObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Waterwheel"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(WaterwheelItem); } } 
 
 
         protected override void Initialize()

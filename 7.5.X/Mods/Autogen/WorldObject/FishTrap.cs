@@ -29,15 +29,19 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
-    [RequireComponent(typeof(LinkComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 	
-    public partial class FishTrapObject : WorldObject
+    [RequireComponent(typeof(LinkComponent))]                   
+    [RequireComponent(typeof(SolidGroundComponent))]            
+    public partial class FishTrapObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Fish Trap"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(FishTrapItem); } } 
 
 
         protected override void Initialize()

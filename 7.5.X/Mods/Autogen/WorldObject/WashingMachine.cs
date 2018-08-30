@@ -41,9 +41,13 @@ namespace Eco.Mods.TechTree
     [RequireRoomContainment]
     [RequireRoomVolume(8)]                              
     [RequireRoomMaterialTier(3, 6)]        
-    public partial class WashingMachineObject : WorldObject
+    public partial class WashingMachineObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Washing Machine"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(WashingMachineItem); } } 
 
 
         protected override void Initialize()

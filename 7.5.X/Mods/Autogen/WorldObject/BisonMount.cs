@@ -35,9 +35,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(HousingComponent))]                  
     public partial class BisonMountObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Bison Mount"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(BisonMountItem); } } 
 
 
         protected override void Initialize()

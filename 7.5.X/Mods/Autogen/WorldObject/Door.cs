@@ -35,9 +35,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class DoorObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Door"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(DoorItem); } } 
 
 
         protected override void Initialize()

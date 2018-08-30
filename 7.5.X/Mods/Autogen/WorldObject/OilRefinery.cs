@@ -29,21 +29,25 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
-    [RequireComponent(typeof(PipeComponent))]    
-    [RequireComponent(typeof(AttachmentComponent))]
+    [RequireComponent(typeof(PipeComponent))]                    
+    [RequireComponent(typeof(AttachmentComponent))]              
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
     [RequireComponent(typeof(CraftingComponent))]               
     [RequireComponent(typeof(FuelSupplyComponent))]                      
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
-    [RequireComponent(typeof(HousingComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 	
-    public partial class OilRefineryObject : WorldObject
+    [RequireComponent(typeof(HousingComponent))]                  
+    [RequireComponent(typeof(SolidGroundComponent))]            
+    public partial class OilRefineryObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Oil Refinery"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(OilRefineryItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

@@ -41,9 +41,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(0.5f)]        
     public partial class ResearchTableObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Research Table"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(ResearchTableItem); } } 
 
 
         protected override void Initialize()

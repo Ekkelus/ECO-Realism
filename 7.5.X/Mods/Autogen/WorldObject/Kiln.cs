@@ -43,9 +43,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(45)]                              
     [RequireRoomMaterialTier(0.9f)]        
     public partial class KilnObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Kiln"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(KilnItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

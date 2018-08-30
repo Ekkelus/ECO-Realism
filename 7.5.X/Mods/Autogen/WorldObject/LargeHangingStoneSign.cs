@@ -35,14 +35,18 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(CustomTextComponent))]              
     [RequireComponent(typeof(MinimapComponent))]                
     public partial class LargeHangingStoneSignObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Large Hanging Stone Sign"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(LargeHangingStoneSignItem); } } 
 
 
         protected override void Initialize()
         {
             this.GetComponent<MinimapComponent>().Initialize("Sign");                                 
+            this.GetComponent<CustomTextComponent>().Initialize(700);                                       
 
 
         }

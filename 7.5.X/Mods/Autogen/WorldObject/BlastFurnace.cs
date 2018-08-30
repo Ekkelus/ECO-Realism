@@ -31,19 +31,23 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     
     [Serialized]    
-    [RequireComponent(typeof(PipeComponent))]    
-    [RequireComponent(typeof(AttachmentComponent))]
+    [RequireComponent(typeof(PipeComponent))]                    
+    [RequireComponent(typeof(AttachmentComponent))]              
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(LinkComponent))]                   
     [RequireComponent(typeof(CraftingComponent))]               
     [RequireComponent(typeof(FuelSupplyComponent))]                      
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
-    [RequireComponent(typeof(HousingComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))]
-    public partial class BlastFurnaceObject : WorldObject
+    [RequireComponent(typeof(HousingComponent))]                  
+    [RequireComponent(typeof(SolidGroundComponent))]            
+    public partial class BlastFurnaceObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Blast Furnace"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(BlastFurnaceItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

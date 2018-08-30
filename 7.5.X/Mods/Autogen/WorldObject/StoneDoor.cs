@@ -34,13 +34,17 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class StoneDoorObject : 
-        DoorObject 
+        DoorObject, 
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Stone Door"; } } 
+
+        public override Type RepresentedItemType { get { return typeof(StoneDoorItem); } } 
 
 
         protected override void Initialize()
         {
+            base.Initialize(); 
 
 
         }

@@ -43,9 +43,13 @@ namespace Eco.Mods.TechTree
     [RequireRoomContainment]
     [RequireRoomVolume(8)]                              
     [RequireRoomMaterialTier(3, 6)]        
-    public partial class RefrigeratorObject : WorldObject
+    public partial class RefrigeratorObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Refrigerator"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(RefrigeratorItem); } } 
 
 
         protected override void Initialize()

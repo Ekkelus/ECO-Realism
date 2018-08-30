@@ -39,9 +39,13 @@ namespace Eco.Mods.TechTree
     [RequireRoomContainment]
     [RequireRoomVolume(16)]                              
     [RequireRoomMaterialTier(1, 6)]        
-    public partial class WoodenStrawBedObject : WorldObject
+    public partial class WoodenStrawBedObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Wooden Straw Bed"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(WoodenStrawBedItem); } } 
 
 
         protected override void Initialize()

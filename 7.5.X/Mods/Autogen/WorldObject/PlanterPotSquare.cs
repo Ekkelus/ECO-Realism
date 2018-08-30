@@ -29,16 +29,20 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(HousingComponent))]
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomVolume(4)]
-    public partial class PlanterPotSquareObject : WorldObject
+    public partial class PlanterPotSquareObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Square Pot"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(PlanterPotSquareItem); } } 
 
 
         protected override void Initialize()

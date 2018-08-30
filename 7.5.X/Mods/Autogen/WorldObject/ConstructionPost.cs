@@ -35,9 +35,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class ConstructionPostObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Construction Post"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(ConstructionPostItem); } } 
 
 
         protected override void Initialize()

@@ -42,9 +42,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(25)]                              
     [RequireRoomMaterialTier(0.8f)]        
     public partial class ButcheryTableObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Butchery Table"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(ButcheryTableItem); } } 
 
 
         protected override void Initialize()

@@ -34,14 +34,17 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class FramedGlassDoorObject : 
-        DoorObject 
+        DoorObject, 
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Framed Glass Door"; } } 
+
+        public override Type RepresentedItemType { get { return typeof(FramedGlassDoorItem); } } 
 
 
         protected override void Initialize()
         {
-
+            base.Initialize(); 
 
 
         }

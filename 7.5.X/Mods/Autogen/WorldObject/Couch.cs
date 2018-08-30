@@ -38,9 +38,13 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(8)]                              
-    public partial class CouchObject : WorldObject
+    public partial class CouchObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Couch"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(CouchItem); } } 
 
 
         protected override void Initialize()

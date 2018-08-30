@@ -40,9 +40,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomContainment]
     [RequireRoomVolume(25)]                              
     public partial class FarmersTableObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Farmers Table"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(FarmersTableItem); } } 
 
 
         protected override void Initialize()

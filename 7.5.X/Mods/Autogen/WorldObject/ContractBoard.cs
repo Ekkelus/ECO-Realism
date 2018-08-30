@@ -29,14 +29,18 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
-    [RequireComponent(typeof(MinimapComponent))]
-	[RequireComponent(typeof(SolidGroundComponent))] 	
-    public partial class ContractBoardObject : WorldObject
+    [RequireComponent(typeof(MinimapComponent))]                
+    [RequireComponent(typeof(SolidGroundComponent))]            
+    public partial class ContractBoardObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Contract Board"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(ContractBoardItem); } } 
 
 
         protected override void Initialize()

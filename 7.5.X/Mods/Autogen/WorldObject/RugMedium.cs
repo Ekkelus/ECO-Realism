@@ -35,9 +35,13 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(HousingComponent))]
 	[RequireComponent(typeof(SolidGroundComponent))] 	
-    public partial class RugMediumObject : WorldObject
+    public partial class RugMediumObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Medium Rug"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(RugMediumItem); } } 
 
 
         protected override void Initialize()

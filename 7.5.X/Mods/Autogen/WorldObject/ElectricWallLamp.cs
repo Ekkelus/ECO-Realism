@@ -29,17 +29,21 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
     using Eco.World.Blocks;
-
+    
     [Serialized]    
-    [RequireComponent(typeof(OnOffComponent))]    
+    [RequireComponent(typeof(OnOffComponent))]                   
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(PowerGridComponent))]              
     [RequireComponent(typeof(PowerConsumptionComponent))]                     
-    [RequireComponent(typeof(HousingComponent))]                          
-    public partial class ElectricWallLampObject : WorldObject
+    [RequireComponent(typeof(HousingComponent))]                  
+    public partial class ElectricWallLampObject : 
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Electric Wall Lamp"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(ElectricWallLampItem); } } 
 
 
         protected override void Initialize()

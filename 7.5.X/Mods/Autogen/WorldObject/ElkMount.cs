@@ -35,9 +35,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MinimapComponent))]                
     [RequireComponent(typeof(HousingComponent))]                  
     public partial class ElkMountObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Elk Mount"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(ElkMountItem); } } 
 
 
         protected override void Initialize()

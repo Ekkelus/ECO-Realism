@@ -40,9 +40,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(HousingComponent))]                  
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class StoneBrazierObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Stone Brazier"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(StoneBrazierItem); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {

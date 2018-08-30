@@ -37,9 +37,12 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(RepairComponent))]                     
     [RequireComponent(typeof(SolidGroundComponent))]            
     public partial class RepairStationObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Repair Station"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(RepairStationItem); } } 
 
 
         protected override void Initialize()

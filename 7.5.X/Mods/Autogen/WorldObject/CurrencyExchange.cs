@@ -39,9 +39,12 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(45)]                              
     [RequireRoomMaterialTier(1.5f)]        
     public partial class CurrencyExchangeObject : 
-        WorldObject    
+        WorldObject,    
+        IRepresentsItem
     {
         public override string FriendlyName { get { return "Currency Exchange"; } } 
+
+        public virtual Type RepresentedItemType { get { return typeof(CurrencyExchangeItem); } } 
 
 
         protected override void Initialize()
