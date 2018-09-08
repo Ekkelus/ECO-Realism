@@ -37,7 +37,7 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(8)]                              
-    [RequireRoomMaterialTier(1, 2)]        
+    [RequireRoomMaterialTier(0.8f)]        
     public partial class ChairObject : 
         WorldObject,    
         IRepresentsItem

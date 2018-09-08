@@ -37,7 +37,7 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(16)]                              
-    [RequireRoomMaterialTier(1, 6)]        
+    [RequireRoomMaterialTier(0.8f)]        
     public partial class TableObject : 
         WorldObject,    
         IRepresentsItem

@@ -38,13 +38,14 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(16)]                              
-    [RequireRoomMaterialTier(1, 6)]        
+    [RequireRoomMaterialTier(0.8f)]        
     public partial class LatrineObject : 
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Wooden Latrine"; } } 
+        public override string FriendlyName { get { return "Wooden Latrine"; } }
 
+        public virtual Type RepresentedItemType { get { return typeof(LatrineItem); } }
 
         protected override void Initialize()
         {

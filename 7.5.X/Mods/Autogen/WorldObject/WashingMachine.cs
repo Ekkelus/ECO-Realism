@@ -40,7 +40,7 @@ namespace Eco.Mods.TechTree
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomContainment]
     [RequireRoomVolume(8)]                              
-    [RequireRoomMaterialTier(3, 6)]        
+    [RequireRoomMaterialTier(2.5f)]        
     public partial class WashingMachineObject : 
         WorldObject,    
         IRepresentsItem

@@ -34,7 +34,7 @@ namespace Eco.Mods.TechTree
     [Serialized]
     [RequireRoomContainment]
     [RequireRoomVolume(45)]
-    [RequireRoomMaterialTier(4, 64)]
+    [RequireRoomMaterialTier(4f)]
     [Weight(5000)]
     public partial class ComputerLabItem : WorldObjectItem<ComputerLabObject>
     {
