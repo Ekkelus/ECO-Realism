@@ -54,8 +54,13 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(MovableLinkComponent))]        
     [RequireComponent(typeof(VehicleComponent))]
     [RequireComponent(typeof(TailingsReportComponent))]     
-    public partial class SmallWoodCartObject : PhysicsWorldObject
+    public partial class SmallWoodCartObject : PhysicsWorldObject, IRepresentsItem
     {
+        static SmallWoodCartObject()
+        {
+            WorldObject.AddOccupancy<SmallWoodCartObject>(new List<BlockOccupancy>(0));
+        }
+
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
         {
             { typeof(GrassBlock) , 0.7f}, { typeof(SandBlock) , 0.3f},
@@ -67,6 +72,7 @@ namespace Eco.Mods.TechTree
             { typeof(AsphaltRoadBlock), 1.4f }, { typeof(AsphaltRoadWorldObjectBlock), 1.4f }
         };
         public override string FriendlyName { get { return "Small Wood Cart"; } }
+        public Type RepresentedItemType { get { return typeof(SmallWoodCartItem); } }
 
 
         private SmallWoodCartObject() { }

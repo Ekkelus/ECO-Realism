@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
     public class HandPloughItem : WorldObjectItem<HandPloughObject>
     {
         public override string FriendlyName         { get { return "Hand Plough"; } }
-        public override string Description          { get { return "Small wheelbarrow for hauling minimal loads."; } }
+        public override string Description          { get { return "A tool that tills the field for farming."; } }
     }
 
     [RequiresSkill(typeof(PrimitiveMechanicsSkill), 1)] 
@@ -51,15 +51,22 @@ namespace Eco.Mods.TechTree
     [Serialized]
     [RequireComponent(typeof(StandaloneAuthComponent))]
     [RequireComponent(typeof(VehicleComponent))]
-    public partial class HandPloughObject : PhysicsWorldObject
+    public partial class HandPloughObject : PhysicsWorldObject, IRepresentsItem
     {
+        static HandPloughObject()
+        {
+            WorldObject.AddOccupancy<HandPloughObject>(new List<BlockOccupancy>(0));
+        }
+
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
         {
             { typeof(DirtRoadBlock), 1 }, { typeof(DirtRoadWorldObjectBlock), 1 },
             { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
             { typeof(AsphaltRoadBlock), 1.4f }, { typeof(AsphaltRoadWorldObjectBlock), 1.4f }
         };
+
         public override string FriendlyName { get { return "Hand Plough"; } }
+        public Type RepresentedItemType { get { return typeof(HandPloughItem); } }
 
 
         private HandPloughObject() { }

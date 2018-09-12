@@ -58,8 +58,13 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(VehicleComponent))]
     [RequireComponent(typeof(ModularStockpileComponent))]   
     [RequireComponent(typeof(TailingsReportComponent))]     
-    public partial class WoodCartObject : PhysicsWorldObject
+    public partial class WoodCartObject : PhysicsWorldObject, IRepresentsItem
     {
+        static WoodCartObject()
+        {
+            WorldObject.AddOccupancy<WoodCartObject>(new List<BlockOccupancy>(0));
+        }
+
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
         {
             { typeof(GrassBlock) , 0.7f}, { typeof(SandBlock) , 0.3f},
@@ -71,6 +76,7 @@ namespace Eco.Mods.TechTree
             { typeof(AsphaltRoadBlock), 1.4f }, { typeof(AsphaltRoadWorldObjectBlock), 1.4f }
         };
         public override string FriendlyName { get { return "Wood Cart"; } }
+        public Type RepresentedItemType { get { return typeof(WoodCartItem); } }
 
 
         private WoodCartObject() { }
@@ -80,7 +86,7 @@ namespace Eco.Mods.TechTree
             base.Initialize();
             
             this.GetComponent<PublicStorageComponent>().Initialize(12, 2000000);           
-            this.GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency, 1);
+            this.GetComponent<VehicleComponent>().Initialize(12, 1, roadEfficiency, 1);
             this.GetComponent<VehicleComponent>().HumanPowered(1);           
             this.GetComponent<StockpileComponent>().Initialize(new Vector3i(2,1,2));  
         }

@@ -59,8 +59,13 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(AirPollutionComponent))]       
     [RequireComponent(typeof(VehicleComponent))]
     [RequireComponent(typeof(TailingsReportComponent))]     
-    public partial class PoweredCartObject : PhysicsWorldObject
+    public partial class PoweredCartObject : PhysicsWorldObject, IRepresentsItem
     {
+        static PoweredCartObject()
+        {
+            WorldObject.AddOccupancy<PoweredCartObject>(new List<BlockOccupancy>(0));
+        }
+
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
         {
             { typeof(GrassBlock) , 0.7f}, { typeof(SandBlock) , 0.3f},
@@ -72,6 +77,7 @@ namespace Eco.Mods.TechTree
             { typeof(AsphaltRoadBlock), 1.6f }, { typeof(AsphaltRoadWorldObjectBlock), 1.6f }
         };
         public override string FriendlyName { get { return "Powered Cart"; } }
+        public Type RepresentedItemType { get { return typeof(PoweredCartItem); } }
 
         private static Type[] fuelTypeList = new Type[]
         {

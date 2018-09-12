@@ -64,8 +64,13 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(VehicleComponent))]
     [RequireComponent(typeof(ModularStockpileComponent))]   
     [RequireComponent(typeof(TailingsReportComponent))]     
-    public partial class TruckObject : PhysicsWorldObject
+    public partial class TruckObject : PhysicsWorldObject, IRepresentsItem
     {
+        static TruckObject()
+        {
+            WorldObject.AddOccupancy<TruckObject>(new List<BlockOccupancy>(0));
+        }
+
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
         {
             { typeof(GrassBlock) , 0.7f}, { typeof(SandBlock) , 0.3f},
@@ -77,6 +82,7 @@ namespace Eco.Mods.TechTree
             { typeof(AsphaltRoadBlock), 1.8f }, { typeof(AsphaltRoadWorldObjectBlock), 1.8f }
         };
         public override string FriendlyName { get { return "Truck"; } }
+        public Type RepresentedItemType { get { return typeof(TruckItem); } }
 
         private static Type[] fuelTypeList = new Type[]
         {
@@ -93,8 +99,8 @@ typeof(GasolineItem),
             this.GetComponent<PublicStorageComponent>().Initialize(36, 8000000);           
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
             this.GetComponent<FuelConsumptionComponent>().Initialize(25);    
-            this.GetComponent<AirPollutionComponent>().Initialize(0.2f);            
             this.GetComponent<VehicleComponent>().Initialize(25, 1, roadEfficiency, 2);
+            this.GetComponent<AirPollutionComponent>().Initialize(0.5f);            
             this.GetComponent<StockpileComponent>().Initialize(new Vector3i(2,2,3));  
         }
     }
