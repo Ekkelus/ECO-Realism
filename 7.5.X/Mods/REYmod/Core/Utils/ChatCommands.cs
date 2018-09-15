@@ -507,6 +507,28 @@ namespace REYmod.Core.ChatCommands
             SkillUtils.ShowSuperSkillInfo(user.Player);
         }
 
+
+        [ChatCommand("leaderpasslaw", "WorldLeader only - Insta passes a law when it has at least 5 \"yes\" and no \"no\" votes")]
+        public static void LeaderPassLaw(User user)
+        {
+            if (user != Legislation.Government.LeaderUser)//leader only
+            {
+                ChatUtils.SendMessage(user, "Not Authorized to use this command!");
+                return;
+            }
+
+            string panelcontent = "Click on the law you want to pass: <br><br>";
+            if (Legislation.Laws.AllNonFailedLaws.Where(x => !x.InEffect).Count() != 0)
+            {
+                Legislation.Laws.AllNonFailedLaws.Where(x => !x.InEffect).ToList().ForEach(x =>
+                {
+                    panelcontent += new Button(player => { MiscUtils.SoftPassLaw(x,user); }, tooltip: x.Tooltip(), content: x.Title, singleuse: true, clickdesc: "Click to try to enact this law").UILink();
+                    panelcontent += "<br>";
+                });
+            }
+            else panelcontent = "No pending laws!";
+            user.Player.OpenInfoPanel("Passlaw Menu", panelcontent);
+        }
         #endregion USER Commands
     }
 }

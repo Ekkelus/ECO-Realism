@@ -291,6 +291,27 @@ namespace REYmod.Utils
                 else return;
             });
         }
+
+        public static void SoftPassLaw(Law law, User user)
+        {
+            if (user != Legislation.Government.LeaderUser)
+            {
+                user.Player.OpenInfoPanel("Failed!", "You are not the current leader");
+                return;
+            }
+            if (law.VotedYes.Count < 0)
+            {
+                user.Player.OpenInfoPanel("Failed!", "Not enough Yes-Votes (" + law.VotedYes.Count + "/5)");
+                return;
+            }
+            if (law.VotedNo.Count > 0)
+            {
+                user.Player.OpenInfoPanel("Failed!", "Votes are not unanimous! (" +law.VotedNo.Count + " No-Votes)");
+                return;
+            }
+            law.Enact();
+            user.Player.OpenInfoPanel("Success!", "Law " + law.Title + " has been passed!");
+        }
     }
 
     /// <summary>
