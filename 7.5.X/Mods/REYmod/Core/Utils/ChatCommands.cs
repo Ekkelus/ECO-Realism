@@ -162,6 +162,7 @@ namespace REYmod.Core.ChatCommands
                 ChatUtils.SendMessage(user, "Not Authorized to use this command!");
                 return;
             }
+            IOUtils.WriteCommandLog(user, "mFly");
             user.Player.RPC("ToggleFly");
         }
 
@@ -173,6 +174,7 @@ namespace REYmod.Core.ChatCommands
                 ChatUtils.SendMessage(user, "Not Authorized to use this command!");
                 return;
             }
+            IOUtils.WriteCommandLog(user, "mKick", "Kicked " + kickUser.Name);
             var player = kickUser.Player;
             if (player != null)
             {
@@ -231,7 +233,7 @@ namespace REYmod.Core.ChatCommands
             }
             else
             {
-                textbox += new Button(x => MiscUtils.UnclaimUser(owner, user), "", "Click here to unclaim all property of " + owner.UILink(), "Confirm Unclaiming".Color("green")).UILink();
+                textbox += new Button(x => { MiscUtils.UnclaimUser(owner, user); IOUtils.WriteCommandLog(user, "UnclaimUser", "Unclaimed " + owner.Name + " (" + ownedplots + " plots/" + ownedvehicles + " vehicles)" + "Inactive for " + TimeFormatter.FormatSpan(inactivetime)); }, "", "Click here to unclaim all property of " + owner.UILink(), "Confirm Unclaiming".Color("green")).UILink();
             }
 
             user.Player.OpenInfoPanel("Unclaim Player", textbox);
@@ -252,7 +254,7 @@ namespace REYmod.Core.ChatCommands
             string panelcontent = "Select Player: <br><br>";
             foreach (User onlineuser in UserManager.OnlineUsers)
             {
-                panelcontent += new Button(player => { usertoteleport.Player.SetPosition(onlineuser.Player.Position); }, content: onlineuser.Name, singleuse: true, clickdesc: "Click to teleport " + usertoteleport.Name + " to " + onlineuser.Name).UILink();
+                panelcontent += new Button(player => { usertoteleport.Player.SetPosition(onlineuser.Player.Position); IOUtils.WriteCommandLog(user, "Tp", usertoteleport.Name + " -> " + onlineuser.Name); }, content: onlineuser.Name, singleuse: true, clickdesc: "Click to teleport " + usertoteleport.Name + " to " + onlineuser.Name).UILink();
                 panelcontent += "<br>";
             }
             user.Player.OpenInfoPanel("Teleporting " + usertoteleport.Name, panelcontent);
@@ -266,6 +268,8 @@ namespace REYmod.Core.ChatCommands
                 ChatUtils.SendMessage(user, "Not Authorized to use this command!");
                 return;
             }
+
+            IOUtils.WriteCommandLog(user, "Roomfix");
             foreach (WorldObject obj in WorldObjectManager.All)
             {
                 RoomData.QueueRoomTest(obj.Position3i);

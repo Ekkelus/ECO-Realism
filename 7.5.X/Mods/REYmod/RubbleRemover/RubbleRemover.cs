@@ -20,9 +20,15 @@ namespace REYmod.Utils
     {
 
 
-        [ChatCommand("removerubble", "Opens a Menu for removing Rubble", ChatAuthorizationLevel.Admin)]
+        [ChatCommand("removerubble", "MOD/ADMIN only! - Opens a Menu for removing Rubble", ChatAuthorizationLevel.User)]
         public static void RemoveRubble(User user)
         {
+            if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
+            {
+                ChatUtils.SendMessage(user, "Not Authorized to use this command!");
+                return;
+            }
+
 
             IEnumerable<RubbleObject<StoneItem>> stonerubble = NetObjectManager.GetObjectsOfType<RubbleObject<StoneItem>>();
             IEnumerable<RubbleObject<IronOreItem>> ironrubble = NetObjectManager.GetObjectsOfType<RubbleObject<IronOreItem>>();
@@ -30,7 +36,7 @@ namespace REYmod.Utils
             IEnumerable<RubbleObject<GoldOreItem>> goldrubble = NetObjectManager.GetObjectsOfType<RubbleObject<GoldOreItem>>();
             IEnumerable<RubbleObject<CoalItem>> coalrubble = NetObjectManager.GetObjectsOfType<RubbleObject<CoalItem>>();
 
-            /* Maybe this is a better solution, it would be nice to dynamically find all types of RubbleObject<>
+            /* Maybe this is a better solution, it would be nice to dynamically find all types of RubbleObject<>, right now i have to declare every single one separately here, i left out diamonds for example
             IEnumerable<RubbleObject> rubbleObjects = NetObjectManager.GetObjectsOfType<RubbleObject>();
             rubbleObjects.Where(x => { return (x is RubbleObject<StoneItem>); });
             */
@@ -47,27 +53,27 @@ namespace REYmod.Utils
 
             panelcontent += "<br>StoneRubble\t" + rubbles.Count().ToString().PadLeft(6) + "\t\t";
             buttontext = (rubbles.Count() != 0) ? "<color=red>Remove</color>" : "<color=green>CLEAR</color>";
-            panelcontent += new Button(player => { DestroyRubbleType<RubbleObject<StoneItem>>(); RemoveRubble(user); }, content: buttontext , singleuse: true).UILink();
+            panelcontent += new Button(player => { DestroyRubbleType<RubbleObject<StoneItem>>(user, "Stone"); RemoveRubble(user); }, content: buttontext , singleuse: true).UILink();
 
             rubbles = ironrubble;
             panelcontent += "<br>IronRubble   \t" + rubbles.Count().ToString().PadLeft(6) + "\t\t";
             buttontext = (rubbles.Count() != 0) ? "<color=red>Remove</color>" : "<color=green>CLEAR</color>";
-            panelcontent += new Button(player => { DestroyRubbleType<RubbleObject<IronOreItem>>(); RemoveRubble(user); }, content: buttontext, singleuse: true).UILink();
+            panelcontent += new Button(player => { DestroyRubbleType<RubbleObject<IronOreItem>>(user, "Iron"); RemoveRubble(user); }, content: buttontext, singleuse: true).UILink();
 
             rubbles = copperrubble;
             panelcontent += "<br>CopperRubble\t" + rubbles.Count().ToString().PadLeft(6) + "\t\t";
             buttontext = (rubbles.Count() != 0) ? "<color=red>Remove</color>" : "<color=green>CLEAR</color>";
-            panelcontent += new Button(player => { DestroyRubbleType<RubbleObject<CopperOreItem>>(); RemoveRubble(user); }, content: buttontext, singleuse: true).UILink();
+            panelcontent += new Button(player => { DestroyRubbleType<RubbleObject<CopperOreItem>>(user, "Copper"); RemoveRubble(user); }, content: buttontext, singleuse: true).UILink();
 
             rubbles = goldrubble;
             panelcontent += "<br>GoldRubble\t" + rubbles.Count().ToString().PadLeft(6) + "\t\t";
             buttontext = (rubbles.Count() != 0) ? "<color=red>Remove</color>" : "<color=green>CLEAR</color>";
-            panelcontent += new Button(player => { DestroyRubbleType<RubbleObject<GoldOreItem>>(); RemoveRubble(user); }, content: buttontext, singleuse: true).UILink();
+            panelcontent += new Button(player => { DestroyRubbleType<RubbleObject<GoldOreItem>>(user, "Gold"); RemoveRubble(user); }, content: buttontext, singleuse: true).UILink();
 
             rubbles = coalrubble;
             panelcontent += "<br>CoalRubble\t" + rubbles.Count().ToString().PadLeft(6) + "\t\t";
             buttontext = (rubbles.Count() != 0) ? "<color=red>Remove</color>" : "<color=green>CLEAR</color>";
-            panelcontent += new Button(player => { DestroyRubbleType<RubbleObject<CoalItem>>(); RemoveRubble(user); }, content: buttontext, singleuse: true).UILink();
+            panelcontent += new Button(player => { DestroyRubbleType<RubbleObject<CoalItem>>(user,"Coal"); RemoveRubble(user); }, content: buttontext, singleuse: true).UILink();
 
             user.Player.OpenInfoPanel("Rubble Remover", panelcontent);
 
@@ -75,8 +81,8 @@ namespace REYmod.Utils
 
 
         // this is not mine.. i dont know why my own implementation didn't work, i'll use this for now
-        public static void DestroyRubbleType<T>() where T : RubbleObject
-        {
+        public static void DestroyRubbleType<T>(User user = null, string type = "") where T : RubbleObject
+        {            
             MethodInfo destroyRubbleMethod = typeof(RubbleObject).GetMethod("Destroy", BindingFlags.NonPublic | BindingFlags.Instance);
             if (destroyRubbleMethod == null)
             {
@@ -90,6 +96,7 @@ namespace REYmod.Utils
                 destroyRubbleMethod.Invoke(rubbleObject, new Object[0]);
             });
             //return count;
+            if (user != null) IOUtils.WriteCommandLog(user, "DestroyRubble", "Removed " + count +" " + type+"-Rubbles");
         }
 
 

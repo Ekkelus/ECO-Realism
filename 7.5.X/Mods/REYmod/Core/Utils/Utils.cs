@@ -201,6 +201,17 @@ namespace REYmod.Utils
             File.AppendAllText(path, logdata);
 
         }
+
+
+        public static void WriteCommandLog(User user,string command, string desc = "")
+        {
+            string path = "./Mods/REYmod/commandlog.csv";
+            string logdata = String.Join(";", System.DateTime.Now.ToShortDateString(),System.DateTime.Now.ToLongTimeString(), user.Name, command, desc, Environment.NewLine);
+            if (!File.Exists(path)) File.Create(path).Close();
+
+            File.AppendAllText(path, logdata);
+
+        }
     }
 
     /// <summary>
