@@ -517,20 +517,6 @@ namespace REYmod.Utils
 
     }
 
-    /// <summary>
-    /// Custom Comparer -OUTDATED-(can probably be removed)
-    /// </summary>
-    //public class UserFloatComparer : IComparer<KeyValuePair<User, float>>
-    //{
-    //    public int Compare(KeyValuePair<User, float> x, KeyValuePair<User, float> y)
-    //    {
-    //        if (x.Value == y.Value) return 0;
-    //        if (x.Value > y.Value) return -1;
-    //        else return 1;
-    //    }
-
-    //}
-
   
     public class AllergyIgnoreAttribute : ItemAttribute { } // This has to stay in Core because the attribute is added to Existing Items
 
