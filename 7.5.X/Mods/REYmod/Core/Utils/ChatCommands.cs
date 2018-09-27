@@ -196,6 +196,7 @@ namespace REYmod.Core.ChatCommands
 
             UserManager.Ban(user, banUserIDOrName, reason);
             IOUtils.WriteCommandLog(user, "mBan", "Banned " + banUserIDOrName);
+        }
         #endregion
 
 
