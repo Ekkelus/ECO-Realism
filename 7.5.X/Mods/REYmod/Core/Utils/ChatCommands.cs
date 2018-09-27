@@ -185,6 +185,17 @@ namespace REYmod.Core.ChatCommands
                 ChatUtils.SendMessage(user, kickUser.Name + " is not online");
         }
 
+        [ChatCommand("MOD/ADMIN only! - Bans user", ChatAuthorizationLevel.User)]
+        public static void MBan(User user, string banUserIDOrName, string reason = "")
+        {
+            if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
+            {
+                ChatUtils.SendMessage(user, "Not Authorized to use this command!");
+                return;
+            }
+
+            UserManager.Ban(user, banUserIDOrName, reason);
+            IOUtils.WriteCommandLog(user, "mBan", "Banned " + banUserIDOrName);
         #endregion
 
 

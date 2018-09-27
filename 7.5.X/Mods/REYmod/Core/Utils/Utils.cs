@@ -299,7 +299,7 @@ namespace REYmod.Utils
                 user.Player.OpenInfoPanel("Failed!", "You are not the current leader");
                 return;
             }
-            if (law.VotedYes.Count < 0)
+            if (law.VotedYes.Count < 5)
             {
                 user.Player.OpenInfoPanel("Failed!", "Not enough Yes-Votes (" + law.VotedYes.Count + "/5)");
                 return;
