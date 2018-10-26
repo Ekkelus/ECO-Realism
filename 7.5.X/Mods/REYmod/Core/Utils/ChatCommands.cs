@@ -16,6 +16,8 @@ using Eco.Shared.Math;
 using Eco.Shared.Networking;
 using Eco.Shared.Utils;
 using Eco.Simulation.Time;
+using Eco.World;
+using REYmod.Blocks;
 using REYmod.Config;
 using REYmod.Utils;
 using System;
@@ -307,6 +309,31 @@ namespace REYmod.Core.ChatCommands
         #endregion
 
         #region USER Commands
+
+
+        [ChatCommand("removediamonds", "Removes all (invisible) DiamondBlocks around you")]
+        public static void Removediamonds(User user)
+        {
+            int count = 0;
+            int debugcount = 0;
+            Vector3i startpos = user.Position.XYZi - new Vector3i(4,4,4);
+
+
+            foreach (Vector3i posoffset in Vector3i.XYZIter(9))
+            {
+                debugcount++;
+                Vector3i pos = startpos + posoffset;
+                if (World.GetBlock(pos).GetType() == typeof(DiamondBlock))
+                {
+                    World.DeleteBlock(pos);
+                    count++;
+                }
+            }
+            ChatUtils.SendMessage(user, "Debug(totalblocks): " + debugcount);
+            if (count > 0)ChatUtils.SendMessage(user, "Deleted " + count + " Diamondblocks");
+            else ChatUtils.SendMessage(user, "No Diamonds found!");
+
+        }
 
         [ChatCommand("random", "Rolls a random number between 1 and the given number (default 100), visible to all")]
         public static void Random(User user, int max = 100)

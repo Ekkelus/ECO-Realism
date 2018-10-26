@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(RoomRequirementsComponent))]
     [RequireRoomContainment]
     [RequireRoomVolume(45)]                              
-    [RequireRoomMaterialTier(2)]        
+    [RequireRoomMaterialTier(1.9f)]        
     public partial class CementKilnObject : 
         WorldObject,    
         IRepresentsItem
