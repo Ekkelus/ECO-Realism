@@ -39,9 +39,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<FriedTomatoesItem>(typeof(LeavenedBakingEfficiencySkill), 20, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BannockItem>(typeof(LeavenedBakingEfficiencySkill), 5, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BoiledShootsItem>(typeof(LeavenedBakingEfficiencySkill), 30, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<TomatoesItem>(typeof(LeavenedBakingEfficiencySkill), 30, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<FlatbreadItem>(typeof(LeavenedBakingEfficiencySkill), 5, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<FiddleheadsItem>(typeof(LeavenedBakingEfficiencySkill), 30, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<ScrapMeatItem>(typeof(LeavenedBakingEfficiencySkill), 10, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(PizzaRecipe), Item.Get<PizzaItem>().UILink(), 15, typeof(LeavenedBakingSpeedSkill));

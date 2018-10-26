@@ -39,10 +39,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<HoneyItem>(typeof(CulinaryArtsEfficiencySkill), 6, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<VegetableMedleyItem>(typeof(CulinaryArtsEfficiencySkill), 2, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PrimeCutItem>(typeof(CulinaryArtsEfficiencySkill), 12, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<MeatStockItem>(typeof(CulinaryArtsEfficiencySkill), 8, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HoneyItem>(typeof(CulinaryArtsEfficiencySkill), 5, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<VegetableMedleyItem>(typeof(CulinaryArtsEfficiencySkill), 1, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<PrimeCutItem>(typeof(CulinaryArtsEfficiencySkill), 10, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<MeatStockItem>(typeof(CulinaryArtsEfficiencySkill), 5, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyGlazedHamRecipe), Item.Get<HoneyGlazedHamItem>().UILink(), 20, typeof(CulinaryArtsSpeedSkill));
             this.Initialize("Honey Glazed Ham", typeof(HoneyGlazedHamRecipe));
