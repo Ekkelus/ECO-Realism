@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<TomatoesItem>(typeof(LeavenedBakingEfficiencySkill), 30, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<TomatoItem>(typeof(LeavenedBakingEfficiencySkill), 30, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<FlatbreadItem>(typeof(LeavenedBakingEfficiencySkill), 5, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<FiddleheadsItem>(typeof(LeavenedBakingEfficiencySkill), 30, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<ScrapMeatItem>(typeof(LeavenedBakingEfficiencySkill), 10, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
