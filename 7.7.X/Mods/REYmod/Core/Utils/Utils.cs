@@ -528,7 +528,7 @@ namespace REYmod.Utils
             SkillUtils.Initialize();
             UtilsClipboard.Initialize();
             GlobalEvents.Initialize();
-            CustomWorldGen.Initialize();
+            //CustomWorldGen.Initialize();
         }
     }
 

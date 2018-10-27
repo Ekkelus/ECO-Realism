@@ -97,25 +97,6 @@ namespace REYmod.Core.ChatCommands
         }
 
 
-
-        /// <summary>
-        /// -OBSOLETE- Finalizes worldgen by running the Custom Generator part
-        /// </summary>
-        /// <param name="user"></param>
-        /// <param name="force"></param>
-        [ChatCommand("spawncustomores", "Finalizes worldgen by running the Custom Generator part", level: ChatAuthorizationLevel.Admin)]
-        public static void SpawnCustomOres(User user, string force = null)
-        {
-            if (CustomWorldGen.newworld || (force == "force"))
-            {
-                DateTime start = DateTime.Now;
-                CustomWorldGen.Generate();
-                TimeSpan used = DateTime.Now - start;
-                ChatUtils.SendMessage(user, "Worldgen finalized. Time spent: " + used.Minutes + ":" + used.Seconds + ":" + used.Milliseconds);
-            }
-            else ChatUtils.SendMessage(user, "This is not a newly generated world. This command should only be run once. You can however force it by entering \"force\" as parameter");
-        }
-
         [ChatCommand("vomit+", "(Really) Empties your stomach", ChatAuthorizationLevel.Admin)]
         public static void VomitPlus(User user)
         {
