@@ -145,11 +145,10 @@ namespace REYmod.Utils
 
         public static void Generate()
         {
+            /* TEMPORARY DISABLED DUE TO DIAMOND BUGS!!!
             Type[] spawnin = new Type[] { typeof(CoalBlock) };
-            //DateTime start = DateTime.Now;
             WorldGenUtils.GenerateMineral(typeof(DiamondBlock), 300, 10, 25, spawnin);
-            //TimeSpan usedTime = DateTime.Now - start;
-            //Console.WriteLine("Worldgen finalized. Time spent: " + Math.Round(usedTime.TotalMilliseconds,0)+ "ms");
+            */ 
             newworld = false;
         }
 
