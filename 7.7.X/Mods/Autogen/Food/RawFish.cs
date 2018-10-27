@@ -1,4 +1,4 @@
-/* namespace Eco.Mods.TechTree
+ namespace Eco.Mods.TechTree
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -27,4 +27,63 @@
         public override Nutrients Nutrition                     { get { return nutrition; } }
     }
 
-} */
+
+    public partial class RawSalmonRecipe : Recipe
+    {
+        public RawSalmonRecipe()
+        {
+            this.Products = new CraftingElement[]
+            {
+                new CraftingElement<RawFishItem>(),
+
+            };
+            this.Ingredients = new CraftingElement[]
+            {
+                new CraftingElement<SalmonFilletItem>(1),
+            };
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RawSalmonRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(FishCleaningSpeedSkill));
+            this.Initialize("Raw Salmon", typeof(RawSalmonRecipe));
+            CraftingComponent.AddRecipe(typeof(FisheryObject), this);
+        }
+    }
+
+    public partial class RawTroutRecipe : Recipe
+    {
+        public RawTroutRecipe()
+        {
+            this.Products = new CraftingElement[]
+            {
+                new CraftingElement<RawFishItem>(),
+
+            };
+            this.Ingredients = new CraftingElement[]
+            {
+                new CraftingElement<TroutFilletItem>(1),
+            };
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RawTroutRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(FishCleaningSpeedSkill));
+            this.Initialize("Raw Trout", typeof(RawTroutRecipe));
+            CraftingComponent.AddRecipe(typeof(FisheryObject), this);
+        }
+    }
+
+
+    public partial class RawTunaRecipe : Recipe
+    {
+        public RawTunaRecipe()
+        {
+            this.Products = new CraftingElement[]
+            {
+                new CraftingElement<RawFishItem>(),
+
+            };
+            this.Ingredients = new CraftingElement[]
+            {
+                new CraftingElement<TunaFilletItem>(1),
+            };
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RawTunaRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(FishCleaningSpeedSkill));
+            this.Initialize("Raw Tuna", typeof(RawTunaRecipe));
+            CraftingComponent.AddRecipe(typeof(FisheryObject), this);
+        }
+    }
+
+} 
