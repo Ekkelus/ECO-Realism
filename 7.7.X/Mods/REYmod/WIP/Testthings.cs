@@ -91,7 +91,7 @@ namespace REYmod.TestStuff
             Console.WriteLine(law.Title);
             Console.WriteLine("Zoned? " + law.IsZonedLaw);
             Console.WriteLine("Clauses? " + law.HasClauses);
-            Console.WriteLine("Logic? " + law.HasLogic);
+         //   Console.WriteLine("Logic? " + law.HasLogic);
             Console.WriteLine("Zonename: " + law.Zone);
             Console.WriteLine("ManagedActionsCount: " + law.ManagedActions.Count());
 
