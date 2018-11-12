@@ -56,7 +56,6 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<BrickItem>(typeof(ResearchEfficiencySkill), 50, ResearchEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(ResearchEfficiencySkill), 25, ResearchEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<YeastItem>(typeof(ResearchEfficiencySkill), 15, ResearchEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<SugarItem>(typeof(ResearchEfficiencySkill), 15, ResearchEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<BookItem>(typeof(ResearchEfficiencySkill), 8, ResearchEfficiencySkill.MultiplicativeStrategy),
             };

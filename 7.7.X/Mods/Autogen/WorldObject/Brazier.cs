@@ -37,7 +37,9 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(FuelSupplyComponent))]                      
     [RequireComponent(typeof(FuelConsumptionComponent))]                 
     [RequireComponent(typeof(HousingComponent))]                  
-    [RequireComponent(typeof(SolidGroundComponent))]            
+    [RequireComponent(typeof(SolidGroundComponent))]
+    [RequireComponent(typeof(RoomRequirementsComponent))]
+    [RequireRoomVolume(4)]
     public partial class BrazierObject : 
         WorldObject,    
         IRepresentsItem
