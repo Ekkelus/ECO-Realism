@@ -322,7 +322,7 @@ namespace REYmod.Utils
         /// <summary>
         /// A List of the users who entered the /superskillconfirmed command
         /// </summary>
-        public static List<string> superskillconfirmed;
+        public static List<int> superskillconfirmed;
 
         /// <summary>
         /// Tries to determine the Profession of the given user
@@ -397,7 +397,7 @@ namespace REYmod.Utils
         /// </summary>
         public static void Initialize()
         {
-            superskillconfirmed = new List<string>();
+            superskillconfirmed = new List<int>();
         }
 
         /// <summary>
@@ -467,7 +467,7 @@ namespace REYmod.Utils
 
         public static bool CheckSuperskillConfirmation(User user)
         {
-            foreach (string id in SkillUtils.superskillconfirmed)
+            foreach (int id in SkillUtils.superskillconfirmed)
             {
                 if (id == user.ID)
                 {
