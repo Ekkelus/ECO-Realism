@@ -24,8 +24,10 @@ namespace Eco.Mods.TechTree
     [Tier(4)]
     [IsForm("Floor", typeof(FlatSteelItem))]
     public partial class FlatSteelFloorBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FlatSteelItem); } }
+    }
 
 
     [Serialized]
@@ -33,9 +35,10 @@ namespace Eco.Mods.TechTree
     [Tier(4)]
     [IsForm("Wall", typeof(FlatSteelItem))]
     public partial class FlatSteelWallBlock :
-        Block
-    { }
-
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FlatSteelItem); } }
+    }
 
 
     [Serialized]
@@ -44,8 +47,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Cube", typeof(FlatSteelItem))]
     [RequiresSkill(typeof(Tier4ConstructionSkill), 4)]
     public partial class FlatSteelCubeBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FlatSteelItem); } }
+    }
 
 
     [Serialized]
@@ -54,8 +59,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Roof", typeof(FlatSteelItem))]
     [RequiresSkill(typeof(Tier4ConstructionSkill), 2)]
     public partial class FlatSteelRoofBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FlatSteelItem); } }
+    }
 
 
     [Serialized]
@@ -64,8 +71,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Column", typeof(FlatSteelItem))]
     [RequiresSkill(typeof(Tier4ConstructionSkill), 4)]
     public partial class FlatSteelColumnBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FlatSteelItem); } }
+    }
 
 
     [Serialized]
@@ -74,8 +83,11 @@ namespace Eco.Mods.TechTree
     [IsForm("Window", typeof(FlatSteelItem))]
     [RequiresSkill(typeof(Tier4ConstructionSkill), 3)]
     public partial class FlatSteelWindowBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FlatSteelItem); } }
+    }
+
 
 
     [RotatedVariants(typeof(FlatSteelStairsBlock), typeof(FlatSteelStairs90Block), typeof(FlatSteelStairs180Block), typeof(FlatSteelStairs270Block))]

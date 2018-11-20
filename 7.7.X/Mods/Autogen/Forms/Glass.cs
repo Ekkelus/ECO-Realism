@@ -24,8 +24,10 @@ namespace Eco.Mods.TechTree
     [Tier(2)]
     [IsForm("Window", typeof(GlassItem))]
     public partial class GlassWindowBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(GlassItem); } }
+    }
 
 
 }

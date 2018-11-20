@@ -24,8 +24,10 @@ namespace Eco.Mods.TechTree
     [Tier(1)]
     [IsForm("Floor", typeof(MortaredStoneItem))]
     public partial class MortaredStoneFloorBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(MortaredStoneItem); } }
+    }
 
 
     [Serialized]
@@ -33,9 +35,10 @@ namespace Eco.Mods.TechTree
     [Tier(1)]
     [IsForm("Wall", typeof(MortaredStoneItem))]
     public partial class MortaredStoneWallBlock :
-        Block
-    { }
-
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(MortaredStoneItem); } }
+    }
 
 
     [Serialized]
@@ -44,8 +47,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Cube", typeof(MortaredStoneItem))]
     [RequiresSkill(typeof(Tier1ConstructionSkill), 4)]
     public partial class MortaredStoneCubeBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(MortaredStoneItem); } }
+    }
 
 
     [Serialized]
@@ -54,8 +59,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Roof", typeof(MortaredStoneItem))]
     [RequiresSkill(typeof(Tier1ConstructionSkill), 2)]
     public partial class MortaredStoneRoofBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(MortaredStoneItem); } }
+    }
 
 
     [Serialized]
@@ -64,8 +71,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Column", typeof(MortaredStoneItem))]
     [RequiresSkill(typeof(Tier1ConstructionSkill), 4)]
     public partial class MortaredStoneColumnBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(MortaredStoneItem); } }
+    }
 
 
     [Serialized]
@@ -74,8 +83,11 @@ namespace Eco.Mods.TechTree
     [IsForm("Window", typeof(MortaredStoneItem))]
     [RequiresSkill(typeof(Tier1ConstructionSkill), 3)]
     public partial class MortaredStoneWindowBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(MortaredStoneItem); } }
+    }
+
 
 
     [RotatedVariants(typeof(MortaredStoneStairsBlock), typeof(MortaredStoneStairs90Block), typeof(MortaredStoneStairs180Block), typeof(MortaredStoneStairs270Block))]
