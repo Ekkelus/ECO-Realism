@@ -24,8 +24,10 @@ namespace Eco.Mods.TechTree
     [Tier(3)]
     [IsForm("Floor", typeof(CorrugatedSteelItem))]
     public partial class CorrugatedSteelFloorBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(CorrugatedSteelItem); } }
+    }
 
 
     [Serialized]
@@ -33,9 +35,10 @@ namespace Eco.Mods.TechTree
     [Tier(3)]
     [IsForm("Wall", typeof(CorrugatedSteelItem))]
     public partial class CorrugatedSteelWallBlock :
-        Block
-    { }
-
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(CorrugatedSteelItem); } }
+    }
 
 
     [Serialized]
@@ -44,8 +47,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Cube", typeof(CorrugatedSteelItem))]
     [RequiresSkill(typeof(Tier3ConstructionSkill), 4)]
     public partial class CorrugatedSteelCubeBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(CorrugatedSteelItem); } }
+    }
 
 
     [Serialized]
@@ -54,8 +59,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Roof", typeof(CorrugatedSteelItem))]
     [RequiresSkill(typeof(Tier3ConstructionSkill), 2)]
     public partial class CorrugatedSteelRoofBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(CorrugatedSteelItem); } }
+    }
 
 
     [Serialized]
@@ -64,8 +71,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Column", typeof(CorrugatedSteelItem))]
     [RequiresSkill(typeof(Tier3ConstructionSkill), 4)]
     public partial class CorrugatedSteelColumnBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(CorrugatedSteelItem); } }
+    }
 
 
     [Serialized]
@@ -74,8 +83,11 @@ namespace Eco.Mods.TechTree
     [IsForm("Window", typeof(CorrugatedSteelItem))]
     [RequiresSkill(typeof(Tier3ConstructionSkill), 3)]
     public partial class CorrugatedSteelWindowBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(CorrugatedSteelItem); } }
+    }
+
 
 
     [RotatedVariants(typeof(CorrugatedSteelStairsBlock), typeof(CorrugatedSteelStairs90Block), typeof(CorrugatedSteelStairs180Block), typeof(CorrugatedSteelStairs270Block))]

@@ -24,8 +24,10 @@ namespace Eco.Mods.TechTree
     [Tier(2)]
     [IsForm("Floor", typeof(LumberItem))]
     public partial class LumberFloorBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(LumberItem); } }
+    }
 
 
     [Serialized]
@@ -33,9 +35,10 @@ namespace Eco.Mods.TechTree
     [Tier(2)]
     [IsForm("Wall", typeof(LumberItem))]
     public partial class LumberWallBlock :
-        Block
-    { }
-
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(LumberItem); } }
+    }
 
 
     [Serialized]
@@ -44,8 +47,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Cube", typeof(LumberItem))]
     [RequiresSkill(typeof(Tier2ConstructionSkill), 4)]
     public partial class LumberCubeBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(LumberItem); } }
+    }
 
 
     [Serialized]
@@ -54,8 +59,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Roof", typeof(LumberItem))]
     [RequiresSkill(typeof(Tier2ConstructionSkill), 2)]
     public partial class LumberRoofBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(LumberItem); } }
+    }
 
 
     [Serialized]
@@ -64,8 +71,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Column", typeof(LumberItem))]
     [RequiresSkill(typeof(Tier2ConstructionSkill), 4)]
     public partial class LumberColumnBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(LumberItem); } }
+    }
 
 
     [Serialized]
@@ -74,8 +83,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Window", typeof(LumberItem))]
     [RequiresSkill(typeof(Tier2ConstructionSkill), 3)]
     public partial class LumberWindowBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(LumberItem); } }
+    }
 
 
     [Serialized]
@@ -84,8 +95,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Fence", typeof(LumberItem))]
     [RequiresSkill(typeof(Tier2ConstructionSkill), 2)]
     public partial class LumberFenceBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(LumberItem); } }
+    }
 
 
     [Serialized]
@@ -94,8 +107,11 @@ namespace Eco.Mods.TechTree
     [IsForm("WindowT2", typeof(LumberItem))]
     [RequiresSkill(typeof(Tier2ConstructionSkill), 4)]
     public partial class LumberWindowT2Block :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(LumberItem); } }
+    }
+
 
 
     [RotatedVariants(typeof(LumberStairsBlock), typeof(LumberStairs90Block), typeof(LumberStairs180Block), typeof(LumberStairs270Block))]

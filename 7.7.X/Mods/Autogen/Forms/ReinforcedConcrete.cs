@@ -24,8 +24,10 @@ namespace Eco.Mods.TechTree
     [Tier(3)]
     [IsForm("Floor", typeof(ReinforcedConcreteItem))]
     public partial class ReinforcedConcreteFloorBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(ReinforcedConcreteItem); } }
+    }
 
 
     [Serialized]
@@ -33,9 +35,10 @@ namespace Eco.Mods.TechTree
     [Tier(3)]
     [IsForm("Wall", typeof(ReinforcedConcreteItem))]
     public partial class ReinforcedConcreteWallBlock :
-        Block
-    { }
-
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(ReinforcedConcreteItem); } }
+    }
 
 
     [Serialized]
@@ -44,8 +47,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Cube", typeof(ReinforcedConcreteItem))]
     [RequiresSkill(typeof(Tier3ConstructionSkill), 4)]
     public partial class ReinforcedConcreteCubeBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(ReinforcedConcreteItem); } }
+    }
 
 
     [Serialized]
@@ -54,8 +59,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Roof", typeof(ReinforcedConcreteItem))]
     [RequiresSkill(typeof(Tier3ConstructionSkill), 2)]
     public partial class ReinforcedConcreteRoofBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(ReinforcedConcreteItem); } }
+    }
 
 
     [Serialized]
@@ -64,8 +71,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Column", typeof(ReinforcedConcreteItem))]
     [RequiresSkill(typeof(Tier3ConstructionSkill), 4)]
     public partial class ReinforcedConcreteColumnBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(ReinforcedConcreteItem); } }
+    }
 
 
     [Serialized]
@@ -74,8 +83,11 @@ namespace Eco.Mods.TechTree
     [IsForm("Window", typeof(ReinforcedConcreteItem))]
     [RequiresSkill(typeof(Tier3ConstructionSkill), 3)]
     public partial class ReinforcedConcreteWindowBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(ReinforcedConcreteItem); } }
+    }
+
 
 
     [RotatedVariants(typeof(ReinforcedConcreteStairsBlock), typeof(ReinforcedConcreteStairs90Block), typeof(ReinforcedConcreteStairs180Block), typeof(ReinforcedConcreteStairs270Block))]
