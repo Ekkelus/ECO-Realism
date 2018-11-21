@@ -19,7 +19,7 @@ namespace Eco.Mods.TechTree
     using Eco.World.Blocks;
     using Eco.Gameplay.Pipes;
 
-    [RequiresSkill(typeof(CastingSkill), 4)]   
+    [RequiresSkill(typeof(MetalworkingSkill), 4)]   
     public partial class RebarRecipe : Recipe
     {
         public RebarRecipe()
@@ -30,9 +30,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(CastingEfficiencySkill), 5, CastingEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<CoalItem>(typeof(MetalworkingEfficiencySkill), 2, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 5, MetalworkingEfficiencySkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RebarRecipe), Item.Get<RebarItem>().UILink(), 0.5f, typeof(CastingSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RebarRecipe), Item.Get<RebarItem>().UILink(), 0.5f, typeof(MetalworkingSpeedSkill));    
             this.Initialize("Rebar", typeof(RebarRecipe));
 
             CraftingComponent.AddRecipe(typeof(BlastFurnaceObject), this);
