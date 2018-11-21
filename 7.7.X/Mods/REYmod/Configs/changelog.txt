@@ -1,3 +1,5 @@
+<color=red><b>OUTDATED!</b></color>
+
 <color=green><b>2018-05-11</b></color><size=18>
 - Balanced stone brazier
 - Balanced the new hewn log and lumber signs
