@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using Eco.Gameplay.Components;
+using Eco.Gameplay.Components.Auth;
 using Eco.Gameplay.Objects;
 using Eco.Mods.TechTree;
 using Eco.Shared.Math;
@@ -17,6 +18,7 @@ using REYmod.Utils;
 [RequireComponent(typeof(ChargingComponent))]
 [RequireComponent(typeof(PowerGridNetworkComponent))]
 [RequireComponent(typeof(SpecificGroundComponent))]
+[RequireComponent(typeof(PropertyAuthComponent))]
 public class LaserObject : WorldObject
 {
     public float MinimapYaw { get { return 0.0f; } }
@@ -35,6 +37,5 @@ public class LaserObject : WorldObject
 
     static LaserObject()
     {
-        AddOccupancyList(typeof(LaserObject), new BlockOccupancy(Vector3i.Zero, typeof(WorldObjectBlock)));
     }
 }

@@ -11,7 +11,7 @@ If you find an exploit and abuse it without telling an admin you might get banne
 [Bannable Offense]
 
 <color=green><b>4. Inactivity</b></color>
-If you've been inactive for more than 3 days your claims might get unclaimed, if you however plan to come back to the server please make a sign and place it on your property clearly visable to prevent an unclaim-accident.
+If you've been inactive for more than 3 days your claims might get unclaimed, if you however plan to come back to the server please make a sign and place it on your property clearly visible to prevent an unclaim-accident.
 
 <color=green><b>5. Be Helpful</b></color>
 We strongly encourage players to be helpful so please help out because you never know when you'll be the one in need of help.
