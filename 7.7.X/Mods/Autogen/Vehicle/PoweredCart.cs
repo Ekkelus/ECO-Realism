@@ -15,6 +15,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Networking;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World.Blocks;
 
@@ -22,8 +23,8 @@ namespace Eco.Mods.TechTree
     [Weight(15000)]  
     public class PoweredCartItem : WorldObjectItem<PoweredCartObject>
     {
-        public override string FriendlyName         { get { return "Powered Cart"; } }
-        public override string Description          { get { return "Large cart for hauling sizable loads."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Powered Cart"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Large cart for hauling sizable loads."); } }
     }
 
     [RequiresSkill(typeof(MechanicalEngineeringSkill), 0)] 
@@ -76,7 +77,7 @@ namespace Eco.Mods.TechTree
             { typeof(StoneRoadBlock), 1.3f }, { typeof(StoneRoadWorldObjectBlock), 1.3f },
             { typeof(AsphaltRoadBlock), 1.6f }, { typeof(AsphaltRoadWorldObjectBlock), 1.6f }
         };
-        public override string FriendlyName { get { return "Powered Cart"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Powered Cart"); } }
         public Type RepresentedItemType { get { return typeof(PoweredCartItem); } }
 
         private static Type[] fuelTypeList = new Type[]

@@ -14,6 +14,7 @@
     // using Eco.Gameplay.Systems.TextLinks;
     // using Eco.Shared.Localization;
     // using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     // using Eco.Shared.Services;
     // using Eco.Shared.Utils;
     // using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@
     // [RequiresSkill(typeof(SmithSkill), 0)]    
     // public partial class MetalConstructionSkill : Skill
     // {
-        // public override string FriendlyName { get { return "Metal Construction"; } }
+        // public override LocString DisplayName { get { return Localizer.DoStr("Metal Construction"); } }
         // public override string Description { get { return Localizer.DoStr(""); } }
 
         // public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
@@ -34,13 +35,13 @@
     // [Serialized]
     // public partial class MetalConstructionSkillBook : SkillBook<MetalConstructionSkill, MetalConstructionSkillScroll>
     // {
-        // public override string FriendlyName { get { return "Metal Construction Skill Book"; } }
+        // public override LocString DisplayName { get { return Localizer.DoStr("Metal Construction Skill Book"); } }
     // }
 
     // [Serialized]
     // public partial class MetalConstructionSkillScroll : SkillScroll<MetalConstructionSkill, MetalConstructionSkillBook>
     // {
-        // public override string FriendlyName { get { return "Metal Construction Skill Scroll"; } }
+        // public override LocString DisplayName { get { return Localizer.DoStr("Metal Construction Skill Scroll"); } }
     // }
 
     // [RequiresSkill(typeof(AdvancedSmeltingSkill), 0)] 

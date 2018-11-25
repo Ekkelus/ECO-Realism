@@ -10,6 +10,7 @@ using Eco.Gameplay.Objects;
 using Eco.Shared.Items;
 using Eco.Shared.Math;
 using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
 using Eco.Simulation;
 using Eco.Simulation.Agents;
 using Eco.World;
@@ -23,8 +24,8 @@ using Eco.Gameplay.Players;
 [Category("Hidden")]
 public class DevtoolItem : HammerItem
 {
-    public override string Description  { get { return "DOES CHEATER THINGS THROUGH CHEATING POWERS"; } }
-    public override string FriendlyName { get { return "Dev Tool"; } }
+    public override LocString DisplayDescription { get { return Localizer.DoStr("DOES CHEATER THINGS THROUGH CHEATING POWERS"); } }
+    public override LocString DisplayName { get { return Localizer.DoStr("Dev Tool"); } }
 
     private static IDynamicValue skilledRepairCost = new ConstantValue(1);
     public override IDynamicValue SkilledRepairCost { get { return skilledRepairCost; } }

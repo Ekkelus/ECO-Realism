@@ -10,6 +10,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Mods.TechTree;
     using Eco.Shared.Items;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
@@ -20,8 +21,8 @@ namespace Eco.Mods.TechTree
     public partial class HoneyItem :
         FoodItem
     {
-        public override string FriendlyName { get { return "Honey"; } }
-        public override string Description { get { return "A spoonful a day keeps the doctor away"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Honey"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A spoonful a day keeps the doctor away"); } }
 
         private static Nutrients nutrition = new Nutrients() { Carbs = 14, Fat = 0, Protein = 1, Vitamins = 0 };
         public override float Calories { get { return 45; } }

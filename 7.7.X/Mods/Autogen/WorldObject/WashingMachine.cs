@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -45,7 +46,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Washing Machine"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Washing Machine"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(WashingMachineItem); } } 
 
@@ -71,8 +72,8 @@ namespace Eco.Mods.TechTree
     [Weight(3000)]
     public partial class WashingMachineItem : WorldObjectItem<WashingMachineObject>
     {
-        public override string FriendlyName { get { return "Washing Machine"; } } 
-        public override string Description { get { return "Why hand scrub your clothes on a washboard when you could throw them into this magical cleaning machine?"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Washing Machine"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Why hand scrub your clothes on a washboard when you could throw them into this magical cleaning machine?"); } }
 
         static WashingMachineItem()
         {

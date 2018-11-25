@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -43,7 +44,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Torch Stand"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Torch Stand"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(TorchStandItem); } } 
 
@@ -74,7 +75,7 @@ namespace Eco.Mods.TechTree
     public partial class TorchStandItem :
         WorldObjectItem<TorchStandObject> 
     {
-        public override string FriendlyName { get { return "Torch Stand"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Torch Stand"); } } 
         public override string Description  { get { return  "A stand for a torch."; } }
 
         static TorchStandItem()

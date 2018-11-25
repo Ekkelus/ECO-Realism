@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -27,8 +28,8 @@ namespace Eco.Mods.TechTree
     public partial class BeeItem :
     Item
     {
-        public override string FriendlyName { get { return "Bee"; } }
-        public override string Description { get { return "Bzzz."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Bee"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Bzzz."); } }
 
     }
 

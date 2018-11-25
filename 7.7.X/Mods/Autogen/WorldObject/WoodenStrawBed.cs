@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -43,7 +44,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Wooden Straw Bed"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Wooden Straw Bed"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(WoodenStrawBedItem); } } 
 
@@ -67,8 +68,8 @@ namespace Eco.Mods.TechTree
     [Weight(3000)]
     public partial class WoodenStrawBedItem : WorldObjectItem<WoodenStrawBedObject>
     {
-        public override string FriendlyName { get { return "Wooden Straw Bed"; } } 
-        public override string Description { get { return "A nice, scratchy and horrible uncomfortable bed. But at least it keeps you off the ground."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Wooden Straw Bed"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A nice, scratchy and horrible uncomfortable bed. But at least it keeps you off the ground."); } }
 
         static WoodenStrawBedItem()
         {

@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -43,7 +44,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Wooden Latrine"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Wooden Latrine"); } }
 
         public virtual Type RepresentedItemType { get { return typeof(LatrineItem); } }
 
@@ -67,8 +68,8 @@ namespace Eco.Mods.TechTree
     [Weight(1000)]
     public partial class LatrineItem : WorldObjectItem<LatrineObject>
     {
-        public override string FriendlyName { get { return "Wooden Latrine"; } } 
-        public override string Description { get { return "A wooden potty."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Wooden Latrine"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A wooden potty."); } }
 
         static LatrineItem()
         {

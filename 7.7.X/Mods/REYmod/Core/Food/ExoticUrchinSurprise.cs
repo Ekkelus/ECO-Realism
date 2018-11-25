@@ -11,6 +11,7 @@ namespace Eco.Mods.TechTree
     using Eco.Mods.TechTree;
     using Eco.Shared.Items;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
 
@@ -19,8 +20,8 @@ namespace Eco.Mods.TechTree
     public partial class ExoticUrchinSurpriseItem :
         FoodItem
     {
-        public override string FriendlyName { get { return "Exotic Urchin Surprise"; } }
-        public override string Description { get { return "Sea Urchins!"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Exotic Urchin Surprise"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Sea Urchins!"); } }
 
         private static Nutrients nutrition = new Nutrients() { Carbs = 8, Fat = 9, Protein =12 , Vitamins = 9 };
         public override float Calories { get { return 500; } }

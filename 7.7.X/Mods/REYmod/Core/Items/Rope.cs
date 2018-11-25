@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -44,8 +45,8 @@ namespace Eco.Mods.TechTree
     public partial class RopeItem :
     Item
     {
-        public override string FriendlyName { get { return "Rope"; } }
-        public override string Description { get { return "Several strings twisted together to form a long rope."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Rope"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Several strings twisted together to form a long rope."); } }
 
     }
 

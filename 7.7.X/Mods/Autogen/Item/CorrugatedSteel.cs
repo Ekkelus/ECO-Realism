@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -58,8 +59,8 @@ namespace Eco.Mods.TechTree
     public partial class CorrugatedSteelItem :
     BlockItem<CorrugatedSteelBlock>
     {
-        public override string FriendlyName { get { return "Corrugated Steel"; } } 
-        public override string Description { get { return "Especially useful for industrial buildings."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Corrugated Steel"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Especially useful for industrial buildings."); } }
 
         public override bool CanStickToWalls { get { return false; } }  
 

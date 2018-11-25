@@ -14,6 +14,7 @@
     // using Eco.Gameplay.Systems.TextLinks;
     // using Eco.Shared.Localization;
     // using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     // using Eco.Shared.Services;
     // using Eco.Shared.Utils;
     // using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@
     // [RequiresSkill(typeof(MasonSkill), 0)]    
     // public partial class StoneConstructionSkill : Skill
     // {
-        // public override string FriendlyName { get { return "Stone Construction"; } }
+        // public override LocString DisplayName { get { return Localizer.DoStr("Stone Construction"); } }
         // public override string Description { get { return Localizer.DoStr(""); } }
 
         // public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
@@ -34,13 +35,13 @@
     // [Serialized]
     // public partial class StoneConstructionSkillBook : SkillBook<StoneConstructionSkill, StoneConstructionSkillScroll>
     // {
-        // public override string FriendlyName { get { return "Stone Construction Skill Book"; } }
+        // public override LocString DisplayName { get { return Localizer.DoStr("Stone Construction Skill Book"); } }
     // }
 
     // [Serialized]
     // public partial class StoneConstructionSkillScroll : SkillScroll<StoneConstructionSkill, StoneConstructionSkillBook>
     // {
-        // public override string FriendlyName { get { return "Stone Construction Skill Scroll"; } }
+        // public override LocString DisplayName { get { return Localizer.DoStr("Stone Construction Skill Scroll"); } }
     // }
 
     // [RequiresSkill(typeof(MortaringSkill), 0)] 

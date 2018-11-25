@@ -24,6 +24,7 @@
 //    using Eco.Shared.Math;
 //    using Eco.Shared.Localization;
 //    using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
 //    using Eco.Shared.Utils;
 //    using Eco.Shared.View;
 //    using Eco.Shared.Items;
@@ -35,7 +36,7 @@
 //    public partial class SmallWoodSignItem :
 //        WorldObjectItem<SmallWoodSignObject> 
 //    {
-//        public override string FriendlyName { get { return "Small Wood Sign"; } } 
+//        public override LocString DisplayName { get { return Localizer.DoStr("Small Wood Sign"); } } 
 //        public override string Description  { get { return  "A small wooden sign for all your small text needs."; } }
 
 //        static SmallWoodSignItem()

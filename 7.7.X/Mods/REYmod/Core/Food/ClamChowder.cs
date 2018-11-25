@@ -11,6 +11,7 @@ namespace Eco.Mods.TechTree
     using Eco.Mods.TechTree;
     using Eco.Shared.Items;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
 
@@ -19,8 +20,8 @@ namespace Eco.Mods.TechTree
     public partial class ClamChowderItem :
         FoodItem
     {
-        public override string FriendlyName { get { return "Clam Chowder"; } }
-        public override string Description { get { return "Some soup with clams"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Clam Chowder"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Some soup with clams"); } }
 
         private static Nutrients nutrition = new Nutrients() { Carbs = 4, Fat = 4, Protein = 10, Vitamins = 12 };
         public override float Calories { get { return 1000; } }

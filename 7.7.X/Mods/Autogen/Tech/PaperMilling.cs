@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(CarpenterSkill), 0)]    
     public partial class PaperMillingSkill : Skill
     {
-        public override string FriendlyName { get { return "Paper Milling"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Paper Milling"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
         public override int RequiredPoint { get { return 0; } }
@@ -32,13 +33,13 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class PaperMillingSkillBook : SkillBook<PaperMillingSkill, PaperMillingSkillScroll>
     {
-        public override string FriendlyName { get { return "Paper Milling Skill Book"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Paper Milling Skill Book"); } }
     }
 
     [Serialized]
     public partial class PaperMillingSkillScroll : SkillScroll<PaperMillingSkill, PaperMillingSkillBook>
     {
-        public override string FriendlyName { get { return "Paper Milling Skill Scroll"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Paper Milling Skill Scroll"); } }
     }
 
     public partial class PaperMillingSkillBookRecipe : Recipe

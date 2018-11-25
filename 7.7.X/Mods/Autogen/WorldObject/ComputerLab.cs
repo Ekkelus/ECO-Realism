@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -38,8 +39,8 @@ namespace Eco.Mods.TechTree
     [Weight(5000)]
     public partial class ComputerLabItem : WorldObjectItem<ComputerLabObject>
     {
-        public override string FriendlyName { get { return "Computer Lab"; } } 
-        public override string Description { get { return "A place where you can sit all day and play video games! Or work on expert-level research."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Computer Lab"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A place where you can sit all day and play video games! Or work on expert-level research."); } }
 
         static ComputerLabItem()
         {

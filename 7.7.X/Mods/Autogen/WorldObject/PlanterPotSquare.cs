@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -40,7 +41,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Square Pot"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Square Pot"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(PlanterPotSquareItem); } } 
 
@@ -65,8 +66,8 @@ namespace Eco.Mods.TechTree
     [Weight(1500)]
     public partial class PlanterPotSquareItem : WorldObjectItem<PlanterPotSquareObject>
     {
-        public override string FriendlyName { get { return "Square Pot"; } } 
-        public override string Description { get { return "Sometimes you just want to bring a little bit of nature into your house."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Square Pot"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Sometimes you just want to bring a little bit of nature into your house."); } }
 
         static PlanterPotSquareItem()
         {

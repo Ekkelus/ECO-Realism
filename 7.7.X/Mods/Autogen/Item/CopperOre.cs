@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -33,9 +34,9 @@ namespace Eco.Mods.TechTree
     public partial class CopperOreItem :
     BlockItem<CopperOreBlock>
     {
-        public override string FriendlyName { get { return "Copper Ore"; } }
-        public override string FriendlyNamePlural { get { return "Copper Ore"; } } 
-        public override string Description { get { return "Unrefined ore with traces of copper."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Copper Ore"); } }
+        public override LocString DisplayNamePlural { get { return Localizer.DoStr("Copper Ore"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Unrefined ore with traces of copper."); } }
 
         public override bool CanStickToWalls { get { return false; } }  
 

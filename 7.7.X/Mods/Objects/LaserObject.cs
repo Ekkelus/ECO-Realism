@@ -9,6 +9,7 @@ using Eco.Gameplay.Objects;
 using Eco.Mods.TechTree;
 using Eco.Shared.Math;
 using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
 using REYmod.Utils;
 
 [Serialized]

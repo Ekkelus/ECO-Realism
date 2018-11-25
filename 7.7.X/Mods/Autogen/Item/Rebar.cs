@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -47,8 +48,8 @@ namespace Eco.Mods.TechTree
     public partial class RebarItem :
     Item                                     
     {
-        public override string FriendlyName { get { return "Rebar"; } } 
-        public override string Description { get { return "Ribbed steel bars for reinforcing stuctures."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Rebar"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Ribbed steel bars for reinforcing stuctures."); } }
 
     }
 

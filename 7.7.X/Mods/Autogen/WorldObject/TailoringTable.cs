@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -44,7 +45,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Tailoring Table"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Tailoring Table"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(TailoringTableItem); } } 
 
@@ -68,7 +69,7 @@ namespace Eco.Mods.TechTree
     [Weight(5000)]
     public partial class TailoringTableItem : WorldObjectItem<TailoringTableObject>
     {
-        public override string FriendlyName { get { return "Tailoring Table"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Tailoring Table"); } } 
         public override string Description  { get { return  "Spearhead the fashion movement with the finest clothes and hair!"; } }
 
         static TailoringTableItem()

@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -54,8 +55,8 @@ namespace Eco.Mods.TechTree
     public partial class BarrelItem :
     BlockItem<BarrelBlock>
     {
-        public override string FriendlyName { get { return "Barrel"; } }
-        public override string Description { get { return "Expertly crafted from smoothed boards and metal bands, this can carry a variety of substances."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Barrel"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Expertly crafted from smoothed boards and metal bands, this can carry a variety of substances."); } }
 
     }
 

@@ -15,6 +15,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Networking;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World.Blocks;
 
@@ -22,8 +23,8 @@ namespace Eco.Mods.TechTree
     [Weight(25000)]  
     public class SteamTruckItem : WorldObjectItem<SteamTruckObject>
     {
-        public override string FriendlyName         { get { return "Steam Truck"; } }
-        public override string Description          { get { return "Stream truck"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Steam Truck"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Stream truck"); } }
     }
 
     [RequiresSkill(typeof(MechanicalEngineeringSkill), 0)] 
@@ -80,7 +81,7 @@ namespace Eco.Mods.TechTree
             { typeof(StoneRoadBlock), 1.4f }, { typeof(StoneRoadWorldObjectBlock), 1.4f },
             { typeof(AsphaltRoadBlock), 1.8f }, { typeof(AsphaltRoadWorldObjectBlock), 1.8f }
         };
-        public override string FriendlyName { get { return "Steam Truck"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Steam Truck"); } }
         public Type RepresentedItemType { get { return typeof(SteamTruckItem); } }
 
         private static Type[] fuelTypeList = new Type[]

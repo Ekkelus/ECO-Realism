@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -46,8 +47,8 @@ namespace Eco.Mods.TechTree
     public partial class CharcoalItem :
     Item                                     
     {
-        public override string FriendlyName { get { return "Charcoal"; } }
-        public override string Description { get { return "A black residue, consisting of carbon and any remaining ash."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Charcoal"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A black residue, consisting of carbon and any remaining ash."); } }
 
     }
 

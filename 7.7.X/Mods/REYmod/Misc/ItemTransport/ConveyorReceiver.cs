@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -47,7 +48,7 @@ namespace Eco.Mods.TechTree
     public partial class ConveyorReceiverObject : 
         WorldObject, IWireContainer 
     {
-        public override string FriendlyName { get { return "ConveyorReceiver"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("ConveyorReceiver"); } }
         public Timer timer;
         private Inventory Storage { get { return this.GetComponent<PublicStorageComponent>().Inventory; } }
         private Inventory LinkedStorage { get { return this.GetComponent<LinkComponent>().GetSortedLinkedInventories(this.OwnerUser); } }
@@ -149,8 +150,8 @@ namespace Eco.Mods.TechTree
     [Weight(2000)]
     public partial class ConveyorReceiverItem : WorldObjectItem<ConveyorReceiverObject>
     {
-        public override string FriendlyName { get { return "Conveyor Exit Point"; } } 
-        public override string Description  { get { return "Exit Point of a itempipe system. (Name not final, im open to suggestions)"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Conveyor Exit Point"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Exit Point of a itempipe system. (Name not final, im open to suggestions)"); } }
 
         static ConveyorReceiverItem()
         {

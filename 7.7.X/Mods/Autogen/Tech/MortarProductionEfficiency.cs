@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -23,7 +24,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(MortarProductionSkill), 1)]    
     public partial class MortarProductionEfficiencySkill : Skill
     {
-        public override string FriendlyName { get { return "Mortar Production Efficiency"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Mortar Production Efficiency"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
         public static ModificationStrategy MultiplicativeStrategy = 

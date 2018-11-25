@@ -11,6 +11,7 @@ namespace Eco.Mods.TechTree
     using Eco.Mods.TechTree;
     using Eco.Shared.Items;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
 
@@ -19,8 +20,8 @@ namespace Eco.Mods.TechTree
     public partial class HoneyFlanItem :
         FoodItem
     {
-        public override string FriendlyName { get { return "Honey Flan"; } }
-        public override string Description { get { return "Classic tasty dessert."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Honey Flan"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Classic tasty dessert."); } }
 
         private static Nutrients nutrition = new Nutrients() { Carbs = 15, Fat = 5, Protein = 4, Vitamins = 8 };
         public override float Calories { get { return 550; } }

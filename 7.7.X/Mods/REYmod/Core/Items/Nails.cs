@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -45,8 +46,8 @@ namespace Eco.Mods.TechTree
     public partial class NailsItem :
     Item                                     
     {
-        public override string FriendlyName { get { return "Nails"; } }
-        public override string Description { get { return "Hold wooden constructions together."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Nails"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Hold wooden constructions together."); } }
 
     }
 

@@ -12,6 +12,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     
@@ -20,9 +21,9 @@ namespace Eco.Mods.TechTree
     public partial class CamasPasteItem :
         FoodItem            
     {
-        public override string FriendlyName                     { get { return "Camas Paste"; } }
-        public override string FriendlyNamePlural               { get { return "Camas Paste"; } } 
-        public override string Description                      { get { return "Pulverized camas works as an excellent thickener or flavour enhancer."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Camas Paste"); } }
+        public override LocString DisplayNamePlural { get { return Localizer.DoStr("Camas Paste"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Pulverized camas works as an excellent thickener or flavour enhancer."); } }
 
         private static Nutrients nutrition = new Nutrients()    { Carbs = 3, Fat = 10, Protein = 2, Vitamins = 0};
         public override float Calories                          { get { return 60; } }

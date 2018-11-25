@@ -11,6 +11,7 @@ using Eco.Gameplay.Players;
 using Eco.Gameplay.Property;
 using Eco.Shared.Networking;
 using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
 using Eco.Gameplay.Wires;
 using Eco.Gameplay.Components;
 using Eco.World;

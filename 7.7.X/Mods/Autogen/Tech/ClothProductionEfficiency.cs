@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -23,7 +24,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(ClothProductionSkill), 1)]    
     public partial class ClothProductionEfficiencySkill : Skill
     {
-        public override string FriendlyName { get { return "Cloth Production Efficiency"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Cloth Production Efficiency"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
         public static ModificationStrategy MultiplicativeStrategy = 

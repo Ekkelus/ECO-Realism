@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -43,7 +44,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "SolarPanels"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("SolarPanels"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(SolarGeneratorItem); } } 
 
@@ -69,8 +70,8 @@ namespace Eco.Mods.TechTree
     [Weight(10000)]
     public partial class SolarGeneratorItem : WorldObjectItem<SolarGeneratorObject>
     {
-        public override string FriendlyName { get { return "Solar Generator"; } } 
-        public override string Description { get { return "Generates electrical power from the sun! It also stores energy to work at night."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Solar Generator"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Generates electrical power from the sun! It also stores energy to work at night."); } }
 
         static SolarGeneratorItem()
         {

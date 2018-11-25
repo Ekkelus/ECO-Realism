@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -36,7 +37,7 @@ namespace Eco.Mods.TechTree
     public partial class StockpileItem :
         WorldObjectItem<StockpileObject> 
     {
-        public override string FriendlyName { get { return "Stockpile"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Stockpile"); } } 
         public override string Description  { get { return  "Designates a 5x5x5 area as storage for large items."; } }
 
         static StockpileItem()

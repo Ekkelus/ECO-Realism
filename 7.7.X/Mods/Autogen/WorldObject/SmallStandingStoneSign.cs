@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -39,7 +40,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Small Standing Stone Sign"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Small Standing Stone Sign"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(SmallStandingStoneSignItem); } } 
 
@@ -64,7 +65,7 @@ namespace Eco.Mods.TechTree
     public partial class SmallStandingStoneSignItem :
         WorldObjectItem<SmallStandingStoneSignObject> 
     {
-        public override string FriendlyName { get { return "Small Standing Stone Sign"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Small Standing Stone Sign"); } } 
         public override string Description  { get { return  "A small sign for all of your smaller text needs!"; } }
 
         static SmallStandingStoneSignItem()

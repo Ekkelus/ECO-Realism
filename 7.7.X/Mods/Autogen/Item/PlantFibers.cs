@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -27,8 +28,8 @@ namespace Eco.Mods.TechTree
     public partial class PlantFibersItem :
     Item                                     
     {
-        public override string FriendlyName { get { return "Plant Fibers"; } }
-        public override string Description { get { return "Harvested from a number of plants, these fibers are useful for a suprising number of things."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Plant Fibers"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Harvested from a number of plants, these fibers are useful for a suprising number of things."); } }
 
     }
 

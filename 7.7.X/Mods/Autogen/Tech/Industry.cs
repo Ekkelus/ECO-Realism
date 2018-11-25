@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(EngineerSkill), 0)]    
     public partial class IndustrySkill : Skill
     {
-        public override string FriendlyName { get { return "Industry"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Industry"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
         public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
@@ -34,13 +35,13 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class IndustrySkillBook : SkillBook<IndustrySkill, IndustrySkillScroll>
     {
-        public override string FriendlyName { get { return "Industry Skill Book"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Industry Skill Book"); } }
     }
 
     [Serialized]
     public partial class IndustrySkillScroll : SkillScroll<IndustrySkill, IndustrySkillBook>
     {
-        public override string FriendlyName { get { return "Industry Skill Scroll"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Industry Skill Scroll"); } }
     }
 
     [RequiresSkill(typeof(MechanicsSkill), 0)] 

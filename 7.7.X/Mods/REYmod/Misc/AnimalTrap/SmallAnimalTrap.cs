@@ -25,6 +25,7 @@ using Eco.Gameplay.Systems.Tooltip;
 using Eco.Shared;
 using Eco.Shared.Math;
 using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
 using Eco.Shared.Utils;
 using Eco.Shared.View;
 using Eco.Shared.Items;
@@ -45,7 +46,7 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
     [RequireComponent(typeof(AnimalTrapComponent))]
     public class SmallAnimalTrapObject : WorldObject
     {
-        public override string FriendlyName { get { return "Small Animal Trap"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Small Animal Trap"); } }
 
         private Type RequiredSkill = typeof(TrapperSkill);
         private int RequiredLevel = 1;
@@ -110,8 +111,8 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
     [Weight(1000)]
     public partial class SmallAnimalTrapItem : WorldObjectItem<SmallAnimalTrapObject>
     {
-        public override string FriendlyName { get { return "Small Animal Trap"; } }
-        public override string Description { get { return "A trap to catch small animals as they run around. "; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Small Animal Trap"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A trap to catch small animals as they run around. "); } }
 
         static SmallAnimalTrapItem()
         {

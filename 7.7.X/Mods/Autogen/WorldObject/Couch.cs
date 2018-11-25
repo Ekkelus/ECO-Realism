@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -42,7 +43,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Couch"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Couch"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(CouchItem); } } 
 
@@ -67,8 +68,8 @@ namespace Eco.Mods.TechTree
     [Weight(2000)]
     public partial class CouchItem : WorldObjectItem<CouchObject>
     {
-        public override string FriendlyName { get { return "Couch"; } } 
-        public override string Description { get { return "A sweet couch to lounge on. Now with room for your friends!"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Couch"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A sweet couch to lounge on. Now with room for your friends!"); } }
 
         static CouchItem()
         {

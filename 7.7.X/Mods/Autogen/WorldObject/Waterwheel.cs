@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -40,7 +41,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Waterwheel"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Waterwheel"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(WaterwheelItem); } } 
 
@@ -66,8 +67,8 @@ namespace Eco.Mods.TechTree
     [Weight(10000)]
     public partial class WaterwheelItem : WorldObjectItem<WaterwheelObject>
     {
-        public override string FriendlyName { get { return "Waterwheel"; } } 
-        public override string Description { get { return "Use the power of flowing water to produce mechanical power."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Waterwheel"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Use the power of flowing water to produce mechanical power."); } }
 
         static WaterwheelItem()
         {

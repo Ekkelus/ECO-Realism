@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -44,7 +45,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Wind Turbine"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Wind Turbine"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(WindTurbineItem); } } 
 
@@ -72,8 +73,8 @@ namespace Eco.Mods.TechTree
     [Weight(10000)]
     public partial class WindTurbineItem : WorldObjectItem<WindTurbineObject>
     {
-        public override string FriendlyName { get { return "Wind Turbine"; } } 
-        public override string Description { get { return "Generates electrical power from the wind. Needs to be placed on 3x3 reinforced concrete."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Wind Turbine"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Generates electrical power from the wind. Needs to be placed on 3x3 reinforced concrete."); } }
 
         static WindTurbineItem()
         {

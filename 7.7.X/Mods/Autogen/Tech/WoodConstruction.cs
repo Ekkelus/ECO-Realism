@@ -14,6 +14,7 @@
     // using Eco.Gameplay.Systems.TextLinks;
     // using Eco.Shared.Localization;
     // using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     // using Eco.Shared.Services;
     // using Eco.Shared.Utils;
     // using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@
     // [RequiresSkill(typeof(CarpenterSkill), 0)]    
     // public partial class WoodConstructionSkill : Skill
     // {
-        // public override string FriendlyName { get { return "Wood Construction"; } }
+        // public override LocString DisplayName { get { return Localizer.DoStr("Wood Construction"); } }
         // public override string Description { get { return Localizer.DoStr(""); } }
 
         // public override int RequiredPoint { get { return 0; } }
@@ -32,13 +33,13 @@
     // [Serialized]
     // public partial class WoodConstructionSkillBook : SkillBook<WoodConstructionSkill, WoodConstructionSkillScroll>
     // {
-        // public override string FriendlyName { get { return "Wood Construction Skill Book"; } }
+        // public override LocString DisplayName { get { return Localizer.DoStr("Wood Construction Skill Book"); } }
     // }
 
     // [Serialized]
     // public partial class WoodConstructionSkillScroll : SkillScroll<WoodConstructionSkill, WoodConstructionSkillBook>
     // {
-        // public override string FriendlyName { get { return "Wood Construction Skill Scroll"; } }
+        // public override LocString DisplayName { get { return Localizer.DoStr("Wood Construction Skill Scroll"); } }
     // }
 
     // [RequiresSkill(typeof(HewingSkill), 0)] 

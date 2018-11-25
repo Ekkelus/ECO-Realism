@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -47,7 +48,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Refrigerator"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Refrigerator"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(RefrigeratorItem); } } 
 
@@ -78,8 +79,8 @@ namespace Eco.Mods.TechTree
     [Weight(3000)]
     public partial class RefrigeratorItem : WorldObjectItem<RefrigeratorObject>
     {
-        public override string FriendlyName { get { return "Refrigerator"; } } 
-        public override string Description { get { return "An icebox from the future with significantly better cooling properties."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Refrigerator"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("An icebox from the future with significantly better cooling properties."); } }
 
         static RefrigeratorItem()
         {

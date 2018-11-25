@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -43,7 +44,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Pump Jack"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Pump Jack"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(PumpJackItem); } } 
 
@@ -69,8 +70,8 @@ namespace Eco.Mods.TechTree
     [Weight(20000)]
     public partial class PumpJackItem : WorldObjectItem<PumpJackObject>
     {
-        public override string FriendlyName { get { return "Pump Jack"; } } 
-        public override string Description { get { return "Drill, baby! Drill!"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Pump Jack"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Drill, baby! Drill!"); } }
 
         static PumpJackItem()
         {

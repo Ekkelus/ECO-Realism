@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -38,7 +39,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Elk Mount"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Elk Mount"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(ElkMountItem); } } 
 
@@ -62,7 +63,7 @@ namespace Eco.Mods.TechTree
     public partial class ElkMountItem :
         WorldObjectItem<ElkMountObject> 
     {
-        public override string FriendlyName { get { return "Elk Mount"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Elk Mount"); } } 
         public override string Description  { get { return  "A hunting trophy for your house."; } }
 
         static ElkMountItem()

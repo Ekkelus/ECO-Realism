@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -46,7 +47,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Kiln"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Kiln"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(KilnItem); } } 
 
@@ -83,7 +84,7 @@ namespace Eco.Mods.TechTree
     [Weight(10000)]
     public partial class KilnItem : WorldObjectItem<KilnObject>
     {
-        public override string FriendlyName { get { return "Kiln"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Kiln"); } } 
         public override string Description  { get { return  "Useful for baking bricks and finishing pottery."; } }
 
         static KilnItem()

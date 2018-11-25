@@ -22,6 +22,7 @@ using Eco.Gameplay.Systems.Tooltip;
 using Eco.Shared;
 using Eco.Shared.Math;
 using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
 using Eco.Shared.Utils;
 using Eco.Shared.View;
 using Eco.Shared.Items;

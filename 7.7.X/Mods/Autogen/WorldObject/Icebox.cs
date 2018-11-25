@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -44,7 +45,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Icebox"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Icebox"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(IceboxItem); } } 
 
@@ -73,8 +74,8 @@ namespace Eco.Mods.TechTree
     [Weight(3000)]
     public partial class IceboxItem : WorldObjectItem<IceboxObject>
     {
-        public override string FriendlyName { get { return "Icebox"; } } 
-        public override string Description { get { return "A box of ice. It's in the name!"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Icebox"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A box of ice. It's in the name!"); } }
 
         static IceboxItem()
         {

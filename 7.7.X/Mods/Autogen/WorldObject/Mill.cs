@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -47,7 +48,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Mill"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Mill"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(MillItem); } } 
 
@@ -74,8 +75,8 @@ namespace Eco.Mods.TechTree
     [Weight(5000)]
     public partial class MillItem : WorldObjectItem<MillObject>
     {
-        public override string FriendlyName { get { return "Mill"; } } 
-        public override string Description { get { return "Refines food resources by crushing them under a stone millstone."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Mill"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Refines food resources by crushing them under a stone millstone."); } }
 
         static MillItem()
         {

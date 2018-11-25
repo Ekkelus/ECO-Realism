@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -59,9 +60,9 @@ namespace Eco.Mods.TechTree
     public partial class ReinforcedConcreteItem :
     BlockItem<ReinforcedConcreteBlock>
     {
-        public override string FriendlyName { get { return "Reinforced Concrete"; } } 
-        public override string FriendlyNamePlural { get { return "Reinforced Concrete"; } } 
-        public override string Description { get { return "A study construction material poured around a latice of rebar."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Reinforced Concrete"); } } 
+        public override LocString DisplayNamePlural { get { return Localizer.DoStr("Reinforced Concrete"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A study construction material poured around a latice of rebar."); } }
 
         public override bool CanStickToWalls { get { return false; } }  
 
