@@ -50,7 +50,7 @@ namespace REYmod.Utils
         public override void Initialize()
         {   }
 
-        public void Initialize(Type blockitem, int grid = 1)
+        public void Initialize(Type blockitem, int grid = 1) //"grid" isnt used yet, it is planned to make it possible to require more than a 3x3 grind (or also only a single block)
         {
             this.status = this.Parent.GetComponent<StatusComponent>().CreateStatusElement();
             positionstocheck = World.BlockBelow(this.Parent.Position3i).XZFullNeighborsAndSelf;
