@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -41,7 +42,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Tallow Wall Lamp"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Tallow Wall Lamp"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(TallowWallLampItem); } } 
 
@@ -75,7 +76,7 @@ namespace Eco.Mods.TechTree
     [Weight(500)]
     public partial class TallowWallLampItem : WorldObjectItem<TallowWallLampObject>
     {
-        public override string FriendlyName { get { return "Tallow Wall Lamp"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Tallow Wall Lamp"); } } 
         public override string Description  { get { return  "A candle mounted on a wall bracket which can burn tallow to produce a small amount of light."; } }
 
         static TallowWallLampItem()

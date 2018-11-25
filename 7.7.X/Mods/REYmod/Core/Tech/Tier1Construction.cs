@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(SelfImprovementSkill), 0)]    
     public partial class Tier1ConstructionSkill : Skill
     {
-        public override string FriendlyName { get { return "Tier 1 Construction"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Tier 1 Construction"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
         public static ModificationStrategy MultiplicativeStrategy = 

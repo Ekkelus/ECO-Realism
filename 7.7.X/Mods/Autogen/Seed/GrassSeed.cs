@@ -10,6 +10,7 @@ namespace Eco.Mods.TechTree
     using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -25,8 +26,8 @@ namespace Eco.Mods.TechTree
         
         private static Nutrients nutrition = new Nutrients() { Carbs = 0, Fat = 0, Protein = 0, Vitamins = 0 };
 
-        public override string FriendlyName { get { return "Grass Seed"; } }
-        public override string Description  { get { return "Plant to grow grass."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Grass Seed"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow grass."); } }
         public override string SpeciesName  { get { return "CommonGrass"; } }
 
         public override float Calories { get { return 0; } }
@@ -41,8 +42,8 @@ namespace Eco.Mods.TechTree
     {
         static GrassSeedPackItem() { }
 
-        public override string FriendlyName { get { return "Grass Seed Pack"; } }
-        public override string Description  { get { return "Plant to grow grass."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Grass Seed Pack"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow grass."); } }
         public override string SpeciesName  { get { return "CommonGrass"; } }
     }
 

@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -45,7 +46,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Electronics Assembly"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Electronics Assembly"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(ElectronicsAssemblyItem); } } 
 
@@ -70,8 +71,8 @@ namespace Eco.Mods.TechTree
     [Weight(5000)]
     public partial class ElectronicsAssemblyItem : WorldObjectItem<ElectronicsAssemblyObject>
     {
-        public override string FriendlyName { get { return "Electronics Assembly"; } } 
-        public override string Description { get { return "A set of machinery to create electronics."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Electronics Assembly"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A set of machinery to create electronics."); } }
 
         static ElectronicsAssemblyItem()
         {

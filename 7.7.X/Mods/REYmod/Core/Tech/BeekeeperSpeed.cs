@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(BeekeeperEfficiencySkill), 1)]    
     public partial class BeekeeperSpeedSkill : Skill
     {
-        public override string FriendlyName { get { return "Beekeeper Speed"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Beekeeper Speed"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
         public static ModificationStrategy MultiplicativeStrategy = 

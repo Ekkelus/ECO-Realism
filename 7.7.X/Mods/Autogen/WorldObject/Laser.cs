@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -35,8 +36,8 @@ namespace Eco.Mods.TechTree
     [Weight(5000)]
     public partial class LaserItem : WorldObjectItem<LaserObject>
     {
-        public override string FriendlyName { get { return "Laser"; } } 
-        public override string Description  { get { return "AVOID DIRECT EYE EXPOSURE. Needs to be placed on 3x3 reinforced concrete."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Laser"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("AVOID DIRECT EYE EXPOSURE. Needs to be placed on 3x3 reinforced concrete."); } }
 
         static LaserItem()
         {

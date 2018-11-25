@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -38,7 +39,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Contract Board"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Contract Board"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(ContractBoardItem); } } 
 
@@ -61,8 +62,8 @@ namespace Eco.Mods.TechTree
     [Weight(1500)]
     public partial class ContractBoardItem : WorldObjectItem<ContractBoardObject>
     {
-        public override string FriendlyName { get { return "Contract Board"; } } 
-        public override string Description { get { return "A board to post contracts."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Contract Board"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A board to post contracts."); } }
 
         static ContractBoardItem()
         {

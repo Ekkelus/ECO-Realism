@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -45,7 +46,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Oil Refinery"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Oil Refinery"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(OilRefineryItem); } } 
 
@@ -89,8 +90,8 @@ namespace Eco.Mods.TechTree
     [Weight(20000)]
     public partial class OilRefineryItem : WorldObjectItem<OilRefineryObject>
     {
-        public override string FriendlyName { get { return "Oil Refinery"; } } 
-        public override string Description { get { return "Sets of pipes and tanks which refine crude petroleum into usable products."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Oil Refinery"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Sets of pipes and tanks which refine crude petroleum into usable products."); } }
 
         static OilRefineryItem()
         {

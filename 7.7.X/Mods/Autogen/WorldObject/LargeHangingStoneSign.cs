@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -38,7 +39,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Large Hanging Stone Sign"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Large Hanging Stone Sign"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(LargeHangingStoneSignItem); } } 
 
@@ -63,7 +64,7 @@ namespace Eco.Mods.TechTree
     public partial class LargeHangingStoneSignItem :
         WorldObjectItem<LargeHangingStoneSignObject> 
     {
-        public override string FriendlyName { get { return "Large Hanging Stone Sign"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Large Hanging Stone Sign"); } } 
         public override string Description  { get { return  "A large sign for all your large text needs!"; } }
 
         static LargeHangingStoneSignItem()

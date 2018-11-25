@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -42,7 +43,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Table"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Table"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(TableItem); } } 
 
@@ -65,8 +66,8 @@ namespace Eco.Mods.TechTree
     [Weight(2000)]
     public partial class TableItem : WorldObjectItem<TableObject>
     {
-        public override string FriendlyName { get { return "Table"; } } 
-        public override string Description { get { return "A large table for placing things on."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Table"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A large table for placing things on."); } }
 
         static TableItem()
         {

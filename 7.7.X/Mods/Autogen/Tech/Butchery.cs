@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(HunterSkill), 0)]    
     public partial class ButcherySkill : Skill
     {
-        public override string FriendlyName { get { return "Butchery"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Butchery"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
         public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
@@ -34,13 +35,13 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class ButcherySkillBook : SkillBook<ButcherySkill, ButcherySkillScroll>
     {
-        public override string FriendlyName { get { return "Butchery Skill Book"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Butchery Skill Book"); } }
     }
 
     [Serialized]
     public partial class ButcherySkillScroll : SkillScroll<ButcherySkill, ButcherySkillBook>
     {
-        public override string FriendlyName { get { return "Butchery Skill Scroll"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Butchery Skill Scroll"); } }
     }
 
     [RequiresSkill(typeof(HuntingSkill), 0)] 

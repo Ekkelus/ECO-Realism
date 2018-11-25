@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -46,7 +47,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Laboratory"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Laboratory"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(LaboratoryItem); } } 
 
@@ -72,8 +73,8 @@ namespace Eco.Mods.TechTree
     [Weight(5000)]
     public partial class LaboratoryItem : WorldObjectItem<LaboratoryObject>
     {
-        public override string FriendlyName { get { return "Laboratory"; } } 
-        public override string Description { get { return "For researching the science side of cooking. Science rules!"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Laboratory"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("For researching the science side of cooking. Science rules!"); } }
 
         static LaboratoryItem()
         {

@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(TailorSkill), 0)]    
     public partial class TailoringSkill : Skill
     {
-        public override string FriendlyName { get { return "Tailoring"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Tailoring"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
         public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
@@ -34,13 +35,13 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class TailoringSkillBook : SkillBook<TailoringSkill, TailoringSkillScroll>
     {
-        public override string FriendlyName { get { return "Tailoring Skill Book"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Tailoring Skill Book"); } }
     }
 
     [Serialized]
     public partial class TailoringSkillScroll : SkillScroll<TailoringSkill, TailoringSkillBook>
     {
-        public override string FriendlyName { get { return "Tailoring Skill Scroll"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Tailoring Skill Scroll"); } }
     }
 
     [RequiresSkill(typeof(GatheringSkill), 0)] 

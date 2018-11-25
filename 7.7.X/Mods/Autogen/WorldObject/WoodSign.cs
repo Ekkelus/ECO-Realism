@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -37,7 +38,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Wood Sign"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Wood Sign"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(WoodSignItem); } } 
 
@@ -62,8 +63,8 @@ namespace Eco.Mods.TechTree
     [Weight(1000)]
     public partial class WoodSignItem : WorldObjectItem<WoodSignObject>
     {
-        public override string FriendlyName { get { return "Wood Sign"; } } 
-        public override string Description { get { return "A large sign for all your large text needs!"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Wood Sign"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A large sign for all your large text needs!"); } }
 
         static WoodSignItem()
         {

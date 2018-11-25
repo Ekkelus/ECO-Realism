@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -26,8 +27,8 @@ namespace Eco.Mods.TechTree
     public partial class CoinItem :
     Item                                     
     {
-        public override string FriendlyName { get { return "Coin"; } }
-        public override string Description { get { return "Print some money at the local Mint."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Coin"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Print some money at the local Mint."); } }
 
     }
 

@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -42,7 +43,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Mint"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Mint"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(MintItem); } } 
 
@@ -66,8 +67,8 @@ namespace Eco.Mods.TechTree
     [Weight(10000)]
     public partial class MintItem : WorldObjectItem<MintObject>
     {
-        public override string FriendlyName { get { return "Mint"; } } 
-        public override string Description { get { return "Allows for the creation of currency."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Mint"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Allows for the creation of currency."); } }
 
         static MintItem()
         {

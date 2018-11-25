@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -45,8 +46,8 @@ namespace Eco.Mods.TechTree
     public partial class HingeItem :
     Item
     {
-        public override string FriendlyName { get { return "Hinge"; } }
-        public override string Description { get { return "Allows one component to pivot off the other."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Hinge"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Allows one component to pivot off the other."); } }
 
     }
 

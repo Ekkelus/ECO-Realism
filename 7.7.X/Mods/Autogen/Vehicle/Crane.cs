@@ -15,14 +15,15 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Networking;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     
     [Serialized]
     [Weight(25000)]  
     public class CraneItem : WorldObjectItem<CraneObject>
     {
-        public override string FriendlyName         { get { return "Crane"; } }
-        public override string Description          { get { return "Allows the placement and transport of materials in an area."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Crane"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Allows the placement and transport of materials in an area."); } }
     }
 
     [RequiresSkill(typeof(IndustrialEngineeringSkill), 1)] 

@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -42,7 +43,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Currency Exchange"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Currency Exchange"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(CurrencyExchangeItem); } } 
 
@@ -66,7 +67,7 @@ namespace Eco.Mods.TechTree
     [Weight(3000)]
     public partial class CurrencyExchangeItem : WorldObjectItem<CurrencyExchangeObject>
     {
-        public override string FriendlyName { get { return "Currency Exchange"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Currency Exchange"); } } 
         public override string Description  { get { return  "Allows players to exchange currency."; } }
 
         static CurrencyExchangeItem()

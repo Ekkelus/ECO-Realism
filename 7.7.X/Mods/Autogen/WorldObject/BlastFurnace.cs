@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -45,7 +46,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Blast Furnace"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Blast Furnace"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(BlastFurnaceItem); } } 
 
@@ -92,7 +93,7 @@ namespace Eco.Mods.TechTree
     [Weight(20000)]
     public partial class BlastFurnaceItem : WorldObjectItem<BlastFurnaceObject>
     {
-        public override string FriendlyName { get { return "Blast Furnace"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Blast Furnace"); } } 
         public override string Description  { get { return  "A superior replacement for the bloomery that can produce steel."; } }
 
         static BlastFurnaceItem()

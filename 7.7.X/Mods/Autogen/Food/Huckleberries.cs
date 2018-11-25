@@ -12,6 +12,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     
@@ -21,9 +22,9 @@ namespace Eco.Mods.TechTree
     public partial class HuckleberriesItem :
         FoodItem            
     {
-        public override string FriendlyName                     { get { return "Huckleberries"; } }
-        public override string FriendlyNamePlural               { get { return "Huckleberries"; } } 
-        public override string Description                      { get { return "A handfull of small wild berries. I'm your huckleberry."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Huckleberries"); } }
+        public override LocString DisplayNamePlural { get { return Localizer.DoStr("Huckleberries"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A handfull of small wild berries. I'm your huckleberry."); } }
 
         private static Nutrients nutrition = new Nutrients()    { Carbs = 2, Fat = 0, Protein = 0, Vitamins = 6};
         public override float Calories                          { get { return 80; } }

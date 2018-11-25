@@ -15,6 +15,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Networking;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World.Blocks;
 
@@ -22,8 +23,8 @@ namespace Eco.Mods.TechTree
     [Weight(5000)]  
     public class SmallWoodCartItem : WorldObjectItem<SmallWoodCartObject>
     {
-        public override string FriendlyName         { get { return "Small Wood Cart"; } }
-        public override string Description          { get { return "A small wood cart for hauling minimal loads."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Small Wood Cart"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A small wood cart for hauling minimal loads."); } }
     }
 
     [RequiresSkill(typeof(WoodworkingSkill), 1)] 
@@ -71,7 +72,7 @@ namespace Eco.Mods.TechTree
             { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
             { typeof(AsphaltRoadBlock), 1.4f }, { typeof(AsphaltRoadWorldObjectBlock), 1.4f }
         };
-        public override string FriendlyName { get { return "Small Wood Cart"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Small Wood Cart"); } }
         public Type RepresentedItemType { get { return typeof(SmallWoodCartItem); } }
 
 

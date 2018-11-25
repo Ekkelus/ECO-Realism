@@ -10,6 +10,7 @@ namespace Eco.Mods.TechTree
     using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -24,8 +25,8 @@ namespace Eco.Mods.TechTree
         
         private static Nutrients nutrition = new Nutrients() { Carbs = 0, Fat = 0, Protein = 0, Vitamins = 0 };
 
-        public override string FriendlyName { get { return "Crimini Mushroom Spores"; } }
-        public override string Description  { get { return "Plant to grow crimini mushrooms."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Crimini Mushroom Spores"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow crimini mushrooms."); } }
         public override string SpeciesName  { get { return "CriminiMushroom"; } }
 
         public override float Calories { get { return 0; } }
@@ -64,8 +65,8 @@ namespace Eco.Mods.TechTree
     {
         static CriminiMushroomSporesPackItem() { }
 
-        public override string FriendlyName { get { return "Crimini Mushroom Spores Pack"; } }
-        public override string Description  { get { return "Plant to grow crimini mushrooms."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Crimini Mushroom Spores Pack"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow crimini mushrooms."); } }
         public override string SpeciesName  { get { return "CriminiMushroom"; } }
     }
 

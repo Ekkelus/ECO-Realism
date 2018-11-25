@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -59,8 +60,8 @@ namespace Eco.Mods.TechTree
     public partial class FlatSteelItem :
     BlockItem<FlatSteelBlock>
     {
-        public override string FriendlyName { get { return "Flat Steel"; } } 
-        public override string Description { get { return "Coated with a layer of epoxy, this steel refuses to rust."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Flat Steel"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Coated with a layer of epoxy, this steel refuses to rust."); } }
 
         public override bool CanStickToWalls { get { return false; } }  
 

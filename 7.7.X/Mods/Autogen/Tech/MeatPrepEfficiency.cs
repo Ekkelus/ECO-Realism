@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -23,7 +24,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(MeatPrepSkill), 1)]    
     public partial class MeatPrepEfficiencySkill : Skill
     {
-        public override string FriendlyName { get { return "Meat Prep Efficiency"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Meat Prep Efficiency"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
         public static ModificationStrategy MultiplicativeStrategy = 

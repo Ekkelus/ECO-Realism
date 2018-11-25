@@ -24,6 +24,7 @@
 //    using Eco.Shared.Math;
 //    using Eco.Shared.Localization;
 //    using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
 //    using Eco.Shared.Utils;
 //    using Eco.Shared.View;
 //    using Eco.Shared.Items;
@@ -44,7 +45,7 @@
 //    public partial class MachineShopObject : 
 //        WorldObject    
 //    {
-//        public override string FriendlyName { get { return "Machine Shop"; } } 
+//        public override LocString DisplayName { get { return Localizer.DoStr("Machine Shop"); } } 
 
 
 //        protected override void Initialize()
@@ -67,7 +68,7 @@
 //    [Weight(5000)]
 //    public partial class MachineShopItem : WorldObjectItem<MachineShopObject>
 //    {
-//        public override string FriendlyName { get { return "Machine Shop"; } } 
+//        public override LocString DisplayName { get { return Localizer.DoStr("Machine Shop"); } } 
 //        public override string Description  { get { return  "A fancy toolbench that creates equally fancy toys."; } }
 
 //        static MachineShopItem()

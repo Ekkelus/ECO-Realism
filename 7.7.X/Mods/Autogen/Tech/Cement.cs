@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(MasonSkill), 0)]    
     public partial class CementSkill : Skill
     {
-        public override string FriendlyName { get { return "Cement"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Cement"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
         public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
@@ -34,13 +35,13 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class CementSkillBook : SkillBook<CementSkill, CementSkillScroll>
     {
-        public override string FriendlyName { get { return "Cement Skill Book"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Cement Skill Book"); } }
     }
 
     [Serialized]
     public partial class CementSkillScroll : SkillScroll<CementSkill, CementSkillBook>
     {
-        public override string FriendlyName { get { return "Cement Skill Scroll"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Cement Skill Scroll"); } }
     }
 
     [RequiresSkill(typeof(BricklayingSkill), 0)] 

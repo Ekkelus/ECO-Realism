@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -26,8 +27,8 @@ namespace Eco.Mods.TechTree
     public partial class SkinnedHareItem :
     Item
     {
-        public override string FriendlyName { get { return "Skinned Hare"; } }
-        public override string Description { get { return "A skinned hare."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Skinned Hare"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A skinned hare."); } }
 
     }
 

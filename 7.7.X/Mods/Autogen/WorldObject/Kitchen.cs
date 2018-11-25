@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -45,7 +46,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Kitchen"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Kitchen"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(KitchenItem); } } 
 
@@ -69,8 +70,8 @@ namespace Eco.Mods.TechTree
     [Weight(5000)]
     public partial class KitchenItem : WorldObjectItem<KitchenObject>
     {
-        public override string FriendlyName { get { return "Kitchen"; } } 
-        public override string Description { get { return "A prep area for food which allows for more complex dishes."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Kitchen"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A prep area for food which allows for more complex dishes."); } }
 
         static KitchenItem()
         {

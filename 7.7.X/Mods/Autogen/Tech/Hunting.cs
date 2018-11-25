@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(HunterSkill), 0)]    
     public partial class HuntingSkill : Skill
     {
-        public override string FriendlyName { get { return "Hunting"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Hunting"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
        /*  private static List<Tuple<Type, int>> ItemsGiven = new List<Tuple<Type, int>>

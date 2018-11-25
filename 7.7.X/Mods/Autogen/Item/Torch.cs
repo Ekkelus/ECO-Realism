@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -45,8 +46,8 @@ namespace Eco.Mods.TechTree
     public partial class TorchItem :
     ToolItem                        
     {
-        public override string FriendlyName { get { return "Torch"; } } 
-        public override string Description { get { return "A little bit of light to help beat back the night."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Torch"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A little bit of light to help beat back the night."); } }
 
     }
 

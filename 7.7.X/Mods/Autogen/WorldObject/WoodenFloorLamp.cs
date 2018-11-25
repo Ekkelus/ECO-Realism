@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -41,7 +42,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Wooden Floor Lamp"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Wooden Floor Lamp"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(WoodenFloorLampItem); } } 
 
@@ -67,7 +68,7 @@ namespace Eco.Mods.TechTree
     public partial class WoodenFloorLampItem :
         WorldObjectItem<WoodenFloorLampObject> 
     {
-        public override string FriendlyName { get { return "Wooden Floor Lamp"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Wooden Floor Lamp"); } } 
         public override string Description  { get { return  "A more modern way to light up a room. This time from the floor."; } }
 
         static WoodenFloorLampItem()

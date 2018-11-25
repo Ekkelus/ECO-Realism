@@ -15,14 +15,15 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Networking;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     
     [Serialized]
     [Weight(25000)]  
     public class SkidSteerItem : WorldObjectItem<SkidSteerObject>
     {
-        public override string FriendlyName         { get { return "Skid Steer"; } }
-        public override string Description          { get { return "A WHAT?"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Skid Steer"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A WHAT?"); } }
     }
 
     [RequiresSkill(typeof(IndustrialEngineeringSkill), 1)] 

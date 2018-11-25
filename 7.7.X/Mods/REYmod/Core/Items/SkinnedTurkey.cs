@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -26,8 +27,8 @@ namespace Eco.Mods.TechTree
     public partial class SkinnedTurkeyItem :
     Item
     {
-        public override string FriendlyName { get { return "Skinned Turkey"; } }
-        public override string Description { get { return "A skinned turkey."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Skinned Turkey"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A skinned turkey."); } }
 
     }
 

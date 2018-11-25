@@ -14,6 +14,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Services;
     using Eco.Shared.Utils;
     using Gameplay.Systems.Tooltip;
@@ -22,7 +23,7 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(SmithSkill), 0)]    
     public partial class SmeltingSkill : Skill
     {
-        public override string FriendlyName { get { return "Smelting"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Smelting"); } }
         public override string Description { get { return Localizer.DoStr(""); } }
 
         public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
@@ -34,13 +35,13 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class SmeltingSkillBook : SkillBook<SmeltingSkill, SmeltingSkillScroll>
     {
-        public override string FriendlyName { get { return "Smelting Skill Book"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Smelting Skill Book"); } }
     }
 
     [Serialized]
     public partial class SmeltingSkillScroll : SkillScroll<SmeltingSkill, SmeltingSkillBook>
     {
-        public override string FriendlyName { get { return "Smelting Skill Scroll"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Smelting Skill Scroll"); } }
     }
 
     [RequiresSkill(typeof(MortaringSkill), 0)] 

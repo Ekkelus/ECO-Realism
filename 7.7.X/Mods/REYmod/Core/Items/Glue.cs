@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -46,8 +47,8 @@ namespace Eco.Mods.TechTree
     public partial class GlueItem :
     Item
     {
-        public override string FriendlyName { get { return "Glue"; } }
-        public override string Description { get { return "Sticks two components together."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Glue"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Sticks two components together."); } }
 
     }
 

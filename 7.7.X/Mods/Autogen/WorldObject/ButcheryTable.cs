@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -45,7 +46,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Butchery Table"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Butchery Table"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(ButcheryTableItem); } } 
 
@@ -70,7 +71,7 @@ namespace Eco.Mods.TechTree
     [Weight(5000)]
     public partial class ButcheryTableItem : WorldObjectItem<ButcheryTableObject>
     {
-        public override string FriendlyName { get { return "Butchery Table"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Butchery Table"); } } 
         public override string Description  { get { return  "A block and cleaver to process raw meat into fancier dishes."; } }
 
         static ButcheryTableItem()

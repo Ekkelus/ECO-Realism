@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -47,7 +48,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Bakery Oven"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Bakery Oven"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(BakeryOvenItem); } } 
 
@@ -85,8 +86,8 @@ namespace Eco.Mods.TechTree
     [Weight(10000)]
     public partial class BakeryOvenItem : WorldObjectItem<BakeryOvenObject>
     {
-        public override string FriendlyName { get { return "Bakery Oven"; } } 
-        public override string Description { get { return "A solidly built brick oven useful for baking all manner of treats."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Bakery Oven"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A solidly built brick oven useful for baking all manner of treats."); } }
 
         static BakeryOvenItem()
         {

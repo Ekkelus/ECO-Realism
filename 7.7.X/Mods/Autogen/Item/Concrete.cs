@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -46,9 +47,9 @@ namespace Eco.Mods.TechTree
     public partial class ConcreteItem :
     Item                                     
     {
-        public override string FriendlyName { get { return "Concrete"; } }
-        public override string FriendlyNamePlural { get { return "Concrete"; } } 
-        public override string Description { get { return "A very strong building material made from cement and an aggregate like crushed stone."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Concrete"); } }
+        public override LocString DisplayNamePlural { get { return Localizer.DoStr("Concrete"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A very strong building material made from cement and an aggregate like crushed stone."); } }
 
     }
 

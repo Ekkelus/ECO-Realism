@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -56,8 +57,8 @@ namespace Eco.Mods.TechTree
     public partial class AsphaltRoadItem :
     RoadItem<AsphaltRoadBlock>
     {
-        public override string FriendlyName { get { return "Asphalt Road"; } }
-        public override string Description { get { return "A paved surface constructed with asphalt and concrete. It's durable and extremely efficient for any wheeled vehicle."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Asphalt Road"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A paved surface constructed with asphalt and concrete. It's durable and extremely efficient for any wheeled vehicle."); } }
 
     }
 

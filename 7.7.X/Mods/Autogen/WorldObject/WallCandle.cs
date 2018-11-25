@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -41,7 +42,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Wall Candle"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Wall Candle"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(WallCandleItem); } } 
 
@@ -75,7 +76,7 @@ namespace Eco.Mods.TechTree
     [Weight(500)]
     public partial class WallCandleItem : WorldObjectItem<WallCandleObject>
     {
-        public override string FriendlyName { get { return "Wall Candle"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Wall Candle"); } } 
         public override string Description  { get { return  "A wall mounted candle."; } }
 
         static WallCandleItem()

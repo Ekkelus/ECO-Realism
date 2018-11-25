@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -45,9 +46,9 @@ namespace Eco.Mods.TechTree
     public partial class PlasticItem :
     Item                                     
     {
-        public override string FriendlyName { get { return "Plastic"; } }
-        public override string FriendlyNamePlural { get { return "Plastic"; } } 
-        public override string Description { get { return "An extremely useful synthetic material derived from petrochemicals"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Plastic"); } }
+        public override LocString DisplayNamePlural { get { return Localizer.DoStr("Plastic"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("An extremely useful synthetic material derived from petrochemicals"); } }
 
     }
 

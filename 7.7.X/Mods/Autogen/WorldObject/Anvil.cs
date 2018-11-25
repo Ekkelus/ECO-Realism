@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -45,7 +46,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Anvil"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Anvil"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(AnvilItem); } } 
 
@@ -70,7 +71,7 @@ namespace Eco.Mods.TechTree
     [Weight(5000)]
     public partial class AnvilItem : WorldObjectItem<AnvilObject>
     {
-        public override string FriendlyName { get { return "Anvil"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Anvil"); } } 
         public override string Description  { get { return  "A solid shaped piece of metal used to hammer ingots into tools and other useful things."; } }
 
         static AnvilItem()

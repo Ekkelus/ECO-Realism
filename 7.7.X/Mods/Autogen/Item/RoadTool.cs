@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -45,8 +46,8 @@ namespace Eco.Mods.TechTree
     public partial class RoadToolItem :
     ToolItem                        
     {
-        public override string FriendlyName { get { return "Road Tool"; } }
-        public override string Description { get { return "Used to press roads into dirt and stone rubble."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Road Tool"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Used to press roads into dirt and stone rubble."); } }
 
     }
 

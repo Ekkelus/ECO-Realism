@@ -13,6 +13,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
@@ -46,8 +47,8 @@ namespace Eco.Mods.TechTree
     public partial class SteelItem :
     Item                                     
     {
-        public override string FriendlyName { get { return "Steel"; } } 
-        public override string Description { get { return "A strong alloy of iron and other elements."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Steel"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A strong alloy of iron and other elements."); } }
 
     }
 

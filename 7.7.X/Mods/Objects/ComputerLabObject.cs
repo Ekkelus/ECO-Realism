@@ -19,7 +19,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PropertyAuthComponent))]
     public partial class ComputerLabObject : WorldObject
     {
-        public override string FriendlyName { get { return "Computer Lab"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Computer Lab"); } }
 
         protected override void Initialize()
         {

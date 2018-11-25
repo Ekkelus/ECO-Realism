@@ -24,6 +24,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Shared.Items;
@@ -44,7 +45,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Wainwright Table"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Wainwright Table"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(WainwrightTableItem); } } 
 
@@ -68,7 +69,7 @@ namespace Eco.Mods.TechTree
     [Weight(5000)]
     public partial class WainwrightTableItem : WorldObjectItem<WainwrightTableObject>
     {
-        public override string FriendlyName { get { return "Wainwright Table"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Wainwright Table"); } } 
         public override string Description  { get { return  "A set of smoothing and woodworking tools that assist in creating wheels and transportation."; } }
 
         static WainwrightTableItem()
