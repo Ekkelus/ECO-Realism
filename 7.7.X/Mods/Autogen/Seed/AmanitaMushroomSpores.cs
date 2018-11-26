@@ -45,7 +45,7 @@ namespace Eco.Mods.TechTree
 			SkillModifiedValueManager.AddSkillBenefit(Item.Get<AmanitaMushroomSporesItem>().UILink(), value);
 			this.CraftMinutes = value;
 
-			this.Initialize("Amanita Mushroom Spores", typeof(AmanitaMushroomSporesRecipe));
+			this.Initialize(Localizer.Do("Amanita Mushroom Spores"), typeof(AmanitaMushroomSporesRecipe));
 			CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
 		}
 	}
