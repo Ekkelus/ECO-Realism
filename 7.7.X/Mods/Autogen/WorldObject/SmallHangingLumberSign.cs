@@ -76,7 +76,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(SmallHangingLumberSignRecipe), Item.Get<SmallHangingLumberSignItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SmallHangingLumberSignItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Small Hanging Lumber Sign"), typeof(SmallHangingLumberSignRecipe));
+            this.Initialize("Small Hanging Lumber Sign", typeof(SmallHangingLumberSignRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }

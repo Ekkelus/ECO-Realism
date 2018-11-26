@@ -40,7 +40,7 @@
 // };
 // this.CraftMinutes = new ConstantValue(5);
 
-// this.Initialize(Localizer.Do("Wood Construction Skill Book"), typeof(WoodConstructionSkillBookRecipe));
+// this.Initialize("Wood Construction Skill Book", typeof(WoodConstructionSkillBookRecipe));
 // CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
 // }
 // }

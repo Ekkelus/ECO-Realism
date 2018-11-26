@@ -89,7 +89,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WaterwheelRecipe), Item.Get<WaterwheelItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WaterwheelItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Waterwheel"), typeof(WaterwheelRecipe));
+            this.Initialize("Waterwheel", typeof(WaterwheelRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

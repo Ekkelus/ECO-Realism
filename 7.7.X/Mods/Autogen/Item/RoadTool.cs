@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(RoadConstructionEfficiencySkill), 6, RoadConstructionEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
-            this.Initialize(Localizer.Do("Road Tool"), typeof(RoadToolRecipe));
+            this.Initialize("Road Tool", typeof(RoadToolRecipe));
 
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

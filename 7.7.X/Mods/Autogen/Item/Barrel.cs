@@ -24,7 +24,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<RivetItem>(typeof(PetrolRefiningEfficiencySkill), 4, PetrolRefiningEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(BarrelRecipe), Item.Get<BarrelItem>().UILink(), 1, typeof(PetrolRefiningSpeedSkill));    
-            this.Initialize(Localizer.Do("Barrel"), typeof(BarrelRecipe));
+            this.Initialize("Barrel", typeof(BarrelRecipe));
 
             CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);
         }

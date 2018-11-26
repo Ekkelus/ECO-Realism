@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<PricklyPearSeedItem>().UILink(), value);
             this.CraftMinutes = value;
 
-            this.Initialize(Localizer.Do("Prickly Pear Seed"), typeof(PricklyPearSeedRecipe));
+            this.Initialize("Prickly Pear Seed", typeof(PricklyPearSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

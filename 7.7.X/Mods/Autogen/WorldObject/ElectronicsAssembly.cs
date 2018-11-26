@@ -90,7 +90,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(ElectronicsAssemblyRecipe), Item.Get<ElectronicsAssemblyItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ElectronicsAssemblyItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Electronics Assembly"), typeof(ElectronicsAssemblyRecipe));
+            this.Initialize("Electronics Assembly", typeof(ElectronicsAssemblyRecipe));
             CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);
         }
     }

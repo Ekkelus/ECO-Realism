@@ -49,7 +49,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(5);
 
-            this.Initialize(Localizer.Do("Butchery Skill Book"), typeof(ButcherySkillBookRecipe));
+            this.Initialize("Butchery Skill Book", typeof(ButcherySkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

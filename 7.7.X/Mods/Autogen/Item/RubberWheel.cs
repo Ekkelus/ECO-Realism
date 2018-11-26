@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronWheelItem>(1),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(RubberWheelRecipe), Item.Get<RubberWheelItem>().UILink(), 5, typeof(IndustrialEngineeringSpeedSkill));    
-            this.Initialize(Localizer.Do("Rubber Wheel"), typeof(RubberWheelRecipe));
+            this.Initialize("Rubber Wheel", typeof(RubberWheelRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }

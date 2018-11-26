@@ -108,7 +108,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(CastIronStoveRecipe), Item.Get<CastIronStoveItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CastIronStoveItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Cast Iron Stove"), typeof(CastIronStoveRecipe));
+            this.Initialize("Cast Iron Stove", typeof(CastIronStoveRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

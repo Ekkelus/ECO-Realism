@@ -88,7 +88,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(LaboratoryRecipe), Item.Get<LaboratoryItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<LaboratoryItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Laboratory"), typeof(LaboratoryRecipe));
+            this.Initialize("Laboratory", typeof(LaboratoryRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

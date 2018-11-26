@@ -37,7 +37,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<CamasBulbItem>(typeof(MillProcessingEfficiencySkill), 10, MillProcessingEfficiencySkill.MultiplicativeStrategy), 
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(CamasPasteRecipe), Item.Get<CamasPasteItem>().UILink(), 5, typeof(MillProcessingSpeedSkill)); 
-            this.Initialize(Localizer.Do("Camas Paste"), typeof(CamasPasteRecipe));
+            this.Initialize("Camas Paste", typeof(CamasPasteRecipe));
             CraftingComponent.AddRecipe(typeof(MillObject), this);
         }
     }

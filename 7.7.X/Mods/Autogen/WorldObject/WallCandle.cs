@@ -99,7 +99,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WallCandleRecipe), Item.Get<WallCandleItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WallCandleItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Wall Candle"), typeof(WallCandleRecipe));
+            this.Initialize("Wall Candle", typeof(WallCandleRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

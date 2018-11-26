@@ -78,7 +78,7 @@
 //            SkillModifiedValueManager.AddBenefitForObject(typeof(MachineShopRecipe), Item.Get<MachineShopItem>().UILink(), value);
 //            SkillModifiedValueManager.AddSkillBenefit(Item.Get<MachineShopItem>().UILink(), value);
 //            this.CraftMinutes = value;
-//            this.Initialize(Localizer.Do("Machine Shop"), typeof(MachineShopRecipe));
+//            this.Initialize("Machine Shop", typeof(MachineShopRecipe));
 //            CraftingComponent.AddRecipe(typeof(AnvilObject), this);
 //        }
 //    }

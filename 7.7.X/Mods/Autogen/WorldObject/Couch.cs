@@ -91,7 +91,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(CouchRecipe), Item.Get<CouchItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CouchItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Couch"), typeof(CouchRecipe));
+            this.Initialize("Couch", typeof(CouchRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }
     }

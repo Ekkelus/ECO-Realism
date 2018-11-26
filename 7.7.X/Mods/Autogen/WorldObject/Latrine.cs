@@ -90,7 +90,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(LatrineRecipe), Item.Get<LatrineItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<LatrineItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Latrine"), typeof(LatrineRecipe));
+            this.Initialize("Latrine", typeof(LatrineRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

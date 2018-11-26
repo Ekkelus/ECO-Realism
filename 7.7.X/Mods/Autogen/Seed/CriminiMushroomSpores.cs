@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CriminiMushroomSporesItem>().UILink(), value);
             this.CraftMinutes = value;
 
-            this.Initialize(Localizer.Do("Crimini Mushroom Spores"), typeof(CriminiMushroomSporesRecipe));
+            this.Initialize("Crimini Mushroom Spores", typeof(CriminiMushroomSporesRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

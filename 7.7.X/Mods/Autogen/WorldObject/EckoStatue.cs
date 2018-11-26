@@ -77,7 +77,7 @@ namespace Eco.Mods.TechTree
             {
             };
             this.CraftMinutes = new ConstantValue(); 
-            this.Initialize(Localizer.Do("Ecko Statue"), typeof(EckoStatueRecipe));
+            this.Initialize("Ecko Statue", typeof(EckoStatueRecipe));
             CraftingComponent.AddRecipe(typeof(Object), this);
         }
     }

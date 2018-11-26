@@ -96,7 +96,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(BookshelfRecipe), Item.Get<BookshelfItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BookshelfItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Bookshelf"), typeof(BookshelfRecipe));
+            this.Initialize("Bookshelf", typeof(BookshelfRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }

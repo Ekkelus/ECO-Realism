@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<LogItem>(1),                                                                    
             };
             this.CraftMinutes = new ConstantValue(2); 
-            this.Initialize(Localizer.Do("Construction Post"), typeof(ConstructionPostRecipe));
+            this.Initialize("Construction Post", typeof(ConstructionPostRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }
