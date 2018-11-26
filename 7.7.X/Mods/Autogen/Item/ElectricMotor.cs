@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 6, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(ElectricMotorRecipe), Item.Get<ElectricMotorItem>().UILink(), 5, typeof(ElectronicEngineeringSpeedSkill));    
-            this.Initialize("Electric Motor", typeof(ElectricMotorRecipe));
+            this.Initialize(Localizer.DoStr("Electric Motor"), typeof(ElectricMotorRecipe));
 
             CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }

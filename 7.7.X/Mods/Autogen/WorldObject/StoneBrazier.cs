@@ -106,7 +106,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(StoneBrazierRecipe), Item.Get<StoneBrazierItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StoneBrazierItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Stone Brazier", typeof(StoneBrazierRecipe));
+            this.Initialize(Localizer.DoStr("Stone Brazier"), typeof(StoneBrazierRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }
     }

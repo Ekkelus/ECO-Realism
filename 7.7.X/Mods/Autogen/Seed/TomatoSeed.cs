@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<TomatoSeedItem>().UILink(), value);
             this.CraftMinutes = value;
 
-            this.Initialize("Tomato Seed", typeof(TomatoSeedRecipe));
+            this.Initialize(Localizer.DoStr("Tomato Seed"), typeof(TomatoSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SandItem>(typeof(CementProductionEfficiencySkill), 10, CementProductionEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(ConcreteRecipe), Item.Get<ConcreteItem>().UILink(), 2, typeof(CementProductionSpeedSkill));    
-            this.Initialize("Concrete", typeof(ConcreteRecipe));
+            this.Initialize(Localizer.DoStr("Concrete"), typeof(ConcreteRecipe));
 
             CraftingComponent.AddRecipe(typeof(CementKilnObject), this);
         }

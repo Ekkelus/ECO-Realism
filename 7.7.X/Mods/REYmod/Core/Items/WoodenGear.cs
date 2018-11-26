@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<LogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 10, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(WoodenGearRecipe), Item.Get<WoodenGearItem>().UILink(), 6, typeof(PrimitiveMechanicsSpeedSkill));
-            this.Initialize("Wooden Gear", typeof(WoodenGearRecipe));
+            this.Initialize(Localizer.DoStr("Wooden Gear"), typeof(WoodenGearRecipe));
 
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

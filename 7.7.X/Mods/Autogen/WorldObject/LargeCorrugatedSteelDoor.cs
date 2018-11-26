@@ -71,7 +71,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(LargeCorrugatedSteelDoorRecipe), Item.Get<LargeCorrugatedSteelDoorItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<LargeCorrugatedSteelDoorItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Large Corrugated Steel Door", typeof(LargeCorrugatedSteelDoorRecipe));
+            this.Initialize(Localizer.DoStr("Large Corrugated Steel Door"), typeof(LargeCorrugatedSteelDoorRecipe));
             CraftingComponent.AddRecipe(typeof(RollingMillObject), this);
         }
     }

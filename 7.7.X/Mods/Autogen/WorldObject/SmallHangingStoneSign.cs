@@ -74,7 +74,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(SmallHangingStoneSignRecipe), Item.Get<SmallHangingStoneSignItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SmallHangingStoneSignItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Small Hanging Stone Sign", typeof(SmallHangingStoneSignRecipe));
+            this.Initialize(Localizer.DoStr("Small Hanging Stone Sign"), typeof(SmallHangingStoneSignRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }
     }

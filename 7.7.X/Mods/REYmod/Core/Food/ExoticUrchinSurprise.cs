@@ -37,7 +37,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<AmanitaMushroomsItem>(typeof(CulinaryArtsEfficiencySkill), 20, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(ExoticUrchinSurpriseRecipe), Item.Get<ExoticUrchinSurpriseItem>().UILink(), 10, typeof(CulinaryArtsSpeedSkill));
-            this.Initialize("Exotic Urchin Surprise", typeof(ExoticUrchinSurpriseRecipe));
+            this.Initialize(Localizer.DoStr("Exotic Urchin Surprise"), typeof(ExoticUrchinSurpriseRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }
     }

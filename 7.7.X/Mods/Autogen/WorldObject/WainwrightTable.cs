@@ -81,7 +81,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WainwrightTableRecipe), Item.Get<WainwrightTableItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WainwrightTableItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Wainwright Table", typeof(WainwrightTableRecipe));
+            this.Initialize(Localizer.DoStr("Wainwright Table"), typeof(WainwrightTableRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

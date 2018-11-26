@@ -87,7 +87,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<StoneItem>(12),                                                                    
             };
             this.CraftMinutes = new ConstantValue(1); 
-            this.Initialize("Campfire", typeof(CampfireRecipe));
+            this.Initialize(Localizer.DoStr("Campfire"), typeof(CampfireRecipe));
             CraftingComponent.AddRecipe(typeof(CampsiteObject), this);
         }
     }

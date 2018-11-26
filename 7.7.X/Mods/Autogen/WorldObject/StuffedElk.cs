@@ -84,7 +84,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(StuffedElkRecipe), Item.Get<StuffedElkItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StuffedElkItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Stuffed Elk", typeof(StuffedElkRecipe));
+            this.Initialize(Localizer.DoStr("Stuffed Elk"), typeof(StuffedElkRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }
     }

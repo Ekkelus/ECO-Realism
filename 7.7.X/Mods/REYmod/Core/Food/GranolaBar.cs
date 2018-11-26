@@ -38,7 +38,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<TallowItem>(typeof(BasicBakingEfficiencySkill), 5, BasicBakingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(GranolaBarRecipe), Item.Get<GranolaBarItem>().UILink(), 10, typeof(BasicBakingSpeedSkill));
-            this.Initialize("Granola Bar", typeof(GranolaBarRecipe));
+            this.Initialize(Localizer.DoStr("Granola Bar"), typeof(GranolaBarRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }
     }

@@ -93,7 +93,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(SteelCeilingLightRecipe), Item.Get<SteelCeilingLightItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SteelCeilingLightItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Steel Ceiling Light", typeof(SteelCeilingLightRecipe));
+            this.Initialize(Localizer.DoStr("Steel Ceiling Light"), typeof(SteelCeilingLightRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

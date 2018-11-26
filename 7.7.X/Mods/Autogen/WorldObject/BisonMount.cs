@@ -84,7 +84,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(BisonMountRecipe), Item.Get<BisonMountItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BisonMountItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Bison Mount", typeof(BisonMountRecipe));
+            this.Initialize(Localizer.DoStr("Bison Mount"), typeof(BisonMountRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }
     }

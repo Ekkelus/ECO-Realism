@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<FernSporeItem>().UILink(), value);
             this.CraftMinutes = value;
 
-            this.Initialize("Fern Spore", typeof(FernSporeRecipe));
+            this.Initialize(Localizer.DoStr("Fern Spore"), typeof(FernSporeRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

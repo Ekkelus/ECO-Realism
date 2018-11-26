@@ -74,7 +74,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronIngotItem>(typeof(WoodworkingEfficiencySkill), 3, WoodworkingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(2); 
-            this.Initialize("Storage Chest", typeof(StorageChestRecipe));
+            this.Initialize(Localizer.DoStr("Storage Chest"), typeof(StorageChestRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

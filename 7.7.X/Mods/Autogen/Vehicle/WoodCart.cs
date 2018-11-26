@@ -40,7 +40,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(5);
 
-            this.Initialize("Wood Cart", typeof(WoodCartRecipe));
+            this.Initialize(Localizer.DoStr("Wood Cart"), typeof(WoodCartRecipe));
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }
     }

@@ -74,7 +74,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(ContractBoardRecipe), Item.Get<ContractBoardItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ContractBoardItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Contract Board", typeof(ContractBoardRecipe));
+            this.Initialize(Localizer.DoStr("Contract Board"), typeof(ContractBoardRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

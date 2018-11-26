@@ -50,7 +50,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(30);
 
-            this.Initialize("Advanced Baking Skill Book", typeof(AdvancedBakingSkillBookRecipe));
+            this.Initialize(Localizer.DoStr("Advanced Baking Skill Book"), typeof(AdvancedBakingSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

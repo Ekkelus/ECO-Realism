@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(25);
 
-            this.Initialize("Powered Cart", typeof(PoweredCartRecipe));
+            this.Initialize(Localizer.DoStr("Powered Cart"), typeof(PoweredCartRecipe));
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }
     }

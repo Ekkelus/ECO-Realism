@@ -99,7 +99,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(CandleStandRecipe), Item.Get<CandleStandItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CandleStandItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Candle Stand", typeof(CandleStandRecipe));
+            this.Initialize(Localizer.DoStr("Candle Stand"), typeof(CandleStandRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

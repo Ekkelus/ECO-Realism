@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PricklyPearFruitItem>(typeof(HomeCookingEfficiencySkill), 20, HomeCookingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(SmokedTroutSaladRecipe), Item.Get<SmokedTroutSaladItem>().UILink(), 10, typeof(HomeCookingSpeedSkill));
-            this.Initialize("Smoked Trout Salad", typeof(SmokedTroutSaladRecipe));
+            this.Initialize(Localizer.DoStr("Smoked Trout Salad"), typeof(SmokedTroutSaladRecipe));
             CraftingComponent.AddRecipe(typeof(CastIronStoveObject), this);
         }
     }

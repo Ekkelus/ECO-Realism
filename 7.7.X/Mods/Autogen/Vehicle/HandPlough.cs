@@ -37,7 +37,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(5);
 
-            this.Initialize("Hand Plough", typeof(HandPloughRecipe));
+            this.Initialize(Localizer.DoStr("Hand Plough"), typeof(HandPloughRecipe));
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }
     }

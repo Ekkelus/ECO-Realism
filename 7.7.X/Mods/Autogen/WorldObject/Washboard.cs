@@ -88,7 +88,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WashboardRecipe), Item.Get<WashboardItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WashboardItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Washboard", typeof(WashboardRecipe));
+            this.Initialize(Localizer.DoStr("Washboard"), typeof(WashboardRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }
     }

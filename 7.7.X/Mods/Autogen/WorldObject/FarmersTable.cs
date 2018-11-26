@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<LogItem>(20),   
             };
             this.CraftMinutes = new ConstantValue(10);     
-            this.Initialize("Farmers Table", typeof(FarmersTableRecipe));
+            this.Initialize(Localizer.DoStr("Farmers Table"), typeof(FarmersTableRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

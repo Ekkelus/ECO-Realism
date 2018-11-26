@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(LargeLumberDoorRecipe), Item.Get<LargeLumberDoorItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<LargeLumberDoorItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Large Lumber Door", typeof(LargeLumberDoorRecipe));
+            this.Initialize(Localizer.DoStr("Large Lumber Door"), typeof(LargeLumberDoorRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }
