@@ -1,22 +1,12 @@
 ﻿namespace Eco.Mods.TechTree
 {
-    using System.Collections.Generic;
     using System.ComponentModel;
-    using System.Linq;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Players;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Mods.TechTree;
-    using Eco.Shared.Items;
     using Eco.Shared.Serialization;
-	using Eco.Shared.Localization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    
-    
+    using Eco.Shared.Localization;
+
+
     /// <summary>
     /// Dummy for the Foodallergysystem
     /// </summary>   

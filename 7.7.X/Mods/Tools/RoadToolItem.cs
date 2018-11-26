@@ -4,12 +4,10 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.ComponentModel;
-    using Eco.Core.Utils;
     using Eco.Core.Utils.AtomicAction;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Plants;
     using Eco.Shared.Math;
     using Eco.Simulation;
     using Eco.World;

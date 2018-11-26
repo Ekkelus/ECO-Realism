@@ -1,13 +1,7 @@
 ﻿using Eco.Gameplay.Blocks;
 using Eco.Gameplay.Objects;
 using Eco.Shared.Serialization;
-	using Eco.Shared.Localization;
 using Eco.World.Blocks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace REYmod.Blocks
 {

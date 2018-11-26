@@ -1,19 +1,12 @@
 namespace Eco.Mods.TechTree
 {
-    using System.Collections.Generic;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-	using Eco.Shared.Localization;
-    using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
     using Gameplay.Players;
     using System.ComponentModel;
 
