@@ -48,7 +48,7 @@ namespace Eco.Mods.TechTree
     public partial class RugSmallItem : WorldObjectItem<RugSmallObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Small Rug"); } } 
-        public override string Description  { get { return  "A small rug for when you just didn't have enough materials to make a bigger one."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A small rug for when you just didn't have enough materials to make a bigger one."); } }
 
         static RugSmallItem()
         {

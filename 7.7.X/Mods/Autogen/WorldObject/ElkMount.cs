@@ -46,7 +46,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<ElkMountObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Elk Mount"); } } 
-        public override string Description  { get { return  "A hunting trophy for your house."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A hunting trophy for your house."); } }
 
         static ElkMountItem()
         {

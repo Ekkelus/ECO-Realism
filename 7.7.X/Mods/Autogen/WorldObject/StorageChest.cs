@@ -47,7 +47,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<StorageChestObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Storage Chest"); } } 
-        public override string Description  { get { return  "A container you can store items in."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A container you can store items in."); } }
 
         static StorageChestItem()
         {

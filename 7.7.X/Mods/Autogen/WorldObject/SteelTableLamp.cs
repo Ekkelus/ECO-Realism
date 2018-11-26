@@ -53,7 +53,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<SteelTableLampObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Steel Table Lamp"); } } 
-        public override string Description  { get { return  "For late night studying. Or working. Or anything, really."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("For late night studying. Or working. Or anything, really."); } }
 
         static SteelTableLampItem()
         {

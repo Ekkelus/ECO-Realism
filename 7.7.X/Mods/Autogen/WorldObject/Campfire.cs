@@ -60,7 +60,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<CampfireObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Campfire"); } } 
-        public override string Description  { get { return  "Cook like a caveman on an uneven fire."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Cook like a caveman on an uneven fire."); } }
 
         static CampfireItem()
         {

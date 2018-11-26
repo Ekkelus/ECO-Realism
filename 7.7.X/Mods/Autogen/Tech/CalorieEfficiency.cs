@@ -10,7 +10,7 @@ namespace Eco.Mods.TechTree
     public partial class CalorieEfficiencySkill : Skill
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Calorie Efficiency"); } }
-        public override string Description { get { return Localizer.DoStr(""); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr(""); } }
 
         public static ModificationStrategy MultiplicativeStrategy = 
             new MultiplicativeStrategy(new float[] { 1, 1 - 0.05f, 1 - 0.1f, 1 - 0.15f, 1 - 0.2f, 1 - 0.25f });

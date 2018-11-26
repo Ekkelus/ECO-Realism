@@ -54,7 +54,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<StreetlampObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Streetlamp"); } } 
-        public override string Description  { get { return  "A towering metal lightpost that requires electricity to run."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A towering metal lightpost that requires electricity to run."); } }
 
         static StreetlampItem()
         {

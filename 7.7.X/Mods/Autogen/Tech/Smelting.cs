@@ -12,7 +12,7 @@ namespace Eco.Mods.TechTree
     public partial class SmeltingSkill : Skill
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Smelting"); } }
-        public override string Description { get { return Localizer.DoStr(""); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr(""); } }
 
         public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
         public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }

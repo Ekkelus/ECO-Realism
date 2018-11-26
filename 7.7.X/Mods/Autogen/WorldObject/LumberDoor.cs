@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<LumberDoorObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Lumber Door"); } } 
-        public override string Description  { get { return  "A door made from finely cut lumber."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A door made from finely cut lumber."); } }
 
         [Tooltip(100)]
         public string TierTooltip()

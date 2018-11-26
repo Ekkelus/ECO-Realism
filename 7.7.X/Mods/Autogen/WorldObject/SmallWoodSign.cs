@@ -10,7 +10,7 @@
 //        WorldObjectItem<SmallWoodSignObject> 
 //    {
 //        public override LocString DisplayName { get { return Localizer.DoStr("Small Wood Sign"); } } 
-//        public override string Description  { get { return  "A small wooden sign for all your small text needs."; } }
+//        public override LocString DisplayDescription { get { return Localizer.DoStr("A small wooden sign for all your small text needs."); } }
 
 //        static SmallWoodSignItem()
 //        {

@@ -1,16 +1,16 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Gameplay.Players;
-    using System.ComponentModel;
+	using Eco.Gameplay.Components;
+	using Eco.Gameplay.DynamicValues;
+	using Eco.Gameplay.Items;
+	using Eco.Gameplay.Skills;
+	using Eco.Gameplay.Systems.TextLinks;
+	using Eco.Shared.Localization;
+	using Eco.Shared.Serialization;
+	using Gameplay.Players;
+	using System.ComponentModel;
 
-    [Serialized]
+	[Serialized]
 	[Weight(10)]  
 	public partial class AmanitaMushroomSporesItem : SeedItem
 	{

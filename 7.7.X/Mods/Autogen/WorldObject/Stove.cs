@@ -83,7 +83,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<StoveObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Stove"); } } 
-        public override string Description  { get { return  "A heavy stove for cooking more complex dishes."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A heavy stove for cooking more complex dishes."); } }
 
         static StoveItem()
         {

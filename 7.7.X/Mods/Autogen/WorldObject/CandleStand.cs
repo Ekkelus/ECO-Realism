@@ -60,7 +60,7 @@ namespace Eco.Mods.TechTree
     public partial class CandleStandItem : WorldObjectItem<CandleStandObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Candle Stand"); } } 
-        public override string Description  { get { return  "A fancy candelabra for providing small amounts of light."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A fancy candelabra for providing small amounts of light."); } }
 
         static CandleStandItem()
         {

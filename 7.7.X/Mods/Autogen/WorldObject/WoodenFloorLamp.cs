@@ -52,7 +52,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<WoodenFloorLampObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Wooden Floor Lamp"); } } 
-        public override string Description  { get { return  "A more modern way to light up a room. This time from the floor."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A more modern way to light up a room. This time from the floor."); } }
 
         static WoodenFloorLampItem()
         {

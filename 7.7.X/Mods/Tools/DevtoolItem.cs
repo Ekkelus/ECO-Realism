@@ -24,97 +24,97 @@ using Eco.Gameplay.Players;
 [Category("Hidden")]
 public class DevtoolItem : HammerItem
 {
-    public override LocString DisplayDescription { get { return Localizer.DoStr("DOES CHEATER THINGS THROUGH CHEATING POWERS"); } }
-    public override LocString DisplayName { get { return Localizer.DoStr("Dev Tool"); } }
+	public override LocString DisplayDescription { get { return Localizer.DoStr("DOES CHEATER THINGS THROUGH CHEATING POWERS"); } }
+	public override LocString DisplayName { get { return Localizer.DoStr("Dev Tool"); } }
 
-    private static IDynamicValue skilledRepairCost = new ConstantValue(1);
-    public override IDynamicValue SkilledRepairCost { get { return skilledRepairCost; } }
+	private static IDynamicValue skilledRepairCost = new ConstantValue(1);
+	public override IDynamicValue SkilledRepairCost { get { return skilledRepairCost; } }
 
-    public override ClientPredictedBlockAction LeftAction { get { return ClientPredictedBlockAction.DestroyBlock; } }
-    public override string LeftActionDescription          { get { return "Smite"; } }
+	public override ClientPredictedBlockAction LeftAction { get { return ClientPredictedBlockAction.DestroyBlock; } }
+	public override LocString LeftActionDescription          { get { return Localizer.DoStr("Smite"); } }
 
-    public override InteractResult OnActLeft(InteractionContext context)
-    {
-        if (context.HasBlock && !context.Block.Is<Impenetrable>())
-        {
-            World.DeleteBlock(context.BlockPosition.Value);
-            var plant = EcoSim.PlantSim.GetPlant(context.BlockPosition.Value + Vector3i.Up);
-            if (plant != null)
-                EcoSim.PlantSim.DestroyPlant(plant, DeathType.Harvesting);
-            return InteractResult.Success;
-        }
-        else if (context.HasTarget)
-        {
-            if (context.Target != null)
-            {
-                if (context.Target is WorldObject)
-                    (context.Target as WorldObject).Destroy();
-                else if (context.Target is TreeEntity)
-                    (context.Target as TreeEntity).Destroy();
-                else if (context.Target is Animal)
-                    (context.Target as Animal).Destroy();
-            }
-            return InteractResult.Success;
-        }
-        else
-            return InteractResult.NoOp;
-    }
+	public override InteractResult OnActLeft(InteractionContext context)
+	{
+		if (context.HasBlock && !context.Block.Is<Impenetrable>())
+		{
+			World.DeleteBlock(context.BlockPosition.Value);
+			var plant = EcoSim.PlantSim.GetPlant(context.BlockPosition.Value + Vector3i.Up);
+			if (plant != null)
+				EcoSim.PlantSim.DestroyPlant(plant, DeathType.Harvesting);
+			return InteractResult.Success;
+		}
+		else if (context.HasTarget)
+		{
+			if (context.Target != null)
+			{
+				if (context.Target is WorldObject)
+					(context.Target as WorldObject).Destroy();
+				else if (context.Target is TreeEntity)
+					(context.Target as TreeEntity).Destroy();
+				else if (context.Target is Animal)
+					(context.Target as Animal).Destroy();
+			}
+			return InteractResult.Success;
+		}
+		else
+			return InteractResult.NoOp;
+	}
 
-    public override InteractResult OnActRight(InteractionContext context)
-    {
-        User owner;
-        User creator;
-        var currentBlock = context.Player.User.Inventory.Carried.Stacks.First().Item as BlockItem;
-        if (currentBlock != null && context.HasBlock && context.Normal != Vector3i.Zero)
-        {
-            var result = currentBlock.OnActRight(context);
-            if (result == InteractResult.Success)
-            {
-                context.Player.User.Inventory.AddItem(currentBlock);
-                return result;
-            }
-        }
-        else if (context.HasTarget)
-        {
-            if (context.Target != null)
-            {
-                if (context.Target is WorldObject)
-                {
-                    owner = (context.Target as WorldObject).OwnerUser;
-                    if (owner != null)
-                    {
-                        ChatUtils.SendMessage(context.Player, "Owner: " + owner.Name);
-                    }
-                    else ChatUtils.SendMessage(context.Player, "Object is unowned");
-                    creator = (context.Target as WorldObject).Creator.User;
-                    if (creator != null)
-                    {
-                        ChatUtils.SendMessage(context.Player, "Creator: " + creator.Name);
-                    }
-                    else ChatUtils.SendMessage(context.Player, "No creator");
-                }
-            }
-            return InteractResult.Success;
-        }
+	public override InteractResult OnActRight(InteractionContext context)
+	{
+		User owner;
+		User creator;
+		var currentBlock = context.Player.User.Inventory.Carried.Stacks.First().Item as BlockItem;
+		if (currentBlock != null && context.HasBlock && context.Normal != Vector3i.Zero)
+		{
+			var result = currentBlock.OnActRight(context);
+			if (result == InteractResult.Success)
+			{
+				context.Player.User.Inventory.AddItem(currentBlock);
+				return result;
+			}
+		}
+		else if (context.HasTarget)
+		{
+			if (context.Target != null)
+			{
+				if (context.Target is WorldObject)
+				{
+					owner = (context.Target as WorldObject).OwnerUser;
+					if (owner != null)
+					{
+						ChatUtils.SendMessage(context.Player, "Owner: " + owner.Name);
+					}
+					else ChatUtils.SendMessage(context.Player, "Object is unowned");
+					creator = (context.Target as WorldObject).Creator.User;
+					if (creator != null)
+					{
+						ChatUtils.SendMessage(context.Player, "Creator: " + creator.Name);
+					}
+					else ChatUtils.SendMessage(context.Player, "No creator");
+				}
+			}
+			return InteractResult.Success;
+		}
 
-        return InteractResult.NoOp;
-    }
+		return InteractResult.NoOp;
+	}
 
-    public override InteractResult OnActInteract(InteractionContext context)
-    {
-        if (context.HasBlock)
-        {
-            var item = BlockItem.CreatingItem(context.Block.GetType());
-            if(item != null)
-                context.Player.User.Inventory.ReplaceStack(context.Player, context.Player.User.Inventory.Carried.Stacks.First(), item.TypeID, 1);
-        }
-        return InteractResult.NoOp;
-    }
+	public override InteractResult OnActInteract(InteractionContext context)
+	{
+		if (context.HasBlock)
+		{
+			var item = BlockItem.CreatingItem(context.Block.GetType());
+			if(item != null)
+				context.Player.User.Inventory.ReplaceStack(context.Player, context.Player.User.Inventory.Carried.Stacks.First(), item.TypeID, 1);
+		}
+		return InteractResult.NoOp;
+	}
 
 
-    // un-override hammer stuff we don't really want
-    public override bool ShouldHighlight(Type block)
-    {
-        return true;
-    }
+	// un-override hammer stuff we don't really want
+	public override bool ShouldHighlight(Type block)
+	{
+		return true;
+	}
 }

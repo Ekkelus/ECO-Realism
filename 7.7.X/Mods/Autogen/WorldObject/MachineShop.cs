@@ -42,7 +42,7 @@
 //    public partial class MachineShopItem : WorldObjectItem<MachineShopObject>
 //    {
 //        public override LocString DisplayName { get { return Localizer.DoStr("Machine Shop"); } } 
-//        public override string Description  { get { return  "A fancy toolbench that creates equally fancy toys."; } }
+//        public override LocString DisplayDescription { get { return Localizer.DoStr("A fancy toolbench that creates equally fancy toys."); } }
 
 //        static MachineShopItem()
 //        {

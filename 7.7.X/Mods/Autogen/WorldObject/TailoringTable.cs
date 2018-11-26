@@ -52,7 +52,7 @@ namespace Eco.Mods.TechTree
     public partial class TailoringTableItem : WorldObjectItem<TailoringTableObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Tailoring Table"); } } 
-        public override string Description  { get { return  "Spearhead the fashion movement with the finest clothes and hair!"; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Spearhead the fashion movement with the finest clothes and hair!"); } }
 
         static TailoringTableItem()
         {

@@ -7,6 +7,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.Objects;
+    using Eco.Shared.Localization;
     using Shared.Serialization;
 
     [Serialized]
