@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<LargeCorrugatedSteelDoorObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Large Corrugated Steel Door"); } } 
-        public override string Description  { get { return  "A large door."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A large door."); } }
 
         static LargeCorrugatedSteelDoorItem()
         {

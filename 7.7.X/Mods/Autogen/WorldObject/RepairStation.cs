@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<RepairStationObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Repair Station"); } } 
-        public override string Description  { get { return  "A place to fix up broken tools."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A place to fix up broken tools."); } }
 
         static RepairStationItem()
         {

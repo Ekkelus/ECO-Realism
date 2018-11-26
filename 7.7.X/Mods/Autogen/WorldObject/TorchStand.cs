@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<TorchStandObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Torch Stand"); } } 
-        public override string Description  { get { return  "A stand for a torch."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A stand for a torch."); } }
 
         static TorchStandItem()
         {

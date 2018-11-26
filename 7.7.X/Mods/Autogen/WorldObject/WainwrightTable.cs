@@ -52,7 +52,7 @@ namespace Eco.Mods.TechTree
     public partial class WainwrightTableItem : WorldObjectItem<WainwrightTableObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Wainwright Table"); } } 
-        public override string Description  { get { return  "A set of smoothing and woodworking tools that assist in creating wheels and transportation."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A set of smoothing and woodworking tools that assist in creating wheels and transportation."); } }
 
         static WainwrightTableItem()
         {

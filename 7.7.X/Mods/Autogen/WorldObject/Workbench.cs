@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
     public partial class WorkbenchItem : WorldObjectItem<WorkbenchObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Workbench"); } } 
-        public override string Description  { get { return  "A bench for the basics and making even more benches."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A bench for the basics and making even more benches."); } }
 
         static WorkbenchItem()
         {

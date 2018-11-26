@@ -46,7 +46,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<SmallHangingHewnLogSignObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Small Hanging Hewn Log Sign"); } } 
-        public override string Description  { get { return  "A small sign for all of your smaller text needs!"; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A small sign for all of your smaller text needs!"); } }
 
         static SmallHangingHewnLogSignItem()
         {

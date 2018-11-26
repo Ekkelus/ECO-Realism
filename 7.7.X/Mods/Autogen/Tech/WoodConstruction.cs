@@ -7,7 +7,7 @@
 // public partial class WoodConstructionSkill : Skill
 // {
 // public override LocString DisplayName { get { return Localizer.DoStr("Wood Construction"); } }
-// public override string Description { get { return Localizer.DoStr(""); } }
+// public override LocString DisplayDescription { get { return Localizer.DoStr(""); } }
 
 // public override int RequiredPoint { get { return 0; } }
 // public override int MaxLevel { get { return 1; } }

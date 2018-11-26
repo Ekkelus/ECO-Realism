@@ -46,7 +46,7 @@ namespace Eco.Mods.TechTree
     public partial class EckoStatueItem : WorldObjectItem<EckoStatueObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Ecko Statue"); } } 
-        public override string Description  { get { return  "A statue of a dolphin. What could it mean?"; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A statue of a dolphin. What could it mean?"); } }
 
         static EckoStatueItem()
         {

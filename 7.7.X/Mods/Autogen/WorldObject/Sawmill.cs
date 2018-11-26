@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
     public partial class SawmillItem : WorldObjectItem<SawmillObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Sawmill"); } } 
-        public override string Description  { get { return  "Used to saw wood into lumber."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Used to saw wood into lumber."); } }
 
         static SawmillItem()
         {

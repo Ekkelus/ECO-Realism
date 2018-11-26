@@ -43,7 +43,7 @@ namespace Eco.Mods.TechTree
     public partial class FramedGlassDoorItem : WorldObjectItem<FramedGlassDoorObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Framed Glass Door"); } } 
-        public override string Description  { get { return  "A beautiful glass door made of steel and glass."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A beautiful glass door made of steel and glass."); } }
 
         [Tooltip(100)]
         public string TierTooltip()

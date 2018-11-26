@@ -85,7 +85,7 @@ namespace Eco.Mods.TechTree
     public partial class CementKilnItem : WorldObjectItem<CementKilnObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Cement Kiln"); } } 
-        public override string Description  { get { return  "A rotary kiln that produces cement and concrete products."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A rotary kiln that produces cement and concrete products."); } }
 
         static CementKilnItem()
         {

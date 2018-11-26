@@ -47,7 +47,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<LargeStandingStoneSignObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Large Standing Stone Sign"); } } 
-        public override string Description  { get { return  "A large sign for all your large text needs!"; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A large sign for all your large text needs!"); } }
 
         static LargeStandingStoneSignItem()
         {

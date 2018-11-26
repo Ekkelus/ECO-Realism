@@ -51,7 +51,7 @@ namespace Eco.Mods.TechTree
     public partial class CarpentryTableItem : WorldObjectItem<CarpentryTableObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Carpentry Table"); } } 
-        public override string Description  { get { return  "A table for basic wooden crafts for home improvement and progress."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A table for basic wooden crafts for home improvement and progress."); } }
 
         static CarpentryTableItem()
         {

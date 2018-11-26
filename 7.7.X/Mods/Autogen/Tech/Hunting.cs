@@ -9,7 +9,7 @@ namespace Eco.Mods.TechTree
     public partial class HuntingSkill : Skill
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Hunting"); } }
-        public override string Description { get { return Localizer.DoStr(""); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr(""); } }
 
        /*  private static List<Tuple<Type, int>> ItemsGiven = new List<Tuple<Type, int>>
         {

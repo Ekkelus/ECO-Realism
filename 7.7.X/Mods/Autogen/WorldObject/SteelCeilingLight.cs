@@ -53,7 +53,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<SteelCeilingLightObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Steel Ceiling Light"); } } 
-        public override string Description  { get { return  "A more modern way to light up a room."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A more modern way to light up a room."); } }
 
         static SteelCeilingLightItem()
         {

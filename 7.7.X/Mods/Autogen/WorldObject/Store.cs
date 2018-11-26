@@ -48,7 +48,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<StoreObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Store"); } } 
-        public override string Description  { get { return  "Allows the selling and trading of items."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Allows the selling and trading of items."); } }
 
         static StoreItem()
         {

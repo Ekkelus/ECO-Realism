@@ -68,7 +68,7 @@ namespace Eco.Mods.TechTree
     public partial class KilnItem : WorldObjectItem<KilnObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Kiln"); } } 
-        public override string Description  { get { return  "Useful for baking bricks and finishing pottery."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Useful for baking bricks and finishing pottery."); } }
 
         static KilnItem()
         {

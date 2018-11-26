@@ -60,7 +60,7 @@ namespace Eco.Mods.TechTree
     public partial class WallCandleItem : WorldObjectItem<WallCandleObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Wall Candle"); } } 
-        public override string Description  { get { return  "A wall mounted candle."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A wall mounted candle."); } }
 
         static WallCandleItem()
         {

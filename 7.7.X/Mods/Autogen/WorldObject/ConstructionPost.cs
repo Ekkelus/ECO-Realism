@@ -45,7 +45,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<ConstructionPostObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Construction Post"); } } 
-        public override string Description  { get { return  "For contruction contracts."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("For contruction contracts."); } }
 
         static ConstructionPostItem()
         {

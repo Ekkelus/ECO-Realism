@@ -55,7 +55,7 @@ namespace Eco.Mods.TechTree
     public partial class ButcheryTableItem : WorldObjectItem<ButcheryTableObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Butchery Table"); } } 
-        public override string Description  { get { return  "A block and cleaver to process raw meat into fancier dishes."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A block and cleaver to process raw meat into fancier dishes."); } }
 
         static ButcheryTableItem()
         {

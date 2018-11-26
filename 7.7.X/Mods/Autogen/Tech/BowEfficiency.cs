@@ -10,7 +10,7 @@ namespace Eco.Mods.TechTree
     public partial class BowEfficiencySkill : Skill
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Bow Efficiency"); } }
-        public override string Description { get { return Localizer.DoStr(""); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr(""); } }
 
         public static ModificationStrategy MultiplicativeStrategy = 
             new MultiplicativeStrategy(new float[] { 1, 1 - 0.1f, 1 - 0.2f, 1 - 0.3f, 1 - 0.4f, 1 - 0.5f });

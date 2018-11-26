@@ -68,7 +68,7 @@ namespace Eco.Mods.TechTree
     public partial class BrazierItem : WorldObjectItem<BrazierObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Brazier"); } } 
-        public override string Description  { get { return  "A metal stand which can hold burning fuel to provide light."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A metal stand which can hold burning fuel to provide light."); } }
 
         static BrazierItem()
         {

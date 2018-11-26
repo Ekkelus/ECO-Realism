@@ -46,7 +46,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<StuffedElkObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Stuffed Elk"); } } 
-        public override string Description  { get { return  "It looks so real!"; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("It looks so real!"); } }
 
         static StuffedElkItem()
         {

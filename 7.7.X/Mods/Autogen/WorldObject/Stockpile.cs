@@ -13,7 +13,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<StockpileObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Stockpile"); } } 
-        public override string Description  { get { return  "Designates a 5x5x5 area as storage for large items."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Designates a 5x5x5 area as storage for large items."); } }
 
         static StockpileItem()
         {

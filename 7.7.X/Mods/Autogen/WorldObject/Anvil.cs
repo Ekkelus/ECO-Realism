@@ -55,7 +55,7 @@ namespace Eco.Mods.TechTree
     public partial class AnvilItem : WorldObjectItem<AnvilObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Anvil"); } } 
-        public override string Description  { get { return  "A solid shaped piece of metal used to hammer ingots into tools and other useful things."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A solid shaped piece of metal used to hammer ingots into tools and other useful things."); } }
 
         static AnvilItem()
         {

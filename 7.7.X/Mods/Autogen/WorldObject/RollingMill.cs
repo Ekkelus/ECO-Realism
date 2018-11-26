@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
         WorldObjectItem<RollingMillObject> 
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Rolling Mill"); } } 
-        public override string Description  { get { return  "For rolling steel into more buildable materials."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("For rolling steel into more buildable materials."); } }
 
         static RollingMillItem()
         {

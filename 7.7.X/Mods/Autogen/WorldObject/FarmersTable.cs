@@ -49,7 +49,7 @@ namespace Eco.Mods.TechTree
     public partial class FarmersTableItem : WorldObjectItem<FarmersTableObject>
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Farmers Table"); } } 
-        public override string Description  { get { return  "A basic table for creating farming tools and similar products."; } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A basic table for creating farming tools and similar products."); } }
 
         static FarmersTableItem()
         {
