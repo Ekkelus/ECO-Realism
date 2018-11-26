@@ -4,6 +4,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Skills;
+    using Eco.Shared.Localization;
 
     [RequiresSkill(typeof(BowEfficiencySkill), 0)]   
     public partial class BowRecipe : Recipe

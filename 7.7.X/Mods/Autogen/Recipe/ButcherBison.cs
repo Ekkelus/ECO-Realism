@@ -3,6 +3,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Skills;
+    using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
     [RequiresSkill(typeof(LargeButcherySkill), 3)] 

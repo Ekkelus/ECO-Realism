@@ -5,6 +5,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.World;
     using Eco.World.Blocks;
