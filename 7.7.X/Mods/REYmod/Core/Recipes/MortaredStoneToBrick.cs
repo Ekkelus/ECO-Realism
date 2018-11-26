@@ -2,6 +2,7 @@
 using Eco.Gameplay.Items;
 using Eco.Gameplay.Skills;
 using Eco.Gameplay.Systems.TextLinks;
+using Eco.Shared.Localization;
 
 namespace Eco.Mods.TechTree
 {

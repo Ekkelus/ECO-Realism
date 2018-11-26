@@ -4,6 +4,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Shared.Localization;
 
     [RequiresSkill(typeof(FishingSkill), 1)]   
     public partial class FishingPoleRecipe : Recipe

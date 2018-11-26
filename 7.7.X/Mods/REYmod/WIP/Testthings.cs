@@ -110,9 +110,9 @@ namespace REYmod.TestStuff
 			{
 				if (item.HasIngredient(ingredient.Type))
 				{
-					ChatUtils.SendMessage(user, item.FriendlyName + " contains " + ingredient.FriendlyName);
+					ChatUtils.SendMessage(user, item.DisplayName + " contains " + ingredient.DisplayName);
 				}
-				else ChatUtils.SendMessage(user, item.FriendlyName + " does not contain " + ingredient.FriendlyName);
+				else ChatUtils.SendMessage(user, item.DisplayName + " does not contain " + ingredient.DisplayName);
 
 			}
 			else ChatUtils.SendMessage(user, "ERROR");

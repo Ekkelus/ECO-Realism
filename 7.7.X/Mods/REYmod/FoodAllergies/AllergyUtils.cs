@@ -25,7 +25,7 @@ namespace REYmod.Utils
 		{
 			if (REYmodSettings.Obj.Config.Foodallergiesenabled && user.IsAllergicTo(food))
 			{
-				ChatUtils.SendMessage(user, "You are allergic to " + food.FriendlyName + "!");
+				ChatUtils.SendMessage(user, "You are allergic to " + food.DisplayName + "!");
 				//user.Stomach.UseCalories(food.Calories * 2);
 				user.Stomach.Contents.Remove(user.Stomach.Contents.First(x => x.Food == food));
 				FoodItem rottenfood = new RottenFoodItem();
