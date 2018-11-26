@@ -93,7 +93,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(SolarGeneratorRecipe), Item.Get<SolarGeneratorItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SolarGeneratorItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Solar Generator", typeof(SolarGeneratorRecipe));
+            this.Initialize(Localizer.DoStr("Solar Generator"), typeof(SolarGeneratorRecipe));
             CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }
     }

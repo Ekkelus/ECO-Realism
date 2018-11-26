@@ -81,7 +81,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(CurrencyExchangeRecipe), Item.Get<CurrencyExchangeItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CurrencyExchangeItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Currency Exchange", typeof(CurrencyExchangeRecipe));
+            this.Initialize(Localizer.DoStr("Currency Exchange"), typeof(CurrencyExchangeRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

@@ -99,7 +99,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(TallowWallLampRecipe), Item.Get<TallowWallLampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<TallowWallLampItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Tallow Wall Lamp", typeof(TallowWallLampRecipe));
+            this.Initialize(Localizer.DoStr("Tallow Wall Lamp"), typeof(TallowWallLampRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

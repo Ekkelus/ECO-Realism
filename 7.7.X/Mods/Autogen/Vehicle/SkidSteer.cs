@@ -37,7 +37,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(25);
 
-            this.Initialize("Skid Steer", typeof(SkidSteerRecipe));
+            this.Initialize(Localizer.DoStr("Skid Steer"), typeof(SkidSteerRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

@@ -56,7 +56,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(LaserRecipe), Item.Get<LaserItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<LaserItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Laser", typeof(LaserRecipe));
+            this.Initialize(Localizer.DoStr("Laser"), typeof(LaserRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

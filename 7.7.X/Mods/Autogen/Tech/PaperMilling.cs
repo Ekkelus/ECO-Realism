@@ -45,7 +45,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(15);
 
-            this.Initialize("Paper Milling Skill Book", typeof(PaperMillingSkillBookRecipe));
+            this.Initialize(Localizer.DoStr("Paper Milling Skill Book"), typeof(PaperMillingSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

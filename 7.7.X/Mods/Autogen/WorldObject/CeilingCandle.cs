@@ -99,7 +99,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(CeilingCandleRecipe), Item.Get<CeilingCandleItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CeilingCandleItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Ceiling Candle", typeof(CeilingCandleRecipe));
+            this.Initialize(Localizer.DoStr("Ceiling Candle"), typeof(CeilingCandleRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

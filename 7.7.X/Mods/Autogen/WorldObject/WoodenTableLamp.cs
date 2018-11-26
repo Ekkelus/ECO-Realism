@@ -93,7 +93,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WoodenTableLampRecipe), Item.Get<WoodenTableLampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WoodenTableLampItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Wooden Table Lamp", typeof(WoodenTableLampRecipe));
+            this.Initialize(Localizer.DoStr("Wooden Table Lamp"), typeof(WoodenTableLampRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }

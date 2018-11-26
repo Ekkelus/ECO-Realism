@@ -81,7 +81,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(HewnLogDoorRecipe), Item.Get<HewnLogDoorItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<HewnLogDoorItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Hewn Log Door", typeof(HewnLogDoorRecipe));
+            this.Initialize(Localizer.DoStr("Hewn Log Door"), typeof(HewnLogDoorRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<RiceItem>(typeof(CulinaryArtsEfficiencySkill), 20, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(SushiRecipe), Item.Get<SushiItem>().UILink(), 15, typeof(CulinaryArtsSpeedSkill));
-            this.Initialize("Sushi", typeof(SushiRecipe));
+            this.Initialize(Localizer.DoStr("Sushi"), typeof(SushiRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }
     }

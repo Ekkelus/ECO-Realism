@@ -38,7 +38,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<CriminiMushroomsItem>(typeof(HomeCookingEfficiencySkill), 20, HomeCookingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(ClamChowderRecipe), Item.Get<ClamChowderItem>().UILink(), 10, typeof(HomeCookingSpeedSkill));
-            this.Initialize("Clam Chowder", typeof(ClamChowderRecipe));
+            this.Initialize(Localizer.DoStr("Clam Chowder"), typeof(ClamChowderRecipe));
             CraftingComponent.AddRecipe(typeof(CastIronStoveObject), this);
         }
     }

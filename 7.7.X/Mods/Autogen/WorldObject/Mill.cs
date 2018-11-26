@@ -101,7 +101,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(MillRecipe), Item.Get<MillItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<MillItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Mill", typeof(MillRecipe));
+            this.Initialize(Localizer.DoStr("Mill"), typeof(MillRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }
     }

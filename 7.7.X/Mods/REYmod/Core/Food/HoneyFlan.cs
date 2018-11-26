@@ -37,7 +37,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SugarItem>(typeof(CulinaryArtsEfficiencySkill), 15, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyFlanRecipe), Item.Get<HoneyFlanItem>().UILink(), 15, typeof(CulinaryArtsSpeedSkill));
-            this.Initialize("Honey Flan", typeof(HoneyFlanRecipe));
+            this.Initialize(Localizer.DoStr("Honey Flan"), typeof(HoneyFlanRecipe));
             CraftingComponent.AddRecipe(typeof(StoveObject), this);
         }
     }

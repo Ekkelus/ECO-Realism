@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(SmallHangingHewnLogSignRecipe), Item.Get<SmallHangingHewnLogSignItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SmallHangingHewnLogSignItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Small Hanging Hewn Log Sign", typeof(SmallHangingHewnLogSignRecipe));
+            this.Initialize(Localizer.DoStr("Small Hanging Hewn Log Sign"), typeof(SmallHangingHewnLogSignRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

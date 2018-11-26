@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ScrapMeatItem>(typeof(LeavenedBakingEfficiencySkill), 10, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(PizzaRecipe), Item.Get<PizzaItem>().UILink(), 15, typeof(LeavenedBakingSpeedSkill));
-            this.Initialize("Pizza", typeof(PizzaRecipe));
+            this.Initialize(Localizer.DoStr("Pizza"), typeof(PizzaRecipe));
             CraftingComponent.AddRecipe(typeof(BakeryOvenObject), this);
         }
     }

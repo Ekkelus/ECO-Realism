@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<HuckleberrySeedItem>().UILink(), value);
             this.CraftMinutes = value;
 
-            this.Initialize("Huckleberry Seed", typeof(HuckleberrySeedRecipe));
+            this.Initialize(Localizer.DoStr("Huckleberry Seed"), typeof(HuckleberrySeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

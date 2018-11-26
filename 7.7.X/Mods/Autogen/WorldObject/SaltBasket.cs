@@ -85,7 +85,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(SaltBasketRecipe), Item.Get<SaltBasketItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SaltBasketItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Salt Basket", typeof(SaltBasketRecipe));
+            this.Initialize(Localizer.DoStr("Salt Basket"), typeof(SaltBasketRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

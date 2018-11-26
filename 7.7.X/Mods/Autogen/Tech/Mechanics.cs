@@ -50,7 +50,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(30);
 
-            this.Initialize("Mechanics Skill Book", typeof(MechanicsSkillBookRecipe));
+            this.Initialize(Localizer.DoStr("Mechanics Skill Book"), typeof(MechanicsSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

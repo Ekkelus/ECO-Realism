@@ -51,7 +51,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(ComputerLabRecipe), Item.Get<ComputerLabItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ComputerLabItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Computer Lab", typeof(ComputerLabRecipe));
+            this.Initialize(Localizer.DoStr("Computer Lab"), typeof(ComputerLabRecipe));
             CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }
     }

@@ -33,7 +33,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(25);
 
-            this.Initialize("Wooden Elevator", typeof(WoodenElevatorRecipe));
+            this.Initialize(Localizer.DoStr("Wooden Elevator"), typeof(WoodenElevatorRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

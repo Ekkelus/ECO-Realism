@@ -87,7 +87,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(RollingMillRecipe), Item.Get<RollingMillItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<RollingMillItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Rolling Mill", typeof(RollingMillRecipe));
+            this.Initialize(Localizer.DoStr("Rolling Mill"), typeof(RollingMillRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

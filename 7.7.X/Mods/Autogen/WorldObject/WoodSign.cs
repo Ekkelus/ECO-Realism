@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WoodSignRecipe), Item.Get<WoodSignItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WoodSignItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Wood Sign", typeof(WoodSignRecipe));
+            this.Initialize(Localizer.DoStr("Wood Sign"), typeof(WoodSignRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }

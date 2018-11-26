@@ -87,7 +87,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(PlanterPotSquareRecipe), Item.Get<PlanterPotSquareItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<PlanterPotSquareItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Planter Pot Square", typeof(PlanterPotSquareRecipe));
+            this.Initialize(Localizer.DoStr("Planter Pot Square"), typeof(PlanterPotSquareRecipe));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }
     }

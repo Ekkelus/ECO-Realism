@@ -90,7 +90,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WoodenFabricBedRecipe), Item.Get<WoodenFabricBedItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WoodenFabricBedItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Wooden Fabric Bed", typeof(WoodenFabricBedRecipe));
+            this.Initialize(Localizer.DoStr("Wooden Fabric Bed"), typeof(WoodenFabricBedRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }
