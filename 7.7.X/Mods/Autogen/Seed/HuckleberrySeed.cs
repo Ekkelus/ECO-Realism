@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Huckleberry Seed"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow a huckleberry bush."); } }
-        public override string SpeciesName  { get { return "Huckleberry"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Huckleberry"); } }
 
         public override float Calories { get { return 0; } }
         public override Nutrients Nutrition { get { return nutrition; } }
@@ -43,7 +43,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Huckleberry Seed Pack"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow a huckleberry bush."); } }
-        public override string SpeciesName  { get { return "Huckleberry"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Huckleberry"); } }
     }
 
     [RequiresSkill(typeof(SeedProductionSkill), 2)]    

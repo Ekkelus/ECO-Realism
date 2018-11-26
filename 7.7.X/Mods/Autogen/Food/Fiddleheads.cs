@@ -12,7 +12,6 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Items;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-	using Eco.Shared.Localization;
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     

@@ -28,7 +28,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Grass Seed"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow grass."); } }
-        public override string SpeciesName  { get { return "CommonGrass"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("CommonGrass"); } }
 
         public override float Calories { get { return 0; } }
         public override Nutrients Nutrition { get { return nutrition; } }
@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Grass Seed Pack"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow grass."); } }
-        public override string SpeciesName  { get { return "CommonGrass"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("CommonGrass"); } }
     }
 
 }
