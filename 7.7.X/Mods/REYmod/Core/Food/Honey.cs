@@ -43,7 +43,7 @@ namespace Eco.Mods.TechTree
             //    , new LayerModifiedValue("Camas", 5))
             //));
             this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 10, typeof(BeekeeperSpeedSkill));
-            this.Initialize("Honey", typeof(HoneyRecipe));
+            this.Initialize(Localizer.Do("Honey"), typeof(HoneyRecipe));
             CraftingComponent.AddRecipe(typeof(BeehiveObject), this);
         }
     }
