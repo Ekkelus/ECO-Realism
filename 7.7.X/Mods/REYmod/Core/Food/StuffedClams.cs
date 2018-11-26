@@ -37,7 +37,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<WheatItem>(typeof(HomeCookingEfficiencySkill), 20, HomeCookingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(StuffedClamsRecipe), Item.Get<StuffedClamsItem>().UILink(), 15, typeof(HomeCookingSpeedSkill));
-            this.Initialize("Stuffed Clams", typeof(StuffedClamsRecipe));
+            this.Initialize(Localizer.Do("Stuffed Clams"), typeof(StuffedClamsRecipe));
             CraftingComponent.AddRecipe(typeof(CastIronStoveObject), this);
         }
     }

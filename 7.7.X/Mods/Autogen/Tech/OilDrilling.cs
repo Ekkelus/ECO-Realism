@@ -50,7 +50,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(30);
 
-            this.Initialize("Oil Drilling Skill Book", typeof(OilDrillingSkillBookRecipe));
+            this.Initialize(Localizer.Do("Oil Drilling Skill Book"), typeof(OilDrillingSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

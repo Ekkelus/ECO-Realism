@@ -90,7 +90,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WindmillRecipe), Item.Get<WindmillItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WindmillItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Windmill", typeof(WindmillRecipe));
+            this.Initialize(Localizer.Do("Windmill"), typeof(WindmillRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

@@ -37,7 +37,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(5);
 
-            this.Initialize("Small Wood Cart", typeof(SmallWoodCartRecipe));
+            this.Initialize(Localizer.Do("Small Wood Cart"), typeof(SmallWoodCartRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

@@ -25,7 +25,7 @@
             {
                 new CraftingElement<UrchinItem>(typeof(FishCleaningEfficiencySkill), 4, FishCleaningEfficiencySkill.MultiplicativeStrategy), 
             };
-            this.Initialize("Clean Urchins", typeof(CleanUrchinsRecipe));
+            this.Initialize(Localizer.Do("Clean Urchins"), typeof(CleanUrchinsRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(CleanUrchinsRecipe), this.UILink(), 0.2f, typeof(FishCleaningSpeedSkill));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }

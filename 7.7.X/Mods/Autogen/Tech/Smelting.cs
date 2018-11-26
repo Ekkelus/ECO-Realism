@@ -50,7 +50,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(15);
 
-            this.Initialize("Smelting Skill Book", typeof(SmeltingSkillBookRecipe));
+            this.Initialize(Localizer.Do("Smelting Skill Book"), typeof(SmeltingSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

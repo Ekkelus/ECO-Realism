@@ -91,7 +91,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WoodenStrawBedRecipe), Item.Get<WoodenStrawBedItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WoodenStrawBedItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Wooden Straw Bed", typeof(WoodenStrawBedRecipe));
+            this.Initialize(Localizer.Do("Wooden Straw Bed"), typeof(WoodenStrawBedRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

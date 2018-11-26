@@ -94,7 +94,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(PumpJackRecipe), Item.Get<PumpJackItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<PumpJackItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Pump Jack", typeof(PumpJackRecipe));
+            this.Initialize(Localizer.Do("Pump Jack"), typeof(PumpJackRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

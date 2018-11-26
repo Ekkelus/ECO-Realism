@@ -117,7 +117,7 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
                 new CraftingElement<IronIngotItem>(20),
             };
             this.CraftMinutes = new ConstantValue(10);
-            this.Initialize("Small Animal Trap", typeof(SmallAnimalTrapRecipe));
+            this.Initialize(Localizer.Do("Small Animal Trap"), typeof(SmallAnimalTrapRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<FireweedSeedItem>().UILink(), value);
             this.CraftMinutes = value;
 
-            this.Initialize("Fireweed Seed", typeof(FireweedSeedRecipe));
+            this.Initialize(Localizer.Do("Fireweed Seed"), typeof(FireweedSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

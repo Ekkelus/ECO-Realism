@@ -25,7 +25,7 @@
             {
                 new CraftingElement<ClamItem>(typeof(FishCleaningEfficiencySkill), 5, FishCleaningEfficiencySkill.MultiplicativeStrategy), 
             };
-            this.Initialize("Shuck Clams", typeof(ShuckClamsRecipe));
+            this.Initialize(Localizer.Do("Shuck Clams"), typeof(ShuckClamsRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(ShuckClamsRecipe), this.UILink(), 0.2f, typeof(FishCleaningSpeedSkill));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }

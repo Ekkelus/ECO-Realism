@@ -47,7 +47,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(15);
 
-            this.Initialize("Glassworking Skill Book", typeof(GlassworkingSkillBookRecipe));
+            this.Initialize(Localizer.Do("Glassworking Skill Book"), typeof(GlassworkingSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

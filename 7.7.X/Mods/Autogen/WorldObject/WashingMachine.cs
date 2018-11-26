@@ -98,7 +98,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WashingMachineRecipe), Item.Get<WashingMachineItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WashingMachineItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Washing Machine", typeof(WashingMachineRecipe));
+            this.Initialize(Localizer.Do("Washing Machine"), typeof(WashingMachineRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

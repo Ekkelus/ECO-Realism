@@ -94,7 +94,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(KitchenRecipe), Item.Get<KitchenItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<KitchenItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Kitchen", typeof(KitchenRecipe));
+            this.Initialize(Localizer.Do("Kitchen"), typeof(KitchenRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }

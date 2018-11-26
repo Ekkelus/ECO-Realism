@@ -88,7 +88,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(BeehiveRecipe), Item.Get<BeehiveItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BeehiveItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Beehive", typeof(BeehiveRecipe));
+            this.Initialize(Localizer.Do("Beehive"), typeof(BeehiveRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

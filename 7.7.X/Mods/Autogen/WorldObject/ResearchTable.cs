@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PlantFibersItem>(30),                                                                    
             };
             this.CraftMinutes = new ConstantValue(5); 
-            this.Initialize("Research Table", typeof(ResearchTableRecipe));
+            this.Initialize(Localizer.Do("Research Table"), typeof(ResearchTableRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

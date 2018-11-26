@@ -84,7 +84,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(RugSmallRecipe), Item.Get<RugSmallItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<RugSmallItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Rug Small", typeof(RugSmallRecipe));
+            this.Initialize(Localizer.Do("Rug Small"), typeof(RugSmallRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }
     }

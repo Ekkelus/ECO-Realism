@@ -103,7 +103,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(BloomeryRecipe), Item.Get<BloomeryItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BloomeryItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Bloomery", typeof(BloomeryRecipe));
+            this.Initialize(Localizer.Do("Bloomery"), typeof(BloomeryRecipe));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }
     }

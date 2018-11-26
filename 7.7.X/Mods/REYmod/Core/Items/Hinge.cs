@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 2, MetalworkingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(HingeRecipe), Item.Get<HingeItem>().UILink(), 7, typeof(MetalworkingSpeedSkill));
-            this.Initialize("Hinge", typeof(HingeRecipe));
+            this.Initialize(Localizer.Do("Hinge"), typeof(HingeRecipe));
 
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }

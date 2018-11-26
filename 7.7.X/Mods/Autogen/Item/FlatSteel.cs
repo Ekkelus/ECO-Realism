@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<EpoxyItem>(typeof(SteelworkingEfficiencySkill), 1, SteelworkingEfficiencySkill.MultiplicativeStrategy), 
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(FlatSteelRecipe), Item.Get<FlatSteelItem>().UILink(), 5, typeof(SteelworkingSpeedSkill));    
-            this.Initialize("Flat Steel", typeof(FlatSteelRecipe));
+            this.Initialize(Localizer.Do("Flat Steel"), typeof(FlatSteelRecipe));
 
             CraftingComponent.AddRecipe(typeof(RollingMillObject), this);
         }

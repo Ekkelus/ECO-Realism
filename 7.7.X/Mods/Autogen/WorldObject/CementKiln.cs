@@ -126,7 +126,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(CementKilnRecipe), Item.Get<CementKilnItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CementKilnItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Cement Kiln", typeof(CementKilnRecipe));
+            this.Initialize(Localizer.Do("Cement Kiln"), typeof(CementKilnRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

@@ -18,7 +18,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<HewnLogItem>(typeof(LumberWoodworkingEfficiencySkill), 2, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy), 
             };
-            this.Initialize("Saw Boards", typeof(SawBoardsRecipe));
+            this.Initialize(Localizer.Do("Saw Boards"), typeof(SawBoardsRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(SawBoardsRecipe), this.UILink(), 0.5f, typeof(LumberWoodworkingSpeedSkill));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }

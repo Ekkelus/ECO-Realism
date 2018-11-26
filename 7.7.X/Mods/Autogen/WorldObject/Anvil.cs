@@ -90,7 +90,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(AnvilRecipe), Item.Get<AnvilItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<AnvilItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Anvil", typeof(AnvilRecipe));
+            this.Initialize(Localizer.Do("Anvil"), typeof(AnvilRecipe));
             CraftingComponent.AddRecipe(typeof(BloomeryObject), this);
         }
     }
