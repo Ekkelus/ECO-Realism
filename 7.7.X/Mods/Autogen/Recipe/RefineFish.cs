@@ -20,7 +20,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SalmonItem>(typeof(MolecularGastronomyEfficiencySkill), 5, MolecularGastronomyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<TroutItem>(typeof(MolecularGastronomyEfficiencySkill), 5, MolecularGastronomyEfficiencySkill.MultiplicativeStrategy),
             };
-            this.Initialize(Localizer.Do("Refine Fish"), typeof(RefineFishRecipe));
+            this.Initialize("Refine Fish", typeof(RefineFishRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(RefineFishRecipe), this.UILink(), 5, typeof(MolecularGastronomySpeedSkill));
             CraftingComponent.AddRecipe(typeof(LaboratoryObject), this);
         }

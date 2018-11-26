@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(50);
 
-            this.Initialize(Localizer.Do("Excavator"), typeof(ExcavatorRecipe));
+            this.Initialize("Excavator", typeof(ExcavatorRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

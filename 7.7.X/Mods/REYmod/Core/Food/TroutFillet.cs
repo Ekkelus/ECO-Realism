@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
 				new CraftingElement<TroutItem>(typeof(FishCleaningEfficiencySkill), 1, FishCleaningEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(TroutFilletRecipe), Item.Get<TroutFilletItem>().UILink(), 3, typeof(FishCleaningSpeedSkill));
-            this.Initialize(Localizer.Do("Trout Fillet"), typeof(TroutFilletRecipe));
+            this.Initialize("Trout Fillet", typeof(TroutFilletRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }

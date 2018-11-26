@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<RawDiamondItem>(typeof(StoneworkingEfficiencySkill), 10, StoneworkingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(DiamondCutRecipe), Item.Get<DiamondCutItem>().UILink(), 60, typeof(StoneworkingSpeedSkill));
-            this.Initialize(Localizer.Do("Cut Diamond"), typeof(DiamondCutRecipe));
+            this.Initialize("Cut Diamond", typeof(DiamondCutRecipe));
 
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }

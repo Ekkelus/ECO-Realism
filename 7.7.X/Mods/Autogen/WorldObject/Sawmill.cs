@@ -88,7 +88,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(SawmillRecipe), Item.Get<SawmillItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SawmillItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Sawmill"), typeof(SawmillRecipe));
+            this.Initialize("Sawmill", typeof(SawmillRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

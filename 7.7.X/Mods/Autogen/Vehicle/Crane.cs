@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(25);
 
-            this.Initialize(Localizer.Do("Crane"), typeof(CraneRecipe));
+            this.Initialize("Crane", typeof(CraneRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

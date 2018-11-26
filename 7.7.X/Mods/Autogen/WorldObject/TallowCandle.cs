@@ -93,7 +93,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<TallowItem>(3),   
             };
             this.CraftMinutes = new ConstantValue(2.5f);
-            this.Initialize(Localizer.Do("Tallow Candle"), typeof(TallowCandleRecipe));
+            this.Initialize("Tallow Candle", typeof(TallowCandleRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

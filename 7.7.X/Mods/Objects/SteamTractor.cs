@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(25);
 
-            this.Initialize(Localizer.Do("Steam Tractor"), typeof(SteamTractorRecipe));
+            this.Initialize("Steam Tractor", typeof(SteamTractorRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

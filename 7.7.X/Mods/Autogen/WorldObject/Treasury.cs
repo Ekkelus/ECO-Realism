@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(TreasuryRecipe), Item.Get<TreasuryItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<TreasuryItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Treasury"), typeof(TreasuryRecipe));
+            this.Initialize("Treasury", typeof(TreasuryRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

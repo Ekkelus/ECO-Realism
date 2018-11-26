@@ -20,7 +20,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<StringItem>(typeof(BowEfficiencySkill), 3, BowEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
-            this.Initialize(Localizer.Do("Bow"), typeof(BowRecipe));
+            this.Initialize("Bow", typeof(BowRecipe));
 
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

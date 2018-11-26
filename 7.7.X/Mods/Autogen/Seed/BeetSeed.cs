@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BeetSeedItem>().UILink(), value);
             this.CraftMinutes = value;
 
-            this.Initialize(Localizer.Do("Beet Seed"), typeof(BeetSeedRecipe));
+            this.Initialize("Beet Seed", typeof(BeetSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

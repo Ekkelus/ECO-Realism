@@ -19,7 +19,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SteelItem>(typeof(IndustrialEngineeringEfficiencySkill), 4, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<RivetItem>(typeof(IndustrialEngineeringEfficiencySkill), 8, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
             };
-            this.Initialize(Localizer.Do("Mass Barrels"), typeof(MassBarrelsRecipe));
+            this.Initialize("Mass Barrels", typeof(MassBarrelsRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(MassBarrelsRecipe), this.UILink(), 5, typeof(IndustrialEngineeringSpeedSkill));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }

@@ -98,7 +98,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(IceboxRecipe), Item.Get<IceboxItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<IceboxItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Icebox"), typeof(IceboxRecipe));
+            this.Initialize("Icebox", typeof(IceboxRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

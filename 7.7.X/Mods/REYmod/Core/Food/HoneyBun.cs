@@ -38,7 +38,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<FlourItem>(typeof(LeavenedBakingEfficiencySkill), 6, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyBunRecipe), Item.Get<HoneyBunItem>().UILink(), 10, typeof(LeavenedBakingSpeedSkill));
-            this.Initialize(Localizer.Do("Honey Bun"), typeof(HoneyBunRecipe));
+            this.Initialize("Honey Bun", typeof(HoneyBunRecipe));
             CraftingComponent.AddRecipe(typeof(BakeryOvenObject), this);
         }
     }

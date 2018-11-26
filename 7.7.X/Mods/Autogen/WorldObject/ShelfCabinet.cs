@@ -97,7 +97,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(ShelfCabinetRecipe), Item.Get<ShelfCabinetItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ShelfCabinetItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Shelf Cabinet"), typeof(ShelfCabinetRecipe));
+            this.Initialize("Shelf Cabinet", typeof(ShelfCabinetRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }

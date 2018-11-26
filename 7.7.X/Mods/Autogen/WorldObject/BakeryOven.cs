@@ -111,7 +111,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(BakeryOvenRecipe), Item.Get<BakeryOvenItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BakeryOvenItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Bakery Oven"), typeof(BakeryOvenRecipe));
+            this.Initialize("Bakery Oven", typeof(BakeryOvenRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }
     }

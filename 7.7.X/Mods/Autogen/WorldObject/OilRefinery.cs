@@ -120,7 +120,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(OilRefineryRecipe), Item.Get<OilRefineryItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<OilRefineryItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize(Localizer.Do("Oil Refinery"), typeof(OilRefineryRecipe));
+            this.Initialize("Oil Refinery", typeof(OilRefineryRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
