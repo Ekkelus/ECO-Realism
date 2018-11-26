@@ -11,9 +11,8 @@ using Eco.Gameplay.Objects;
 using Eco.Gameplay.Players;
 using Eco.Mods.TechTree;
 using Eco.Shared.Math;
-using Eco.Shared.Networking;
 using Eco.Shared.Serialization;
-	using Eco.Shared.Localization;
+using Eco.Shared.Localization;
 using Eco.World;
 using Eco.World.Blocks;
 
