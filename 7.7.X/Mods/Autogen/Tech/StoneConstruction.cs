@@ -42,7 +42,7 @@
 // };
 // this.CraftMinutes = new ConstantValue(5);
 
-// this.Initialize("Stone Construction Skill Book", typeof(StoneConstructionSkillBookRecipe));
+// this.Initialize(Localizer.Do("Stone Construction Skill Book"), typeof(StoneConstructionSkillBookRecipe));
 // CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
 // }
 // }

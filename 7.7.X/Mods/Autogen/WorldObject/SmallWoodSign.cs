@@ -39,7 +39,7 @@
 //            SkillModifiedValueManager.AddBenefitForObject(typeof(SmallWoodSignRecipe), Item.Get<SmallWoodSignItem>().UILink(), value);
 //            SkillModifiedValueManager.AddSkillBenefit(Item.Get<SmallWoodSignItem>().UILink(), value);
 //            this.CraftMinutes = value;
-//            this.Initialize("Small Wood Sign", typeof(SmallWoodSignRecipe));
+//            this.Initialize(Localizer.Do("Small Wood Sign"), typeof(SmallWoodSignRecipe));
 //            CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
 //        }
 //    }

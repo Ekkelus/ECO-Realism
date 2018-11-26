@@ -19,7 +19,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<ElkCarcassItem>(1),
             };
-            this.Initialize("Skin Elk", typeof(SkinElkRecipe));
+            this.Initialize(Localizer.Do("Skin Elk"), typeof(SkinElkRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(SkinElkRecipe), this.UILink(), 1, typeof(SkinningSpeedSkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }

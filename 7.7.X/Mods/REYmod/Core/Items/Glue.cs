@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<GlassJarItem>(1),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(GlueRecipe), Item.Get<GlueItem>().UILink(), 3, typeof(MeatPrepSpeedSkill));
-            this.Initialize("Glue", typeof(GlueRecipe));
+            this.Initialize(Localizer.Do("Glue"), typeof(GlueRecipe));
 
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);
         }

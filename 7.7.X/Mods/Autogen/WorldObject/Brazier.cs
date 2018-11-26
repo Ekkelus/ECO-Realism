@@ -106,7 +106,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(BrazierRecipe), Item.Get<BrazierItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BrazierItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Brazier", typeof(BrazierRecipe));
+            this.Initialize(Localizer.Do("Brazier"), typeof(BrazierRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

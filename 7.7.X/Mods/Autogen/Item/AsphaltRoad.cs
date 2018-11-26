@@ -26,7 +26,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PetroleumItem>(typeof(RoadConstructionEfficiencySkill), 1, RoadConstructionEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(AsphaltRoadRecipe), Item.Get<AsphaltRoadItem>().UILink(), 1, typeof(RoadConstructionSkill));    
-            this.Initialize("Asphalt Road", typeof(AsphaltRoadRecipe));
+            this.Initialize(Localizer.Do("Asphalt Road"), typeof(AsphaltRoadRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }

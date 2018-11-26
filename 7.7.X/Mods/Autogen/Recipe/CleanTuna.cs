@@ -25,7 +25,7 @@
             {
                 new CraftingElement<TunaItem>(typeof(FishCleaningEfficiencySkill), 1, FishCleaningEfficiencySkill.MultiplicativeStrategy), 
             };
-            this.Initialize("Clean Tuna", typeof(CleanTunaRecipe));
+            this.Initialize(Localizer.Do("Clean Tuna"), typeof(CleanTunaRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(CleanTunaRecipe), this.UILink(), 2, typeof(FishCleaningSpeedSkill));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }

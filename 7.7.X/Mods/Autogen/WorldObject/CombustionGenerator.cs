@@ -125,7 +125,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(CombustionGeneratorRecipe), Item.Get<CombustionGeneratorItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CombustionGeneratorItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Combustion Generator", typeof(CombustionGeneratorRecipe));
+            this.Initialize(Localizer.Do("Combustion Generator"), typeof(CombustionGeneratorRecipe));
             CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);
         }
     }

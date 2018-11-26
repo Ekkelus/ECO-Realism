@@ -93,7 +93,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(StreetlampRecipe), Item.Get<StreetlampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StreetlampItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Streetlamp", typeof(StreetlampRecipe));
+            this.Initialize(Localizer.Do("Streetlamp"), typeof(StreetlampRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

@@ -19,7 +19,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<SkinnedWolfItem>(typeof(LargeButcheryEfficiencySkill), 1, LargeButcheryEfficiencySkill.MultiplicativeStrategy), 
             };
-            this.Initialize("Butcher Wolf", typeof(ButcherWolfRecipe));
+            this.Initialize(Localizer.Do("Butcher Wolf"), typeof(ButcherWolfRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(ButcherWolfRecipe), this.UILink(), 1.5f, typeof(LargeButcherySpeedSkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }

@@ -19,7 +19,7 @@
                 new CraftingElement<RiceSludgeItem>(typeof(CampfireCreationsEfficiencySkill), 5, CampfireCreationsEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<GlassJarItem>(1),
             };
-            this.Initialize("Rice Glue", typeof(RiceGlueRecipe));
+            this.Initialize(Localizer.Do("Rice Glue"), typeof(RiceGlueRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(RiceGlueRecipe), this.UILink(), 5, typeof(CampfireCreationsSpeedSkill));
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);
         }

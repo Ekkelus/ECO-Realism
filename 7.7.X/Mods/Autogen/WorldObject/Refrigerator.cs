@@ -105,7 +105,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(RefrigeratorRecipe), Item.Get<RefrigeratorItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<RefrigeratorItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Refrigerator", typeof(RefrigeratorRecipe));
+            this.Initialize(Localizer.Do("Refrigerator"), typeof(RefrigeratorRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

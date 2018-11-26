@@ -92,7 +92,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<RopeItem>(1),
             };
             this.CraftMinutes = new ConstantValue(2); 
-            this.Initialize("Torch Stand", typeof(TorchStandRecipe));
+            this.Initialize(Localizer.Do("Torch Stand"), typeof(TorchStandRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(FishTrapRecipe), Item.Get<FishTrapItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<FishTrapItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Fish Trap", typeof(FishTrapRecipe));
+            this.Initialize(Localizer.Do("Fish Trap"), typeof(FishTrapRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }

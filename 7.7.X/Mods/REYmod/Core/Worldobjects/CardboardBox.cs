@@ -78,7 +78,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(CardboardBoxRecipe), Item.Get<CardboardBoxItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CardboardBoxItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Cardboard Box", typeof(CardboardBoxRecipe));
+            this.Initialize(Localizer.Do("Cardboard Box"), typeof(CardboardBoxRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

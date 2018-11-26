@@ -122,7 +122,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(BlastFurnaceRecipe), Item.Get<BlastFurnaceItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BlastFurnaceItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Blast Furnace", typeof(BlastFurnaceRecipe));
+            this.Initialize(Localizer.Do("Blast Furnace"), typeof(BlastFurnaceRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

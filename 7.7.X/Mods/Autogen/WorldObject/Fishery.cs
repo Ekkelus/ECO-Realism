@@ -76,7 +76,7 @@ namespace Eco.Mods.TechTree
 				new CraftingElement<RopeItem>(typeof(FishingSkill), 3, FishingSkill.MultiplicativeStrategy),				
             };
             this.CraftMinutes = new ConstantValue(1);
-            this.Initialize("Fishery", typeof(FisheryRecipe));
+            this.Initialize(Localizer.Do("Fishery"), typeof(FisheryRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

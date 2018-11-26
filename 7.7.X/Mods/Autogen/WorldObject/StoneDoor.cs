@@ -80,7 +80,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(StoneDoorRecipe), Item.Get<StoneDoorItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StoneDoorItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Stone Door", typeof(StoneDoorRecipe));
+            this.Initialize(Localizer.Do("Stone Door"), typeof(StoneDoorRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }
     }

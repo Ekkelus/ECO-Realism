@@ -19,7 +19,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<SkinnedHareItem>(typeof(SmallButcheryEfficiencySkill), 1, SmallButcheryEfficiencySkill.MultiplicativeStrategy), 
             };
-            this.Initialize("Butcher Hare", typeof(ButcherHareRecipe));
+            this.Initialize(Localizer.Do("Butcher Hare"), typeof(ButcherHareRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(ButcherHareRecipe), this.UILink(), 1, typeof(SmallButcherySpeedSkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }

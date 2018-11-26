@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(25);
 
-            this.Initialize("Truck", typeof(TruckRecipe));
+            this.Initialize(Localizer.Do("Truck"), typeof(TruckRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

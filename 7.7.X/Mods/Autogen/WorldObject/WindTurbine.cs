@@ -96,7 +96,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WindTurbineRecipe), Item.Get<WindTurbineItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WindTurbineItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Wind Turbine", typeof(WindTurbineRecipe));
+            this.Initialize(Localizer.Do("Wind Turbine"), typeof(WindTurbineRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

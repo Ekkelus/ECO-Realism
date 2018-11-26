@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PetroleumItem>(typeof(PetrolRefiningEfficiencySkill), 5, PetrolRefiningEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(PlasticRecipe), Item.Get<PlasticItem>().UILink(), 2, typeof(PetrolRefiningSpeedSkill));    
-            this.Initialize("Plastic", typeof(PlasticRecipe));
+            this.Initialize(Localizer.Do("Plastic"), typeof(PlasticRecipe));
 
             CraftingComponent.AddRecipe(typeof(OilRefineryObject), this);
         }

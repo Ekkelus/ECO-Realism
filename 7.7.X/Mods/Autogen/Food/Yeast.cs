@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SugarItem>(typeof(LeavenedBakingEfficiencySkill), 10, LeavenedBakingEfficiencySkill.MultiplicativeStrategy), 
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(YeastRecipe), Item.Get<YeastItem>().UILink(), 5, typeof(LeavenedBakingSpeedSkill)); 
-            this.Initialize("Yeast", typeof(YeastRecipe));
+            this.Initialize(Localizer.Do("Yeast"), typeof(YeastRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }
     }

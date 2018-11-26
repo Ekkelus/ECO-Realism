@@ -168,7 +168,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(ConveyorReceiverRecipe), Item.Get<ConveyorReceiverItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ConveyorReceiverItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Conveyor Exit Point", typeof(ConveyorReceiverRecipe));
+            this.Initialize(Localizer.Do("Conveyor Exit Point"), typeof(ConveyorReceiverRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
