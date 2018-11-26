@@ -42,7 +42,7 @@
 // };
 // this.CraftMinutes = new ConstantValue(30);
 
-// this.Initialize(Localizer.Do("Metal Construction Skill Book"), typeof(MetalConstructionSkillBookRecipe));
+// this.Initialize("Metal Construction Skill Book", typeof(MetalConstructionSkillBookRecipe));
 // CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
 // }
 // }
