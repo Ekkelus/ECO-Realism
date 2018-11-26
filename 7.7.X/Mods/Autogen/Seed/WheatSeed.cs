@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Wheat Seed"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow wheat."); } }
-        public override string SpeciesName  { get { return "Wheat"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Wheat"); } }
 
         public override float Calories { get { return 0; } }
         public override Nutrients Nutrition { get { return nutrition; } }
@@ -43,7 +43,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Wheat Seed Pack"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow wheat."); } }
-        public override string SpeciesName  { get { return "Wheat"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Wheat"); } }
     }
 
     [RequiresSkill(typeof(SeedProductionSkill), 1)]    

@@ -28,7 +28,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Birch Seed"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow into a birch sapling."); } }
-        public override string SpeciesName  { get { return "Birch"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Birch"); } }
 
         public override float Calories { get { return 0; } }
         public override Nutrients Nutrition { get { return nutrition; } }
@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Birch Seed Pack"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow into a birch sapling."); } }
-        public override string SpeciesName  { get { return "Birch"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Birch"); } }
     }
 
 }

@@ -28,7 +28,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Creosote Bush Seed"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow creosote bushes."); } }
-        public override string SpeciesName  { get { return "CreosoteBush"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("CreosoteBush"); } }
 
         public override float Calories { get { return 0; } }
         public override Nutrients Nutrition { get { return nutrition; } }
@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Creosote Bush Seed Pack"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow creosote bushes."); } }
-        public override string SpeciesName  { get { return "CreosoteBush"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("CreosoteBush"); } }
     }
 
 }

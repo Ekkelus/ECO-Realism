@@ -28,7 +28,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Beans"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("A good source of protein."); } }
-        public override string SpeciesName  { get { return "Beans"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Beans"); } }
 
         public override float Calories { get { return 120; } }
         public override Nutrients Nutrition { get { return nutrition; } }
@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Beans Pack"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("A good source of protein."); } }
-        public override string SpeciesName  { get { return "Beans"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Beans"); } }
     }
 
 }

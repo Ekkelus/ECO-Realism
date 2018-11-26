@@ -28,7 +28,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Rice"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow rice."); } }
-        public override string SpeciesName  { get { return "Rice"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Rice"); } }
 
         public override float Calories { get { return 90; } }
         public override Nutrients Nutrition { get { return nutrition; } }
@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Rice Pack"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow rice."); } }
-        public override string SpeciesName  { get { return "Rice"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Rice"); } }
     }
 
 }

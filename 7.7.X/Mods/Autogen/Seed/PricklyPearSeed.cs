@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Prickly Pear Seed"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow prickly pear cacti."); } }
-        public override string SpeciesName  { get { return "PricklyPear"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("PricklyPear"); } }
 
         public override float Calories { get { return 0; } }
         public override Nutrients Nutrition { get { return nutrition; } }
@@ -43,7 +43,7 @@ namespace Eco.Mods.TechTree
 
         public override LocString DisplayName { get { return Localizer.DoStr("Prickly Pear Seed Pack"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow prickly pear cacti."); } }
-        public override string SpeciesName  { get { return "PricklyPear"; } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("PricklyPear"); } }
     }
 
     [RequiresSkill(typeof(SeedProductionSkill), 4)]    
