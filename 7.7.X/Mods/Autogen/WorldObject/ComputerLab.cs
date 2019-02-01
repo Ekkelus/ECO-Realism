@@ -3,6 +3,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Components;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
+    using Eco.Gameplay.Objects;
     using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
@@ -12,9 +13,6 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
-    [RequireRoomContainment]
-    [RequireRoomVolume(45)]
-    [RequireRoomMaterialTier(4f)]
     [Weight(5000)]
     public partial class ComputerLabItem : WorldObjectItem<ComputerLabObject>
     {
