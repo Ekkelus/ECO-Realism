@@ -1,35 +1,19 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
     using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]                   
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -41,7 +25,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Electric Wall Lamp"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Electric Wall Lamp"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(ElectricWallLampItem); } } 
 
@@ -68,8 +52,8 @@ namespace Eco.Mods.TechTree
     [Weight(1000)]
     public partial class ElectricWallLampItem : WorldObjectItem<ElectricWallLampObject>
     {
-        public override string FriendlyName { get { return "Electric Wall Lamp"; } } 
-        public override string Description { get { return "A wall mounted lamp that requires electricity to turn on."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Electric Wall Lamp"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A wall mounted lamp that requires electricity to turn on."); } }
 
         static ElectricWallLampItem()
         {
@@ -108,7 +92,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(ElectricWallLampRecipe), Item.Get<ElectricWallLampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ElectricWallLampItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Electric Wall Lamp", typeof(ElectricWallLampRecipe));
+            this.Initialize(Localizer.DoStr("Electric Wall Lamp"), typeof(ElectricWallLampRecipe));
             CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }
     }

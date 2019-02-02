@@ -2,43 +2,20 @@
 using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Eco.Gameplay.Blocks;
-using Eco.Gameplay.Components;
-using Eco.Gameplay.Components.Auth;
-using Eco.Gameplay.DynamicValues;
-using Eco.Gameplay.Economy;
-using Eco.Gameplay.Housing;
-using Eco.Gameplay.Interactions;
 using Eco.Gameplay.Items;
-using Eco.Gameplay.Minimap;
-using Eco.Gameplay.Objects;
 using Eco.Gameplay.Players;
 using Eco.Gameplay.Property;
 using Eco.Gameplay.Skills;
 using Eco.Gameplay.Systems.Chat;
 using Eco.Gameplay.Systems.TextLinks;
-using Eco.Gameplay.Pipes.LiquidComponents;
-using Eco.Gameplay.Pipes.Gases;
 using Eco.Gameplay.Systems.Tooltip;
-using Eco.Shared;
-using Eco.Shared.Math;
-using Eco.Shared.Serialization;
-using Eco.Shared.Utils;
-using Eco.Shared.View;
-using Eco.Shared.Items;
-using Eco.Gameplay.Pipes;
-using Eco.World.Blocks;
-using REYmod.Utils;
 using Eco.Shared.Localization;
+using Eco.Shared.Utils;
 using System.Linq;
 using Eco.Core.Utils;
-using Eco.Gameplay.Stats;
 using Eco.Mods.TechTree;
 using Eco.Core.Utils.AtomicAction;
 using System.Timers;
-using Eco.Gameplay.Wires;
-using Eco.Simulation.Time;
-using Eco.Core.Controller;
 using REYmod.Config;
 using Eco.Gameplay;
 
@@ -322,7 +299,7 @@ namespace REYmod.Utils
         /// <summary>
         /// A List of the users who entered the /superskillconfirmed command
         /// </summary>
-        public static List<string> superskillconfirmed;
+        public static List<int> superskillconfirmed;
 
         /// <summary>
         /// Tries to determine the Profession of the given user
@@ -397,7 +374,7 @@ namespace REYmod.Utils
         /// </summary>
         public static void Initialize()
         {
-            superskillconfirmed = new List<string>();
+            superskillconfirmed = new List<int>();
         }
 
         /// <summary>
@@ -467,7 +444,7 @@ namespace REYmod.Utils
 
         public static bool CheckSuperskillConfirmation(User user)
         {
-            foreach (string id in SkillUtils.superskillconfirmed)
+            foreach (int id in SkillUtils.superskillconfirmed)
             {
                 if (id == user.ID)
                 {

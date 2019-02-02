@@ -1,42 +1,23 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
     using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
 
     [Serialized]
     [Weight(5000)]
     public partial class LaserItem : WorldObjectItem<LaserObject>
     {
-        public override string FriendlyName { get { return "Laser"; } } 
-        public override string Description  { get { return "AVOID DIRECT EYE EXPOSURE. Needs to be placed on 3x3 reinforced concrete."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Laser"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("AVOID DIRECT EYE EXPOSURE. Needs to be placed on 3x3 reinforced concrete."); } }
 
         static LaserItem()
         {
@@ -75,7 +56,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(LaserRecipe), Item.Get<LaserItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<LaserItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Laser", typeof(LaserRecipe));
+            this.Initialize(Localizer.DoStr("Laser"), typeof(LaserRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

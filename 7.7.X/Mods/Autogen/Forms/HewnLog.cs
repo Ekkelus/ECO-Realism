@@ -1,22 +1,13 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
     using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
-    using Eco.Gameplay.Pipes;
-    
+
 
 
     [Serialized]
@@ -24,8 +15,10 @@ namespace Eco.Mods.TechTree
     [Tier(1)]
     [IsForm("Floor", typeof(HewnLogItem))]
     public partial class HewnLogFloorBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(HewnLogItem); } }
+    }
 
 
     [Serialized]
@@ -33,9 +26,10 @@ namespace Eco.Mods.TechTree
     [Tier(1)]
     [IsForm("Wall", typeof(HewnLogItem))]
     public partial class HewnLogWallBlock :
-        Block
-    { }
-
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(HewnLogItem); } }
+    }
 
 
     [Serialized]
@@ -44,8 +38,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Cube", typeof(HewnLogItem))]
     [RequiresSkill(typeof(Tier1ConstructionSkill), 4)]
     public partial class HewnLogCubeBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(HewnLogItem); } }
+    }
 
 
     [Serialized]
@@ -54,8 +50,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Roof", typeof(HewnLogItem))]
     [RequiresSkill(typeof(Tier1ConstructionSkill), 2)]
     public partial class HewnLogRoofBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(HewnLogItem); } }
+    }
 
 
     [Serialized]
@@ -64,8 +62,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Column", typeof(HewnLogItem))]
     [RequiresSkill(typeof(Tier1ConstructionSkill), 4)]
     public partial class HewnLogColumnBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(HewnLogItem); } }
+    }
 
 
     [Serialized]
@@ -74,8 +74,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Window", typeof(HewnLogItem))]
     [RequiresSkill(typeof(Tier1ConstructionSkill), 3)]
     public partial class HewnLogWindowBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(HewnLogItem); } }
+    }
 
 
     [Serialized]
@@ -84,8 +86,11 @@ namespace Eco.Mods.TechTree
     [IsForm("PeatRoof", typeof(HewnLogItem))]
     [RequiresSkill(typeof(Tier1ConstructionSkill), 1)]
     public partial class HewnLogPeatRoofBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(HewnLogItem); } }
+    }
+
 
 
     [RotatedVariants(typeof(HewnLogStairsBlock), typeof(HewnLogStairs90Block), typeof(HewnLogStairs180Block), typeof(HewnLogStairs270Block))]
@@ -116,6 +121,37 @@ namespace Eco.Mods.TechTree
     [Tier(1)]
     [RequiresSkill(typeof(Tier1ConstructionSkill), 1)]
     public partial class HewnLogStairs270Block : Block
+    { }
+
+
+    [RotatedVariants(typeof(HewnLogLadderBlock), typeof(HewnLogLadder90Block), typeof(HewnLogLadder180Block), typeof(HewnLogLadder270Block))]
+    [Serialized]
+    [Wall, Constructed, Solid, BuildRoomMaterialOption]
+    [Tier(1)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 1)]
+    [IsForm("Ladder", typeof(HewnLogItem))]
+    public partial class HewnLogLadderBlock : Block
+    { }
+
+    [Serialized]
+    [Wall, Constructed, Solid, BuildRoomMaterialOption]
+    [Tier(1)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 1)]
+    public partial class HewnLogLadder90Block : Block
+    { }
+
+    [Serialized]
+    [Wall, Constructed, Solid, BuildRoomMaterialOption]
+    [Tier(1)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 1)]
+    public partial class HewnLogLadder180Block : Block
+    { }
+
+    [Serialized]
+    [Wall, Constructed, Solid, BuildRoomMaterialOption]
+    [Tier(1)]
+    [RequiresSkill(typeof(Tier1ConstructionSkill), 1)]
+    public partial class HewnLogLadder270Block : Block
     { }
 
 }

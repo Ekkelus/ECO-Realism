@@ -1,29 +1,15 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Eco.Core.Utils;
-    using Eco.Core.Utils.AtomicAction;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Services;
-    using Eco.Shared.Utils;
-    using Gameplay.Systems.Tooltip;
 
     [Serialized]
     [RequiresSkill(typeof(CarpenterSkill), 0)]    
     public partial class LoggingSkill : Skill
     {
-        public override string FriendlyName { get { return "Logging"; } }
-        public override string Description { get { return Localizer.DoStr(""); } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Logging"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr(""); } }
 
  /*        private static List<Tuple<Type, int>> ItemsGiven = new List<Tuple<Type, int>>
         {

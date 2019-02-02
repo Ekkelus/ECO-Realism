@@ -1,14 +1,9 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
-    using System.Collections.Generic;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Skills;
-    using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
+    using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
     [RequiresSkill(typeof(MolecularGastronomySkill), 1)] 
@@ -26,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SalmonItem>(typeof(MolecularGastronomyEfficiencySkill), 5, MolecularGastronomyEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<TroutItem>(typeof(MolecularGastronomyEfficiencySkill), 5, MolecularGastronomyEfficiencySkill.MultiplicativeStrategy),
             };
-            this.Initialize("Refine Fish", typeof(RefineFishRecipe));
+            this.Initialize(Localizer.DoStr("Refine Fish"), typeof(RefineFishRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(RefineFishRecipe), this.UILink(), 5, typeof(MolecularGastronomySpeedSkill));
             CraftingComponent.AddRecipe(typeof(LaboratoryObject), this);
         }

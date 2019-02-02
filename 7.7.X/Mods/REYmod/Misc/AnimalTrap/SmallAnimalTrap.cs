@@ -1,38 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Eco.Shared.Localization;
-using System.ComponentModel;
-using Eco.Gameplay.Blocks;
 using Eco.Gameplay.Components;
 using Eco.Gameplay.Components.Auth;
 using Eco.Gameplay.DynamicValues;
-using Eco.Gameplay.Economy;
-using Eco.Gameplay.Housing;
-using Eco.Gameplay.Interactions;
 using Eco.Gameplay.Items;
-using Eco.Gameplay.Minimap;
 using Eco.Gameplay.Objects;
 using Eco.Gameplay.Players;
-using Eco.Gameplay.Property;
 using Eco.Gameplay.Skills;
-using Eco.Gameplay.Systems.TextLinks;
-using Eco.Gameplay.Pipes.LiquidComponents;
-using Eco.Gameplay.Pipes.Gases;
-using Eco.Gameplay.Systems.Tooltip;
-using Eco.Shared;
 using Eco.Shared.Math;
 using Eco.Shared.Serialization;
-using Eco.Shared.Utils;
-using Eco.Shared.View;
-using Eco.Shared.Items;
-using Eco.Gameplay.Pipes;
-using Eco.World.Blocks;
 using Eco.Mods.TechTree;
 using Eco.Core.Utils;
-using Eco.Gameplay.Systems.Chat;
 using REYmod.Utils;
 
 namespace REYmod.Mods.ECO_Realism.Worldobjects
@@ -45,7 +24,7 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
     [RequireComponent(typeof(AnimalTrapComponent))]
     public class SmallAnimalTrapObject : WorldObject
     {
-        public override string FriendlyName { get { return "Small Animal Trap"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Small Animal Trap"); } }
 
         private Type RequiredSkill = typeof(TrapperSkill);
         private int RequiredLevel = 1;
@@ -110,8 +89,8 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
     [Weight(1000)]
     public partial class SmallAnimalTrapItem : WorldObjectItem<SmallAnimalTrapObject>
     {
-        public override string FriendlyName { get { return "Small Animal Trap"; } }
-        public override string Description { get { return "A trap to catch small animals as they run around. "; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Small Animal Trap"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A trap to catch small animals as they run around. "); } }
 
         static SmallAnimalTrapItem()
         {
@@ -138,7 +117,7 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
                 new CraftingElement<IronIngotItem>(20),
             };
             this.CraftMinutes = new ConstantValue(10);
-            this.Initialize("Small Animal Trap", typeof(SmallAnimalTrapRecipe));
+            this.Initialize(Localizer.DoStr("Small Animal Trap"), typeof(SmallAnimalTrapRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

@@ -1,26 +1,20 @@
 namespace Eco.Mods.TechTree
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Mods.TechTree;
-    using Eco.Shared.Items;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
+    using Eco.Shared.Localization;
 
     [Serialized]
     [Weight(200)]
     public partial class TroutFilletItem :
         FoodItem
     {
-        public override string FriendlyName { get { return "Trout Fillet"; } }
-        public override string Description { get { return "Some fine trout Fillet."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Trout Fillet"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Some fine trout Fillet."); } }
 
         private static Nutrients nutrition = new Nutrients() { Carbs = 0, Fat = 3, Protein = 10, Vitamins = 2 };
         public override float Calories { get { return 400; } }
@@ -42,7 +36,7 @@ namespace Eco.Mods.TechTree
 				new CraftingElement<TroutItem>(typeof(FishCleaningEfficiencySkill), 1, FishCleaningEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(TroutFilletRecipe), Item.Get<TroutFilletItem>().UILink(), 3, typeof(FishCleaningSpeedSkill));
-            this.Initialize("Trout Fillet", typeof(TroutFilletRecipe));
+            this.Initialize(Localizer.DoStr("Trout Fillet"), typeof(TroutFilletRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }

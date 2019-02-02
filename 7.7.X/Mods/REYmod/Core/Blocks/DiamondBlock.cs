@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Eco.Gameplay.Blocks;
-using Eco.Gameplay.Components;
-using Eco.Gameplay.DynamicValues;
-using Eco.Gameplay.Items;
+﻿using Eco.Gameplay.Items;
 using Eco.Gameplay.Objects;
-using Eco.Gameplay.Players;
-using Eco.Gameplay.Skills;
-using Eco.Gameplay.Systems.TextLinks;
 using Eco.Shared.Localization;
 using Eco.Shared.Serialization;
-using Eco.Shared.Utils;
 using Eco.World;
 using Eco.World.Blocks;
-using Eco.Gameplay.Pipes;
-using Eco.Mods.TechTree;
 
 namespace REYmod.Blocks
 {
@@ -31,7 +19,7 @@ namespace REYmod.Blocks
     [MaxStackSize(20)]
     public class RawDiamondItem : Item
     {
-        public override string FriendlyName { get { return "Raw Diamond"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Raw Diamond"); } }
     }
 
     [Serialized]

@@ -1,35 +1,19 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
     using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
@@ -40,7 +24,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Square Pot"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Square Pot"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(PlanterPotSquareItem); } } 
 
@@ -65,8 +49,8 @@ namespace Eco.Mods.TechTree
     [Weight(1500)]
     public partial class PlanterPotSquareItem : WorldObjectItem<PlanterPotSquareObject>
     {
-        public override string FriendlyName { get { return "Square Pot"; } } 
-        public override string Description { get { return "Sometimes you just want to bring a little bit of nature into your house."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Square Pot"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Sometimes you just want to bring a little bit of nature into your house."); } }
 
         static PlanterPotSquareItem()
         {
@@ -103,7 +87,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(PlanterPotSquareRecipe), Item.Get<PlanterPotSquareItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<PlanterPotSquareItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Planter Pot Square", typeof(PlanterPotSquareRecipe));
+            this.Initialize(Localizer.DoStr("Planter Pot Square"), typeof(PlanterPotSquareRecipe));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }
     }

@@ -1,26 +1,20 @@
 namespace Eco.Mods.TechTree
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Mods.TechTree;
-    using Eco.Shared.Items;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
+    using Eco.Shared.Localization;
 
     [Serialized]
     [Weight(200)]
     public partial class SmokedTroutSaladItem :
         FoodItem
     {
-        public override string FriendlyName { get { return "Smoked Trout Salad"; } }
-        public override string Description { get { return "Yummy Salad"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Smoked Trout Salad"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Yummy Salad"); } }
 
         private static Nutrients nutrition = new Nutrients() { Carbs = 7, Fat = 7, Protein = 13, Vitamins = 14 };
         public override float Calories { get { return 800; } }
@@ -45,7 +39,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PricklyPearFruitItem>(typeof(HomeCookingEfficiencySkill), 20, HomeCookingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(SmokedTroutSaladRecipe), Item.Get<SmokedTroutSaladItem>().UILink(), 10, typeof(HomeCookingSpeedSkill));
-            this.Initialize("Smoked Trout Salad", typeof(SmokedTroutSaladRecipe));
+            this.Initialize(Localizer.DoStr("Smoked Trout Salad"), typeof(SmokedTroutSaladRecipe));
             CraftingComponent.AddRecipe(typeof(CastIronStoveObject), this);
         }
     }

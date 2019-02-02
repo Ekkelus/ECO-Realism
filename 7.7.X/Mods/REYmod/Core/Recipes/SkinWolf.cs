@@ -1,15 +1,9 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
-    using Eco.Shared.Localization;
-    using System.Collections.Generic;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Skills;
-    using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
+    using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
     [RequiresSkill(typeof(SkinningSkill), 2)]
@@ -26,7 +20,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<WolfCarcassItem>(1),
             };
-            this.Initialize("Skin Wolf", typeof(SkinWolfRecipe));
+            this.Initialize(Localizer.DoStr("Skin Wolf"), typeof(SkinWolfRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(SkinWolfRecipe), this.UILink(), 1, typeof(SkinningSpeedSkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }

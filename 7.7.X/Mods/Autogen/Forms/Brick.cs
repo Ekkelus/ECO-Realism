@@ -1,22 +1,13 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
     using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
-    using Eco.Gameplay.Pipes;
-    
+
 
 
     [Serialized]
@@ -24,8 +15,10 @@ namespace Eco.Mods.TechTree
     [Tier(2)]
     [IsForm("Floor", typeof(BrickItem))]
     public partial class BrickFloorBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(BrickItem); } }
+    }
 
 
     [Serialized]
@@ -33,9 +26,10 @@ namespace Eco.Mods.TechTree
     [Tier(2)]
     [IsForm("Wall", typeof(BrickItem))]
     public partial class BrickWallBlock :
-        Block
-    { }
-
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(BrickItem); } }
+    }
 
 
     [Serialized]
@@ -44,8 +38,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Cube", typeof(BrickItem))]
     [RequiresSkill(typeof(Tier2ConstructionSkill), 4)]
     public partial class BrickCubeBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(BrickItem); } }
+    }
 
 
     [Serialized]
@@ -54,8 +50,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Roof", typeof(BrickItem))]
     [RequiresSkill(typeof(Tier2ConstructionSkill), 2)]
     public partial class BrickRoofBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(BrickItem); } }
+    }
 
 
     [Serialized]
@@ -64,8 +62,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Column", typeof(BrickItem))]
     [RequiresSkill(typeof(Tier2ConstructionSkill), 4)]
     public partial class BrickColumnBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(BrickItem); } }
+    }
 
 
     [Serialized]
@@ -74,8 +74,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Window", typeof(BrickItem))]
     [RequiresSkill(typeof(Tier2ConstructionSkill), 3)]
     public partial class BrickWindowBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(BrickItem); } }
+    }
 
 
     [Serialized]
@@ -84,8 +86,11 @@ namespace Eco.Mods.TechTree
     [IsForm("Aqueduct", typeof(BrickItem))]
     [RequiresSkill(typeof(Tier2ConstructionSkill), 2)]
     public partial class BrickAqueductBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(BrickItem); } }
+    }
+
 
 
     [RotatedVariants(typeof(BrickStairsBlock), typeof(BrickStairs90Block), typeof(BrickStairs180Block), typeof(BrickStairs270Block))]

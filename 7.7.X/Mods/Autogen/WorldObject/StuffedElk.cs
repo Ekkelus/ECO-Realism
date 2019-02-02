@@ -1,35 +1,18 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
     using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
@@ -38,7 +21,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Stuffed Elk"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Stuffed Elk"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(StuffedElkItem); } } 
 
@@ -62,8 +45,8 @@ namespace Eco.Mods.TechTree
     public partial class StuffedElkItem :
         WorldObjectItem<StuffedElkObject> 
     {
-        public override string FriendlyName { get { return "Stuffed Elk"; } } 
-        public override string Description  { get { return  "It looks so real!"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Stuffed Elk"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("It looks so real!"); } }
 
         static StuffedElkItem()
         {
@@ -101,7 +84,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(StuffedElkRecipe), Item.Get<StuffedElkItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StuffedElkItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Stuffed Elk", typeof(StuffedElkRecipe));
+            this.Initialize(Localizer.DoStr("Stuffed Elk"), typeof(StuffedElkRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }
     }

@@ -1,10 +1,7 @@
 ﻿using Eco.Core.Plugins.Interfaces;
 using Eco.Core.Utils;
 using Eco.Gameplay;
-using Eco.Gameplay.Components;
-using Eco.Gameplay.Components.Auth;
 using Eco.Gameplay.Economy;
-using Eco.Gameplay.Items;
 using Eco.Gameplay.Objects;
 using Eco.Gameplay.Players;
 using Eco.Gameplay.Property;
@@ -24,7 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace REYmod.Core.ChatCommands
+namespace REYmod.Core.ChatCommandsNamespace
 {
     public class ChatCommands : IChatCommandHandler
     {
@@ -47,7 +44,7 @@ namespace REYmod.Core.ChatCommands
         }
 
         [ChatCommand("settitle", "Sets the custom title of the given user", level: ChatAuthorizationLevel.Admin)]
-        public static void Removemod(User user, User target, string title)
+        public static void SetTitle(User user, User target, string title)
         {
             target.SetState("CustomTitle", title);
             ChatUtils.SendMessage(user, "Set " + target.Name + "'s title to: \"" + title + "\"");

@@ -1,28 +1,18 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
-    using System.Collections.Generic;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.Components.VehicleModules;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Math;
-    using Eco.Shared.Networking;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    
+
     [Serialized]
     [Weight(25000)]  
     public class SkidSteerItem : WorldObjectItem<SkidSteerObject>
     {
-        public override string FriendlyName         { get { return "Skid Steer"; } }
-        public override string Description          { get { return "A WHAT?"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Skid Steer"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A WHAT?"); } }
     }
 
     [RequiresSkill(typeof(IndustrialEngineeringSkill), 1)] 
@@ -47,7 +37,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(25);
 
-            this.Initialize("Skid Steer", typeof(SkidSteerRecipe));
+            this.Initialize(Localizer.DoStr("Skid Steer"), typeof(SkidSteerRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

@@ -1,18 +1,8 @@
 namespace Eco.Mods.TechTree
 {
-    using System.Collections.Generic;
-    using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
     using Gameplay.Players;
     using System.ComponentModel;
 
@@ -25,9 +15,9 @@ namespace Eco.Mods.TechTree
         
         private static Nutrients nutrition = new Nutrients() { Carbs = 7, Fat = 0, Protein = 1, Vitamins = 0 };
 
-        public override string FriendlyName { get { return "Rice"; } }
-        public override string Description  { get { return "Plant to grow rice."; } }
-        public override string SpeciesName  { get { return "Rice"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Rice"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow rice."); } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Rice"); } }
 
         public override float Calories { get { return 90; } }
         public override Nutrients Nutrition { get { return nutrition; } }
@@ -41,9 +31,9 @@ namespace Eco.Mods.TechTree
     {
         static RicePackItem() { }
 
-        public override string FriendlyName { get { return "Rice Pack"; } }
-        public override string Description  { get { return "Plant to grow rice."; } }
-        public override string SpeciesName  { get { return "Rice"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Rice Pack"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow rice."); } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Rice"); } }
     }
 
 }

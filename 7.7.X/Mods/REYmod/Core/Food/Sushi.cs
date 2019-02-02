@@ -1,26 +1,20 @@
 namespace Eco.Mods.TechTree
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Mods.TechTree;
-    using Eco.Shared.Items;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
+    using Eco.Shared.Localization;
 
     [Serialized]
     [Weight(200)]
     public partial class SushiItem :
         FoodItem
     {
-        public override string FriendlyName { get { return "Sushi"; } }
-        public override string Description { get { return "Raw fish with sticky rice, rolled in kelp."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Sushi"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Raw fish with sticky rice, rolled in kelp."); } }
 
         private static Nutrients nutrition = new Nutrients() { Carbs = 15, Fat = 12, Protein = 15, Vitamins = 10 };
         public override float Calories { get { return 950; } }
@@ -48,7 +42,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<RiceItem>(typeof(CulinaryArtsEfficiencySkill), 20, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(SushiRecipe), Item.Get<SushiItem>().UILink(), 15, typeof(CulinaryArtsSpeedSkill));
-            this.Initialize("Sushi", typeof(SushiRecipe));
+            this.Initialize(Localizer.DoStr("Sushi"), typeof(SushiRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }
     }

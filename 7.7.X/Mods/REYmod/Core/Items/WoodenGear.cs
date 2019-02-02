@@ -1,22 +1,11 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
     using Eco.Shared.Localization;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
-    using Eco.Gameplay.Pipes;
 
     [RequiresSkill(typeof(PrimitiveMechanicsSkill), 1)]
     public partial class WoodenGearRecipe : Recipe
@@ -33,7 +22,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<LogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 10, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(WoodenGearRecipe), Item.Get<WoodenGearItem>().UILink(), 6, typeof(PrimitiveMechanicsSpeedSkill));
-            this.Initialize("Wooden Gear", typeof(WoodenGearRecipe));
+            this.Initialize(Localizer.DoStr("Wooden Gear"), typeof(WoodenGearRecipe));
 
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
@@ -46,8 +35,8 @@ namespace Eco.Mods.TechTree
     public partial class WoodenGearItem :
     Item
     {
-        public override string FriendlyName { get { return "Wooden Gear"; } }
-        public override string Description { get { return "A toothed machine part that interlocks with others."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Wooden Gear"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A toothed machine part that interlocks with others."); } }
 
     }
 

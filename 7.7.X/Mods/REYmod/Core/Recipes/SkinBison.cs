@@ -1,15 +1,9 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
-    using Eco.Shared.Localization;
-    using System.Collections.Generic;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Skills;
-    using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
+    using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
     [RequiresSkill(typeof(SkinningSkill), 4)]
@@ -26,7 +20,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<BisonCarcassItem>(1),
             };
-            this.Initialize("Skin Bison", typeof(SkinBisonRecipe));
+            this.Initialize(Localizer.DoStr("Skin Bison"), typeof(SkinBisonRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(SkinBisonRecipe), this.UILink(), 1, typeof(SkinningSpeedSkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }

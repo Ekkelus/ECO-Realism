@@ -2,36 +2,21 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
     using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
     using Eco.Gameplay.Wires;
     using System.Timers;
-    using System.Linq;
 
     [Serialized]
     [RequireComponent(typeof(MustBeOwnedComponent))]
@@ -51,7 +36,7 @@ namespace Eco.Mods.TechTree
         private Inventory LinkedStorage { get { return this.GetComponent<LinkComponent>().GetSortedLinkedInventories(this.OwnerUser); } }
         private int pullcounter = 0;
 
-        public override string FriendlyName { get { return "ConveyorSender"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("ConveyorSender"); } } 
 
         private static Type[] fuelTypeList = new Type[]
         {
@@ -118,8 +103,8 @@ namespace Eco.Mods.TechTree
     [Weight(2000)]
     public partial class ConveyorSenderItem : WorldObjectItem<ConveyorSenderObject>
     {
-        public override string FriendlyName { get { return "Conveyor Entry Point"; } } 
-        public override string Description  { get { return "Entry Point of a itempipe system. (Name not final, im open to suggestions)"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Conveyor Entry Point"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Entry Point of a itempipe system. (Name not final, im open to suggestions)"); } }
 
         static ConveyorSenderItem()
         {
@@ -152,7 +137,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(ConveyorSenderRecipe), Item.Get<ConveyorSenderItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ConveyorSenderItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Conveyor Entry Point", typeof(ConveyorSenderRecipe));
+            this.Initialize(Localizer.DoStr("Conveyor Entry Point"), typeof(ConveyorSenderRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

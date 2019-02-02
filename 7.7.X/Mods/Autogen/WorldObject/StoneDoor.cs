@@ -1,35 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(SolidGroundComponent))]            
@@ -37,7 +19,7 @@ namespace Eco.Mods.TechTree
         DoorObject, 
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Stone Door"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Stone Door"); } } 
 
         public override Type RepresentedItemType { get { return typeof(StoneDoorItem); } } 
 
@@ -61,8 +43,8 @@ namespace Eco.Mods.TechTree
     public partial class StoneDoorItem :
         WorldObjectItem<StoneDoorObject> 
     {
-        public override string FriendlyName { get { return "Stone Door"; } } 
-        public override string Description  { get { return  "A heavy stone door."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Stone Door"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A heavy stone door."); } }
 
         [Tooltip(100)]
         public string TierTooltip()
@@ -98,7 +80,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(StoneDoorRecipe), Item.Get<StoneDoorItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StoneDoorItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Stone Door", typeof(StoneDoorRecipe));
+            this.Initialize(Localizer.DoStr("Stone Door"), typeof(StoneDoorRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }
     }

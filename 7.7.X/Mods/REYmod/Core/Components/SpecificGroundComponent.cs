@@ -1,22 +1,11 @@
 ﻿using Eco.Gameplay.Objects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Eco.Gameplay.Components.Auth;
-using Eco.Core.Controller;
-using Eco.Gameplay.Interactions;
-using Eco.Gameplay.Players;
-using Eco.Gameplay.Property;
-using Eco.Shared.Networking;
 using Eco.Shared.Serialization;
-using Eco.Gameplay.Wires;
 using Eco.Gameplay.Components;
 using Eco.World;
 using Eco.Shared.Math;
 using Eco.Gameplay.Items;
-using Eco.Gameplay.Systems.Chat;
 
 namespace REYmod.Utils
 {
@@ -50,7 +39,7 @@ namespace REYmod.Utils
         public override void Initialize()
         {   }
 
-        public void Initialize(Type blockitem, int grid = 1)
+        public void Initialize(Type blockitem, int grid = 1) //"grid" isnt used yet, it is planned to make it possible to require more than a 3x3 grind (or also only a single block)
         {
             this.status = this.Parent.GetComponent<StatusComponent>().CreateStatusElement();
             positionstocheck = World.BlockBelow(this.Parent.Position3i).XZFullNeighborsAndSelf;

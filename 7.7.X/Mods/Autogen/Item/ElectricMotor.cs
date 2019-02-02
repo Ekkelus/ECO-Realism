@@ -1,22 +1,11 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
     using Eco.Shared.Localization;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
-    using Eco.Gameplay.Pipes;
 
     [RequiresSkill(typeof(ElectronicEngineeringSkill), 3)]   
     public partial class ElectricMotorRecipe : Recipe
@@ -34,7 +23,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 6, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(ElectricMotorRecipe), Item.Get<ElectricMotorItem>().UILink(), 5, typeof(ElectronicEngineeringSpeedSkill));    
-            this.Initialize("Electric Motor", typeof(ElectricMotorRecipe));
+            this.Initialize(Localizer.DoStr("Electric Motor"), typeof(ElectricMotorRecipe));
 
             CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }
@@ -47,8 +36,8 @@ namespace Eco.Mods.TechTree
     public partial class ElectricMotorItem :
     Item                                     
     {
-        public override string FriendlyName { get { return "Electric Motor"; } }
-        public override string Description { get { return "A motor."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Electric Motor"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A motor."); } }
 
     }
 

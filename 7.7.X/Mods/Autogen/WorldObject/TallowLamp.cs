@@ -1,35 +1,19 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
     using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]                   
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -41,7 +25,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Tallow Lamp"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Tallow Lamp"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(TallowLampItem); } } 
 
@@ -75,8 +59,8 @@ namespace Eco.Mods.TechTree
     [Weight(500)]
     public partial class TallowLampItem : WorldObjectItem<TallowLampObject>
     {
-        public override string FriendlyName { get { return "Tallow Lamp"; } } 
-        public override string Description  { get { return  "A pottery lamp. Fuel with tallow."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Tallow Lamp"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A pottery lamp. Fuel with tallow."); } }
 
         static TallowLampItem()
         {
@@ -115,7 +99,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(TallowLampRecipe), Item.Get<TallowLampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<TallowLampItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Tallow Lamp", typeof(TallowLampRecipe));
+            this.Initialize(Localizer.DoStr("Tallow Lamp"), typeof(TallowLampRecipe));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }
     }

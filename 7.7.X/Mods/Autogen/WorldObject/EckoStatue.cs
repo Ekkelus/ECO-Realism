@@ -1,35 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
     using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(HousingComponent))]                  
@@ -38,7 +20,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Ecko Statue"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Ecko Statue"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(EckoStatueItem); } } 
 
@@ -63,8 +45,8 @@ namespace Eco.Mods.TechTree
     [Category("Hidden")]
     public partial class EckoStatueItem : WorldObjectItem<EckoStatueObject>
     {
-        public override string FriendlyName { get { return "Ecko Statue"; } } 
-        public override string Description  { get { return  "A statue of a dolphin. What could it mean?"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Ecko Statue"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A statue of a dolphin. What could it mean?"); } }
 
         static EckoStatueItem()
         {
@@ -95,7 +77,7 @@ namespace Eco.Mods.TechTree
             {
             };
             this.CraftMinutes = new ConstantValue(); 
-            this.Initialize("Ecko Statue", typeof(EckoStatueRecipe));
+            this.Initialize(Localizer.DoStr("Ecko Statue"), typeof(EckoStatueRecipe));
             CraftingComponent.AddRecipe(typeof(Object), this);
         }
     }

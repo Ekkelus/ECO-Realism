@@ -1,35 +1,19 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
     using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
@@ -43,7 +27,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Wooden Fabric Bed"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Wooden Fabric Bed"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(WoodenFabricBedItem); } } 
 
@@ -67,8 +51,8 @@ namespace Eco.Mods.TechTree
     [Weight(3000)]
     public partial class WoodenFabricBedItem : WorldObjectItem<WoodenFabricBedObject>
     {
-        public override string FriendlyName { get { return "Wooden Fabric Bed"; } } 
-        public override string Description { get { return "A much more comfortable bed made with fabric."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Wooden Fabric Bed"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A much more comfortable bed made with fabric."); } }
 
         static WoodenFabricBedItem()
         {
@@ -106,7 +90,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(WoodenFabricBedRecipe), Item.Get<WoodenFabricBedItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WoodenFabricBedItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Wooden Fabric Bed", typeof(WoodenFabricBedRecipe));
+            this.Initialize(Localizer.DoStr("Wooden Fabric Bed"), typeof(WoodenFabricBedRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }

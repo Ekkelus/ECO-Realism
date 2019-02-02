@@ -1,15 +1,9 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
-    using Eco.Shared.Localization;
-    using System.Collections.Generic;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Skills;
-    using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
+    using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
     [RequiresSkill(typeof(SkinningSkill), 3)]
@@ -26,7 +20,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<ElkCarcassItem>(1),
             };
-            this.Initialize("Skin Elk", typeof(SkinElkRecipe));
+            this.Initialize(Localizer.DoStr("Skin Elk"), typeof(SkinElkRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(SkinElkRecipe), this.UILink(), 1, typeof(SkinningSpeedSkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }

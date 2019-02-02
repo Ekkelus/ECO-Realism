@@ -9,14 +9,15 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Objects;
     using Eco.Gameplay.Skills;
     using Eco.Shared.Serialization;
+	using Eco.Shared.Localization;
     using Eco.World.Blocks;
 
     [Serialized]
     [Weight(25000)]  
     public class SteamTractorItem : WorldObjectItem<SteamTractorObject>
     {
-        public override string FriendlyName         { get { return "Steam Tractor"; } }
-        public override string Description          { get { return "Steam Tractor"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Steam Tractor"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Steam Tractor"); } }
     }
 
     [RequiresSkill(typeof(MechanicalEngineeringSkill), 0)] 
@@ -41,7 +42,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(25);
 
-            this.Initialize("Steam Tractor", typeof(SteamTractorRecipe));
+            this.Initialize(Localizer.DoStr("Steam Tractor"), typeof(SteamTractorRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
@@ -67,7 +68,7 @@ namespace Eco.Mods.TechTree
             { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
             { typeof(AsphaltRoadBlock), 1.4f }, { typeof(AsphaltRoadWorldObjectBlock), 1.4f }
         };
-        public override string FriendlyName { get { return "Steam Tractor"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Steam Tractor"); } }
 
         private static Type[] fuelTypeList = new Type[]
         {

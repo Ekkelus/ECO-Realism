@@ -1,35 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
     using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]                   
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -43,7 +25,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Torch Stand"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Torch Stand"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(TorchStandItem); } } 
 
@@ -74,8 +56,8 @@ namespace Eco.Mods.TechTree
     public partial class TorchStandItem :
         WorldObjectItem<TorchStandObject> 
     {
-        public override string FriendlyName { get { return "Torch Stand"; } } 
-        public override string Description  { get { return  "A stand for a torch."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Torch Stand"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A stand for a torch."); } }
 
         static TorchStandItem()
         {
@@ -110,7 +92,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<RopeItem>(1),
             };
             this.CraftMinutes = new ConstantValue(2); 
-            this.Initialize("Torch Stand", typeof(TorchStandRecipe));
+            this.Initialize(Localizer.DoStr("Torch Stand"), typeof(TorchStandRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

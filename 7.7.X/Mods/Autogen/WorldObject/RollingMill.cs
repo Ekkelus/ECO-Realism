@@ -1,35 +1,19 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
@@ -46,7 +30,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Rolling Mill"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Rolling Mill"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(RollingMillItem); } } 
 
@@ -72,8 +56,8 @@ namespace Eco.Mods.TechTree
     public partial class RollingMillItem :
         WorldObjectItem<RollingMillObject> 
     {
-        public override string FriendlyName { get { return "Rolling Mill"; } } 
-        public override string Description  { get { return  "For rolling steel into more buildable materials."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Rolling Mill"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("For rolling steel into more buildable materials."); } }
 
         static RollingMillItem()
         {
@@ -103,7 +87,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(RollingMillRecipe), Item.Get<RollingMillItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<RollingMillItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Rolling Mill", typeof(RollingMillRecipe));
+            this.Initialize(Localizer.DoStr("Rolling Mill"), typeof(RollingMillRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

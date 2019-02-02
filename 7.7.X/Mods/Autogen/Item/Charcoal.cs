@@ -1,22 +1,11 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
     using Eco.Shared.Localization;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
-    using Eco.Gameplay.Pipes;
 
     [RequiresSkill(typeof(LumberSkill), 1)]   
     public partial class CharcoalRecipe : Recipe
@@ -32,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<LumberItem>(typeof(LumberProcessingEfficiencySkill), 2, LumberProcessingEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(CharcoalRecipe), Item.Get<CharcoalItem>().UILink(), 1, typeof(LumberProcessingSpeedSkill));    
-            this.Initialize("Charcoal", typeof(CharcoalRecipe));
+            this.Initialize(Localizer.DoStr("Charcoal"), typeof(CharcoalRecipe));
 
             CraftingComponent.AddRecipe(typeof(BloomeryObject), this);
         }
@@ -46,8 +35,8 @@ namespace Eco.Mods.TechTree
     public partial class CharcoalItem :
     Item                                     
     {
-        public override string FriendlyName { get { return "Charcoal"; } }
-        public override string Description { get { return "A black residue, consisting of carbon and any remaining ash."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Charcoal"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A black residue, consisting of carbon and any remaining ash."); } }
 
     }
 

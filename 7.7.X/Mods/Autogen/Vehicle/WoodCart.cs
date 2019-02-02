@@ -4,27 +4,21 @@ namespace Eco.Mods.TechTree
     using System.Collections.Generic;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.Components.VehicleModules;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Math;
-    using Eco.Shared.Networking;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.World;
     using Eco.World.Blocks;
-    
+
     [Serialized]
     [Weight(15000)]  
     public class WoodCartItem : WorldObjectItem<WoodCartObject>
     {
-        public override string FriendlyName         { get { return "Wood Cart"; } }
-        public override string Description          { get { return "Small cart for hauling small loads."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Wood Cart"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Small cart for hauling small loads."); } }
     }
 
     [RequiresSkill(typeof(PrimitiveMechanicsSkill), 1)] 
@@ -46,7 +40,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(5);
 
-            this.Initialize("Wood Cart", typeof(WoodCartRecipe));
+            this.Initialize(Localizer.DoStr("Wood Cart"), typeof(WoodCartRecipe));
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }
     }
@@ -75,7 +69,7 @@ namespace Eco.Mods.TechTree
             { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
             { typeof(AsphaltRoadBlock), 1.4f }, { typeof(AsphaltRoadWorldObjectBlock), 1.4f }
         };
-        public override string FriendlyName { get { return "Wood Cart"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Wood Cart"); } }
         public Type RepresentedItemType { get { return typeof(WoodCartItem); } }
 
 

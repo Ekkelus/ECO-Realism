@@ -4,26 +4,21 @@ namespace Eco.Mods.TechTree
     using System.Collections.Generic;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.Components.VehicleModules;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Math;
-    using Eco.Shared.Networking;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
     using Eco.World.Blocks;
 
     [Serialized]
     [Weight(25000)]  
     public class SteamTruckItem : WorldObjectItem<SteamTruckObject>
     {
-        public override string FriendlyName         { get { return "Steam Truck"; } }
-        public override string Description          { get { return "Stream truck"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Steam Truck"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Stream truck"); } }
     }
 
     [RequiresSkill(typeof(MechanicalEngineeringSkill), 0)] 
@@ -48,7 +43,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(25);
 
-            this.Initialize("Steam Truck", typeof(SteamTruckRecipe));
+            this.Initialize(Localizer.DoStr("Steam Truck"), typeof(SteamTruckRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
@@ -80,7 +75,7 @@ namespace Eco.Mods.TechTree
             { typeof(StoneRoadBlock), 1.4f }, { typeof(StoneRoadWorldObjectBlock), 1.4f },
             { typeof(AsphaltRoadBlock), 1.8f }, { typeof(AsphaltRoadWorldObjectBlock), 1.8f }
         };
-        public override string FriendlyName { get { return "Steam Truck"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Steam Truck"); } }
         public Type RepresentedItemType { get { return typeof(SteamTruckItem); } }
 
         private static Type[] fuelTypeList = new Type[]

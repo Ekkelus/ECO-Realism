@@ -1,29 +1,18 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Eco.Core.Utils;
-    using Eco.Core.Utils.AtomicAction;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Services;
-    using Eco.Shared.Utils;
-    using Gameplay.Systems.Tooltip;
 
     [Serialized]
     [RequiresSkill(typeof(MasonSkill), 0)]    
     public partial class GlassworkingSkill : Skill
     {
-        public override string FriendlyName { get { return "Glassworking"; } }
-        public override string Description { get { return Localizer.DoStr(""); } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Glassworking"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr(""); } }
 
         public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
         public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }
@@ -34,13 +23,13 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class GlassworkingSkillBook : SkillBook<GlassworkingSkill, GlassworkingSkillScroll>
     {
-        public override string FriendlyName { get { return "Glassworking Skill Book"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Glassworking Skill Book"); } }
     }
 
     [Serialized]
     public partial class GlassworkingSkillScroll : SkillScroll<GlassworkingSkill, GlassworkingSkillBook>
     {
-        public override string FriendlyName { get { return "Glassworking Skill Scroll"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Glassworking Skill Scroll"); } }
     }
 
     public partial class GlassworkingSkillBookRecipe : Recipe
@@ -58,7 +47,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(15);
 
-            this.Initialize("Glassworking Skill Book", typeof(GlassworkingSkillBookRecipe));
+            this.Initialize(Localizer.DoStr("Glassworking Skill Book"), typeof(GlassworkingSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

@@ -1,35 +1,18 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
     using Eco.Shared.Localization;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
     using Eco.Shared.Math;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(AttachmentComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -38,7 +21,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PublicStorageComponent))]                
     public partial class CardboardBoxObject : WorldObject
     {
-        public override string FriendlyName { get { return "Cardboard Box"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Cardboard Box"); } } 
 
 
         protected override void Initialize()
@@ -63,8 +46,8 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class CardboardBoxItem : WorldObjectItem<CardboardBoxObject>
     {
-        public override string FriendlyName { get { return "Cardboard Box"; } } 
-        public override string Description { get { return "A container you can store items in."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Cardboard Box"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A container you can store items in."); } }
 
         static CardboardBoxItem()
         {
@@ -95,7 +78,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(CardboardBoxRecipe), Item.Get<CardboardBoxItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CardboardBoxItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Cardboard Box", typeof(CardboardBoxRecipe));
+            this.Initialize(Localizer.DoStr("Cardboard Box"), typeof(CardboardBoxRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

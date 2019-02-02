@@ -5,8 +5,6 @@ using Eco.Gameplay.Systems.Chat;
 using Eco.Mods.TechTree;
 using Eco.Shared.Localization;
 using REYmod.Config;
-using System;
-using System.ComponentModel;
 using System.Net;
 
 /*

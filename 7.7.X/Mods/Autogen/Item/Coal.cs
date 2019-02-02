@@ -1,22 +1,12 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
-    using Eco.Gameplay.Pipes;
 
 
     [Serialized]
@@ -34,9 +24,9 @@ namespace Eco.Mods.TechTree
     public partial class CoalItem :
     BlockItem<CoalBlock>
     {
-        public override string FriendlyName { get { return "Coal"; } }
-        public override string FriendlyNamePlural { get { return "Coal"; } } 
-        public override string Description { get { return "A combustible mineral which when used as a fuel provides lots of energy but generates lots of pollution."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Coal"); } }
+        public override LocString DisplayNamePlural { get { return Localizer.DoStr("Coal"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A combustible mineral which when used as a fuel provides lots of energy but generates lots of pollution."); } }
 
         public override bool CanStickToWalls { get { return false; } }  
 

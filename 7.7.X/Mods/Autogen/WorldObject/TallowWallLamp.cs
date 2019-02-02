@@ -1,35 +1,19 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
     using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]                   
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -41,7 +25,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Tallow Wall Lamp"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Tallow Wall Lamp"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(TallowWallLampItem); } } 
 
@@ -75,8 +59,8 @@ namespace Eco.Mods.TechTree
     [Weight(500)]
     public partial class TallowWallLampItem : WorldObjectItem<TallowWallLampObject>
     {
-        public override string FriendlyName { get { return "Tallow Wall Lamp"; } } 
-        public override string Description  { get { return  "A candle mounted on a wall bracket which can burn tallow to produce a small amount of light."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Tallow Wall Lamp"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A candle mounted on a wall bracket which can burn tallow to produce a small amount of light."); } }
 
         static TallowWallLampItem()
         {
@@ -115,7 +99,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(TallowWallLampRecipe), Item.Get<TallowWallLampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<TallowWallLampItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Tallow Wall Lamp", typeof(TallowWallLampRecipe));
+            this.Initialize(Localizer.DoStr("Tallow Wall Lamp"), typeof(TallowWallLampRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

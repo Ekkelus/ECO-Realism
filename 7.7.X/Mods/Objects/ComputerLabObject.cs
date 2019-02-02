@@ -7,6 +7,8 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.Objects;
+    using Eco.Gameplay.Property;
+    using Eco.Shared.Localization;
     using Shared.Serialization;
 
     [Serialized]
@@ -17,9 +19,14 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(PowerGridComponent))]
     [RequireComponent(typeof(PowerGridNetworkComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
+    [RequireComponent(typeof(RoomRequirementsComponent))]
+    [RequireComponent(typeof(PowerConsumptionComponent))]
+    [RequireRoomContainment]
+    [RequireRoomVolume(45)]
+    [RequireRoomMaterialTier(3.8f)]
     public partial class ComputerLabObject : WorldObject
     {
-        public override string FriendlyName { get { return "Computer Lab"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Computer Lab"); } }
 
         protected override void Initialize()
         {

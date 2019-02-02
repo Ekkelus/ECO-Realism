@@ -1,45 +1,23 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
 
 
     [Serialized]
-    [RequireRoomContainment]
-    [RequireRoomVolume(45)]
-    [RequireRoomMaterialTier(4f)]
     [Weight(5000)]
     public partial class ComputerLabItem : WorldObjectItem<ComputerLabObject>
     {
-        public override string FriendlyName { get { return "Computer Lab"; } } 
-        public override string Description { get { return "A place where you can sit all day and play video games! Or work on expert-level research."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Computer Lab"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A place where you can sit all day and play video games! Or work on expert-level research."); } }
 
         static ComputerLabItem()
         {
@@ -71,7 +49,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(ComputerLabRecipe), Item.Get<ComputerLabItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ComputerLabItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Computer Lab", typeof(ComputerLabRecipe));
+            this.Initialize(Localizer.DoStr("Computer Lab"), typeof(ComputerLabRecipe));
             CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }
     }

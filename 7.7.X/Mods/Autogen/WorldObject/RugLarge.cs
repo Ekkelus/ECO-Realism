@@ -1,35 +1,18 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
     using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
-    
+
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(MinimapComponent))]                
@@ -39,7 +22,7 @@ namespace Eco.Mods.TechTree
         WorldObject,    
         IRepresentsItem
     {
-        public override string FriendlyName { get { return "Large Rug"; } } 
+        public override LocString DisplayName { get { return Localizer.DoStr("Large Rug"); } } 
 
         public virtual Type RepresentedItemType { get { return typeof(RugLargeItem); } } 
 
@@ -64,8 +47,8 @@ namespace Eco.Mods.TechTree
     [Weight(1500)]
     public partial class RugLargeItem : WorldObjectItem<RugLargeObject>
     {
-        public override string FriendlyName { get { return "Large Rug"; } } 
-        public override string Description { get { return "A large area rug to cover that weird stain."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Large Rug"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A large area rug to cover that weird stain."); } }
 
         static RugLargeItem()
         {
@@ -102,7 +85,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(RugLargeRecipe), Item.Get<RugLargeItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<RugLargeItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Rug Large", typeof(RugLargeRecipe));
+            this.Initialize(Localizer.DoStr("Rug Large"), typeof(RugLargeRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }
     }

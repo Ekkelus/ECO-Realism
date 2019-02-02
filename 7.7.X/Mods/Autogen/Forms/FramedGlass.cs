@@ -1,22 +1,13 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
     using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
     using Eco.World;
     using Eco.World.Blocks;
-    using Eco.Gameplay.Pipes;
-    
+
 
 
     [Serialized]
@@ -24,8 +15,10 @@ namespace Eco.Mods.TechTree
     [Tier(4)]
     [IsForm("Floor", typeof(FramedGlassItem))]
     public partial class FramedGlassFloorBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FramedGlassItem); } }
+    }
 
 
     [Serialized]
@@ -33,9 +26,10 @@ namespace Eco.Mods.TechTree
     [Tier(4)]
     [IsForm("Wall", typeof(FramedGlassItem))]
     public partial class FramedGlassWallBlock :
-        Block
-    { }
-
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FramedGlassItem); } }
+    }
 
 
     [Serialized]
@@ -44,8 +38,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Cube", typeof(FramedGlassItem))]
     [RequiresSkill(typeof(Tier4ConstructionSkill), 4)]
     public partial class FramedGlassCubeBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FramedGlassItem); } }
+    }
 
 
     [Serialized]
@@ -54,8 +50,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Roof", typeof(FramedGlassItem))]
     [RequiresSkill(typeof(Tier4ConstructionSkill), 2)]
     public partial class FramedGlassRoofBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FramedGlassItem); } }
+    }
 
 
     [Serialized]
@@ -64,8 +62,10 @@ namespace Eco.Mods.TechTree
     [IsForm("Column", typeof(FramedGlassItem))]
     [RequiresSkill(typeof(Tier4ConstructionSkill), 4)]
     public partial class FramedGlassColumnBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FramedGlassItem); } }
+    }
 
 
     [Serialized]
@@ -74,8 +74,11 @@ namespace Eco.Mods.TechTree
     [IsForm("Window", typeof(FramedGlassItem))]
     [RequiresSkill(typeof(Tier4ConstructionSkill), 3)]
     public partial class FramedGlassWindowBlock :
-        Block
-    { }
+        Block, IRepresentsItem
+    {
+        public Type RepresentedItemType { get { return typeof(FramedGlassItem); } }
+    }
+
 
 
     [RotatedVariants(typeof(FramedGlassStairsBlock), typeof(FramedGlassStairs90Block), typeof(FramedGlassStairs180Block), typeof(FramedGlassStairs270Block))]

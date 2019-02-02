@@ -1,22 +1,11 @@
 namespace Eco.Mods.TechTree
 {
-    using System;
     using Eco.Shared.Localization;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
-    using Eco.Gameplay.Pipes;
 
     [RequiresSkill(typeof(RoadConstructionSkill), 1)]   
     public partial class RoadToolRecipe : Recipe
@@ -32,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(RoadConstructionEfficiencySkill), 6, RoadConstructionEfficiencySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
-            this.Initialize("Road Tool", typeof(RoadToolRecipe));
+            this.Initialize(Localizer.DoStr("Road Tool"), typeof(RoadToolRecipe));
 
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
@@ -45,8 +34,8 @@ namespace Eco.Mods.TechTree
     public partial class RoadToolItem :
     ToolItem                        
     {
-        public override string FriendlyName { get { return "Road Tool"; } }
-        public override string Description { get { return "Used to press roads into dirt and stone rubble."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Road Tool"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Used to press roads into dirt and stone rubble."); } }
 
     }
 

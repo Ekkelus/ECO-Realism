@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Eco.Gameplay.Components;
-using Eco.Gameplay.DynamicValues;
+﻿using Eco.Gameplay.Components;
 using Eco.Gameplay.Items;
 using Eco.Gameplay.Skills;
-using Eco.Shared.Utils;
-using Eco.World;
-using Eco.World.Blocks;
 using Eco.Gameplay.Systems.TextLinks;
+using Eco.Shared.Localization;
 
 namespace Eco.Mods.TechTree
 {
@@ -24,7 +19,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<MortaredStoneItem>(typeof(BrickProductionEfficiencySkill), 5f, BrickProductionEfficiencySkill.MultiplicativeStrategy),
             };
-            this.Initialize("Upgrade Mortared Stones", typeof(MortarBrickRecipe));
+            this.Initialize(Localizer.DoStr("Upgrade Mortared Stones"), typeof(MortarBrickRecipe));
             this.CraftMinutes = CreateCraftTimeValue(typeof(MortarBrickRecipe), this.UILink(), 1, typeof(BrickProductionSpeedSkill));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }

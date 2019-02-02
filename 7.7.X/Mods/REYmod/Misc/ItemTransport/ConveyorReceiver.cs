@@ -2,33 +2,19 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
     using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
     using Eco.Shared.Math;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
     using Eco.Gameplay.Wires;
     using System.Linq;
     using Eco.Core.Utils;
@@ -47,7 +33,7 @@ namespace Eco.Mods.TechTree
     public partial class ConveyorReceiverObject : 
         WorldObject, IWireContainer 
     {
-        public override string FriendlyName { get { return "ConveyorReceiver"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("ConveyorReceiver"); } }
         public Timer timer;
         private Inventory Storage { get { return this.GetComponent<PublicStorageComponent>().Inventory; } }
         private Inventory LinkedStorage { get { return this.GetComponent<LinkComponent>().GetSortedLinkedInventories(this.OwnerUser); } }
@@ -149,8 +135,8 @@ namespace Eco.Mods.TechTree
     [Weight(2000)]
     public partial class ConveyorReceiverItem : WorldObjectItem<ConveyorReceiverObject>
     {
-        public override string FriendlyName { get { return "Conveyor Exit Point"; } } 
-        public override string Description  { get { return "Exit Point of a itempipe system. (Name not final, im open to suggestions)"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Conveyor Exit Point"); } } 
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Exit Point of a itempipe system. (Name not final, im open to suggestions)"); } }
 
         static ConveyorReceiverItem()
         {
@@ -182,7 +168,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddBenefitForObject(typeof(ConveyorReceiverRecipe), Item.Get<ConveyorReceiverItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ConveyorReceiverItem>().UILink(), value);
             this.CraftMinutes = value;
-            this.Initialize("Conveyor Exit Point", typeof(ConveyorReceiverRecipe));
+            this.Initialize(Localizer.DoStr("Conveyor Exit Point"), typeof(ConveyorReceiverRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

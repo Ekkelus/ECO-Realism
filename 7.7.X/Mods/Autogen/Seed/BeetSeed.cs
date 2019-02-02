@@ -1,18 +1,12 @@
 namespace Eco.Mods.TechTree
 {
-    using System.Collections.Generic;
-    using Eco.Gameplay.Blocks;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.World;
-    using Eco.World.Blocks;
     using Gameplay.Players;
     using System.ComponentModel;
 
@@ -24,9 +18,9 @@ namespace Eco.Mods.TechTree
         
         private static Nutrients nutrition = new Nutrients() { Carbs = 0, Fat = 0, Protein = 0, Vitamins = 0 };
 
-        public override string FriendlyName { get { return "Beet Seed"; } }
-        public override string Description  { get { return "Plant to grow beets."; } }
-        public override string SpeciesName  { get { return "Beets"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Beet Seed"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow beets."); } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Beets"); } }
 
         public override float Calories { get { return 0; } }
         public override Nutrients Nutrition { get { return nutrition; } }
@@ -40,9 +34,9 @@ namespace Eco.Mods.TechTree
     {
         static BeetSeedPackItem() { }
 
-        public override string FriendlyName { get { return "Beet Seed Pack"; } }
-        public override string Description  { get { return "Plant to grow beets."; } }
-        public override string SpeciesName  { get { return "Beets"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Beet Seed Pack"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow beets."); } }
+        public override LocString SpeciesName { get { return Localizer.DoStr("Beets"); } }
     }
 
     [RequiresSkill(typeof(SeedProductionSkill), 2)]    
@@ -63,7 +57,7 @@ namespace Eco.Mods.TechTree
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BeetSeedItem>().UILink(), value);
             this.CraftMinutes = value;
 
-            this.Initialize("Beet Seed", typeof(BeetSeedRecipe));
+            this.Initialize(Localizer.DoStr("Beet Seed"), typeof(BeetSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

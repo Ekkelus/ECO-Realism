@@ -4,26 +4,20 @@ namespace Eco.Mods.TechTree
     using System.Collections.Generic;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.Components.VehicleModules;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Math;
-    using Eco.Shared.Networking;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
     using Eco.World.Blocks;
 
     [Serialized]
     [Weight(15000)]  
     public class PoweredCartItem : WorldObjectItem<PoweredCartObject>
     {
-        public override string FriendlyName         { get { return "Powered Cart"; } }
-        public override string Description          { get { return "Large cart for hauling sizable loads."; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Powered Cart"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("Large cart for hauling sizable loads."); } }
     }
 
     [RequiresSkill(typeof(MechanicalEngineeringSkill), 0)] 
@@ -45,7 +39,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(25);
 
-            this.Initialize("Powered Cart", typeof(PoweredCartRecipe));
+            this.Initialize(Localizer.DoStr("Powered Cart"), typeof(PoweredCartRecipe));
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }
     }
@@ -76,7 +70,7 @@ namespace Eco.Mods.TechTree
             { typeof(StoneRoadBlock), 1.3f }, { typeof(StoneRoadWorldObjectBlock), 1.3f },
             { typeof(AsphaltRoadBlock), 1.6f }, { typeof(AsphaltRoadWorldObjectBlock), 1.6f }
         };
-        public override string FriendlyName { get { return "Powered Cart"; } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Powered Cart"); } }
         public Type RepresentedItemType { get { return typeof(PoweredCartItem); } }
 
         private static Type[] fuelTypeList = new Type[]
