@@ -9,7 +9,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Serialization;
     using Eco.World.Blocks;
 
-    [RequiresSkill(typeof(PetrolRefiningSkill), 0)]   
+    [RequiresSkill(typeof(OilDrillingSkill), 0)]   
     public partial class BarrelRecipe : Recipe
     {
         public BarrelRecipe()
@@ -20,10 +20,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(PetrolRefiningEfficiencySkill), 4, PetrolRefiningEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RivetItem>(typeof(PetrolRefiningEfficiencySkill), 4, PetrolRefiningEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(OilDrillingSkill), 4, OilDrillingSkill.MultiplicativeStrategy),
+                new CraftingElement<RivetItem>(typeof(OilDrillingSkill), 4, OilDrillingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(BarrelRecipe), Item.Get<BarrelItem>().UILink(), 1, typeof(PetrolRefiningSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(BarrelRecipe), Item.Get<BarrelItem>().UILink(), 1, typeof(OilDrillingSkill));    
             this.Initialize(Localizer.DoStr("Barrel"), typeof(BarrelRecipe));
 
             CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);
@@ -32,7 +32,7 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Solid]
-    [RequiresSkill(typeof(PetrolRefiningEfficiencySkill), 0)]   
+    [RequiresSkill(typeof(OilDrillingSkill), 0)]   
     public partial class BarrelBlock :
         PickupableBlock     
     { }

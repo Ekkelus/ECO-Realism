@@ -19,7 +19,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayDescription { get { return Localizer.DoStr("A tool that tills the field for farming."); } }
     }
 
-    [RequiresSkill(typeof(PrimitiveMechanicsSkill), 1)] 
+    [RequiresSkill(typeof(BasicEngineeringSkill), 1)] 
     public class HandPloughRecipe : Recipe
     {
         public HandPloughRecipe()
@@ -31,9 +31,9 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<WoodenWheelItem>(1), 
-                new CraftingElement<HewnLogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 10, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BoardItem>(typeof(PrimitiveMechanicsEfficiencySkill), 50, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(PrimitiveMechanicsEfficiencySkill), 20, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HewnLogItem>(typeof(BasicEngineeringSkill), 10, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(BasicEngineeringSkill), 50, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(BasicEngineeringSkill), 20, BasicEngineeringSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
 

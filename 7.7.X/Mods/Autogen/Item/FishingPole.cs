@@ -6,7 +6,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
 
-    [RequiresSkill(typeof(FishingSkill), 1)]   
+    [RequiresSkill(typeof(HuntingSkill), 1)]   
     public partial class FishingPoleRecipe : Recipe
     {
         public FishingPoleRecipe()
@@ -17,10 +17,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(FishingSkill), 5, FishingSkill.MultiplicativeStrategy),
-                new CraftingElement<StringItem>(typeof(FishingSkill), 2, FishingSkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(HuntingSkill), 5, HuntingSkill.MultiplicativeStrategy),
+                new CraftingElement<StringItem>(typeof(HuntingSkill), 2, HuntingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(FishingPoleRecipe), Item.Get<FishingPoleItem>().UILink(), 5, typeof(FishingSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(FishingPoleRecipe), Item.Get<FishingPoleItem>().UILink(), 5, typeof(HuntingSkill));    
             this.Initialize(Localizer.DoStr("Fishing Pole"), typeof(FishingPoleRecipe));
 
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);

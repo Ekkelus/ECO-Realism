@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(HomeCookingSkill), 4)]
+    [RequiresSkill(typeof(CookingSkill), 4)]
     public partial class StuffedClamsRecipe : Recipe
     {
         public StuffedClamsRecipe()
@@ -33,10 +33,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ClamItem>(typeof(HomeCookingEfficiencySkill), 10, HomeCookingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<WheatItem>(typeof(HomeCookingEfficiencySkill), 20, HomeCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<ClamItem>(typeof(CookingSkill), 10, CookingSkill.MultiplicativeStrategy),
+                new CraftingElement<WheatItem>(typeof(CookingSkill), 20, CookingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(StuffedClamsRecipe), Item.Get<StuffedClamsItem>().UILink(), 15, typeof(HomeCookingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(StuffedClamsRecipe), Item.Get<StuffedClamsItem>().UILink(), 15, typeof(CookingSkill));
             this.Initialize(Localizer.DoStr("Stuffed Clams"), typeof(StuffedClamsRecipe));
             CraftingComponent.AddRecipe(typeof(CastIronStoveObject), this);
         }

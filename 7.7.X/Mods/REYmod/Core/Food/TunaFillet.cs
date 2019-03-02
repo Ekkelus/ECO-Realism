@@ -21,7 +21,7 @@
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(FishingSkill), 3)]
+    [RequiresSkill(typeof(HuntingSkill), 3)]
     public partial class TunaFilletRecipe : Recipe
     {
         public TunaFilletRecipe()
@@ -33,9 +33,9 @@
             };
             this.Ingredients = new CraftingElement[]
             {
-				new CraftingElement<TunaItem>(typeof(FishCleaningEfficiencySkill), 1, FishCleaningEfficiencySkill.MultiplicativeStrategy),
+				new CraftingElement<TunaItem>(typeof(HuntingSkill), 1, HuntingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(TunaFilletRecipe), Item.Get<TunaFilletItem>().UILink(), 3, typeof(FishCleaningSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(TunaFilletRecipe), Item.Get<TunaFilletItem>().UILink(), 3, typeof(HuntingSkill));
             this.Initialize(Localizer.DoStr("Tuna Fillet"), typeof(TunaFilletRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }

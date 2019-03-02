@@ -10,7 +10,7 @@ namespace Eco.Mods.TechTree
 
 
     [Serialized]
-    [Minable, Solid,Wall]
+    [Minable(1), Solid,Wall]
     public partial class GoldOreBlock :
         Block           
     { }

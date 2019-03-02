@@ -6,7 +6,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
-    [RequiresSkill(typeof(SkinningSkill), 2)]
+    [RequiresSkill(typeof(HuntingSkill), 2)]
     public class SkinFoxRecipe : Recipe
     {
         public SkinFoxRecipe()
@@ -14,14 +14,14 @@ namespace Eco.Mods.TechTree
             this.Products = new CraftingElement[]
             {
                new CraftingElement<SkinnedFoxItem>(1),
-               new CraftingElement<FurPeltItem>(typeof(SkinningEfficiencySkill), 2, SkinningEfficiencySkill.MultiplicativeStrategy),
+               new CraftingElement<FurPeltItem>(typeof(HuntingSkill), 2, HuntingSkill.MultiplicativeStrategy),
             };
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<FoxCarcassItem>(1),
             };
             this.Initialize(Localizer.DoStr("Skin Fox"), typeof(SkinFoxRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SkinFoxRecipe), this.UILink(), 1, typeof(SkinningSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(SkinFoxRecipe), this.UILink(), 1, typeof(HuntingSkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }

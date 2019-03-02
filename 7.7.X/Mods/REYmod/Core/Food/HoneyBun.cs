@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(LeavenedBakingSkill), 3)]
+    [RequiresSkill(typeof(AdvancedBakingSkill), 3)]
     public partial class HoneyBunRecipe : Recipe
     {
         public HoneyBunRecipe()
@@ -33,11 +33,11 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<HoneyItem>(typeof(LeavenedBakingEfficiencySkill), 2, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<YeastItem>(typeof(LeavenedBakingEfficiencySkill), 3, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<FlourItem>(typeof(LeavenedBakingEfficiencySkill), 6, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HoneyItem>(typeof(AdvancedBakingSkill), 2, AdvancedBakingSkill.MultiplicativeStrategy),
+                new CraftingElement<YeastItem>(typeof(AdvancedBakingSkill), 3, AdvancedBakingSkill.MultiplicativeStrategy),
+                new CraftingElement<FlourItem>(typeof(AdvancedBakingSkill), 6, AdvancedBakingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyBunRecipe), Item.Get<HoneyBunItem>().UILink(), 10, typeof(LeavenedBakingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyBunRecipe), Item.Get<HoneyBunItem>().UILink(), 10, typeof(AdvancedBakingSkill));
             this.Initialize(Localizer.DoStr("Honey Bun"), typeof(HoneyBunRecipe));
             CraftingComponent.AddRecipe(typeof(BakeryOvenObject), this);
         }

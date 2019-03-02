@@ -80,7 +80,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(StoneworkingSkill), 1)]
+    [RequiresSkill(typeof(MortaringSkill), 1)]
     public partial class TallowLampRecipe : Recipe
     {
         public TallowLampRecipe()
@@ -92,10 +92,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SandItem>(typeof(StoneworkingEfficiencySkill), 4, StoneworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<TallowItem>(typeof(StoneworkingEfficiencySkill), 2, StoneworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<SandItem>(typeof(MortaringSkill), 4, MortaringSkill.MultiplicativeStrategy),
+                new CraftingElement<TallowItem>(typeof(MortaringSkill), 2, MortaringSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(2, StoneworkingSpeedSkill.MultiplicativeStrategy, typeof(StoneworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(2, MortaringSkill.MultiplicativeStrategy, typeof(MortaringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(TallowLampRecipe), Item.Get<TallowLampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<TallowLampItem>().UILink(), value);
             this.CraftMinutes = value;

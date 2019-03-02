@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(LeavenedBakingSkill), 4)]
+    [RequiresSkill(typeof(AdvancedBakingSkill), 4)]
     public partial class TaiyakiRecipe : Recipe
     {
         public TaiyakiRecipe()
@@ -33,11 +33,11 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BeanPasteItem>(typeof(LeavenedBakingEfficiencySkill), 20, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<FlourItem>(typeof(LeavenedBakingEfficiencySkill), 20, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<OilItem>(typeof(LeavenedBakingEfficiencySkill), 10, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BeanPasteItem>(typeof(AdvancedBakingSkill), 20, AdvancedBakingSkill.MultiplicativeStrategy),
+                new CraftingElement<FlourItem>(typeof(AdvancedBakingSkill), 20, AdvancedBakingSkill.MultiplicativeStrategy),
+                new CraftingElement<OilItem>(typeof(AdvancedBakingSkill), 10, AdvancedBakingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(TaiyakiRecipe), Item.Get<TaiyakiItem>().UILink(), 10, typeof(LeavenedBakingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(TaiyakiRecipe), Item.Get<TaiyakiItem>().UILink(), 10, typeof(AdvancedBakingSkill));
             this.Initialize(Localizer.DoStr("Taiyaki"), typeof(TaiyakiRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }

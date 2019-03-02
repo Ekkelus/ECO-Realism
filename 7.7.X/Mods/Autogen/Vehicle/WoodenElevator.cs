@@ -15,7 +15,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayDescription { get { return Localizer.DoStr("An elevator for transporting loads vertically."); } }
     }
 
-    [RequiresSkill(typeof(MechanicalEngineeringSkill), 0)] 
+    [RequiresSkill(typeof(MechanicsSkill), 0)] 
     public class WoodenElevatorRecipe : Recipe
     {
         public WoodenElevatorRecipe()
@@ -27,9 +27,9 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<PortableSteamEngineItem>(1), 
-                new CraftingElement<GearboxItem>(typeof(MechanicsAssemblyEfficiencySkill), 10, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CelluloseFiberItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LumberItem>(typeof(MechanicsAssemblyEfficiencySkill), 30, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GearboxItem>(typeof(MechanicsSkill), 10, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<CelluloseFiberItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(MechanicsSkill), 30, MechanicsSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(25);
 

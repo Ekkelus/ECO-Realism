@@ -73,7 +73,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(SteelworkingSkill), 3)]
+    [RequiresSkill(typeof(AdvancedSmeltingSkill), 3)]
     public partial class SteelCeilingLightRecipe : Recipe
     {
         public SteelCeilingLightRecipe()
@@ -86,10 +86,10 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<LightBulbItem>(1), 
-                new CraftingElement<SteelItem>(typeof(SteelworkingEfficiencySkill), 10, SteelworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PlasticItem>(typeof(SteelworkingEfficiencySkill), 10, SteelworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<SteelItem>(typeof(AdvancedSmeltingSkill), 10, AdvancedSmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<PlasticItem>(typeof(AdvancedSmeltingSkill), 10, AdvancedSmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, SteelworkingSpeedSkill.MultiplicativeStrategy, typeof(SteelworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(10, AdvancedSmeltingSkill.MultiplicativeStrategy, typeof(AdvancedSmeltingSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(SteelCeilingLightRecipe), Item.Get<SteelCeilingLightItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SteelCeilingLightItem>().UILink(), value);
             this.CraftMinutes = value;

@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(CulinaryArtsSkill), 3)]
+    [RequiresSkill(typeof(AdvancedCookingSkill), 3)]
     public partial class ExoticUrchinSurpriseRecipe : Recipe
     {
         public ExoticUrchinSurpriseRecipe()
@@ -33,10 +33,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<UrchinItem>(typeof(CulinaryArtsEfficiencySkill), 10, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<AmanitaMushroomsItem>(typeof(CulinaryArtsEfficiencySkill), 20, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<UrchinItem>(typeof(AdvancedCookingSkill), 10, AdvancedCookingSkill.MultiplicativeStrategy),
+                new CraftingElement<AmanitaMushroomsItem>(typeof(AdvancedCookingSkill), 20, AdvancedCookingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ExoticUrchinSurpriseRecipe), Item.Get<ExoticUrchinSurpriseItem>().UILink(), 10, typeof(CulinaryArtsSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ExoticUrchinSurpriseRecipe), Item.Get<ExoticUrchinSurpriseItem>().UILink(), 10, typeof(AdvancedCookingSkill));
             this.Initialize(Localizer.DoStr("Exotic Urchin Surprise"), typeof(ExoticUrchinSurpriseRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }

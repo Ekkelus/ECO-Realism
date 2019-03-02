@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(PrimitiveMechanicsSkill), 2)]
+    [RequiresSkill(typeof(BasicEngineeringSkill), 2)]
     public partial class WaterwheelRecipe : Recipe
     {
         public WaterwheelRecipe()
@@ -81,11 +81,11 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 30, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BoardItem>(typeof(PrimitiveMechanicsEfficiencySkill), 50, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<WoodenGearItem>(typeof(PrimitiveMechanicsEfficiencySkill), 1, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(BasicEngineeringSkill), 30, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(BasicEngineeringSkill), 50, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<WoodenGearItem>(typeof(BasicEngineeringSkill), 1, BasicEngineeringSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(30, PrimitiveMechanicsSpeedSkill.MultiplicativeStrategy, typeof(PrimitiveMechanicsSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(30, BasicEngineeringSkill.MultiplicativeStrategy, typeof(BasicEngineeringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(WaterwheelRecipe), Item.Get<WaterwheelItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WaterwheelItem>().UILink(), value);
             this.CraftMinutes = value;

@@ -35,7 +35,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(ElectronicEngineeringSkill), 4)]
+    [RequiresSkill(typeof(ElectronicsSkill), 4)]
     public partial class LaserRecipe : Recipe
     {
         public LaserRecipe()
@@ -47,12 +47,12 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<GoldIngotItem>(typeof(ElectronicEngineeringEfficiencySkill), 125, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 125, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CircuitItem>(typeof(ElectronicEngineeringEfficiencySkill), 70, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<DiamondCutItem>(typeof(ElectronicEngineeringEfficiencySkill), 50, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GoldIngotItem>(typeof(ElectronicsSkill), 125, ElectronicsSkill.MultiplicativeStrategy),
+                new CraftingElement<SteelItem>(typeof(ElectronicsSkill), 125, ElectronicsSkill.MultiplicativeStrategy),
+                new CraftingElement<CircuitItem>(typeof(ElectronicsSkill), 70, ElectronicsSkill.MultiplicativeStrategy),
+                new CraftingElement<DiamondCutItem>(typeof(ElectronicsSkill), 50, ElectronicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(240, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(240, ElectronicsSkill.MultiplicativeStrategy, typeof(ElectronicsSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(LaserRecipe), Item.Get<LaserItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<LaserItem>().UILink(), value);
             this.CraftMinutes = value;

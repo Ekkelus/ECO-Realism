@@ -60,7 +60,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(FishingSkill), 1)]
+    [RequiresSkill(typeof(HuntingSkill), 1)]
     public partial class FisheryRecipe : Recipe
     {
         public FisheryRecipe()
@@ -72,8 +72,8 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(FishingSkill), 20, FishingSkill.MultiplicativeStrategy),
-				new CraftingElement<RopeItem>(typeof(FishingSkill), 3, FishingSkill.MultiplicativeStrategy),				
+                new CraftingElement<LogItem>(typeof(HuntingSkill), 20, HuntingSkill.MultiplicativeStrategy),
+				new CraftingElement<RopeItem>(typeof(HuntingSkill), 3, HuntingSkill.MultiplicativeStrategy),				
             };
             this.CraftMinutes = new ConstantValue(1);
             this.Initialize(Localizer.DoStr("Fishery"), typeof(FisheryRecipe));

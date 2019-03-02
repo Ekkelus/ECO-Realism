@@ -43,6 +43,13 @@ public static class PlayerDefaults
             { typeof(CardboardBoxItem), 3 },
         };
     }
+    public static IEnumerable<Type> GetDefaultSpecialties()
+    {
+        return new Type[]
+        {
+            typeof(SelfImprovementSkill)
+        };
+    }
 
     public static IEnumerable<Type> GetDefaultSkills()
     {
@@ -56,15 +63,14 @@ public static class PlayerDefaults
             typeof(MortaringSkill),
             typeof(ChefSkill),
             typeof(FarmerSkill),
-            typeof(DiggingSkill),
             typeof(GatheringSkill),
+            typeof(AdvancedCampfireCookingSkill),
             typeof(HunterSkill),
             typeof(HuntingSkill),
             typeof(SmithSkill),
             typeof(EngineerSkill),
             typeof(SurvivalistSkill),
-            typeof(TailorSkill),
-            typeof(SelfImprovementSkill)
+            typeof(TailorSkill)
         };
     }
 
@@ -72,30 +78,35 @@ public static class PlayerDefaults
     {
         {
             UserStatType.MaxCalories, new MultiDynamicValue(MultiDynamicOps.Sum,
-                CreateSmv(0f, BigStomachSkill.AdditiveStrategy, typeof(BigStomachSkill), Localizer.DoStr("maximum calories")),
+                CreateSmv(0f, SelfImprovementSkill.AdditiveStrategy, typeof(SelfImprovementSkill), Localizer.DoStr("maximum calories"), typeof(Misc)),
                 new ConstantValue(3000))
         },
         {
             UserStatType.MaxCarryWeight, new MultiDynamicValue(MultiDynamicOps.Sum,
-                CreateSmv(0f, new BonusUnitsDecoratorStrategy(StrongBackSkill.AdditiveStrategy, "kg", (float val) => val/1000f), typeof(StrongBackSkill), Localizer.DoStr("carry weight")),
+                CreateSmv(0f, new BonusUnitsDecoratorStrategy(SelfImprovementSkill.AdditiveStrategy, "kg", (float val) => val/1000f), typeof(SelfImprovementSkill), Localizer.DoStr("carry weight"), typeof(Misc)),
                 new ConstantValue(ToolbarBackpackInventory.DefaultWeightLimit))
         },
         {
             UserStatType.CalorieRate, new MultiDynamicValue(MultiDynamicOps.Sum,
-                CreateSmv(1f, CalorieEfficiencySkill.MultiplicativeStrategy, typeof(CalorieEfficiencySkill), Localizer.DoStr("calorie cost")),
+                CreateSmv(1f, SelfImprovementSkill.MultiplicativeStrategy, typeof(SelfImprovementSkill), Localizer.DoStr("calorie cost"), typeof(Calorie)),
                 new ConstantValue(0))
         },
         {
             UserStatType.DetectionRange, new MultiDynamicValue(MultiDynamicOps.Sum,
-                CreateSmv(0f, PredatoryInstinctsSkill.AdditiveStrategy, typeof(PredatoryInstinctsSkill), Localizer.DoStr("how close you can approach animals")),
+                CreateSmv(0f, HuntingSkill.AdditiveStrategy, typeof(HuntingSkill), Localizer.DoStr("how close you can approach animals"), typeof(Misc)),
                 new ConstantValue(0))
         },
+        {
+            UserStatType.MovementSpeed, new MultiDynamicValue(MultiDynamicOps.Sum,
+                new TalentModifiedValue(typeof(NatureAdventurerTalent), 0),
+                new TalentModifiedValue(typeof(UrbanTravellerTalent), 0))
+        }
     };
 
-    private static SkillModifiedValue CreateSmv(float startValue, ModificationStrategy strategy, Type skillType, LocString benefitsDescription)
+    private static SkillModifiedValue CreateSmv(float startValue, ModificationStrategy strategy, Type skillType, LocString benefitsDescription, Type modifierType)
     {
-        SkillModifiedValue smv = new SkillModifiedValue(startValue, strategy, skillType, benefitsDescription);
-        SkillModifiedValueManager.AddSkillBenefit(Localizer.DoStr("You"), smv);
+        SkillModifiedValue smv = new SkillModifiedValue(startValue, strategy, skillType, benefitsDescription, modifierType);
+        SkillModifiedValueManager.AddSkillBenefit(skillType, Localizer.DoStr("You"), smv);
         return smv;
     }
 

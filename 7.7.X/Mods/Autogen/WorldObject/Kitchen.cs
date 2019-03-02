@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(LumberWoodworkingSkill), 1)]
+    [RequiresSkill(typeof(LumberSkill), 1)]
     public partial class KitchenRecipe : Recipe
     {
         public KitchenRecipe()
@@ -84,13 +84,13 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(LumberWoodworkingEfficiencySkill), 10, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LumberItem>(typeof(LumberWoodworkingEfficiencySkill), 20, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CopperPipeItem>(typeof(LumberWoodworkingEfficiencySkill), 8, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(LumberWoodworkingEfficiencySkill), 16, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlassJarItem>(typeof(LumberWoodworkingEfficiencySkill), 8, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(LumberSkill), 10, LumberSkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(LumberSkill), 20, LumberSkill.MultiplicativeStrategy),
+                new CraftingElement<CopperPipeItem>(typeof(LumberSkill), 8, LumberSkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(LumberSkill), 16, LumberSkill.MultiplicativeStrategy),
+                new CraftingElement<GlassJarItem>(typeof(LumberSkill), 8, LumberSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(120, LumberWoodworkingSpeedSkill.MultiplicativeStrategy, typeof(LumberWoodworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(120, LumberSkill.MultiplicativeStrategy, typeof(LumberSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(KitchenRecipe), Item.Get<KitchenItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<KitchenItem>().UILink(), value);
             this.CraftMinutes = value;

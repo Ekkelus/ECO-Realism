@@ -88,7 +88,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MetalworkingSkill), 4)]
+    [RequiresSkill(typeof(SmeltingSkill), 4)]
     public partial class BrazierRecipe : Recipe
     {
         public BrazierRecipe()
@@ -100,9 +100,9 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 10, MetalworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(1, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(BrazierRecipe), Item.Get<BrazierItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BrazierItem>().UILink(), value);
             this.CraftMinutes = value;

@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(StoneworkingSkill), 3)]
+    [RequiresSkill(typeof(MortaringSkill), 3)]
     public partial class LargeStandingStoneSignRecipe : Recipe
     {
         public LargeStandingStoneSignRecipe()
@@ -69,9 +69,9 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<StoneItem>(typeof(StoneworkingEfficiencySkill), 60, StoneworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<StoneItem>(typeof(MortaringSkill), 60, MortaringSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, StoneworkingSpeedSkill.MultiplicativeStrategy, typeof(StoneworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(10, MortaringSkill.MultiplicativeStrategy, typeof(MortaringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(LargeStandingStoneSignRecipe), Item.Get<LargeStandingStoneSignItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<LargeStandingStoneSignItem>().UILink(), value);
             this.CraftMinutes = value;

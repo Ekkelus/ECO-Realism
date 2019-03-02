@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(IndustrialEngineeringSkill), 4)]
+    [RequiresSkill(typeof(IndustrySkill), 4)]
     public partial class ComputerLabRecipe : Recipe
     {
         public ComputerLabRecipe()
@@ -39,13 +39,13 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(IndustrialEngineeringEfficiencySkill), 50, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CircuitItem>(typeof(IndustrialEngineeringEfficiencySkill), 30, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ConcreteItem>(typeof(IndustrialEngineeringEfficiencySkill), 40, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PaperItem>(typeof(IndustrialEngineeringEfficiencySkill), 20, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RivetItem>(typeof(IndustrialEngineeringEfficiencySkill), 10, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<SteelItem>(typeof(IndustrySkill), 50, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<CircuitItem>(typeof(IndustrySkill), 30, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<ConcreteItem>(typeof(IndustrySkill), 40, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<PaperItem>(typeof(IndustrySkill), 20, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<RivetItem>(typeof(IndustrySkill), 10, IndustrySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(260, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(260, ElectronicsSkill.MultiplicativeStrategy, typeof(ElectronicsSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(ComputerLabRecipe), Item.Get<ComputerLabItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ComputerLabItem>().UILink(), value);
             this.CraftMinutes = value;

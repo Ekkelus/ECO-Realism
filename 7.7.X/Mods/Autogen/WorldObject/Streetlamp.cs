@@ -74,7 +74,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(ElectronicEngineeringSkill), 3)]
+    [RequiresSkill(typeof(ElectronicsSkill), 3)]
     public partial class StreetlampRecipe : Recipe
     {
         public StreetlampRecipe()
@@ -87,9 +87,9 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<LightBulbItem>(1), 
-                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 20, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<SteelItem>(typeof(ElectronicsSkill), 20, ElectronicsSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(1, ElectronicsSkill.MultiplicativeStrategy, typeof(ElectronicsSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(StreetlampRecipe), Item.Get<StreetlampItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StreetlampItem>().UILink(), value);
             this.CraftMinutes = value;

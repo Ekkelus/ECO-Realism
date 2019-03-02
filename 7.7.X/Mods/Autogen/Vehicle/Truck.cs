@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayDescription { get { return Localizer.DoStr("Modern truck for hauling sizable loads."); } }
     }
 
-    [RequiresSkill(typeof(IndustrialEngineeringSkill), 0)] 
+    [RequiresSkill(typeof(IndustrySkill), 0)] 
     public class TruckRecipe : Recipe
     {
         public TruckRecipe()
@@ -35,12 +35,12 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SteamTruckItem>(1),
                 new CraftingElement<CombustionEngineItem>(1),
                 new CraftingElement<RadiatorItem>(1), 
-                new CraftingElement<GearboxItem>(typeof(IndustrialEngineeringEfficiencySkill), 10, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CelluloseFiberItem>(typeof(IndustrialEngineeringEfficiencySkill), 20, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<SteelItem>(typeof(IndustrialEngineeringEfficiencySkill), 40, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlassItem>(typeof(IndustrialEngineeringEfficiencySkill), 20, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GearboxItem>(typeof(IndustrySkill), 10, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<CelluloseFiberItem>(typeof(IndustrySkill), 20, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<SteelItem>(typeof(IndustrySkill), 40, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<GlassItem>(typeof(IndustrySkill), 20, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<RubberWheelItem>(4),
-                new CraftingElement<RivetItem>(typeof(IndustrialEngineeringEfficiencySkill), 18, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<RivetItem>(typeof(IndustrySkill), 18, IndustrySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(25);
 

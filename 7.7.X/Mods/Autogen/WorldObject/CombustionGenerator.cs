@@ -104,7 +104,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MechanicalEngineeringSkill), 3)]
+    [RequiresSkill(typeof(MechanicsSkill), 3)]
     public partial class CombustionGeneratorRecipe : Recipe
     {
         public CombustionGeneratorRecipe()
@@ -117,11 +117,11 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<CombustionEngineItem>(1), 
-                new CraftingElement<IronIngotItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PistonItem>(typeof(MechanicsAssemblyEfficiencySkill), 5, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ValveItem>(typeof(MechanicsAssemblyEfficiencySkill), 4, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<PistonItem>(typeof(MechanicsSkill), 5, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<ValveItem>(typeof(MechanicsSkill), 4, MechanicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(30, MechanicsAssemblySpeedSkill.MultiplicativeStrategy, typeof(MechanicsAssemblySpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(30, MechanicsSkill.MultiplicativeStrategy, typeof(MechanicsSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(CombustionGeneratorRecipe), Item.Get<CombustionGeneratorItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CombustionGeneratorItem>().UILink(), value);
             this.CraftMinutes = value;

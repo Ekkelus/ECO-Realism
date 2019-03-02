@@ -53,7 +53,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(SteelworkingSkill), 2)]
+    [RequiresSkill(typeof(AdvancedSmeltingSkill), 2)]
     public partial class LargeCorrugatedSteelDoorRecipe : Recipe
     {
         public LargeCorrugatedSteelDoorRecipe()
@@ -65,9 +65,9 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(SteelworkingEfficiencySkill), 20, SteelworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<SteelItem>(typeof(AdvancedSmeltingSkill), 20, AdvancedSmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(30, SteelworkingSpeedSkill.MultiplicativeStrategy, typeof(SteelworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(30, AdvancedSmeltingSkill.MultiplicativeStrategy, typeof(AdvancedSmeltingSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(LargeCorrugatedSteelDoorRecipe), Item.Get<LargeCorrugatedSteelDoorItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<LargeCorrugatedSteelDoorItem>().UILink(), value);
             this.CraftMinutes = value;

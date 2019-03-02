@@ -88,7 +88,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(StoneworkingSkill), 1)]
+    [RequiresSkill(typeof(MortaringSkill), 1)]
     public partial class StoneBrazierRecipe : Recipe
     {
         public StoneBrazierRecipe()
@@ -100,9 +100,9 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<StoneItem>(typeof(StoneworkingEfficiencySkill), 20, StoneworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<StoneItem>(typeof(MortaringSkill), 20, MortaringSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, StoneworkingSpeedSkill.MultiplicativeStrategy, typeof(StoneworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(10, MortaringSkill.MultiplicativeStrategy, typeof(MortaringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(StoneBrazierRecipe), Item.Get<StoneBrazierItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StoneBrazierItem>().UILink(), value);
             this.CraftMinutes = value;

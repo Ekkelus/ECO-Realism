@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(FishingSkill), 1)]
+    [RequiresSkill(typeof(HuntingSkill), 1)]
     public partial class TroutFilletRecipe : Recipe
     {
         public TroutFilletRecipe()
@@ -33,9 +33,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-				new CraftingElement<TroutItem>(typeof(FishCleaningEfficiencySkill), 1, FishCleaningEfficiencySkill.MultiplicativeStrategy),
+				new CraftingElement<TroutItem>(typeof(HuntingSkill), 1, HuntingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(TroutFilletRecipe), Item.Get<TroutFilletItem>().UILink(), 3, typeof(FishCleaningSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(TroutFilletRecipe), Item.Get<TroutFilletItem>().UILink(), 3, typeof(HuntingSkill));
             this.Initialize(Localizer.DoStr("Trout Fillet"), typeof(TroutFilletRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }

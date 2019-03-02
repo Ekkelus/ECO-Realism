@@ -56,7 +56,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(LumberWoodworkingSkill), 1)]
+    [RequiresSkill(typeof(LumberSkill), 1)]
     public partial class WoodSignRecipe : Recipe
     {
         public WoodSignRecipe()
@@ -68,10 +68,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LumberItem>(typeof(LumberWoodworkingEfficiencySkill), 4, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(LumberWoodworkingEfficiencySkill), 8, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(LumberSkill), 4, LumberSkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(LumberSkill), 8, LumberSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, LumberWoodworkingSpeedSkill.MultiplicativeStrategy, typeof(LumberWoodworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(1, LumberSkill.MultiplicativeStrategy, typeof(LumberSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(WoodSignRecipe), Item.Get<WoodSignItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WoodSignItem>().UILink(), value);
             this.CraftMinutes = value;

@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(BeekeeperSkill), 1)]
+    [RequiresSkill(typeof(FarmingSkill), 1)]
     public partial class HoneyRecipe : Recipe
     {
         public HoneyRecipe()
@@ -34,15 +34,15 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<GlassJarItem>(typeof(BeekeeperEfficiencySkill), 2, BeekeeperEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GlassJarItem>(typeof(FarmingSkill), 2, FarmingSkill.MultiplicativeStrategy),
             };
             //            this.CraftMinutes = new MultiDynamicValue(MultiDynamicOps.Multiply
-            //, CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 0.1f, typeof(BeekeeperSpeedSkill))
+            //, CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 0.1f, typeof(FarmingSkill))
             //, MiscUtils.InvertDynamicvalue(new MultiDynamicValue(MultiDynamicOps.Average
             //    , new LayerModifiedValue("Fireweed", 5)
             //    , new LayerModifiedValue("Camas", 5))
             //));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 10, typeof(BeekeeperSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 10, typeof(FarmingSkill));
             this.Initialize(Localizer.DoStr("Honey"), typeof(HoneyRecipe));
             CraftingComponent.AddRecipe(typeof(BeehiveObject), this);
         }

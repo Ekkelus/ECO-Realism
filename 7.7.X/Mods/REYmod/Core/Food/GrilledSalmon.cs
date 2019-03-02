@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(CampfireCreationsSkill), 3)]
+    [RequiresSkill(typeof(AdvancedCampfireCookingSkill), 3)]
     public partial class GrilledSalmonRecipe : Recipe
     {
         public GrilledSalmonRecipe()
@@ -33,10 +33,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SalmonFilletItem>(typeof(CampfireCreationsEfficiencySkill), 10, CampfireCreationsEfficiencySkill.MultiplicativeStrategy),
-				new CraftingElement<TallowItem>(typeof(CampfireCreationsEfficiencySkill), 5, CampfireCreationsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<SalmonFilletItem>(typeof(AdvancedCampfireCookingSkill), 10, AdvancedCampfireCookingSkill.MultiplicativeStrategy),
+				new CraftingElement<TallowItem>(typeof(AdvancedCampfireCookingSkill), 5, AdvancedCampfireCookingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(GrilledSalmonRecipe), Item.Get<GrilledSalmonItem>().UILink(), 10, typeof(CampfireCreationsSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(GrilledSalmonRecipe), Item.Get<GrilledSalmonItem>().UILink(), 10, typeof(AdvancedCampfireCookingSkill));
             this.Initialize(Localizer.DoStr("Grilled Salmon"), typeof(GrilledSalmonRecipe));
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);
         }

@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayDescription { get { return Localizer.DoStr("Small cart for hauling small loads."); } }
     }
 
-    [RequiresSkill(typeof(PrimitiveMechanicsSkill), 1)] 
+    [RequiresSkill(typeof(BasicEngineeringSkill), 1)] 
     public class WoodCartRecipe : Recipe
     {
         public WoodCartRecipe()
@@ -33,10 +33,10 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<WoodenWheelItem>(2), 
-                new CraftingElement<HewnLogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 30, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BoardItem>(typeof(PrimitiveMechanicsEfficiencySkill), 50, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 2, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(PrimitiveMechanicsEfficiencySkill), 4, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HewnLogItem>(typeof(BasicEngineeringSkill), 30, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(BasicEngineeringSkill), 50, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(BasicEngineeringSkill), 2, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(BasicEngineeringSkill), 4, BasicEngineeringSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
 

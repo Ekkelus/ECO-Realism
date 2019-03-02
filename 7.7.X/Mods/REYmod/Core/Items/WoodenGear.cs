@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
 
-    [RequiresSkill(typeof(PrimitiveMechanicsSkill), 1)]
+    [RequiresSkill(typeof(BasicEngineeringSkill), 1)]
     public partial class WoodenGearRecipe : Recipe
     {
         public WoodenGearRecipe()
@@ -18,10 +18,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<HewnLogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 10, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 10, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HewnLogItem>(typeof(BasicEngineeringSkill), 10, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(BasicEngineeringSkill), 10, BasicEngineeringSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(WoodenGearRecipe), Item.Get<WoodenGearItem>().UILink(), 6, typeof(PrimitiveMechanicsSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(WoodenGearRecipe), Item.Get<WoodenGearItem>().UILink(), 6, typeof(BasicEngineeringSkill));
             this.Initialize(Localizer.DoStr("Wooden Gear"), typeof(WoodenGearRecipe));
 
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);

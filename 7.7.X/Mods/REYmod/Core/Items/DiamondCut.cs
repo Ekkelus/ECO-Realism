@@ -8,7 +8,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Serialization;
     using REYmod.Blocks;
 
-    [RequiresSkill(typeof(StoneworkingSkill), 5)]
+    [RequiresSkill(typeof(MortaringSkill), 5)]
     public partial class DiamondCutRecipe : Recipe
     {
         public DiamondCutRecipe()
@@ -19,9 +19,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<RawDiamondItem>(typeof(StoneworkingEfficiencySkill), 10, StoneworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<RawDiamondItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(DiamondCutRecipe), Item.Get<DiamondCutItem>().UILink(), 60, typeof(StoneworkingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(DiamondCutRecipe), Item.Get<DiamondCutItem>().UILink(), 60, typeof(MortaringSkill));
             this.Initialize(Localizer.DoStr("Cut Diamond"), typeof(DiamondCutRecipe));
 
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);

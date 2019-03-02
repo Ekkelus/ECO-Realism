@@ -68,7 +68,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(StoneworkingSkill), 3)]
+    [RequiresSkill(typeof(MortaringSkill), 3)]
     public partial class PlanterPotRoundRecipe : Recipe
     {
         public PlanterPotRoundRecipe()
@@ -80,10 +80,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<StoneItem>(typeof(StoneworkingEfficiencySkill), 10, StoneworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PulpFillerItem>(typeof(StoneworkingEfficiencySkill), 5, StoneworkingEfficiencySkill.MultiplicativeStrategy)
+                new CraftingElement<StoneItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),
+                new CraftingElement<PulpFillerItem>(typeof(MortaringSkill), 5, MortaringSkill.MultiplicativeStrategy)
             };
-            SkillModifiedValue value = new SkillModifiedValue(5, StoneworkingSpeedSkill.MultiplicativeStrategy, typeof(StoneworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(5, MortaringSkill.MultiplicativeStrategy, typeof(MortaringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(PlanterPotRoundRecipe), Item.Get<PlanterPotRoundItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<PlanterPotRoundItem>().UILink(), value);
             this.CraftMinutes = value;

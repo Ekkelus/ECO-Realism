@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
 
-    [RequiresSkill(typeof(PetrolRefiningSkill), 3)]   
+    [RequiresSkill(typeof(OilDrillingSkill), 3)]   
     public partial class PlasticRecipe : Recipe
     {
         public PlasticRecipe()
@@ -18,9 +18,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<PetroleumItem>(typeof(PetrolRefiningEfficiencySkill), 5, PetrolRefiningEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<PetroleumItem>(typeof(OilDrillingSkill), 5, OilDrillingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(PlasticRecipe), Item.Get<PlasticItem>().UILink(), 2, typeof(PetrolRefiningSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(PlasticRecipe), Item.Get<PlasticItem>().UILink(), 2, typeof(OilDrillingSkill));    
             this.Initialize(Localizer.DoStr("Plastic"), typeof(PlasticRecipe));
 
             CraftingComponent.AddRecipe(typeof(OilRefineryObject), this);

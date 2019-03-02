@@ -71,7 +71,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MetalworkingSkill), 1)]
+    [RequiresSkill(typeof(SmeltingSkill), 1)]
     public partial class AnvilRecipe : Recipe
     {
         public AnvilRecipe()
@@ -83,10 +83,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LogItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(20, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(20, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(AnvilRecipe), Item.Get<AnvilItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<AnvilItem>().UILink(), value);
             this.CraftMinutes = value;

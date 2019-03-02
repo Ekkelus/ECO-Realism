@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(HomeCookingSkill), 4)]
+    [RequiresSkill(typeof(CookingSkill), 4)]
     public partial class SmokedTroutSaladRecipe : Recipe
     {
         public SmokedTroutSaladRecipe()
@@ -33,12 +33,12 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<TroutFilletItem>(typeof(HomeCookingEfficiencySkill), 20, HomeCookingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CriminiMushroomsItem>(typeof(HomeCookingEfficiencySkill), 20, HomeCookingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<FiddleheadsItem>(typeof(HomeCookingEfficiencySkill), 20, HomeCookingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PricklyPearFruitItem>(typeof(HomeCookingEfficiencySkill), 20, HomeCookingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<TroutFilletItem>(typeof(CookingSkill), 20, CookingSkill.MultiplicativeStrategy),
+                new CraftingElement<CriminiMushroomsItem>(typeof(CookingSkill), 20, CookingSkill.MultiplicativeStrategy),
+                new CraftingElement<FiddleheadsItem>(typeof(CookingSkill), 20, CookingSkill.MultiplicativeStrategy),
+                new CraftingElement<PricklyPearFruitItem>(typeof(CookingSkill), 20, CookingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SmokedTroutSaladRecipe), Item.Get<SmokedTroutSaladItem>().UILink(), 10, typeof(HomeCookingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(SmokedTroutSaladRecipe), Item.Get<SmokedTroutSaladItem>().UILink(), 10, typeof(CookingSkill));
             this.Initialize(Localizer.DoStr("Smoked Trout Salad"), typeof(SmokedTroutSaladRecipe));
             CraftingComponent.AddRecipe(typeof(CastIronStoveObject), this);
         }

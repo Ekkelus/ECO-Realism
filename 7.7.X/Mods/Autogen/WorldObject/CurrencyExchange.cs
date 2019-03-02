@@ -60,7 +60,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MetalworkingSkill), 3)]
+    [RequiresSkill(typeof(SmeltingSkill), 3)]
     public partial class CurrencyExchangeRecipe : Recipe
     {
         public CurrencyExchangeRecipe()
@@ -72,12 +72,12 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GoldIngotItem>(typeof(MetalworkingEfficiencySkill), 10, MetalworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BrickItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LumberItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<GoldIngotItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<BrickItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(30, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(30, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(CurrencyExchangeRecipe), Item.Get<CurrencyExchangeItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CurrencyExchangeItem>().UILink(), value);
             this.CraftMinutes = value;

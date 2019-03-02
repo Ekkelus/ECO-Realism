@@ -34,7 +34,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<SalmonFilletItem>(1),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RawSalmonRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(FishCleaningSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RawSalmonRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(HuntingSkill));
             this.Initialize(Localizer.DoStr("Raw Salmon"), typeof(RawSalmonRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
@@ -53,7 +53,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<TroutFilletItem>(1),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RawTroutRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(FishCleaningSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RawTroutRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(HuntingSkill));
             this.Initialize(Localizer.DoStr("Raw Trout"), typeof(RawTroutRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
@@ -73,7 +73,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<TunaFilletItem>(1),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RawTunaRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(FishCleaningSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RawTunaRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(HuntingSkill));
             this.Initialize(Localizer.DoStr("Raw Tuna"), typeof(RawTunaRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }

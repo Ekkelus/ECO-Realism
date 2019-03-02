@@ -6,7 +6,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Shared.Localization;
 
-    [RequiresSkill(typeof(BowEfficiencySkill), 0)]   
+    [RequiresSkill(typeof(HuntingSkill), 0)]   
     public partial class BowRecipe : Recipe
     {
         public BowRecipe()
@@ -17,8 +17,8 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(BowEfficiencySkill), 4, BowEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<StringItem>(typeof(BowEfficiencySkill), 3, BowEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(HuntingSkill), 4, HuntingSkill.MultiplicativeStrategy),
+                new CraftingElement<StringItem>(typeof(HuntingSkill), 3, HuntingSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
             this.Initialize(Localizer.DoStr("Bow"), typeof(BowRecipe));

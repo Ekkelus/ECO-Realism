@@ -12,7 +12,7 @@
     using Eco.World.Blocks;
     using Gameplay.Systems.TextLinks;
 
-    [RequiresSkill(typeof(FishingSkill), 2)] 
+    [RequiresSkill(typeof(HuntingSkill), 2)] 
     public class CleanSalmonRecipe : Recipe
     {
         public CleanSalmonRecipe()
@@ -23,10 +23,10 @@
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SalmonItem>(typeof(FishCleaningEfficiencySkill), 1, FishCleaningEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<SalmonItem>(typeof(HuntingSkill), 1, HuntingSkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Clean Salmon"), typeof(CleanSalmonRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CleanSalmonRecipe), this.UILink(), 1, typeof(FishCleaningSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CleanSalmonRecipe), this.UILink(), 1, typeof(HuntingSkill));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }

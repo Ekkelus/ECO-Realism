@@ -4,6 +4,7 @@ using Eco.Gameplay.Skills;
 using Eco.Gameplay.Systems.TextLinks;
 using Eco.Shared.Localization;
 
+/* CURRENTLY DISABLED
 namespace Eco.Mods.TechTree
 {
     [RequiresSkill(typeof(BrickProductionEfficiencySkill), 10)]
@@ -25,3 +26,4 @@ namespace Eco.Mods.TechTree
         }
     }
 }
+*/
