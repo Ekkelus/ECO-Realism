@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
 
-    [RequiresSkill(typeof(MeatPrepSkill), 1)]
+    [RequiresSkill(typeof(ButcherySkill), 1)]
     public partial class GlueRecipe : Recipe
     {
         public GlueRecipe()
@@ -18,10 +18,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoneItem>(typeof(MeatPrepEfficiencySkill), 5, MeatPrepEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoneItem>(typeof(ButcherySkill), 5, ButcherySkill.MultiplicativeStrategy),
                 new CraftingElement<GlassJarItem>(1),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(GlueRecipe), Item.Get<GlueItem>().UILink(), 3, typeof(MeatPrepSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(GlueRecipe), Item.Get<GlueItem>().UILink(), 3, typeof(ButcherySkill));
             this.Initialize(Localizer.DoStr("Glue"), typeof(GlueRecipe));
 
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);

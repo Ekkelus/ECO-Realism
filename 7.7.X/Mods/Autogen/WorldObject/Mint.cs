@@ -60,7 +60,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MetalworkingSkill), 2)]
+    [RequiresSkill(typeof(SmeltingSkill), 2)]
     public partial class MintRecipe : Recipe
     {
         public MintRecipe()
@@ -72,10 +72,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GoldIngotItem>(typeof(MetalworkingEfficiencySkill), 10, MetalworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<SteelItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<GoldIngotItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(60, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(60, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(MintRecipe), Item.Get<MintItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<MintItem>().UILink(), value);
             this.CraftMinutes = value;

@@ -61,7 +61,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(StoneworkingSkill), 0)]
+    [RequiresSkill(typeof(MortaringSkill), 0)]
     public partial class MasonryTableRecipe : Recipe
     {
         public MasonryTableRecipe()
@@ -73,10 +73,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<StoneItem>(typeof(StoneworkingEfficiencySkill), 40, StoneworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LogItem>(typeof(StoneworkingEfficiencySkill), 10, StoneworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<StoneItem>(typeof(MortaringSkill), 40, MortaringSkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, StoneworkingSpeedSkill.MultiplicativeStrategy, typeof(StoneworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(1, MortaringSkill.MultiplicativeStrategy, typeof(MortaringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(MasonryTableRecipe), Item.Get<MasonryTableItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<MasonryTableItem>().UILink(), value);
             this.CraftMinutes = value;

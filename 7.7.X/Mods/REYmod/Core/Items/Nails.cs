@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
 
-    [RequiresSkill(typeof(MetalworkingSkill), 1)]   
+    [RequiresSkill(typeof(SmeltingSkill), 1)]   
     public partial class NailsRecipe : Recipe
     {
         public NailsRecipe()
@@ -18,9 +18,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 2, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 2, SmeltingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(NailsRecipe), Item.Get<NailsItem>().UILink(), 4, typeof(MetalworkingSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(NailsRecipe), Item.Get<NailsItem>().UILink(), 4, typeof(SmeltingSkill));    
             this.Initialize(Localizer.DoStr("Nails"), typeof(NailsRecipe));
 
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);

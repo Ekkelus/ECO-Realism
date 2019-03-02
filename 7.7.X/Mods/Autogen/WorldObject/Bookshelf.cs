@@ -76,7 +76,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(LumberWoodworkingSkill), 2)]
+    [RequiresSkill(typeof(LumberSkill), 2)]
     public partial class BookshelfRecipe : Recipe
     {
         public BookshelfRecipe()
@@ -88,11 +88,11 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LumberItem>(typeof(LumberWoodworkingEfficiencySkill), 20, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BookItem>(typeof(LumberWoodworkingEfficiencySkill), 5, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(LumberWoodworkingEfficiencySkill), 10, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(LumberSkill), 20, LumberSkill.MultiplicativeStrategy),
+                new CraftingElement<BookItem>(typeof(LumberSkill), 5, LumberSkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(LumberSkill), 10, LumberSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, LumberWoodworkingSpeedSkill.MultiplicativeStrategy, typeof(LumberWoodworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(1, LumberSkill.MultiplicativeStrategy, typeof(LumberSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(BookshelfRecipe), Item.Get<BookshelfItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BookshelfItem>().UILink(), value);
             this.CraftMinutes = value;

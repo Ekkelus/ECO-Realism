@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(SteelworkingSkill), 1)]
+    [RequiresSkill(typeof(AdvancedSmeltingSkill), 1)]
     public partial class RollingMillRecipe : Recipe
     {
         public RollingMillRecipe()
@@ -81,9 +81,9 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(SteelworkingEfficiencySkill), 10, SteelworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<SteelItem>(typeof(AdvancedSmeltingSkill), 10, AdvancedSmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(45, SteelworkingSpeedSkill.MultiplicativeStrategy, typeof(SteelworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(45, AdvancedSmeltingSkill.MultiplicativeStrategy, typeof(AdvancedSmeltingSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(RollingMillRecipe), Item.Get<RollingMillItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<RollingMillItem>().UILink(), value);
             this.CraftMinutes = value;

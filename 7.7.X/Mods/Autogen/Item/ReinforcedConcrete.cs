@@ -23,10 +23,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ConcreteItem>(typeof(CementProductionEfficiencySkill), 1, CementProductionEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RebarItem>(typeof(CementProductionEfficiencySkill), 1, CementProductionEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<ConcreteItem>(typeof(CementSkill), 1, CementSkill.MultiplicativeStrategy),
+                new CraftingElement<RebarItem>(typeof(CementSkill), 1, CementSkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ReinforcedConcreteRecipe), Item.Get<ReinforcedConcreteItem>().UILink(), 2, typeof(CementProductionSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ReinforcedConcreteRecipe), Item.Get<ReinforcedConcreteItem>().UILink(), 2, typeof(CementSkill));    
             this.Initialize(Localizer.DoStr("Reinforced Concrete"), typeof(ReinforcedConcreteRecipe));
 
             CraftingComponent.AddRecipe(typeof(CementKilnObject), this);
@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
     [Serialized]
     [Solid, Wall, Constructed,BuildRoomMaterialOption]
     [Tier(3)]                                          
-    [RequiresSkill(typeof(CementProductionEfficiencySkill), 1)]   
+    [RequiresSkill(typeof(CementSkill), 1)]   
     public partial class ReinforcedConcreteBlock :
         Block            
         , IRepresentsItem     

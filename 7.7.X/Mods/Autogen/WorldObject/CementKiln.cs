@@ -106,7 +106,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MetalworkingSkill), 1)]
+    [RequiresSkill(typeof(SmeltingSkill), 1)]
     public partial class CementKilnRecipe : Recipe
     {
         public CementKilnRecipe()
@@ -118,11 +118,11 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(MetalworkingEfficiencySkill), 30, MetalworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GearboxItem>(typeof(MetalworkingEfficiencySkill), 10, MetalworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PistonItem>(typeof(MetalworkingEfficiencySkill), 5, MetalworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 30, SmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<GearboxItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<PistonItem>(typeof(SmeltingSkill), 5, SmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(240, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(240, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(CementKilnRecipe), Item.Get<CementKilnItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<CementKilnItem>().UILink(), value);
             this.CraftMinutes = value;

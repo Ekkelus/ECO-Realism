@@ -10,7 +10,7 @@ namespace Eco.Mods.TechTree
     using Eco.World;
     using Eco.World.Blocks;
 
-    [RequiresSkill(typeof(RoadConstructionSkill), 1)]   
+    [RequiresSkill(typeof(BasicEngineeringSkill), 1)]   
     public partial class StoneRampRecipe : Recipe
     {
         public StoneRampRecipe()
@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<StoneRoadItem>(4),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(StoneRampRecipe), Item.Get<StoneRampItem>().UILink(), 1, typeof(RoadConstructionSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(StoneRampRecipe), Item.Get<StoneRampItem>().UILink(), 1, typeof(BasicEngineeringSkill));    
             this.Initialize(Localizer.DoStr("Stone Ramp"), typeof(StoneRampRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
@@ -34,7 +34,7 @@ namespace Eco.Mods.TechTree
     [Serialized]
     [Constructed]
     [Road(1)]                                          
-    [RequiresSkill(typeof(RoadConstructionEfficiencySkill), 1)]   
+    [RequiresSkill(typeof(BasicEngineeringSkill), 1)]   
     public partial class StoneRampBlock :
         Block            
     {

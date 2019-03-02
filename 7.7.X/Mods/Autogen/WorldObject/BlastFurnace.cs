@@ -101,7 +101,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MetalworkingSkill), 4)]
+    [RequiresSkill(typeof(SmeltingSkill), 4)]
     public partial class BlastFurnaceRecipe : Recipe
     {
         public BlastFurnaceRecipe()
@@ -113,12 +113,12 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BrickItem>(typeof(MetalworkingEfficiencySkill), 10, MetalworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronPipeItem>(typeof(MetalworkingEfficiencySkill), 10, MetalworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronPlateItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ScrewsItem>(typeof(MetalworkingEfficiencySkill), 20, MetalworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BrickItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<IronPipeItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<IronPlateItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<ScrewsItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(60, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(60, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(BlastFurnaceRecipe), Item.Get<BlastFurnaceItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BlastFurnaceItem>().UILink(), value);
             this.CraftMinutes = value;

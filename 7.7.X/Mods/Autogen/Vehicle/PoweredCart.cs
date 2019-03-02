@@ -20,7 +20,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayDescription { get { return Localizer.DoStr("Large cart for hauling sizable loads."); } }
     }
 
-    [RequiresSkill(typeof(MechanicalEngineeringSkill), 0)] 
+    [RequiresSkill(typeof(MechanicsSkill), 0)] 
     public class PoweredCartRecipe : Recipe
     {
         public PoweredCartRecipe()
@@ -32,10 +32,10 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<CombustionEngineItem>(1),
-                new CraftingElement<LumberItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ClothItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RivetItem>(typeof(MechanicsAssemblyEfficiencySkill), 5, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RubberWheelItem>(typeof(MechanicsAssemblyEfficiencySkill), 3, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<ClothItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<RivetItem>(typeof(MechanicsSkill), 5, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<RubberWheelItem>(typeof(MechanicsSkill), 3, MechanicsSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(25);
 

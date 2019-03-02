@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Skills;
     using Eco.Shared.Serialization;
 
-    [RequiresSkill(typeof(RoadConstructionSkill), 1)]   
+    [RequiresSkill(typeof(BasicEngineeringSkill), 1)]   
     public partial class RoadToolRecipe : Recipe
     {
         public RoadToolRecipe()
@@ -18,7 +18,7 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(RoadConstructionEfficiencySkill), 6, RoadConstructionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(BasicEngineeringSkill), 6, BasicEngineeringSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
             this.Initialize(Localizer.DoStr("Road Tool"), typeof(RoadToolRecipe));

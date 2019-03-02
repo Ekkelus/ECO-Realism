@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(LeavenedBakingSkill), 3)]
+    [RequiresSkill(typeof(AdvancedBakingSkill), 3)]
     public partial class PizzaRecipe : Recipe
     {
         public PizzaRecipe()
@@ -33,12 +33,12 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<TomatoItem>(typeof(LeavenedBakingEfficiencySkill), 30, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<FlatbreadItem>(typeof(LeavenedBakingEfficiencySkill), 5, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<FiddleheadsItem>(typeof(LeavenedBakingEfficiencySkill), 30, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ScrapMeatItem>(typeof(LeavenedBakingEfficiencySkill), 10, LeavenedBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<TomatoItem>(typeof(AdvancedBakingSkill), 30, AdvancedBakingSkill.MultiplicativeStrategy),
+                new CraftingElement<FlatbreadItem>(typeof(AdvancedBakingSkill), 5, AdvancedBakingSkill.MultiplicativeStrategy),
+                new CraftingElement<FiddleheadsItem>(typeof(AdvancedBakingSkill), 30, AdvancedBakingSkill.MultiplicativeStrategy),
+                new CraftingElement<ScrapMeatItem>(typeof(AdvancedBakingSkill), 10, AdvancedBakingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(PizzaRecipe), Item.Get<PizzaItem>().UILink(), 15, typeof(LeavenedBakingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(PizzaRecipe), Item.Get<PizzaItem>().UILink(), 15, typeof(AdvancedBakingSkill));
             this.Initialize(Localizer.DoStr("Pizza"), typeof(PizzaRecipe));
             CraftingComponent.AddRecipe(typeof(BakeryOvenObject), this);
         }

@@ -21,13 +21,13 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class PaperMillingSkillBook : SkillBook<PaperMillingSkill, PaperMillingSkillScroll>
     {
-        public override LocString DisplayName { get { return Localizer.DoStr("Paper Milling Skill Book"); } }
+        public override LocString DisplayName { get { return Localizer.DoStr("PaperMillingSkill Book"); } }
     }
 
     [Serialized]
     public partial class PaperMillingSkillScroll : SkillScroll<PaperMillingSkill, PaperMillingSkillBook>
     {
-        public override LocString DisplayName { get { return Localizer.DoStr("Paper Milling Skill Scroll"); } }
+        public override LocString DisplayName { get { return Localizer.DoStr("PaperMillingSkill Scroll"); } }
     }
 
     public partial class PaperMillingSkillBookRecipe : Recipe
@@ -45,7 +45,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(15);
 
-            this.Initialize(Localizer.DoStr("Paper Milling Skill Book"), typeof(PaperMillingSkillBookRecipe));
+            this.Initialize(Localizer.DoStr("PaperMillingSkill Book"), typeof(PaperMillingSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

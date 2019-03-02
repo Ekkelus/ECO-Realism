@@ -59,7 +59,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(PaperSkill), 1)]
+    [RequiresSkill(typeof(PaperMillingSkill), 1)]
     public partial class CardboardBoxRecipe : Recipe
     {
         public CardboardBoxRecipe()
@@ -71,13 +71,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<PaperItem>(typeof(PaperEfficiencySkill), 10, PaperEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlueItem>(typeof(PaperEfficiencySkill), 1, PaperEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<PaperItem>(typeof(PaperMillingSkill), 10, PaperMillingSkill.MultiplicativeStrategy),
+                new CraftingElement<GlueItem>(typeof(PaperMillingSkill), 1, PaperMillingSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(2, PaperSpeedSkill.MultiplicativeStrategy, typeof(PaperSpeedSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(CardboardBoxRecipe), Item.Get<CardboardBoxItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<CardboardBoxItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CardboardBoxRecipe), Item.Get<CardboardBoxItem>().UILink(), 2, typeof(PaperMillingSkill));
             this.Initialize(Localizer.DoStr("Cardboard Box"), typeof(CardboardBoxRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

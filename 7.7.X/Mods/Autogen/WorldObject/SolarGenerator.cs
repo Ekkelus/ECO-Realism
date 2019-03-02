@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(ElectronicEngineeringSkill), 4)]
+    [RequiresSkill(typeof(ElectronicsSkill), 4)]
     public partial class SolarGeneratorRecipe : Recipe
     {
         public SolarGeneratorRecipe()
@@ -84,12 +84,12 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ReinforcedConcreteItem>(typeof(ElectronicEngineeringEfficiencySkill), 6, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ServoItem>(typeof(ElectronicEngineeringEfficiencySkill), 5, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CircuitItem>(typeof(ElectronicEngineeringEfficiencySkill), 10, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlassItem>(typeof(ElectronicEngineeringEfficiencySkill), 50, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<ReinforcedConcreteItem>(typeof(ElectronicsSkill), 6, ElectronicsSkill.MultiplicativeStrategy),
+                new CraftingElement<ServoItem>(typeof(ElectronicsSkill), 5, ElectronicsSkill.MultiplicativeStrategy),
+                new CraftingElement<CircuitItem>(typeof(ElectronicsSkill), 10, ElectronicsSkill.MultiplicativeStrategy),
+                new CraftingElement<GlassItem>(typeof(ElectronicsSkill), 50, ElectronicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(50, ElectronicEngineeringSpeedSkill.MultiplicativeStrategy, typeof(ElectronicEngineeringSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(50, ElectronicsSkill.MultiplicativeStrategy, typeof(ElectronicsSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(SolarGeneratorRecipe), Item.Get<SolarGeneratorItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SolarGeneratorItem>().UILink(), value);
             this.CraftMinutes = value;

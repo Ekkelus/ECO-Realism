@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(PrimitiveMechanicsSkill), 3)]
+    [RequiresSkill(typeof(BasicEngineeringSkill), 3)]
     public partial class WindmillRecipe : Recipe
     {
         public WindmillRecipe()
@@ -81,12 +81,12 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<HewnLogItem>(typeof(PrimitiveMechanicsEfficiencySkill), 5, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BoardItem>(typeof(PrimitiveMechanicsEfficiencySkill), 10, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ClothItem>(typeof(PrimitiveMechanicsEfficiencySkill), 25, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<WoodenGearItem>(typeof(PrimitiveMechanicsEfficiencySkill), 1, PrimitiveMechanicsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HewnLogItem>(typeof(BasicEngineeringSkill), 5, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(BasicEngineeringSkill), 10, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<ClothItem>(typeof(BasicEngineeringSkill), 25, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<WoodenGearItem>(typeof(BasicEngineeringSkill), 1, BasicEngineeringSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(30, PrimitiveMechanicsSpeedSkill.MultiplicativeStrategy, typeof(PrimitiveMechanicsSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(30, BasicEngineeringSkill.MultiplicativeStrategy, typeof(BasicEngineeringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(WindmillRecipe), Item.Get<WindmillItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WindmillItem>().UILink(), value);
             this.CraftMinutes = value;

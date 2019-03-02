@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
 
-    [RequiresSkill(typeof(IndustrialEngineeringSkill), 2)]   
+    [RequiresSkill(typeof(IndustrySkill), 2)]   
     public partial class RubberWheelRecipe : Recipe
     {
         public RubberWheelRecipe()
@@ -18,10 +18,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SyntheticRubberItem>(typeof(IndustrialEngineeringEfficiencySkill), 10, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<SyntheticRubberItem>(typeof(IndustrySkill), 10, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<IronWheelItem>(1),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RubberWheelRecipe), Item.Get<RubberWheelItem>().UILink(), 5, typeof(IndustrialEngineeringSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RubberWheelRecipe), Item.Get<RubberWheelItem>().UILink(), 5, typeof(IndustrySkill));    
             this.Initialize(Localizer.DoStr("Rubber Wheel"), typeof(RubberWheelRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);

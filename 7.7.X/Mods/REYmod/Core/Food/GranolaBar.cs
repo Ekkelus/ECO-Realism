@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(BasicBakingSkill), 4)]
+    [RequiresSkill(typeof(BakingSkill), 4)]
     public partial class GranolaBarRecipe : Recipe
     {
         public GranolaBarRecipe()
@@ -33,11 +33,11 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<WheatSeedItem>(typeof(BasicBakingEfficiencySkill), 20, BasicBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<SugarItem>(typeof(BasicBakingEfficiencySkill), 10, BasicBakingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<TallowItem>(typeof(BasicBakingEfficiencySkill), 5, BasicBakingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<WheatSeedItem>(typeof(BakingSkill), 20, BakingSkill.MultiplicativeStrategy),
+                new CraftingElement<SugarItem>(typeof(BakingSkill), 10, BakingSkill.MultiplicativeStrategy),
+                new CraftingElement<TallowItem>(typeof(BakingSkill), 5, BakingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(GranolaBarRecipe), Item.Get<GranolaBarItem>().UILink(), 10, typeof(BasicBakingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(GranolaBarRecipe), Item.Get<GranolaBarItem>().UILink(), 10, typeof(BakingSkill));
             this.Initialize(Localizer.DoStr("Granola Bar"), typeof(GranolaBarRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }

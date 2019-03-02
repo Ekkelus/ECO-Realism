@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition                     { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(LeavenedBakingSkill), 2)]    
+    [RequiresSkill(typeof(AdvancedBakingSkill), 2)]    
     public partial class YeastRecipe : Recipe
     {
         public YeastRecipe()
@@ -33,9 +33,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SugarItem>(typeof(LeavenedBakingEfficiencySkill), 10, LeavenedBakingEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<SugarItem>(typeof(AdvancedBakingSkill), 10, AdvancedBakingSkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(YeastRecipe), Item.Get<YeastItem>().UILink(), 5, typeof(LeavenedBakingSpeedSkill)); 
+            this.CraftMinutes = CreateCraftTimeValue(typeof(YeastRecipe), Item.Get<YeastItem>().UILink(), 5, typeof(AdvancedBakingSkill)); 
             this.Initialize(Localizer.DoStr("Yeast"), typeof(YeastRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }

@@ -6,7 +6,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
-    [RequiresSkill(typeof(LumberWoodworkingSkill), 3)] 
+    [RequiresSkill(typeof(LumberSkill), 3)] 
     public class SawBoardsRecipe : Recipe
     {
         public SawBoardsRecipe()
@@ -17,10 +17,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<HewnLogItem>(typeof(LumberWoodworkingEfficiencySkill), 2, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<HewnLogItem>(typeof(LumberSkill), 2, LumberSkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Saw Boards"), typeof(SawBoardsRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SawBoardsRecipe), this.UILink(), 0.5f, typeof(LumberWoodworkingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(SawBoardsRecipe), this.UILink(), 0.5f, typeof(LumberSkill));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }

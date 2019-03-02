@@ -11,11 +11,11 @@
     <None Remove="Removed\**" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="7.7.X\Mods\REYmod\Core\WorldGen\Worldgen.cs" />
+    <Compile Remove="7.7.X\Mods\REYmod\WIP\WorldGen\Worldgen.cs" />
     <Compile Remove="7.7.X\Mods\REYmod\WIP\Testthings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="7.7.X\Mods\REYmod\Core\WorldGen\Worldgen.cs" />
+    <None Include="7.7.X\Mods\REYmod\WIP\WorldGen\Worldgen.cs" />
     <None Include="7.7.X\Mods\REYmod\WIP\Testthings.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,5 +49,8 @@
     <Reference Include="Priority Queue">
       <HintPath>dlls\Priority Queue.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="7.7.X\Mods\REYmod\Core\Tech\" />
   </ItemGroup>
 </Project>

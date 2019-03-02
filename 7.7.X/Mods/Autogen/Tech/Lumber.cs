@@ -21,13 +21,13 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class LumberSkillBook : SkillBook<LumberSkill, LumberSkillScroll>
     {
-        public override LocString DisplayName { get { return Localizer.DoStr("Lumber Skill Book"); } }
+        public override LocString DisplayName { get { return Localizer.DoStr("LumberSkill Book"); } }
     }
 
     [Serialized]
     public partial class LumberSkillScroll : SkillScroll<LumberSkill, LumberSkillBook>
     {
-        public override LocString DisplayName { get { return Localizer.DoStr("Lumber Skill Scroll"); } }
+        public override LocString DisplayName { get { return Localizer.DoStr("LumberSkill Scroll"); } }
     }
 
     public partial class LumberSkillBookRecipe : Recipe
@@ -47,7 +47,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(15);
 
-            this.Initialize(Localizer.DoStr("Lumber Skill Book"), typeof(LumberSkillBookRecipe));
+            this.Initialize(Localizer.DoStr("LumberSkill Book"), typeof(LumberSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

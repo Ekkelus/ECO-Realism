@@ -56,7 +56,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(StoneworkingSkill), 2)]
+    [RequiresSkill(typeof(MortaringSkill), 2)]
     public partial class SmallHangingStoneSignRecipe : Recipe
     {
         public SmallHangingStoneSignRecipe()
@@ -68,9 +68,9 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<StoneItem>(typeof(StoneworkingEfficiencySkill), 30, StoneworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<StoneItem>(typeof(MortaringSkill), 30, MortaringSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, StoneworkingSpeedSkill.MultiplicativeStrategy, typeof(StoneworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(10, MortaringSkill.MultiplicativeStrategy, typeof(MortaringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(SmallHangingStoneSignRecipe), Item.Get<SmallHangingStoneSignItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<SmallHangingStoneSignItem>().UILink(), value);
             this.CraftMinutes = value;

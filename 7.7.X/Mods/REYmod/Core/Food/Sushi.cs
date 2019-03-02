@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(CulinaryArtsSkill), 3)]
+    [RequiresSkill(typeof(AdvancedCookingSkill), 3)]
     public partial class SushiRecipe : Recipe
     {
         public SushiRecipe()
@@ -33,15 +33,15 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SalmonFilletItem>(typeof(CulinaryArtsEfficiencySkill), 10, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<TunaFilletItem>(typeof(CulinaryArtsEfficiencySkill), 10, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<TroutFilletItem>(typeof(CulinaryArtsEfficiencySkill), 10, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ClamItem>(typeof(CulinaryArtsEfficiencySkill), 4, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<UrchinItem>(typeof(CulinaryArtsEfficiencySkill), 4, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<KelpItem>(typeof(CulinaryArtsEfficiencySkill), 4, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RiceItem>(typeof(CulinaryArtsEfficiencySkill), 20, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<SalmonFilletItem>(typeof(AdvancedCookingSkill), 10, AdvancedCookingSkill.MultiplicativeStrategy),
+                new CraftingElement<TunaFilletItem>(typeof(AdvancedCookingSkill), 10, AdvancedCookingSkill.MultiplicativeStrategy),
+                new CraftingElement<TroutFilletItem>(typeof(AdvancedCookingSkill), 10, AdvancedCookingSkill.MultiplicativeStrategy),
+                new CraftingElement<ClamItem>(typeof(AdvancedCookingSkill), 4, AdvancedCookingSkill.MultiplicativeStrategy),
+                new CraftingElement<UrchinItem>(typeof(AdvancedCookingSkill), 4, AdvancedCookingSkill.MultiplicativeStrategy),
+                new CraftingElement<KelpItem>(typeof(AdvancedCookingSkill), 4, AdvancedCookingSkill.MultiplicativeStrategy),
+                new CraftingElement<RiceItem>(typeof(AdvancedCookingSkill), 20, AdvancedCookingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SushiRecipe), Item.Get<SushiItem>().UILink(), 15, typeof(CulinaryArtsSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(SushiRecipe), Item.Get<SushiItem>().UILink(), 15, typeof(AdvancedCookingSkill));
             this.Initialize(Localizer.DoStr("Sushi"), typeof(SushiRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }

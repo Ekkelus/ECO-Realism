@@ -90,7 +90,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(StoneworkingSkill), 2)]
+    [RequiresSkill(typeof(MortaringSkill), 2)]
     public partial class BakeryOvenRecipe : Recipe
     {
         public BakeryOvenRecipe()
@@ -102,12 +102,12 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BrickItem>(typeof(StoneworkingEfficiencySkill), 30, StoneworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LogItem>(typeof(StoneworkingEfficiencySkill), 6, StoneworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(StoneworkingEfficiencySkill), 10, StoneworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<HingeItem>(typeof(StoneworkingEfficiencySkill), 10, StoneworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BrickItem>(typeof(MortaringSkill), 30, MortaringSkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(MortaringSkill), 6, MortaringSkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),
+                new CraftingElement<HingeItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(20, StoneworkingSpeedSkill.MultiplicativeStrategy, typeof(StoneworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(20, MortaringSkill.MultiplicativeStrategy, typeof(MortaringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(BakeryOvenRecipe), Item.Get<BakeryOvenItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<BakeryOvenItem>().UILink(), value);
             this.CraftMinutes = value;

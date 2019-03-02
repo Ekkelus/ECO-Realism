@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(ClothProductionSkill), 1)]
+    [RequiresSkill(typeof(TailoringSkill), 1)]
     public partial class WashboardRecipe : Recipe
     {
         public WashboardRecipe()
@@ -81,10 +81,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(ClothProductionEfficiencySkill), 10, ClothProductionEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(ClothProductionEfficiencySkill), 4, ClothProductionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(TailoringSkill), 10, TailoringSkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(TailoringSkill), 4, TailoringSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(5, ClothProductionSpeedSkill.MultiplicativeStrategy, typeof(ClothProductionSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(5, TailoringSkill.MultiplicativeStrategy, typeof(TailoringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(WashboardRecipe), Item.Get<WashboardItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WashboardItem>().UILink(), value);
             this.CraftMinutes = value;

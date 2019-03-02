@@ -117,7 +117,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MechanicalEngineeringSkill), 4)]
+    [RequiresSkill(typeof(MechanicsSkill), 4)]
     public partial class ConveyorSenderRecipe : Recipe
     {
         public ConveyorSenderRecipe()
@@ -129,11 +129,11 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<IronIngotItem>(typeof(MechanicsAssemblyEfficiencySkill), 10, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GearboxItem>(typeof(MechanicsAssemblyEfficiencySkill), 4, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PistonItem>(typeof(MechanicsAssemblyEfficiencySkill), 2, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(MechanicsSkill), 10, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<GearboxItem>(typeof(MechanicsSkill), 4, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<PistonItem>(typeof(MechanicsSkill), 2, MechanicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, MetalworkingSpeedSkill.MultiplicativeStrategy, typeof(MetalworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(1, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(ConveyorSenderRecipe), Item.Get<ConveyorSenderItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ConveyorSenderItem>().UILink(), value);
             this.CraftMinutes = value;

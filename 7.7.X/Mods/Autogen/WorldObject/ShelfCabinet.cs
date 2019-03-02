@@ -76,7 +76,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(LumberWoodworkingSkill), 3)]
+    [RequiresSkill(typeof(LumberSkill), 3)]
     public partial class ShelfCabinetRecipe : Recipe
     {
         public ShelfCabinetRecipe()
@@ -88,12 +88,12 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LumberItem>(typeof(LumberWoodworkingEfficiencySkill), 20, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BookItem>(typeof(LumberWoodworkingEfficiencySkill), 2, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<HingeItem>(typeof(LumberWoodworkingEfficiencySkill), 4, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(LumberWoodworkingEfficiencySkill), 5, LumberWoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(LumberSkill), 20, LumberSkill.MultiplicativeStrategy),
+                new CraftingElement<BookItem>(typeof(LumberSkill), 2, LumberSkill.MultiplicativeStrategy),
+                new CraftingElement<HingeItem>(typeof(LumberSkill), 4, LumberSkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(LumberSkill), 5, LumberSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(5, LumberWoodworkingSpeedSkill.MultiplicativeStrategy, typeof(LumberWoodworkingSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(5, LumberSkill.MultiplicativeStrategy, typeof(LumberSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(ShelfCabinetRecipe), Item.Get<ShelfCabinetItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<ShelfCabinetItem>().UILink(), value);
             this.CraftMinutes = value;

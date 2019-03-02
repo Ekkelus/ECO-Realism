@@ -18,9 +18,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LumberItem>(typeof(LumberProcessingEfficiencySkill), 2, LumberProcessingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(LumberSkill), 2, LumberSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CharcoalRecipe), Item.Get<CharcoalItem>().UILink(), 1, typeof(LumberProcessingSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CharcoalRecipe), Item.Get<CharcoalItem>().UILink(), 1, typeof(LumberSkill));    
             this.Initialize(Localizer.DoStr("Charcoal"), typeof(CharcoalRecipe));
 
             CraftingComponent.AddRecipe(typeof(BloomeryObject), this);

@@ -15,7 +15,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayDescription { get { return Localizer.DoStr("A WHAT?"); } }
     }
 
-    [RequiresSkill(typeof(IndustrialEngineeringSkill), 1)] 
+    [RequiresSkill(typeof(IndustrySkill), 1)] 
     public class SkidSteerRecipe : Recipe
     {
         public SkidSteerRecipe()
@@ -30,10 +30,10 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<RubberWheelItem>(4),
                 new CraftingElement<RadiatorItem>(2),
                 new CraftingElement<SteelAxleItem>(1), 
-                new CraftingElement<GearboxItem>(typeof(IndustrialEngineeringEfficiencySkill), 10, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CelluloseFiberItem>(typeof(IndustrialEngineeringEfficiencySkill), 20, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<SteelItem>(typeof(IndustrialEngineeringEfficiencySkill), 40, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RivetItem>(typeof(IndustrialEngineeringEfficiencySkill), 16, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<GearboxItem>(typeof(IndustrySkill), 10, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<CelluloseFiberItem>(typeof(IndustrySkill), 20, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<SteelItem>(typeof(IndustrySkill), 40, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<RivetItem>(typeof(IndustrySkill), 16, IndustrySkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(25);
 

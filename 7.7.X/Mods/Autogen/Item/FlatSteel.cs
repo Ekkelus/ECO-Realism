@@ -12,7 +12,7 @@ namespace Eco.Mods.TechTree
     using Eco.World;
     using Eco.World.Blocks;
 
-    [RequiresSkill(typeof(SteelworkingSkill), 3)]   
+    [RequiresSkill(typeof(AdvancedSmeltingSkill), 3)]   
     public partial class FlatSteelRecipe : Recipe
     {
         public FlatSteelRecipe()
@@ -23,10 +23,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<CorrugatedSteelItem>(typeof(SteelworkingEfficiencySkill), 4, SteelworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<EpoxyItem>(typeof(SteelworkingEfficiencySkill), 1, SteelworkingEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<CorrugatedSteelItem>(typeof(AdvancedSmeltingSkill), 4, AdvancedSmeltingSkill.MultiplicativeStrategy),
+                new CraftingElement<EpoxyItem>(typeof(AdvancedSmeltingSkill), 1, AdvancedSmeltingSkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(FlatSteelRecipe), Item.Get<FlatSteelItem>().UILink(), 5, typeof(SteelworkingSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(FlatSteelRecipe), Item.Get<FlatSteelItem>().UILink(), 5, typeof(AdvancedSmeltingSkill));    
             this.Initialize(Localizer.DoStr("Flat Steel"), typeof(FlatSteelRecipe));
 
             CraftingComponent.AddRecipe(typeof(RollingMillObject), this);
@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
     [Serialized]
     [Solid, Wall, Constructed,BuildRoomMaterialOption]
     [Tier(4)]                                          
-    [RequiresSkill(typeof(SteelworkingEfficiencySkill), 3)]   
+    [RequiresSkill(typeof(AdvancedSmeltingSkill), 3)]   
     public partial class FlatSteelBlock :
         Block            
         , IRepresentsItem     

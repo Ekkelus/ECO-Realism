@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
 
-    [RequiresSkill(typeof(PaperSkill), 1)]
+    [RequiresSkill(typeof(PaperMillingSkill), 1)]
     public partial class BookRecipe : Recipe
     {
         public BookRecipe()
@@ -18,11 +18,11 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<PaperItem>(typeof(PaperEfficiencySkill), 20, PaperEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LeatherHideItem>(typeof(PaperEfficiencySkill), 10, PaperEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlueItem>(typeof(PaperEfficiencySkill), 4, PaperEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<PaperItem>(typeof(PaperMillingSkill), 20, PaperMillingSkill.MultiplicativeStrategy),
+                new CraftingElement<LeatherHideItem>(typeof(PaperMillingSkill), 10, PaperMillingSkill.MultiplicativeStrategy),
+                new CraftingElement<GlueItem>(typeof(PaperMillingSkill), 4, PaperMillingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(BookRecipe), Item.Get<BookItem>().UILink(), 10, typeof(PaperSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(BookRecipe), Item.Get<BookItem>().UILink(), 10, typeof(PaperMillingSkill));
             this.Initialize(Localizer.DoStr("Book"), typeof(BookRecipe));
 
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);

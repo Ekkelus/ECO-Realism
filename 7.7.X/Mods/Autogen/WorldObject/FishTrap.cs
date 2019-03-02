@@ -56,7 +56,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(FishingSkill), 3)]
+    [RequiresSkill(typeof(HuntingSkill), 3)]
     public partial class FishTrapRecipe : Recipe
     {
         public FishTrapRecipe()
@@ -68,10 +68,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(FishingSkill), 20, FishingSkill.MultiplicativeStrategy),
-                new CraftingElement<RopeItem>(typeof(FishingSkill), 4, FishingSkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(HuntingSkill), 20, HuntingSkill.MultiplicativeStrategy),
+                new CraftingElement<RopeItem>(typeof(HuntingSkill), 4, HuntingSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, FishingSkill.MultiplicativeStrategy, typeof(FishingSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(10, HuntingSkill.MultiplicativeStrategy, typeof(HuntingSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(FishTrapRecipe), Item.Get<FishTrapItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<FishTrapItem>().UILink(), value);
             this.CraftMinutes = value;

@@ -17,9 +17,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<PlantFibersItem>(typeof(ClothProductionEfficiencySkill), 10, ClothProductionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<PlantFibersItem>(typeof(TailoringSkill), 10, TailoringSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(StringRecipe), Item.Get<StringItem>().UILink(), 0.5f, typeof(ClothProductionSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(StringRecipe), Item.Get<StringItem>().UILink(), 0.5f, typeof(TailoringSkill));
             this.Initialize(Localizer.DoStr("String"), typeof(StringRecipe));
 
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);

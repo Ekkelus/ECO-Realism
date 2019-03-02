@@ -12,7 +12,7 @@
     using Eco.World.Blocks;
     using Gameplay.Systems.TextLinks;
 
-    [RequiresSkill(typeof(FishingSkill), 1)] 
+    [RequiresSkill(typeof(HuntingSkill), 1)] 
     public class ShuckClamsRecipe : Recipe
     {
         public ShuckClamsRecipe()
@@ -23,10 +23,10 @@
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ClamItem>(typeof(FishCleaningEfficiencySkill), 5, FishCleaningEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<ClamItem>(typeof(HuntingSkill), 5, HuntingSkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Shuck Clams"), typeof(ShuckClamsRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ShuckClamsRecipe), this.UILink(), 0.2f, typeof(FishCleaningSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ShuckClamsRecipe), this.UILink(), 0.2f, typeof(HuntingSkill));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }

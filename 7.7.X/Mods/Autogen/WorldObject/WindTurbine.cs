@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MechanicalEngineeringSkill), 4)]
+    [RequiresSkill(typeof(MechanicsSkill), 4)]
     public partial class WindTurbineRecipe : Recipe
     {
         public WindTurbineRecipe()
@@ -87,12 +87,12 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(MechanicsAssemblyEfficiencySkill), 50, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GearboxItem>(typeof(MechanicsAssemblyEfficiencySkill), 5, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CircuitItem>(typeof(MechanicsAssemblyEfficiencySkill), 10, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ReinforcedConcreteItem>(typeof(MechanicsAssemblyEfficiencySkill), 6, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<SteelItem>(typeof(MechanicsSkill), 50, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<GearboxItem>(typeof(MechanicsSkill), 5, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<CircuitItem>(typeof(MechanicsSkill), 10, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<ReinforcedConcreteItem>(typeof(MechanicsSkill), 6, MechanicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(50, MechanicsAssemblySpeedSkill.MultiplicativeStrategy, typeof(MechanicsAssemblySpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(50, MechanicsSkill.MultiplicativeStrategy, typeof(MechanicsSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(WindTurbineRecipe), Item.Get<WindTurbineItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WindTurbineItem>().UILink(), value);
             this.CraftMinutes = value;

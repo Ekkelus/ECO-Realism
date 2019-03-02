@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MechanicalEngineeringSkill), 4)]
+    [RequiresSkill(typeof(MechanicsSkill), 4)]
     public partial class PumpJackRecipe : Recipe
     {
         public PumpJackRecipe()
@@ -84,13 +84,13 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ConcreteItem>(typeof(MechanicsAssemblyEfficiencySkill), 14, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GearboxItem>(typeof(MechanicsAssemblyEfficiencySkill), 4, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PistonItem>(typeof(MechanicsAssemblyEfficiencySkill), 6, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CopperPipeItem>(typeof(MechanicsAssemblyEfficiencySkill), 6, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<WaterwheelItem>(typeof(MechanicsAssemblyEfficiencySkill), 2, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<ConcreteItem>(typeof(MechanicsSkill), 14, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<GearboxItem>(typeof(MechanicsSkill), 4, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<PistonItem>(typeof(MechanicsSkill), 6, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<CopperPipeItem>(typeof(MechanicsSkill), 6, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<WaterwheelItem>(typeof(MechanicsSkill), 2, MechanicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(50, MechanicsAssemblySpeedSkill.MultiplicativeStrategy, typeof(MechanicsAssemblySpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(50, MechanicsSkill.MultiplicativeStrategy, typeof(MechanicsSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(PumpJackRecipe), Item.Get<PumpJackItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<PumpJackItem>().UILink(), value);
             this.CraftMinutes = value;

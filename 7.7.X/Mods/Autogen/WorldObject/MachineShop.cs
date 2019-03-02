@@ -58,7 +58,7 @@
 //    }
 
 
-//    [RequiresSkill(typeof(MechanicalEngineeringSkill), 0)]
+//    [RequiresSkill(typeof(MechanicsSkill), 0)]
 //    public partial class MachineShopRecipe : Recipe
 //    {
 //        public MachineShopRecipe()
@@ -70,11 +70,11 @@
 
 //            this.Ingredients = new CraftingElement[]
 //            {
-//                new CraftingElement<LumberItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-//                new CraftingElement<BoardItem>(typeof(MechanicsAssemblyEfficiencySkill), 30, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-//                new CraftingElement<IronIngotItem>(typeof(MechanicsAssemblyEfficiencySkill), 40, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),   
+//                new CraftingElement<LumberItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
+//                new CraftingElement<BoardItem>(typeof(MechanicsSkill), 30, MechanicsSkill.MultiplicativeStrategy),
+//                new CraftingElement<IronIngotItem>(typeof(MechanicsSkill), 40, MechanicsSkill.MultiplicativeStrategy),   
 //            };
-//            SkillModifiedValue value = new SkillModifiedValue(120, MechanicsAssemblySpeedSkill.MultiplicativeStrategy, typeof(MechanicsAssemblySpeedSkill), Localizer.DoStr("craft time"));
+//            SkillModifiedValue value = new SkillModifiedValue(120, MechanicsSkill.MultiplicativeStrategy, typeof(MechanicsSkill), Localizer.DoStr("craft time"));
 //            SkillModifiedValueManager.AddBenefitForObject(typeof(MachineShopRecipe), Item.Get<MachineShopItem>().UILink(), value);
 //            SkillModifiedValueManager.AddSkillBenefit(Item.Get<MachineShopItem>().UILink(), value);
 //            this.CraftMinutes = value;

@@ -65,7 +65,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(ClothProductionSkill), 3)]
+    [RequiresSkill(typeof(TailoringSkill), 3)]
     public partial class RugMediumRecipe : Recipe
     {
         public RugMediumRecipe()
@@ -77,10 +77,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ClothItem>(typeof(ClothProductionEfficiencySkill), 10, ClothProductionEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CelluloseFiberItem>(typeof(ClothProductionEfficiencySkill), 5, ClothProductionEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<ClothItem>(typeof(TailoringSkill), 10, TailoringSkill.MultiplicativeStrategy),
+                new CraftingElement<CelluloseFiberItem>(typeof(TailoringSkill), 5, TailoringSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(20, ClothProductionSpeedSkill.MultiplicativeStrategy, typeof(ClothProductionSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(20, TailoringSkill.MultiplicativeStrategy, typeof(TailoringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(RugMediumRecipe), Item.Get<RugMediumItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<RugMediumItem>().UILink(), value);
             this.CraftMinutes = value;

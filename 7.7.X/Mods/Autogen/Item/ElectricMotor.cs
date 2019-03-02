@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Serialization;
 
-    [RequiresSkill(typeof(ElectronicEngineeringSkill), 3)]   
+    [RequiresSkill(typeof(ElectronicsSkill), 3)]   
     public partial class ElectricMotorRecipe : Recipe
     {
         public ElectricMotorRecipe()
@@ -18,11 +18,11 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<CopperWiringItem>(typeof(ElectronicEngineeringEfficiencySkill), 20, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CircuitItem>(typeof(ElectronicEngineeringEfficiencySkill), 6, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<SteelItem>(typeof(ElectronicEngineeringEfficiencySkill), 6, ElectronicEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<CopperWiringItem>(typeof(ElectronicsSkill), 20, ElectronicsSkill.MultiplicativeStrategy),
+                new CraftingElement<CircuitItem>(typeof(ElectronicsSkill), 6, ElectronicsSkill.MultiplicativeStrategy),
+                new CraftingElement<SteelItem>(typeof(ElectronicsSkill), 6, ElectronicsSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ElectricMotorRecipe), Item.Get<ElectricMotorItem>().UILink(), 5, typeof(ElectronicEngineeringSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ElectricMotorRecipe), Item.Get<ElectricMotorItem>().UILink(), 5, typeof(ElectronicsSkill));    
             this.Initialize(Localizer.DoStr("Electric Motor"), typeof(ElectricMotorRecipe));
 
             CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);

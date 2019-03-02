@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayDescription { get { return Localizer.DoStr("Stream truck"); } }
     }
 
-    [RequiresSkill(typeof(MechanicalEngineeringSkill), 0)] 
+    [RequiresSkill(typeof(MechanicsSkill), 0)] 
     public class SteamTruckRecipe : Recipe
     {
         public SteamTruckRecipe()
@@ -35,11 +35,11 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PortableSteamEngineItem>(1),
                 new CraftingElement<IronWheelItem>(4),
                 new CraftingElement<IronAxleItem>(1), 
-                new CraftingElement<IronPlateItem>(typeof(MechanicsAssemblyEfficiencySkill), 30, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronPipeItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ScrewsItem>(typeof(MechanicsAssemblyEfficiencySkill), 40, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LumberItem>(typeof(MechanicsAssemblyEfficiencySkill), 30, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LeatherHideItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<IronPlateItem>(typeof(MechanicsSkill), 30, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<IronPipeItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<ScrewsItem>(typeof(MechanicsSkill), 40, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<LumberItem>(typeof(MechanicsSkill), 30, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<LeatherHideItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(25);
 

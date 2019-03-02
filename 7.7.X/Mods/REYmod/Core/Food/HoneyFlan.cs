@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(CulinaryArtsSkill), 2)]
+    [RequiresSkill(typeof(AdvancedCookingSkill), 2)]
     public partial class HoneyFlanRecipe : Recipe
     {
         public HoneyFlanRecipe()
@@ -33,10 +33,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<HoneyItem>(typeof(CulinaryArtsEfficiencySkill), 4, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<SugarItem>(typeof(CulinaryArtsEfficiencySkill), 15, CulinaryArtsEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HoneyItem>(typeof(AdvancedCookingSkill), 4, AdvancedCookingSkill.MultiplicativeStrategy),
+                new CraftingElement<SugarItem>(typeof(AdvancedCookingSkill), 15, AdvancedCookingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyFlanRecipe), Item.Get<HoneyFlanItem>().UILink(), 15, typeof(CulinaryArtsSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyFlanRecipe), Item.Get<HoneyFlanItem>().UILink(), 15, typeof(AdvancedCookingSkill));
             this.Initialize(Localizer.DoStr("Honey Flan"), typeof(HoneyFlanRecipe));
             CraftingComponent.AddRecipe(typeof(StoveObject), this);
         }

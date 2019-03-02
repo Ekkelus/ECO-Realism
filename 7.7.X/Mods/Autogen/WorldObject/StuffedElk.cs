@@ -64,7 +64,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(ClothProductionSkill), 1)]
+    [RequiresSkill(typeof(TailoringSkill), 1)]
     public partial class StuffedElkRecipe : Recipe
     {
         public StuffedElkRecipe()
@@ -77,10 +77,10 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<ElkCarcassItem>(1),
-                new CraftingElement<PlantFibersItem>(typeof(ClothProductionEfficiencySkill), 100, ClothProductionEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(ClothProductionEfficiencySkill), 8, ClothProductionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<PlantFibersItem>(typeof(TailoringSkill), 100, TailoringSkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(TailoringSkill), 8, TailoringSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(40, ClothProductionSpeedSkill.MultiplicativeStrategy, typeof(ClothProductionSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(40, TailoringSkill.MultiplicativeStrategy, typeof(TailoringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(StuffedElkRecipe), Item.Get<StuffedElkItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<StuffedElkItem>().UILink(), value);
             this.CraftMinutes = value;

@@ -12,7 +12,7 @@
     using Eco.World.Blocks;
     using Gameplay.Systems.TextLinks;
 
-    [RequiresSkill(typeof(FishingSkill), 4)] 
+    [RequiresSkill(typeof(HuntingSkill), 4)] 
     public class CleanUrchinsRecipe : Recipe
     {
         public CleanUrchinsRecipe()
@@ -23,10 +23,10 @@
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<UrchinItem>(typeof(FishCleaningEfficiencySkill), 4, FishCleaningEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<UrchinItem>(typeof(HuntingSkill), 4, HuntingSkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Clean Urchins"), typeof(CleanUrchinsRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CleanUrchinsRecipe), this.UILink(), 0.2f, typeof(FishCleaningSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CleanUrchinsRecipe), this.UILink(), 0.2f, typeof(HuntingSkill));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }

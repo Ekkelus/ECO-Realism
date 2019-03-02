@@ -18,10 +18,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<StoneItem>(typeof(CementProductionEfficiencySkill), 10, CementProductionEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<SandItem>(typeof(CementProductionEfficiencySkill), 10, CementProductionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<StoneItem>(typeof(CementSkill), 10, CementSkill.MultiplicativeStrategy),
+                new CraftingElement<SandItem>(typeof(CementSkill), 10, CementSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ConcreteRecipe), Item.Get<ConcreteItem>().UILink(), 2, typeof(CementProductionSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ConcreteRecipe), Item.Get<ConcreteItem>().UILink(), 2, typeof(CementSkill));    
             this.Initialize(Localizer.DoStr("Concrete"), typeof(ConcreteRecipe));
 
             CraftingComponent.AddRecipe(typeof(CementKilnObject), this);

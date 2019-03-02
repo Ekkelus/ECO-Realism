@@ -12,7 +12,7 @@ namespace Eco.Mods.TechTree
     using Eco.World;
     using Eco.World.Blocks;
 
-    [RequiresSkill(typeof(SteelworkingSkill), 2)]   
+    [RequiresSkill(typeof(AdvancedSmeltingSkill), 2)]   
     public partial class CorrugatedSteelRecipe : Recipe
     {
         public CorrugatedSteelRecipe()
@@ -23,9 +23,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(SteelworkingEfficiencySkill), 2, SteelworkingEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<SteelItem>(typeof(AdvancedSmeltingSkill), 2, AdvancedSmeltingSkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CorrugatedSteelRecipe), Item.Get<CorrugatedSteelItem>().UILink(), 2, typeof(SteelworkingSpeedSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CorrugatedSteelRecipe), Item.Get<CorrugatedSteelItem>().UILink(), 2, typeof(AdvancedSmeltingSkill));    
             this.Initialize(Localizer.DoStr("Corrugated Steel"), typeof(CorrugatedSteelRecipe));
 
             CraftingComponent.AddRecipe(typeof(RollingMillObject), this);
@@ -35,7 +35,7 @@ namespace Eco.Mods.TechTree
     [Serialized]
     [Solid, Wall, Constructed]
     [Tier(3)]                                          
-    [RequiresSkill(typeof(SteelworkingEfficiencySkill), 2)]   
+    [RequiresSkill(typeof(AdvancedSmeltingSkill), 2)]   
     public partial class CorrugatedSteelBlock :
         Block            
         , IRepresentsItem     

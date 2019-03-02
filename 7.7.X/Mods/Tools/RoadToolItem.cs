@@ -15,7 +15,7 @@ namespace Eco.Mods.TechTree
     using Gameplay.Skills;
 
     [Category("Tools")]
-    [RepairRequiresSkill(typeof(RoadConstructionSkill), 1)]
+    [RepairRequiresSkill(typeof(BasicEngineeringSkill), 1)]
     public partial class RoadToolItem : ToolItem
     {
         static IDynamicValue caloriesBurn = new ConstantValue(15);

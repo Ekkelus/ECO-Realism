@@ -10,7 +10,7 @@ namespace Eco.Mods.TechTree
     using Eco.World;
     using Eco.World.Blocks;
 
-    [RequiresSkill(typeof(RoadConstructionSkill), 0)]   
+    [RequiresSkill(typeof(BasicEngineeringSkill), 0)]   
     public partial class DirtRampRecipe : Recipe
     {
         public DirtRampRecipe()
@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<DirtItem>(4), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(DirtRampRecipe), Item.Get<DirtRampItem>().UILink(), 0.5f, typeof(RoadConstructionSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(DirtRampRecipe), Item.Get<DirtRampItem>().UILink(), 0.5f, typeof(BasicEngineeringSkill));    
             this.Initialize(Localizer.DoStr("Dirt Ramp"), typeof(DirtRampRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
@@ -34,7 +34,7 @@ namespace Eco.Mods.TechTree
     [Serialized]
     [Constructed]
     [Road(1)]                                          
-    [RequiresSkill(typeof(RoadConstructionEfficiencySkill), 0)]   
+    [RequiresSkill(typeof(BasicEngineeringSkill), 0)]   
     public partial class DirtRampBlock :
         Block            
     {

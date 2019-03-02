@@ -10,10 +10,10 @@
 - Added room requirement to Computer Lab
 - Added room requirement to Factory
 - Added tier construction skills to self improvement
-- Added Beekeeper skill
+- Added FarmingSkill
 - Added Bee, Beeswax, Honey and Beehive
 - Added Honey Bun, Honey Flan, Honey Glazed Ham
-- Added Skinning Skill
+- Added HuntingSkill
 - Added skinned animals
 - Added Ruined Carcass
 - Added Raw Diamond, Diamond Cut

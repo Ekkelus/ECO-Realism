@@ -10,7 +10,7 @@ namespace Eco.Mods.TechTree
     using Eco.World;
     using Eco.World.Blocks;
 
-    [RequiresSkill(typeof(RoadConstructionSkill), 3)]   
+    [RequiresSkill(typeof(BasicEngineeringSkill), 3)]   
     public partial class AsphaltRoadRecipe : Recipe
     {
         public AsphaltRoadRecipe()
@@ -21,11 +21,11 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ConcreteItem>(typeof(RoadConstructionEfficiencySkill), 1, RoadConstructionEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<StoneRoadItem>(typeof(RoadConstructionEfficiencySkill), 1, RoadConstructionEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PetroleumItem>(typeof(RoadConstructionEfficiencySkill), 1, RoadConstructionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<ConcreteItem>(typeof(BasicEngineeringSkill), 1, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<StoneRoadItem>(typeof(BasicEngineeringSkill), 1, BasicEngineeringSkill.MultiplicativeStrategy),
+                new CraftingElement<PetroleumItem>(typeof(BasicEngineeringSkill), 1, BasicEngineeringSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(AsphaltRoadRecipe), Item.Get<AsphaltRoadItem>().UILink(), 1, typeof(RoadConstructionSkill));    
+            this.CraftMinutes = CreateCraftTimeValue(typeof(AsphaltRoadRecipe), Item.Get<AsphaltRoadItem>().UILink(), 1, typeof(BasicEngineeringSkill));    
             this.Initialize(Localizer.DoStr("Asphalt Road"), typeof(AsphaltRoadRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
     [Solid, Wall, Constructed]
     [Road(1)]                                          
     [UsesRamp(typeof(AsphaltRoadWorldObjectBlock))]              
-    [RequiresSkill(typeof(RoadConstructionEfficiencySkill), 3)]   
+    [RequiresSkill(typeof(BasicEngineeringSkill), 3)]   
     public partial class AsphaltRoadBlock :
         Block           
     { }

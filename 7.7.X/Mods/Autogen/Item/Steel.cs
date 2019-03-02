@@ -4,7 +4,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
 
-    //[RequiresSkill(typeof(AlloySmeltingSkill), 2)]   
+    //[RequiresSkill(typeof(AdvancedSmeltingSkill), 2)]   
     //public partial class SteelRecipe : Recipe
     //{
     //    public SteelRecipe()
@@ -15,10 +15,10 @@ namespace Eco.Mods.TechTree
     //        };
     //        this.Ingredients = new CraftingElement[]
     //        {
-    //            new CraftingElement<CoalItem>(typeof(AlloySmeltingEfficiencySkill), 2, AlloySmeltingEfficiencySkill.MultiplicativeStrategy),
-    //            new CraftingElement<IronIngotItem>(typeof(AlloySmeltingEfficiencySkill), 5, AlloySmeltingEfficiencySkill.MultiplicativeStrategy), 
+    //            new CraftingElement<CoalItem>(typeof(AdvancedSmeltingSkill), 2, AdvancedSmeltingSkill.MultiplicativeStrategy),
+    //            new CraftingElement<IronIngotItem>(typeof(AdvancedSmeltingSkill), 5, AdvancedSmeltingSkill.MultiplicativeStrategy), 
     //        };
-    //        this.CraftMinutes = CreateCraftTimeValue(typeof(SteelRecipe), Item.Get<SteelItem>().UILink(), 3, typeof(AlloySmeltingSpeedSkill));    
+    //        this.CraftMinutes = CreateCraftTimeValue(typeof(SteelRecipe), Item.Get<SteelItem>().UILink(), 3, typeof(AdvancedSmeltingSkill));    
     //        this.Initialize(Localizer.DoStr("Steel"), typeof(SteelRecipe));
 
     //        CraftingComponent.AddRecipe(typeof(BlastFurnaceObject), this);

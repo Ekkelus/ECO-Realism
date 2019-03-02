@@ -98,7 +98,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(MechanicalEngineeringSkill), 4)]
+    [RequiresSkill(typeof(MechanicsSkill), 4)]
     public partial class OilRefineryRecipe : Recipe
     {
         public OilRefineryRecipe()
@@ -110,13 +110,13 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BrickItem>(typeof(MechanicsAssemblyEfficiencySkill), 10, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GearItem>(typeof(MechanicsAssemblyEfficiencySkill), 5, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(MechanicsAssemblyEfficiencySkill), 20, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CopperPipeItem>(typeof(MechanicsAssemblyEfficiencySkill), 10, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<WindmillItem>(typeof(MechanicsAssemblyEfficiencySkill), 2, MechanicsAssemblyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BrickItem>(typeof(MechanicsSkill), 10, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<GearItem>(typeof(MechanicsSkill), 5, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<CopperPipeItem>(typeof(MechanicsSkill), 10, MechanicsSkill.MultiplicativeStrategy),
+                new CraftingElement<WindmillItem>(typeof(MechanicsSkill), 2, MechanicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(50, MechanicsAssemblySpeedSkill.MultiplicativeStrategy, typeof(MechanicsAssemblySpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(50, MechanicsSkill.MultiplicativeStrategy, typeof(MechanicsSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(OilRefineryRecipe), Item.Get<OilRefineryItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<OilRefineryItem>().UILink(), value);
             this.CraftMinutes = value;

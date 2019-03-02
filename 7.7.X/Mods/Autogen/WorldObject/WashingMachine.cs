@@ -77,7 +77,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(IndustrialEngineeringSkill), 3)]
+    [RequiresSkill(typeof(IndustrySkill), 3)]
     public partial class WashingMachineRecipe : Recipe
     {
         public WashingMachineRecipe()
@@ -89,12 +89,12 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteelItem>(typeof(IndustrialEngineeringEfficiencySkill), 20, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<CircuitItem>(typeof(IndustrialEngineeringEfficiencySkill), 5, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<HingeItem>(typeof(IndustrialEngineeringEfficiencySkill), 4, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlassItem>(typeof(IndustrialEngineeringEfficiencySkill), 4, IndustrialEngineeringEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<SteelItem>(typeof(IndustrySkill), 20, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<CircuitItem>(typeof(IndustrySkill), 5, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<HingeItem>(typeof(IndustrySkill), 4, IndustrySkill.MultiplicativeStrategy),
+                new CraftingElement<GlassItem>(typeof(IndustrySkill), 4, IndustrySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, IndustrialEngineeringSpeedSkill.MultiplicativeStrategy, typeof(IndustrialEngineeringSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(10, IndustrySkill.MultiplicativeStrategy, typeof(IndustrySkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(WashingMachineRecipe), Item.Get<WashingMachineItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<WashingMachineItem>().UILink(), value);
             this.CraftMinutes = value;

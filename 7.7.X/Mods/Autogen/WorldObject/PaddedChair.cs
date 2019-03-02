@@ -70,7 +70,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(ClothProductionSkill), 3)]
+    [RequiresSkill(typeof(TailoringSkill), 3)]
     public partial class PaddedChairRecipe : Recipe
     {
         public PaddedChairRecipe()
@@ -82,12 +82,12 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(ClothProductionEfficiencySkill), 5, ClothProductionEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BoardItem>(typeof(ClothProductionEfficiencySkill), 20, ClothProductionEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<ClothItem>(typeof(ClothProductionEfficiencySkill), 10, ClothProductionEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(ClothProductionEfficiencySkill), 6, ClothProductionEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(TailoringSkill), 5, TailoringSkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(TailoringSkill), 20, TailoringSkill.MultiplicativeStrategy),
+                new CraftingElement<ClothItem>(typeof(TailoringSkill), 10, TailoringSkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(TailoringSkill), 6, TailoringSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(5, ClothProductionSpeedSkill.MultiplicativeStrategy, typeof(ClothProductionSpeedSkill), Localizer.DoStr("craft time"));
+            SkillModifiedValue value = new SkillModifiedValue(5, TailoringSkill.MultiplicativeStrategy, typeof(TailoringSkill), Localizer.DoStr("craft time"));
             SkillModifiedValueManager.AddBenefitForObject(typeof(PaddedChairRecipe), Item.Get<PaddedChairItem>().UILink(), value);
             SkillModifiedValueManager.AddSkillBenefit(Item.Get<PaddedChairItem>().UILink(), value);
             this.CraftMinutes = value;

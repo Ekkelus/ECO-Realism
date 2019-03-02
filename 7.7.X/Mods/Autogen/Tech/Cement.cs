@@ -23,13 +23,13 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class CementSkillBook : SkillBook<CementSkill, CementSkillScroll>
     {
-        public override LocString DisplayName { get { return Localizer.DoStr("Cement Skill Book"); } }
+        public override LocString DisplayName { get { return Localizer.DoStr("CementSkill Book"); } }
     }
 
     [Serialized]
     public partial class CementSkillScroll : SkillScroll<CementSkill, CementSkillBook>
     {
-        public override LocString DisplayName { get { return Localizer.DoStr("Cement Skill Scroll"); } }
+        public override LocString DisplayName { get { return Localizer.DoStr("CementSkill Scroll"); } }
     }
 
     [RequiresSkill(typeof(BricklayingSkill), 0)] 
@@ -50,7 +50,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(30);
 
-            this.Initialize(Localizer.DoStr("Cement Skill Book"), typeof(CementSkillBookRecipe));
+            this.Initialize(Localizer.DoStr("CementSkill Book"), typeof(CementSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }
