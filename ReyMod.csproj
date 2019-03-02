@@ -46,5 +46,8 @@
     <Reference Include="LiteDB">
       <HintPath>dlls\LiteDB.dll</HintPath>
     </Reference>
+    <Reference Include="Priority Queue">
+      <HintPath>dlls\Priority Queue.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

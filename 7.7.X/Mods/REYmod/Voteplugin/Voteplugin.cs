@@ -22,7 +22,7 @@ namespace REYmod.Utils
             switch(VoteUtils.CheckVote(user))
             {
                 case -2:
-                    ChatUtils.SendMessage(user, "Received an unexpected response from Ecoservers. Please try again later.");
+                    ChatUtils.SendMessage(user, "Received an unexpected response from Ecoservers.io. Please try again later.");
                     return;
                 case -1:
                     ChatUtils.SendMessage(user, "There was an error when contacting Ecoservers.io. Please try again later.");

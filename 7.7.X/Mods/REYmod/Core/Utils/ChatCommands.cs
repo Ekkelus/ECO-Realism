@@ -14,12 +14,13 @@ using Eco.Shared.Networking;
 using Eco.Shared.Utils;
 using Eco.Simulation.Time;
 using Eco.World;
-using REYmod.Blocks;
 using REYmod.Config;
 using REYmod.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using Eco.Shared.Localization;
 
 namespace REYmod.Core.ChatCommandsNamespace
 {
@@ -51,29 +52,40 @@ namespace REYmod.Core.ChatCommandsNamespace
         }
         #endregion
 
-        [ChatCommand("removediamonds", "Removes all (invisible) DiamondBlocks around you", level: ChatAuthorizationLevel.Admin)]
-        public static void Removediamonds(User user)
+        //[ChatCommand("removediamonds", "Removes all (invisible) DiamondBlocks around you", level: ChatAuthorizationLevel.Admin)]
+        //public static void Removediamonds(User user)
+        //{
+        //    int count = 0;
+        //    int debugcount = 0;
+        //    Vector3i startpos = user.Position.XYZi - new Vector3i(4, 4, 4);
+
+
+        //    foreach (Vector3i posoffset in Vector3i.XYZIter(9))
+        //    {
+        //        debugcount++;
+        //        Vector3i pos = startpos + posoffset;
+        //        if (World.GetBlock(pos).GetType() == typeof(DiamondBlock))
+        //        {
+        //            World.DeleteBlock(pos);
+        //            count++;
+        //        }
+        //    }
+        //    ChatUtils.SendMessage(user, "Debug(totalblocks): " + debugcount);
+        //    if (count > 0) ChatUtils.SendMessage(user, "Deleted " + count + " Diamondblocks");
+        //    else ChatUtils.SendMessage(user, "No Diamonds found!");
+
+        //}
+
+        [ChatCommand("TestCommand", "testtesttest", level: ChatAuthorizationLevel.Admin)]
+        public static async void TestCommandAsync(User user)
         {
-            int count = 0;
-            int debugcount = 0;
-            Vector3i startpos = user.Position.XYZi - new Vector3i(4, 4, 4);
-
-
-            foreach (Vector3i posoffset in Vector3i.XYZIter(9))
-            {
-                debugcount++;
-                Vector3i pos = startpos + posoffset;
-                if (World.GetBlock(pos).GetType() == typeof(DiamondBlock))
-                {
-                    World.DeleteBlock(pos);
-                    count++;
-                }
-            }
-            ChatUtils.SendMessage(user, "Debug(totalblocks): " + debugcount);
-            if (count > 0) ChatUtils.SendMessage(user, "Deleted " + count + " Diamondblocks");
-            else ChatUtils.SendMessage(user, "No Diamonds found!");
+            FormattableString msg = FormattableStringFactory.Create("test");
+            bool x = await user.Player.PopupConfirmBoxLoc(msg);
+            if (x) user.Player.PopupOKBoxLoc(Localizer.DoStr("OK"));
+            else user.Player.PopupOKBoxLoc(Localizer.DoStr("NOT OK"));
 
         }
+
 
         [ChatCommand("setowner", "Sets tho owner of the Plot your currently standing on", level: ChatAuthorizationLevel.Admin)]
         public static void SetOwner(User user, string newowner)
@@ -99,7 +111,7 @@ namespace REYmod.Core.ChatCommandsNamespace
         {
             user.Player.User.Stomach.ClearCalories(user.Player);
             user.Player.User.Stomach.Contents.Clear();
-            user.Player.SendTemporaryMessageLoc("Really Bad elk meat?");
+            user.Player.SendTemporaryMessageAlreadyLocalized("Really Bad elk meat?");
         }
 
         [ChatCommand("passlaw+", "Lets you pass a single law instead of all at once", level: ChatAuthorizationLevel.Admin)]
@@ -134,7 +146,7 @@ namespace REYmod.Core.ChatCommandsNamespace
                 REYmodSettings.Obj.Config.Maxsuperskills = maxallowed;
                 REYmodSettings.Obj.SaveConfig();
                 ChatUtils.SendMessage(user, "Changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr);
-                ChatManager.ServerMessageToAllAlreadyLocalized(user.UILink() + "changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr, false);
+               ChatUtils.SendMessageToAll(user.UILink() + "changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr, false);
                 // ConfigHandler.UpdateConfigFile();
             }
         }
@@ -204,9 +216,10 @@ namespace REYmod.Core.ChatCommandsNamespace
 
 
         [ChatCommand("unclaimuser", "MOD/ADMIN only! - Unclaims all property of the given user ", level: ChatAuthorizationLevel.User)]
-        public static void UnclaimPlayer(User user, User owner = null)
+        public static async void UnclaimPlayerAsync(User user, User owner = null)
         {
             bool inactive = true;
+            bool confirmed = false;
             double inactivetime;
 
             if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
@@ -231,7 +244,7 @@ namespace REYmod.Core.ChatCommandsNamespace
             if (owner.LoggedIn) inactivetime = 0;
 
             IEnumerable<Deed> allDeeds = PropertyManager.GetAllDeeds();
-            IEnumerable<Deed> targetDeeds = allDeeds.Where(x => x.OwnerUser.User == owner);
+            IEnumerable<Deed> targetDeeds = allDeeds.Where(x => x.OwnerUser == owner);
             int ownedplots = PropertyManager.PropertyForUser(owner).Count();
             int ownedvehicles = targetDeeds.Sum(x => x.OwnedObjects.Count) - ownedplots;
 
@@ -244,14 +257,25 @@ namespace REYmod.Core.ChatCommandsNamespace
             textbox += "<br><br>";
             if (!inactive && !user.IsAdmin)
             {
-                textbox += "You can't unclaim this player! Not inactive for long enough.";
+                textbox += "<b><color=red>You can't unclaim this player! Not inactive for long enough.</color></b>";
+                user.Player.PopupOKBoxLoc(Localizer.DoStr(textbox));
+                return;
             }
             else
             {
-                textbox += new Button(x => { MiscUtils.UnclaimUser(owner, user); IOUtils.WriteCommandLog(user, "UnclaimUser", "Unclaimed " + owner.Name + " (" + ownedplots + " plots/" + ownedvehicles + " vehicles)" + "Inactive for " + TimeFormatter.FormatSpan(inactivetime)); }, "", "Click here to unclaim all property of " + owner.UILink(), "Confirm Unclaiming".Color("green")).UILink();
+              //  textbox += new Button(x => { MiscUtils.UnclaimUser(owner, user); IOUtils.WriteCommandLog(user, "UnclaimUser", "Unclaimed " + owner.Name + " (" + ownedplots + " plots/" + ownedvehicles + " vehicles)" + "Inactive for " + TimeFormatter.FormatSpan(inactivetime)); }, "", "Click here to unclaim all property of " + owner.UILink(), "Confirm Unclaiming".Color("green")).UILink();
+                FormattableString textboxformattable = FormattableStringFactory.Create(textbox);
+                confirmed = await user.Player.PopupConfirmBoxLoc(textboxformattable);
             }
 
-            user.Player.OpenInfoPanel("Unclaim Player", textbox);
+            if (confirmed)
+            {
+                MiscUtils.UnclaimUser(owner, user);
+                IOUtils.WriteCommandLog(user, "UnclaimUser", "Unclaimed " + owner.Name + " (" + ownedplots + " plots/" + ownedvehicles + " vehicles)" + "Inactive for " + TimeFormatter.FormatSpan(inactivetime));
+            }
+
+
+            //user.Player.OpenInfoPanel("Unclaim Player", textbox);
 
         }
 
@@ -316,7 +340,7 @@ namespace REYmod.Core.ChatCommandsNamespace
         {
             if (max < 1) max = 1;
             int x = RandomUtil.Range(1, max);
-            ChatManager.ServerMessageToAllAlreadyLocalized(user.Name + " rolled a random number from 1 to " + max + ": " + "<i>" + x + "</i>", false);
+           ChatUtils.SendMessageToAll(user.Name + " rolled a random number from 1 to " + max + ": " + "<i>" + x + "</i>", false);
         }
 
         [ChatCommand("rules", "Displays the Server Rules")]
@@ -420,6 +444,7 @@ namespace REYmod.Core.ChatCommandsNamespace
             user.Player.OpenInfoPanel("Nutrition Ranking", output);
         }
 
+
         [ChatCommand("avatar", "Displays information about you or the given Player")]
         public static void Avatarcmd(User user, string playername = "")
         {
@@ -456,6 +481,8 @@ namespace REYmod.Core.ChatCommandsNamespace
 
             if (targetuser.IsAdmin) admininfo = "<color=red><b>ADMIN</b></color> ";
 
+
+            /* old currencies (pre bank accounts)
             foreach (Currency currency in EconomyManager.Currency.Currencies)
             {
                 if (currency.HasAccount(targetuser.Name))
@@ -466,7 +493,14 @@ namespace REYmod.Core.ChatCommandsNamespace
                     }
                 }
             }
+            */
+            foreach (BankAccount account in BankAccountManager.Obj.AccessibleAccounts(targetplayer))  //not yet working as expected
+            {
+                currencyinfo += account.UILink() + newline;
+            }
 
+
+            /* no superskills atm
             List<Skill> superskills = SkillUtils.GetSuperSkills(targetuser);
             if (superskills.Count > 0)
             {
@@ -477,6 +511,7 @@ namespace REYmod.Core.ChatCommandsNamespace
                 }
                 superskillsinfo += newline;
             }
+            */
 
             float foodsp = targetuser.Stomach.NutrientSkillRate;
             float housesp = targetuser.CachedHouseValue.HousingSkillRate;
@@ -492,6 +527,7 @@ namespace REYmod.Core.ChatCommandsNamespace
             user.Player.OpenInfoPanel(title, admininfo + targetuser.UILink() + " " + onlineinfo + newline + skillsheadline + foodinfo + housinginfo + totalsp + professioninfo + newline + propertyinfo + newline + superskillsinfo + currencyinfo);
         }
 
+        /* OBSOLETE
         [ChatCommand("donate", "Donates Money to the Treasury")]
         public static void Donate(User user, float amount, string currencytype)
         {
@@ -515,13 +551,16 @@ namespace REYmod.Core.ChatCommandsNamespace
             }
             else user.Player.SendTemporaryMessageAlreadyLocalized(result.Message);
         }
+        */
 
-        [ChatCommand("superskillshelp", "Displays an infobox about Super Skills")]
+        [ChatCommand("superskillshelp", "Displays an infobox about Super Skills")] 
         public static void SuperSkillhelp(User user)
         {
             SkillUtils.ShowSuperSkillInfo(user.Player);
         }
 
+
+        /************************************************/
 
         [ChatCommand("leaderpasslaw", "WorldLeader only - Insta passes a law when it has at least 5 \"yes\" and no \"no\" votes")]
         public static void LeaderPassLaw(User user)
