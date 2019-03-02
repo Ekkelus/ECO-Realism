@@ -18,6 +18,7 @@ using Eco.Core.Utils.AtomicAction;
 using System.Timers;
 using REYmod.Config;
 using Eco.Gameplay;
+using Eco.World.Blocks;
 
 
 
@@ -35,13 +36,18 @@ namespace REYmod.Utils
 
         public static void SendMessage(User user, string msg, bool temporary = false, bool createlinks = true)
         {
-            if(createlinks) ChatManager.ServerMessageToPlayerAlreadyLocalized(msg.Autolink(), user, temporary);
-            else ChatManager.ServerMessageToPlayerAlreadyLocalized(msg, user, temporary);
+            if(createlinks) ChatManager.ServerMessageToPlayer(Localizer.DoStr(msg.Autolink()), user, temporary);
+            else ChatManager.ServerMessageToPlayer(Localizer.DoStr(msg), user, temporary);
         }
 
         public static void SendMessage(Player player, string msg, bool temporary = false, bool createlinks = true)
         {
             SendMessage(player.User, msg, temporary,createlinks);
+        }
+
+        public static void SendMessageToAll(string msg, bool tmp = false)
+        {
+            ChatManager.ServerMessageToAll(Localizer.DoStr(msg), tmp);
         }
 
         public static void ShowWelcomeMessage(User user)
@@ -196,6 +202,9 @@ namespace REYmod.Utils
     /// </summary>
     public static class MiscUtils
     {
+
+
+
         /// <summary>
         /// Returns the number of plots a <see cref="User"/> owns.
         /// </summary>
@@ -234,9 +243,9 @@ namespace REYmod.Utils
         /// <param name="feedbackuser"></param>
         public static void UnclaimUser(User target, User feedbackuser)
         {
-            int emptystacks = 0; 
+            // int emptystacks = 0; 
             IEnumerable<Deed> allDeeds = PropertyManager.GetAllDeeds();
-            IEnumerable<Deed> targetDeeds = allDeeds.Where(x => x.OwnerUser.User == target);
+            IEnumerable<Deed> targetDeeds = allDeeds.Where(x => x.OwnerUser == target);
 
             bool forceunclaim = false;
             string force = "";
@@ -395,7 +404,7 @@ namespace REYmod.Utils
         {
             if (CheckSuperskillConfirmation(user)) return;           
             if (user.Player != null) user.Player.OpenInfoPanel("Superskill Unlocked!", "You can now level up a Skill to level 10");
-            superskillconfirmed.Add(user.ID);
+            superskillconfirmed.Add(user.Id);
         }
 
         /// <summary>
@@ -435,7 +444,7 @@ namespace REYmod.Utils
             if (SkillUtils.SuperSkillCount(player.User) >= REYmodSettings.Obj.Config.Maxsuperskills) return new FailedAtomicAction(Localizer.DoStr("You already have enough SuperSkills " + SkillUtils.SuperSkillCount(player.User) + "/" + REYmodSettings.Obj.Config.Maxsuperskills));
             if (CheckSuperskillConfirmation(player.User))
             {
-                superskillconfirmed.Remove(player.User.ID);
+                superskillconfirmed.Remove(player.User.Id);
                 return SimpleAtomicAction.NoOp;
             }
             SkillUtils.ShowSuperSkillInfo(player);
@@ -446,7 +455,7 @@ namespace REYmod.Utils
         {
             foreach (int id in SkillUtils.superskillconfirmed)
             {
-                if (id == user.ID)
+                if (id == user.Id)
                 {
                     return true;
                 }
@@ -564,7 +573,7 @@ namespace REYmod.Utils
             });
             if (recipes.Count() != 0)
             {
-                //recipes.ForEach(x => ChatManager.ServerMessageToAllAlreadyLocalized(x.FriendlyName, false));
+                //recipes.ForEach(x =>ChatUtils.SendMessageToAll(x.FriendlyName, false));
                 return true;
             }
             else return false;
@@ -586,6 +595,18 @@ namespace REYmod.Utils
         {
             string title = user.GetState<string>("CustomTitle");
             return title;
+        }
+        #endregion
+
+        #region Player
+        public static void SendTemporaryMessageAlreadyLocalized(this Player player,string msg)
+        {
+            player.SendTemporaryMessage(Localizer.DoStr(msg));
+        }
+        public static void SendTemporaryErrorAlreadyLocalized(this Player player, string msg)
+        {
+            player.SendTemporaryError(Localizer.DoStr(msg));
+            
         }
         #endregion
 
@@ -665,5 +686,5 @@ namespace REYmod.Utils
 
     #endregion
 
-
+    
 }
