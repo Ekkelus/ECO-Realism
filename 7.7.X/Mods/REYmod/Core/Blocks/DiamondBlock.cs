@@ -8,7 +8,7 @@ using Eco.World.Blocks;
 namespace REYmod.Blocks
 {
     [Serialized]
-    [Minable, Solid, Wall]
+    [Minable(3), Solid, Wall]
     [BecomesRubble(typeof(DiamondRubble1Object), typeof(DiamondRubble2Object), typeof(DiamondRubble3Object), typeof(DiamondRubble4Object))]
     public partial class DiamondBlock :
         Block
