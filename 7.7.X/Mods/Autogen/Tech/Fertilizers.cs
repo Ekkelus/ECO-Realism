@@ -23,13 +23,13 @@ namespace Eco.Mods.TechTree
     [Serialized]
     public partial class FertilizersSkillBook : SkillBook<FertilizersSkill, FertilizersSkillScroll>
     {
-        public override LocString DisplayName { get { return Localizer.DoStr("Fertilizers Skill Book"); } }
+        public override LocString DisplayName { get { return Localizer.DoStr("FertilizersSkill Book"); } }
     }
 
     [Serialized]
     public partial class FertilizersSkillScroll : SkillScroll<FertilizersSkill, FertilizersSkillBook>
     {
-        public override LocString DisplayName { get { return Localizer.DoStr("Fertilizers Skill Scroll"); } }
+        public override LocString DisplayName { get { return Localizer.DoStr("FertilizersSkill Scroll"); } }
     }
 
     [RequiresSkill(typeof(FarmingSkill), 0)] 
@@ -48,7 +48,7 @@ namespace Eco.Mods.TechTree
             };
             this.CraftMinutes = new ConstantValue(5);
 
-            this.Initialize(Localizer.DoStr("Fertilizers Skill Book"), typeof(FertilizersSkillBookRecipe));
+            this.Initialize(Localizer.DoStr("FertilizersSkill Book"), typeof(FertilizersSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

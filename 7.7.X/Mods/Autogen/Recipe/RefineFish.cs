@@ -6,7 +6,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
-    [RequiresSkill(typeof(MolecularGastronomySkill), 1)] 
+    [RequiresSkill(typeof(CuttingEdgeCookingSkill), 1)] 
     public class RefineFishRecipe : Recipe
     {
         public RefineFishRecipe()
@@ -17,12 +17,12 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<TunaItem>(typeof(MolecularGastronomyEfficiencySkill), 5, MolecularGastronomyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<SalmonItem>(typeof(MolecularGastronomyEfficiencySkill), 5, MolecularGastronomyEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<TroutItem>(typeof(MolecularGastronomyEfficiencySkill), 5, MolecularGastronomyEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<TunaItem>(typeof(CuttingEdgeCookingSkill), 5, CuttingEdgeCookingSkill.MultiplicativeStrategy),
+                new CraftingElement<SalmonItem>(typeof(CuttingEdgeCookingSkill), 5, CuttingEdgeCookingSkill.MultiplicativeStrategy),
+                new CraftingElement<TroutItem>(typeof(CuttingEdgeCookingSkill), 5, CuttingEdgeCookingSkill.MultiplicativeStrategy),
             };
             this.Initialize(Localizer.DoStr("Refine Fish"), typeof(RefineFishRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RefineFishRecipe), this.UILink(), 5, typeof(MolecularGastronomySpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RefineFishRecipe), this.UILink(), 5, typeof(CuttingEdgeCookingSkill));
             CraftingComponent.AddRecipe(typeof(LaboratoryObject), this);
         }
     }

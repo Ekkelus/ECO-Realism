@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
         public override LocString SpeciesName { get { return Localizer.DoStr("Huckleberry"); } }
     }
 
-    [RequiresSkill(typeof(SeedProductionSkill), 2)]    
+    [RequiresSkill(typeof(FarmingSkill), 2)]    
     public class HuckleberrySeedRecipe : Recipe
     {
         public HuckleberrySeedRecipe()
@@ -50,9 +50,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<HuckleberriesItem>(typeof(SeedProductionEfficiencySkill), 4, SeedProductionEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<HuckleberriesItem>(typeof(FarmingSkill), 4, FarmingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(HuckleberrySeedRecipe), Item.Get<HuckleberrySeedItem>().UILink(), 0.5f, typeof(SeedProductionSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(HuckleberrySeedRecipe), Item.Get<HuckleberrySeedItem>().UILink(), 0.5f, typeof(FarmingSkill));
 
             this.Initialize(Localizer.DoStr("Huckleberry Seed"), typeof(HuckleberrySeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);

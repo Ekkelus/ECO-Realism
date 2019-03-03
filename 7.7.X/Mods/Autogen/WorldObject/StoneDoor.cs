@@ -46,12 +46,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Stone Door"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A heavy stone door."); } }
 
-        [Tooltip(100)]
-        public string TierTooltip()
-        {
-            return "<i>Tier 1 building material</i>";
-        }
-
 
         static StoneDoorItem()
         {
@@ -74,7 +68,7 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<StoneItem>(typeof(MortaringSkill), 40, MortaringSkill.MultiplicativeStrategy),   
-                new CraftingElement<HingeItem>(typeof(WoodworkingEfficiencySkill), 2, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HingeItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(StoneDoorRecipe), Item.Get<StoneDoorItem>().UILink(), 3, typeof(MortaringSkill));
             this.Initialize(Localizer.DoStr("Stone Door"), typeof(StoneDoorRecipe));

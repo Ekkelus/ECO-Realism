@@ -45,11 +45,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Framed Glass Door"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A beautiful glass door made of steel and glass."); } }
 
-        [Tooltip(100)]
-        public string TierTooltip()
-        {
-            return "<i>Tier 4 building material</i>";
-        }
 
         static FramedGlassDoorItem()
         {
@@ -72,7 +67,7 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<FramedGlassItem>(typeof(GlassworkingSkill), 10, GlassworkingSkill.MultiplicativeStrategy),   
-                new CraftingElement<HingeItem>(typeof(WoodworkingEfficiencySkill), 2, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HingeItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(FramedGlassDoorRecipe), Item.Get<FramedGlassDoorItem>().UILink(), 20, typeof(GlassworkingSkill));
             this.Initialize(Localizer.DoStr("Framed Glass Door"), typeof(FramedGlassDoorRecipe));

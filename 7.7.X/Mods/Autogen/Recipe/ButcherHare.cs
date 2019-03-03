@@ -6,7 +6,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
-    [RequiresSkill(typeof(SmallButcherySkill), 1)] 
+    [RequiresSkill(typeof(ButcherySkill), 1)] 
     public class ButcherHareRecipe : Recipe
     {
         public ButcherHareRecipe()
@@ -18,10 +18,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SkinnedHareItem>(typeof(SmallButcheryEfficiencySkill), 1, SmallButcheryEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<SkinnedHareItem>(typeof(ButcherySkill), 1, ButcherySkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Butcher Hare"), typeof(ButcherHareRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ButcherHareRecipe), this.UILink(), 1, typeof(SmallButcherySpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ButcherHareRecipe), this.UILink(), 1, typeof(ButcherySkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }

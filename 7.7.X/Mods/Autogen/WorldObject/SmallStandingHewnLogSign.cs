@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(WoodworkingSkill), 1)]
+    [RequiresSkill(typeof(HewingSkill), 1)]
     public partial class SmallStandingHewnLogSignRecipe : Recipe
     {
         public SmallStandingHewnLogSignRecipe()
@@ -69,10 +69,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<HewnLogItem>(typeof(WoodworkingEfficiencySkill), 10, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(WoodworkingEfficiencySkill), 4, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HewnLogItem>(typeof(HewingSkill), 10, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(HewingSkill), 4, HewingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SmallStandingHewnLogSignRecipe), Item.Get<SmallStandingHewnLogSignItem>().UILink(), 10, typeof(WoodworkingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(SmallStandingHewnLogSignRecipe), Item.Get<SmallStandingHewnLogSignItem>().UILink(), 10, typeof(HewingSkill));
             this.Initialize(Localizer.DoStr("Small Standing Hewn Log Sign"), typeof(SmallStandingHewnLogSignRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

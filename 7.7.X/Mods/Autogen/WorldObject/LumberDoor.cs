@@ -46,12 +46,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Lumber Door"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A door made from finely cut lumber."); } }
 
-        [Tooltip(100)]
-        public string TierTooltip()
-        {
-            return "<i>Tier 2 building material</i>";
-        }
-
 
         static LumberDoorItem()
         {
@@ -74,8 +68,8 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<LumberItem>(typeof(LumberSkill), 10, LumberSkill.MultiplicativeStrategy),   
-                new CraftingElement<HingeItem>(typeof(WoodworkingEfficiencySkill), 2, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(WoodworkingEfficiencySkill), 5, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HingeItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(HewingSkill), 5, HewingSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = CreateCraftTimeValue(typeof(LumberDoorRecipe), Item.Get<LumberDoorItem>().UILink(), 3, typeof(LumberSkill));
             this.Initialize(Localizer.DoStr("Lumber Door"), typeof(LumberDoorRecipe));

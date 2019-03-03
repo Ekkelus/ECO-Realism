@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition                     { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(MillProcessingSkill), 2)]    
+    [RequiresSkill(typeof(MillingSkill), 2)]    
     public partial class CamasPasteRecipe : Recipe
     {
         public CamasPasteRecipe()
@@ -34,9 +34,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<CamasBulbItem>(typeof(MillProcessingEfficiencySkill), 10, MillProcessingEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<CamasBulbItem>(typeof(MillingSkill), 10, MillingSkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CamasPasteRecipe), Item.Get<CamasPasteItem>().UILink(), 5, typeof(MillProcessingSpeedSkill)); 
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CamasPasteRecipe), Item.Get<CamasPasteItem>().UILink(), 5, typeof(MillingSkill)); 
             this.Initialize(Localizer.DoStr("Camas Paste"), typeof(CamasPasteRecipe));
             CraftingComponent.AddRecipe(typeof(MillObject), this);
         }

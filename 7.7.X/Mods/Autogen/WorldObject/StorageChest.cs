@@ -56,7 +56,7 @@ namespace Eco.Mods.TechTree
 
     }
 
-    [RequiresSkill(typeof(WoodworkingSkill),1)]
+    [RequiresSkill(typeof(HewingSkill),1)]
     public partial class StorageChestRecipe : Recipe
     {
         public StorageChestRecipe()
@@ -68,10 +68,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(WoodworkingEfficiencySkill), 5, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<HingeItem>(typeof(WoodworkingEfficiencySkill), 2, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(WoodworkingEfficiencySkill), 10, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<IronIngotItem>(typeof(WoodworkingEfficiencySkill), 3, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(HewingSkill), 5, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<HingeItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(HewingSkill), 10, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<IronIngotItem>(typeof(HewingSkill), 3, HewingSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(2); 
             this.Initialize(Localizer.DoStr("Storage Chest"), typeof(StorageChestRecipe));

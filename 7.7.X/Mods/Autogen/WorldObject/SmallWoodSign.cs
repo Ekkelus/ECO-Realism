@@ -21,7 +21,7 @@
 //    }
 
 
-//    [RequiresSkill(typeof(WoodworkingSkill), 1)]
+//    [RequiresSkill(typeof(HewingSkill), 1)]
 //    public partial class SmallWoodSignRecipe : Recipe
 //    {
 //        public SmallWoodSignRecipe()
@@ -33,9 +33,9 @@
 
 //            this.Ingredients = new CraftingElement[]
 //            {
-//                new CraftingElement<BoardItem>(typeof(WoodworkingEfficiencySkill), 8, WoodworkingEfficiencySkill.MultiplicativeStrategy),   
+//                new CraftingElement<BoardItem>(typeof(HewingSkill), 8, HewingSkill.MultiplicativeStrategy),   
 //            };
-//            SkillModifiedValue value = new SkillModifiedValue(1, WoodworkingSpeedSkill.MultiplicativeStrategy, typeof(WoodworkingSpeedSkill), Localizer.DoStr("craft time"));
+//            SkillModifiedValue value = new SkillModifiedValue(1, HewingSkill.MultiplicativeStrategy, typeof(HewingSkill), Localizer.DoStr("craft time"));
 //            SkillModifiedValueManager.AddBenefitForObject(typeof(SmallWoodSignRecipe), Item.Get<SmallWoodSignItem>().UILink(), value);
 //            SkillModifiedValueManager.AddSkillBenefit(Item.Get<SmallWoodSignItem>().UILink(), value);
 //            this.CraftMinutes = value;

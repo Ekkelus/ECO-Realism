@@ -46,12 +46,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Hewn Log Door"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A door made from roughly hewn logs."); } }
 
-        [Tooltip(100)]
-        public string TierTooltip()
-        {
-            return "<i>Tier 1 building material</i>";
-        }
-
 
         static HewnLogDoorItem()
         {
@@ -61,7 +55,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(WoodworkingSkill), 2)]
+    [RequiresSkill(typeof(HewingSkill), 2)]
     public partial class HewnLogDoorRecipe : Recipe
     {
         public HewnLogDoorRecipe()
@@ -73,11 +67,11 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<HewnLogItem>(typeof(WoodworkingEfficiencySkill), 10, WoodworkingEfficiencySkill.MultiplicativeStrategy),   
-                new CraftingElement<HingeItem>(typeof(WoodworkingEfficiencySkill), 2, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<NailsItem>(typeof(WoodworkingEfficiencySkill), 5, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HewnLogItem>(typeof(HewingSkill), 10, HewingSkill.MultiplicativeStrategy),   
+                new CraftingElement<HingeItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<NailsItem>(typeof(HewingSkill), 5, HewingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(HewnLogDoorRecipe), Item.Get<HewnLogDoorItem>().UILink(), 3, typeof(WoodworkingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(HewnLogDoorRecipe), Item.Get<HewnLogDoorItem>().UILink(), 3, typeof(HewingSkill));
             this.Initialize(Localizer.DoStr("Hewn Log Door"), typeof(HewnLogDoorRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

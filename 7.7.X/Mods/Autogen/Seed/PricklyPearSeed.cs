@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
         public override LocString SpeciesName { get { return Localizer.DoStr("PricklyPear"); } }
     }
 
-    [RequiresSkill(typeof(SeedProductionSkill), 4)]    
+    [RequiresSkill(typeof(FarmingSkill), 4)]    
     public class PricklyPearSeedRecipe : Recipe
     {
         public PricklyPearSeedRecipe()
@@ -50,9 +50,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<PricklyPearFruitItem>(typeof(SeedProductionEfficiencySkill), 2, SeedProductionEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<PricklyPearFruitItem>(typeof(FarmingSkill), 2, FarmingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(PricklyPearSeedRecipe), Item.Get<PricklyPearSeedItem>().UILink(), 0.5f, typeof(SeedProductionSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(PricklyPearSeedRecipe), Item.Get<PricklyPearSeedItem>().UILink(), 0.5f, typeof(FarmingSkill));
 
             this.Initialize(Localizer.DoStr("Prickly Pear Seed"), typeof(PricklyPearSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);

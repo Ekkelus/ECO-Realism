@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
         public override LocString SpeciesName { get { return Localizer.DoStr("Beets"); } }
     }
 
-    [RequiresSkill(typeof(SeedProductionSkill), 2)]    
+    [RequiresSkill(typeof(FarmingSkill), 2)]    
     public class BeetSeedRecipe : Recipe
     {
         public BeetSeedRecipe()
@@ -50,9 +50,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BeetItem>(typeof(SeedProductionEfficiencySkill), 2, SeedProductionEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<BeetItem>(typeof(FarmingSkill), 2, FarmingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(BeetSeedRecipe), Item.Get<BeetSeedItem>().UILink(), 0.5f, typeof(SeedProductionSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(BeetSeedRecipe), Item.Get<BeetSeedItem>().UILink(), 0.5f, typeof(FarmingSkill));
 
             this.Initialize(Localizer.DoStr("Beet Seed"), typeof(BeetSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);

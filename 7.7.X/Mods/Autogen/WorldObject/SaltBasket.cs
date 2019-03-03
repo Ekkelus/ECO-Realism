@@ -66,7 +66,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(FertilizerProductionSkill), 1)]
+    [RequiresSkill(typeof(FertilizersSkill), 1)]
     public partial class SaltBasketRecipe : Recipe
     {
         public SaltBasketRecipe()
@@ -78,10 +78,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(FertilizerEfficiencySkill), 10, FertilizerEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<RopeItem>(typeof(FertilizerEfficiencySkill), 6, FertilizerEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(FertilizersSkill), 10, FertilizersSkill.MultiplicativeStrategy),
+                new CraftingElement<RopeItem>(typeof(FertilizersSkill), 6, FertilizersSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SaltBasketRecipe), Item.Get<SaltBasketItem>().UILink(), 5, typeof(FertilizerSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(SaltBasketRecipe), Item.Get<SaltBasketItem>().UILink(), 5, typeof(FertilizersSkill));
             this.Initialize(Localizer.DoStr("Salt Basket"), typeof(SaltBasketRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }

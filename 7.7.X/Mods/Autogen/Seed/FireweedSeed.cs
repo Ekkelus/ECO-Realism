@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
         public override LocString SpeciesName { get { return Localizer.DoStr("Fireweed"); } }
     }
 
-    [RequiresSkill(typeof(SeedProductionSkill), 3)]    
+    [RequiresSkill(typeof(FarmingSkill), 3)]    
     public class FireweedSeedRecipe : Recipe
     {
         public FireweedSeedRecipe()
@@ -50,9 +50,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<FireweedShootsItem>(typeof(SeedProductionEfficiencySkill), 2, SeedProductionEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<FireweedShootsItem>(typeof(FarmingSkill), 2, FarmingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(FireweedSeedRecipe), Item.Get<FireweedSeedItem>().UILink(), 0.5f, typeof(SeedProductionSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(FireweedSeedRecipe), Item.Get<FireweedSeedItem>().UILink(), 0.5f, typeof(FarmingSkill));
 
             this.Initialize(Localizer.DoStr("Fireweed Seed"), typeof(FireweedSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
