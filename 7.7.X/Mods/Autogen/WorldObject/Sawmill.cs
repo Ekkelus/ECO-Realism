@@ -84,10 +84,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronIngotItem>(typeof(LumberSkill), 20, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<LogItem>(typeof(LumberSkill), 30, LumberSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(15, LumberSkill.MultiplicativeStrategy, typeof(LumberSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(SawmillRecipe), Item.Get<SawmillItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<SawmillItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(SawmillRecipe), Item.Get<SawmillItem>().UILink(), 15, typeof(LumberSkill));
             this.Initialize(Localizer.DoStr("Sawmill"), typeof(SawmillRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }

@@ -52,10 +52,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<HuckleberriesItem>(typeof(SeedProductionEfficiencySkill), 4, SeedProductionEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(0.5f, SeedProductionSpeedSkill.MultiplicativeStrategy, typeof(SeedProductionSpeedSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(HuckleberrySeedRecipe), Item.Get<HuckleberrySeedItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<HuckleberrySeedItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(HuckleberrySeedRecipe), Item.Get<HuckleberrySeedItem>().UILink(), 0.5f, typeof(SeedProductionSpeedSkill));
 
             this.Initialize(Localizer.DoStr("Huckleberry Seed"), typeof(HuckleberrySeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);

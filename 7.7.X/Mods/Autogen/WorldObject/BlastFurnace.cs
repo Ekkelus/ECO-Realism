@@ -118,10 +118,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronPlateItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<ScrewsItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(60, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(BlastFurnaceRecipe), Item.Get<BlastFurnaceItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<BlastFurnaceItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(BlastFurnaceRecipe), Item.Get<BlastFurnaceItem>().UILink(), 60, typeof(SmeltingSkill));
             this.Initialize(Localizer.DoStr("Blast Furnace"), typeof(BlastFurnaceRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }

@@ -122,10 +122,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<GearboxItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<PistonItem>(typeof(SmeltingSkill), 5, SmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(240, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(CementKilnRecipe), Item.Get<CementKilnItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<CementKilnItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CementKilnRecipe), Item.Get<CementKilnItem>().UILink(), 240, typeof(SmeltingSkill));
             this.Initialize(Localizer.DoStr("Cement Kiln"), typeof(CementKilnRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }

@@ -99,10 +99,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(MortaringSkill), 20, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<SandItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, MortaringSkill.MultiplicativeStrategy, typeof(MortaringSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(BloomeryRecipe), Item.Get<BloomeryItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<BloomeryItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(BloomeryRecipe), Item.Get<BloomeryItem>().UILink(), 10, typeof(MortaringSkill));
             this.Initialize(Localizer.DoStr("Bloomery"), typeof(BloomeryRecipe));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }

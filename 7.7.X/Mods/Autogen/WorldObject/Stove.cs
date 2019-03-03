@@ -123,10 +123,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SteelPlateItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<RivetItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(20, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(StoveRecipe), Item.Get<StoveItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<StoveItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(StoveRecipe), Item.Get<StoveItem>().UILink(), 20, typeof(SmeltingSkill));
             this.Initialize(Localizer.DoStr("Stove"), typeof(StoveRecipe));
             CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);
         }

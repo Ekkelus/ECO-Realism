@@ -90,10 +90,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<CopperPipeItem>(typeof(MechanicsSkill), 6, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<WaterwheelItem>(typeof(MechanicsSkill), 2, MechanicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(50, MechanicsSkill.MultiplicativeStrategy, typeof(MechanicsSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(PumpJackRecipe), Item.Get<PumpJackItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<PumpJackItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(PumpJackRecipe), Item.Get<PumpJackItem>().UILink(), 50, typeof(MechanicsSkill));
             this.Initialize(Localizer.DoStr("Pump Jack"), typeof(PumpJackRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }

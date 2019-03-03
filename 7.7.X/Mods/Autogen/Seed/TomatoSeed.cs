@@ -52,10 +52,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<TomatoItem>(typeof(SeedProductionEfficiencySkill), 2, SeedProductionEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(0.5f, SeedProductionSpeedSkill.MultiplicativeStrategy, typeof(SeedProductionSpeedSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(TomatoSeedRecipe), Item.Get<TomatoSeedItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<TomatoSeedItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(TomatoSeedRecipe), Item.Get<TomatoSeedItem>().UILink(), 0.5f, typeof(SeedProductionSpeedSkill));
 
             this.Initialize(Localizer.DoStr("Tomato Seed"), typeof(TomatoSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);

@@ -80,10 +80,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ClothItem>(typeof(TailoringSkill), 10, TailoringSkill.MultiplicativeStrategy),
                 new CraftingElement<CelluloseFiberItem>(typeof(TailoringSkill), 5, TailoringSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(20, TailoringSkill.MultiplicativeStrategy, typeof(TailoringSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(RugMediumRecipe), Item.Get<RugMediumItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<RugMediumItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(RugMediumRecipe), Item.Get<RugMediumItem>().UILink(), 20, typeof(TailoringSkill));
             this.Initialize(Localizer.DoStr("Rug Medium"), typeof(RugMediumRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }

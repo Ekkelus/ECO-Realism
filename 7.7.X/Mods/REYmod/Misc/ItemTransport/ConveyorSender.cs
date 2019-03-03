@@ -133,10 +133,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<GearboxItem>(typeof(MechanicsSkill), 4, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<PistonItem>(typeof(MechanicsSkill), 2, MechanicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(ConveyorSenderRecipe), Item.Get<ConveyorSenderItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<ConveyorSenderItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ConveyorSenderRecipe), Item.Get<ConveyorSenderItem>().UILink(), 1, typeof(SmeltingSkill));
             this.Initialize(Localizer.DoStr("Conveyor Entry Point"), typeof(ConveyorSenderRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }

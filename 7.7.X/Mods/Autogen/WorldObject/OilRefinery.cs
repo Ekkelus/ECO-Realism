@@ -116,10 +116,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<CopperPipeItem>(typeof(MechanicsSkill), 10, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<WindmillItem>(typeof(MechanicsSkill), 2, MechanicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(50, MechanicsSkill.MultiplicativeStrategy, typeof(MechanicsSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(OilRefineryRecipe), Item.Get<OilRefineryItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<OilRefineryItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(OilRefineryRecipe), Item.Get<OilRefineryItem>().UILink(), 50, typeof(MechanicsSkill));
             this.Initialize(Localizer.DoStr("Oil Refinery"), typeof(OilRefineryRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
