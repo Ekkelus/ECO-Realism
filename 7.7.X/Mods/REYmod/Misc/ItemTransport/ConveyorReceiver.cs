@@ -95,23 +95,33 @@ namespace Eco.Mods.TechTree
             return 0;
         }
 
-        private int CanReceive(ItemStack arg)
+        private int CanReceive(Type arg)
         {
             if (!this.Enabled) return 0;
-            if (arg.Item.IsLiquid())
+
+            Item item = (Item)Activator.CreateInstance(arg);
+
+            if (item.IsLiquid())
             {
                 return 0;
             }
             int canreceive = 0;
             bool firsttry = true;
 
+            
+
+
+
+
             while (true)
             {
                 if (Storage.Stacks.Any(x => x.Empty))
                 {
-                    return Math.Min(arg.Item.MaxStackSize, arg.Quantity);
+                    ChatUtils.SendMessageToAll("CANRECEIVE " + item.Name(1) +": EmptyStack! return " + item.MaxStackSize);
+                    return item.MaxStackSize;
+                  //  return Math.Min(arg.Item.MaxStackSize, arg.Quantity);
                 }                
-                IEnumerable<ItemStack> matchingStacks = Storage.Stacks.Where(x => (x.Item == arg.Item) && x.Quantity < x.Item.MaxStackSize);
+                IEnumerable<ItemStack> matchingStacks = Storage.Stacks.Where(x => (x.Item.Type == arg) && x.Quantity < x.Item.MaxStackSize);
                 matchingStacks.ForEach(x => canreceive += (x.Item.MaxStackSize - x.Quantity));
 
                 if ((canreceive == 0) && firsttry)
@@ -119,7 +129,11 @@ namespace Eco.Mods.TechTree
                     this.Storage.MoveAsManyItemsAsPossible(LinkedStorage, this.OwnerUser);
                     firsttry = false;
                 }
-                else return Math.Min(canreceive, arg.Quantity);
+                else
+                {
+                    ChatUtils.SendMessageToAll("CANRECEIVE " + item.Name(1) + ": return " + canreceive);
+                    return canreceive;
+                }
             }
             
         }

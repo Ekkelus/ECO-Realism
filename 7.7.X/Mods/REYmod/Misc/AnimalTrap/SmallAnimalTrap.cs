@@ -26,7 +26,7 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Small Animal Trap"); } }
 
-        private Type RequiredSkill = typeof(TrapperSkill);
+        private Type RequiredSkill = typeof(HuntingSkill);
         private int RequiredLevel = 1;
         private Type[] allowedItems = new Type[]
             {
@@ -102,7 +102,7 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
     }
 
 
-    [RequiresSkill(typeof(TrapperSkill), 1)]
+    [RequiresSkill(typeof(HuntingSkill), 1)]
     public partial class SmallAnimalTrapRecipe : Recipe
     {
         public SmallAnimalTrapRecipe()
