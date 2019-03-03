@@ -3,6 +3,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Components;
     using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Items;
+    using Eco.Gameplay.Players;
     using Eco.Gameplay.Skills;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
@@ -11,13 +12,74 @@ namespace Eco.Mods.TechTree
     [RequiresSkill(typeof(ChefSkill), 0)]    
     public partial class BakingSkill : Skill
     {
-        public override LocString DisplayName { get { return Localizer.DoStr("Baking"); } }
-        public override LocString DisplayDescription { get { return Localizer.DoStr(""); } }
+        public override LocString DisplayName        { get { return Localizer.DoStr("Baking"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("An introduction to cooking with an oven. Level by crafting related unleavened recipes."); } }
 
-        public static int[] SkillPointCost = { 1, 1, 1, 1, 1 };
-        public override int RequiredPoint { get { return this.Level < this.MaxLevel ? SkillPointCost[this.Level] : 0; } }
-        public override int PrevRequiredPoint { get { return this.Level - 1 >= 0 && this.Level - 1 < this.MaxLevel ? SkillPointCost[this.Level - 1] : 0; } }
-        public override int MaxLevel { get { return 1; } }
+        public override void OnLevelUp(User user)
+        {
+            user.Skillset.AddExperience(typeof(SelfImprovementSkill), 20, Localizer.DoStr("for leveling up another specialization."));
+        }
+
+
+        public static ModificationStrategy MultiplicativeStrategy = 
+            new MultiplicativeStrategy(new float[] { 1,
+                
+                1 - 0.5f,
+                
+                1 - 0.55f,
+                
+                1 - 0.6f,
+                
+                1 - 0.65f,
+                
+                1 - 0.7f,
+                
+                1 - 0.75f,
+                
+                1 - 0.8f,
+                
+            });
+        public override ModificationStrategy MultiStrategy { get { return MultiplicativeStrategy; } }
+        public static ModificationStrategy AdditiveStrategy =
+            new AdditiveStrategy(new float[] { 0,
+                
+                0.5f,
+                
+                0.55f,
+                
+                0.6f,
+                
+                0.65f,
+                
+                0.7f,
+                
+                0.75f,
+                
+                0.8f,
+                
+            });
+        public override ModificationStrategy AddStrategy { get { return AdditiveStrategy; } }
+        public static int[] SkillPointCost = {
+            
+            1,
+            
+            1,
+            
+            1,
+            
+            1,
+            
+            1,
+            
+            1,
+            
+            1,
+            
+        };
+        public override int RequiredPoint { get { return this.Level < SkillPointCost.Length ? SkillPointCost[this.Level] : 0; } }
+        public override int PrevRequiredPoint { get { return this.Level - 1 >= 0 && this.Level - 1 < SkillPointCost.Length ? SkillPointCost[this.Level - 1] : 0; } }
+        public override int MaxLevel { get { return 7; } }
+        public override int Tier { get { return 3; } }
     }
 
     [Serialized]
@@ -43,11 +105,11 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BrickItem>(typeof(ResearchEfficiencySkill), 30, ResearchEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<HewnLogItem>(typeof(ResearchEfficiencySkill), 30, ResearchEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<FlourItem>(typeof(ResearchEfficiencySkill), 50, ResearchEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BannockItem>(typeof(ResearchEfficiencySkill), 20, ResearchEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BookItem>(typeof(ResearchEfficiencySkill), 6, ResearchEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<BrickItem>(30),
+                new CraftingElement<HewnLogItem>(30),
+                new CraftingElement<FlourItem>(50),
+                new CraftingElement<BannockItem>(20),
+                new CraftingElement<BookItem>(6)
             };
             this.CraftMinutes = new ConstantValue(15);
 
