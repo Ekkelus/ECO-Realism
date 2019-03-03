@@ -25,7 +25,7 @@ namespace Eco.Mods.TechTree
         public override Nutrients Nutrition                     { get { return nutrition; } }
     }
 
-    [RequiresSkill(typeof(MillProcessingSkill), 2)]    
+    [RequiresSkill(typeof(MillingSkill), 2)]    
     public partial class OilRecipe : Recipe
     {
         public OilRecipe()
@@ -37,9 +37,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<CerealGermItem>(typeof(MillProcessingEfficiencySkill), 30, MillProcessingEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<CerealGermItem>(typeof(MillingSkill), 30, MillingSkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(OilRecipe), Item.Get<OilItem>().UILink(), 5, typeof(MillProcessingSpeedSkill)); 
+            this.CraftMinutes = CreateCraftTimeValue(typeof(OilRecipe), Item.Get<OilItem>().UILink(), 5, typeof(MillingSkill)); 
             this.Initialize(Localizer.DoStr("Oil"), typeof(OilRecipe));
             CraftingComponent.AddRecipe(typeof(MillObject), this);
         }

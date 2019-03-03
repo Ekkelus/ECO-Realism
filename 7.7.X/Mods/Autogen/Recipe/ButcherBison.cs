@@ -6,7 +6,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
-    [RequiresSkill(typeof(LargeButcherySkill), 3)] 
+    [RequiresSkill(typeof(ButcherySkill), 3)] 
     public class ButcherBisonRecipe : Recipe
     {
         public ButcherBisonRecipe()
@@ -18,10 +18,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SkinnedBisonItem>(typeof(LargeButcheryEfficiencySkill), 1, LargeButcheryEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<SkinnedBisonItem>(typeof(ButcherySkill), 1, ButcherySkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Butcher Bison"), typeof(ButcherBisonRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ButcherBisonRecipe), this.UILink(), 3, typeof(LargeButcherySpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ButcherBisonRecipe), this.UILink(), 3, typeof(ButcherySkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }

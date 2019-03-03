@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
         public override LocString SpeciesName { get { return Localizer.DoStr("Corn"); } }
     }
 
-    [RequiresSkill(typeof(SeedProductionSkill), 4)]    
+    [RequiresSkill(typeof(FarmingSkill), 4)]    
     public class CornSeedRecipe : Recipe
     {
         public CornSeedRecipe()
@@ -50,9 +50,9 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<CornItem>(typeof(SeedProductionEfficiencySkill), 2, SeedProductionEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<CornItem>(typeof(FarmingSkill), 2, FarmingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CornSeedRecipe), Item.Get<CornSeedItem>().UILink(), 0.5f, typeof(SeedProductionSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CornSeedRecipe), Item.Get<CornSeedItem>().UILink(), 0.5f, typeof(FarmingSkill));
 
             this.Initialize(Localizer.DoStr("Corn Seed"), typeof(CornSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);

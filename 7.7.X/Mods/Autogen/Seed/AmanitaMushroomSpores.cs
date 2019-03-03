@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
 	}
 
 
-	[RequiresSkill(typeof(SeedProductionSkill), 1)]
+	[RequiresSkill(typeof(FarmingSkill), 1)]
 	public class AmanitaMushroomSporesRecipe : Recipe
 	{
 		public AmanitaMushroomSporesRecipe()
@@ -38,9 +38,9 @@ namespace Eco.Mods.TechTree
 			};
 			this.Ingredients = new CraftingElement[]
 			{
-				new CraftingElement<AmanitaMushroomsItem>(typeof(SeedProductionEfficiencySkill), 2, SeedProductionEfficiencySkill.MultiplicativeStrategy),
+				new CraftingElement<AmanitaMushroomsItem>(typeof(FarmingSkill), 2, FarmingSkill.MultiplicativeStrategy),
 			};
-			SkillModifiedValue value = new SkillModifiedValue(0.5f, SeedProductionSpeedSkill.MultiplicativeStrategy, typeof(SeedProductionSpeedSkill), Localizer.DoStr("craft time"));
+			SkillModifiedValue value = new SkillModifiedValue(0.5f, FarmingSkill.MultiplicativeStrategy, typeof(FarmingSkill), Localizer.DoStr("craft time"));
 			SkillModifiedValueManager.AddBenefitForObject(typeof(AmanitaMushroomSporesRecipe), Item.Get<AmanitaMushroomSporesItem>().UILink(), value);
 			SkillModifiedValueManager.AddSkillBenefit(Item.Get<AmanitaMushroomSporesItem>().UILink(), value);
 			this.CraftMinutes = value;

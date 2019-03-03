@@ -54,7 +54,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(WoodworkingSkill), 1)]
+    [RequiresSkill(typeof(HewingSkill), 1)]
     public partial class ContractBoardRecipe : Recipe
     {
         public ContractBoardRecipe()
@@ -66,11 +66,11 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(WoodworkingEfficiencySkill), 10, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<PaperItem>(typeof(WoodworkingEfficiencySkill), 10, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                //new CraftingElement<NailsItem>(typeof(WoodworkingEfficiencySkill), 20, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(HewingSkill), 10, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<PaperItem>(typeof(HewingSkill), 10, HewingSkill.MultiplicativeStrategy),
+                //new CraftingElement<NailsItem>(typeof(HewingSkill), 20, HewingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ContractBoardRecipe), Item.Get<ContractBoardItem>().UILink(), 15, typeof(WoodworkingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ContractBoardRecipe), Item.Get<ContractBoardItem>().UILink(), 15, typeof(HewingSkill));
             this.Initialize(Localizer.DoStr("Contract Board"), typeof(ContractBoardRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(10)]                                          
-     [Yield(typeof(AmanitaMushroomsItem), typeof(WetlandsWandererSkill), new float[] {1f, 1.4f, 1.8f, 2.2f, 2.6f, 3f})]      
+     [Yield(typeof(AmanitaMushroomsItem), typeof(GatheringSkill), new float[] {1f, 1.4f, 1.8f, 2.2f, 2.6f, 3f})]      
     public partial class AmanitaMushroomsItem :
         FoodItem            
     {

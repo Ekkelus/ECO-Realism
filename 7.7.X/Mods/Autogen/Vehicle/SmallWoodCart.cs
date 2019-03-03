@@ -20,7 +20,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayDescription { get { return Localizer.DoStr("A small wood cart for hauling minimal loads."); } }
     }
 
-    [RequiresSkill(typeof(WoodworkingSkill), 1)] 
+    [RequiresSkill(typeof(HewingSkill), 1)] 
     public class SmallWoodCartRecipe : Recipe
     {
         public SmallWoodCartRecipe()
@@ -32,8 +32,8 @@ namespace Eco.Mods.TechTree
             this.Ingredients = new CraftingElement[]
             {
                 new CraftingElement<WoodenWheelItem>(2),
-                new CraftingElement<HewnLogItem>(typeof(WoodworkingEfficiencySkill), 10, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BoardItem>(typeof(WoodworkingEfficiencySkill), 15, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<HewnLogItem>(typeof(HewingSkill), 10, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(HewingSkill), 15, HewingSkill.MultiplicativeStrategy),
             };
             this.CraftMinutes = new ConstantValue(5);
 

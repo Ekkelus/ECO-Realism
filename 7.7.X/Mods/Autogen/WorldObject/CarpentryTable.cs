@@ -61,7 +61,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(WoodworkingSkill), 0)]
+    [RequiresSkill(typeof(HewingSkill), 0)]
     public partial class CarpentryTableRecipe : Recipe
     {
         public CarpentryTableRecipe()
@@ -73,10 +73,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(WoodworkingEfficiencySkill), 20, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<StoneItem>(typeof(WoodworkingEfficiencySkill), 20, WoodworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<LogItem>(typeof(HewingSkill), 20, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<StoneItem>(typeof(HewingSkill), 20, HewingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CarpentryTableRecipe), Item.Get<CarpentryTableItem>().UILink(), 1, typeof(WoodworkingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CarpentryTableRecipe), Item.Get<CarpentryTableItem>().UILink(), 1, typeof(HewingSkill));
             this.Initialize(Localizer.DoStr("Carpentry Table"), typeof(CarpentryTableRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

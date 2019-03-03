@@ -6,7 +6,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
-    [RequiresSkill(typeof(LargeButcherySkill), 2)] 
+    [RequiresSkill(typeof(ButcherySkill), 2)] 
     public class ButcherWolfRecipe : Recipe
     {
         public ButcherWolfRecipe()
@@ -18,10 +18,10 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SkinnedWolfItem>(typeof(LargeButcheryEfficiencySkill), 1, LargeButcheryEfficiencySkill.MultiplicativeStrategy), 
+                new CraftingElement<SkinnedWolfItem>(typeof(ButcherySkill), 1, ButcherySkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Butcher Wolf"), typeof(ButcherWolfRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ButcherWolfRecipe), this.UILink(), 1.5f, typeof(LargeButcherySpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ButcherWolfRecipe), this.UILink(), 1.5f, typeof(ButcherySkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }

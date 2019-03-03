@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(WoodworkingSkill), 0)]
+    [RequiresSkill(typeof(HewingSkill), 0)]
     public partial class WainwrightTableRecipe : Recipe
     {
         public WainwrightTableRecipe()
@@ -74,10 +74,10 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BoardItem>(typeof(WoodworkingEfficiencySkill), 50, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<LogItem>(typeof(WoodworkingEfficiencySkill), 40, WoodworkingEfficiencySkill.MultiplicativeStrategy),   
+                new CraftingElement<BoardItem>(typeof(HewingSkill), 50, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(HewingSkill), 40, HewingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(WainwrightTableRecipe), Item.Get<WainwrightTableItem>().UILink(), 10, typeof(WoodworkingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(WainwrightTableRecipe), Item.Get<WainwrightTableItem>().UILink(), 10, typeof(HewingSkill));
             this.Initialize(Localizer.DoStr("Wainwright Table"), typeof(WainwrightTableRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

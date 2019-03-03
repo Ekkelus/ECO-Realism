@@ -47,11 +47,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Door"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A sturdy wooden door. Can be locked for certain players."); } }
 
-        [Tooltip(100)]
-        public string TierTooltip()
-        {
-            return "<i>Tier 1 building material</i>";
-        }
 
         static DoorItem()
         {
@@ -61,7 +56,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(WoodworkingSkill), 0)]
+    [RequiresSkill(typeof(HewingSkill), 0)]
     public partial class DoorRecipe : Recipe
     {
         public DoorRecipe()
@@ -73,11 +68,11 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-            new CraftingElement<LogItem>(typeof(WoodworkingEfficiencySkill), 6, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-            new CraftingElement<HingeItem>(typeof(WoodworkingEfficiencySkill), 2, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-            new CraftingElement<NailsItem>(typeof(WoodworkingEfficiencySkill), 5, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+            new CraftingElement<LogItem>(typeof(HewingSkill), 6, HewingSkill.MultiplicativeStrategy),
+            new CraftingElement<HingeItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
+            new CraftingElement<NailsItem>(typeof(HewingSkill), 5, HewingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(DoorRecipe), Item.Get<DoorItem>().UILink(), 5, typeof(WoodworkingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(DoorRecipe), Item.Get<DoorItem>().UILink(), 5, typeof(HewingSkill));
             this.Initialize(Localizer.DoStr("Door"), typeof(DoorRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

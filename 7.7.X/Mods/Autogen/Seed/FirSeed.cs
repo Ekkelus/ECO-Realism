@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
     using System.ComponentModel;
 
     [Serialized]
-    [Yield(typeof(FirSeedItem), typeof(TundraTravellerSkill), new float[] { 1f, 1.2f, 1.4f, 1.6f, 1.8f, 2f  })]  
+    [Yield(typeof(FirSeedItem), typeof(GatheringSkill), new float[] { 1f, 1.2f, 1.4f, 1.6f, 1.8f, 2f  })]  
     [Weight(10)]  
     public partial class FirSeedItem : SeedItem
     {

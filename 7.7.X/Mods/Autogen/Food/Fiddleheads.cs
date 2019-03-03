@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(10)]                                          
-     [Yield(typeof(FiddleheadsItem), typeof(ForestForagerSkill), new float[] {1f, 1.4f, 1.8f, 2.2f, 2.6f, 3f})]      
+     [Yield(typeof(FiddleheadsItem), typeof(GatheringSkill), new float[] {1f, 1.4f, 1.8f, 2.2f, 2.6f, 3f})]      
     public partial class FiddleheadsItem :
         FoodItem            
     {

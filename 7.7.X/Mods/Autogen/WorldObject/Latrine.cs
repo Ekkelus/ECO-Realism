@@ -70,7 +70,7 @@ namespace Eco.Mods.TechTree
     }
 
 
-    [RequiresSkill(typeof(WoodworkingSkill), 4)]
+    [RequiresSkill(typeof(HewingSkill), 4)]
     public partial class LatrineRecipe : Recipe
     {
         public LatrineRecipe()
@@ -82,11 +82,11 @@ namespace Eco.Mods.TechTree
 
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(typeof(WoodworkingEfficiencySkill), 10, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<BoardItem>(typeof(WoodworkingEfficiencySkill), 25, WoodworkingEfficiencySkill.MultiplicativeStrategy),
-                new CraftingElement<GlueItem>(typeof(WoodworkingEfficiencySkill), 2, WoodworkingEfficiencySkill.MultiplicativeStrategy),
+                new CraftingElement<LogItem>(typeof(HewingSkill), 10, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<BoardItem>(typeof(HewingSkill), 25, HewingSkill.MultiplicativeStrategy),
+                new CraftingElement<GlueItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(LatrineRecipe), Item.Get<LatrineItem>().UILink(), 5, typeof(WoodworkingSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(LatrineRecipe), Item.Get<LatrineItem>().UILink(), 5, typeof(HewingSkill));
             this.Initialize(Localizer.DoStr("Latrine"), typeof(LatrineRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
