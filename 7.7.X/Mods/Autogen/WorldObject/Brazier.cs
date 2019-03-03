@@ -102,10 +102,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(1, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(BrazierRecipe), Item.Get<BrazierItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<BrazierItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(BrazierRecipe), Item.Get<BrazierItem>().UILink(), 1, typeof(SmeltingSkill));
             this.Initialize(Localizer.DoStr("Brazier"), typeof(BrazierRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }

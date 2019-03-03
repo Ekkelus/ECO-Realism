@@ -86,10 +86,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ClothItem>(typeof(BasicEngineeringSkill), 25, BasicEngineeringSkill.MultiplicativeStrategy),
                 new CraftingElement<WoodenGearItem>(typeof(BasicEngineeringSkill), 1, BasicEngineeringSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(30, BasicEngineeringSkill.MultiplicativeStrategy, typeof(BasicEngineeringSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(WindmillRecipe), Item.Get<WindmillItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<WindmillItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(WindmillRecipe), Item.Get<WindmillItem>().UILink(), 30, typeof(BasicEngineeringSkill));
             this.Initialize(Localizer.DoStr("Windmill"), typeof(WindmillRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

@@ -89,10 +89,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<CircuitItem>(typeof(ElectronicsSkill), 10, ElectronicsSkill.MultiplicativeStrategy),
                 new CraftingElement<GlassItem>(typeof(ElectronicsSkill), 50, ElectronicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(50, ElectronicsSkill.MultiplicativeStrategy, typeof(ElectronicsSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(SolarGeneratorRecipe), Item.Get<SolarGeneratorItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<SolarGeneratorItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(SolarGeneratorRecipe), Item.Get<SolarGeneratorItem>().UILink(), 50, typeof(ElectronicsSkill));
             this.Initialize(Localizer.DoStr("Solar Generator"), typeof(SolarGeneratorRecipe));
             CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }

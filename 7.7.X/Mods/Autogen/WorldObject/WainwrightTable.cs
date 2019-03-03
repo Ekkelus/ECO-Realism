@@ -77,10 +77,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(WoodworkingEfficiencySkill), 50, WoodworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<LogItem>(typeof(WoodworkingEfficiencySkill), 40, WoodworkingEfficiencySkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, WoodworkingSpeedSkill.MultiplicativeStrategy, typeof(WoodworkingSpeedSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(WainwrightTableRecipe), Item.Get<WainwrightTableItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<WainwrightTableItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(WainwrightTableRecipe), Item.Get<WainwrightTableItem>().UILink(), 10, typeof(WoodworkingSpeedSkill));
             this.Initialize(Localizer.DoStr("Wainwright Table"), typeof(WainwrightTableRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

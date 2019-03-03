@@ -40,10 +40,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SteelItem>(typeof(SmeltingSkill), 30, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<GoldIngotItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(60, SmeltingSkill.MultiplicativeStrategy, typeof(SmeltingSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(TreasuryRecipe), Item.Get<TreasuryItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<TreasuryItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(TreasuryRecipe), Item.Get<TreasuryItem>().UILink(), 60, typeof(SmeltingSkill));
             this.Initialize(Localizer.DoStr("Treasury"), typeof(TreasuryRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }

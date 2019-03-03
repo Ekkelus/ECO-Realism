@@ -97,10 +97,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronIngotItem>(typeof(MortaringSkill), 4, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<BoardItem>(typeof(MortaringSkill), 8, MortaringSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(20, MortaringSkill.MultiplicativeStrategy, typeof(MortaringSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(MillRecipe), Item.Get<MillItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<MillItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(MillRecipe), Item.Get<MillItem>().UILink(), 20, typeof(MortaringSkill));
             this.Initialize(Localizer.DoStr("Mill"), typeof(MillRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }

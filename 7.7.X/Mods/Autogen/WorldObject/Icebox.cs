@@ -94,10 +94,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<NailsItem>(typeof(WoodworkingEfficiencySkill), 8, WoodworkingEfficiencySkill.MultiplicativeStrategy),
                 new CraftingElement<GlueItem>(typeof(WoodworkingEfficiencySkill), 2, WoodworkingEfficiencySkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(5, WoodworkingSpeedSkill.MultiplicativeStrategy, typeof(WoodworkingSpeedSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(IceboxRecipe), Item.Get<IceboxItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<IceboxItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(IceboxRecipe), Item.Get<IceboxItem>().UILink(), 5, typeof(WoodworkingSpeedSkill));
             this.Initialize(Localizer.DoStr("Icebox"), typeof(IceboxRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

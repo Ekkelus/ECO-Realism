@@ -71,10 +71,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<LogItem>(typeof(HuntingSkill), 20, HuntingSkill.MultiplicativeStrategy),
                 new CraftingElement<RopeItem>(typeof(HuntingSkill), 4, HuntingSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, HuntingSkill.MultiplicativeStrategy, typeof(HuntingSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(FishTrapRecipe), Item.Get<FishTrapItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<FishTrapItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(FishTrapRecipe), Item.Get<FishTrapItem>().UILink(), 10, typeof(HuntingSkill));
             this.Initialize(Localizer.DoStr("Fish Trap"), typeof(FishTrapRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }

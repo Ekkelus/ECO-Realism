@@ -80,10 +80,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PlantFibersItem>(typeof(TailoringSkill), 100, TailoringSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(TailoringSkill), 8, TailoringSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(40, TailoringSkill.MultiplicativeStrategy, typeof(TailoringSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(StuffedElkRecipe), Item.Get<StuffedElkItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<StuffedElkItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(StuffedElkRecipe), Item.Get<StuffedElkItem>().UILink(), 40, typeof(TailoringSkill));
             this.Initialize(Localizer.DoStr("Stuffed Elk"), typeof(StuffedElkRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }

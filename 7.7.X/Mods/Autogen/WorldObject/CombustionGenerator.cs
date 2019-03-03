@@ -121,10 +121,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PistonItem>(typeof(MechanicsSkill), 5, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<ValveItem>(typeof(MechanicsSkill), 4, MechanicsSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(30, MechanicsSkill.MultiplicativeStrategy, typeof(MechanicsSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(CombustionGeneratorRecipe), Item.Get<CombustionGeneratorItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<CombustionGeneratorItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CombustionGeneratorRecipe), Item.Get<CombustionGeneratorItem>().UILink(), 30, typeof(MechanicsSkill));
             this.Initialize(Localizer.DoStr("Combustion Generator"), typeof(CombustionGeneratorRecipe));
             CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);
         }

@@ -87,10 +87,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ClothItem>(typeof(TailoringSkill), 20, TailoringSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(TailoringSkill), 12, TailoringSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(5, TailoringSkill.MultiplicativeStrategy, typeof(TailoringSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(CouchRecipe), Item.Get<CouchItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<CouchItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CouchRecipe), Item.Get<CouchItem>().UILink(), 5, typeof(TailoringSkill));
             this.Initialize(Localizer.DoStr("Couch"), typeof(CouchRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }

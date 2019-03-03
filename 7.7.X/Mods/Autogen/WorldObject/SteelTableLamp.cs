@@ -89,10 +89,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SteelItem>(typeof(AdvancedSmeltingSkill), 8, AdvancedSmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<PlasticItem>(typeof(AdvancedSmeltingSkill), 5, AdvancedSmeltingSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, AdvancedSmeltingSkill.MultiplicativeStrategy, typeof(AdvancedSmeltingSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(SteelTableLampRecipe), Item.Get<SteelTableLampItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<SteelTableLampItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(SteelTableLampRecipe), Item.Get<SteelTableLampItem>().UILink(), 10, typeof(AdvancedSmeltingSkill));
             this.Initialize(Localizer.DoStr("Steel Table Lamp"), typeof(SteelTableLampRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }

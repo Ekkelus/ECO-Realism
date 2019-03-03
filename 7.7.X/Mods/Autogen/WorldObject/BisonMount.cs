@@ -80,10 +80,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(TailoringSkill), 5, TailoringSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(TailoringSkill), 8, TailoringSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(15, TailoringSkill.MultiplicativeStrategy, typeof(TailoringSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(BisonMountRecipe), Item.Get<BisonMountItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<BisonMountItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(BisonMountRecipe), Item.Get<BisonMountItem>().UILink(), 15, typeof(TailoringSkill));
             this.Initialize(Localizer.DoStr("Bison Mount"), typeof(BisonMountRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }

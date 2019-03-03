@@ -89,10 +89,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(LumberSkill), 10, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<ClothItem>(typeof(LumberSkill), 10, LumberSkill.MultiplicativeStrategy),   
             };
-            SkillModifiedValue value = new SkillModifiedValue(10, AdvancedSmeltingSkill.MultiplicativeStrategy, typeof(AdvancedSmeltingSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(WoodenTableLampRecipe), Item.Get<WoodenTableLampItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<WoodenTableLampItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(WoodenTableLampRecipe), Item.Get<WoodenTableLampItem>().UILink(), 10, typeof(AdvancedSmeltingSkill));
             this.Initialize(Localizer.DoStr("Wooden Table Lamp"), typeof(WoodenTableLampRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }

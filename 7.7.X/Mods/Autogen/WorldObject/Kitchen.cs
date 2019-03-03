@@ -90,10 +90,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<NailsItem>(typeof(LumberSkill), 16, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<GlassJarItem>(typeof(LumberSkill), 8, LumberSkill.MultiplicativeStrategy),
             };
-            SkillModifiedValue value = new SkillModifiedValue(120, LumberSkill.MultiplicativeStrategy, typeof(LumberSkill), Localizer.DoStr("craft time"));
-            SkillModifiedValueManager.AddBenefitForObject(typeof(KitchenRecipe), Item.Get<KitchenItem>().UILink(), value);
-            SkillModifiedValueManager.AddSkillBenefit(Item.Get<KitchenItem>().UILink(), value);
-            this.CraftMinutes = value;
+            this.CraftMinutes = CreateCraftTimeValue(typeof(KitchenRecipe), Item.Get<KitchenItem>().UILink(), 120, typeof(LumberSkill));
             this.Initialize(Localizer.DoStr("Kitchen"), typeof(KitchenRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
