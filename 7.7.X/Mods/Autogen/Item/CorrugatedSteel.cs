@@ -1,32 +1,32 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.World;
-    using Eco.World.Blocks;
+    using Gameplay.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using World;
+    using World.Blocks;
 
     [RequiresSkill(typeof(AdvancedSmeltingSkill), 2)]   
     public partial class CorrugatedSteelRecipe : Recipe
     {
         public CorrugatedSteelRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<CorrugatedSteelItem>(),          
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<SteelItem>(typeof(AdvancedSmeltingSkill), 2, AdvancedSmeltingSkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CorrugatedSteelRecipe), Item.Get<CorrugatedSteelItem>().UILink(), 2, typeof(AdvancedSmeltingSkill));    
-            this.Initialize(Localizer.DoStr("Corrugated Steel"), typeof(CorrugatedSteelRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(CorrugatedSteelRecipe), Item.Get<CorrugatedSteelItem>().UILink(), 2, typeof(AdvancedSmeltingSkill));    
+            Initialize(Localizer.DoStr("Corrugated Steel"), typeof(CorrugatedSteelRecipe));
 
             CraftingComponent.AddRecipe(typeof(RollingMillObject), this);
         }
@@ -56,7 +56,7 @@ namespace Eco.Mods.TechTree
 
         public override bool CanStickToWalls { get { return false; } }  
 
-        private static Type[] blockTypes = new Type[] {
+        private static Type[] blockTypes = new[] {
             typeof(CorrugatedSteelStacked1Block),
             typeof(CorrugatedSteelStacked2Block),
             typeof(CorrugatedSteelStacked3Block),

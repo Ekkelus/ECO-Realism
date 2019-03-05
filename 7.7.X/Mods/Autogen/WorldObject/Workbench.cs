@@ -1,13 +1,13 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -26,7 +26,7 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Crafting");                                 
+            GetComponent<MinimapComponent>().Initialize("Crafting");                                 
 
 
 
@@ -45,12 +45,6 @@ namespace Eco.Mods.TechTree
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Workbench"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A bench for the basics and making even more benches."); } }
-
-        static WorkbenchItem()
-        {
-            
-        }
-
     }
 
 
@@ -58,18 +52,18 @@ namespace Eco.Mods.TechTree
     {
         public WorkbenchRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<WorkbenchItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<LogItem>(30),
                 new CraftingElement<StoneItem>(20),   
             };
-            this.CraftMinutes = new ConstantValue(5);
-            this.Initialize(Localizer.DoStr("Workbench"), typeof(WorkbenchRecipe));
+            CraftMinutes = new ConstantValue(5);
+            Initialize(Localizer.DoStr("Workbench"), typeof(WorkbenchRecipe));
             CraftingComponent.AddRecipe(typeof(CampsiteObject), this);
         }
     }

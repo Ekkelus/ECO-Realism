@@ -1,14 +1,14 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -26,8 +26,8 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Storage");                                 
-            var storage = this.GetComponent<PublicStorageComponent>();
+            GetComponent<MinimapComponent>().Initialize("Storage");                                 
+            var storage = GetComponent<PublicStorageComponent>();
             storage.Initialize(25);
             storage.Storage.AddInvRestriction(new NotCarriedRestriction()); // can't store block or large items
 
@@ -48,12 +48,6 @@ namespace Eco.Mods.TechTree
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Storage Chest"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A container you can store items in."); } }
-
-        static StorageChestItem()
-        {
-            
-        }
-
     }
 
     [RequiresSkill(typeof(HewingSkill),1)]
@@ -61,20 +55,20 @@ namespace Eco.Mods.TechTree
     {
         public StorageChestRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<StorageChestItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BoardItem>(typeof(HewingSkill), 5, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<HingeItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(HewingSkill), 10, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<IronIngotItem>(typeof(HewingSkill), 3, HewingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = new ConstantValue(2); 
-            this.Initialize(Localizer.DoStr("Storage Chest"), typeof(StorageChestRecipe));
+            CraftMinutes = new ConstantValue(2); 
+            Initialize(Localizer.DoStr("Storage Chest"), typeof(StorageChestRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

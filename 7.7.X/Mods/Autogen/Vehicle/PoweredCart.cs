@@ -2,15 +2,15 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.Collections.Generic;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.World.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using World.Blocks;
 
     [Serialized]
     [Weight(15000)]  
@@ -25,21 +25,21 @@ namespace Eco.Mods.TechTree
     {
         public PoweredCartRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<PoweredCartItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
-                new CraftingElement<CombustionEngineItem>(1),
+                new CraftingElement<CombustionEngineItem>(),
                 new CraftingElement<LumberItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<ClothItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<RivetItem>(typeof(MechanicsSkill), 5, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<RubberWheelItem>(typeof(MechanicsSkill), 3, MechanicsSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = new ConstantValue(25);
+            CraftMinutes = new ConstantValue(25);
 
-            this.Initialize(Localizer.DoStr("Powered Cart"), typeof(PoweredCartRecipe));
+            Initialize(Localizer.DoStr("Powered Cart"), typeof(PoweredCartRecipe));
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }
     }
@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
     {
         static PoweredCartObject()
         {
-            WorldObject.AddOccupancy<PoweredCartObject>(new List<BlockOccupancy>(0));
+            AddOccupancy<PoweredCartObject>(new List<BlockOccupancy>(0));
         }
 
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
@@ -73,7 +73,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Powered Cart"); } }
         public Type RepresentedItemType { get { return typeof(PoweredCartItem); } }
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(PetroleumItem),
 typeof(GasolineItem),
@@ -85,11 +85,11 @@ typeof(GasolineItem),
         {
             base.Initialize();
             
-            this.GetComponent<PublicStorageComponent>().Initialize(20, 3000000);            
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(40);    
-            this.GetComponent<AirPollutionComponent>().Initialize(0.2f);            
-            this.GetComponent<VehicleComponent>().Initialize(15, 1, roadEfficiency, 1);
+            GetComponent<PublicStorageComponent>().Initialize(20, 3000000);            
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
+            GetComponent<FuelConsumptionComponent>().Initialize(40);    
+            GetComponent<AirPollutionComponent>().Initialize(0.2f);            
+            GetComponent<VehicleComponent>().Initialize(15, 1, roadEfficiency, 1);
         }
     }
 }

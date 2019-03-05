@@ -1,34 +1,19 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Pipes.LiquidComponents;
+    using Gameplay.Pipes.Gases;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]
     [RequireComponent(typeof(ChimneyComponent))]
@@ -52,7 +37,7 @@ namespace Eco.Mods.TechTree
         public virtual Type RepresentedItemType { get { return typeof(OilRefineryItem); } }
 
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(LogItem),
             typeof(LumberItem),
@@ -65,13 +50,13 @@ namespace Eco.Mods.TechTree
         protected override void Initialize()
         {
 
-            this.GetComponent<MinimapComponent>().Initialize("Crafting");
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);
-            this.GetComponent<FuelConsumptionComponent>().Initialize(50);
-            this.GetComponent<HousingComponent>().Set(OilRefineryItem.HousingVal);
+            GetComponent<MinimapComponent>().Initialize("Crafting");
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);
+            GetComponent<FuelConsumptionComponent>().Initialize(50);
+            GetComponent<HousingComponent>().Set(OilRefineryItem.HousingVal);
 
-            this.GetComponent<LiquidProducerComponent>().Setup(typeof(SmogItem), (int)(1.4f * 1000f), this.NamedOccupancyOffset("ChimneyOut"));
-            this.GetComponent<LiquidConverterComponent>().Setup(typeof(WaterItem), typeof(SewageItem), this.NamedOccupancyOffset("WaterInputPort"), this.NamedOccupancyOffset("SewageOutputPort"), 300, 0.9f);
+            GetComponent<LiquidProducerComponent>().Setup(typeof(SmogItem), (int)(1.4f * 1000f), NamedOccupancyOffset("ChimneyOut"));
+            GetComponent<LiquidConverterComponent>().Setup(typeof(WaterItem), typeof(SewageItem), NamedOccupancyOffset("WaterInputPort"), NamedOccupancyOffset("SewageOutputPort"), 300);
         }
 
         public override void Destroy()
@@ -87,11 +72,6 @@ namespace Eco.Mods.TechTree
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Oil Refinery"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Sets of pipes and tanks which refine crude petroleum into usable products."); } }
-
-        static OilRefineryItem()
-        {
-
-        }
 
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren]
@@ -116,20 +96,20 @@ namespace Eco.Mods.TechTree
     {
         public OilRefineryRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<OilRefineryItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BrickItem>(typeof(MechanicsSkill), 30, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<GearItem>(typeof(MechanicsSkill), 40, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<IronIngotItem>(typeof(MechanicsSkill), 40, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<CopperPipeItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(OilRefineryRecipe), Item.Get<OilRefineryItem>().UILink(), 50, typeof(MechanicsSkill), typeof(MechanicsFocusedSpeedTalent));
-            this.Initialize(Localizer.DoStr("Oil Refinery"), typeof(OilRefineryRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(OilRefineryRecipe), Item.Get<OilRefineryItem>().UILink(), 50, typeof(MechanicsSkill), typeof(MechanicsFocusedSpeedTalent));
+            Initialize(Localizer.DoStr("Oil Refinery"), typeof(OilRefineryRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

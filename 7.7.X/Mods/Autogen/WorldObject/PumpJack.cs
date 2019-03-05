@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -34,10 +33,10 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Crafting");                                 
-            this.GetComponent<PowerConsumptionComponent>().Initialize(100);                      
-            this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());        
-            this.GetComponent<HousingComponent>().Set(PumpJackItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Crafting");                                 
+            GetComponent<PowerConsumptionComponent>().Initialize(100);                      
+            GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());        
+            GetComponent<HousingComponent>().Set(PumpJackItem.HousingVal);                                
 
 
         }
@@ -56,11 +55,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Pump Jack"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("Drill, baby! Drill!"); } }
 
-        static PumpJackItem()
-        {
-            
-        }
-        
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -77,12 +71,12 @@ namespace Eco.Mods.TechTree
     {
         public PumpJackRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<PumpJackItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<ConcreteItem>(typeof(MechanicsSkill), 14, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<GearboxItem>(typeof(MechanicsSkill), 4, MechanicsSkill.MultiplicativeStrategy),
@@ -90,8 +84,8 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<CopperPipeItem>(typeof(MechanicsSkill), 6, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<WaterwheelItem>(typeof(MechanicsSkill), 2, MechanicsSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(PumpJackRecipe), Item.Get<PumpJackItem>().UILink(), 50, typeof(MechanicsSkill));
-            this.Initialize(Localizer.DoStr("Pump Jack"), typeof(PumpJackRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(PumpJackRecipe), Item.Get<PumpJackItem>().UILink(), 50, typeof(MechanicsSkill));
+            Initialize(Localizer.DoStr("Pump Jack"), typeof(PumpJackRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

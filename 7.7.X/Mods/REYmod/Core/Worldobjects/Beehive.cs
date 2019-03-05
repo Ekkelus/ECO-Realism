@@ -2,17 +2,15 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.Collections.Generic;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Math;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Math;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -27,17 +25,17 @@ namespace Eco.Mods.TechTree
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Beehive"); } }
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(BeeItem),
         };
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Crafting");
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);
-            this.GetComponent<FuelConsumptionComponent>().Initialize(1);
-            this.GetComponent<PropertyAuthComponent>().Initialize();
+            GetComponent<MinimapComponent>().Initialize("Crafting");
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);
+            GetComponent<FuelConsumptionComponent>().Initialize(1);
+            GetComponent<PropertyAuthComponent>().Initialize();
 
 
 
@@ -72,20 +70,20 @@ namespace Eco.Mods.TechTree
     {
         public BeehiveRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<BeehiveItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BoardItem>(typeof(FarmingSkill), 50, FarmingSkill.MultiplicativeStrategy),
                 new CraftingElement<GlassItem>(typeof(FarmingSkill), 10, FarmingSkill.MultiplicativeStrategy),
                 new CraftingElement<IronIngotItem>(typeof(FarmingSkill), 4, FarmingSkill.MultiplicativeStrategy),
                 new CraftingElement<GlueItem>(typeof(FarmingSkill), 8, FarmingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(BeehiveRecipe), Item.Get<BeehiveItem>().UILink(), 1, typeof(FarmingSkill));
-            this.Initialize(Localizer.DoStr("Beehive"), typeof(BeehiveRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(BeehiveRecipe), Item.Get<BeehiveItem>().UILink(), 1, typeof(FarmingSkill));
+            Initialize(Localizer.DoStr("Beehive"), typeof(BeehiveRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

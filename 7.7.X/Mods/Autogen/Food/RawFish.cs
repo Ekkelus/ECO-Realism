@@ -1,11 +1,11 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Players;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Serialization;
+    using Shared.Localization;
 
     [Serialized]
     [Weight(50)]                                          
@@ -25,17 +25,17 @@ namespace Eco.Mods.TechTree
     {
         public RawSalmonRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<RawFishItem>(),
 
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SalmonFilletItem>(1),
+                new CraftingElement<SalmonFilletItem>(),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RawSalmonRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(HuntingSkill));
-            this.Initialize(Localizer.DoStr("Raw Salmon"), typeof(RawSalmonRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(RawSalmonRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(HuntingSkill));
+            Initialize(Localizer.DoStr("Raw Salmon"), typeof(RawSalmonRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }
@@ -44,17 +44,17 @@ namespace Eco.Mods.TechTree
     {
         public RawTroutRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<RawFishItem>(),
 
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
-                new CraftingElement<TroutFilletItem>(1),
+                new CraftingElement<TroutFilletItem>(),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RawTroutRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(HuntingSkill));
-            this.Initialize(Localizer.DoStr("Raw Trout"), typeof(RawTroutRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(RawTroutRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(HuntingSkill));
+            Initialize(Localizer.DoStr("Raw Trout"), typeof(RawTroutRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }
@@ -64,17 +64,17 @@ namespace Eco.Mods.TechTree
     {
         public RawTunaRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<RawFishItem>(),
 
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
-                new CraftingElement<TunaFilletItem>(1),
+                new CraftingElement<TunaFilletItem>(),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RawTunaRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(HuntingSkill));
-            this.Initialize(Localizer.DoStr("Raw Tuna"), typeof(RawTunaRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(RawTunaRecipe), Item.Get<RawFishItem>().UILink(), 0.01f, typeof(HuntingSkill));
+            Initialize(Localizer.DoStr("Raw Tuna"), typeof(RawTunaRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }

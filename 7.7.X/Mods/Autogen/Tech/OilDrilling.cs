@@ -1,12 +1,12 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Players;
+    using Gameplay.Skills;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]
     [RequiresSkill(typeof(EngineerSkill), 0)]
@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
 
 
         public static ModificationStrategy MultiplicativeStrategy =
-            new MultiplicativeStrategy(new float[] { 1,
+            new MultiplicativeStrategy(new[] { 1,
 
                 1 - 0.5f,
 
@@ -41,7 +41,7 @@ namespace Eco.Mods.TechTree
             });
         public override ModificationStrategy MultiStrategy { get { return MultiplicativeStrategy; } }
         public static ModificationStrategy AdditiveStrategy =
-            new AdditiveStrategy(new float[] { 0,
+            new AdditiveStrategy(new[] { 0,
 
                 0.5f,
 
@@ -76,8 +76,8 @@ namespace Eco.Mods.TechTree
             1,
 
         };
-        public override int RequiredPoint { get { return this.Level < SkillPointCost.Length ? SkillPointCost[this.Level] : 0; } }
-        public override int PrevRequiredPoint { get { return this.Level - 1 >= 0 && this.Level - 1 < SkillPointCost.Length ? SkillPointCost[this.Level - 1] : 0; } }
+        public override int RequiredPoint { get { return Level < SkillPointCost.Length ? SkillPointCost[Level] : 0; } }
+        public override int PrevRequiredPoint { get { return Level - 1 >= 0 && Level - 1 < SkillPointCost.Length ? SkillPointCost[Level - 1] : 0; } }
         public override int MaxLevel { get { return 7; } }
         public override int Tier { get { return 4; } }
     }
@@ -99,20 +99,20 @@ namespace Eco.Mods.TechTree
     {
         public OilDrillingSkillBookRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<OilDrillingSkillBook>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<ReinforcedConcreteItem>(50),
                 new CraftingElement<CombustionEngineItem>(4),
                 new CraftingElement<LumberItem>(80),
                 new CraftingElement<BookItem>(16)
             };
-            this.CraftMinutes = new ConstantValue(30);
+            CraftMinutes = new ConstantValue(30);
 
-            this.Initialize(Localizer.DoStr("Oil Drilling Skill Book"), typeof(OilDrillingSkillBookRecipe));
+            Initialize(Localizer.DoStr("Oil Drilling Skill Book"), typeof(OilDrillingSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

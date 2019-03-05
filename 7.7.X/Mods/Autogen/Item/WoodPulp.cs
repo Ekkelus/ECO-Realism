@@ -1,8 +1,8 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Items;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Items;
+    using Shared.Localization;
+    using Shared.Serialization;
 
 
 

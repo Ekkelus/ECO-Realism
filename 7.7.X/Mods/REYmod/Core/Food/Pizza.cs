@@ -1,12 +1,12 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Players;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Serialization;
+    using Shared.Localization;
 
     [Serialized]
     [Weight(200)]
@@ -26,20 +26,20 @@ namespace Eco.Mods.TechTree
     {
         public PizzaRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<PizzaItem>(),
 
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<TomatoItem>(typeof(AdvancedBakingSkill), 30, AdvancedBakingSkill.MultiplicativeStrategy),
                 new CraftingElement<FlatbreadItem>(typeof(AdvancedBakingSkill), 5, AdvancedBakingSkill.MultiplicativeStrategy),
                 new CraftingElement<FiddleheadsItem>(typeof(AdvancedBakingSkill), 30, AdvancedBakingSkill.MultiplicativeStrategy),
                 new CraftingElement<ScrapMeatItem>(typeof(AdvancedBakingSkill), 10, AdvancedBakingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(PizzaRecipe), Item.Get<PizzaItem>().UILink(), 15, typeof(AdvancedBakingSkill));
-            this.Initialize(Localizer.DoStr("Pizza"), typeof(PizzaRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(PizzaRecipe), Item.Get<PizzaItem>().UILink(), 15, typeof(AdvancedBakingSkill));
+            Initialize(Localizer.DoStr("Pizza"), typeof(PizzaRecipe));
             CraftingComponent.AddRecipe(typeof(BakeryOvenObject), this);
         }
     }

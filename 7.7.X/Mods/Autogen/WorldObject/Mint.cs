@@ -1,17 +1,15 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -32,7 +30,7 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Economy");                                 
+            GetComponent<MinimapComponent>().Initialize("Economy");                                 
 
 
 
@@ -51,12 +49,6 @@ namespace Eco.Mods.TechTree
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Mint"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("Allows for the creation of currency."); } }
-
-        static MintItem()
-        {
-            
-        }
-        
     }
 
 
@@ -65,18 +57,18 @@ namespace Eco.Mods.TechTree
     {
         public MintRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<MintItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<SteelItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<GoldIngotItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(MintRecipe), Item.Get<MintItem>().UILink(), 60, typeof(SmeltingSkill));
-            this.Initialize(Localizer.DoStr("Mint"), typeof(MintRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(MintRecipe), Item.Get<MintItem>().UILink(), 60, typeof(SmeltingSkill));
+            Initialize(Localizer.DoStr("Mint"), typeof(MintRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

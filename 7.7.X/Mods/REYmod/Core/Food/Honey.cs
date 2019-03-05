@@ -1,12 +1,12 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Players;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]
     [Weight(150)]
@@ -26,13 +26,13 @@ namespace Eco.Mods.TechTree
     {
         public HoneyRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<HoneyItem>(),
                 new CraftingElement<BeeswaxItem>(),
 
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<GlassJarItem>(typeof(FarmingSkill), 2, FarmingSkill.MultiplicativeStrategy),
             };
@@ -42,8 +42,8 @@ namespace Eco.Mods.TechTree
             //    , new LayerModifiedValue("Fireweed", 5)
             //    , new LayerModifiedValue("Camas", 5))
             //));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 10, typeof(FarmingSkill));
-            this.Initialize(Localizer.DoStr("Honey"), typeof(HoneyRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 10, typeof(FarmingSkill));
+            Initialize(Localizer.DoStr("Honey"), typeof(HoneyRecipe));
             CraftingComponent.AddRecipe(typeof(BeehiveObject), this);
         }
     }

@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -31,10 +30,10 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Power");                                 
-            this.GetComponent<PowerGridComponent>().Initialize(10, new MechanicalPower());        
-            this.GetComponent<PowerGeneratorComponent>().Initialize(200);                       
-            this.GetComponent<HousingComponent>().Set(WindmillItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Power");                                 
+            GetComponent<PowerGridComponent>().Initialize(10, new MechanicalPower());        
+            GetComponent<PowerGeneratorComponent>().Initialize(200);                       
+            GetComponent<HousingComponent>().Set(WindmillItem.HousingVal);                                
 
 
         }
@@ -53,11 +52,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Windmill"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("Use wind to produce mechanical power."); } }
 
-        static WindmillItem()
-        {
-            
-        }
-
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -74,20 +68,20 @@ namespace Eco.Mods.TechTree
     {
         public WindmillRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<WindmillItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<HewnLogItem>(typeof(BasicEngineeringSkill), 5, BasicEngineeringSkill.MultiplicativeStrategy),
                 new CraftingElement<BoardItem>(typeof(BasicEngineeringSkill), 10, BasicEngineeringSkill.MultiplicativeStrategy),
                 new CraftingElement<ClothItem>(typeof(BasicEngineeringSkill), 25, BasicEngineeringSkill.MultiplicativeStrategy),
                 new CraftingElement<WoodenGearItem>(typeof(BasicEngineeringSkill), 1, BasicEngineeringSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(WindmillRecipe), Item.Get<WindmillItem>().UILink(), 30, typeof(BasicEngineeringSkill));
-            this.Initialize(Localizer.DoStr("Windmill"), typeof(WindmillRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(WindmillRecipe), Item.Get<WindmillItem>().UILink(), 30, typeof(BasicEngineeringSkill));
+            Initialize(Localizer.DoStr("Windmill"), typeof(WindmillRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

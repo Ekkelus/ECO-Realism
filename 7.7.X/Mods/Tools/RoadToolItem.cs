@@ -4,14 +4,14 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.ComponentModel;
-    using Eco.Core.Utils.AtomicAction;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Interactions;
-    using Eco.Gameplay.Items;
-    using Eco.Shared.Math;
-    using Eco.Simulation;
-    using Eco.World;
-    using Eco.World.Blocks;
+    using Core.Utils.AtomicAction;
+    using Gameplay.DynamicValues;
+    using Gameplay.Interactions;
+    using Gameplay.Items;
+    using Shared.Math;
+    using Simulation;
+    using World;
+    using World.Blocks;
     using Gameplay.Skills;
 
     [Category("Tools")]
@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
         static IDynamicValue caloriesBurn = new ConstantValue(15);
         public override IDynamicValue CaloriesBurn { get { return caloriesBurn; } }
 
-        public override Item RepairItem { get { return Item.Get<StoneItem>(); } }
+        public override Item RepairItem { get { return Get<StoneItem>(); } }
         public override int FullRepairAmount { get { return 10; } }
 
         private static IDynamicValue skilledRepairCost = new ConstantValue(1);
@@ -32,13 +32,13 @@ namespace Eco.Mods.TechTree
             if (!context.HasBlock)
                 return InteractResult.NoOp;
 
-            Type blockType = this.GetRoadBlock(context.Block);
+            Type blockType = GetRoadBlock(context.Block);
 
             if (blockType != null)
             {
                 IAtomicAction destroyAction = UsableItemUtils.TryDestroyPlant(
                     context.Player, context.BlockPosition.Value + Vector3i.Up, DeathType.Construction);
-                return (InteractResult)this.PlayerPlaceBlock(blockType, context.BlockPosition.Value, context.Player, true, 1, destroyAction);
+                return (InteractResult)PlayerPlaceBlock(blockType, context.BlockPosition.Value, context.Player, true, 1, destroyAction);
             }
             else
                 return InteractResult.NoOp;

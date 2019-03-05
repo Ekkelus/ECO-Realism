@@ -18,9 +18,6 @@ using Eco.Core.Utils.AtomicAction;
 using System.Timers;
 using REYmod.Config;
 using Eco.Gameplay;
-using Eco.World.Blocks;
-
-
 
 
 // This file should contain only basic Utils wich are needed for all Modules, no module specific code here, only "interfaces" for events (see OneMinutetimer for example)
@@ -109,6 +106,7 @@ namespace REYmod.Utils
         /// This Method is called when a player Login is completed
         /// </summary>
         /// <param name="user"></param>
+        /// <param name="firstlogin"></param>
         private static void OnUserEnterWorld(User user, bool firstlogin) // Note: "Player" should be ready here
         {
             //Console.WriteLine(user.Name + " entered world");
@@ -178,7 +176,7 @@ namespace REYmod.Utils
         public static void WriteToLog(string logdata, string desc = "")
         {
             string path = "./Dump/log.txt";
-            logdata = Environment.NewLine + System.Environment.NewLine + desc + System.Environment.NewLine + logdata;
+            logdata = Environment.NewLine + Environment.NewLine + desc + Environment.NewLine + logdata;
             if (!File.Exists(path)) File.Create(path).Close();
 
             File.AppendAllText(path, logdata);
@@ -189,7 +187,7 @@ namespace REYmod.Utils
         public static void WriteCommandLog(User user,string command, string desc = "")
         {
             string path = "./Mods/REYmod/commandlog.csv";
-            string logdata = String.Join(";", System.DateTime.Now.ToShortDateString(),System.DateTime.Now.ToLongTimeString(), user.Name, command, desc, Environment.NewLine);
+            string logdata = String.Join(";", DateTime.Now.ToShortDateString(),DateTime.Now.ToLongTimeString(), user.Name, command, desc, Environment.NewLine);
             if (!File.Exists(path)) File.Create(path).Close();
 
             File.AppendAllText(path, logdata);
@@ -397,7 +395,7 @@ namespace REYmod.Utils
             {                 
                 confirmation = "To confirm that you understood Super Skills and to unlock them please click " + new Button(x => ConfirmSuperskill(x.User),clickdesc:"Click to unlock", content: "HERE".Color("green"), singleuse: true).UILink();
             }
-            player.OpenInfoPanel("Super Skills", "Current amount of Super Skills: <b><color=green>" + SkillUtils.SuperSkillCount(player.User) + "</color></b><br>Max amount of Super Skills: <b><color=green>" + ((REYmodSettings.Obj.Config.Maxsuperskills != int.MaxValue) ? REYmodSettings.Obj.Config.Maxsuperskills.ToString() : "Infinite") + "</color></b><br><br>Super Skills are Skills that can be leveled all the way up to level 10.<br><br><color=red>You can only have a limited amount of them.</color><br><br>" + confirmation);
+            player.OpenInfoPanel("Super Skills", "Current amount of Super Skills: <b><color=green>" + SuperSkillCount(player.User) + "</color></b><br>Max amount of Super Skills: <b><color=green>" + ((REYmodSettings.Obj.Config.Maxsuperskills != int.MaxValue) ? REYmodSettings.Obj.Config.Maxsuperskills.ToString() : "Infinite") + "</color></b><br><br>Super Skills are Skills that can be leveled all the way up to level 10.<br><br><color=red>You can only have a limited amount of them.</color><br><br>" + confirmation);
         }
 
         public static void ConfirmSuperskill(User user)
@@ -441,19 +439,19 @@ namespace REYmod.Utils
         public static IAtomicAction SuperSkillLevelUp(Skill skill, Player player)
         {
             if (skill.Level != 5) return SimpleAtomicAction.NoOp;
-            if (SkillUtils.SuperSkillCount(player.User) >= REYmodSettings.Obj.Config.Maxsuperskills) return new FailedAtomicAction(Localizer.DoStr("You already have enough SuperSkills " + SkillUtils.SuperSkillCount(player.User) + "/" + REYmodSettings.Obj.Config.Maxsuperskills));
+            if (SuperSkillCount(player.User) >= REYmodSettings.Obj.Config.Maxsuperskills) return new FailedAtomicAction(Localizer.DoStr("You already have enough SuperSkills " + SuperSkillCount(player.User) + "/" + REYmodSettings.Obj.Config.Maxsuperskills));
             if (CheckSuperskillConfirmation(player.User))
             {
                 superskillconfirmed.Remove(player.User.Id);
                 return SimpleAtomicAction.NoOp;
             }
-            SkillUtils.ShowSuperSkillInfo(player);
+            ShowSuperSkillInfo(player);
             return new FailedAtomicAction(Localizer.DoStr("You need to confirm first"));
         }
 
         public static bool CheckSuperskillConfirmation(User user)
         {
-            foreach (int id in SkillUtils.superskillconfirmed)
+            foreach (int id in superskillconfirmed)
             {
                 if (id == user.Id)
                 {
@@ -630,17 +628,17 @@ namespace REYmod.Utils
         [Tooltip(100)]
         public string Tooltip()
         {
-            return this.tooltip;
+            return tooltip;
         }
 
         public Button(Action<Player> onClick = null, string title = null, string tooltip = null, string content = null, bool singleuse = false,string clickdesc = null)
         {
             if (buttonList.Count > 10000000) throw new OverflowException("Too many undisposed Buttons"); // Exception when there are more than 10mil buttons, thats hopefully never the case
-            this.linkclickaction = onClick;
-            this.TooltipTitle = title;
+            linkclickaction = onClick;
+            TooltipTitle = title;
             this.tooltip = tooltip;
-            this.linkcontent = content;
-            this.temporary = singleuse;
+            linkcontent = content;
+            temporary = singleuse;
             this.clickdesc = clickdesc;
             int newid = RandomUtil.Range(100000000, 999999999);
             while (buttonList.Any(x => x.ID == newid))
@@ -648,7 +646,7 @@ namespace REYmod.Utils
                 newid = RandomUtil.Range(100000000, 999999999);
             }
             buttonList.Add(this);
-            this.ID = newid;
+            ID = newid;
         }
 
         public LocString LinkClickedTooltipContent(Player clickingPlayer)

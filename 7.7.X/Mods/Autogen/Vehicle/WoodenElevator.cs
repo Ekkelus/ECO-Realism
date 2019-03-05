@@ -1,11 +1,11 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]
     [Weight(10000)]  
@@ -20,20 +20,20 @@ namespace Eco.Mods.TechTree
     {
         public WoodenElevatorRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<WoodenElevatorItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
-                new CraftingElement<PortableSteamEngineItem>(1), 
+                new CraftingElement<PortableSteamEngineItem>(), 
                 new CraftingElement<GearboxItem>(typeof(MechanicsSkill), 10, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<CelluloseFiberItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(MechanicsSkill), 30, MechanicsSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = new ConstantValue(25);
+            CraftMinutes = new ConstantValue(25);
 
-            this.Initialize(Localizer.DoStr("Wooden Elevator"), typeof(WoodenElevatorRecipe));
+            Initialize(Localizer.DoStr("Wooden Elevator"), typeof(WoodenElevatorRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

@@ -10,13 +10,13 @@ namespace REYmod.Config
 
     public class REYmodSettings : Singleton<REYmodSettings>, IConfigurablePlugin, IModKitPlugin
     {
-        public IPluginConfig PluginConfig { get { return this.config; } }
+        public IPluginConfig PluginConfig { get { return config; } }
         private PluginConfig<REYconfig> config;
-        public REYconfig Config { get { return this.config.Config; } }
+        public REYconfig Config { get { return config.Config; } }
 
         public REYmodSettings()
         {
-            this.config = new PluginConfig<REYconfig>("REYmod");
+            config = new PluginConfig<REYconfig>("REYmod");
 
             //int maxSuperskills;
             //double maxinactivetime;
@@ -56,7 +56,7 @@ namespace REYmod.Config
 
         public object GetEditObject()
         {
-            return this.config.Config;
+            return config.Config;
         }
         public string GetStatus()
         {

@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]                   
@@ -34,10 +33,10 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Power");                                 
-            this.GetComponent<PowerGridComponent>().Initialize(30, new ElectricPower());        
-            this.GetComponent<PowerGeneratorComponent>().Initialize(750);                       
-            this.GetComponent<HousingComponent>().Set(SolarGeneratorItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Power");                                 
+            GetComponent<PowerGridComponent>().Initialize(30, new ElectricPower());        
+            GetComponent<PowerGeneratorComponent>().Initialize(750);                       
+            GetComponent<HousingComponent>().Set(SolarGeneratorItem.HousingVal);                                
 
 
         }
@@ -56,11 +55,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Solar Generator"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("Generates electrical power from the sun! It also stores energy to work at night."); } }
 
-        static SolarGeneratorItem()
-        {
-            
-        }
-        
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -77,20 +71,20 @@ namespace Eco.Mods.TechTree
     {
         public SolarGeneratorRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<SolarGeneratorItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<ReinforcedConcreteItem>(typeof(ElectronicsSkill), 6, ElectronicsSkill.MultiplicativeStrategy),
                 new CraftingElement<ServoItem>(typeof(ElectronicsSkill), 5, ElectronicsSkill.MultiplicativeStrategy),
                 new CraftingElement<CircuitItem>(typeof(ElectronicsSkill), 10, ElectronicsSkill.MultiplicativeStrategy),
                 new CraftingElement<GlassItem>(typeof(ElectronicsSkill), 50, ElectronicsSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SolarGeneratorRecipe), Item.Get<SolarGeneratorItem>().UILink(), 50, typeof(ElectronicsSkill));
-            this.Initialize(Localizer.DoStr("Solar Generator"), typeof(SolarGeneratorRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(SolarGeneratorRecipe), Item.Get<SolarGeneratorItem>().UILink(), 50, typeof(ElectronicsSkill));
+            Initialize(Localizer.DoStr("Solar Generator"), typeof(SolarGeneratorRecipe));
             CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }
     }

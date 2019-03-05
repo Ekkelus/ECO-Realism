@@ -1,16 +1,16 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.DynamicValues;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]                   
@@ -29,17 +29,17 @@ namespace Eco.Mods.TechTree
 
         public virtual Type RepresentedItemType { get { return typeof(TorchStandItem); } } 
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(TorchItem),
         };
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Lights");                                 
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(0.5f);                    
-            this.GetComponent<HousingComponent>().Set(TorchStandItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Lights");                                 
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
+            GetComponent<FuelConsumptionComponent>().Initialize(0.5f);                    
+            GetComponent<HousingComponent>().Set(TorchStandItem.HousingVal);                                
 
 
         }
@@ -59,11 +59,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Torch Stand"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A stand for a torch."); } }
 
-        static TorchStandItem()
-        {
-            
-        }
-
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -81,18 +76,18 @@ namespace Eco.Mods.TechTree
     {
         public TorchStandRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<TorchStandItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<LogItem>(10),
-                new CraftingElement<RopeItem>(1),
+                new CraftingElement<RopeItem>(),
             };
-            this.CraftMinutes = new ConstantValue(2); 
-            this.Initialize(Localizer.DoStr("Torch Stand"), typeof(TorchStandRecipe));
+            CraftMinutes = new ConstantValue(2); 
+            Initialize(Localizer.DoStr("Torch Stand"), typeof(TorchStandRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

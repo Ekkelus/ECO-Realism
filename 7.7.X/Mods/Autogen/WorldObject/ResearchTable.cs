@@ -1,14 +1,14 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -31,7 +31,7 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Research");                                 
+            GetComponent<MinimapComponent>().Initialize("Research");                                 
 
 
         }
@@ -49,12 +49,6 @@ namespace Eco.Mods.TechTree
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Research Table"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A basic table for researching new technologies and skills."); } }
-
-        static ResearchTableItem()
-        {
-            
-        }
-
     }
 
 
@@ -63,19 +57,19 @@ namespace Eco.Mods.TechTree
     {
         public ResearchTableRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<ResearchTableItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<LogItem>(30),
                 new CraftingElement<StoneItem>(40),
                 new CraftingElement<PlantFibersItem>(30),                                                                    
             };
-            this.CraftMinutes = new ConstantValue(5); 
-            this.Initialize(Localizer.DoStr("Research Table"), typeof(ResearchTableRecipe));
+            CraftMinutes = new ConstantValue(5); 
+            Initialize(Localizer.DoStr("Research Table"), typeof(ResearchTableRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

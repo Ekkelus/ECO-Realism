@@ -19,7 +19,7 @@ namespace REYmod.Utils
         private BlockItem neededBlockItem;
         private int checkinterval = 100;
 
-        public override bool Enabled { get { return this.ismet; } }
+        public override bool Enabled { get { return ismet; } }
         public override void Tick()
         {
             checkinterval++;
@@ -29,7 +29,7 @@ namespace REYmod.Utils
                 if (CheckGround() != ismet)
                 {
                     ismet = !ismet;
-                    status.SetStatusMessage(this.Enabled, "Ground Requirements met" , "Ground Requirements not met!");
+                    status.SetStatusMessage(Enabled, "Ground Requirements met" , "Ground Requirements not met!");
                     //ChatManager.ServerMessageToAllAlreadyLocalized(this.Enabled ? "Ground Requirements met" : "Ground Requirements not met!", false);
                 }
             }
@@ -41,11 +41,11 @@ namespace REYmod.Utils
 
         public void Initialize(Type blockitem, int grid = 1) //"grid" isnt used yet, it is planned to make it possible to require more than a 3x3 grind (or also only a single block)
         {
-            this.status = this.Parent.GetComponent<StatusComponent>().CreateStatusElement();
-            positionstocheck = World.BlockBelow(this.Parent.Position3i).XZFullNeighborsAndSelf;
+            status = Parent.GetComponent<StatusComponent>().CreateStatusElement();
+            positionstocheck = World.BlockBelow(Parent.Position3i).XZFullNeighborsAndSelf;
             neededBlockItem = Item.Get(blockitem) as BlockItem;
-            this.ismet = CheckGround();
-            status.SetStatusMessage(this.Enabled, "Ground Requirements met", "Ground Requirements not met!");
+            ismet = CheckGround();
+            status.SetStatusMessage(Enabled, "Ground Requirements met", "Ground Requirements not met!");
         }
 
         private bool CheckGround()

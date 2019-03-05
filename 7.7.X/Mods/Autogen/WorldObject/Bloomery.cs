@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -31,7 +30,7 @@ namespace Eco.Mods.TechTree
 
         public virtual Type RepresentedItemType { get { return typeof(BloomeryItem); } } 
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(LogItem),
             typeof(LumberItem),
@@ -43,11 +42,11 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Crafting");                                 
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(10);                    
-            this.GetComponent<HousingComponent>().Set(BloomeryItem.HousingVal);
-            this.GetComponent<PropertyAuthComponent>().Initialize();
+            GetComponent<MinimapComponent>().Initialize("Crafting");                                 
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
+            GetComponent<FuelConsumptionComponent>().Initialize(10);                    
+            GetComponent<HousingComponent>().Set(BloomeryItem.HousingVal);
+            GetComponent<PropertyAuthComponent>().Initialize();
 
 
 
@@ -67,11 +66,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Bloomery"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A chimney-shaped furnace for smelting ores."); } }
 
-        static BloomeryItem()
-        {
-            
-        }
-        
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -88,19 +82,19 @@ namespace Eco.Mods.TechTree
     {
         public BloomeryRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<BloomeryItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BrickItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<BoardItem>(typeof(MortaringSkill), 20, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<SandItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(BloomeryRecipe), Item.Get<BloomeryItem>().UILink(), 10, typeof(MortaringSkill));
-            this.Initialize(Localizer.DoStr("Bloomery"), typeof(BloomeryRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(BloomeryRecipe), Item.Get<BloomeryItem>().UILink(), 10, typeof(MortaringSkill));
+            Initialize(Localizer.DoStr("Bloomery"), typeof(BloomeryRecipe));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }
     }

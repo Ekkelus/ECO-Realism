@@ -45,7 +45,7 @@ public static class PlayerDefaults
     }
     public static IEnumerable<Type> GetDefaultSpecialties()
     {
-        return new Type[]
+        return new[]
         {
             typeof(SelfImprovementSkill)
         };
@@ -53,7 +53,7 @@ public static class PlayerDefaults
 
     public static IEnumerable<Type> GetDefaultSkills()
     {
-        return new Type[]
+        return new[]
         {
             typeof(CarpenterSkill),
             typeof(LoggingSkill),
@@ -117,7 +117,7 @@ public static class PlayerDefaults
 
     public static IEnumerable<Type> GetDefaultBodyparts()
     {
-        return new Type[]
+        return new[]
         {
             typeof(RoundedFaceItem),
             typeof(BlinkyEyelidsItem),
@@ -129,7 +129,7 @@ public static class PlayerDefaults
 
     public static IEnumerable<Type> GetDefaultClothing()
     {
-        return new Type[]
+        return new[]
         {
             typeof(BasicBackpackItem),
             typeof(TrousersItem),

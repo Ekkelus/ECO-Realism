@@ -1,28 +1,28 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Shared.Localization;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Serialization;
+    using Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Serialization;
 
     [RequiresSkill(typeof(ButcherySkill), 1)]
     public partial class GlueRecipe : Recipe
     {
         public GlueRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<GlueItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BoneItem>(typeof(ButcherySkill), 5, ButcherySkill.MultiplicativeStrategy),
-                new CraftingElement<GlassJarItem>(1),
+                new CraftingElement<GlassJarItem>(),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(GlueRecipe), Item.Get<GlueItem>().UILink(), 3, typeof(ButcherySkill));
-            this.Initialize(Localizer.DoStr("Glue"), typeof(GlueRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(GlueRecipe), Item.Get<GlueItem>().UILink(), 3, typeof(ButcherySkill));
+            Initialize(Localizer.DoStr("Glue"), typeof(GlueRecipe));
 
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);
         }

@@ -1,28 +1,28 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [RequiresSkill(typeof(IndustrySkill), 2)]   
     public partial class RubberWheelRecipe : Recipe
     {
         public RubberWheelRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<RubberWheelItem>(),          
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<SyntheticRubberItem>(typeof(IndustrySkill), 10, IndustrySkill.MultiplicativeStrategy),
-                new CraftingElement<IronWheelItem>(1),
+                new CraftingElement<IronWheelItem>(),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(RubberWheelRecipe), Item.Get<RubberWheelItem>().UILink(), 5, typeof(IndustrySkill));    
-            this.Initialize(Localizer.DoStr("Rubber Wheel"), typeof(RubberWheelRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(RubberWheelRecipe), Item.Get<RubberWheelItem>().UILink(), 5, typeof(IndustrySkill));    
+            Initialize(Localizer.DoStr("Rubber Wheel"), typeof(RubberWheelRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }

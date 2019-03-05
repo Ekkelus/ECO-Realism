@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -35,11 +34,11 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Misc");                                 
-            this.GetComponent<HousingComponent>().Set(BookshelfItem.HousingVal);
-            this.GetComponent<PropertyAuthComponent>().Initialize();
+            GetComponent<MinimapComponent>().Initialize("Misc");                                 
+            GetComponent<HousingComponent>().Set(BookshelfItem.HousingVal);
+            GetComponent<PropertyAuthComponent>().Initialize();
 
-            var storage = this.GetComponent<PublicStorageComponent>();
+            var storage = GetComponent<PublicStorageComponent>();
             storage.Initialize(8);
             storage.Storage.AddInvRestriction(new NotCarriedRestriction()); // can't store block or large items
 
@@ -60,11 +59,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Bookshelf"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A place to store knowledge and information; leads to the town hall."); } }
 
-        static BookshelfItem()
-        {
-            
-        }
-        
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -81,19 +75,19 @@ namespace Eco.Mods.TechTree
     {
         public BookshelfRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<BookshelfItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<LumberItem>(typeof(LumberSkill), 20, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<BookItem>(typeof(LumberSkill), 5, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(LumberSkill), 10, LumberSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(BookshelfRecipe), Item.Get<BookshelfItem>().UILink(), 1, typeof(LumberSkill));
-            this.Initialize(Localizer.DoStr("Bookshelf"), typeof(BookshelfRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(BookshelfRecipe), Item.Get<BookshelfItem>().UILink(), 1, typeof(LumberSkill));
+            Initialize(Localizer.DoStr("Bookshelf"), typeof(BookshelfRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }
