@@ -1,16 +1,14 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -45,13 +43,6 @@ namespace Eco.Mods.TechTree
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Stone Door"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A heavy stone door."); } }
-
-
-        static StoneDoorItem()
-        {
-            
-        }
-
     }
 
 
@@ -60,18 +51,18 @@ namespace Eco.Mods.TechTree
     {
         public StoneDoorRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<StoneDoorItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<StoneItem>(typeof(MortaringSkill), 40, MortaringSkill.MultiplicativeStrategy),   
                 new CraftingElement<HingeItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(StoneDoorRecipe), Item.Get<StoneDoorItem>().UILink(), 3, typeof(MortaringSkill));
-            this.Initialize(Localizer.DoStr("Stone Door"), typeof(StoneDoorRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(StoneDoorRecipe), Item.Get<StoneDoorItem>().UILink(), 3, typeof(MortaringSkill));
+            Initialize(Localizer.DoStr("Stone Door"), typeof(StoneDoorRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }
     }

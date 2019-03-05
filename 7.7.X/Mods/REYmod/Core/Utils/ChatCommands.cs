@@ -1,19 +1,15 @@
 ﻿using Eco.Core.Plugins.Interfaces;
-using Eco.Core.Utils;
 using Eco.Gameplay;
 using Eco.Gameplay.Economy;
 using Eco.Gameplay.Objects;
 using Eco.Gameplay.Players;
 using Eco.Gameplay.Property;
 using Eco.Gameplay.Rooms;
-using Eco.Gameplay.Skills;
 using Eco.Gameplay.Systems.Chat;
 using Eco.Gameplay.Systems.TextLinks;
-using Eco.Shared.Math;
 using Eco.Shared.Networking;
 using Eco.Shared.Utils;
 using Eco.Simulation.Time;
-using Eco.World;
 using REYmod.Config;
 using REYmod.Utils;
 using System;
@@ -146,7 +142,7 @@ namespace REYmod.Core.ChatCommandsNamespace
                 REYmodSettings.Obj.Config.Maxsuperskills = maxallowed;
                 REYmodSettings.Obj.SaveConfig();
                 ChatUtils.SendMessage(user, "Changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr);
-               ChatUtils.SendMessageToAll(user.UILink() + "changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr, false);
+               ChatUtils.SendMessageToAll(user.UILink() + "changed the amount of allowed Superskills from " + currentallowedstr + " to " + newallowedstr);
                 // ConfigHandler.UpdateConfigFile();
             }
         }
@@ -169,7 +165,7 @@ namespace REYmod.Core.ChatCommandsNamespace
 
         #region MOD Commands
         #region Copies of original Commands
-        [ChatCommand("MOD/ADMIN only! - Toggles fly mode", ChatAuthorizationLevel.User)]
+        [ChatCommand("MOD/ADMIN only! - Toggles fly mode")]
         public static void MFly(User user)
         {
             if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
@@ -181,7 +177,7 @@ namespace REYmod.Core.ChatCommandsNamespace
             user.Player.RPC("ToggleFly");
         }
 
-        [ChatCommand("MOD/ADMIN only! - Kicks user", ChatAuthorizationLevel.User)]
+        [ChatCommand("MOD/ADMIN only! - Kicks user")]
         public static void MKick(User user, User kickUser, string reason = "")
         {
             if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
@@ -200,7 +196,7 @@ namespace REYmod.Core.ChatCommandsNamespace
                 ChatUtils.SendMessage(user, kickUser.Name + " is not online");
         }
 
-        [ChatCommand("MOD/ADMIN only! - Bans user", ChatAuthorizationLevel.User)]
+        [ChatCommand("MOD/ADMIN only! - Bans user")]
         public static void MBan(User user, string banUserIDOrName, string reason = "")
         {
             if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
@@ -215,7 +211,7 @@ namespace REYmod.Core.ChatCommandsNamespace
         #endregion
 
 
-        [ChatCommand("unclaimuser", "MOD/ADMIN only! - Unclaims all property of the given user ", level: ChatAuthorizationLevel.User)]
+        [ChatCommand("unclaimuser", "MOD/ADMIN only! - Unclaims all property of the given user ")]
         public static async void UnclaimPlayerAsync(User user, User owner = null)
         {
             bool inactive = true;
@@ -279,7 +275,7 @@ namespace REYmod.Core.ChatCommandsNamespace
 
         }
 
-        [ChatCommand("tp", "MOD/ADMIN only! - Opens a list of online players. Click the player you(or the given player) should be teleported to", level: ChatAuthorizationLevel.User)]
+        [ChatCommand("tp", "MOD/ADMIN only! - Opens a list of online players. Click the player you(or the given player) should be teleported to")]
         public static void Tp(User user, string username = "")
         {
             if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
@@ -299,7 +295,7 @@ namespace REYmod.Core.ChatCommandsNamespace
             user.Player.OpenInfoPanel("Teleporting " + usertoteleport.Name, panelcontent);
         }
 
-        [ChatCommand("globalroomfix", "MOD/ADMIN only! - Reevaluates all rooms that have at least one worldobject placed in them", level: ChatAuthorizationLevel.User)]
+        [ChatCommand("globalroomfix", "MOD/ADMIN only! - Reevaluates all rooms that have at least one worldobject placed in them")]
         public static void GlobalRoomFix(User user)
         {
             if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
@@ -318,7 +314,7 @@ namespace REYmod.Core.ChatCommandsNamespace
             ChatUtils.SendMessage(user, "Rooms should be fixed now");
         }
 
-        [ChatCommand("openauth", "MOD/ADMIN only! - Opens the authmenu for the Plot your currently standing on, only to check settings, only owner can change", level: ChatAuthorizationLevel.User)]
+        [ChatCommand("openauth", "MOD/ADMIN only! - Opens the authmenu for the Plot your currently standing on, only to check settings, only owner can change")]
         public static void OpenAuth(User user)
         {
             if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only
@@ -340,7 +336,7 @@ namespace REYmod.Core.ChatCommandsNamespace
         {
             if (max < 1) max = 1;
             int x = RandomUtil.Range(1, max);
-           ChatUtils.SendMessageToAll(user.Name + " rolled a random number from 1 to " + max + ": " + "<i>" + x + "</i>", false);
+           ChatUtils.SendMessageToAll(user.Name + " rolled a random number from 1 to " + max + ": " + "<i>" + x + "</i>");
         }
 
         [ChatCommand("rules", "Displays the Server Rules")]
@@ -381,7 +377,7 @@ namespace REYmod.Core.ChatCommandsNamespace
                 if (usercheck.IsAdmin) usercheck.Player.OpenCustomPanel("New Report from " + user.Name, TextLinkManager.MarkUpText(singlestringreport), DateTime.Now.Ticks.ToString());
             }
 
-            texttoadd = TextLinkManager.MarkUpText("<b>" + user.Name + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":</b>" + System.Environment.NewLine + singlestringreport + System.Environment.NewLine + System.Environment.NewLine);
+            texttoadd = TextLinkManager.MarkUpText("<b>" + user.Name + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ":</b>" + Environment.NewLine + singlestringreport + Environment.NewLine + Environment.NewLine);
             IOUtils.WriteFileToConfigFolder("../Reports/reports.txt", texttoadd);
             user.Player.SendTemporaryMessageAlreadyLocalized("Report sent");
         }

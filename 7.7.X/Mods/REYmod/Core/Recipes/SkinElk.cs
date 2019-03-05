@@ -1,9 +1,9 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Shared.Localization;
     using Gameplay.Systems.TextLinks;
 
     [RequiresSkill(typeof(HuntingSkill), 3)]
@@ -11,17 +11,17 @@ namespace Eco.Mods.TechTree
     {
         public SkinElkRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
-               new CraftingElement<SkinnedElkItem>(1),
+               new CraftingElement<SkinnedElkItem>(),
                new CraftingElement<LeatherHideItem>(typeof(HuntingSkill), 2, HuntingSkill.MultiplicativeStrategy),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ElkCarcassItem>(1),
+                new CraftingElement<ElkCarcassItem>(),
             };
-            this.Initialize(Localizer.DoStr("Skin Elk"), typeof(SkinElkRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SkinElkRecipe), this.UILink(), 1, typeof(HuntingSkill));
+            Initialize(Localizer.DoStr("Skin Elk"), typeof(SkinElkRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(SkinElkRecipe), this.UILink(), 1, typeof(HuntingSkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }

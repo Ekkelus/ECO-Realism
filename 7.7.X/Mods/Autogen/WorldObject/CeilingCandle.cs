@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]                   
@@ -29,7 +28,7 @@ namespace Eco.Mods.TechTree
 
         public virtual Type RepresentedItemType { get { return typeof(CeilingCandleItem); } } 
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(TallowItem),
             typeof(OilItem),
@@ -38,11 +37,11 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Lights");                                 
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(0.2f);                    
-            this.GetComponent<HousingComponent>().Set(CeilingCandleItem.HousingVal);
-            this.GetComponent<PropertyAuthComponent>().Initialize();
+            GetComponent<MinimapComponent>().Initialize("Lights");                                 
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
+            GetComponent<FuelConsumptionComponent>().Initialize(0.2f);                    
+            GetComponent<HousingComponent>().Set(CeilingCandleItem.HousingVal);
+            GetComponent<PropertyAuthComponent>().Initialize();
 
 
 
@@ -62,11 +61,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Ceiling Candle"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A fancy hanging candelabra."); } }
 
-        static CeilingCandleItem()
-        {
-            
-        }
-
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -85,18 +79,18 @@ namespace Eco.Mods.TechTree
     {
         public CeilingCandleRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<CeilingCandleItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 5, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<TallowItem>(typeof(SmeltingSkill), 2, SmeltingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CeilingCandleRecipe), Item.Get<CeilingCandleItem>().UILink(), 1, typeof(SmeltingSkill));
-            this.Initialize(Localizer.DoStr("Ceiling Candle"), typeof(CeilingCandleRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(CeilingCandleRecipe), Item.Get<CeilingCandleItem>().UILink(), 1, typeof(SmeltingSkill));
+            Initialize(Localizer.DoStr("Ceiling Candle"), typeof(CeilingCandleRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

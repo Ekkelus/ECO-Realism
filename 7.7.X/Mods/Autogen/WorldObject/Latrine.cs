@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -33,8 +32,8 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Misc");                                 
-            this.GetComponent<HousingComponent>().Set(LatrineItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Misc");                                 
+            GetComponent<HousingComponent>().Set(LatrineItem.HousingVal);                                
 
 
 
@@ -54,11 +53,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Wooden Latrine"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A wooden potty."); } }
 
-        static LatrineItem()
-        {
-            
-        }
-
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -75,19 +69,19 @@ namespace Eco.Mods.TechTree
     {
         public LatrineRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<LatrineItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<LogItem>(typeof(HewingSkill), 10, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<BoardItem>(typeof(HewingSkill), 25, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<GlueItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(LatrineRecipe), Item.Get<LatrineItem>().UILink(), 5, typeof(HewingSkill));
-            this.Initialize(Localizer.DoStr("Latrine"), typeof(LatrineRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(LatrineRecipe), Item.Get<LatrineItem>().UILink(), 5, typeof(HewingSkill));
+            Initialize(Localizer.DoStr("Latrine"), typeof(LatrineRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

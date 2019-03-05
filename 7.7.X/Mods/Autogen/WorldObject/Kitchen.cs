@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -36,8 +35,8 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Cooking");                                 
-            this.GetComponent<HousingComponent>().Set(KitchenItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Cooking");                                 
+            GetComponent<HousingComponent>().Set(KitchenItem.HousingVal);                                
 
 
         }
@@ -56,11 +55,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Kitchen"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A prep area for food which allows for more complex dishes."); } }
 
-        static KitchenItem()
-        {
-            
-        }
-        
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -77,12 +71,12 @@ namespace Eco.Mods.TechTree
     {
         public KitchenRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<KitchenItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<IronIngotItem>(typeof(LumberSkill), 10, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(LumberSkill), 20, LumberSkill.MultiplicativeStrategy),
@@ -90,8 +84,8 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<NailsItem>(typeof(LumberSkill), 16, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<GlassJarItem>(typeof(LumberSkill), 8, LumberSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(KitchenRecipe), Item.Get<KitchenItem>().UILink(), 120, typeof(LumberSkill));
-            this.Initialize(Localizer.DoStr("Kitchen"), typeof(KitchenRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(KitchenRecipe), Item.Get<KitchenItem>().UILink(), 120, typeof(LumberSkill));
+            Initialize(Localizer.DoStr("Kitchen"), typeof(KitchenRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }

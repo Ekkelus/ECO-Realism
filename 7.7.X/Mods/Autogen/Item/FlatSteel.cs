@@ -1,33 +1,33 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.World;
-    using Eco.World.Blocks;
+    using Gameplay.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using World;
+    using World.Blocks;
 
     [RequiresSkill(typeof(AdvancedSmeltingSkill), 3)]   
     public partial class FlatSteelRecipe : Recipe
     {
         public FlatSteelRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<FlatSteelItem>(),          
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<CorrugatedSteelItem>(typeof(AdvancedSmeltingSkill), 4, AdvancedSmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<EpoxyItem>(typeof(AdvancedSmeltingSkill), 1, AdvancedSmeltingSkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(FlatSteelRecipe), Item.Get<FlatSteelItem>().UILink(), 5, typeof(AdvancedSmeltingSkill));    
-            this.Initialize(Localizer.DoStr("Flat Steel"), typeof(FlatSteelRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(FlatSteelRecipe), Item.Get<FlatSteelItem>().UILink(), 5, typeof(AdvancedSmeltingSkill));    
+            Initialize(Localizer.DoStr("Flat Steel"), typeof(FlatSteelRecipe));
 
             CraftingComponent.AddRecipe(typeof(RollingMillObject), this);
         }
@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
 
         public override bool CanStickToWalls { get { return false; } }  
 
-        private static Type[] blockTypes = new Type[] {
+        private static Type[] blockTypes = new[] {
             typeof(FlatSteelStacked1Block),
             typeof(FlatSteelStacked2Block),
             typeof(FlatSteelStacked3Block),

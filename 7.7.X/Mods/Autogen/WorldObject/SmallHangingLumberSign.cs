@@ -1,16 +1,14 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -27,8 +25,8 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Sign");                                 
-            this.GetComponent<CustomTextComponent>().Initialize(700);                                       
+            GetComponent<MinimapComponent>().Initialize("Sign");                                 
+            GetComponent<CustomTextComponent>().Initialize(700);                                       
 
 
         }
@@ -47,12 +45,6 @@ namespace Eco.Mods.TechTree
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Small Hanging Lumber Sign"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A small sign for all of your smaller text needs!"); } }
-
-        static SmallHangingLumberSignItem()
-        {
-            
-        }
-
     }
 
 
@@ -61,19 +53,19 @@ namespace Eco.Mods.TechTree
     {
         public SmallHangingLumberSignRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<SmallHangingLumberSignItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BoardItem>(typeof(LumberSkill), 10, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(LumberSkill), 4, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(LumberSkill), 4, LumberSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SmallHangingLumberSignRecipe), Item.Get<SmallHangingLumberSignItem>().UILink(), 10, typeof(LumberSkill));
-            this.Initialize(Localizer.DoStr("Small Hanging Lumber Sign"), typeof(SmallHangingLumberSignRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(SmallHangingLumberSignRecipe), Item.Get<SmallHangingLumberSignItem>().UILink(), 10, typeof(LumberSkill));
+            Initialize(Localizer.DoStr("Small Hanging Lumber Sign"), typeof(SmallHangingLumberSignRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }

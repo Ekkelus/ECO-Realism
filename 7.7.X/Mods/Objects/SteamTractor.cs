@@ -2,15 +2,15 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.Collections.Generic;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Serialization;
-	using Eco.Shared.Localization;
-    using Eco.World.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Shared.Serialization;
+	using Shared.Localization;
+    using World.Blocks;
 
     [Serialized]
     [Weight(25000)]  
@@ -25,24 +25,24 @@ namespace Eco.Mods.TechTree
     {
         public SteamTractorRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<SteamTractorItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
-                new CraftingElement<PortableSteamEngineItem>(1),
+                new CraftingElement<PortableSteamEngineItem>(),
                 new CraftingElement<IronWheelItem>(4),
-                new CraftingElement<IronAxleItem>(1), 
+                new CraftingElement<IronAxleItem>(), 
                 new CraftingElement<IronPlateItem>(typeof(MechanicsSkill), 30, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<IronPipeItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<ScrewsItem>(typeof(MechanicsSkill), 40, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(MechanicsSkill), 30, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<LeatherHideItem>(typeof(MechanicsSkill), 20, MechanicsSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = new ConstantValue(25);
+            CraftMinutes = new ConstantValue(25);
 
-            this.Initialize(Localizer.DoStr("Steam Tractor"), typeof(SteamTractorRecipe));
+            Initialize(Localizer.DoStr("Steam Tractor"), typeof(SteamTractorRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }
@@ -70,7 +70,7 @@ namespace Eco.Mods.TechTree
         };
         public override LocString DisplayName { get { return Localizer.DoStr("Steam Tractor"); } }
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(LogItem),
 typeof(LumberItem),
@@ -81,7 +81,7 @@ typeof(CoalItem),
         };
 
         private static Type[] segmentTypeList = new Type[] { };
-        private static Type[] attachmentTypeList = new Type[]
+        private static Type[] attachmentTypeList = new[]
         {
             typeof(SteamTractorPloughItem), typeof(SteamTractorHarvesterItem), typeof(SteamTractorSowerItem)
         };
@@ -92,11 +92,11 @@ typeof(CoalItem),
         {
             base.Initialize();
             
-            this.GetComponent<PublicStorageComponent>().Initialize(12, 2500000);           
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(25);    
-            this.GetComponent<VehicleComponent>().Initialize(15, 1, roadEfficiency, 2);
-            this.GetComponent<ModularVehicleComponent>().Initialize(0, 1, segmentTypeList, attachmentTypeList);
+            GetComponent<PublicStorageComponent>().Initialize(12, 2500000);           
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
+            GetComponent<FuelConsumptionComponent>().Initialize(25);    
+            GetComponent<VehicleComponent>().Initialize(15, 1, roadEfficiency, 2);
+            GetComponent<ModularVehicleComponent>().Initialize(0, 1, segmentTypeList, attachmentTypeList);
         }
     }
 }

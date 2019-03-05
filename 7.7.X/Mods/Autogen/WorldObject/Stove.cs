@@ -1,34 +1,20 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Economy;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Interactions;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Minimap;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Pipes.LiquidComponents;
-    using Eco.Gameplay.Pipes.Gases;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared;
-    using Eco.Shared.Math;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
-    using Eco.Shared.View;
-    using Eco.Shared.Items;
-    using Eco.Gameplay.Pipes;
-    using Eco.World.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Pipes.LiquidComponents;
+    using Gameplay.Pipes.Gases;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]
     [RequireComponent(typeof(ChimneyComponent))]
@@ -55,7 +41,7 @@ namespace Eco.Mods.TechTree
         public virtual Type RepresentedItemType { get { return typeof(StoveItem); } }
 
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(LogItem),
             typeof(LumberItem),
@@ -68,12 +54,12 @@ namespace Eco.Mods.TechTree
         protected override void Initialize()
         {
 
-            this.GetComponent<MinimapComponent>().Initialize("Cooking");
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);
-            this.GetComponent<FuelConsumptionComponent>().Initialize(10);
-            this.GetComponent<HousingComponent>().Set(StoveItem.HousingVal);
+            GetComponent<MinimapComponent>().Initialize("Cooking");
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);
+            GetComponent<FuelConsumptionComponent>().Initialize(10);
+            GetComponent<HousingComponent>().Set(StoveItem.HousingVal);
 
-            this.GetComponent<LiquidProducerComponent>().Setup(typeof(SmogItem), (int)(0.4f * 1000f), this.NamedOccupancyOffset("ChimneyOut"));
+            GetComponent<LiquidProducerComponent>().Setup(typeof(SmogItem), (int)(0.4f * 1000f), NamedOccupancyOffset("ChimneyOut"));
         }
 
         public override void Destroy()
@@ -89,11 +75,6 @@ namespace Eco.Mods.TechTree
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Stove"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("A heavy stove for cooking more complex dishes."); } }
-
-        static StoveItem()
-        {
-
-        }
 
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren]
@@ -120,20 +101,20 @@ namespace Eco.Mods.TechTree
     {
         public StoveRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<StoveItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<SteelPlateItem>(typeof(SmeltingSkill), 40, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<RivetItem>(typeof(SmeltingSkill), 30, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<HingeItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<GlassJarItem>(typeof(SmeltingSkill), 5, SmeltingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(StoveRecipe), Item.Get<StoveItem>().UILink(), 20, typeof(SmeltingSkill), typeof(SmeltingFocusedSpeedTalent));
-            this.Initialize(Localizer.DoStr("Stove"), typeof(StoveRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(StoveRecipe), Item.Get<StoveItem>().UILink(), 20, typeof(SmeltingSkill), typeof(SmeltingFocusedSpeedTalent));
+            Initialize(Localizer.DoStr("Stove"), typeof(StoveRecipe));
             CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);
         }
     }

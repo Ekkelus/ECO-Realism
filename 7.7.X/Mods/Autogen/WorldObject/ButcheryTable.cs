@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -36,8 +35,8 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Cooking");                                 
-            this.GetComponent<HousingComponent>().Set(ButcheryTableItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Cooking");                                 
+            GetComponent<HousingComponent>().Set(ButcheryTableItem.HousingVal);                                
 
 
 
@@ -57,11 +56,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Butchery Table"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A block and cleaver to process raw meat into fancier dishes."); } }
 
-        static ButcheryTableItem()
-        {
-            
-        }
-
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -78,18 +72,18 @@ namespace Eco.Mods.TechTree
     {
         public ButcheryTableRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<ButcheryTableItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BoardItem>(typeof(HewingSkill), 20, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<LogItem>(typeof(HewingSkill), 20, HewingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ButcheryTableRecipe), Item.Get<ButcheryTableItem>().UILink(), 5, typeof(HewingSkill));
-            this.Initialize(Localizer.DoStr("Butchery Table"), typeof(ButcheryTableRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(ButcheryTableRecipe), Item.Get<ButcheryTableItem>().UILink(), 5, typeof(HewingSkill));
+            Initialize(Localizer.DoStr("Butchery Table"), typeof(ButcheryTableRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
     }

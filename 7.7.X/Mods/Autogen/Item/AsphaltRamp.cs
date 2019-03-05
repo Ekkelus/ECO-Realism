@@ -1,30 +1,29 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.World;
-    using Eco.World.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using World;
+    using World.Blocks;
 
     [RequiresSkill(typeof(BasicEngineeringSkill), 3)]   
     public partial class AsphaltRampRecipe : Recipe
     {
         public AsphaltRampRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<AsphaltRampItem>(),          
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<AsphaltRoadItem>(4),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(AsphaltRampRecipe), Item.Get<AsphaltRampItem>().UILink(), 5, typeof(BasicEngineeringSkill));    
-            this.Initialize(Localizer.DoStr("Asphalt Ramp"), typeof(AsphaltRampRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(AsphaltRampRecipe), Item.Get<AsphaltRampItem>().UILink(), 5, typeof(BasicEngineeringSkill));    
+            Initialize(Localizer.DoStr("Asphalt Ramp"), typeof(AsphaltRampRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }

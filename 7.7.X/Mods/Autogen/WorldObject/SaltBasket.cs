@@ -1,17 +1,16 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -29,8 +28,8 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Misc");                                 
-            this.GetComponent<HousingComponent>().Set(SaltBasketItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Misc");                                 
+            GetComponent<HousingComponent>().Set(SaltBasketItem.HousingVal);                                
 
 
 
@@ -50,11 +49,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Salt Basket"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A basket of salt."); } }
 
-        static SaltBasketItem()
-        {
-            
-        }
-        
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -71,18 +65,18 @@ namespace Eco.Mods.TechTree
     {
         public SaltBasketRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<SaltBasketItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BoardItem>(typeof(FertilizersSkill), 10, FertilizersSkill.MultiplicativeStrategy),
                 new CraftingElement<RopeItem>(typeof(FertilizersSkill), 6, FertilizersSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SaltBasketRecipe), Item.Get<SaltBasketItem>().UILink(), 5, typeof(FertilizersSkill));
-            this.Initialize(Localizer.DoStr("Salt Basket"), typeof(SaltBasketRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(SaltBasketRecipe), Item.Get<SaltBasketItem>().UILink(), 5, typeof(FertilizersSkill));
+            Initialize(Localizer.DoStr("Salt Basket"), typeof(SaltBasketRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

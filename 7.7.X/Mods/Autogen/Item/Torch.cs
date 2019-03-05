@@ -1,25 +1,25 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     public partial class TorchRecipe : Recipe
     {
         public TorchRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<TorchItem>(),          
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<LogItem>(2),    
             };
-            this.CraftMinutes = new ConstantValue(0.5f);
-            this.Initialize(Localizer.DoStr("Torch"), typeof(TorchRecipe));
+            CraftMinutes = new ConstantValue(0.5f);
+            Initialize(Localizer.DoStr("Torch"), typeof(TorchRecipe));
 
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

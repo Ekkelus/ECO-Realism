@@ -1,12 +1,12 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Players;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Serialization;
+    using Shared.Localization;
 
     [Serialized]
     [Weight(200)]
@@ -26,19 +26,19 @@ namespace Eco.Mods.TechTree
     {
         public TaiyakiRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<TaiyakiItem>(),
 
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BeanPasteItem>(typeof(AdvancedBakingSkill), 20, AdvancedBakingSkill.MultiplicativeStrategy),
                 new CraftingElement<FlourItem>(typeof(AdvancedBakingSkill), 20, AdvancedBakingSkill.MultiplicativeStrategy),
                 new CraftingElement<OilItem>(typeof(AdvancedBakingSkill), 10, AdvancedBakingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(TaiyakiRecipe), Item.Get<TaiyakiItem>().UILink(), 10, typeof(AdvancedBakingSkill));
-            this.Initialize(Localizer.DoStr("Taiyaki"), typeof(TaiyakiRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(TaiyakiRecipe), Item.Get<TaiyakiItem>().UILink(), 10, typeof(AdvancedBakingSkill));
+            Initialize(Localizer.DoStr("Taiyaki"), typeof(TaiyakiRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }
     }

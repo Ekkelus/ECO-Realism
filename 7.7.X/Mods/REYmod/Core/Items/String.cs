@@ -1,26 +1,26 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Shared.Localization;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Serialization;
+    using Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Serialization;
 
 
     public partial class StringRecipe : Recipe
     {
         public StringRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<StringItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<PlantFibersItem>(typeof(TailoringSkill), 10, TailoringSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(StringRecipe), Item.Get<StringItem>().UILink(), 0.5f, typeof(TailoringSkill));
-            this.Initialize(Localizer.DoStr("String"), typeof(StringRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(StringRecipe), Item.Get<StringItem>().UILink(), 0.5f, typeof(TailoringSkill));
+            Initialize(Localizer.DoStr("String"), typeof(StringRecipe));
 
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

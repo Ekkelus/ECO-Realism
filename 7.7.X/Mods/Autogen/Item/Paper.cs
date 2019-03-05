@@ -1,27 +1,27 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Shared.Localization;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Serialization;
+    using Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Serialization;
 
     [RequiresSkill(typeof(PaperMillingSkill), 1)]   
     public partial class PaperRecipe : Recipe
     {
         public PaperRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<PaperItem>(),          
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<WoodPulpItem>(typeof(PaperMillingSkill), 10, PaperMillingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(PaperRecipe), Item.Get<PaperItem>().UILink(), 0.25f, typeof(PaperMillingSkill));    
-            this.Initialize(Localizer.DoStr("Paper"), typeof(PaperRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(PaperRecipe), Item.Get<PaperItem>().UILink(), 0.25f, typeof(PaperMillingSkill));    
+            Initialize(Localizer.DoStr("Paper"), typeof(PaperRecipe));
 
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

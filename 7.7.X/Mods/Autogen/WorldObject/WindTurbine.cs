@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
     using REYmod.Utils;
 
     [Serialized]    
@@ -35,11 +34,11 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Power");                                 
-            this.GetComponent<PowerGridComponent>().Initialize(30, new ElectricPower());        
-            this.GetComponent<PowerGeneratorComponent>().Initialize(750);                       
-            this.GetComponent<HousingComponent>().Set(WindTurbineItem.HousingVal);
-            this.GetComponent<SpecificGroundComponent>().Initialize(typeof(ReinforcedConcreteItem));
+            GetComponent<MinimapComponent>().Initialize("Power");                                 
+            GetComponent<PowerGridComponent>().Initialize(30, new ElectricPower());        
+            GetComponent<PowerGeneratorComponent>().Initialize(750);                       
+            GetComponent<HousingComponent>().Set(WindTurbineItem.HousingVal);
+            GetComponent<SpecificGroundComponent>().Initialize(typeof(ReinforcedConcreteItem));
 
 
 
@@ -59,11 +58,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Wind Turbine"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("Generates electrical power from the wind. Needs to be placed on 3x3 reinforced concrete."); } }
 
-        static WindTurbineItem()
-        {
-            
-        }
-
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -80,20 +74,20 @@ namespace Eco.Mods.TechTree
     {
         public WindTurbineRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<WindTurbineItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<SteelItem>(typeof(MechanicsSkill), 50, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<GearboxItem>(typeof(MechanicsSkill), 5, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<CircuitItem>(typeof(MechanicsSkill), 10, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<ReinforcedConcreteItem>(typeof(MechanicsSkill), 6, MechanicsSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(WindTurbineRecipe), Item.Get<WindTurbineItem>().UILink(), 50, typeof(MechanicsSkill));
-            this.Initialize(Localizer.DoStr("Wind Turbine"), typeof(WindTurbineRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(WindTurbineRecipe), Item.Get<WindTurbineItem>().UILink(), 50, typeof(MechanicsSkill));
+            Initialize(Localizer.DoStr("Wind Turbine"), typeof(WindTurbineRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

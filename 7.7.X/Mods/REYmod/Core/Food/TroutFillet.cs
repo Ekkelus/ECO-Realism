@@ -1,12 +1,12 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Players;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Serialization;
+    using Shared.Localization;
 
     [Serialized]
     [Weight(200)]
@@ -26,17 +26,17 @@ namespace Eco.Mods.TechTree
     {
         public TroutFilletRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<TroutFilletItem>(),
 
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
 				new CraftingElement<TroutItem>(typeof(HuntingSkill), 1, HuntingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(TroutFilletRecipe), Item.Get<TroutFilletItem>().UILink(), 3, typeof(HuntingSkill));
-            this.Initialize(Localizer.DoStr("Trout Fillet"), typeof(TroutFilletRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(TroutFilletRecipe), Item.Get<TroutFilletItem>().UILink(), 3, typeof(HuntingSkill));
+            Initialize(Localizer.DoStr("Trout Fillet"), typeof(TroutFilletRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }

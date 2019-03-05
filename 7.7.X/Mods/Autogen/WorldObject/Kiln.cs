@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -34,7 +33,7 @@ namespace Eco.Mods.TechTree
 
         public virtual Type RepresentedItemType { get { return typeof(KilnItem); } } 
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(LogItem),
             typeof(LumberItem),
@@ -47,10 +46,10 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Crafting");                                 
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(50);
-            this.GetComponent<PropertyAuthComponent>().Initialize();
+            GetComponent<MinimapComponent>().Initialize("Crafting");                                 
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
+            GetComponent<FuelConsumptionComponent>().Initialize(50);
+            GetComponent<PropertyAuthComponent>().Initialize();
 
 
 
@@ -70,12 +69,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Kiln"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("Useful for baking bricks and finishing pottery."); } }
 
-        static KilnItem()
-        {
-            
-        }
 
-        
         [Tooltip(7)] private LocString PowerConsumptionTooltip { get { return new LocString(string.Format(Localizer.DoStr("Consumes: {0}w from fuel"), Text.Info(50))); } } 
     }
 
@@ -85,17 +79,17 @@ namespace Eco.Mods.TechTree
     {
         public KilnRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<KilnItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<StoneItem>(typeof(MortaringSkill), 60, MortaringSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(KilnRecipe), Item.Get<KilnItem>().UILink(), 30, typeof(MortaringSkill));
-            this.Initialize(Localizer.DoStr("Kiln"), typeof(KilnRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(KilnRecipe), Item.Get<KilnItem>().UILink(), 30, typeof(MortaringSkill));
+            Initialize(Localizer.DoStr("Kiln"), typeof(KilnRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }
     }

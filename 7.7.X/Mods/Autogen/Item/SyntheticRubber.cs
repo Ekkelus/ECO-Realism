@@ -1,27 +1,27 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [RequiresSkill(typeof(OilDrillingSkill), 3)]   
     public partial class SyntheticRubberRecipe : Recipe
     {
         public SyntheticRubberRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<SyntheticRubberItem>(),          
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<PetroleumItem>(typeof(OilDrillingSkill), 5, OilDrillingSkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SyntheticRubberRecipe), Item.Get<SyntheticRubberItem>().UILink(), 2, typeof(OilDrillingSkill));    
-            this.Initialize(Localizer.DoStr("Synthetic Rubber"), typeof(SyntheticRubberRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(SyntheticRubberRecipe), Item.Get<SyntheticRubberItem>().UILink(), 2, typeof(OilDrillingSkill));    
+            Initialize(Localizer.DoStr("Synthetic Rubber"), typeof(SyntheticRubberRecipe));
 
             CraftingComponent.AddRecipe(typeof(OilRefineryObject), this);
         }

@@ -1,12 +1,12 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.World;
-    using Eco.World.Blocks;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using World;
+    using World.Blocks;
 
 
     [Serialized]
@@ -29,7 +29,7 @@ namespace Eco.Mods.TechTree
 
         public override bool CanStickToWalls { get { return false; } }  
 
-        private static Type[] blockTypes = new Type[] {
+        private static Type[] blockTypes = new[] {
             typeof(IronOreStacked1Block),
             typeof(IronOreStacked2Block),
             typeof(IronOreStacked3Block),

@@ -1,12 +1,12 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Players;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Serialization;
+    using Shared.Localization;
 
     [Serialized]
     [Weight(200)]
@@ -26,18 +26,18 @@ namespace Eco.Mods.TechTree
     {
         public StuffedClamsRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<StuffedClamsItem>(),
 
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<ClamItem>(typeof(CookingSkill), 10, CookingSkill.MultiplicativeStrategy),
                 new CraftingElement<WheatItem>(typeof(CookingSkill), 20, CookingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(StuffedClamsRecipe), Item.Get<StuffedClamsItem>().UILink(), 15, typeof(CookingSkill));
-            this.Initialize(Localizer.DoStr("Stuffed Clams"), typeof(StuffedClamsRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(StuffedClamsRecipe), Item.Get<StuffedClamsItem>().UILink(), 15, typeof(CookingSkill));
+            Initialize(Localizer.DoStr("Stuffed Clams"), typeof(StuffedClamsRecipe));
             CraftingComponent.AddRecipe(typeof(CastIronStoveObject), this);
         }
     }

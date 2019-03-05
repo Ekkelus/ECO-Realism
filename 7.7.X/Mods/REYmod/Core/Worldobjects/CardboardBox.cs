@@ -1,17 +1,15 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Shared.Localization;
+    using Shared.Localization;
     using System.Collections.Generic;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Math;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Math;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(AttachmentComponent))]
@@ -26,10 +24,10 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Storage");
-			this.GetComponent<PropertyAuthComponent>().Initialize();
+            GetComponent<MinimapComponent>().Initialize("Storage");
+			GetComponent<PropertyAuthComponent>().Initialize();
 
-            var storage = this.GetComponent<PublicStorageComponent>();
+            var storage = GetComponent<PublicStorageComponent>();
             storage.Initialize(10);
             storage.Storage.AddInvRestriction(new NotCarriedRestriction()); // can't store block or large items
 
@@ -64,18 +62,18 @@ namespace Eco.Mods.TechTree
     {
         public CardboardBoxRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<CardboardBoxItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<PaperItem>(typeof(PaperMillingSkill), 10, PaperMillingSkill.MultiplicativeStrategy),
                 new CraftingElement<GlueItem>(typeof(PaperMillingSkill), 1, PaperMillingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CardboardBoxRecipe), Item.Get<CardboardBoxItem>().UILink(), 2, typeof(PaperMillingSkill));
-            this.Initialize(Localizer.DoStr("Cardboard Box"), typeof(CardboardBoxRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(CardboardBoxRecipe), Item.Get<CardboardBoxItem>().UILink(), 2, typeof(PaperMillingSkill));
+            Initialize(Localizer.DoStr("Cardboard Box"), typeof(CardboardBoxRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

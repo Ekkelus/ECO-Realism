@@ -1,12 +1,12 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Players;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Serialization;
+    using Shared.Localization;
 
     [Serialized]
     [Weight(200)]
@@ -26,18 +26,18 @@ namespace Eco.Mods.TechTree
     {
         public HoneyFlanRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<HoneyFlanItem>(),
 
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<HoneyItem>(typeof(AdvancedCookingSkill), 4, AdvancedCookingSkill.MultiplicativeStrategy),
                 new CraftingElement<SugarItem>(typeof(AdvancedCookingSkill), 15, AdvancedCookingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(HoneyFlanRecipe), Item.Get<HoneyFlanItem>().UILink(), 15, typeof(AdvancedCookingSkill));
-            this.Initialize(Localizer.DoStr("Honey Flan"), typeof(HoneyFlanRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(HoneyFlanRecipe), Item.Get<HoneyFlanItem>().UILink(), 15, typeof(AdvancedCookingSkill));
+            Initialize(Localizer.DoStr("Honey Flan"), typeof(HoneyFlanRecipe));
             CraftingComponent.AddRecipe(typeof(StoveObject), this);
         }
     }

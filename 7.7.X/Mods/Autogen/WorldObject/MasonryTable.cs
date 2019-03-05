@@ -1,17 +1,15 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -33,7 +31,7 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Crafting");                                 
+            GetComponent<MinimapComponent>().Initialize("Crafting");                                 
 
 
 
@@ -52,12 +50,6 @@ namespace Eco.Mods.TechTree
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Masonry Table"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A workstation for hewing and shaping stone into usable objects."); } }
-
-        static MasonryTableItem()
-        {
-            
-        }
-
     }
 
 
@@ -66,18 +58,18 @@ namespace Eco.Mods.TechTree
     {
         public MasonryTableRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<MasonryTableItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<StoneItem>(typeof(MortaringSkill), 40, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<LogItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(MasonryTableRecipe), Item.Get<MasonryTableItem>().UILink(), 1, typeof(MortaringSkill));
-            this.Initialize(Localizer.DoStr("Masonry Table"), typeof(MasonryTableRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(MasonryTableRecipe), Item.Get<MasonryTableItem>().UILink(), 1, typeof(MortaringSkill));
+            Initialize(Localizer.DoStr("Masonry Table"), typeof(MasonryTableRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }

@@ -28,7 +28,7 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
 
         private Type RequiredSkill = typeof(HuntingSkill);
         private int RequiredLevel = 1;
-        private Type[] allowedItems = new Type[]
+        private Type[] allowedItems = new[]
             {
             typeof(HareCarcassItem),
             typeof(TurkeyCarcassItem),
@@ -39,20 +39,20 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Economy");
-            this.GetComponent<PropertyAuthComponent>().Initialize();
-            this.GetComponent<PublicStorageComponent>().Initialize(1);
-            this.GetComponent<PublicStorageComponent>().Storage.AddInvRestriction(new StackLimitRestriction(1));
-            this.GetComponent<PublicStorageComponent>().Storage.AddInvRestriction(new SpecificItemTypesRestriction(allowedItems));
-            ThreadSafeAction<User> action = this.GetComponent<PublicStorageComponent>().Storage.OnChanged;
+            GetComponent<MinimapComponent>().Initialize("Economy");
+            GetComponent<PropertyAuthComponent>().Initialize();
+            GetComponent<PublicStorageComponent>().Initialize(1);
+            GetComponent<PublicStorageComponent>().Storage.AddInvRestriction(new StackLimitRestriction(1));
+            GetComponent<PublicStorageComponent>().Storage.AddInvRestriction(new SpecificItemTypesRestriction(allowedItems));
+            ThreadSafeAction<User> action = GetComponent<PublicStorageComponent>().Storage.OnChanged;
             action.Add(InventoryChanged);
         }
 
         private void InventoryChanged(User obj)
         {
-            Inventory inventory = this.GetComponent<PublicStorageComponent>().Storage;
-            User owner = this.OwnerUser;
-            User creator = this.Creator;
+            Inventory inventory = GetComponent<PublicStorageComponent>().Storage;
+            User owner = OwnerUser;
+            User creator = Creator;
             if (owner == null && creator == null) return;
             if (owner == null) owner = creator;
             if (creator == null) creator = owner;
@@ -79,7 +79,7 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
         protected override void PostInitialize()
         {
             base.PostInitialize();
-            this.GetComponent<AnimalTrapComponent>().Initialize(new List<string>() { "Hare", "Turkey", "Fox" });
+            GetComponent<AnimalTrapComponent>().Initialize(new List<string>() { "Hare", "Turkey", "Fox" });
         }
 
 
@@ -107,17 +107,17 @@ namespace REYmod.Mods.ECO_Realism.Worldobjects
     {
         public SmallAnimalTrapRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<SmallAnimalTrapItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<IronIngotItem>(20),
             };
-            this.CraftMinutes = new ConstantValue(10);
-            this.Initialize(Localizer.DoStr("Small Animal Trap"), typeof(SmallAnimalTrapRecipe));
+            CraftMinutes = new ConstantValue(10);
+            Initialize(Localizer.DoStr("Small Animal Trap"), typeof(SmallAnimalTrapRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

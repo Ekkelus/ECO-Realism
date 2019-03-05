@@ -1,27 +1,27 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Shared.Localization;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Serialization;
+    using Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Serialization;
 
     [RequiresSkill(typeof(GlassworkingSkill), 1)]
     public partial class GlassJarRecipe : Recipe
     {
         public GlassJarRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<GlassJarItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<GlassItem>(typeof(GlassworkingSkill), 2, GlassworkingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(GlassJarRecipe), Item.Get<GlassJarItem>().UILink(), 2, typeof(GlassworkingSkill));
-            this.Initialize(Localizer.DoStr("Glass Jar"), typeof(GlassJarRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(GlassJarRecipe), Item.Get<GlassJarItem>().UILink(), 2, typeof(GlassworkingSkill));
+            Initialize(Localizer.DoStr("Glass Jar"), typeof(GlassJarRecipe));
 
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }

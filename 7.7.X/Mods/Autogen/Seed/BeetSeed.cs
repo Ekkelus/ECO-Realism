@@ -1,12 +1,11 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
     using Gameplay.Players;
     using System.ComponentModel;
 
@@ -32,8 +31,6 @@ namespace Eco.Mods.TechTree
     [Weight(10)]  
     public partial class BeetSeedPackItem : SeedPackItem
     {
-        static BeetSeedPackItem() { }
-
         public override LocString DisplayName { get { return Localizer.DoStr("Beet Seed Pack"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow beets."); } }
         public override LocString SpeciesName { get { return Localizer.DoStr("Beets"); } }
@@ -44,17 +41,17 @@ namespace Eco.Mods.TechTree
     {
         public BeetSeedRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<BeetSeedItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BeetItem>(typeof(FarmingSkill), 2, FarmingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(BeetSeedRecipe), Item.Get<BeetSeedItem>().UILink(), 0.5f, typeof(FarmingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(BeetSeedRecipe), Item.Get<BeetSeedItem>().UILink(), 0.5f, typeof(FarmingSkill));
 
-            this.Initialize(Localizer.DoStr("Beet Seed"), typeof(BeetSeedRecipe));
+            Initialize(Localizer.DoStr("Beet Seed"), typeof(BeetSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

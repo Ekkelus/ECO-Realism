@@ -1,11 +1,11 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]
     [Weight(30000)]  
@@ -20,16 +20,16 @@ namespace Eco.Mods.TechTree
     {
         public ExcavatorRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<ExcavatorItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
-                new CraftingElement<AdvancedCombustionEngineItem>(1),
+                new CraftingElement<AdvancedCombustionEngineItem>(),
                 new CraftingElement<RubberWheelItem>(4),
                 new CraftingElement<RadiatorItem>(2),
-                new CraftingElement<SteelAxleItem>(1), 
+                new CraftingElement<SteelAxleItem>(), 
                 new CraftingElement<GearboxItem>(typeof(IndustrySkill), 10, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<CelluloseFiberItem>(typeof(IndustrySkill), 20, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<SteelItem>(typeof(IndustrySkill), 40, IndustrySkill.MultiplicativeStrategy),
@@ -37,9 +37,9 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<GlassItem>(typeof(IndustrySkill), 10, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<SteelPlateItem>(typeof(IndustrySkill), 40, IndustrySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = new ConstantValue(50);
+            CraftMinutes = new ConstantValue(50);
 
-            this.Initialize(Localizer.DoStr("Excavator"), typeof(ExcavatorRecipe));
+            Initialize(Localizer.DoStr("Excavator"), typeof(ExcavatorRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

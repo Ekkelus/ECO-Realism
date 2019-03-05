@@ -1,12 +1,11 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
     using Gameplay.Players;
     using System.ComponentModel;
 
@@ -32,8 +31,6 @@ namespace Eco.Mods.TechTree
     [Weight(10)]  
     public partial class TomatoSeedPackItem : SeedPackItem
     {
-        static TomatoSeedPackItem() { }
-
         public override LocString DisplayName { get { return Localizer.DoStr("Tomato Seed Pack"); } }
         public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow tomato plants."); } }
         public override LocString SpeciesName { get { return Localizer.DoStr("Tomatoes"); } }
@@ -44,17 +41,17 @@ namespace Eco.Mods.TechTree
     {
         public TomatoSeedRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<TomatoSeedItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<TomatoItem>(typeof(FarmingSkill), 2, FarmingSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(TomatoSeedRecipe), Item.Get<TomatoSeedItem>().UILink(), 0.5f, typeof(FarmingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(TomatoSeedRecipe), Item.Get<TomatoSeedItem>().UILink(), 0.5f, typeof(FarmingSkill));
 
-            this.Initialize(Localizer.DoStr("Tomato Seed"), typeof(TomatoSeedRecipe));
+            Initialize(Localizer.DoStr("Tomato Seed"), typeof(TomatoSeedRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }
     }

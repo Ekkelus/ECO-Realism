@@ -1,11 +1,11 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Shared.Localization;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Serialization;
+    using Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Serialization;
     using REYmod.Blocks;
 
     [RequiresSkill(typeof(MortaringSkill), 5)]
@@ -13,16 +13,16 @@ namespace Eco.Mods.TechTree
     {
         public DiamondCutRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<DiamondCutItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<RawDiamondItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(DiamondCutRecipe), Item.Get<DiamondCutItem>().UILink(), 60, typeof(MortaringSkill));
-            this.Initialize(Localizer.DoStr("Cut Diamond"), typeof(DiamondCutRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(DiamondCutRecipe), Item.Get<DiamondCutItem>().UILink(), 60, typeof(MortaringSkill));
+            Initialize(Localizer.DoStr("Cut Diamond"), typeof(DiamondCutRecipe));
 
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }

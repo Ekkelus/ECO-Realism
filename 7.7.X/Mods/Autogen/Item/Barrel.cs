@@ -1,30 +1,30 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.World.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using World.Blocks;
 
     [RequiresSkill(typeof(OilDrillingSkill), 0)]   
     public partial class BarrelRecipe : Recipe
     {
         public BarrelRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<BarrelItem>(),          
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<IronIngotItem>(typeof(OilDrillingSkill), 4, OilDrillingSkill.MultiplicativeStrategy),
                 new CraftingElement<RivetItem>(typeof(OilDrillingSkill), 4, OilDrillingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(BarrelRecipe), Item.Get<BarrelItem>().UILink(), 1, typeof(OilDrillingSkill));    
-            this.Initialize(Localizer.DoStr("Barrel"), typeof(BarrelRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(BarrelRecipe), Item.Get<BarrelItem>().UILink(), 1, typeof(OilDrillingSkill));    
+            Initialize(Localizer.DoStr("Barrel"), typeof(BarrelRecipe));
 
             CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);
         }
