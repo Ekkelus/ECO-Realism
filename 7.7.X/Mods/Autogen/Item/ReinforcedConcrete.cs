@@ -1,33 +1,33 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.World;
-    using Eco.World.Blocks;
+    using Gameplay.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using World;
+    using World.Blocks;
 
     [RequiresSkill(typeof(CementSkill), 1)]   
     public partial class ReinforcedConcreteRecipe : Recipe
     {
         public ReinforcedConcreteRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<ReinforcedConcreteItem>(),          
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<ConcreteItem>(typeof(CementSkill), 1, CementSkill.MultiplicativeStrategy),
                 new CraftingElement<RebarItem>(typeof(CementSkill), 1, CementSkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ReinforcedConcreteRecipe), Item.Get<ReinforcedConcreteItem>().UILink(), 2, typeof(CementSkill));    
-            this.Initialize(Localizer.DoStr("Reinforced Concrete"), typeof(ReinforcedConcreteRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(ReinforcedConcreteRecipe), Item.Get<ReinforcedConcreteItem>().UILink(), 2, typeof(CementSkill));    
+            Initialize(Localizer.DoStr("Reinforced Concrete"), typeof(ReinforcedConcreteRecipe));
 
             CraftingComponent.AddRecipe(typeof(CementKilnObject), this);
         }
@@ -58,7 +58,7 @@ namespace Eco.Mods.TechTree
 
         public override bool CanStickToWalls { get { return false; } }  
 
-        private static Type[] blockTypes = new Type[] {
+        private static Type[] blockTypes = new[] {
             typeof(ReinforcedConcreteStacked1Block),
             typeof(ReinforcedConcreteStacked2Block),
             typeof(ReinforcedConcreteStacked3Block),

@@ -1,13 +1,13 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Items;
+    using Gameplay.Players;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]
     [Weight(10)]                                          
-     [Yield(typeof(WheatItem), typeof(GatheringSkill), new float[] {1f, 1.4f, 1.8f, 2.2f, 2.6f, 3f})]      
+     [Yield(typeof(WheatItem), typeof(GatheringSkill), new[] {1f, 1.4f, 1.8f, 2.2f, 2.6f, 3f})]      
     public partial class WheatItem :
         FoodItem            
     {

@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -35,11 +34,11 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Housing");                                 
-            this.GetComponent<HousingComponent>().Set(ShelfCabinetItem.HousingVal);
-            this.GetComponent<PropertyAuthComponent>().Initialize();
+            GetComponent<MinimapComponent>().Initialize("Housing");                                 
+            GetComponent<HousingComponent>().Set(ShelfCabinetItem.HousingVal);
+            GetComponent<PropertyAuthComponent>().Initialize();
 
-            var storage = this.GetComponent<PublicStorageComponent>();
+            var storage = GetComponent<PublicStorageComponent>();
             storage.Initialize(8);
             storage.Storage.AddInvRestriction(new NotCarriedRestriction()); // can't store block or large items
 
@@ -60,11 +59,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Shelf Cabinet"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("When a shelf and a cabinet aren't enough individually."); } }
 
-        static ShelfCabinetItem()
-        {
-            
-        }
-        
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -81,20 +75,20 @@ namespace Eco.Mods.TechTree
     {
         public ShelfCabinetRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<ShelfCabinetItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<LumberItem>(typeof(LumberSkill), 20, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<BookItem>(typeof(LumberSkill), 2, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<HingeItem>(typeof(LumberSkill), 4, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(LumberSkill), 5, LumberSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ShelfCabinetRecipe), Item.Get<ShelfCabinetItem>().UILink(), 5, typeof(LumberSkill));
-            this.Initialize(Localizer.DoStr("Shelf Cabinet"), typeof(ShelfCabinetRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(ShelfCabinetRecipe), Item.Get<ShelfCabinetItem>().UILink(), 5, typeof(LumberSkill));
+            Initialize(Localizer.DoStr("Shelf Cabinet"), typeof(ShelfCabinetRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }
     }

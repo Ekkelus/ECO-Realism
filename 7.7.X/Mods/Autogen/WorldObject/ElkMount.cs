@@ -1,17 +1,16 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -28,8 +27,8 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Misc");                                 
-            this.GetComponent<HousingComponent>().Set(ElkMountItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Misc");                                 
+            GetComponent<HousingComponent>().Set(ElkMountItem.HousingVal);                                
 
 
         }
@@ -48,11 +47,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Elk Mount"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A hunting trophy for your house."); } }
 
-        static ElkMountItem()
-        {
-            
-        }
-
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -69,19 +63,19 @@ namespace Eco.Mods.TechTree
     {
         public ElkMountRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<ElkMountItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
-                new CraftingElement<ElkCarcassItem>(1), 
+                new CraftingElement<ElkCarcassItem>(), 
                 new CraftingElement<BoardItem>(typeof(TailoringSkill), 5, TailoringSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(TailoringSkill), 8, TailoringSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ElkMountRecipe), Item.Get<ElkMountItem>().UILink(), 15, typeof(TailoringSkill));
-            this.Initialize(Localizer.DoStr("Elk Mount"), typeof(ElkMountRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(ElkMountRecipe), Item.Get<ElkMountItem>().UILink(), 15, typeof(TailoringSkill));
+            Initialize(Localizer.DoStr("Elk Mount"), typeof(ElkMountRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }
     }

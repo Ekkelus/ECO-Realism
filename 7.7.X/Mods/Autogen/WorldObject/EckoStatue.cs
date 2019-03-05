@@ -2,15 +2,15 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.ComponentModel;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.DynamicValues;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<HousingComponent>().Set(EckoStatueItem.HousingVal);                                
+            GetComponent<HousingComponent>().Set(EckoStatueItem.HousingVal);                                
 
 
 
@@ -48,11 +48,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Ecko Statue"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A statue of a dolphin. What could it mean?"); } }
 
-        static EckoStatueItem()
-        {
-            
-        }
-
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -68,16 +63,16 @@ namespace Eco.Mods.TechTree
     {
         public EckoStatueRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<EckoStatueItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
             };
-            this.CraftMinutes = new ConstantValue(); 
-            this.Initialize(Localizer.DoStr("Ecko Statue"), typeof(EckoStatueRecipe));
+            CraftMinutes = new ConstantValue(); 
+            Initialize(Localizer.DoStr("Ecko Statue"), typeof(EckoStatueRecipe));
             CraftingComponent.AddRecipe(typeof(Object), this);
         }
     }

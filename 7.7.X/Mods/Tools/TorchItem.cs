@@ -4,8 +4,8 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.DynamicValues;
 
     public partial class TorchItem : ToolItem
     {

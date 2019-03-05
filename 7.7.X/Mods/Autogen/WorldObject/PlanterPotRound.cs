@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -31,8 +30,8 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Housing");                                 
-            this.GetComponent<HousingComponent>().Set(PlanterPotRoundItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Housing");                                 
+            GetComponent<HousingComponent>().Set(PlanterPotRoundItem.HousingVal);                                
 
 
 
@@ -52,11 +51,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Round Pot"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("Sometimes you just want to bring a little bit of nature into your house."); } }
 
-        static PlanterPotRoundItem()
-        {
-            
-        }
-
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -73,18 +67,18 @@ namespace Eco.Mods.TechTree
     {
         public PlanterPotRoundRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<PlanterPotRoundItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<StoneItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<PulpFillerItem>(typeof(MortaringSkill), 5, MortaringSkill.MultiplicativeStrategy)
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(PlanterPotRoundRecipe), Item.Get<PlanterPotRoundItem>().UILink(), 5, typeof(MortaringSkill));
-            this.Initialize(Localizer.DoStr("Planter Pot Round"), typeof(PlanterPotRoundRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(PlanterPotRoundRecipe), Item.Get<PlanterPotRoundItem>().UILink(), 5, typeof(MortaringSkill));
+            Initialize(Localizer.DoStr("Planter Pot Round"), typeof(PlanterPotRoundRecipe));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }
     }

@@ -1,15 +1,15 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
 
         public virtual Type RepresentedItemType { get { return typeof(CampfireItem); } } 
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(LogItem),
             typeof(LumberItem),
@@ -40,9 +40,9 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Cooking");                                 
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(10);                    
+            GetComponent<MinimapComponent>().Initialize("Cooking");                                 
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
+            GetComponent<FuelConsumptionComponent>().Initialize(10);                    
 
 
         }
@@ -62,12 +62,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Campfire"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("Cook like a caveman on an uneven fire."); } }
 
-        static CampfireItem()
-        {
-            
-        }
 
-        
         [Tooltip(7)] private LocString PowerConsumptionTooltip { get { return new LocString(string.Format(Localizer.DoStr("Consumes: {0}w from fuel"), Text.Info(10))); } } 
     }
 
@@ -76,18 +71,18 @@ namespace Eco.Mods.TechTree
     {
         public CampfireRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<CampfireItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<LogItem>(3),
                 new CraftingElement<StoneItem>(12),                                                                    
             };
-            this.CraftMinutes = new ConstantValue(1); 
-            this.Initialize(Localizer.DoStr("Campfire"), typeof(CampfireRecipe));
+            CraftMinutes = new ConstantValue(1); 
+            Initialize(Localizer.DoStr("Campfire"), typeof(CampfireRecipe));
             CraftingComponent.AddRecipe(typeof(CampsiteObject), this);
         }
     }

@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(OnOffComponent))]                   
@@ -29,7 +28,7 @@ namespace Eco.Mods.TechTree
 
         public virtual Type RepresentedItemType { get { return typeof(TallowLampItem); } } 
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(TallowItem),
             typeof(OilItem),
@@ -38,11 +37,11 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Lights");                                 
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(0.2f);                    
-            this.GetComponent<HousingComponent>().Set(TallowLampItem.HousingVal);
-            this.GetComponent<PropertyAuthComponent>().Initialize();
+            GetComponent<MinimapComponent>().Initialize("Lights");                                 
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);                           
+            GetComponent<FuelConsumptionComponent>().Initialize(0.2f);                    
+            GetComponent<HousingComponent>().Set(TallowLampItem.HousingVal);
+            GetComponent<PropertyAuthComponent>().Initialize();
 
 
 
@@ -62,11 +61,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Tallow Lamp"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("A pottery lamp. Fuel with tallow."); } }
 
-        static TallowLampItem()
-        {
-            
-        }
-
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -85,18 +79,18 @@ namespace Eco.Mods.TechTree
     {
         public TallowLampRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<TallowLampItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<SandItem>(typeof(MortaringSkill), 4, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<TallowItem>(typeof(MortaringSkill), 2, MortaringSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(TallowLampRecipe), Item.Get<TallowLampItem>().UILink(), 2, typeof(MortaringSkill));
-            this.Initialize(Localizer.DoStr("Tallow Lamp"), typeof(TallowLampRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(TallowLampRecipe), Item.Get<TallowLampItem>().UILink(), 2, typeof(MortaringSkill));
+            Initialize(Localizer.DoStr("Tallow Lamp"), typeof(TallowLampRecipe));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }
     }

@@ -2,14 +2,14 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.Collections.Generic;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]
     [Weight(15000)]  
@@ -24,20 +24,20 @@ namespace Eco.Mods.TechTree
     {
         public HandPloughRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<HandPloughItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
-                new CraftingElement<WoodenWheelItem>(1), 
+                new CraftingElement<WoodenWheelItem>(), 
                 new CraftingElement<HewnLogItem>(typeof(BasicEngineeringSkill), 10, BasicEngineeringSkill.MultiplicativeStrategy),
                 new CraftingElement<BoardItem>(typeof(BasicEngineeringSkill), 50, BasicEngineeringSkill.MultiplicativeStrategy),
                 new CraftingElement<IronIngotItem>(typeof(BasicEngineeringSkill), 20, BasicEngineeringSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = new ConstantValue(5);
+            CraftMinutes = new ConstantValue(5);
 
-            this.Initialize(Localizer.DoStr("Hand Plough"), typeof(HandPloughRecipe));
+            Initialize(Localizer.DoStr("Hand Plough"), typeof(HandPloughRecipe));
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
         }
     }
@@ -49,7 +49,7 @@ namespace Eco.Mods.TechTree
     {
         static HandPloughObject()
         {
-            WorldObject.AddOccupancy<HandPloughObject>(new List<BlockOccupancy>(0));
+            AddOccupancy<HandPloughObject>(new List<BlockOccupancy>(0));
         }
 
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
@@ -69,8 +69,8 @@ namespace Eco.Mods.TechTree
         {
             base.Initialize();
             
-            this.GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency, 1);
-            this.GetComponent<VehicleComponent>().HumanPowered(1);           
+            GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency, 1);
+            GetComponent<VehicleComponent>().HumanPowered(1);           
         }
     }
 }

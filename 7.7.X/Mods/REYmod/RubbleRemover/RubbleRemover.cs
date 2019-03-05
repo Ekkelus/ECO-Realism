@@ -17,7 +17,7 @@ namespace REYmod.Utils
     {
 
 
-        [ChatCommand("removerubble", "MOD/ADMIN only! - Opens a Menu for removing Rubble", ChatAuthorizationLevel.User)]
+        [ChatCommand("removerubble", "MOD/ADMIN only! - Opens a Menu for removing Rubble")]
         public static void RemoveRubble(User user)
         {
             if (!user.IsAdmin && !user.GetState<bool>("Moderator"))//admin/mod only

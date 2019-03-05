@@ -2,15 +2,15 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.Collections.Generic;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.World.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using World.Blocks;
 
     [Serialized]
     [Weight(5000)]  
@@ -25,19 +25,19 @@ namespace Eco.Mods.TechTree
     {
         public SmallWoodCartRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<SmallWoodCartItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<WoodenWheelItem>(2),
                 new CraftingElement<HewnLogItem>(typeof(HewingSkill), 10, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<BoardItem>(typeof(HewingSkill), 15, HewingSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = new ConstantValue(5);
+            CraftMinutes = new ConstantValue(5);
 
-            this.Initialize(Localizer.DoStr("Small Wood Cart"), typeof(SmallWoodCartRecipe));
+            Initialize(Localizer.DoStr("Small Wood Cart"), typeof(SmallWoodCartRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }
     }
@@ -52,7 +52,7 @@ namespace Eco.Mods.TechTree
     {
         static SmallWoodCartObject()
         {
-            WorldObject.AddOccupancy<SmallWoodCartObject>(new List<BlockOccupancy>(0));
+            AddOccupancy<SmallWoodCartObject>(new List<BlockOccupancy>(0));
         }
 
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
@@ -75,9 +75,9 @@ namespace Eco.Mods.TechTree
         {
             base.Initialize();
             
-            this.GetComponent<PublicStorageComponent>().Initialize(8, 1400000);           
-            this.GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency, 1);
-            this.GetComponent<VehicleComponent>().HumanPowered(0.5f);           
+            GetComponent<PublicStorageComponent>().Initialize(8, 1400000);           
+            GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency, 1);
+            GetComponent<VehicleComponent>().HumanPowered(0.5f);           
         }
     }
 }

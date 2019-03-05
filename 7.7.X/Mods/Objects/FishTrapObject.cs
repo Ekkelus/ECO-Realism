@@ -3,7 +3,7 @@
 
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Objects;
+    using Gameplay.Objects;
     using Gameplay.Components;
     using System.Collections.Generic;
 
@@ -13,7 +13,7 @@ namespace Eco.Mods.TechTree
         protected override void PostInitialize()
         {
             base.PostInitialize();
-            this.GetComponent<AnimalTrapComponent>().Initialize(new List<string>() { "Trout", "Salmon", "Tuna" });
+            GetComponent<AnimalTrapComponent>().Initialize(new List<string>() { "Trout", "Salmon", "Tuna" });
         }
     }
 }

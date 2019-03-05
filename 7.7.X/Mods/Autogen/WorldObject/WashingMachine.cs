@@ -1,19 +1,18 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -37,10 +36,10 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Housing");                                 
-            this.GetComponent<PowerConsumptionComponent>().Initialize(100);                      
-            this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());        
-            this.GetComponent<HousingComponent>().Set(WashingMachineItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Housing");                                 
+            GetComponent<PowerConsumptionComponent>().Initialize(100);                      
+            GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());        
+            GetComponent<HousingComponent>().Set(WashingMachineItem.HousingVal);                                
 
 
         }
@@ -58,11 +57,6 @@ namespace Eco.Mods.TechTree
     {
         public override LocString DisplayName { get { return Localizer.DoStr("Washing Machine"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("Why hand scrub your clothes on a washboard when you could throw them into this magical cleaning machine?"); } }
-
-        static WashingMachineItem()
-        {
-            
-        }
 
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
@@ -82,20 +76,20 @@ namespace Eco.Mods.TechTree
     {
         public WashingMachineRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<WashingMachineItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<SteelItem>(typeof(IndustrySkill), 20, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<CircuitItem>(typeof(IndustrySkill), 5, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<HingeItem>(typeof(IndustrySkill), 4, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<GlassItem>(typeof(IndustrySkill), 4, IndustrySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(WashingMachineRecipe), Item.Get<WashingMachineItem>().UILink(), 10, typeof(IndustrySkill));
-            this.Initialize(Localizer.DoStr("Washing Machine"), typeof(WashingMachineRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(WashingMachineRecipe), Item.Get<WashingMachineItem>().UILink(), 10, typeof(IndustrySkill));
+            Initialize(Localizer.DoStr("Washing Machine"), typeof(WashingMachineRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

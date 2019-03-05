@@ -1,12 +1,12 @@
 namespace Eco.Mods.TechTree
 {
-	using Eco.Gameplay.Components;
-	using Eco.Gameplay.DynamicValues;
-	using Eco.Gameplay.Items;
-	using Eco.Gameplay.Skills;
-	using Eco.Gameplay.Systems.TextLinks;
-	using Eco.Shared.Localization;
-	using Eco.Shared.Serialization;
+	using Gameplay.Components;
+	using Gameplay.DynamicValues;
+	using Gameplay.Items;
+	using Gameplay.Skills;
+	using Gameplay.Systems.TextLinks;
+	using Shared.Localization;
+	using Shared.Serialization;
 	using Gameplay.Players;
 	using System.ComponentModel;
 
@@ -32,20 +32,20 @@ namespace Eco.Mods.TechTree
 	{
 		public AmanitaMushroomSporesRecipe()
 		{
-			this.Products = new CraftingElement[]
+			Products = new CraftingElement[]
 			{
 				new CraftingElement<AmanitaMushroomSporesItem>(),
 			};
-			this.Ingredients = new CraftingElement[]
+			Ingredients = new CraftingElement[]
 			{
 				new CraftingElement<AmanitaMushroomsItem>(typeof(FarmingSkill), 2, FarmingSkill.MultiplicativeStrategy),
 			};
 			SkillModifiedValue value = new SkillModifiedValue(0.5f, FarmingSkill.MultiplicativeStrategy, typeof(FarmingSkill), Localizer.DoStr("craft time"));
 			SkillModifiedValueManager.AddBenefitForObject(typeof(AmanitaMushroomSporesRecipe), Item.Get<AmanitaMushroomSporesItem>().UILink(), value);
 			SkillModifiedValueManager.AddSkillBenefit(Item.Get<AmanitaMushroomSporesItem>().UILink(), value);
-			this.CraftMinutes = value;
+			CraftMinutes = value;
 
-			this.Initialize(Localizer.DoStr("Amanita Mushroom Spores"), typeof(AmanitaMushroomSporesRecipe));
+			Initialize(Localizer.DoStr("Amanita Mushroom Spores"), typeof(AmanitaMushroomSporesRecipe));
 			CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
 		}
 	}
@@ -56,9 +56,7 @@ namespace Eco.Mods.TechTree
 	[Weight(10)]  
 	public partial class AmanitaMushroomSporesPackItem : SeedPackItem
 	{
-		static AmanitaMushroomSporesPackItem() { }
-
-		public override LocString DisplayName { get { return Localizer.DoStr("Amanita Mushroom Spores Pack"); } }
+	    public override LocString DisplayName { get { return Localizer.DoStr("Amanita Mushroom Spores Pack"); } }
 		public override LocString DisplayDescription { get { return Localizer.DoStr("Plant to grow amanita mushrooms. Not sure why you'd want these poisonous mushrooms, though."); } }
 		public override LocString SpeciesName { get { return Localizer.DoStr("AmanitaMushroom"); } }
 	}

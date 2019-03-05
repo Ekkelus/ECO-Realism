@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -37,9 +36,9 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Crafting");                                 
-            this.GetComponent<PowerConsumptionComponent>().Initialize(100);                      
-            this.GetComponent<PowerGridComponent>().Initialize(5, new MechanicalPower());        
+            GetComponent<MinimapComponent>().Initialize("Crafting");                                 
+            GetComponent<PowerConsumptionComponent>().Initialize(100);                      
+            GetComponent<PowerGridComponent>().Initialize(5, new MechanicalPower());        
 
 
 
@@ -59,12 +58,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Sawmill"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("Used to saw wood into lumber."); } }
 
-        static SawmillItem()
-        {
-            
-        }
 
-        
         [Tooltip(7)] private LocString PowerConsumptionTooltip { get { return new LocString(string.Format(Localizer.DoStr("Consumes: {0}w"), Text.Info(75))); } }  
     }
 
@@ -74,18 +68,18 @@ namespace Eco.Mods.TechTree
     {
         public SawmillRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<SawmillItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<IronIngotItem>(typeof(LumberSkill), 20, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<LogItem>(typeof(LumberSkill), 30, LumberSkill.MultiplicativeStrategy),   
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(SawmillRecipe), Item.Get<SawmillItem>().UILink(), 15, typeof(LumberSkill));
-            this.Initialize(Localizer.DoStr("Sawmill"), typeof(SawmillRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(SawmillRecipe), Item.Get<SawmillItem>().UILink(), 15, typeof(LumberSkill));
+            Initialize(Localizer.DoStr("Sawmill"), typeof(SawmillRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }
     }

@@ -26,15 +26,11 @@ public class LaserObject : WorldObject
     protected override void Initialize()
     {
         base.Initialize();
-        this.GetComponent<MinimapComponent>().Initialize("Laser");
-        this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());
-        this.GetComponent<PowerConsumptionComponent>().Initialize(9000);
-        this.GetComponent<ChargingComponent>().Initialize(30, 30);
-        this.GetComponent<PowerGridNetworkComponent>().Initialize(new Dictionary<Type, int> { { typeof(LaserObject), 8 }, { typeof(ComputerLabObject), 4 } }, false);
-        this.GetComponent<SpecificGroundComponent>().Initialize(typeof(ReinforcedConcreteItem));
-    }
-
-    static LaserObject()
-    {
+        GetComponent<MinimapComponent>().Initialize("Laser");
+        GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());
+        GetComponent<PowerConsumptionComponent>().Initialize(9000);
+        GetComponent<ChargingComponent>().Initialize(30, 30);
+        GetComponent<PowerGridNetworkComponent>().Initialize(new Dictionary<Type, int> { { typeof(LaserObject), 8 }, { typeof(ComputerLabObject), 4 } }, false);
+        GetComponent<SpecificGroundComponent>().Initialize(typeof(ReinforcedConcreteItem));
     }
 }

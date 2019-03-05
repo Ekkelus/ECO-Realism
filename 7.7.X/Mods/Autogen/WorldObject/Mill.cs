@@ -1,19 +1,18 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Housing;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Housing;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -39,10 +38,10 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Cooking");                                 
-            this.GetComponent<PowerConsumptionComponent>().Initialize(100);                      
-            this.GetComponent<PowerGridComponent>().Initialize(5, new MechanicalPower());        
-            this.GetComponent<HousingComponent>().Set(MillItem.HousingVal);                                
+            GetComponent<MinimapComponent>().Initialize("Cooking");                                 
+            GetComponent<PowerConsumptionComponent>().Initialize(100);                      
+            GetComponent<PowerGridComponent>().Initialize(5, new MechanicalPower());        
+            GetComponent<HousingComponent>().Set(MillItem.HousingVal);                                
 
 
 
@@ -62,11 +61,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Mill"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("Refines food resources by crushing them under a stone millstone."); } }
 
-        static MillItem()
-        {
-            
-        }
-        
         [TooltipChildren] public HousingValue HousingTooltip { get { return HousingVal; } }
         [TooltipChildren] public static HousingValue HousingVal { get { return new HousingValue() 
                                                 {
@@ -85,20 +79,20 @@ namespace Eco.Mods.TechTree
     {
         public MillRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<MillItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<StoneItem>(typeof(MortaringSkill), 35, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<LogItem>(typeof(MortaringSkill), 15, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<IronIngotItem>(typeof(MortaringSkill), 4, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<BoardItem>(typeof(MortaringSkill), 8, MortaringSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(MillRecipe), Item.Get<MillItem>().UILink(), 20, typeof(MortaringSkill));
-            this.Initialize(Localizer.DoStr("Mill"), typeof(MillRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(MillRecipe), Item.Get<MillItem>().UILink(), 20, typeof(MortaringSkill));
+            Initialize(Localizer.DoStr("Mill"), typeof(MillRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }
     }

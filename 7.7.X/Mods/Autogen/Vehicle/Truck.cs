@@ -2,16 +2,16 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.Collections.Generic;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Math;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.World.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Skills;
+    using Shared.Math;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using World.Blocks;
 
     [Serialized]
     [Weight(25000)]  
@@ -26,15 +26,15 @@ namespace Eco.Mods.TechTree
     {
         public TruckRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<TruckItem>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteamTruckItem>(1),
-                new CraftingElement<CombustionEngineItem>(1),
-                new CraftingElement<RadiatorItem>(1), 
+                new CraftingElement<SteamTruckItem>(),
+                new CraftingElement<CombustionEngineItem>(),
+                new CraftingElement<RadiatorItem>(), 
                 new CraftingElement<GearboxItem>(typeof(IndustrySkill), 10, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<CelluloseFiberItem>(typeof(IndustrySkill), 20, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<SteelItem>(typeof(IndustrySkill), 40, IndustrySkill.MultiplicativeStrategy),
@@ -42,9 +42,9 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<RubberWheelItem>(4),
                 new CraftingElement<RivetItem>(typeof(IndustrySkill), 18, IndustrySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = new ConstantValue(25);
+            CraftMinutes = new ConstantValue(25);
 
-            this.Initialize(Localizer.DoStr("Truck"), typeof(TruckRecipe));
+            Initialize(Localizer.DoStr("Truck"), typeof(TruckRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }
@@ -63,7 +63,7 @@ namespace Eco.Mods.TechTree
     {
         static TruckObject()
         {
-            WorldObject.AddOccupancy<TruckObject>(new List<BlockOccupancy>(0));
+            AddOccupancy<TruckObject>(new List<BlockOccupancy>(0));
         }
 
         private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
@@ -79,7 +79,7 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Truck"); } }
         public Type RepresentedItemType { get { return typeof(TruckItem); } }
 
-        private static Type[] fuelTypeList = new Type[]
+        private static Type[] fuelTypeList = new[]
         {
             typeof(PetroleumItem),
 typeof(GasolineItem),
@@ -91,12 +91,12 @@ typeof(GasolineItem),
         {
             base.Initialize();
             
-            this.GetComponent<PublicStorageComponent>().Initialize(36, 8000000);           
-            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
-            this.GetComponent<FuelConsumptionComponent>().Initialize(25);    
-            this.GetComponent<VehicleComponent>().Initialize(25, 1, roadEfficiency, 2);
-            this.GetComponent<AirPollutionComponent>().Initialize(0.5f);            
-            this.GetComponent<StockpileComponent>().Initialize(new Vector3i(2,2,3));  
+            GetComponent<PublicStorageComponent>().Initialize(36, 8000000);           
+            GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
+            GetComponent<FuelConsumptionComponent>().Initialize(25);    
+            GetComponent<VehicleComponent>().Initialize(25, 1, roadEfficiency, 2);
+            GetComponent<AirPollutionComponent>().Initialize(0.5f);            
+            GetComponent<StockpileComponent>().Initialize(new Vector3i(2,2,3));  
         }
     }
 }

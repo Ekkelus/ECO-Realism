@@ -1,12 +1,12 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Players;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
+    using Gameplay.Components;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Players;
+    using Gameplay.Skills;
+    using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]
     [RequiresSkill(typeof(CarpenterSkill), 0)]
@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
 
 
         public static ModificationStrategy MultiplicativeStrategy =
-            new MultiplicativeStrategy(new float[] { 1,
+            new MultiplicativeStrategy(new[] { 1,
 
                 1 - 0.5f,
 
@@ -41,7 +41,7 @@ namespace Eco.Mods.TechTree
             });
         public override ModificationStrategy MultiStrategy { get { return MultiplicativeStrategy; } }
         public static ModificationStrategy AdditiveStrategy =
-            new AdditiveStrategy(new float[] { 0,
+            new AdditiveStrategy(new[] { 0,
 
                 0.5f,
 
@@ -80,18 +80,18 @@ namespace Eco.Mods.TechTree
     {
         public PaperMillingSkillBookRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<PaperMillingSkillBook>(),
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<HewnLogItem>(30),
                 new CraftingElement<MortaredStoneItem>(30)
             };
-            this.CraftMinutes = new ConstantValue(15);
+            CraftMinutes = new ConstantValue(15);
 
-            this.Initialize(Localizer.DoStr("Paper Milling Skill Book"), typeof(PaperMillingSkillBookRecipe));
+            Initialize(Localizer.DoStr("Paper Milling Skill Book"), typeof(PaperMillingSkillBookRecipe));
             CraftingComponent.AddRecipe(typeof(ResearchTableObject), this);
         }
     }

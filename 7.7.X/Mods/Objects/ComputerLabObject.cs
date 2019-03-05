@@ -4,11 +4,11 @@ namespace Eco.Mods.TechTree
 {
     using System;
     using System.Collections.Generic;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Shared.Localization;
     using Shared.Serialization;
 
     [Serialized]
@@ -32,11 +32,11 @@ namespace Eco.Mods.TechTree
         {
             base.Initialize();
 
-            this.GetComponent<MinimapComponent>().Initialize("Computer Lab");
-            this.GetComponent<LinkComponent>().Initialize(5);
-            this.GetComponent<PowerConsumptionComponent>().Initialize(1000);
-            this.GetComponent<PowerGridComponent>().Initialize(10.0f, new ElectricPower());
-            this.GetComponent<PowerGridNetworkComponent>().Initialize(new Dictionary<Type, int> { { typeof(LaserObject), 8 }, { typeof(ComputerLabObject), 4 } }, true);
+            GetComponent<MinimapComponent>().Initialize("Computer Lab");
+            GetComponent<LinkComponent>().Initialize(5);
+            GetComponent<PowerConsumptionComponent>().Initialize(1000);
+            GetComponent<PowerGridComponent>().Initialize(10.0f, new ElectricPower());
+            GetComponent<PowerGridNetworkComponent>().Initialize(new Dictionary<Type, int> { { typeof(LaserObject), 8 }, { typeof(ComputerLabObject), 4 } }, true);
         }
     }
 }

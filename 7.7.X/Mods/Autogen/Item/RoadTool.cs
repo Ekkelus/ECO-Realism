@@ -1,27 +1,27 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Shared.Localization;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Shared.Serialization;
+    using Shared.Localization;
+    using Gameplay.Components;
+    using Gameplay.DynamicValues;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Shared.Serialization;
 
     [RequiresSkill(typeof(BasicEngineeringSkill), 1)]   
     public partial class RoadToolRecipe : Recipe
     {
         public RoadToolRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<RoadToolItem>(),          
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<BoardItem>(typeof(BasicEngineeringSkill), 6, BasicEngineeringSkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = new ConstantValue(5);
-            this.Initialize(Localizer.DoStr("Road Tool"), typeof(RoadToolRecipe));
+            CraftMinutes = new ConstantValue(5);
+            Initialize(Localizer.DoStr("Road Tool"), typeof(RoadToolRecipe));
 
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

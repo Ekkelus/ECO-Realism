@@ -1,18 +1,17 @@
 namespace Eco.Mods.TechTree
 {
     using System;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Components.Auth;
-    using Eco.Gameplay.DynamicValues;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Objects;
-    using Eco.Gameplay.Property;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Gameplay.Systems.Tooltip;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.Shared.Utils;
+    using Gameplay.Components;
+    using Gameplay.Components.Auth;
+    using Gameplay.Items;
+    using Gameplay.Objects;
+    using Gameplay.Property;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Systems.Tooltip;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using Shared.Utils;
 
     [Serialized]    
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -37,9 +36,9 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.GetComponent<MinimapComponent>().Initialize("Cooking");                                 
-            this.GetComponent<PowerConsumptionComponent>().Initialize(250);                      
-            this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());        
+            GetComponent<MinimapComponent>().Initialize("Cooking");                                 
+            GetComponent<PowerConsumptionComponent>().Initialize(250);                      
+            GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());        
 
 
 
@@ -59,11 +58,6 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName { get { return Localizer.DoStr("Laboratory"); } } 
         public override LocString DisplayDescription { get { return Localizer.DoStr("For researching the science side of cooking. Science rules!"); } }
 
-        static LaboratoryItem()
-        {
-            
-        }
-        
         [Tooltip(7)] private LocString PowerConsumptionTooltip { get { return new LocString(string.Format(Localizer.DoStr("Consumes: {0}w"), Text.Info(250))); } }  
     }
 
@@ -73,19 +67,19 @@ namespace Eco.Mods.TechTree
     {
         public LaboratoryRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<LaboratoryItem>(),
             };
 
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<SteelItem>(typeof(IndustrySkill), 30, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<GlassJarItem>(typeof(IndustrySkill), 15, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<HingeItem>(typeof(IndustrySkill), 8, IndustrySkill.MultiplicativeStrategy),
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(LaboratoryRecipe), Item.Get<LaboratoryItem>().UILink(), 120, typeof(IndustrySkill));
-            this.Initialize(Localizer.DoStr("Laboratory"), typeof(LaboratoryRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(LaboratoryRecipe), Item.Get<LaboratoryItem>().UILink(), 120, typeof(IndustrySkill));
+            Initialize(Localizer.DoStr("Laboratory"), typeof(LaboratoryRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
     }

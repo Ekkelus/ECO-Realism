@@ -4,7 +4,6 @@
 using System;
 using System.Linq;
 using Eco.Core.Utils;
-using Eco.Gameplay.Blocks;
 using Eco.Gameplay.Interactions;
 using Eco.Gameplay.Items;
 using Eco.Gameplay.Objects;
@@ -69,13 +68,13 @@ public class DirtRampObject : BaseRampObject
         base.Initialize();
 
         // destroy the object first - as destroy deletes blocks based on occupancy
-        this.Destroy();
+        Destroy();
 
         // migration - delete the old object and replace with blocks.
-        Vector3i placementDir = this.Rotation.RotateVector(Vector3i.Left).Round;
-        Vector3i offset = this.Rotation.RotateVector(Vector3i.Forward).Round;
+        Vector3i placementDir = Rotation.RotateVector(Vector3i.Left).Round;
+        Vector3i offset = Rotation.RotateVector(Vector3i.Forward).Round;
         var blockTypes = Item.Get<DirtRampItem>().GetBlockTypesForDirection(placementDir);
-        var position = this.Position.Round;
+        var position = Position.Round;
         foreach (var blockType in blockTypes)
         {
             // dirt ramps were 2 wide
@@ -120,13 +119,13 @@ public class DirtRampItem : RampItem<DirtRampObject>
     public override Type[] GetBlockTypesForDirection(Vector3i direction)
     {
         if (direction == Vector3.Left)
-            return new Type[] { typeof(DirtRampABlock), typeof(DirtRampBBlock), typeof(DirtRampCBlock), typeof(DirtRampDBlock) };
+            return new[] { typeof(DirtRampABlock), typeof(DirtRampBBlock), typeof(DirtRampCBlock), typeof(DirtRampDBlock) };
         if (direction == Vector3.Forward)
-            return new Type[] { typeof(DirtRampA90Block), typeof(DirtRampB90Block), typeof(DirtRampC90Block), typeof(DirtRampD90Block) };
+            return new[] { typeof(DirtRampA90Block), typeof(DirtRampB90Block), typeof(DirtRampC90Block), typeof(DirtRampD90Block) };
         if (direction == Vector3.Right)
-            return new Type[] { typeof(DirtRampA180Block), typeof(DirtRampB180Block), typeof(DirtRampC180Block), typeof(DirtRampD180Block) };
+            return new[] { typeof(DirtRampA180Block), typeof(DirtRampB180Block), typeof(DirtRampC180Block), typeof(DirtRampD180Block) };
         if (direction == Vector3.Back)
-            return new Type[] { typeof(DirtRampA270Block), typeof(DirtRampB270Block), typeof(DirtRampC270Block), typeof(DirtRampD270Block) };
+            return new[] { typeof(DirtRampA270Block), typeof(DirtRampB270Block), typeof(DirtRampC270Block), typeof(DirtRampD270Block) };
         else
             return new Type[] { };
     }
@@ -151,13 +150,13 @@ public class StoneRampObject : BaseRampObject
         base.Initialize();
 
         // destroy the object first - as destroy deletes blocks based on occupancy
-        this.Destroy();
+        Destroy();
 
         // migration - delete the old object and replace with blocks.
-        Vector3i placementDir = this.Rotation.RotateVector(Vector3i.Left).Round;
-        Vector3i offset = this.Rotation.RotateVector(Vector3i.Forward).Round;
+        Vector3i placementDir = Rotation.RotateVector(Vector3i.Left).Round;
+        Vector3i offset = Rotation.RotateVector(Vector3i.Forward).Round;
         var blockTypes = Item.Get<StoneRampItem>().GetBlockTypesForDirection(placementDir);
-        var position = this.Position.Round;
+        var position = Position.Round;
         foreach (var blockType in blockTypes)
         {
             // stone ramps were 2 wide
@@ -179,13 +178,13 @@ public class StoneRampItem : RampItem<StoneRampObject>
     public override Type[] GetBlockTypesForDirection(Vector3i direction)
     {
         if (direction == Vector3.Left)
-            return new Type[] { typeof(StoneRampABlock), typeof(StoneRampBBlock), typeof(StoneRampCBlock), typeof(StoneRampDBlock) };
+            return new[] { typeof(StoneRampABlock), typeof(StoneRampBBlock), typeof(StoneRampCBlock), typeof(StoneRampDBlock) };
         if (direction == Vector3.Forward)
-            return new Type[] { typeof(StoneRampA90Block), typeof(StoneRampB90Block), typeof(StoneRampC90Block), typeof(StoneRampD90Block) };
+            return new[] { typeof(StoneRampA90Block), typeof(StoneRampB90Block), typeof(StoneRampC90Block), typeof(StoneRampD90Block) };
         if (direction == Vector3.Right)
-            return new Type[] { typeof(StoneRampA180Block), typeof(StoneRampB180Block), typeof(StoneRampC180Block), typeof(StoneRampD180Block) };
+            return new[] { typeof(StoneRampA180Block), typeof(StoneRampB180Block), typeof(StoneRampC180Block), typeof(StoneRampD180Block) };
         if (direction == Vector3.Back)
-            return new Type[] { typeof(StoneRampA270Block), typeof(StoneRampB270Block), typeof(StoneRampC270Block), typeof(StoneRampD270Block) };
+            return new[] { typeof(StoneRampA270Block), typeof(StoneRampB270Block), typeof(StoneRampC270Block), typeof(StoneRampD270Block) };
         else
             return new Type[] { };
     }
@@ -209,13 +208,13 @@ public class AsphaltRampObject : BaseRampObject
         base.Initialize();
 
         // destroy the object first - as destroy deletes blocks based on occupancy
-        this.Destroy();
+        Destroy();
 
         // migration - delete the old object and replace with blocks.
-        Vector3i placementDir = this.Rotation.RotateVector(Vector3i.Left).Round;
-        Vector3i offset = this.Rotation.RotateVector(Vector3i.Forward).Round;
+        Vector3i placementDir = Rotation.RotateVector(Vector3i.Left).Round;
+        Vector3i offset = Rotation.RotateVector(Vector3i.Forward).Round;
         var blockTypes = Item.Get<AsphaltRampItem>().GetBlockTypesForDirection(placementDir);
-        var position = this.Position.Round;
+        var position = Position.Round;
         foreach (var blockType in blockTypes)
         {
             // asphalt ramps were 4 wide
@@ -239,13 +238,13 @@ public class AsphaltRampItem : RampItem<AsphaltRampObject>
     public override Type[] GetBlockTypesForDirection(Vector3i direction)
     {
         if (direction == Vector3.Left)
-            return new Type[] { typeof(AsphaltRampABlock), typeof(AsphaltRampBBlock), typeof(AsphaltRampCBlock), typeof(AsphaltRampDBlock) };
+            return new[] { typeof(AsphaltRampABlock), typeof(AsphaltRampBBlock), typeof(AsphaltRampCBlock), typeof(AsphaltRampDBlock) };
         if (direction == Vector3.Forward)
-            return new Type[] { typeof(AsphaltRampA90Block), typeof(AsphaltRampB90Block), typeof(AsphaltRampC90Block), typeof(AsphaltRampD90Block) };
+            return new[] { typeof(AsphaltRampA90Block), typeof(AsphaltRampB90Block), typeof(AsphaltRampC90Block), typeof(AsphaltRampD90Block) };
         if (direction == Vector3.Right)
-            return new Type[] { typeof(AsphaltRampA180Block), typeof(AsphaltRampB180Block), typeof(AsphaltRampC180Block), typeof(AsphaltRampD180Block) };
+            return new[] { typeof(AsphaltRampA180Block), typeof(AsphaltRampB180Block), typeof(AsphaltRampC180Block), typeof(AsphaltRampD180Block) };
         if (direction == Vector3.Back)
-            return new Type[] { typeof(AsphaltRampA270Block), typeof(AsphaltRampB270Block), typeof(AsphaltRampC270Block), typeof(AsphaltRampD270Block) };
+            return new[] { typeof(AsphaltRampA270Block), typeof(AsphaltRampB270Block), typeof(AsphaltRampC270Block), typeof(AsphaltRampD270Block) };
         else
             return new Type[] { };
     }

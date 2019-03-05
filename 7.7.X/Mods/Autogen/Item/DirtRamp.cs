@@ -1,30 +1,29 @@
 namespace Eco.Mods.TechTree
 {
-    using Eco.Gameplay.Blocks;
-    using Eco.Gameplay.Components;
-    using Eco.Gameplay.Items;
-    using Eco.Gameplay.Skills;
-    using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Serialization;
-    using Eco.World;
-    using Eco.World.Blocks;
+    using Gameplay.Components;
+    using Gameplay.Items;
+    using Gameplay.Skills;
+    using Gameplay.Systems.TextLinks;
+    using Shared.Localization;
+    using Shared.Serialization;
+    using World;
+    using World.Blocks;
 
     [RequiresSkill(typeof(BasicEngineeringSkill), 0)]   
     public partial class DirtRampRecipe : Recipe
     {
         public DirtRampRecipe()
         {
-            this.Products = new CraftingElement[]
+            Products = new CraftingElement[]
             {
                 new CraftingElement<DirtRampItem>(),          
             };
-            this.Ingredients = new CraftingElement[]
+            Ingredients = new CraftingElement[]
             {
                 new CraftingElement<DirtItem>(4), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(DirtRampRecipe), Item.Get<DirtRampItem>().UILink(), 0.5f, typeof(BasicEngineeringSkill));    
-            this.Initialize(Localizer.DoStr("Dirt Ramp"), typeof(DirtRampRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(DirtRampRecipe), Item.Get<DirtRampItem>().UILink(), 0.5f, typeof(BasicEngineeringSkill));    
+            Initialize(Localizer.DoStr("Dirt Ramp"), typeof(DirtRampRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
