@@ -94,7 +94,7 @@ typeof(GasolineItem),
             GetComponent<PublicStorageComponent>().Initialize(36, 8000000);           
             GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
             GetComponent<FuelConsumptionComponent>().Initialize(25);    
-            GetComponent<VehicleComponent>().Initialize(25, 1, roadEfficiency, 2);
+            GetComponent<VehicleComponent>().Initialize(25, 1, 2);
             GetComponent<AirPollutionComponent>().Initialize(0.5f);            
             GetComponent<StockpileComponent>().Initialize(new Vector3i(2,2,3));  
         }
