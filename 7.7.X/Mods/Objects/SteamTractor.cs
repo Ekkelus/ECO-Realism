@@ -95,7 +95,7 @@ typeof(CoalItem),
             GetComponent<PublicStorageComponent>().Initialize(12, 2500000);           
             GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
             GetComponent<FuelConsumptionComponent>().Initialize(25);    
-            GetComponent<VehicleComponent>().Initialize(15, 1, roadEfficiency, 2);
+            GetComponent<VehicleComponent>().Initialize(15, 1, 2);
             GetComponent<ModularVehicleComponent>().Initialize(0, 1, segmentTypeList, attachmentTypeList);
         }
     }

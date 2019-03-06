@@ -80,7 +80,7 @@ namespace Eco.Mods.TechTree
             base.Initialize();
             
             GetComponent<PublicStorageComponent>().Initialize(12, 2000000);           
-            GetComponent<VehicleComponent>().Initialize(12, 1, roadEfficiency, 1);
+            GetComponent<VehicleComponent>().Initialize(12, 1, 1);
             GetComponent<VehicleComponent>().HumanPowered(1);           
             GetComponent<StockpileComponent>().Initialize(new Vector3i(2,1,2));  
         }

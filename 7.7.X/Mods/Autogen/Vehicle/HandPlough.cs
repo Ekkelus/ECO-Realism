@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
         {
             base.Initialize();
             
-            GetComponent<VehicleComponent>().Initialize(10, 1, roadEfficiency, 1);
+            GetComponent<VehicleComponent>().Initialize(10, 1, 1);
             GetComponent<VehicleComponent>().HumanPowered(1);           
         }
     }

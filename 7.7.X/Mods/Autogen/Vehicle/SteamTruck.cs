@@ -98,7 +98,7 @@ typeof(CoalItem),
             GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);           
             GetComponent<FuelConsumptionComponent>().Initialize(25);    
             GetComponent<AirPollutionComponent>().Initialize(0.03f);            
-            GetComponent<VehicleComponent>().Initialize(18, 1, roadEfficiency, 2);
+            GetComponent<VehicleComponent>().Initialize(18, 1, 2);
             GetComponent<StockpileComponent>().Initialize(new Vector3i(2,2,3));  
         }
     }
