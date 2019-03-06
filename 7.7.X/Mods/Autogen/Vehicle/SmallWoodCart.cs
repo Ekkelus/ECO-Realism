@@ -55,16 +55,7 @@ namespace Eco.Mods.TechTree
             AddOccupancy<SmallWoodCartObject>(new List<BlockOccupancy>(0));
         }
 
-        private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
-        {
-            { typeof(GrassBlock) , 0.7f}, { typeof(SandBlock) , 0.3f},
-            { typeof(DesertSandBlock) , 0.3f}, { typeof(WetlandsBlock) , 0.5f},
-            { typeof(SnowBlock) , 0.5f}, { typeof(DirtBlock) , 0.8f},
-            { typeof(ForestSoilBlock) , 0.6f},
-            { typeof(DirtRoadBlock), 1 }, { typeof(DirtRoadWorldObjectBlock), 1 },
-            { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
-            { typeof(AsphaltRoadBlock), 1.4f }, { typeof(AsphaltRoadWorldObjectBlock), 1.4f }
-        };
+
         public override LocString DisplayName { get { return Localizer.DoStr("Small Wood Cart"); } }
         public Type RepresentedItemType { get { return typeof(SmallWoodCartItem); } }
 

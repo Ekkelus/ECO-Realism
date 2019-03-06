@@ -52,12 +52,6 @@ namespace Eco.Mods.TechTree
             AddOccupancy<HandPloughObject>(new List<BlockOccupancy>(0));
         }
 
-        private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
-        {
-            { typeof(DirtRoadBlock), 1 }, { typeof(DirtRoadWorldObjectBlock), 1 },
-            { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
-            { typeof(AsphaltRoadBlock), 1.4f }, { typeof(AsphaltRoadWorldObjectBlock), 1.4f }
-        };
 
         public override LocString DisplayName { get { return Localizer.DoStr("Hand Plough"); } }
         public Type RepresentedItemType { get { return typeof(HandPloughItem); } }

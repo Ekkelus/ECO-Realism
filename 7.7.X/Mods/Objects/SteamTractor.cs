@@ -58,16 +58,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(ModularVehicleComponent))]     
     public partial class SteamTractorObject : PhysicsWorldObject
     {
-        private static Dictionary<Type, float> roadEfficiency = new Dictionary<Type, float>()
-        {
-            { typeof(GrassBlock) , 0.9f}, { typeof(SandBlock) , 0.5f},
-            { typeof(DesertSandBlock) , 0.5f}, { typeof(WetlandsBlock) , 0.7f},
-            { typeof(SnowBlock) , 0.7f}, 
-            { typeof(ForestSoilBlock) , 0.8f},
-            { typeof(DirtRoadBlock), 1.0f }, { typeof(DirtRoadWorldObjectBlock), 1.0f },
-            { typeof(StoneRoadBlock), 1.2f }, { typeof(StoneRoadWorldObjectBlock), 1.2f },
-            { typeof(AsphaltRoadBlock), 1.4f }, { typeof(AsphaltRoadWorldObjectBlock), 1.4f }
-        };
+
         public override LocString DisplayName { get { return Localizer.DoStr("Steam Tractor"); } }
 
         private static Type[] fuelTypeList = new[]
