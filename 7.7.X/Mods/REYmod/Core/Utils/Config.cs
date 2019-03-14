@@ -1,7 +1,9 @@
-﻿using Eco.Shared.Localization;
+﻿using Eco.Core.Controller;
+using Eco.Shared.Localization;
 using Eco.Shared.Utils;
 using Eco.Core.Plugins.Interfaces;
 using Eco.Core.Plugins;
+using Eco.Core.Utils;
 
 namespace REYmod.Config
 {
@@ -10,41 +12,21 @@ namespace REYmod.Config
 
     public class REYmodSettings : Singleton<REYmodSettings>, IConfigurablePlugin, IModKitPlugin
     {
-        public IPluginConfig PluginConfig { get { return config; } }
-        private PluginConfig<REYconfig> config;
-        public REYconfig Config { get { return config.Config; } }
+        public IPluginConfig PluginConfig { get { return _config; } }
+        private readonly PluginConfig<REYconfig> _config;
+        public REYconfig Config { get { return _config.Config; } }
+
+        public static readonly ThreadSafeAction<float> OnPlantYieldChange = new ThreadSafeAction<float>();
+        public static readonly ThreadSafeAction<float> OnSeedDropChange = new ThreadSafeAction<float>();
 
         public REYmodSettings()
         {
-            config = new PluginConfig<REYconfig>("REYmod");
+            _config = new PluginConfig<REYconfig>("REYmod");
 
-            //int maxSuperskills;
-            //double maxinactivetime;
-            //bool showwelcomemessage;
-
-            //if (int.TryParse(CommandLine.GetValueArg("maxsuperskills"), out maxSuperskills))
-            //{
-            //    this.Config.Maxsuperskills = maxSuperskills;
-            //    this.SaveConfig();
-            //}
-
-            //if (double.TryParse(CommandLine.GetValueArg("maxinactivetime"), out maxinactivetime))
-            //{
-            //    this.Config.Maxinactivetime = maxinactivetime;
-            //    this.SaveConfig();
-            //}
-
-            //if (bool.TryParse(CommandLine.GetValueArg("showwelcomemessage"), out showwelcomemessage))
-            //{
-            //    this.Config.Showwelcomemessage = showwelcomemessage;
-            //    this.SaveConfig();
-            //}
-
-            //this.Config.Configfolderpath = CommandLine.GetValueArg("configfolderpath");
-            //this.SaveConfig();
-
-
-
+            _config.Config.Subscribe("PlantYieldMultiplier", _onPlantYieldChange);
+            _config.Config.Subscribe("SeedDropMultiplier", _onSeedDropChange);
+            _onPlantYieldChange();
+            _onSeedDropChange();
 
         }
 
@@ -56,7 +38,7 @@ namespace REYmod.Config
 
         public object GetEditObject()
         {
-            return config.Config;
+            return _config.Config;
         }
         public string GetStatus()
         {
@@ -65,6 +47,16 @@ namespace REYmod.Config
         public override string ToString()
         {
             return Localizer.DoStr("REYmod");
+        }
+
+        private void _onPlantYieldChange()
+        {
+            OnPlantYieldChange.Invoke(Config.PlantYieldMultiplier);
+        }
+
+        private void _onSeedDropChange()
+        {
+            OnSeedDropChange.Invoke(Config.SeedDropMultiplier);
         }
     }
 }
