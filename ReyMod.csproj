@@ -7,10 +7,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="7.4.X WIP\**" />
+    <Compile Remove="7.7.X\Mods\REYmod\Core\Tech\**" />
     <Compile Remove="Removed\**" />
     <EmbeddedResource Remove="7.4.X WIP\**" />
+    <EmbeddedResource Remove="7.7.X\Mods\REYmod\Core\Tech\**" />
     <EmbeddedResource Remove="Removed\**" />
     <None Remove="7.4.X WIP\**" />
+    <None Remove="7.7.X\Mods\REYmod\Core\Tech\**" />
     <None Remove="Removed\**" />
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +58,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="7.7.X\Mods\Organisms\Plant\" />
-    <Folder Include="7.7.X\Mods\REYmod\Core\Tech\" />
   </ItemGroup>
 </Project>
