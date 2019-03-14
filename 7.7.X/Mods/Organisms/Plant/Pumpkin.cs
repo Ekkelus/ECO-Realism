@@ -15,7 +15,7 @@
         public Pumpkin(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Pumpkin() { }
         static PlantSpecies species;
-        public class PumpkinSpecies : PlantSpecies
+        public class PumpkinSpecies : BalancedPlantSpecies
         {
             public PumpkinSpecies() : base()
             {

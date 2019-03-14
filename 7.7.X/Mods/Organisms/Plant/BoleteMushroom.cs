@@ -14,7 +14,7 @@
         public BoleteMushroom(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public BoleteMushroom() { }
         static PlantSpecies species;
-        public class BoleteMushroomSpecies : PlantSpecies
+        public class BoleteMushroomSpecies : BalancedPlantSpecies
         {
             public BoleteMushroomSpecies() : base()
             {

@@ -14,7 +14,7 @@
         public CookeinaMushroom(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public CookeinaMushroom() { }
         static PlantSpecies species;
-        public class CookeinaMushroomSpecies : PlantSpecies
+        public class CookeinaMushroomSpecies : BalancedPlantSpecies
         {
             public CookeinaMushroomSpecies() : base()
             {

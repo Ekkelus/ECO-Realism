@@ -14,7 +14,7 @@ namespace Eco.Mods.Organisms
         public CriminiMushroom(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public CriminiMushroom() { }
         static PlantSpecies species;
-        public class CriminiMushroomSpecies : PlantSpecies
+        public class CriminiMushroomSpecies : BalancedPlantSpecies
         {
             public CriminiMushroomSpecies() : base()
             {

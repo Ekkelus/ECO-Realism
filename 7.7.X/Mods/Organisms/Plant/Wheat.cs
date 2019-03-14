@@ -15,7 +15,7 @@ namespace Eco.Mods.Organisms
         public Wheat(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Wheat() { }
         static PlantSpecies species;
-        public class WheatSpecies : PlantSpecies
+        public class WheatSpecies : BalancedPlantSpecies
         {
             public WheatSpecies() : base()
             {

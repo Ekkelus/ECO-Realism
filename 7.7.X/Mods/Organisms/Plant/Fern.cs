@@ -15,7 +15,7 @@ namespace Eco.Mods.Organisms
         public Fern(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Fern() { }
         static PlantSpecies species;
-        public class FernSpecies : PlantSpecies
+        public class FernSpecies : BalancedPlantSpecies
         {
             public FernSpecies() : base()
             {

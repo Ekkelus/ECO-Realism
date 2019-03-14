@@ -14,7 +14,7 @@
         public Papaya(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Papaya() { }
         static PlantSpecies species;
-        public class PapayaSpecies : PlantSpecies
+        public class PapayaSpecies : BalancedPlantSpecies
         {
             public PapayaSpecies() : base()
             {
