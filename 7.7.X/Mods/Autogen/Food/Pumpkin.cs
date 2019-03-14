@@ -18,17 +18,17 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Objects;
 
     [Serialized]
-    [Weight(10)]                                          
-    [Yield(typeof(CriminiMushroomsItem), typeof(GatheringSkill), new float[] {1f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f})][Tag("Crop")]      
+    [Weight(500)]                                          
+    [Yield(typeof(PumpkinItem), typeof(GatheringSkill), new float[] {1f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f})][Tag("Crop")]      
     [Crop]                                                      
-    public partial class CriminiMushroomsItem :
+    public partial class PumpkinItem :
         FoodItem            
     {
-        public override LocString DisplayName                   { get { return Localizer.DoStr("Crimini Mushrooms"); } }
-        public override LocString DisplayDescription            { get { return Localizer.DoStr("Edible mushrooms that are quite tasty."); } }
+        public override LocString DisplayName                   { get { return Localizer.DoStr("Pumpkin"); } }
+        public override LocString DisplayDescription            { get { return Localizer.DoStr("Round and large"); } }
 
-        private static Nutrients nutrition = new Nutrients()    { Carbs = 3, Fat = 1, Protein = 3, Vitamins = 1};
-        public override float Calories                          { get { return 200; } }
+        private static Nutrients nutrition = new Nutrients()    { Carbs = 5, Fat = 0, Protein = 1, Vitamins = 2};
+        public override float Calories                          { get { return 340; } }
         public override Nutrients Nutrition                     { get { return nutrition; } }
     }
 

@@ -19,17 +19,16 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(10)]                                          
-    [Yield(typeof(HuckleberriesItem), typeof(GatheringSkill), new float[] {1f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f})][Tag("Crop")]      
+    [Yield(typeof(TaroRootItem), typeof(GatheringSkill), new float[] {1f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f})][Tag("Crop")]      
     [Crop]                                                      
-    public partial class HuckleberriesItem :
+    public partial class TaroRootItem :
         FoodItem            
     {
-        public override LocString DisplayName                   { get { return Localizer.DoStr("Huckleberries"); } }
-        public override LocString DisplayNamePlural             { get { return Localizer.DoStr("Huckleberries"); } } 
-        public override LocString DisplayDescription            { get { return Localizer.DoStr("A handfull of small wild berries. I'm your huckleberry."); } }
+        public override LocString DisplayName                   { get { return Localizer.DoStr("Taro Root"); } }
+        public override LocString DisplayDescription            { get { return Localizer.DoStr("Colocasia esculenta"); } }
 
-        private static Nutrients nutrition = new Nutrients()    { Carbs = 2, Fat = 0, Protein = 0, Vitamins = 6};
-        public override float Calories                          { get { return 80; } }
+        private static Nutrients nutrition = new Nutrients()    { Carbs = 8, Fat = 0, Protein = 0, Vitamins = 0};
+        public override float Calories                          { get { return 400; } }
         public override Nutrients Nutrition                     { get { return nutrition; } }
     }
 
