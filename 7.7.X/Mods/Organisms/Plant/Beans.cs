@@ -70,9 +70,5 @@ namespace Eco.Mods.Organisms
     }
 
     [Serialized]
-    public class BeansBlock : InteractablePlantBlock
-    {
-        protected BeansBlock() { }
-        public BeansBlock(WorldPosition3i position) : base(position) { }
-    }
+    public class BeansBlock : InteractablePlantBlock { }
 }

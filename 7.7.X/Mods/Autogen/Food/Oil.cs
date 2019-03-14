@@ -16,6 +16,7 @@ namespace Eco.Mods.TechTree
     using Eco.Shared.Utils;
     using Eco.Shared.View;
     using Eco.Gameplay.Objects;
+    using REYmod.Utils;
 
     [Serialized]
     [Weight(100)]                                          
