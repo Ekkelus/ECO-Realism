@@ -19,7 +19,7 @@ namespace Eco.Mods.TechTree
     using System.ComponentModel;
 
     [Serialized]
-    [Yield(typeof(RiceItem), typeof(GatheringSkill), new float[] { 1f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f })]  
+    [Yield(typeof(RiceItem), typeof(GatheringSkill), new float[] {1f, 1.8f, 2.0f, 2.2f, 2.4f, 2.6f, 2.8f, 3.0f})]  
     [Crop]  
     [Weight(50)]  
     [StartsDiscovered]
