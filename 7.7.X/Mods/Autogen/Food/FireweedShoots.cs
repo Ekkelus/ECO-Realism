@@ -7,7 +7,7 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(10)]                                          
-     [Yield(typeof(FireweedShootsItem), typeof(GatheringSkill), new[] {1f, 1.4f, 1.8f, 2.2f, 2.6f, 3f})]      
+     [Yield(typeof(FireweedShootsItem), typeof(GatheringSkill), new[] { 1f, 1.8f, 2.0f, 2.2f, 2.4f, 2.6f, 2.8f, 3.0f })]      
     public partial class FireweedShootsItem :
         FoodItem            
     {
