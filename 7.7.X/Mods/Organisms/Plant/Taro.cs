@@ -15,7 +15,7 @@
         public Taro(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Taro() { }
         static PlantSpecies species;
-        public class TaroSpecies : PlantSpecies
+        public class TaroSpecies : BalancedPlantSpecies
         {
             public TaroSpecies() : base()
             {

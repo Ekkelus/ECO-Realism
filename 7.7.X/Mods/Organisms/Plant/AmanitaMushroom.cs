@@ -14,7 +14,7 @@ namespace Eco.Mods.Organisms
         public AmanitaMushroom(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public AmanitaMushroom() { }
         static PlantSpecies species;
-        public class AmanitaMushroomSpecies : PlantSpecies
+        public class AmanitaMushroomSpecies : BalancedPlantSpecies
         {
             public AmanitaMushroomSpecies() : base()
             {

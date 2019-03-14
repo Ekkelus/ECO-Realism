@@ -15,7 +15,7 @@ namespace Eco.Mods.Organisms
         public PricklyPear(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public PricklyPear() { }
         static PlantSpecies species;
-        public class PricklyPearSpecies : PlantSpecies
+        public class PricklyPearSpecies : BalancedPlantSpecies
         {
             public PricklyPearSpecies() : base()
             {

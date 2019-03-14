@@ -15,7 +15,7 @@ namespace Eco.Mods.Organisms
         public Tomatoes(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Tomatoes() { }
         static PlantSpecies species;
-        public class TomatoesSpecies : PlantSpecies
+        public class TomatoesSpecies : BalancedPlantSpecies
         {
             public TomatoesSpecies() : base()
             {

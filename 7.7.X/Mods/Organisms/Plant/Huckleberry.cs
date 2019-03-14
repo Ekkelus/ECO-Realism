@@ -15,7 +15,7 @@ namespace Eco.Mods.Organisms
         public Huckleberry(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Huckleberry() { }
         static PlantSpecies species;
-        public class HuckleberrySpecies : PlantSpecies
+        public class HuckleberrySpecies : BalancedPlantSpecies
         {
             public HuckleberrySpecies() : base()
             {

@@ -15,7 +15,7 @@ namespace Eco.Mods.Organisms
         public Camas(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Camas() { }
         static PlantSpecies species;
-        public class CamasSpecies : PlantSpecies
+        public class CamasSpecies : BalancedPlantSpecies
         {
             public CamasSpecies() : base()
             {

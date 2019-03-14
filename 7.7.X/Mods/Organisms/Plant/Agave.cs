@@ -15,7 +15,7 @@
         public Agave(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Agave() { }
         static PlantSpecies species;
-        public class AgaveSpecies : PlantSpecies
+        public class AgaveSpecies : BalancedPlantSpecies
         {
             public AgaveSpecies() : base()
             {

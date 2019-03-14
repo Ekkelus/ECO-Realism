@@ -15,7 +15,7 @@ namespace Eco.Mods.Organisms
         public Fireweed(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Fireweed() { }
         static PlantSpecies species;
-        public class FireweedSpecies : PlantSpecies
+        public class FireweedSpecies : BalancedPlantSpecies
         {
             public FireweedSpecies() : base()
             {

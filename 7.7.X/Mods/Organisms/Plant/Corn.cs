@@ -15,7 +15,7 @@ namespace Eco.Mods.Organisms
         public Corn(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Corn() { }
         static PlantSpecies species;
-        public class CornSpecies : PlantSpecies
+        public class CornSpecies : BalancedPlantSpecies
         {
             public CornSpecies() : base()
             {

@@ -14,7 +14,7 @@ namespace Eco.Mods.Organisms
         public Rice(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Rice() { }
         static PlantSpecies species;
-        public class RiceSpecies : PlantSpecies
+        public class RiceSpecies : BalancedPlantSpecies
         {
             public RiceSpecies() : base()
             {

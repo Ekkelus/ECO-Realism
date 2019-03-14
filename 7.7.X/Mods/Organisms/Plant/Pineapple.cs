@@ -15,7 +15,7 @@
         public Pineapple(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }
         public Pineapple() { }
         static PlantSpecies species;
-        public class PineappleSpecies : PlantSpecies
+        public class PineappleSpecies : BalancedPlantSpecies
         {
             public PineappleSpecies() : base()
             {
