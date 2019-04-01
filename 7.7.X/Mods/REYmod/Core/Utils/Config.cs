@@ -18,6 +18,7 @@ namespace REYmod.Config
 
         public static readonly ThreadSafeAction<float> OnPlantYieldChange = new ThreadSafeAction<float>();
         public static readonly ThreadSafeAction<float> OnSeedDropChange = new ThreadSafeAction<float>();
+        public static readonly ThreadSafeAction OnSendMessageToggleChange = new ThreadSafeAction();
 
         public REYmodSettings()
         {
@@ -28,7 +29,10 @@ namespace REYmod.Config
             _onPlantYieldChange();
             _onSeedDropChange();
 
+            _config.Config.Subscribe("SendMessageToggle", _onSendMessageToggleChange);
+
         }
+
 
         public void OnEditObjectChanged(object o, string param)
         {
@@ -57,6 +61,11 @@ namespace REYmod.Config
         private void _onSeedDropChange()
         {
             OnSeedDropChange.Invoke(Config.SeedDropMultiplier);
+        }
+
+        private void _onSendMessageToggleChange()
+        {
+            OnSendMessageToggleChange.Invoke();
         }
     }
 }

@@ -30,6 +30,15 @@ namespace REYmod.Utils
     /// </summary>
     public static class ChatUtils
     {
+        public static void BroadcastPopup(string msg)
+        {
+            LocString locmsg = new LocString(msg);
+            foreach (User user in UserManager.OnlineUsers)
+            {
+                if(user.Player != null) user.Player.PopupOKBoxLoc(locmsg);
+            }
+
+        }
 
         public static void SendMessage(User user, string msg, bool temporary = false, bool createlinks = true)
         {
@@ -73,6 +82,9 @@ namespace REYmod.Utils
 
         public static void Initialize()
         {
+            REYmodSettings.OnSendMessageToggleChange.Add(ServerGUIBroadcast);
+
+
             if (timer != null) timer.Dispose(); // dispose the old timer if theres already one
             timer = new Timer
             {
@@ -86,6 +98,13 @@ namespace REYmod.Utils
 
 
 
+        }
+
+        private static void ServerGUIBroadcast()
+        {
+            string msgwithheader = "<b>Broadcast from Serverconsole</b><br><br>" + REYmodSettings.Obj.Config.ServerMessageSender;
+
+            ChatUtils.BroadcastPopup(msgwithheader);
         }
 
         /// <summary>

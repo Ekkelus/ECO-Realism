@@ -59,8 +59,7 @@ namespace Eco.Mods.TechTree
 
             Ingredients = new CraftingElement[]
             {
-                new CraftingElement<LogItem>(30),
-                new CraftingElement<StoneItem>(20),   
+                new CraftingElement<LogItem>(30), 
             };
             CraftMinutes = new ConstantValue(5);
             Initialize(Localizer.DoStr("Workbench"), typeof(WorkbenchRecipe));
