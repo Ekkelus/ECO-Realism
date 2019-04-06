@@ -105,7 +105,7 @@ namespace Eco.Mods.TechTree
             Ingredients = new CraftingElement[]
             {
                 new CraftingElement<MortaredStoneItem>(50),
-                new CraftingElement<PitchItem>(50),
+                new CraftingElement<MortarItem>(50),
                 new CraftingElement<ClothItem>(20) 
             };
             CraftMinutes = new ConstantValue(15);
