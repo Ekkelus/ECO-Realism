@@ -8,10 +8,11 @@ using Eco.Gameplay.Interactions;
 using Eco.Gameplay.Items;
 using Eco.Gameplay.Objects;
 using Eco.Gameplay.Players;
+using Eco.Gameplay.Systems;
 using Eco.Mods.TechTree;
+using Eco.Shared.Localization;
 using Eco.Shared.Math;
 using Eco.Shared.Serialization;
-using Eco.Shared.Localization;
 using Eco.World;
 using Eco.World.Blocks;
 
@@ -90,8 +91,6 @@ public abstract class RampItem<T> : WorldObjectItem<T>
 {
     public override bool ShouldCreate { get { return false; } }
 
-    public abstract Type[] GetBlockTypesForDirection(Vector3i direction);
-
     public override Result OnAreaValid(Player player, Vector3i position, Quaternion rotation)
     {
         // instead of placing as a world object, spawn blocks
@@ -111,6 +110,7 @@ public abstract class RampItem<T> : WorldObjectItem<T>
 [Serialized]
 [ItemGroup("Road Items")]
 [Weight(500)]
+[Tag("Road")]
 public class DirtRampItem : RampItem<DirtRampObject>
 {
     public override LocString DisplayName { get { return Localizer.DoStr("Dirt Ramp"); } }
@@ -170,6 +170,7 @@ public class StoneRampObject : BaseRampObject
 [Serialized]
 [ItemGroup("Road Items")]
 [Weight(500)]
+[Tag("Road")]
 public class StoneRampItem : RampItem<StoneRampObject>
 {
     public override LocString DisplayName { get { return Localizer.DoStr("Stone Ramp"); } }
@@ -230,6 +231,7 @@ public class AsphaltRampObject : BaseRampObject
 [Serialized]
 [ItemGroup("Road Items")]
 [Weight(500)]
+[Tag("Road")]
 public class AsphaltRampItem : RampItem<AsphaltRampObject>
 {
     public override LocString DisplayName { get { return Localizer.DoStr("Asphalt Ramp"); } }
