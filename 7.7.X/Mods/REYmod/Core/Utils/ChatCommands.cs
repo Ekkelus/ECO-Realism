@@ -17,6 +17,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Eco.Shared.Localization;
+using Eco.Gameplay.Skills;
+using Eco.Mods.TechTree;
 
 namespace REYmod.Core.ChatCommandsNamespace
 {
@@ -71,6 +73,39 @@ namespace REYmod.Core.ChatCommandsNamespace
         //    else ChatUtils.SendMessage(user, "No Diamonds found!");
 
         //}
+
+        [ChatCommand("UnlearnSpecialty", "Unlearns all specialties wich haven't been used before and refunds the stars", level: ChatAuthorizationLevel.Admin)]
+        public static void UnlearnSpecialty(User user)
+        {
+
+            Skill[] skillsToUnlearn;
+            string unlearned = "";
+
+
+            skillsToUnlearn = user.Skillset.Skills.Where(x => (!x.IsRoot) && (x.Level == 1) && (x.PercentTowardsNextLevel == 0.0f) && (!(x is SelfImprovementSkill))).ToArray();
+
+            if(skillsToUnlearn.Count()==0)
+            {
+                user.Player.PopupOKBoxLoc(Localizer.DoStr("No applicable Skills found"));
+                return;
+            }
+
+            foreach(Skill s in skillsToUnlearn)
+            {
+                unlearned = unlearned + s.DisplayName + "\n";
+                s.AbandonSpecialty(user.Player);
+
+
+            }
+            //user.Skillset.RefreshSkills();
+            user.Tick();
+            user.Player.PopupOKBoxLoc(Localizer.DoStr("Unlearned the following skills:\n" + unlearned));
+            
+
+
+        }
+
+
 
         [ChatCommand("TestCommand", "testtesttest", level: ChatAuthorizationLevel.Admin)]
         public static async void TestCommandAsync(User user)
