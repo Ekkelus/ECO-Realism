@@ -26,7 +26,7 @@
                 new CraftingElement<UrchinItem>(typeof(HuntingSkill), 4, HuntingSkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Clean Urchins"), typeof(CleanUrchinsRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CleanUrchinsRecipe), this.UILink(), 0.2f, typeof(HuntingSkill), typeof(HuntingFocusedSpeedTalent));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CleanUrchinsRecipe), this.UILink(), 0.2f, typeof(HuntingSkill));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }
