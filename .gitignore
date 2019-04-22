@@ -331,3 +331,6 @@ ASALocalRun/
 # Binaries
 *.dll
 *.7z
+
+#WIP folder
+7.7.X\Mods\REYmod\WIP\
