@@ -68,8 +68,37 @@ namespace REYmod.TestStuff
    
 	public class ChatCommands : IChatCommandHandler
 	{
+       
+        
+        //[ChatCommand("GiveBackerItem", "", level: ChatAuthorizationLevel.Admin)]
+        //public static void GiveBackerItem(User user, string setname)
+        //{
+        //    var changeSet = InventoryChangeSet.New(new InventoryCollection(user.Inventory.ToolbarBackpack, user.Inventory.Carried), user);
 
-		[ChatCommand("diamond", "Spawns a diamond above you", level: ChatAuthorizationLevel.Admin)]
+
+        //    if (setname.ToLower() == "wolf")
+        //    {
+        //        changeSet.AddItem(new WolfWhispererHatItem());
+        //        changeSet.AddItem(new WolfWhispererMaskItem());
+        //        changeSet.AddItem(new WolfWhispererShirtItem());
+        //    }
+        //    if (setname.ToLower() == "alpha")
+        //    {
+        //        changeSet.AddItem(new AlphaHatItem());
+        //        changeSet.AddItem(new AlphaCloakItem());
+        //        changeSet.AddItem(new AlphaGogglesItem());
+        //    }
+        //    if (setname.ToLower() == "meteor")
+        //    {
+        //        changeSet.AddItem(new MeteorShardItem());
+        //    }
+        //    var res = changeSet.TryApply();
+        //    if (!res.Success) user.Player.SendTemporaryError(res.Message);
+
+        //}
+
+
+        [ChatCommand("diamond", "Spawns a diamond above you", level: ChatAuthorizationLevel.Admin)]
 		public static void DiamondSpawn(User user)
 		{
 			Vector3i x = user.Position.Round + new Vector3i(0, 2, 0);

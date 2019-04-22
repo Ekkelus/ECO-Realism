@@ -18,6 +18,8 @@ using Eco.Core.Utils.AtomicAction;
 using System.Timers;
 using REYmod.Config;
 using Eco.Gameplay;
+using Eco.Gameplay.Objects;
+using Eco.Gameplay.Components;
 
 
 // This file should contain only basic Utils wich are needed for all Modules, no module specific code here, only "interfaces" for events (see OneMinutetimer for example)
@@ -99,6 +101,7 @@ namespace REYmod.Utils
 
 
         }
+
 
         private static void ServerGUIBroadcast()
         {
@@ -220,6 +223,32 @@ namespace REYmod.Utils
     public static class MiscUtils
     {
 
+        public static string GetHouseRanking(int amount = 10)
+        {
+            int usercount = UserManager.Users.Count<User>();
+            int i = 0;
+            string output = string.Empty;
+            List<KeyValuePair<User, float>> userlist = new List<KeyValuePair<User, float>>(usercount);
+            User tmpuser;
+
+            foreach (User userentry in UserManager.Users)
+            {
+                userlist.Add(new KeyValuePair<User, float>(userentry, (float)Math.Round(userentry.CachedHouseValue.HousingSkillRate, 2)));
+            }
+
+            //userlist.Sort(new UserFloatComparer());
+            userlist.Sort((KeyValuePair<User, float> x, KeyValuePair<User, float> y) => y.Value.CompareTo(x.Value));
+
+            if (usercount < amount) amount = usercount;
+            for (i = 0; i < amount; i++)
+            {
+                tmpuser = userlist[i].Key;
+                //output = output + (i + 1).ToString() + ". <link=\"User:" + tmpuser.Name + "\"><style=\"Warning\">" + tmpuser.Name + "</style></link>: <link=\"CachedHouseValue:" + tmpuser.Name +"\"><style=\"Positive\">" + userlist[i].Value.ToString() + "</style></link> skill/day <br>";
+                output = output + (i + 1) + ". " + tmpuser.UILink() + ": " + tmpuser.CachedHouseValue.UILink() + "<br>";
+            }
+
+            return output;
+        }
 
 
         /// <summary>
@@ -412,7 +441,7 @@ namespace REYmod.Utils
             string confirmation = "You already unlocked your next superskill";
             if (!CheckSuperskillConfirmation(player.User))
             {                 
-                confirmation = "To confirm that you understood Super Skills and to unlock them please click " + new Button(x => ConfirmSuperskill(x.User),clickdesc:"Click to unlock", content: "HERE".Color("green"), singleuse: true).UILink();
+                confirmation = "To confirm that you understood Super Skills and to unlock them please click " + new Button(x => ConfirmSuperskill(x.User),clickdesc:"Click to unlock", text: "HERE".Color("green"), singleuse: true).UILink();
             }
             player.OpenInfoPanel("Super Skills", "Current amount of Super Skills: <b><color=green>" + SuperSkillCount(player.User) + "</color></b><br>Max amount of Super Skills: <b><color=green>" + ((REYmodSettings.Obj.Config.Maxsuperskills != int.MaxValue) ? REYmodSettings.Obj.Config.Maxsuperskills.ToString() : "Infinite") + "</color></b><br><br>Super Skills are Skills that can be leveled all the way up to level 10.<br><br><color=red>You can only have a limited amount of them.</color><br><br>" + confirmation);
         }
@@ -627,6 +656,20 @@ namespace REYmod.Utils
         }
         #endregion
 
+
+        #region CustomTextComponent
+        public static void UpdateDynamicText(this CustomTextComponent comp)
+        {
+            if (comp.Text.Contains("[TIME]"))
+                {
+                     comp.SetText(comp.Parent.OwnerUser.Player, "<size=0>[TIME]</size>" + DateTime.Now.ToString("hh:mm:ss"));
+                }
+            else if (comp.Text.Contains("[HOUSERANK]"))
+            {
+                comp.SetText(comp.Parent.OwnerUser.Player, "<size=0>[HOUSERANK]</size>" + MiscUtils.GetHouseRanking(10));
+            }
+        }
+        #endregion
     }
 
 
@@ -641,7 +684,7 @@ namespace REYmod.Utils
         public bool temporary;
 
         public static HashSet<Button> buttonList = new HashSet<Button>();
-        // [TooltipTitle]
+        [TooltipTitle]
         public string TooltipTitle { get; set; }
 
         [Tooltip(100)]
@@ -650,13 +693,13 @@ namespace REYmod.Utils
             return tooltip;
         }
 
-        public Button(Action<Player> onClick = null, string title = null, string tooltip = null, string content = null, bool singleuse = false,string clickdesc = null)
+        public Button(Action<Player> onClick = null, string tooltiptitle = null, string tooltip = null, string text = null, bool singleuse = false,string clickdesc = null)
         {
             if (buttonList.Count > 10000000) throw new OverflowException("Too many undisposed Buttons"); // Exception when there are more than 10mil buttons, thats hopefully never the case
             linkclickaction = onClick;
-            TooltipTitle = title;
+            TooltipTitle = tooltiptitle;
             this.tooltip = tooltip;
-            linkcontent = content;
+            linkcontent = text;
             temporary = singleuse;
             this.clickdesc = clickdesc;
             int newid = RandomUtil.Range(100000000, 999999999);
@@ -673,7 +716,7 @@ namespace REYmod.Utils
             return new LocString(clickdesc);
         }
 
-        public virtual void OnLinkClicked(Player clickingPlayer)
+        public void OnLinkClicked(Player clickingPlayer)
         {
             if (linkclickaction == null) return;
             linkclickaction(clickingPlayer);
