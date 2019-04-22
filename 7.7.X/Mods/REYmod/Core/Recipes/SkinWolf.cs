@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<WolfCarcassItem>(),
             };
             Initialize(Localizer.DoStr("Skin Wolf"), typeof(SkinWolfRecipe));
-            CraftMinutes = CreateCraftTimeValue(typeof(SkinWolfRecipe), this.UILink(), 1, typeof(HuntingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(SkinWolfRecipe), this.UILink(), 1, typeof(HuntingSkill), typeof(HuntingFocusedSpeedTalent));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }

@@ -88,7 +88,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<HingeItem>(typeof(IndustrySkill), 4, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<GlassItem>(typeof(IndustrySkill), 4, IndustrySkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(WashingMachineRecipe), Item.Get<WashingMachineItem>().UILink(), 10, typeof(IndustrySkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(WashingMachineRecipe), Item.Get<WashingMachineItem>().UILink(), 10, typeof(IndustrySkill), typeof(IndustryFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Washing Machine"), typeof(WashingMachineRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }

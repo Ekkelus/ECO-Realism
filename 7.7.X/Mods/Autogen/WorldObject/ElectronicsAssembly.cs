@@ -80,7 +80,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SteelItem>(typeof(ElectronicsSkill), 20, ElectronicsSkill.MultiplicativeStrategy),
 				new CraftingElement<RivetItem>(typeof(ElectronicsSkill), 10, ElectronicsSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(ElectronicsAssemblyRecipe), Item.Get<ElectronicsAssemblyItem>().UILink(), 60, typeof(ElectronicsSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(ElectronicsAssemblyRecipe), Item.Get<ElectronicsAssemblyItem>().UILink(), 60, typeof(ElectronicsSkill), typeof(ElectronicsFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Electronics Assembly"), typeof(ElectronicsAssemblyRecipe));
             CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);
         }

@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BisonCarcassItem>(),
             };
             Initialize(Localizer.DoStr("Skin Bison"), typeof(SkinBisonRecipe));
-            CraftMinutes = CreateCraftTimeValue(typeof(SkinBisonRecipe), this.UILink(), 1, typeof(HuntingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(SkinBisonRecipe), this.UILink(), 1, typeof(HuntingSkill), typeof(HuntingFocusedSpeedTalent));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }

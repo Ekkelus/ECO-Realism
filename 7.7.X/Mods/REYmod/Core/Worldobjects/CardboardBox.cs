@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PaperItem>(typeof(PaperMillingSkill), 10, PaperMillingSkill.MultiplicativeStrategy),
                 new CraftingElement<GlueItem>(typeof(PaperMillingSkill), 1, PaperMillingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(CardboardBoxRecipe), Item.Get<CardboardBoxItem>().UILink(), 2, typeof(PaperMillingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(CardboardBoxRecipe), Item.Get<CardboardBoxItem>().UILink(), 2, typeof(PaperMillingSkill), typeof(PaperMillingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Cardboard Box"), typeof(CardboardBoxRecipe));
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);
         }

@@ -79,7 +79,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PlantFibersItem>(typeof(HewingSkill), 20, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<GlueItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(ChairRecipe), Item.Get<ChairItem>().UILink(), 5, typeof(HewingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(ChairRecipe), Item.Get<ChairItem>().UILink(), 5, typeof(HewingSkill), typeof(HewingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Chair"), typeof(ChairRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

@@ -65,7 +65,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<LumberItem>(typeof(LumberSkill), 10, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(LumberSkill), 8, LumberSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(LargeStandingLumberSignRecipe), Item.Get<LargeStandingLumberSignItem>().UILink(), 10, typeof(LumberSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(LargeStandingLumberSignRecipe), Item.Get<LargeStandingLumberSignItem>().UILink(), 10, typeof(LumberSkill), typeof(LumberFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Large Standing Lumber Sign"), typeof(LargeStandingLumberSignRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }

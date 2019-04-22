@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<HewnLogItem>(typeof(BasicEngineeringSkill), 10, BasicEngineeringSkill.MultiplicativeStrategy),
                 new CraftingElement<LogItem>(typeof(BasicEngineeringSkill), 10, BasicEngineeringSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(WoodenGearRecipe), Item.Get<WoodenGearItem>().UILink(), 6, typeof(BasicEngineeringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(WoodenGearRecipe), Item.Get<WoodenGearItem>().UILink(), 6, typeof(BasicEngineeringSkill), typeof(BasicEngineeringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Wooden Gear"), typeof(WoodenGearRecipe));
 
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);

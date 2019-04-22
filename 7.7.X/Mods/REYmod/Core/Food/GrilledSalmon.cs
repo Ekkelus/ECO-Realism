@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SalmonFilletItem>(typeof(AdvancedCampfireCookingSkill), 10, AdvancedCampfireCookingSkill.MultiplicativeStrategy),
 				new CraftingElement<TallowItem>(typeof(AdvancedCampfireCookingSkill), 5, AdvancedCampfireCookingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(GrilledSalmonRecipe), Item.Get<GrilledSalmonItem>().UILink(), 10, typeof(AdvancedCampfireCookingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(GrilledSalmonRecipe), Item.Get<GrilledSalmonItem>().UILink(), 10, typeof(AdvancedCampfireCookingSkill), typeof(AdvancedCampfireCookingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Grilled Salmon"), typeof(GrilledSalmonRecipe));
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);
         }

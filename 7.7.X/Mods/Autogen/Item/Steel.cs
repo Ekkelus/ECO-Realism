@@ -18,7 +18,7 @@ namespace Eco.Mods.TechTree
     //            new CraftingElement<CoalItem>(typeof(AdvancedSmeltingSkill), 2, AdvancedSmeltingSkill.MultiplicativeStrategy),
     //            new CraftingElement<IronIngotItem>(typeof(AdvancedSmeltingSkill), 5, AdvancedSmeltingSkill.MultiplicativeStrategy), 
     //        };
-    //        this.CraftMinutes = CreateCraftTimeValue(typeof(SteelRecipe), Item.Get<SteelItem>().UILink(), 3, typeof(AdvancedSmeltingSkill));    
+    //        this.CraftMinutes = CreateCraftTimeValue(typeof(SteelRecipe), Item.Get<SteelItem>().UILink(), 3, typeof(AdvancedSmeltingSkill), typeof(AdvancedSmeltingFocusedSpeedTalent));    
     //        this.Initialize(Localizer.DoStr("Steel"), typeof(SteelRecipe));
 
     //        CraftingComponent.AddRecipe(typeof(BlastFurnaceObject), this);

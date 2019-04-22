@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<HingeItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(HewingSkill), 5, HewingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(LumberDoorRecipe), Item.Get<LumberDoorItem>().UILink(), 3, typeof(LumberSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(LumberDoorRecipe), Item.Get<LumberDoorItem>().UILink(), 3, typeof(LumberSkill), typeof(LumberFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Lumber Door"), typeof(LumberDoorRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }

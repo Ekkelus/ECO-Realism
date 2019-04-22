@@ -80,7 +80,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ClothItem>(typeof(BasicEngineeringSkill), 25, BasicEngineeringSkill.MultiplicativeStrategy),
                 new CraftingElement<WoodenGearItem>(typeof(BasicEngineeringSkill), 1, BasicEngineeringSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(WindmillRecipe), Item.Get<WindmillItem>().UILink(), 30, typeof(BasicEngineeringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(WindmillRecipe), Item.Get<WindmillItem>().UILink(), 30, typeof(BasicEngineeringSkill), typeof(BasicEngineeringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Windmill"), typeof(WindmillRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SkinnedBisonItem>(typeof(ButcherySkill), 1, ButcherySkill.MultiplicativeStrategy), 
             };
             Initialize(Localizer.DoStr("Butcher Bison"), typeof(ButcherBisonRecipe));
-            CraftMinutes = CreateCraftTimeValue(typeof(ButcherBisonRecipe), this.UILink(), 3, typeof(ButcherySkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(ButcherBisonRecipe), this.UILink(), 3, typeof(ButcherySkill), typeof(ButcheryFocusedSpeedTalent));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }

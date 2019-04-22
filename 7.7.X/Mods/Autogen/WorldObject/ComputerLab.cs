@@ -35,7 +35,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PaperItem>(typeof(IndustrySkill), 20, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<RivetItem>(typeof(IndustrySkill), 10, IndustrySkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(ComputerLabRecipe), Item.Get<ComputerLabItem>().UILink(), 260, typeof(ElectronicsSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(ComputerLabRecipe), Item.Get<ComputerLabItem>().UILink(), 260, typeof(ElectronicsSkill), typeof(ElectronicsFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Computer Lab"), typeof(ComputerLabRecipe));
             CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }

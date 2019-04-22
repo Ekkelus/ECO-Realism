@@ -81,7 +81,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ClothItem>(typeof(TailoringSkill), 10, TailoringSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(TailoringSkill), 6, TailoringSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(PaddedChairRecipe), Item.Get<PaddedChairItem>().UILink(), 5, typeof(TailoringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(PaddedChairRecipe), Item.Get<PaddedChairItem>().UILink(), 5, typeof(TailoringSkill), typeof(TailoringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Padded Chair"), typeof(PaddedChairRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }

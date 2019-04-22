@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(FertilizersSkill), 10, FertilizersSkill.MultiplicativeStrategy),
                 new CraftingElement<RopeItem>(typeof(FertilizersSkill), 6, FertilizersSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(SaltBasketRecipe), Item.Get<SaltBasketItem>().UILink(), 5, typeof(FertilizersSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(SaltBasketRecipe), Item.Get<SaltBasketItem>().UILink(), 5, typeof(FertilizersSkill), typeof(FertilizersFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Salt Basket"), typeof(SaltBasketRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }

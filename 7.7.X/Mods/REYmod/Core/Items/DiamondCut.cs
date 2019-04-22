@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<RawDiamondItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(DiamondCutRecipe), Item.Get<DiamondCutItem>().UILink(), 60, typeof(MortaringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(DiamondCutRecipe), Item.Get<DiamondCutItem>().UILink(), 60, typeof(MortaringSkill), typeof(MortaringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Cut Diamond"), typeof(DiamondCutRecipe));
 
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);

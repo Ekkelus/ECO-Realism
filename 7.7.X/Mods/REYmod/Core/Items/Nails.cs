@@ -20,7 +20,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 2, SmeltingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(NailsRecipe), Item.Get<NailsItem>().UILink(), 4, typeof(SmeltingSkill));    
+            CraftMinutes = CreateCraftTimeValue(typeof(NailsRecipe), Item.Get<NailsItem>().UILink(), 4, typeof(SmeltingSkill), typeof(SmeltingFocusedSpeedTalent));    
             Initialize(Localizer.DoStr("Nails"), typeof(NailsRecipe));
 
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);

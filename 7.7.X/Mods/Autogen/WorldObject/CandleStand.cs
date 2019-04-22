@@ -89,7 +89,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 5, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<TallowItem>(typeof(SmeltingSkill), 2, SmeltingSkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(CandleStandRecipe), Item.Get<CandleStandItem>().UILink(), 1, typeof(SmeltingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(CandleStandRecipe), Item.Get<CandleStandItem>().UILink(), 1, typeof(SmeltingSkill), typeof(SmeltingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Candle Stand"), typeof(CandleStandRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }

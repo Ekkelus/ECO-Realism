@@ -64,7 +64,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<HewnLogItem>(typeof(HewingSkill), 25, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(HewingSkill), 8, HewingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(LargeStandingHewnLogSignRecipe), Item.Get<LargeStandingHewnLogSignItem>().UILink(), 10, typeof(HewingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(LargeStandingHewnLogSignRecipe), Item.Get<LargeStandingHewnLogSignItem>().UILink(), 10, typeof(HewingSkill), typeof(HewingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Large Standing Hewn Log Sign"), typeof(LargeStandingHewnLogSignRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

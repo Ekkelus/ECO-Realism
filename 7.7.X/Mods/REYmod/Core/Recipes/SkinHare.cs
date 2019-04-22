@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<HareCarcassItem>(),
             };
             Initialize(Localizer.DoStr("Skin Hare"), typeof(SkinHareRecipe));
-            CraftMinutes = CreateCraftTimeValue(typeof(SkinHareRecipe), this.UILink(), 1, typeof(HuntingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(SkinHareRecipe), this.UILink(), 1, typeof(HuntingSkill), typeof(HuntingFocusedSpeedTalent));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }

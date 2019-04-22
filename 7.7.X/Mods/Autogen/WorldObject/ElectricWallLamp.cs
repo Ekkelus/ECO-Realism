@@ -82,7 +82,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<LightBulbItem>(), 
                 new CraftingElement<SteelItem>(typeof(ElectronicsSkill), 10, ElectronicsSkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(ElectricWallLampRecipe), Item.Get<ElectricWallLampItem>().UILink(), 1, typeof(ElectronicsSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(ElectricWallLampRecipe), Item.Get<ElectricWallLampItem>().UILink(), 1, typeof(ElectronicsSkill), typeof(ElectronicsFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Electric Wall Lamp"), typeof(ElectricWallLampRecipe));
             CraftingComponent.AddRecipe(typeof(ElectronicsAssemblyObject), this);
         }

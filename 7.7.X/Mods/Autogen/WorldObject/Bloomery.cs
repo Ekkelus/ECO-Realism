@@ -93,7 +93,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(MortaringSkill), 20, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<SandItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(BloomeryRecipe), Item.Get<BloomeryItem>().UILink(), 10, typeof(MortaringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(BloomeryRecipe), Item.Get<BloomeryItem>().UILink(), 10, typeof(MortaringSkill), typeof(MortaringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Bloomery"), typeof(BloomeryRecipe));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }

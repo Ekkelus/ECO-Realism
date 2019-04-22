@@ -38,7 +38,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PrimeCutItem>(typeof(AdvancedCookingSkill), 10, AdvancedCookingSkill.MultiplicativeStrategy),
                 new CraftingElement<MeatStockItem>(typeof(AdvancedCookingSkill), 5, AdvancedCookingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(HoneyGlazedHamRecipe), Item.Get<HoneyGlazedHamItem>().UILink(), 20, typeof(AdvancedCookingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(HoneyGlazedHamRecipe), Item.Get<HoneyGlazedHamItem>().UILink(), 20, typeof(AdvancedCookingSkill), typeof(AdvancedCookingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Honey Glazed Ham"), typeof(HoneyGlazedHamRecipe));
             CraftingComponent.AddRecipe(typeof(StoveObject), this);
         }

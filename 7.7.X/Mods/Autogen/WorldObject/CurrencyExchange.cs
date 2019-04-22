@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BrickItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<LumberItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(CurrencyExchangeRecipe), Item.Get<CurrencyExchangeItem>().UILink(), 30, typeof(SmeltingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(CurrencyExchangeRecipe), Item.Get<CurrencyExchangeItem>().UILink(), 30, typeof(SmeltingSkill), typeof(SmeltingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Currency Exchange"), typeof(CurrencyExchangeRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }

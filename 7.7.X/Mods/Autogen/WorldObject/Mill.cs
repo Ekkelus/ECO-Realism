@@ -91,7 +91,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronIngotItem>(typeof(MortaringSkill), 4, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<BoardItem>(typeof(MortaringSkill), 8, MortaringSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(MillRecipe), Item.Get<MillItem>().UILink(), 20, typeof(MortaringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(MillRecipe), Item.Get<MillItem>().UILink(), 20, typeof(MortaringSkill), typeof(MortaringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Mill"), typeof(MillRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }

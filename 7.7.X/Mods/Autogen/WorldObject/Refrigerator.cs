@@ -95,7 +95,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<HingeItem>(typeof(IndustrySkill), 8, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<RadiatorItem>(typeof(IndustrySkill), 5, IndustrySkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(RefrigeratorRecipe), Item.Get<RefrigeratorItem>().UILink(), 10, typeof(IndustrySkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(RefrigeratorRecipe), Item.Get<RefrigeratorItem>().UILink(), 10, typeof(IndustrySkill), typeof(IndustryFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Refrigerator"), typeof(RefrigeratorRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }

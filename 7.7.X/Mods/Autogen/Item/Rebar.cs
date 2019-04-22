@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<CoalItem>(typeof(SmeltingSkill), 2, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 5, SmeltingSkill.MultiplicativeStrategy), 
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(RebarRecipe), Item.Get<RebarItem>().UILink(), 0.5f, typeof(SmeltingSkill));    
+            CraftMinutes = CreateCraftTimeValue(typeof(RebarRecipe), Item.Get<RebarItem>().UILink(), 0.5f, typeof(SmeltingSkill), typeof(SmeltingFocusedSpeedTalent));    
             Initialize(Localizer.DoStr("Rebar"), typeof(RebarRecipe));
 
             CraftingComponent.AddRecipe(typeof(BlastFurnaceObject), this);

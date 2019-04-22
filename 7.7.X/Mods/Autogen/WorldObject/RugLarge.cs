@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ClothItem>(typeof(TailoringSkill), 20, TailoringSkill.MultiplicativeStrategy),
                 new CraftingElement<CelluloseFiberItem>(typeof(TailoringSkill), 15, TailoringSkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(RugLargeRecipe), Item.Get<RugLargeItem>().UILink(), 25, typeof(TailoringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(RugLargeRecipe), Item.Get<RugLargeItem>().UILink(), 25, typeof(TailoringSkill), typeof(TailoringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Rug Large"), typeof(RugLargeRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }

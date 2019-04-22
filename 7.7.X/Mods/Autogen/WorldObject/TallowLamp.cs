@@ -89,7 +89,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SandItem>(typeof(MortaringSkill), 4, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<TallowItem>(typeof(MortaringSkill), 2, MortaringSkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(TallowLampRecipe), Item.Get<TallowLampItem>().UILink(), 2, typeof(MortaringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(TallowLampRecipe), Item.Get<TallowLampItem>().UILink(), 2, typeof(MortaringSkill), typeof(MortaringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Tallow Lamp"), typeof(TallowLampRecipe));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }

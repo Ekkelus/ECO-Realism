@@ -17,7 +17,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<MortaredStoneItem>(typeof(BrickProductionEfficiencySkill), 5f, BrickProductionEfficiencySkill.MultiplicativeStrategy),
             };
             this.Initialize(Localizer.DoStr("Upgrade Mortared Stones"), typeof(MortarBrickRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(MortarBrickRecipe), this.UILink(), 1, typeof(BrickProductionSpeedSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(MortarBrickRecipe), this.UILink(), 1, typeof(BrickProductionSpeedSkill), typeof(BrickProductionSpeedFocusedSpeedTalent));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }
     }

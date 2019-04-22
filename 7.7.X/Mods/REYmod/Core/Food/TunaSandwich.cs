@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<TunaFilletItem>(typeof(AdvancedCookingSkill), 5, AdvancedCookingSkill.MultiplicativeStrategy),
                 new CraftingElement<BreadItem>(typeof(AdvancedCookingSkill), 1, AdvancedCookingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(TunaSandwichRecipe), Item.Get<TunaSandwichItem>().UILink(), 10, typeof(AdvancedCookingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(TunaSandwichRecipe), Item.Get<TunaSandwichItem>().UILink(), 10, typeof(AdvancedCookingSkill), typeof(AdvancedCookingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Tuna Sandwich"), typeof(TunaSandwichRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }

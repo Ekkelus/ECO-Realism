@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronIngotItem>(typeof(OilDrillingSkill), 4, OilDrillingSkill.MultiplicativeStrategy),
                 new CraftingElement<RivetItem>(typeof(OilDrillingSkill), 4, OilDrillingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(BarrelRecipe), Item.Get<BarrelItem>().UILink(), 1, typeof(OilDrillingSkill));    
+            CraftMinutes = CreateCraftTimeValue(typeof(BarrelRecipe), Item.Get<BarrelItem>().UILink(), 1, typeof(OilDrillingSkill), typeof(OilDrillingFocusedSpeedTalent));    
             Initialize(Localizer.DoStr("Barrel"), typeof(BarrelRecipe));
 
             CraftingComponent.AddRecipe(typeof(ElectricMachinistTableObject), this);

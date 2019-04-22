@@ -96,7 +96,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<StoneItem>(typeof(MortaringSkill), 20, MortaringSkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(StoneBrazierRecipe), Item.Get<StoneBrazierItem>().UILink(), 10, typeof(MortaringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(StoneBrazierRecipe), Item.Get<StoneBrazierItem>().UILink(), 10, typeof(MortaringSkill), typeof(MortaringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Stone Brazier"), typeof(StoneBrazierRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }

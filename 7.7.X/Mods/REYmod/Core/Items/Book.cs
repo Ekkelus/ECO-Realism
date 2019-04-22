@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<LeatherHideItem>(typeof(PaperMillingSkill), 10, PaperMillingSkill.MultiplicativeStrategy),
                 new CraftingElement<GlueItem>(typeof(PaperMillingSkill), 4, PaperMillingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(BookRecipe), Item.Get<BookItem>().UILink(), 10, typeof(PaperMillingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(BookRecipe), Item.Get<BookItem>().UILink(), 10, typeof(PaperMillingSkill), typeof(PaperMillingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Book"), typeof(BookRecipe));
 
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);

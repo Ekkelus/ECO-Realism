@@ -63,7 +63,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<StoneItem>(typeof(MortaringSkill), 30, MortaringSkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(SmallStandingStoneSignRecipe), Item.Get<SmallStandingStoneSignItem>().UILink(), 10, typeof(MortaringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(SmallStandingStoneSignRecipe), Item.Get<SmallStandingStoneSignItem>().UILink(), 10, typeof(MortaringSkill), typeof(MortaringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Small Standing Stone Sign"), typeof(SmallStandingStoneSignRecipe));
             CraftingComponent.AddRecipe(typeof(MasonryTableObject), this);
         }

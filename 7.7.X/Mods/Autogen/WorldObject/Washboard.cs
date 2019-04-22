@@ -78,7 +78,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(TailoringSkill), 10, TailoringSkill.MultiplicativeStrategy),
                 new CraftingElement<IronIngotItem>(typeof(TailoringSkill), 4, TailoringSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(WashboardRecipe), Item.Get<WashboardItem>().UILink(), 5, typeof(TailoringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(WashboardRecipe), Item.Get<WashboardItem>().UILink(), 5, typeof(TailoringSkill), typeof(TailoringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Washboard"), typeof(WashboardRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }

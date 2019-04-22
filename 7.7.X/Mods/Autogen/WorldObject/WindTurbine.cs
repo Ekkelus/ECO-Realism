@@ -86,7 +86,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<CircuitItem>(typeof(MechanicsSkill), 10, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<ReinforcedConcreteItem>(typeof(MechanicsSkill), 6, MechanicsSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(WindTurbineRecipe), Item.Get<WindTurbineItem>().UILink(), 50, typeof(MechanicsSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(WindTurbineRecipe), Item.Get<WindTurbineItem>().UILink(), 50, typeof(MechanicsSkill), typeof(MechanicsFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Wind Turbine"), typeof(WindTurbineRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }

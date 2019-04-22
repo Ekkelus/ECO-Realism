@@ -79,7 +79,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(BasicEngineeringSkill), 50, BasicEngineeringSkill.MultiplicativeStrategy),
                 new CraftingElement<WoodenGearItem>(typeof(BasicEngineeringSkill), 1, BasicEngineeringSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(WaterwheelRecipe), Item.Get<WaterwheelItem>().UILink(), 30, typeof(BasicEngineeringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(WaterwheelRecipe), Item.Get<WaterwheelItem>().UILink(), 30, typeof(BasicEngineeringSkill), typeof(BasicEngineeringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Waterwheel"), typeof(WaterwheelRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

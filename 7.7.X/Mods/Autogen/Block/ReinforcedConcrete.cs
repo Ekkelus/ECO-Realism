@@ -26,7 +26,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ConcreteItem>(typeof(CementSkill), 1, CementSkill.MultiplicativeStrategy),
                 new CraftingElement<RebarItem>(typeof(CementSkill), 1, CementSkill.MultiplicativeStrategy), 
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(ReinforcedConcreteRecipe), Item.Get<ReinforcedConcreteItem>().UILink(), 2, typeof(CementSkill));    
+            CraftMinutes = CreateCraftTimeValue(typeof(ReinforcedConcreteRecipe), Item.Get<ReinforcedConcreteItem>().UILink(), 2, typeof(CementSkill), typeof(CementFocusedSpeedTalent));    
             Initialize(Localizer.DoStr("Reinforced Concrete"), typeof(ReinforcedConcreteRecipe));
 
             CraftingComponent.AddRecipe(typeof(CementKilnObject), this);

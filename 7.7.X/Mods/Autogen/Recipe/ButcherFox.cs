@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SkinnedFoxItem>(typeof(ButcherySkill), 1, ButcherySkill.MultiplicativeStrategy), 
             };
             Initialize(Localizer.DoStr("Butcher Fox"), typeof(ButcherFoxRecipe));
-            CraftMinutes = CreateCraftTimeValue(typeof(ButcherFoxRecipe), this.UILink(), 1, typeof(ButcherySkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(ButcherFoxRecipe), this.UILink(), 1, typeof(ButcherySkill), typeof(ButcheryFocusedSpeedTalent));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }

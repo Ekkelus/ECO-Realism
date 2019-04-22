@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<TroutItem>(typeof(CuttingEdgeCookingSkill), 5, CuttingEdgeCookingSkill.MultiplicativeStrategy),
             };
             Initialize(Localizer.DoStr("Refine Fish"), typeof(RefineFishRecipe));
-            CraftMinutes = CreateCraftTimeValue(typeof(RefineFishRecipe), this.UILink(), 5, typeof(CuttingEdgeCookingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(RefineFishRecipe), this.UILink(), 5, typeof(CuttingEdgeCookingSkill), typeof(CuttingEdgeCookingFocusedSpeedTalent));
             CraftingComponent.AddRecipe(typeof(LaboratoryObject), this);
         }
     }

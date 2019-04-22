@@ -35,7 +35,7 @@ namespace Eco.Mods.TechTree
             {
 				new CraftingElement<SalmonItem>(typeof(HuntingSkill), 1, HuntingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(SalmonFilletRecipe), Item.Get<SalmonFilletItem>().UILink(), 3, typeof(HuntingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(SalmonFilletRecipe), Item.Get<SalmonFilletItem>().UILink(), 3, typeof(HuntingSkill), typeof(HuntingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Salmon Fillet"), typeof(SalmonFilletRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }

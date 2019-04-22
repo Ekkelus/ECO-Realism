@@ -96,7 +96,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 10, SmeltingSkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(BrazierRecipe), Item.Get<BrazierItem>().UILink(), 1, typeof(SmeltingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(BrazierRecipe), Item.Get<BrazierItem>().UILink(), 1, typeof(SmeltingSkill), typeof(SmeltingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Brazier"), typeof(BrazierRecipe));
             CraftingComponent.AddRecipe(typeof(AnvilObject), this);
         }

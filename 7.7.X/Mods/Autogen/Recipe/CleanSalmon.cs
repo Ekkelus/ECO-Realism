@@ -26,7 +26,7 @@
                 new CraftingElement<SalmonItem>(typeof(HuntingSkill), 1, HuntingSkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Clean Salmon"), typeof(CleanSalmonRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CleanSalmonRecipe), this.UILink(), 1, typeof(HuntingSkill));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CleanSalmonRecipe), this.UILink(), 1, typeof(HuntingSkill), typeof(HuntingFocusedSpeedTalent));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }

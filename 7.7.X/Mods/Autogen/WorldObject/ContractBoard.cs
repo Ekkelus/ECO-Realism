@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<PaperItem>(typeof(HewingSkill), 10, HewingSkill.MultiplicativeStrategy),
                 //new CraftingElement<NailsItem>(typeof(HewingSkill), 20, HewingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(ContractBoardRecipe), Item.Get<ContractBoardItem>().UILink(), 15, typeof(HewingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(ContractBoardRecipe), Item.Get<ContractBoardItem>().UILink(), 15, typeof(HewingSkill), typeof(HewingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Contract Board"), typeof(ContractBoardRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }
