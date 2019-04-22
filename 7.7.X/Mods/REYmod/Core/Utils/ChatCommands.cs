@@ -153,7 +153,7 @@ namespace REYmod.Core.ChatCommandsNamespace
             {
                 Legislation.Laws.AllNonFailedLaws.Where(x => !x.InEffect).ToList().ForEach(x =>
                 {
-                    panelcontent += new Button(player => { Legislation.Laws.EnactLaw(x); player.OpenInfoPanel("Law passed", "You passed " + x.UILink()); }, tooltip: x.Tooltip(), content: x.Title, singleuse: true, clickdesc: "Click to enact this law").UILink();
+                    panelcontent += new Button(player => { Legislation.Laws.EnactLaw(x); player.OpenInfoPanel("Law passed", "You passed " + x.UILink()); }, tooltip: x.Tooltip(), text: x.Title, singleuse: true, clickdesc: "Click to enact this law").UILink();
                     panelcontent += "<br>";
                 });
             }
@@ -324,7 +324,7 @@ namespace REYmod.Core.ChatCommandsNamespace
             string panelcontent = "Select Player: <br><br>";
             foreach (User onlineuser in UserManager.OnlineUsers)
             {
-                panelcontent += new Button(player => { usertoteleport.Player.SetPosition(onlineuser.Player.Position); IOUtils.WriteCommandLog(user, "Tp", usertoteleport.Name + " -> " + onlineuser.Name); }, content: onlineuser.Name, singleuse: true, clickdesc: "Click to teleport " + usertoteleport.Name + " to " + onlineuser.Name).UILink();
+                panelcontent += new Button(player => { usertoteleport.Player.SetPosition(onlineuser.Player.Position); IOUtils.WriteCommandLog(user, "Tp", usertoteleport.Name + " -> " + onlineuser.Name); }, text: onlineuser.Name, singleuse: true, clickdesc: "Click to teleport " + usertoteleport.Name + " to " + onlineuser.Name).UILink();
                 panelcontent += "<br>";
             }
             user.Player.OpenInfoPanel("Teleporting " + usertoteleport.Name, panelcontent);
@@ -558,31 +558,6 @@ namespace REYmod.Core.ChatCommandsNamespace
             user.Player.OpenInfoPanel(title, admininfo + targetuser.UILink() + " " + onlineinfo + newline + skillsheadline + foodinfo + housinginfo + totalsp + professioninfo + newline + propertyinfo + newline + superskillsinfo + currencyinfo);
         }
 
-        /* OBSOLETE
-        [ChatCommand("donate", "Donates Money to the Treasury")]
-        public static void Donate(User user, float amount, string currencytype)
-        {
-            Currency currency = EconomyManager.Currency.GetCurrency(currencytype);
-            if (currency == null)
-            {
-                user.Player.SendTemporaryErrorAlreadyLocalized("Currency " + currencytype + " not found.");
-                return;
-            }
-
-            if (amount <= 0)
-            {
-                user.Player.SendTemporaryErrorLoc("Must specify an amount greater than 0.");
-                return;
-            }
-
-            Result result = Legislation.Government.PayTax(currency, user, amount, "Voluntary Donation");
-            if (result.Success)
-            {
-                user.Player.SendTemporaryMessageAlreadyLocalized("You donated " + currency.UILink(amount) + " to the Treasury. Thank you!");
-            }
-            else user.Player.SendTemporaryMessageAlreadyLocalized(result.Message);
-        }
-        */
 
         [ChatCommand("superskillshelp", "Displays an infobox about Super Skills")] 
         public static void SuperSkillhelp(User user)
@@ -607,7 +582,7 @@ namespace REYmod.Core.ChatCommandsNamespace
             {
                 Legislation.Laws.AllNonFailedLaws.Where(x => !x.InEffect).ToList().ForEach(x =>
                 {
-                    panelcontent += new Button(player => { MiscUtils.SoftPassLaw(x,user); }, tooltip: x.Tooltip(), content: x.Title, singleuse: true, clickdesc: "Click to try to enact this law").UILink();
+                    panelcontent += new Button(player => { MiscUtils.SoftPassLaw(x,user); }, tooltip: x.Tooltip(), text: x.Title, singleuse: true, clickdesc: "Click to try to enact this law").UILink();
                     panelcontent += "<br>";
                 });
             }

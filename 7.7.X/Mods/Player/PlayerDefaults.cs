@@ -25,7 +25,7 @@ public static class PlayerDefaults
         {
             { typeof(StarterCampItem), 1 },
             { typeof(PropertyClaimItem), 4 },
-            { typeof(CoinItem), 100 },
+            { typeof(CoinItem), 50 },
             {typeof(StarFruitItem), 1},
         };
     }
