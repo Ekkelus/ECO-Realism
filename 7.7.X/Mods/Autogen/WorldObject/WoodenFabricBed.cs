@@ -80,7 +80,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<ClothItem>(typeof(LumberSkill), 20, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(LumberSkill), 16, LumberSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(WoodenFabricBedRecipe), Item.Get<WoodenFabricBedItem>().UILink(), 5, typeof(LumberSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(WoodenFabricBedRecipe), Item.Get<WoodenFabricBedItem>().UILink(), 5, typeof(LumberSkill), typeof(LumberFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Wooden Fabric Bed"), typeof(WoodenFabricBedRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }

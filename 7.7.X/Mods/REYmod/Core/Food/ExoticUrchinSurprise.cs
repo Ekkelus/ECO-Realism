@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<UrchinItem>(typeof(AdvancedCookingSkill), 10, AdvancedCookingSkill.MultiplicativeStrategy),
                 new CraftingElement<AmanitaMushroomsItem>(typeof(AdvancedCookingSkill), 20, AdvancedCookingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(ExoticUrchinSurpriseRecipe), Item.Get<ExoticUrchinSurpriseItem>().UILink(), 10, typeof(AdvancedCookingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(ExoticUrchinSurpriseRecipe), Item.Get<ExoticUrchinSurpriseItem>().UILink(), 10, typeof(AdvancedCookingSkill), typeof(AdvancedCookingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Exotic Urchin Surprise"), typeof(ExoticUrchinSurpriseRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }

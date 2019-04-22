@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoneItem>(typeof(ButcherySkill), 5, ButcherySkill.MultiplicativeStrategy),
                 new CraftingElement<GlassJarItem>(),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(GlueRecipe), Item.Get<GlueItem>().UILink(), 3, typeof(ButcherySkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(GlueRecipe), Item.Get<GlueItem>().UILink(), 3, typeof(ButcherySkill), typeof(ButcheryFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Glue"), typeof(GlueRecipe));
 
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);

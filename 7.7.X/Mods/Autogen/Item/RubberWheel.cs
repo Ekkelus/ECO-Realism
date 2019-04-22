@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<SyntheticRubberItem>(typeof(IndustrySkill), 10, IndustrySkill.MultiplicativeStrategy),
                 new CraftingElement<IronWheelItem>(),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(RubberWheelRecipe), Item.Get<RubberWheelItem>().UILink(), 5, typeof(IndustrySkill));    
+            CraftMinutes = CreateCraftTimeValue(typeof(RubberWheelRecipe), Item.Get<RubberWheelItem>().UILink(), 5, typeof(IndustrySkill), typeof(IndustryFocusedSpeedTalent));    
             Initialize(Localizer.DoStr("Rubber Wheel"), typeof(RubberWheelRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);

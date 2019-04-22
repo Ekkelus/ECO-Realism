@@ -37,7 +37,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<FlourItem>(typeof(AdvancedBakingSkill), 20, AdvancedBakingSkill.MultiplicativeStrategy),
                 new CraftingElement<OilItem>(typeof(AdvancedBakingSkill), 10, AdvancedBakingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(TaiyakiRecipe), Item.Get<TaiyakiItem>().UILink(), 10, typeof(AdvancedBakingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(TaiyakiRecipe), Item.Get<TaiyakiItem>().UILink(), 10, typeof(AdvancedBakingSkill), typeof(AdvancedBakingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Taiyaki"), typeof(TaiyakiRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }

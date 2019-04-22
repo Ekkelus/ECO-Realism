@@ -56,7 +56,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<LumberItem>(typeof(LumberSkill), 20, LumberSkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(LargeLumberDoorRecipe), Item.Get<LargeLumberDoorItem>().UILink(), 20, typeof(LumberSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(LargeLumberDoorRecipe), Item.Get<LargeLumberDoorItem>().UILink(), 20, typeof(LumberSkill), typeof(LumberFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Large Lumber Door"), typeof(LargeLumberDoorRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }

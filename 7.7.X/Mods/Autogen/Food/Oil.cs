@@ -48,7 +48,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<CerealGermItem>(typeof(MillingSkill), 30, MillingSkill.MultiplicativeStrategy) 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(OilRecipe), Item.Get<OilItem>().UILink(), 5, typeof(MillingSkill)); 
+            this.CraftMinutes = CreateCraftTimeValue(typeof(OilRecipe), Item.Get<OilItem>().UILink(), 5, typeof(MillingSkill), typeof(MillingFocusedSpeedTalent)); 
             this.Initialize(Localizer.DoStr("Oil"), typeof(OilRecipe));
             CraftingComponent.AddRecipe(typeof(MillObject), this);
         }

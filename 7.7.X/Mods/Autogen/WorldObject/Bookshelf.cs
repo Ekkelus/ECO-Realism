@@ -86,7 +86,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BookItem>(typeof(LumberSkill), 5, LumberSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(LumberSkill), 10, LumberSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(BookshelfRecipe), Item.Get<BookshelfItem>().UILink(), 1, typeof(LumberSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(BookshelfRecipe), Item.Get<BookshelfItem>().UILink(), 1, typeof(LumberSkill), typeof(LumberFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Bookshelf"), typeof(BookshelfRecipe));
             CraftingComponent.AddRecipe(typeof(SawmillObject), this);
         }

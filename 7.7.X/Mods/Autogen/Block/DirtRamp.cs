@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<DirtItem>(4), 
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(DirtRampRecipe), Item.Get<DirtRampItem>().UILink(), 0.5f, typeof(BasicEngineeringSkill));    
+            CraftMinutes = CreateCraftTimeValue(typeof(DirtRampRecipe), Item.Get<DirtRampItem>().UILink(), 0.5f, typeof(BasicEngineeringSkill), typeof(BasicEngineeringFocusedSpeedTalent));    
             Initialize(Localizer.DoStr("Dirt Ramp"), typeof(DirtRampRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);

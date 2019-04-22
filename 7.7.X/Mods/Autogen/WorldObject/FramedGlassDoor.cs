@@ -60,7 +60,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<FramedGlassItem>(typeof(GlassworkingSkill), 10, GlassworkingSkill.MultiplicativeStrategy),   
                 new CraftingElement<HingeItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(FramedGlassDoorRecipe), Item.Get<FramedGlassDoorItem>().UILink(), 20, typeof(GlassworkingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(FramedGlassDoorRecipe), Item.Get<FramedGlassDoorItem>().UILink(), 20, typeof(GlassworkingSkill), typeof(GlassworkingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Framed Glass Door"), typeof(FramedGlassDoorRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }

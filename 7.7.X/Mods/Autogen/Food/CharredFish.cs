@@ -33,7 +33,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<RawFishItem>(typeof(CampfireCookingEfficiencySkill), 3, CampfireCookingEfficiencySkill.MultiplicativeStrategy), 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(CharredFishRecipe), Item.Get<CharredFishItem>().UILink(), 3, typeof(CampfireCookingSpeedSkill)); 
+            this.CraftMinutes = CreateCraftTimeValue(typeof(CharredFishRecipe), Item.Get<CharredFishItem>().UILink(), 3, typeof(CampfireCookingSpeedSkill), typeof(CampfireCookingSpeedFocusedSpeedTalent)); 
             this.Initialize(Localizer.DoStr("Charred Fish"), typeof(CharredFishRecipe));
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);
         }

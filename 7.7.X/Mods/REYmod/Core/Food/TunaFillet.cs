@@ -35,7 +35,7 @@
             {
 				new CraftingElement<TunaItem>(typeof(HuntingSkill), 1, HuntingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(TunaFilletRecipe), Item.Get<TunaFilletItem>().UILink(), 3, typeof(HuntingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(TunaFilletRecipe), Item.Get<TunaFilletItem>().UILink(), 3, typeof(HuntingSkill), typeof(HuntingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Tuna Fillet"), typeof(TunaFilletRecipe));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }

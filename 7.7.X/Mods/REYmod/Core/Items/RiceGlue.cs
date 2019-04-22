@@ -21,7 +21,7 @@
                 new CraftingElement<GlassJarItem>(),
             };
             Initialize(Localizer.DoStr("Rice Glue"), typeof(RiceGlueRecipe));
-            CraftMinutes = CreateCraftTimeValue(typeof(RiceGlueRecipe), this.UILink(), 5, typeof(AdvancedCampfireCookingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(RiceGlueRecipe), this.UILink(), 5, typeof(AdvancedCampfireCookingSkill), typeof(AdvancedCampfireCookingFocusedSpeedTalent));
             CraftingComponent.AddRecipe(typeof(CampfireObject), this);
         }
     }

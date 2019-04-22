@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<SugarItem>(typeof(AdvancedCookingSkill), 10, AdvancedCookingSkill.MultiplicativeStrategy) 
             };
-            this.CraftMinutes = CreateCraftTimeValue(typeof(YeastRecipe), Item.Get<YeastItem>().UILink(), 5, typeof(AdvancedCookingSkill)); 
+            this.CraftMinutes = CreateCraftTimeValue(typeof(YeastRecipe), Item.Get<YeastItem>().UILink(), 5, typeof(AdvancedCookingSkill), typeof(AdvancedCookingFocusedSpeedTalent)); 
             this.Initialize(Localizer.DoStr("Yeast"), typeof(YeastRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }

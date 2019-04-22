@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(HewingSkill), 50, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<LogItem>(typeof(HewingSkill), 40, HewingSkill.MultiplicativeStrategy),   
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(WainwrightTableRecipe), Item.Get<WainwrightTableItem>().UILink(), 10, typeof(HewingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(WainwrightTableRecipe), Item.Get<WainwrightTableItem>().UILink(), 10, typeof(HewingSkill), typeof(HewingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Wainwright Table"), typeof(WainwrightTableRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

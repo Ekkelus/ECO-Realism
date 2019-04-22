@@ -74,7 +74,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<BoardItem>(typeof(TailoringSkill), 5, TailoringSkill.MultiplicativeStrategy),
                 new CraftingElement<NailsItem>(typeof(TailoringSkill), 8, TailoringSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(ElkMountRecipe), Item.Get<ElkMountItem>().UILink(), 15, typeof(TailoringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(ElkMountRecipe), Item.Get<ElkMountItem>().UILink(), 15, typeof(TailoringSkill), typeof(TailoringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Elk Mount"), typeof(ElkMountRecipe));
             CraftingComponent.AddRecipe(typeof(TailoringTableObject), this);
         }

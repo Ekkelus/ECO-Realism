@@ -41,7 +41,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<KelpItem>(typeof(AdvancedCookingSkill), 4, AdvancedCookingSkill.MultiplicativeStrategy),
                 new CraftingElement<RiceItem>(typeof(AdvancedCookingSkill), 20, AdvancedCookingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(SushiRecipe), Item.Get<SushiItem>().UILink(), 15, typeof(AdvancedCookingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(SushiRecipe), Item.Get<SushiItem>().UILink(), 15, typeof(AdvancedCookingSkill), typeof(AdvancedCookingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Sushi"), typeof(SushiRecipe));
             CraftingComponent.AddRecipe(typeof(KitchenObject), this);
         }

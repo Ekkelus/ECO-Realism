@@ -77,7 +77,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<StoneItem>(typeof(MortaringSkill), 10, MortaringSkill.MultiplicativeStrategy),
                 new CraftingElement<PulpFillerItem>(typeof(MortaringSkill), 5, MortaringSkill.MultiplicativeStrategy)
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(PlanterPotRoundRecipe), Item.Get<PlanterPotRoundItem>().UILink(), 5, typeof(MortaringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(PlanterPotRoundRecipe), Item.Get<PlanterPotRoundItem>().UILink(), 5, typeof(MortaringSkill), typeof(MortaringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Planter Pot Round"), typeof(PlanterPotRoundRecipe));
             CraftingComponent.AddRecipe(typeof(KilnObject), this);
         }

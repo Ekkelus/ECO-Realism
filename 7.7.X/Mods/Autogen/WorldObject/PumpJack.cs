@@ -84,7 +84,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<CopperPipeItem>(typeof(MechanicsSkill), 6, MechanicsSkill.MultiplicativeStrategy),
                 new CraftingElement<WaterwheelItem>(typeof(MechanicsSkill), 2, MechanicsSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(PumpJackRecipe), Item.Get<PumpJackItem>().UILink(), 50, typeof(MechanicsSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(PumpJackRecipe), Item.Get<PumpJackItem>().UILink(), 50, typeof(MechanicsSkill), typeof(MechanicsFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Pump Jack"), typeof(PumpJackRecipe));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }

@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<AsphaltRoadItem>(4),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(AsphaltRampRecipe), Item.Get<AsphaltRampItem>().UILink(), 5, typeof(BasicEngineeringSkill));    
+            CraftMinutes = CreateCraftTimeValue(typeof(AsphaltRampRecipe), Item.Get<AsphaltRampItem>().UILink(), 5, typeof(BasicEngineeringSkill), typeof(BasicEngineeringFocusedSpeedTalent));    
             Initialize(Localizer.DoStr("Asphalt Ramp"), typeof(AsphaltRampRecipe));
 
             CraftingComponent.AddRecipe(typeof(WainwrightTableObject), this);

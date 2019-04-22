@@ -18,7 +18,7 @@ namespace Eco.Mods.TechTree
             {
                 new CraftingElement<StringItem>(typeof(TailoringSkill), 5, TailoringSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(RopeRecipe), Item.Get<RopeItem>().UILink(), 2, typeof(TailoringSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(RopeRecipe), Item.Get<RopeItem>().UILink(), 2, typeof(TailoringSkill), typeof(TailoringFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Rope"), typeof(RopeRecipe));
 
             CraftingComponent.AddRecipe(typeof(WorkbenchObject), this);

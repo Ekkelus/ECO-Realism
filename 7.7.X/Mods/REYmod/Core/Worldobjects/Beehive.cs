@@ -82,7 +82,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronIngotItem>(typeof(FarmingSkill), 4, FarmingSkill.MultiplicativeStrategy),
                 new CraftingElement<GlueItem>(typeof(FarmingSkill), 8, FarmingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(BeehiveRecipe), Item.Get<BeehiveItem>().UILink(), 1, typeof(FarmingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(BeehiveRecipe), Item.Get<BeehiveItem>().UILink(), 1, typeof(FarmingSkill), typeof(FarmingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Beehive"), typeof(BeehiveRecipe));
             CraftingComponent.AddRecipe(typeof(FarmersTableObject), this);
         }

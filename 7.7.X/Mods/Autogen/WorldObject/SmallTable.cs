@@ -80,7 +80,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<GlueItem>(typeof(HewingSkill), 2, HewingSkill.MultiplicativeStrategy),
                 new CraftingElement<HewnLogItem>(typeof(HewingSkill), 8, HewingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(SmallTableRecipe), Item.Get<SmallTableItem>().UILink(), 5, typeof(HewingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(SmallTableRecipe), Item.Get<SmallTableItem>().UILink(), 5, typeof(HewingSkill), typeof(HewingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Small Table"), typeof(SmallTableRecipe));
             CraftingComponent.AddRecipe(typeof(CarpentryTableObject), this);
         }

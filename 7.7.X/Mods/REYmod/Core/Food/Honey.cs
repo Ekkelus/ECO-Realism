@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
             //    , new LayerModifiedValue("Fireweed", 5)
             //    , new LayerModifiedValue("Camas", 5))
             //));
-            CraftMinutes = CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 10, typeof(FarmingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(HoneyRecipe), Item.Get<HoneyItem>().UILink(), 10, typeof(FarmingSkill), typeof(FarmingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Honey"), typeof(HoneyRecipe));
             CraftingComponent.AddRecipe(typeof(BeehiveObject), this);
         }

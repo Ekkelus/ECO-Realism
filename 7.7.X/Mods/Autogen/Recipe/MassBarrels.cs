@@ -21,7 +21,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<RivetItem>(typeof(IndustrySkill), 8, IndustrySkill.MultiplicativeStrategy),
             };
             Initialize(Localizer.DoStr("Mass Barrels"), typeof(MassBarrelsRecipe));
-            CraftMinutes = CreateCraftTimeValue(typeof(MassBarrelsRecipe), this.UILink(), 5, typeof(IndustrySkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(MassBarrelsRecipe), this.UILink(), 5, typeof(IndustrySkill), typeof(IndustryFocusedSpeedTalent));
             CraftingComponent.AddRecipe(typeof(AssemblyLineObject), this);
         }
     }

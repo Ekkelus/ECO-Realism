@@ -38,7 +38,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<FiddleheadsItem>(typeof(AdvancedBakingSkill), 30, AdvancedBakingSkill.MultiplicativeStrategy),
                 new CraftingElement<ScrapMeatItem>(typeof(AdvancedBakingSkill), 10, AdvancedBakingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(PizzaRecipe), Item.Get<PizzaItem>().UILink(), 15, typeof(AdvancedBakingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(PizzaRecipe), Item.Get<PizzaItem>().UILink(), 15, typeof(AdvancedBakingSkill), typeof(AdvancedBakingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Pizza"), typeof(PizzaRecipe));
             CraftingComponent.AddRecipe(typeof(BakeryOvenObject), this);
         }

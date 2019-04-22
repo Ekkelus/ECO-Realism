@@ -37,7 +37,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<YeastItem>(typeof(AdvancedBakingSkill), 3, AdvancedBakingSkill.MultiplicativeStrategy),
                 new CraftingElement<FlourItem>(typeof(AdvancedBakingSkill), 6, AdvancedBakingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(HoneyBunRecipe), Item.Get<HoneyBunItem>().UILink(), 10, typeof(AdvancedBakingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(HoneyBunRecipe), Item.Get<HoneyBunItem>().UILink(), 10, typeof(AdvancedBakingSkill), typeof(AdvancedBakingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Honey Bun"), typeof(HoneyBunRecipe));
             CraftingComponent.AddRecipe(typeof(BakeryOvenObject), this);
         }

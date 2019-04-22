@@ -80,7 +80,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<IronIngotItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
                 new CraftingElement<LogItem>(typeof(SmeltingSkill), 20, SmeltingSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(AnvilRecipe), Item.Get<AnvilItem>().UILink(), 20, typeof(SmeltingSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(AnvilRecipe), Item.Get<AnvilItem>().UILink(), 20, typeof(SmeltingSkill), typeof(SmeltingFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Anvil"), typeof(AnvilRecipe));
             CraftingComponent.AddRecipe(typeof(BloomeryObject), this);
         }

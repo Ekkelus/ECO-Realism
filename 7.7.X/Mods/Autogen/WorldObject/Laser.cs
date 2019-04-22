@@ -46,7 +46,7 @@ namespace Eco.Mods.TechTree
                 new CraftingElement<CircuitItem>(typeof(ElectronicsSkill), 70, ElectronicsSkill.MultiplicativeStrategy),
                 new CraftingElement<DiamondCutItem>(typeof(ElectronicsSkill), 50, ElectronicsSkill.MultiplicativeStrategy),
             };
-            CraftMinutes = CreateCraftTimeValue(typeof(LaserRecipe), Item.Get<LaserItem>().UILink(), 240, typeof(ElectronicsSkill));
+            CraftMinutes = CreateCraftTimeValue(typeof(LaserRecipe), Item.Get<LaserItem>().UILink(), 240, typeof(ElectronicsSkill), typeof(ElectronicsFocusedSpeedTalent));
             Initialize(Localizer.DoStr("Laser"), typeof(LaserRecipe));
             CraftingComponent.AddRecipe(typeof(RoboticAssemblyLineObject), this);
         }
