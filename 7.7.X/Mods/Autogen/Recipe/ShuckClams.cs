@@ -26,7 +26,7 @@
                 new CraftingElement<ClamItem>(typeof(HuntingSkill), 5, HuntingSkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Shuck Clams"), typeof(ShuckClamsRecipe));
-            this.CraftMinutes = CreateCraftTimeValue(typeof(ShuckClamsRecipe), this.UILink(), 0.2f, typeof(HuntingSkill), typeof(HuntingFocusedSpeedTalent));
+            this.CraftMinutes = CreateCraftTimeValue(typeof(ShuckClamsRecipe), this.UILink(), 0.2f, typeof(HuntingSkill));
             CraftingComponent.AddRecipe(typeof(FisheryObject), this);
         }
     }
