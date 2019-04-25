@@ -18,7 +18,6 @@ namespace REYmod.Core
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Systems;
     using System.ComponentModel;
-    using REYmod.Core.ChatCommandsNamespace;
     using REYmod.Utils;
     using Eco.Mods.TechTree;
     using System;
@@ -62,6 +61,7 @@ namespace REYmod.Core
         private static Type[] fuelTypeList = new Type[]
 {
             typeof(CoalItem),
+            typeof(ArrowItem),
 };
 
 
@@ -98,6 +98,10 @@ namespace REYmod.Core
         private void CustomTick(object sender, ElapsedEventArgs e)
         {
             if (!UpdateEnabled()) return;
+
+            //ChatUtils.SendMessageToAll(this.GetComponent<FuelSupplyComponent>().Energy + " + " + this.GetComponent<FuelSupplyComponent>().EnergyInSupply);
+
+
             AutoMinerSettingsComponent autoMiner = this.GetComponent<AutoMinerSettingsComponent>();
             while (TryMine(new Vector3i(autoMiner.intX, autoMiner.intY, autoMiner.intZ)))
             {
@@ -154,7 +158,7 @@ namespace REYmod.Core
 
             if (block is IRepresentsItem)
             {
-                ChatUtils.SendMessageToAll("RepresentsItem");
+                //ChatUtils.SendMessageToAll("RepresentsItem");
                 blockItem = Item.Create((block as IRepresentsItem).RepresentedItemType);
                 amount = 3;
             }
@@ -162,26 +166,26 @@ namespace REYmod.Core
 
             if ((block.Is<Diggable>() || block.Is<Minable>()) && blockItem != null)
             {
-                if (!this.GetComponent<FuelSupplyComponent>().TryConsumeFuel(1000))
+                if ((this.GetComponent<FuelSupplyComponent>().Energy + this.GetComponent<FuelSupplyComponent>().EnergyInSupply) < 1000)
                 {
-                    ChatUtils.SendMessageToAll("Not enough fuel");
+                   // ChatUtils.SendMessageToAll("Not enough fuel");
                     return false;
                 }
-                // somehow fuel and storage has to be checked simultaniously, as its currently always burning fuel, even if ther is no space
                 Result result = LinkedStorage.TryAddItems(blockItem.Type, amount);
 
                     if (result.Success)
                     {
+                        this.GetComponent<FuelSupplyComponent>().TryConsumeFuel(1000);
                         World.DeleteBlock(pos);
                         return false;
                     }
                     else
                     {
-                        ChatUtils.SendMessageToAll("No Space");
+                        //ChatUtils.SendMessageToAll("No Space");
                         return false;
                     }
             }
-            else ChatUtils.SendMessageToAll("No valid Block");
+            //else ChatUtils.SendMessageToAll("No valid Block");
 
 
             return true;
@@ -245,25 +249,26 @@ namespace REYmod.Core
 
         }
 
-        [RPC, Autogen , ViewDisplayName("Show Rules")]
+        [RPC, Autogen]
         public void StartMining(Player player)
         {
             this.enabled = true;
             status.SetStatusMessage(this.Enabled, Localizer.DoStr("Mining."), Localizer.DoStr("Mining has not started yet"));
-            ChatUtils.SendMessageToAll("AUTOMINER: " + this.Parent.Enabled);
+            //ChatUtils.SendMessageToAll("AUTOMINER: " + this.Parent.Enabled);
             foreach (WorldObjectComponent component in this.Parent.GetComponents<WorldObjectComponent>())
             {
-                ChatUtils.SendMessageToAll(component.GetType() + "     " + component.Enabled);
+                //ChatUtils.SendMessageToAll(component.GetType() + "     " + component.Enabled);
             }
         }
 
-        [RPC, Autogen, GuestEditable , ViewDisplayName("Yell TIMBER!")]
+        [RPC, Autogen, GuestEditable]
         public void Resetpos(Player player)
         {
             CurX = Parent.Position3i.X-R;
             CurY = Parent.Position3i.Y-1;
             CurZ = Parent.Position3i.Z-R;
-            if (player != null) player.RPC("YellTimber");
+            //if (player != null) player.RPC("YellTimber");
+            if (player != null) ChatUtils.SendMessage(player, "Mining started");
         }
 
 
