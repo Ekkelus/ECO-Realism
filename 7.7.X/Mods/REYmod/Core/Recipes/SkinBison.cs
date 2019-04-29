@@ -5,6 +5,7 @@ namespace Eco.Mods.TechTree
     using Gameplay.Skills;
     using Shared.Localization;
     using Gameplay.Systems.TextLinks;
+    using REYmod.Utils;
 
     [RequiresSkill(typeof(HuntingSkill), 4)]
     public class SkinBisonRecipe : Recipe
@@ -14,7 +15,7 @@ namespace Eco.Mods.TechTree
             Products = new CraftingElement[]
             {
                new CraftingElement<SkinnedBisonItem>(),
-               new CraftingElement<LeatherHideItem>(typeof(HuntingSkill), 3, HuntingSkill.MultiplicativeStrategy),
+               new CraftingElement<LeatherHideItem>(typeof(HuntingSkill), 3, HuntingSkill.MultiplicativeStrategy.Inverted()),
             };
             Ingredients = new CraftingElement[]
             {
