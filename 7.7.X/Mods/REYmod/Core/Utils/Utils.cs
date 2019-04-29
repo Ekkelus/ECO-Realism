@@ -20,6 +20,7 @@ using REYmod.Config;
 using Eco.Gameplay;
 using Eco.Gameplay.Objects;
 using Eco.Gameplay.Components;
+using Eco.Gameplay.DynamicValues;
 
 
 // This file should contain only basic Utils wich are needed for all Modules, no module specific code here, only "interfaces" for events (see OneMinutetimer for example)
@@ -670,6 +671,36 @@ namespace REYmod.Utils
             }
         }
         #endregion
+
+        #region ModificationStrategy
+        public static ModificationStrategy Inverted(this ModificationStrategy x)
+        {
+            if (x is MultiplicativeStrategy)
+            {
+
+                List<float> newfactorslist = new List<float>();
+                foreach (float factor in (x as MultiplicativeStrategy).Factors)
+                {
+                    if (factor != 0) newfactorslist.Add(1 / factor);
+                }
+
+                return new MultiplicativeStrategy(newfactorslist.ToArray());
+            }
+            if (x is AdditiveStrategy)
+            {
+                List<float> subtractions = new List<float>();
+                foreach (float addition in (x as AdditiveStrategy).Additions)
+                {
+                    subtractions.Add(-addition);
+                }
+
+                return new AdditiveStrategy(subtractions.ToArray());
+            }
+
+            return x;
+        }
+        #endregion
+
     }
 
 

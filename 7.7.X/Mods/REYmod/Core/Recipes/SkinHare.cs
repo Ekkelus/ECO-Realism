@@ -5,6 +5,7 @@ namespace Eco.Mods.TechTree
     using Gameplay.Skills;
     using Shared.Localization;
     using Gameplay.Systems.TextLinks;
+    using REYmod.Utils;
 
     [RequiresSkill(typeof(HuntingSkill), 1)]
     public class SkinHareRecipe : Recipe
@@ -14,7 +15,7 @@ namespace Eco.Mods.TechTree
             Products = new CraftingElement[]
             {
                new CraftingElement<SkinnedHareItem>(),
-               new CraftingElement<FurPeltItem>(typeof(HuntingSkill), 1, HuntingSkill.MultiplicativeStrategy),
+               new CraftingElement<FurPeltItem>(typeof(HuntingSkill), 1, HuntingSkill.MultiplicativeStrategy.Inverted()),
             };
             Ingredients = new CraftingElement[]
             {
