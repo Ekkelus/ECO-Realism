@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net45</TargetFramework>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <LangVersion>5</LangVersion>
@@ -18,13 +18,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="7.7.X\Mods\REYmod\WIP\WorldGen\Worldgen.cs" />
-    <Compile Remove="7.7.X\Mods\REYmod\WIP\Testthings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="7.7.X\Mods\REYmod\WIP\WorldGen\Worldgen.cs" />
-    <None Include="7.7.X\Mods\REYmod\WIP\Testthings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>dlls\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Asphalt-ModKit">
+      <HintPath>dlls\Asphalt-ModKit.dll</HintPath>
+    </Reference>
     <Reference Include="Eco.Core">
       <HintPath>dlls\Eco.Core.dll</HintPath>
     </Reference>

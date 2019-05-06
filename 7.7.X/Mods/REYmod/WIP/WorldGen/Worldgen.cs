@@ -1,4 +1,6 @@
-﻿using System;
+﻿/*
+
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -145,10 +147,10 @@ namespace REYmod.Utils
 
 		public static void Generate()
 		{
-			/* TEMPORARY DISABLED DUE TO DIAMOND BUGS!!!
-			Type[] spawnin = new Type[] { typeof(CoalBlock) };
-			WorldGenUtils.GenerateMineral(typeof(DiamondBlock), 300, 10, 25, spawnin);
-			*/ 
+			//TEMPORARY DISABLED DUE TO DIAMOND BUGS!!!
+			//Type[] spawnin = new Type[] { typeof(CoalBlock) };
+			//WorldGenUtils.GenerateMineral(typeof(DiamondBlock), 300, 10, 25, spawnin);
+			 
 			newworld = false;
 		}
 
@@ -168,3 +170,5 @@ namespace REYmod.Utils
 
 	}
 }
+
+*/

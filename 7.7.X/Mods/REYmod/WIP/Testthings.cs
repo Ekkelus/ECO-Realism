@@ -47,7 +47,7 @@ using REYmod.Blocks;
 
 
 
-namespace REYmod.TestStuff
+namespace REYmod.Testthings
 {
 
 	[Category("Hidden")]
@@ -60,7 +60,7 @@ namespace REYmod.TestStuff
 
 		private static void WarnDebug()
 		{
-			ChatManager.ServerMessageToAllAlreadyLocalized("WARNING! Debugfunctions enabled! Please contact an admin about that!", false);
+			ChatManager.ServerMessageToAll("WARNING! Debugfunctions enabled! Please contact an admin about that!".ToLocString(), false);        
 		}
 	}
 
@@ -155,14 +155,14 @@ namespace REYmod.TestStuff
 		}
 
 
-		[ChatCommand("worldgentest", "test som worldgen functions")]
-		public static void worldgentest(User user,float initialspread = 1f,float spreaddecay = 0.95f ,int coresize = 0)
-		{
-			Vector3 pos = user.Position + new Vector3(0,5,0);
-			WorldGenUtils.CreateVein(pos.WorldPosition3i, new DirtBlock(),initialspread: initialspread, spreaddecay: spreaddecay ,coreSize: coresize);
+		//[ChatCommand("worldgentest", "test som worldgen functions")]
+		//public static void worldgentest(User user,float initialspread = 1f,float spreaddecay = 0.95f ,int coresize = 0)
+		//{
+		//	Vector3 pos = user.Position + new Vector3(0,5,0);
+		//	WorldGenUtils.CreateVein(pos.WorldPosition3i, new DirtBlock(),initialspread: initialspread, spreaddecay: spreaddecay ,coreSize: coresize);
 
 
-		}
+		//}
 
 		[ChatCommand("testdebug", "test some stuff")]
 		public static void testdebug(User user)
