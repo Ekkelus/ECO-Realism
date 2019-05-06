@@ -115,7 +115,7 @@ namespace Eco.Mods.TechTree
             {
                 if (Storage.Stacks.Any(x => x.Empty))
                 {
-                    ChatUtils.SendMessageToAll("CANRECEIVE " + item.Name(1) +": EmptyStack! return " + item.MaxStackSize);
+                    //ChatUtils.SendMessageToAll("CANRECEIVE " + item.Name(1) +": EmptyStack! return " + item.MaxStackSize);
                     return item.MaxStackSize;
                   //  return Math.Min(arg.Item.MaxStackSize, arg.Quantity);
                 }                
@@ -129,7 +129,7 @@ namespace Eco.Mods.TechTree
                 }
                 else
                 {
-                    ChatUtils.SendMessageToAll("CANRECEIVE " + item.Name(1) + ": return " + canreceive);
+                    //ChatUtils.SendMessageToAll("CANRECEIVE " + item.Name(1) + ": return " + canreceive);
                     return canreceive;
                 }
             }
