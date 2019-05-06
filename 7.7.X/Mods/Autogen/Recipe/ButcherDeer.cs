@@ -25,7 +25,7 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<DeerCarcassItem>(typeof(ButcherySkill), 1, ButcherySkill.MultiplicativeStrategy), 
+                new CraftingElement<SkinnedDeerItem>(typeof(ButcherySkill), 1, ButcherySkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Butcher Deer"), typeof(ButcherDeerRecipe));
             this.ExperienceOnCraft = 6;  

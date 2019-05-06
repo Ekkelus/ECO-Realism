@@ -6,6 +6,7 @@ namespace Eco.Mods.TechTree
     using REYmod.Utils;
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Components;
+    using Gameplay.Systems.TextLinks;
 
     [Serialized]
     [Weight(3000)]

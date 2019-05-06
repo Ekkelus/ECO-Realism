@@ -25,7 +25,7 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<BighornCarcassItem>(typeof(ButcherySkill), 1, ButcherySkill.MultiplicativeStrategy), 
+                new CraftingElement<SkinnedBighornItem>(typeof(ButcherySkill), 1, ButcherySkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Butcher Bighorn"), typeof(ButcherBighornRecipe));
             this.ExperienceOnCraft = 8;  

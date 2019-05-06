@@ -25,7 +25,7 @@ namespace Eco.Mods.TechTree
             };
             this.Ingredients = new CraftingElement[]
             {
-                new CraftingElement<MountainGoatCarcassItem>(typeof(ButcherySkill), 1, ButcherySkill.MultiplicativeStrategy), 
+                new CraftingElement<SkinnedMountainGoatItem>(typeof(ButcherySkill), 1, ButcherySkill.MultiplicativeStrategy), 
             };
             this.Initialize(Localizer.DoStr("Butcher Mountain Goat"), typeof(ButcherMountainGoatRecipe));
             this.ExperienceOnCraft = 4;  

@@ -8,34 +8,33 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Components;
     using Gameplay.Systems.TextLinks;
 
-
     [Serialized]
-    [Weight(300)]
+    [Weight(500)]
     [Currency]
-    public partial class SkinnedHareItem :
+    public partial class SkinnedOtterItem :
     Item
     {
-        public override LocString DisplayName { get { return Localizer.DoStr("Skinned Hare"); } }
-        public override LocString DisplayDescription { get { return Localizer.DoStr("A skinned hare."); } }
+        public override LocString DisplayName { get { return Localizer.DoStr("Skinned Otter"); } }
+        public override LocString DisplayDescription { get { return Localizer.DoStr("A skinned Otter."); } }
 
     }
 
     [RequiresSkill(typeof(HuntingSkill), 1)]
-    public class SkinHareRecipe : Recipe
+    public class SkinOtterRecipe : Recipe
     {
-        public SkinHareRecipe()
+        public SkinOtterRecipe()
         {
             Products = new CraftingElement[]
             {
-               new CraftingElement<SkinnedHareItem>(),
+               new CraftingElement<SkinnedOtterItem>(),
                new CraftingElement<FurPeltItem>(typeof(HuntingSkill), 1, HuntingSkill.MultiplicativeStrategy.Inverted()),
             };
             Ingredients = new CraftingElement[]
             {
-                new CraftingElement<HareCarcassItem>(),
+                new CraftingElement<OtterCarcassItem>(),
             };
-            Initialize(Localizer.DoStr("Skin Hare"), typeof(SkinHareRecipe));
-            CraftMinutes = CreateCraftTimeValue(typeof(SkinHareRecipe), this.UILink(), 1, typeof(HuntingSkill));
+            Initialize(Localizer.DoStr("Skin Otter"), typeof(SkinOtterRecipe));
+            CraftMinutes = CreateCraftTimeValue(typeof(SkinOtterRecipe), this.UILink(), 1, typeof(HuntingSkill));
             CraftingComponent.AddRecipe(typeof(ButcheryTableObject), this);
         }
     }
