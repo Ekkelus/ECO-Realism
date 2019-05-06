@@ -32,7 +32,7 @@ namespace Eco.Mods.TechTree
             };
             Ingredients = new CraftingElement[]
             {
-                new CraftingElement<SteamTruckItem>(),
+    //            new CraftingElement<SteamTruckItem>(),
                 new CraftingElement<CombustionEngineItem>(),
                 new CraftingElement<RadiatorItem>(), 
                 new CraftingElement<GearboxItem>(typeof(IndustrySkill), 10, IndustrySkill.MultiplicativeStrategy),
