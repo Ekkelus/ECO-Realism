@@ -269,7 +269,7 @@ namespace REYmod.Core
 
             Item blockItem = BlockItem.CreatingItem(block.GetType());
             int amount = 1;
-
+           
 
             if (block is IRepresentsItem) 
             {
@@ -277,6 +277,10 @@ namespace REYmod.Core
                 blockItem = Item.Create((block as IRepresentsItem).RepresentedItemType);
                 if(block.Is<Minable>()) amount = 4; // ore, coal or stone, could also limit to ore and coal by stringcomparison
 
+            }
+            else if (block is RockySoilBlock)
+            {
+                blockItem = Item.Create(typeof(DirtItem));
             }
 
 
