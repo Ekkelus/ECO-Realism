@@ -20,7 +20,7 @@ namespace Eco.Mods.TechTree
             this.Products = new CraftingElement[]
             {
                new CraftingElement<RawMeatItem>(5f),  
-               new CraftingElement<LeatherHideItem>(1f),  
+               new CraftingElement<BoneItem>(4f),  
 
             };
             this.Ingredients = new CraftingElement[]
