@@ -32,7 +32,7 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Constructed]
-    [Road(1)]                                          
+    [Road(1.2f)]                                          
     [RequiresSkill(typeof(BasicEngineeringSkill), 1)]   
     public partial class StoneRampBlock :
         Block            

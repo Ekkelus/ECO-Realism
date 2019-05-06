@@ -34,7 +34,7 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Solid, Wall, Constructed]
-    [Road(1)]                                          
+    [Road(1.4f)]                                          
     [UsesRamp(typeof(AsphaltRoadWorldObjectBlock))]              
     [RequiresSkill(typeof(BasicEngineeringSkill), 3)]   
     public partial class AsphaltRoadBlock :
