@@ -70,11 +70,11 @@ namespace REYmod.Core
         {
             base.Initialize();
             this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTypeList);
-            this.GetComponent<AutoMinerComponent>().Initialize(2,15,30);
+            this.GetComponent<AutoMinerComponent>().Initialize(2,15,45);
             //this.GetComponent<FuelConsumptionComponent>().Initialize(50);
 
             timer = new Timer(1000);
-            timer.AutoReset = true;
+            timer.AutoReset = false;
             timer.Elapsed += CustomTick;
             timer.Start();
 
@@ -85,6 +85,9 @@ namespace REYmod.Core
         {
             if (!Enabled) return;
             this.GetComponent<AutoMinerComponent>().MineNext();
+            timer.Interval = RandomUtil.Range(900, 1100);
+            ChatUtils.SendMessageToAll(timer.Interval.ToString());
+            timer.Start();
         }
 
         public override void Tick() // timer or tickcount? what is better?
@@ -151,7 +154,7 @@ namespace REYmod.Core
             Initialize(radius:2); //init with defaultvalues
         }
 
-        public void Initialize(int radius = 2,int fuelperhit = 15, int secondsperblock = 30) 
+        public void Initialize(int radius = 2,int fuelperhit = 15, int secondsperblock = 45) // "seconds" per block isnt quite right anymore, as theres a 50% chance for a free extra hit every second, so 45 equals ~30 seconds
         {
             base.Initialize();
             if(this.status==null) this.status = this.Parent.GetComponent<StatusComponent>().CreateStatusElement();
@@ -297,6 +300,7 @@ namespace REYmod.Core
                 {
                     this.Parent.GetComponent<FuelSupplyComponent>().TryConsumeFuel(fuelconsumption);
                     UpdateStatus();
+                    if (RandomUtil.CoinToss()) hitsperformed++; //50% chance of a free extra hit for randomization, after Update to prevent values >100%
                     return false;                    
                 }
                 
@@ -316,7 +320,7 @@ namespace REYmod.Core
                 else
                 {
                     //ChatUtils.SendMessageToAll("No Space");
-                    hitsperformed--;
+                    hitsperformed = hitsneeded;
                     UpdateStatus("STORAGE FULL! ");
                     return false;
                 }
