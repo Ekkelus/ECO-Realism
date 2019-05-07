@@ -83,10 +83,14 @@ namespace REYmod.Core
 
         public void CustomTick(object sender, ElapsedEventArgs e)
         {
-            if (!Enabled) return;
+            if (!Enabled)
+            {
+                timer.Start();
+                return;
+            }
             this.GetComponent<AutoMinerComponent>().MineNext();
             timer.Interval = RandomUtil.Range(900, 1100);
-            ChatUtils.SendMessageToAll(timer.Interval.ToString());
+            //ChatUtils.SendMessageToAll(timer.Interval.ToString());
             timer.Start();
         }
 
