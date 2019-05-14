@@ -19,6 +19,7 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(HousingComponent))]
 	[RequireComponent(typeof(SolidGroundComponent))] 
     [RequireRoomVolume(4)]
+    [RequireComponent(typeof(FakePlantComponent))]              
     public partial class PlanterPotSquareObject : 
         WorldObject,    
         IRepresentsItem
@@ -34,6 +35,7 @@ namespace Eco.Mods.TechTree
             GetComponent<HousingComponent>().Set(PlanterPotSquareItem.HousingVal);                                
 
 
+            this.GetComponent<FakePlantComponent>().Initialize();                                           
 
         }
 
