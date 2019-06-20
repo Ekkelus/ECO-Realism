@@ -82,18 +82,18 @@ namespace Eco.Mods.TechTree
             }
         }
 
-        private int OnReceive(ItemStack arg)
+        private float OnReceive(Item item, float amount)
         {
             if (!Enabled) return 0;
             ValResult<int> receivedItems;
                 tmpInventory.Clear();
-                tmpInventory.AddItems(arg);
+                tmpInventory.AddItems(item.Type, (int)amount);
                 receivedItems = tmpInventory.MoveAsManyItemsAsPossible(Storage, OwnerUser);
             if (receivedItems.Success) return receivedItems.Val;
             return 0;
         }
 
-        private int CanReceive(Type arg)
+        private float CanReceive(Type arg)
         {
             if (!Enabled) return 0;
 

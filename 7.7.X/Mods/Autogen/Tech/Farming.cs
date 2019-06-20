@@ -80,6 +80,12 @@ namespace Eco.Mods.TechTree
         public override int PrevRequiredPoint { get { return Level - 1 >= 0 && Level - 1 < SkillPointCost.Length ? SkillPointCost[Level - 1] : 0; } }
         public override int MaxLevel { get { return 7; } }
         public override int Tier { get { return 2; } }
+
+        public override void OnLearned()
+        {
+            base.OnLearned();
+            this.ForceSetLevel(0);
+        }
     }
 
     [Serialized]

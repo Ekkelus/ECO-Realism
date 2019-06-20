@@ -606,7 +606,22 @@ namespace REYmod.Utils
             //Console.WriteLine(checkeditems.Count);
             if (allergyfix && ItemAttribute.Has<AllergyIgnoreAttribute>(item.Type)) return false;
 
-
+            /*
+            I think theres a beter way than the following by just iterating through recipes and ingredients in foreach loops
+            theres no need to store the ingredients/recipes, is it?
+            Pseudocode
+            -------------------------------------------------
+            foreach Recipe
+            { 
+                foreach ingredient
+                {
+                if ingredient.HasIngredient return true;
+                }
+            }
+            return false
+            -------------------------------------------------
+            That should be a bit faster
+            */
             if (item.Type == ingredienttype) return true;
             IEnumerable<Recipe> recipes = Recipe.GetRecipesForItem(item.Type);
             recipes = recipes.Where(y =>

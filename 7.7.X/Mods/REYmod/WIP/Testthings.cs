@@ -55,12 +55,12 @@ namespace REYmod.Testthings
 	{
 		static AnotherInitItem()
 		{
-			GlobalEvents.OneMinuteEvent.Add(WarnDebug);
+			//GlobalEvents.OneMinuteEvent.Add(WarnDebug);
 		}
 
 		private static void WarnDebug()
 		{
-			ChatManager.ServerMessageToAll("WARNING! Debugfunctions enabled! Please contact an admin about that!".ToLocString(), false);        
+			//ChatManager.ServerMessageToAll("WARNING! Debugfunctions enabled! Please contact an admin about that!".ToLocString(), false);        
 		}
 	}
 
@@ -165,24 +165,27 @@ namespace REYmod.Testthings
 		//}
 
 		[ChatCommand("testdebug", "test some stuff")]
-		public static void testdebug(User user)
+		public static void testdebug(User user,string target,string asdf)
 		{
-			ChatUtils.SendMessage(user, World.ChunksCount.ToString());
-			ChatUtils.SendMessage(user, World.GetDepth(user.Position.Round).ToString());
-			ChatUtils.SendMessage(user, ("asdf").Color("green"));
-			ChatUtils.SendMessage(user, Text.Color("00FF00", "bla"));
-			Legislation.Laws.AllNonFailedLaws.ForEach(x => { ChatUtils.SendMessage(user, x.Title); });
+            UserIdType type;
+            //ChatUtils.SendMessage(user, World.ChunksCount.ToString());
+            //ChatUtils.SendMessage(user, World.GetDepth(user.Position.Round).ToString());
+            //ChatUtils.SendMessage(user, ("asdf").Color("green"));
+            //ChatUtils.SendMessage(user, Text.Color("00FF00", "bla"));
+            //Legislation.Laws.AllNonFailedLaws.ForEach(x => { ChatUtils.SendMessage(user, x.Title); });
 
-			string teststring = "Hello World!";
-			ChatUtils.SendMessage(user, Text.Bold(teststring));
-			ChatUtils.SendMessage(user, teststring.Bold());
+            //string teststring = "Hello World!";
+            //ChatUtils.SendMessage(user, Text.Bold(teststring));
+            //ChatUtils.SendMessage(user, teststring.Bold());
 
-			Timer timer = new Timer(10000);
-			timer.Disposed += (sender, e) => ChatUtils.SendMessage(user, "Timer disposed");
-			timer.AutoReset = false;
-			timer.Elapsed += (sender, e) => Timer_Elapsed(sender, e, user);
-			timer.Start();
+            //Timer timer = new Timer(10000);
+            //timer.Disposed += (sender, e) => ChatUtils.SendMessage(user, "Timer disposed");
+            //timer.AutoReset = false;
+            //timer.Elapsed += (sender, e) => Timer_Elapsed(sender, e, user);
+            //timer.Start();
 
+
+            ChatManager.SendChat(asdf, UserManager.FindUser(target,out type));
 		}
 
 		private static void Timer_Elapsed(object sender, ElapsedEventArgs e, User user)
